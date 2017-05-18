@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Lost Grid 1`] = `
+"h1{width:calc(24.975% - 22.5px)}h1:nth-child(n){float:left;margin-right:30px;clear:none}h1:last-child{margin-right:0}h1:nth-child(12n){margin-right:0;float:right}h1:nth-child(12n+1){clear:both}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIjxpbnB1dCBjc3MgMT4iXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsR0FBSyw0QkFBaUIsQ0FBRSxBQUF4QixnQkFBSyxXQUFpQixBQUFqQixrQkFBaUIsQUFBakIsVUFBaUIsQ0FBRSxBQUF4QixjQUFLLGNBQWlCLENBQUUsQUFBeEIsa0JBQUssZUFBaUIsQUFBakIsV0FBaUIsQ0FBRSxBQUF4QixvQkFBSyxVQUFpQixDQUFFIiwiZmlsZSI6InRvLmNzcyIsInNvdXJjZXNDb250ZW50IjpbImgxIHsgbG9zdC1jb2x1bW46IDMvMTIgfSJdfQ== */"
+`;

@@ -35,8 +35,9 @@
   },
   "homepage": "https://github.com/sebastian-software/edgecss#readme",
   "dependencies": {
-    "lost": "^8.0.0",
+    "autoprefixer": "^7.1.1",
     "jest-cli": "^20.0.3",
+    "lost": "^8.0.0",
     "pleeease-filters": "^4.0.0",
     "postcss": "^6.0.1",
     "postcss-advanced-variables": "^1.2.2",
@@ -74,6 +75,8 @@
     "postcss-zindex": "^2.2.0"
   },
   "devDependencies": {
+    "babel-preset-env": "^1.4.0",
+    "postcss-load-config": "^1.2.0",
     "readable-code": "^2.2.0"
   }
 }
