@@ -1,18 +1,15 @@
-# Browsers that we support
+# Pretty static for testing proposes
 
-[production]
-> 2%
-last 2 versions
-safari >= 9
-ie >= 10
-ios >= 9
-android > 4.3
-samsung >= 3
-chromeandroid >= 50
+safari 9
+safari 10
+ie 10
+ie 11
+edge 14
+edge 15
+ios 9
+ios 10
+android 4.3
+android 4.4
+samsung 3
+chromeandroid 50
 firefox esr
-not ie < 10
-
-[development]
-chrome >= 54
-firefox >= 50
-safari >= 10
