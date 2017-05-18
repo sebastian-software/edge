@@ -1,13 +1,14 @@
 {
-  "name": "edgeapp",
+  "name": "edgecss",
   "version": "1.0.0",
-  "description": "",
+  "description": "CSS Processing Configuration by Sebastian Software GmbH",
   "main": "index.js",
   "scripts": {
     "start": "edge start",
     "prod": "edge build",
     "prod:start": "npm run prod && node build/server/main.js",
-    "clean": "rimraf build/client/* build/server/*"
+    "clean": "rimraf build/client/* build/server/*",
+    "test": "jest"
   },
   "engines": {
     "node": ">=6.0.0",
