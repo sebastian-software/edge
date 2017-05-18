@@ -1,0 +1,21 @@
+# Environment Configuration
+.env
+
+# Build output folders
+build/
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Dependency directory
+node_modules
+
+# Cache file from ESLint, HardSource
+.eslintcache
+.hardsource
