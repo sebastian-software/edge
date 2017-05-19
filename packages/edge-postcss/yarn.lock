@@ -4690,15 +4690,6 @@ postcss-message-helpers@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/postcss-message-helpers/-/postcss-message-helpers-2.0.0.tgz#a4f2f4fab6e4fe002f0aed000478cdf52f9ba60e"
 
-postcss-nested-ancestors@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/postcss-nested-ancestors/-/postcss-nested-ancestors-1.0.0.tgz#b7e2e2e4aebbbc1456a9adf9283f6ca5c3a61de3"
-  dependencies:
-    escape-string-regexp "^1.0.5"
-    object-assign "^4.1.0"
-    postcss "^5.0.21"
-    postcss-resolve-nested-selector "^0.1.1"
-
 postcss-nested@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/postcss-nested/-/postcss-nested-2.0.2.tgz#f38fad547f5c3747160aec3bb34745819252974a"

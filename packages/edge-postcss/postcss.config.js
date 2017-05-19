@@ -31,10 +31,6 @@ module.exports = (ctx) => ({
       "variables": {}
     },
 
-    // PostCSS plugin to reference any ancestor selector in nested CSS.
-    // https://github.com/toomuchdesign/postcss-nested-ancestors
-    "postcss-nested-ancestors": {},
-
     // Unwrap nested rules like how Sass does it.
     // https://github.com/postcss/postcss-nested
     "postcss-nested": {},
