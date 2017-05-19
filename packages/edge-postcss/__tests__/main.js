@@ -18,6 +18,14 @@ function compile(input) {
     .then((result) => expect(result.css).toMatchSnapshot())
 }
 
+test("Import A", () =>
+  compile("@import './__tests__/fixtures/import-a.css';")
+)
+
+test("Import B", () =>
+  compile("@import './__tests__/fixtures/import-b.css'; .section { background: #333; }")
+)
+
 test("Lost Grid", () =>
   compile(".grid { lost-column: 3/12 }")
 )
