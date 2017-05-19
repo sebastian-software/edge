@@ -1,6 +1,6 @@
 {
   "name": "edgecss",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "CSS Processing Configuration by Sebastian Software GmbH",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,10 @@
     "prod": "edge build",
     "prod:start": "npm run prod && node build/server/main.js",
     "clean": "rimraf build/client/* build/server/*",
-    "test": "jest"
+    "test": "jest",
+    "release": "release-it --github.release --npm.publish --non-interactive",
+    "release:minor": "release-it --github.release --npm.publish --non-interactive --increment minor",
+    "release:major": "release-it --github.release --npm.publish --non-interactive --increment major"
   },
   "engines": {
     "node": ">=6.0.0",
