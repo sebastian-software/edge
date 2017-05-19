@@ -46,6 +46,12 @@ width:210px
 }"
 `;
 
+exports[`Color Function 1`] = `
+".yellow{
+color:rgba(255,255,0,.9)
+}"
+`;
+
 exports[`Easings 1`] = `
 ".snake{
 -webkit-transition:all 600ms cubic-bezier(.47,0,.745,.715);

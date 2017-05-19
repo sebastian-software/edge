@@ -124,7 +124,11 @@ test("Hex with Alpha", () =>
   compile(".blue { color: #11fc; }")
 )
 
+test("Color Function", () =>
+  compile(".yellow { color: color(yellow a(90%)) }")
+)
 
+// TODO
 
 test("zIndex", () =>
   compile(".first { z-index: 1000; } .second { z-index: 2000; }")
