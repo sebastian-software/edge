@@ -52,14 +52,6 @@ test("Responsive Type", () =>
   compile("html { font-size: responsive 12px 21px; font-range: 420px 1280px; }")
 )
 
-test("Lost Grid", () =>
-  compile(".grid { lost-column: 3/12 }")
-)
-
-test("Autoprefixer", () =>
-  compile(":fullscreen a { display: flex }")
-)
-
 test("Sassy Mixins", () =>
   compile("@mixin simple{ color: red; } h1 { @include simple; }")
 )
@@ -68,12 +60,17 @@ test("Sassy Variables", () =>
   compile("$bgColor: red; h1 { background: $bgColor; }")
 )
 
+
 test("Nested Basic", () =>
   compile("body { h1 { font-weight: bold; } h2 { font-weight: normal; }}")
 )
 
 test("Nested Parent Selector", () =>
   compile("body { ul { li { &:first-child { margin-top: 0; }}}}")
+)
+
+test("Lost Grid", () =>
+  compile(".grid { lost-column: 3/12 }")
 )
 
 test("Grid KISS", () =>
@@ -110,4 +107,8 @@ test("Calc Keep", () =>
 
 test("zIndex", () =>
   compile(".first { z-index: 1000; } .second { z-index: 2000; }")
+)
+
+test("Autoprefixer", () =>
+  compile(":fullscreen a { display: flex }")
 )
