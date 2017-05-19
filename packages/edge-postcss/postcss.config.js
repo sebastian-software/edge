@@ -71,13 +71,13 @@ module.exports = (ctx) => ({
     // https://github.com/postcss/postcss-color-hex-alpha
     "postcss-color-hex-alpha": {},
 
-    // Adds fix and fix-legacy attributes to the clear property, for self-clearing of children.
-    // https://github.com/seaneking/postcss-clearfix
-    "postcss-clearfix": {},
-
     // Transform W3C CSS color function to more compatible CSS
     // https://github.com/postcss/postcss-color-function
     "postcss-color-function": {},
+
+    // Adds fix and fix-legacy attributes to the clear property, for self-clearing of children.
+    // https://github.com/seaneking/postcss-clearfix
+    "postcss-clearfix": {},
 
     // Fix up CSS gradients with transparency for older browsers
     // https://github.com/gilmoreorless/postcss-gradient-transparency-fix
