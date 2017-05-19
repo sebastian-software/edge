@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Asset Width 1`] = `"background:128px;"`;
+exports[`Asset Size 1`] = `
+".icon{
+background-size:128px 128px
+}"
+`;
 
 exports[`Autoprefixer 1`] = `
 ":-webkit-full-screen a{
@@ -199,6 +203,26 @@ margin-top:0
 }"
 `;
 
+exports[`Responsive Type 1`] = `
+"html{
+font-size:calc(7.60465px + 1.04651vw)
+}
+
+@media screen and (min-width:1280px){
+html{
+font-size:21px
+}
+}
+
+
+
+@media screen and (max-width:420px){
+html{
+font-size:12px
+}
+}"
+`;
+
 exports[`Sassy Mixins 1`] = `
 "h1{
 color:red
@@ -211,7 +235,11 @@ background:red
 }"
 `;
 
-exports[`Simple URL 1`] = `"background:url(../fixtures/americano.png);"`;
+exports[`Simple URL 1`] = `
+".icon{
+background:url(../fixtures/americano.png)
+}"
+`;
 
 exports[`Smart Import Basic 1`] = `
 ".root{

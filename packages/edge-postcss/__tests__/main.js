@@ -40,11 +40,15 @@ test("Smart Import with Merge", () =>
 )
 
 test("Simple URL", () =>
-  compile("background: url('./fixtures/americano.png');")
+  compile(".icon { background: url('./fixtures/americano.png'); }")
 )
 
-test("Asset Width", () =>
-  compile("background: width('./fixtures/americano.png');")
+test("Asset Size", () =>
+  compile(".icon { background-size: width('./fixtures/americano.png') height('./fixtures/americano.png'); }")
+)
+
+test("Responsive Type", () =>
+  compile("html { font-size: responsive 12px 21px; font-range: 420px 1280px; }")
 )
 
 test("Lost Grid", () =>
