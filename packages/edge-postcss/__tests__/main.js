@@ -93,6 +93,10 @@ test("Grid KISS", () =>
   `)
 )
 
+test("Magic Animations", () =>
+  compile(".animation { animation-name: magic; }")
+)
+
 test("Calc Trivial", () =>
   compile(".elem { width: calc(300px + 10px); }")
 )
