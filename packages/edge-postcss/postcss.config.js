@@ -1,5 +1,6 @@
-module.exports = {
-  "map": true,
+/* eslint-disable quote-props */
+
+module.exports = (ctx) => ({
   "plugins": {
     "postcss-smart-import": {},
     "postcss-simple-url": {},
@@ -155,4 +156,4 @@ module.exports = {
       "clearReportedMessages": true
     }
   }
-}
+})

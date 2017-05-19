@@ -12,18 +12,35 @@ beforeAll(() =>
   })
 )
 
+// We add some super basic formatting to our CSS to make snapshots better readable
+// and inspectable in case of any regressions later on.
+function format(cssString) {
+  return cssString
+    .replace(/;/g, ";\n")
+    .replace(/}/g, "\n}\n\n")
+    .replace(/{/g, "{\n")
+    .replace(/}\n\n\n}/g, "}\n}\n\n")
+    .trim()
+}
+
 function compile(input) {
+  let allOptions = { ...options, from: "__tests__/main.css", to: "__tests__/dist/main.css" }
+
   return postcss(plugins)
-    .process(input, options)
-    .then((result) => expect(result.css).toMatchSnapshot())
+    .process(input, allOptions)
+    .then((result) => expect(format(result.css)).toMatchSnapshot())
 }
 
 test("Smart Import Basic", () =>
-  compile("@import './__tests__/fixtures/import-a.css';")
+  compile("@import './fixtures/import-a.css';")
 )
 
 test("Smart Import with Merge", () =>
-  compile("@import './__tests__/fixtures/import-b.css'; .section { background: #333; }")
+  compile("@import './fixtures/import-b.css'; .section { background: #333; }")
+)
+
+test("Simple URL", () =>
+  compile("background: url('./fixtures/image.png');")
 )
 
 test("Lost Grid", () =>
@@ -38,7 +55,7 @@ test("Sassy Mixins", () =>
   compile("@mixin simple{ color: red; } h1 { @include simple; }")
 )
 
-test("(Sassy) Variables", () =>
+test("Sassy Variables", () =>
   compile("$bgColor: red; h1 { background: $bgColor; }")
 )
 
@@ -52,7 +69,7 @@ test("Nested Parent Selector", () =>
 
 test("Grid KISS", () =>
   compile(`
-    body {
+    .gridTest {
     	grid-kiss:
     		"+-------------------------------+      "
     		"|           header ↑            | 120px"

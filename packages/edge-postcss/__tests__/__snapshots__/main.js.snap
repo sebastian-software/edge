@@ -1,27 +1,235 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`(Sassy) Variables 1`] = `"h1{background:red}"`;
+exports[`Autoprefixer 1`] = `
+":-webkit-full-screen a{
+display:-webkit-box;
+display:flex
+}
 
-exports[`Autoprefixer 1`] = `":-webkit-full-screen a{display:-webkit-box;display:flex}:-moz-full-screen a{display:flex}:-ms-fullscreen a{display:-ms-flexbox;display:flex}:fullscreen a{display:-webkit-box;display:-ms-flexbox;display:flex}"`;
+:-moz-full-screen a{
+display:flex
+}
 
-exports[`Calc Keep 1`] = `".elem{width:calc(100px + 2%)}"`;
+:-ms-fullscreen a{
+display:-ms-flexbox;
+display:flex
+}
 
-exports[`Calc Trivial 1`] = `".elem{width:310px}"`;
+:fullscreen a{
+display:-webkit-box;
+display:-ms-flexbox;
+display:flex
+}"
+`;
 
-exports[`Calc Variable 1`] = `".elem{width:210px}"`;
+exports[`Calc Keep 1`] = `
+".elem{
+width:calc(100px + 2%)
+}"
+`;
 
-exports[`Grid KISS 1`] = `"body{display:grid;-ms-flex-line-pack:justify;align-content:space-between;grid-template:\\"a a\\" 120px \\"b c \\" 1fr \\"e e\\" 60px/30% 1fr}body>header{grid-area:a;-ms-flex-item-align:start;align-self:start}body>.sidebar{grid-area:b}body>main{grid-area:c}body>footer{grid-area:e;justify-self:center;-ms-flex-item-align:end;align-self:end}@supports not (grid-template-areas:\\"test\\"){body{position:relative;display:block;width:100%;height:100%}body>*{position:absolute;-webkit-box-sizing:border-box;box-sizing:border-box}body>header{max-height:120px;width:100%;top:0;left:0}body>.sidebar,body>main{height:calc(100% - 180px);width:30%;top:120px;left:0}body>main{width:70%;left:30%}body>footer{-webkit-transform:translateX(-50%);transform:translateX(-50%);max-height:60px;max-width:100%;bottom:0;left:50%}}@media screen and (min-width:0\\\\0){body{position:relative;display:block;width:100%;height:100%}body>*{position:absolute;-webkit-box-sizing:border-box;box-sizing:border-box}body>header{max-height:120px;width:100%;top:0;left:0}body>.sidebar,body>main{height:calc(100% - 180px);width:30%;top:120px;left:0}body>main{width:70%;left:30%}body>footer{-webkit-transform:translateX(-50%);transform:translateX(-50%);max-height:60px;max-width:100%;bottom:0;left:50%}}"`;
+exports[`Calc Trivial 1`] = `
+".elem{
+width:310px
+}"
+`;
 
-exports[`Lost Grid 1`] = `".grid{width:calc(24.975% - 22.5px)}.grid:nth-child(n){float:left;margin-right:30px;clear:none}.grid:last-child{margin-right:0}.grid:nth-child(12n){margin-right:0;float:right}.grid:nth-child(12n+1){clear:both}"`;
+exports[`Calc Variable 1`] = `
+".elem{
+width:210px
+}"
+`;
 
-exports[`Nested Basic 1`] = `"body h1{font-weight:700}body h2{font-weight:400}"`;
+exports[`Grid KISS 1`] = `
+".gridTest{
+display:grid;
+-ms-flex-line-pack:justify;
+align-content:space-between;
+grid-template:\\"a a\\" 120px \\"b c \\" 1fr \\"e e\\" 60px/30% 1fr
+}
 
-exports[`Nested Parent Selector 1`] = `"body ul li:first-child{margin-top:0}"`;
+.gridTest>header{
+grid-area:a;
+-ms-flex-item-align:start;
+align-self:start
+}
 
-exports[`Sassy Mixins 1`] = `"h1{color:red}"`;
+.gridTest>.sidebar{
+grid-area:b
+}
 
-exports[`Smart Import Basic 1`] = `".root{color:red}"`;
+.gridTest>main{
+grid-area:c
+}
 
-exports[`Smart Import with Merge 1`] = `".section{color:#00d;background:#333}"`;
+.gridTest>footer{
+grid-area:e;
+justify-self:center;
+-ms-flex-item-align:end;
+align-self:end
+}
 
-exports[`zIndex 1`] = `".first{z-index:1}.second{z-index:2}"`;
+@supports not (grid-template-areas:\\"test\\"){
+.gridTest{
+position:relative;
+display:block;
+width:100%;
+height:100%
+}
+
+.gridTest>*{
+position:absolute;
+box-sizing:border-box
+}
+
+.gridTest>header{
+max-height:120px;
+width:100%;
+top:0;
+left:0
+}
+
+.gridTest>.sidebar,.gridTest>main{
+height:calc(100% - 180px);
+width:30%;
+top:120px;
+left:0
+}
+
+.gridTest>main{
+width:70%;
+left:30%
+}
+
+.gridTest>footer{
+-webkit-transform:translateX(-50%);
+transform:translateX(-50%);
+max-height:60px;
+max-width:100%;
+bottom:0;
+left:50%
+}
+}
+
+
+
+@media screen and (min-width:0\\\\0){
+.gridTest{
+position:relative;
+display:block;
+width:100%;
+height:100%
+}
+
+.gridTest>*{
+position:absolute;
+box-sizing:border-box
+}
+
+.gridTest>header{
+max-height:120px;
+width:100%;
+top:0;
+left:0
+}
+
+.gridTest>.sidebar,.gridTest>main{
+height:calc(100% - 180px);
+width:30%;
+top:120px;
+left:0
+}
+
+.gridTest>main{
+width:70%;
+left:30%
+}
+
+.gridTest>footer{
+-webkit-transform:translateX(-50%);
+transform:translateX(-50%);
+max-height:60px;
+max-width:100%;
+bottom:0;
+left:50%
+}
+}"
+`;
+
+exports[`Lost Grid 1`] = `
+".grid{
+width:calc(24.975% - 22.5px)
+}
+
+.grid:nth-child(n){
+float:left;
+margin-right:30px;
+clear:none
+}
+
+.grid:last-child{
+margin-right:0
+}
+
+.grid:nth-child(12n){
+margin-right:0;
+float:right
+}
+
+.grid:nth-child(12n+1){
+clear:both
+}"
+`;
+
+exports[`Nested Basic 1`] = `
+"body h1{
+font-weight:700
+}
+
+body h2{
+font-weight:400
+}"
+`;
+
+exports[`Nested Parent Selector 1`] = `
+"body ul li:first-child{
+margin-top:0
+}"
+`;
+
+exports[`Sassy Mixins 1`] = `
+"h1{
+color:red
+}"
+`;
+
+exports[`Sassy Variables 1`] = `
+"h1{
+background:red
+}"
+`;
+
+exports[`Simple URL 1`] = `"background:url(../fixtures/image.png);"`;
+
+exports[`Smart Import Basic 1`] = `
+".root{
+color:red
+}"
+`;
+
+exports[`Smart Import with Merge 1`] = `
+".section{
+color:#00d;
+background:#333
+}"
+`;
+
+exports[`zIndex 1`] = `
+".first{
+z-index:1
+}
+
+.second{
+z-index:2
+}"
+`;
