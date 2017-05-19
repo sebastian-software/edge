@@ -40,7 +40,11 @@ test("Smart Import with Merge", () =>
 )
 
 test("Simple URL", () =>
-  compile("background: url('./fixtures/image.png');")
+  compile("background: url('./fixtures/americano.png');")
+)
+
+test("Asset Width", () =>
+  compile("background: width('./fixtures/americano.png');")
 )
 
 test("Lost Grid", () =>
