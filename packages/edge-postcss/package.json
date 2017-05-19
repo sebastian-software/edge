@@ -40,7 +40,6 @@
   "homepage": "https://github.com/sebastian-software/edgecss#readme",
   "dependencies": {
     "autoprefixer": "^7.1.1",
-    "jest-cli": "^20.0.3",
     "lost": "^8.0.0",
     "pleeease-filters": "^4.0.0",
     "postcss": "^6.0.1",
@@ -81,6 +80,7 @@
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-env": "^1.4.0",
+    "jest-cli": "^20.0.3",
     "postcss-load-config": "^1.2.0",
     "prepublish": "^0.16.0",
     "readable-code": "^2.2.0"
