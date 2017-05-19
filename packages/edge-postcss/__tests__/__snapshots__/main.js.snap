@@ -46,6 +46,13 @@ width:210px
 }"
 `;
 
+exports[`Easings 1`] = `
+".snake{
+-webkit-transition:all 600ms cubic-bezier(.47,0,.745,.715);
+transition:all 600ms cubic-bezier(.47,0,.745,.715)
+}"
+`;
+
 exports[`Grid KISS 1`] = `
 ".gridTest{
 display:grid;
@@ -290,6 +297,14 @@ exports[`Smart Import with Merge 1`] = `
 ".section{
 color:#00d;
 background:#333
+}"
+`;
+
+exports[`Will Change Compat 1`] = `
+".scaled{
+-webkit-backface-visibility:hidden;
+backface-visibility:hidden;
+will-change:width
 }"
 `;
 

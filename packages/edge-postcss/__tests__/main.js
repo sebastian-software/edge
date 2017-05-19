@@ -60,7 +60,6 @@ test("Sassy Variables", () =>
   compile("$bgColor: red; h1 { background: $bgColor; }")
 )
 
-
 test("Nested Basic", () =>
   compile("body { h1 { font-weight: bold; } h2 { font-weight: normal; }}")
 )
@@ -97,6 +96,10 @@ test("Magic Animations", () =>
   compile(".animation { animation-name: magic; }")
 )
 
+test("Will Change Compat", () =>
+  compile(".scaled { will-change: width; }")
+)
+
 test("Calc Trivial", () =>
   compile(".elem { width: calc(300px + 10px); }")
 )
@@ -108,6 +111,14 @@ test("Calc Variable", () =>
 test("Calc Keep", () =>
   compile(".elem { width: calc(100px + 2%); }")
 )
+
+test("Easings", () =>
+  compile(".snake { transition: all 600ms ease-in-sine; }")
+)
+
+
+
+
 
 test("zIndex", () =>
   compile(".first { z-index: 1000; } .second { z-index: 2000; }")
