@@ -116,7 +116,13 @@ test("Easings", () =>
   compile(".snake { transition: all 600ms ease-in-sine; }")
 )
 
+test("RGBA with Hex", () =>
+  compile(".red { color: rgba(#f11, 0.8); }")
+)
 
+test("Hex with Alpha", () =>
+  compile(".blue { color: #11fc; }")
+)
 
 
 

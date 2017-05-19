@@ -167,6 +167,12 @@ left:50%
 }"
 `;
 
+exports[`Hex with Alpha 1`] = `
+".blue{
+color:rgba(17,17,255,.8)
+}"
+`;
+
 exports[`Lost Grid 1`] = `
 ".grid{
 width:calc(24.975% - 22.5px)
@@ -248,6 +254,12 @@ font-weight:400
 exports[`Nested Parent Selector 1`] = `
 "body ul li:first-child{
 margin-top:0
+}"
+`;
+
+exports[`RGBA with Hex 1`] = `
+".red{
+color:rgba(255,17,17,.8)
 }"
 `;
 
