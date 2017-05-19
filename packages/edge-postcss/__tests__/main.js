@@ -18,11 +18,11 @@ function compile(input) {
     .then((result) => expect(result.css).toMatchSnapshot())
 }
 
-test("Import A", () =>
+test("Smart Import Basic", () =>
   compile("@import './__tests__/fixtures/import-a.css';")
 )
 
-test("Import B", () =>
+test("Smart Import with Merge", () =>
   compile("@import './__tests__/fixtures/import-b.css'; .section { background: #333; }")
 )
 
@@ -34,15 +34,15 @@ test("Autoprefixer", () =>
   compile(":fullscreen a { display: flex }")
 )
 
-test("Mixins", () =>
+test("Sassy Mixins", () =>
   compile("@mixin simple{ color: red; } h1 { @include simple; }")
 )
 
-test("Variables", () =>
+test("(Sassy) Variables", () =>
   compile("$bgColor: red; h1 { background: $bgColor; }")
 )
 
-test("Nested", () =>
+test("Nested Basic", () =>
   compile("body { h1 { font-weight: bold; } h2 { font-weight: normal; }}")
 )
 
