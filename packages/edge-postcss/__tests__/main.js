@@ -20,6 +20,7 @@ function format(cssString) {
     .replace(/}/g, "\n}\n\n")
     .replace(/{/g, "{\n")
     .replace(/}\n\n\n}/g, "}\n}\n\n")
+    .replace(/\n\n\n\n/g, "\n\n")
     .trim()
 }
 

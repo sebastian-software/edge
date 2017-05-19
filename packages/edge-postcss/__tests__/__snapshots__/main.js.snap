@@ -117,8 +117,6 @@ left:50%
 }
 }
 
-
-
 @media screen and (min-width:0\\\\0){
 .gridTest{
 position:relative;
@@ -213,8 +211,6 @@ html{
 font-size:21px
 }
 }
-
-
 
 @media screen and (max-width:420px){
 html{
