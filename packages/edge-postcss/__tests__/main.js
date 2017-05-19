@@ -41,11 +41,11 @@ test("Smart Import with Merge", () =>
 )
 
 test("Simple URL", () =>
-  compile(".icon { background: url('./fixtures/americano.png'); }")
+  compile(".icon { background: url('./fixtures/formula.png'); }")
 )
 
 test("Asset Size", () =>
-  compile(".icon { background-size: width('./fixtures/americano.png') height('./fixtures/americano.png'); }")
+  compile(".icon { background-size: width('./fixtures/formula.png') height('./fixtures/formula.png'); }")
 )
 
 test("Responsive Type", () =>

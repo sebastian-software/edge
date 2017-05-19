@@ -2,7 +2,7 @@
 
 exports[`Asset Size 1`] = `
 ".icon{
-background-size:128px 128px
+background-size:304px 85px
 }"
 `;
 
@@ -276,7 +276,7 @@ background:red
 
 exports[`Simple URL 1`] = `
 ".icon{
-background:url(../fixtures/americano.png)
+background:url(../fixtures/formula.png)
 }"
 `;
 
