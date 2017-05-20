@@ -52,6 +52,14 @@ width:210px
 }"
 `;
 
+exports[`Clearfix 1`] = `
+".row:after{
+content:'';
+display:block;
+clear:both
+}"
+`;
+
 exports[`Color Function 1`] = `
 ".yellow{
 color:rgba(255,255,0,.9)
@@ -62,6 +70,13 @@ exports[`Easings 1`] = `
 ".snake{
 -webkit-transition:all 600ms cubic-bezier(.47,0,.745,.715);
 transition:all 600ms cubic-bezier(.47,0,.745,.715)
+}"
+`;
+
+exports[`Gradient Fix 1`] = `
+".elem{
+background-image:-webkit-linear-gradient(green,rgba(0,128,0,0));
+background-image:linear-gradient(green,rgba(0,128,0,0))
 }"
 `;
 

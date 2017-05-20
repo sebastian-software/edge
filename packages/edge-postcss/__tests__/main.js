@@ -128,6 +128,15 @@ test("Color Function", () =>
   compile(".yellow { color: color(yellow a(90%)) }")
 )
 
+test("Clearfix", () =>
+  compile(".row { clear: fix; }")
+)
+
+test("Gradient Fix", () =>
+  compile(".elem { background-image: linear-gradient(green, transparent); }")
+)
+
+
 // TODO
 
 test("zIndex", () =>
