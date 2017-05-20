@@ -166,6 +166,11 @@ test("Input Style Fixes", () =>
   `)
 )
 
+test("Pleeease Filters", () =>
+  compile(".box { filter: drop-shadow(16px 16px 20px blue); }")
+)
+
+
 
 
 

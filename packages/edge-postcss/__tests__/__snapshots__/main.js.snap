@@ -349,6 +349,15 @@ margin-top:0
 }"
 `;
 
+exports[`Pleeease Filters 1`] = `
+".box{
+filter:url('data:image/svg+xml;
+charset=utf-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\"><filter id=\\"filter\\"><feGaussianBlur in=\\"SourceAlpha\\" stdDeviation=\\"20\\" /><feOffset dx=\\"17\\" dy=\\"17\\" result=\\"offsetblur\\" /><feFlood flood-color=\\"rgba(0,0,255,1)\\" /><feComposite in2=\\"offsetblur\\" operator=\\"in\\" /><feMerge><feMergeNode /><feMergeNode in=\\"SourceGraphic\\" /></feMerge></filter></svg>#filter');
+-webkit-filter:drop-shadow(16px 16px 20px #00f);
+filter:drop-shadow(16px 16px 20px #00f)
+}"
+`;
+
 exports[`RGBA with Hex 1`] = `
 ".red{
 color:rgba(255,17,17,.8)
