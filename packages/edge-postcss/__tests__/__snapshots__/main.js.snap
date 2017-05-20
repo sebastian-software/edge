@@ -66,10 +66,26 @@ color:rgba(255,255,0,.9)
 }"
 `;
 
+exports[`Custom Media 1`] = `
+"@media (max-width:30em){
+body{
+font-size:12px
+}
+}"
+`;
+
 exports[`Easings 1`] = `
 ".snake{
 -webkit-transition:all 600ms cubic-bezier(.47,0,.745,.715);
 transition:all 600ms cubic-bezier(.47,0,.745,.715)
+}"
+`;
+
+exports[`Flexbox Fix 1`] = `
+".elem{
+-webkit-box-flex:1;
+-ms-flex:1 1 0%;
+flex:1 1 0%
 }"
 `;
 
@@ -264,6 +280,14 @@ opacity:0;
 transform-origin:200% 500%;
 -webkit-transform:scale(0,0) rotate(270deg);
 transform:scale(0,0) rotate(270deg)
+}
+}"
+`;
+
+exports[`Media Query Min/Max 1`] = `
+"@media screen and (min-width:500px) and (max-width:1200px){
+.elem{
+display:block
 }
 }"
 `;

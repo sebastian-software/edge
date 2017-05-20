@@ -136,6 +136,20 @@ test("Gradient Fix", () =>
   compile(".elem { background-image: linear-gradient(green, transparent); }")
 )
 
+test("Flexbox Fix", () =>
+  compile(".elem { flex: 1; }")
+)
+
+test("Media Query Min/Max", () =>
+  compile("@media screen and (width >= 500px) and (width <= 1200px) { .elem { display: block; } }")
+)
+
+test("Custom Media", () =>
+  compile("@custom-media --small-viewport (max-width: 30em); @media (--small-viewport) { body { font-size: 12px; } }")
+)
+
+
+
 
 // TODO
 
