@@ -28,6 +28,12 @@ display:flex
 }"
 `;
 
+exports[`CSS-O (Optimizer) 1`] = `
+".elem{
+color:red
+}"
+`;
+
 exports[`Calc Keep 1`] = `
 ".elem{
 width:calc(100px + 2%)

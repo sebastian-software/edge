@@ -134,6 +134,10 @@ test("zIndex", () =>
   compile(".first { z-index: 1000; } .second { z-index: 2000; }")
 )
 
+test("CSS-O (Optimizer)", () =>
+  compile(".elem { color: #ff0000; }")
+)
+
 test("Autoprefixer", () =>
   compile(":fullscreen a { display: flex }")
 )
