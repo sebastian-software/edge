@@ -35,6 +35,12 @@ module.exports = (ctx) => ({
     // https://github.com/postcss/postcss-nested
     "postcss-nested": {},
 
+
+
+    // ====================================================
+    // ================== LAYOUT ==========================
+    // ====================================================
+
     // Fractional grid system built with calc(). Supports masonry, vertical, and waffle grids.
     // https://github.com/peterramsing/lost
     "lost": {},
@@ -46,6 +52,17 @@ module.exports = (ctx) => ({
       "screwIE": true
     },
 
+    // Reduce calc()
+    // Note: Important to keep this after mixin/variable processing
+    // https://github.com/postcss/postcss-calc
+    "postcss-calc": {},
+
+
+
+    // ====================================================
+    // ================ ANIMATION =========================
+    // ====================================================
+
     // Adds @keyframes from Magic Animations
     // https://github.com/nucliweb/postcss-magic-animations
     "postcss-magic-animations": {},
@@ -54,14 +71,15 @@ module.exports = (ctx) => ({
     // https://github.com/postcss/postcss-will-change
     "postcss-will-change": {},
 
-    // Reduce calc()
-    // Note: Important to keep this after mixin/variable processing
-    // https://github.com/postcss/postcss-calc
-    "postcss-calc": {},
-
     // Replace easing names from http://easings.net to `cubic-bezier()`.
     // https://github.com/postcss/postcss-easings
     "postcss-easings": {},
+
+
+
+    // ====================================================
+    // ================== COLOR ===========================
+    // ====================================================
 
     // Adds shorthand hex methods to rbga() values.
     // https://github.com/seaneking/postcss-hexrgba
@@ -75,9 +93,18 @@ module.exports = (ctx) => ({
     // https://github.com/postcss/postcss-color-function
     "postcss-color-function": {},
 
+
+
+
     // Adds fix and fix-legacy attributes to the clear property, for self-clearing of children.
     // https://github.com/seaneking/postcss-clearfix
     "postcss-clearfix": {},
+
+
+
+    // ====================================================
+    // ================== FIXES ===========================
+    // ====================================================
 
     // Fix up CSS gradients with transparency for older browsers
     // https://github.com/gilmoreorless/postcss-gradient-transparency-fix
@@ -87,6 +114,12 @@ module.exports = (ctx) => ({
     // https://github.com/luisrudge/postcss-flexbugs-fixes
     "postcss-flexbugs-fixes": {},
 
+
+
+    // ====================================================
+    // =============== MEDIA QUERIES ======================
+    // ====================================================
+
     // Writing simple and graceful Media Queries!
     // Support for CSS Media Queries Level 4: https://drafts.csswg.org/mediaqueries/#mq-range-context
     // https://github.com/postcss/postcss-media-minmax
@@ -95,6 +128,10 @@ module.exports = (ctx) => ({
     // Custom Media Queries
     // https://github.com/postcss/postcss-custom-media
     "postcss-custom-media": {},
+
+
+
+
 
     // Adds new pseudo-elements to inputs for easy cross-browser styling of their inner elements.
     // https://github.com/seaneking/postcss-input-style
