@@ -55,12 +55,10 @@ which improves performance (reduces number of AST nodes)
 #### [sassy-mixins](https://github.com/andyjansson/postcss-sassy-mixins)
 
 Sass-like mixins.
-Note: Needs to be executed before any variable handling plugins
 
 #### [advanced-variables](https://github.com/jonathantneal/postcss-advanced-variables)
 
-PostCSS plugin for Sass-like variables, conditionals, and iteratives.
-Supports local variables + `@for`/`@each` inspired by Sass
+Converts Sass-like variables and conditionals into CSS.
 
 #### [nested](https://github.com/postcss/postcss-nested)
 

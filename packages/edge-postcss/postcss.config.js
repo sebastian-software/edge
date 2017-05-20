@@ -56,8 +56,7 @@ module.exports = (context) =>
     // https://github.com/andyjansson/postcss-sassy-mixins
     "postcss-sassy-mixins": {},
 
-    // PostCSS plugin for Sass-like variables, conditionals, and iteratives
-    // Supports local variables + @for/@each inspired by Sass
+    // Converts Sass-like variables and conditionals into CSS.
     // https://github.com/jonathantneal/postcss-advanced-variables
     "postcss-advanced-variables": {
       "variables": {}
