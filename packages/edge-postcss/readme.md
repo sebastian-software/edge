@@ -14,6 +14,9 @@
 
 EdgeCSS is a collection of carefully chosen and configured PostCSS plugins.
 
+It combines some common learnings and conventions from Sass, with some upcoming CSS4 features and
+adds a whole chain of fixes for a variety of browser bugs.
+
 ## Features
 
 ### MERGING 
