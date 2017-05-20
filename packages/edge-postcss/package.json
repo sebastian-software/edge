@@ -72,7 +72,6 @@
     "postcss-simple-url": "^0.1.6",
     "postcss-smart-import": "^0.7.0",
     "postcss-transform-shortcut": "^2.0.1",
-    "postcss-unicode-characters": "^1.0.1",
     "postcss-will-change": "^2.0.0",
     "postcss-zindex": "^2.2.0"
   },

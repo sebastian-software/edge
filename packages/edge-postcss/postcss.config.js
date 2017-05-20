@@ -160,10 +160,6 @@ module.exports = (context) =>
     // https://github.com/seaneking/postcss-clearfix
     "postcss-clearfix": {},
 
-    // An easier way to write unicode-range descriptors.
-    // https://github.com/ben-eb/postcss-unicode-characters
-    "postcss-unicode-characters": {},
-
     // Transform W3C CSS "font-family: system-ui" to a practical font-family list
     // https://github.com/JLHwung/postcss-font-family-system-ui
     // See also: https://booking.design/implementing-system-fonts-on-booking-com-a-lesson-learned-bdc984df627f
