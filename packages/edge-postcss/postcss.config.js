@@ -60,24 +60,6 @@ module.exports = (ctx) => ({
 
 
     // ====================================================
-    // ================ ANIMATION =========================
-    // ====================================================
-
-    // Adds @keyframes from Magic Animations
-    // https://github.com/nucliweb/postcss-magic-animations
-    "postcss-magic-animations": {},
-
-    // Insert 3D hack before will-change property
-    // https://github.com/postcss/postcss-will-change
-    "postcss-will-change": {},
-
-    // Replace easing names from http://easings.net to `cubic-bezier()`.
-    // https://github.com/postcss/postcss-easings
-    "postcss-easings": {},
-
-
-
-    // ====================================================
     // ================== COLOR ===========================
     // ====================================================
 
@@ -95,10 +77,65 @@ module.exports = (ctx) => ({
 
 
 
+    // ====================================================
+    // =============== MEDIA QUERIES ======================
+    // ====================================================
+
+    // Writing simple and graceful Media Queries!
+    // Support for CSS Media Queries Level 4: https://drafts.csswg.org/mediaqueries/#mq-range-context
+    // https://github.com/postcss/postcss-media-minmax
+    "postcss-media-minmax": {},
+
+    // Custom Media Queries
+    // https://github.com/postcss/postcss-custom-media
+    "postcss-custom-media": {},
+
+
+
+    // ====================================================
+    // ================== EFFECTS =========================
+    // ====================================================
+
+    // Adds @keyframes from Magic Animations
+    // https://github.com/nucliweb/postcss-magic-animations
+    "postcss-magic-animations": {},
+
+    // Insert 3D hack before will-change property
+    // https://github.com/postcss/postcss-will-change
+    "postcss-will-change": {},
+
+    // Replace easing names from http://easings.net to `cubic-bezier()`.
+    // https://github.com/postcss/postcss-easings
+    "postcss-easings": {},
+
+    // Fallback for Webkit Filters property to SVG filters. Amazing stuff.
+    // It converts all 10 CSS shorthand filters:
+    // grayscale, sepia, saturate, hue-rotate, invert, opacity, brightness, contrast, blur, drop-shadow
+    // https://github.com/iamvdo/pleeease-filters
+    "pleeease-filters": {},
+
+    // Use shorthand transform properties in CSS
+    // https://github.com/jonathantneal/postcss-transform-shortcut
+    "postcss-transform-shortcut": {},
+
+
+
+    // ====================================================
+    // ================= EXTENSIONS =======================
+    // ====================================================
 
     // Adds fix and fix-legacy attributes to the clear property, for self-clearing of children.
     // https://github.com/seaneking/postcss-clearfix
     "postcss-clearfix": {},
+
+    // An easier way to write unicode-range descriptors.
+    // https://github.com/ben-eb/postcss-unicode-characters
+    "postcss-unicode-characters": {},
+
+    // Transform W3C CSS "font-family: system-ui" to a practical font-family list
+    // https://github.com/JLHwung/postcss-font-family-system-ui
+    // See also: https://booking.design/implementing-system-fonts-on-booking-com-a-lesson-learned-bdc984df627f
+    "postcss-font-family-system-ui": {},
 
 
 
@@ -119,39 +156,6 @@ module.exports = (ctx) => ({
     // https://github.com/seaneking/postcss-input-style
     "postcss-input-style": {},
 
-
-
-    // ====================================================
-    // =============== MEDIA QUERIES ======================
-    // ====================================================
-
-    // Writing simple and graceful Media Queries!
-    // Support for CSS Media Queries Level 4: https://drafts.csswg.org/mediaqueries/#mq-range-context
-    // https://github.com/postcss/postcss-media-minmax
-    "postcss-media-minmax": {},
-
-    // Custom Media Queries
-    // https://github.com/postcss/postcss-custom-media
-    "postcss-custom-media": {},
-
-
-
-
-    // ====================================================
-    // ================== EFFECTS =========================
-    // ====================================================
-
-
-    // Fallback for Webkit Filters property to SVG filters. Amazing stuff.
-    // It converts all 10 CSS shorthand filters:
-    // grayscale, sepia, saturate, hue-rotate, invert, opacity, brightness, contrast, blur, drop-shadow
-    // https://github.com/iamvdo/pleeease-filters
-    "pleeease-filters": {},
-
-    // Use shorthand transform properties in CSS
-    // https://github.com/jonathantneal/postcss-transform-shortcut
-    "postcss-transform-shortcut": {},
-
     // Transform :matches() W3C CSS pseudo class to more compatible CSS (simpler selectors)
     // https://github.com/postcss/postcss-selector-matches
     "postcss-selector-matches": {},
@@ -161,32 +165,35 @@ module.exports = (ctx) => ({
     // https://github.com/axa-ch/postcss-pseudoelements
     "postcss-pseudoelements": {},
 
-    // An easier way to write unicode-range descriptors.
-    // https://github.com/ben-eb/postcss-unicode-characters
-    "postcss-unicode-characters": {},
+    // Parse CSS and add vendor prefixes to rules by Can I Use
+    // https://github.com/postcss/autoprefixer
+    "autoprefixer": {},
 
-    // Transform W3C CSS "font-family: system-ui" to a practical font-family list
-    // https://github.com/JLHwung/postcss-font-family-system-ui
-    // See also: https://booking.design/implementing-system-fonts-on-booking-com-a-lesson-learned-bdc984df627f
-    "postcss-font-family-system-ui": {},
+
+
+    // ====================================================
+    // ================ OPTIMIZATION ======================
+    // ====================================================
 
     // Reduce z-index values with PostCSS.
     // https://github.com/ben-eb/postcss-zindex
     "postcss-zindex": {},
+
+    // Adding the best CSS compressor to the chain
+    // https://github.com/lahmatiy/postcss-csso
+    "postcss-csso": {},
+
+
+
+    // ====================================================
+    // ============ DEVELOPER FEEDBACK ====================
+    // ====================================================
 
     // Sass like @warn for PostCSS. Disabling internal usage of "postcss-reporter".
     // https://github.com/ben-eb/postcss-at-warn
     "postcss-at-warn": {
       "silent": true
     },
-
-    // Parse CSS and add vendor prefixes to rules by Can I Use
-    // https://github.com/postcss/autoprefixer
-    "autoprefixer": {},
-
-    // Adding the best CSS compressor to the chain
-    // https://github.com/lahmatiy/postcss-csso
-    "postcss-csso": {},
 
     // Log PostCSS messages to the console
     // https://github.com/postcss/postcss-reporter
