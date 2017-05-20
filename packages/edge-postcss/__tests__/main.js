@@ -189,3 +189,7 @@ test("Pseudoelements", () =>
 test("Selector matches()", () =>
   compile("p:matches(:first-child, .special) { color: red; }")
 )
+
+test("System UI", () =>
+  compile("body { font-family: system-ui; }")
+)
