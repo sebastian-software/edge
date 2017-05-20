@@ -2,7 +2,7 @@
 /* eslint-disable import/no-commonjs */
 /* eslint-disable import/unambiguous */
 
-module.exports = (context) =>
+module.exports = ({ file, options, env }) =>
 ({
   "plugins":
   {
