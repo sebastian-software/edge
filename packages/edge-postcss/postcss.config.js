@@ -84,11 +84,6 @@ module.exports = (context) =>
       "screwIE": true
     },
 
-    // Reduce calc()
-    // Note: Important to keep this after mixin/variable processing
-    // https://github.com/postcss/postcss-calc
-    "postcss-calc": {},
-
 
 
     // ====================================================
@@ -211,6 +206,11 @@ module.exports = (context) =>
     // ====================================================
     // ================ OPTIMIZATION ======================
     // ====================================================
+
+    // Reduce calc()
+    // Note: Important to keep this after mixin/variable processing
+    // https://github.com/postcss/postcss-calc
+    "postcss-calc": {},
 
     // Reduce z-index values.
     // https://github.com/ben-eb/postcss-zindex
