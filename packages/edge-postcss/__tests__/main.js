@@ -193,3 +193,7 @@ test("Selector matches()", () =>
 test("System UI", () =>
   compile("body { font-family: system-ui; }")
 )
+
+test("Transform Shortcut", () =>
+  compile(".transform { scale: 2; translate: 10px 20px; }")
+)

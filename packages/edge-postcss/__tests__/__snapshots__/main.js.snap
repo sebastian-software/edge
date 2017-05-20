@@ -431,6 +431,13 @@ font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ub
 }"
 `;
 
+exports[`Transform Shortcut 1`] = `
+".transform{
+-webkit-transform:scale3d(2,1,1) translate3d(10px,20px,0);
+transform:scale3d(2,1,1) translate3d(10px,20px,0)
+}"
+`;
+
 exports[`Will Change Compat 1`] = `
 ".scaled{
 -webkit-backface-visibility:hidden;
