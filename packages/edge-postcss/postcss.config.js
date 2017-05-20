@@ -114,6 +114,11 @@ module.exports = (ctx) => ({
     // https://github.com/luisrudge/postcss-flexbugs-fixes
     "postcss-flexbugs-fixes": {},
 
+    // Adds new pseudo-elements to inputs for easy cross-browser styling of their inner elements.
+    // Currently, as of 0.3.0, supports range input controls only.
+    // https://github.com/seaneking/postcss-input-style
+    "postcss-input-style": {},
+
 
 
     // ====================================================
@@ -132,10 +137,6 @@ module.exports = (ctx) => ({
 
 
 
-
-    // Adds new pseudo-elements to inputs for easy cross-browser styling of their inner elements.
-    // https://github.com/seaneking/postcss-input-style
-    "postcss-input-style": {},
 
     // Fallback for Webkit Filters property to SVG filters. Amazing stuff.
     // It converts all 10 CSS shorthand filters:

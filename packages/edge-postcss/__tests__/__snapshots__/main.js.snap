@@ -216,6 +216,47 @@ color:rgba(17,17,255,.8)
 }"
 `;
 
+exports[`Input Style Fixes 1`] = `
+"input[type=range]::-webkit-slider-runnable-track{
+-webkit-appearance:none;
+height:3px
+}
+
+input[type=range]::-moz-range-track{
+-moz-appearance:none;
+height:3px
+}
+
+input[type=range]::-ms-track{
+height:3px
+}
+
+input[type=range]{
+-webkit-appearance:none
+}
+
+input[type=range]::-webkit-slider-thumb{
+-webkit-appearance:none;
+width:16px;
+height:8px
+}
+
+input[type=range]::-moz-range-thumb{
+-moz-appearance:none;
+width:16px;
+height:8px
+}
+
+input[type=range]::-ms-thumb{
+width:16px;
+height:8px
+}
+
+input[type=range]::-moz-focus-outer{
+border:0
+}"
+`;
+
 exports[`Lost Grid 1`] = `
 ".grid{
 width:calc(24.975% - 22.5px)

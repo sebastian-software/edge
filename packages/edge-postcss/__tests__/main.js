@@ -145,7 +145,25 @@ test("Media Query Min/Max", () =>
 )
 
 test("Custom Media", () =>
-  compile("@custom-media --small-viewport (max-width: 30em); @media (--small-viewport) { body { font-size: 12px; } }")
+  compile(`
+    @custom-media --small-viewport (max-width: 30em);
+    @media (--small-viewport) {
+      body { font-size: 12px; }
+    }
+  `)
+)
+
+test("Input Style Fixes", () =>
+  compile(`
+    input[type="range"]::track {
+      height: 3px;
+    }
+
+    input[type="range"]::thumb {
+      width: 16px;
+      height: 8px;
+    }
+  `)
 )
 
 
