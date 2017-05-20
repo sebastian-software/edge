@@ -185,3 +185,7 @@ test("Autoprefixer", () =>
 test("Pseudoelements", () =>
   compile("a::before { color: red; }")
 )
+
+test("Selector matches()", () =>
+  compile("p:matches(:first-child, .special) { color: red; }")
+)

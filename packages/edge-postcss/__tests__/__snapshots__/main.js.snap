@@ -400,6 +400,12 @@ background:red
 }"
 `;
 
+exports[`Selector matches() 1`] = `
+"p.special,p:first-child{
+color:red
+}"
+`;
+
 exports[`Simple URL 1`] = `
 ".icon{
 background:url(../fixtures/formula.png)
