@@ -32,6 +32,11 @@ function compile(input) {
     .then((result) => expect(format(result.css)).toMatchSnapshot())
 }
 
+
+// ====================================================
+// ================== MERGING =========================
+// ====================================================
+
 test("Smart Import Basic", () =>
   compile("@import './fixtures/import-a.css';")
 )
@@ -39,6 +44,12 @@ test("Smart Import Basic", () =>
 test("Smart Import with Merge", () =>
   compile("@import './fixtures/import-b.css'; .section { background: #333; }")
 )
+
+
+
+// ====================================================
+// ================= URLS/ASSETS ======================
+// ====================================================
 
 test("Simple URL", () =>
   compile(".icon { background: url('./fixtures/formula.png'); }")
@@ -48,9 +59,11 @@ test("Asset Size", () =>
   compile(".icon { background-size: width('./fixtures/formula.png') height('./fixtures/formula.png'); }")
 )
 
-test("Responsive Type", () =>
-  compile("html { font-size: responsive 12px 21px; font-range: 420px 1280px; }")
-)
+
+
+// ====================================================
+// ================ SASS INSPIRED =====================
+// ====================================================
 
 test("Sassy Mixins", () =>
   compile("@mixin simple{ color: red; } h1 { @include simple; }")
@@ -67,6 +80,12 @@ test("Nested Basic", () =>
 test("Nested Parent Selector", () =>
   compile("body { ul { li { &:first-child { margin-top: 0; }}}}")
 )
+
+
+
+// ====================================================
+// ================== LAYOUT ==========================
+// ====================================================
 
 test("Lost Grid", () =>
   compile(".grid { lost-column: 3/12 }")
@@ -92,29 +111,11 @@ test("Grid KISS", () =>
   `)
 )
 
-test("Magic Animations", () =>
-  compile(".animation { animation-name: magic; }")
-)
 
-test("Will Change Compat", () =>
-  compile(".scaled { will-change: width; }")
-)
 
-test("Calc Trivial", () =>
-  compile(".elem { width: calc(300px + 10px); }")
-)
-
-test("Calc Variable", () =>
-  compile("$margin: 10px; .elem { width: calc(200px + $margin); }")
-)
-
-test("Calc Keep", () =>
-  compile(".elem { width: calc(100px + 2%); }")
-)
-
-test("Easings", () =>
-  compile(".snake { transition: all 600ms ease-in-sine; }")
-)
+// ====================================================
+// ================== COLOR ===========================
+// ====================================================
 
 test("RGBA with Hex", () =>
   compile(".red { color: rgba(#f11, 0.8); }")
@@ -128,17 +129,12 @@ test("Color Function", () =>
   compile(".yellow { color: color(yellow a(90%)) }")
 )
 
-test("Clearfix", () =>
-  compile(".row { clear: fix; }")
-)
 
-test("Gradient Fix", () =>
-  compile(".elem { background-image: linear-gradient(green, transparent); }")
-)
 
-test("Flexbox Fix", () =>
-  compile(".elem { flex: 1; }")
-)
+
+// ====================================================
+// =============== MEDIA QUERIES ======================
+// ====================================================
 
 test("Media Query Min/Max", () =>
   compile("@media screen and (width >= 500px) and (width <= 1200px) { .elem { display: block; } }")
@@ -151,6 +147,64 @@ test("Custom Media", () =>
       body { font-size: 12px; }
     }
   `)
+)
+
+
+
+// ====================================================
+// ================== EFFECTS =========================
+// ====================================================
+
+test("Magic Animations", () =>
+  compile(".animation { animation-name: magic; }")
+)
+
+test("Will Change Compat", () =>
+  compile(".scaled { will-change: width; }")
+)
+
+test("Easings", () =>
+  compile(".snake { transition: all 600ms ease-in-sine; }")
+)
+
+test("Pleeease Filters", () =>
+  compile(".box { filter: drop-shadow(16px 16px 20px blue); }")
+)
+
+test("Transform Shortcut", () =>
+  compile(".transform { scale: 2; translate: 10px 20px; }")
+)
+
+
+
+// ====================================================
+// ================= EXTENSIONS =======================
+// ====================================================
+
+test("Responsive Type", () =>
+  compile("html { font-size: responsive 12px 21px; font-range: 420px 1280px; }")
+)
+
+test("Clearfix", () =>
+  compile(".row { clear: fix; }")
+)
+
+test("System UI", () =>
+  compile("body { font-family: system-ui; }")
+)
+
+
+
+// ====================================================
+// ================== FIXES ===========================
+// ====================================================
+
+test("Gradient Fix", () =>
+  compile(".elem { background-image: linear-gradient(green, transparent); }")
+)
+
+test("Flexbox Fix", () =>
+  compile(".elem { flex: 1; }")
 )
 
 test("Input Style Fixes", () =>
@@ -166,18 +220,6 @@ test("Input Style Fixes", () =>
   `)
 )
 
-test("Pleeease Filters", () =>
-  compile(".box { filter: drop-shadow(16px 16px 20px blue); }")
-)
-
-test("zIndex", () =>
-  compile(".first { z-index: 1000; } .second { z-index: 2000; }")
-)
-
-test("CSS-O (Optimizer)", () =>
-  compile(".elem { color: #ff0000; }")
-)
-
 test("Autoprefixer", () =>
   compile(":fullscreen a { display: flex }")
 )
@@ -190,10 +232,28 @@ test("Selector matches()", () =>
   compile("p:matches(:first-child, .special) { color: red; }")
 )
 
-test("System UI", () =>
-  compile("body { font-family: system-ui; }")
+
+
+// ====================================================
+// ================ OPTIMIZATION ======================
+// ====================================================
+
+test("Calc Trivial", () =>
+  compile(".elem { width: calc(300px + 10px); }")
 )
 
-test("Transform Shortcut", () =>
-  compile(".transform { scale: 2; translate: 10px 20px; }")
+test("Calc Variable", () =>
+  compile("$margin: 10px; .elem { width: calc(200px + $margin); }")
+)
+
+test("Calc Keep", () =>
+  compile(".elem { width: calc(100px + 2%); }")
+)
+
+test("zIndex", () =>
+  compile(".first { z-index: 1000; } .second { z-index: 2000; }")
+)
+
+test("CSS-O (Optimizer)", () =>
+  compile(".elem { color: #ff0000; }")
 )
