@@ -175,11 +175,11 @@ module.exports = (ctx) => ({
     // ================ OPTIMIZATION ======================
     // ====================================================
 
-    // Reduce z-index values with PostCSS.
+    // Reduce z-index values.
     // https://github.com/ben-eb/postcss-zindex
     "postcss-zindex": {},
 
-    // Adding the best CSS compressor to the chain
+    // Adding the best CSS compressor to the chain.
     // https://github.com/lahmatiy/postcss-csso
     "postcss-csso": {},
 

@@ -358,6 +358,12 @@ filter:drop-shadow(16px 16px 20px #00f)
 }"
 `;
 
+exports[`Pseudoelements 1`] = `
+"a:before{
+color:red
+}"
+`;
+
 exports[`RGBA with Hex 1`] = `
 ".red{
 color:rgba(255,17,17,.8)

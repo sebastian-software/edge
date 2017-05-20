@@ -170,12 +170,6 @@ test("Pleeease Filters", () =>
   compile(".box { filter: drop-shadow(16px 16px 20px blue); }")
 )
 
-
-
-
-
-// TODO
-
 test("zIndex", () =>
   compile(".first { z-index: 1000; } .second { z-index: 2000; }")
 )
@@ -186,4 +180,8 @@ test("CSS-O (Optimizer)", () =>
 
 test("Autoprefixer", () =>
   compile(":fullscreen a { display: flex }")
+)
+
+test("Pseudoelements", () =>
+  compile("a::before { color: red; }")
 )
