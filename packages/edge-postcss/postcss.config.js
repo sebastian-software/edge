@@ -1,10 +1,41 @@
 /* eslint-disable quote-props */
+/* eslint-disable import/no-commonjs */
+/* eslint-disable import/unambiguous */
 
-module.exports = (ctx) => ({
-  "plugins": {
+module.exports = (context) =>
+({
+  "plugins":
+  {
+    // ====================================================
+    // ================== MERGING =========================
+    // ====================================================
+
+    // Smarter `@import()` plugin to include other CSS, Sass, SugarSS files.
+    // https://github.com/sebastian-software/postcss-smart-import
     "postcss-smart-import": {},
+
+
+
+    // ====================================================
+    // ================= URLS/ASSETS ======================
+    // ====================================================
+
+    // Re-rebasing url()-referenced assets during processing.
+    // Respects locations of imported files and PostCSS configured output location.
+    // https://github.com/sebastian-software/postcss-simple-url
     "postcss-simple-url": {},
+
+    // Asset Manager for PostCSS. For us mainly interesting
+    // for its support for detecting image dimensions and
+    // base64 based inlining.
+    // https://github.com/borodean/postcss-assets
     "postcss-assets": {},
+
+
+
+    // ====================================================
+    // =================== CLEANUP ========================
+    // ====================================================
 
     // Discard comments in your CSS files with PostCSS.
     // https://github.com/ben-eb/postcss-discard-comments
@@ -14,10 +45,11 @@ module.exports = (ctx) => ({
       "removeAll": true
     },
 
-    // Automagical responsive typography. Adds a responsive property to font-size,
-    // line-height and letter-spacing that generates complex calc and vw based font sizes.
-    // https://github.com/seaneking/postcss-responsive-type
-    "postcss-responsive-type": {},
+
+
+    // ====================================================
+    // ================ SASS INSPIRED =====================
+    // ====================================================
 
     // Sass-like mixins
     // Needs to be executed before any variable handling plugins
@@ -123,6 +155,11 @@ module.exports = (ctx) => ({
     // ====================================================
     // ================= EXTENSIONS =======================
     // ====================================================
+
+    // Automagical responsive typography. Adds a responsive property to font-size,
+    // line-height and letter-spacing that generates complex calc and vw based font sizes.
+    // https://github.com/seaneking/postcss-responsive-type
+    "postcss-responsive-type": {},
 
     // Adds fix and fix-legacy attributes to the clear property, for self-clearing of children.
     // https://github.com/seaneking/postcss-clearfix
