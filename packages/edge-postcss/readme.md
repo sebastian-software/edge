@@ -14,6 +14,199 @@
 
 EdgeCSS is a collection of carefully chosen and configured PostCSS plugins.
 
+## Features
+
+### MERGING 
+
+#### [smart-import](https://github.com/sebastian-software/postcss-smart-import)
+
+Smarter `@import()` plugin to include other CSS, Sass, SugarSS files.
+
+
+### URLS/ASSETS 
+
+#### [simple-url](https://github.com/sebastian-software/postcss-simple-url)
+
+Re-rebasing url()-referenced assets during processing.
+Respects locations of imported files and PostCSS configured output location.
+
+#### [assets](https://github.com/borodean/postcss-assets)
+
+Asset Manager for PostCSS. For us mainly interesting
+for its support for detecting image dimensions and
+base64 based inlining.
+
+
+### CLEANUP 
+
+#### [discard-comments](https://github.com/ben-eb/postcss-discard-comments)
+
+Discard comments in your CSS files with PostCSS.
+Remove all comments... we don't need them further down the line
+which improves performance (reduces number of AST nodes)
+
+
+
+### SASS INSPIRED 
+
+#### [sassy-mixins](https://github.com/andyjansson/postcss-sassy-mixins)
+
+Sass-like mixins.
+Note: Needs to be executed before any variable handling plugins
+
+#### [advanced-variables](https://github.com/jonathantneal/postcss-advanced-variables)
+
+PostCSS plugin for Sass-like variables, conditionals, and iteratives.
+Supports local variables + `@for`/`@each` inspired by Sass
+
+#### [nested](https://github.com/postcss/postcss-nested)
+
+Unwrap nested rules like how Sass does it.
+
+
+
+### LAYOUT 
+
+#### [lost](https://github.com/peterramsing/lost)
+
+Fractional grid system built with calc(). Supports masonry, vertical, and waffle grids.
+
+#### [grid-kiss](https://github.com/sylvainpolletvillard/postcss-grid-kiss)
+
+A PostCSS plugin to keep CSS grids stupidly simple
+
+
+
+### COLOR
+
+#### [hexrgba](https://github.com/seaneking/postcss-hexrgba)
+
+Adds shorthand hex methods to rbga() values.
+
+#### [color-hex-alpha](https://github.com/postcss/postcss-color-hex-alpha)
+
+Transform RGBA hexadecimal notations (#RRGGBBAA or #RGBA) to more compatible CSS (rgba())
+
+#### [color-function](https://github.com/postcss/postcss-color-function)
+
+Transform W3C CSS color function to more compatible CSS
+
+
+
+### MEDIA QUERIES
+
+#### [media-minmax](https://github.com/postcss/postcss-media-minmax)
+
+Writing simple and graceful Media Queries!
+Support for [CSS Media Queries Level 4](https://drafts.csswg.org/mediaqueries/#mq-range-context).
+
+#### [custom-media](https://github.com/postcss/postcss-custom-media)
+
+Define custom Media Queries.
+
+
+
+### EFFECTS 
+
+#### [magic-animations](https://github.com/nucliweb/postcss-magic-animations)
+
+Adds `@keyframes` from Magic Animations
+
+#### [will-change](https://github.com/postcss/postcss-will-change)
+
+Insert 3D hack before will-change property
+
+#### [easings](https://github.com/postcss/postcss-easings)
+
+Replace easing names from http://easings.net to `cubic-bezier()`.
+
+#### [pleeease-filters](https://github.com/iamvdo/pleeease-filters)
+
+Fallback for Webkit Filters property to SVG filters. Amazing stuff.
+It converts all 10 CSS shorthand filters: `grayscale`, `sepia`, `saturate`, `hue-rotate`, `invert`, `opacity`, `brightness`, `contrast`, `blur`, `drop-shadow`.
+
+#### [transform-shortcut](https://github.com/jonathantneal/postcss-transform-shortcut)
+
+Use shorthand transform properties in CSS.
+
+
+
+
+### EXTENSIONS
+
+#### [responsive-type](https://github.com/seaneking/postcss-responsive-type)
+
+Automagical responsive typography. Adds a responsive property to `font-size`,
+`line-height` and `letter-spacing` that generates complex calc and `vw` based font sizes.
+
+#### [clearfix](https://github.com/seaneking/postcss-clearfix)
+
+Adds fix and fix-legacy attributes to the clear property, for self-clearing of children.
+
+#### [font-family-system-ui](https://github.com/JLHwung/postcss-font-family-system-ui)
+
+Transform W3C CSS "font-family: system-ui" to a practical font-family list.
+See also [this article by booking.com](https://booking.design/implementing-system-fonts-on-booking-com-a-lesson-learned-bdc984df627f).
+
+
+
+### FIXES
+
+#### [gradient-transparency-fix](https://github.com/gilmoreorless/postcss-gradient-transparency-fix)
+
+Fix up CSS gradients with transparency for older browsers
+
+#### [flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes)
+
+Tries to fix all of flexbug's issues
+
+#### [input-style](https://github.com/seaneking/postcss-input-style)
+
+Adds new pseudo-elements to inputs for easy cross-browser styling of their inner elements.
+Currently, as of 0.3.0, supports range input controls only.
+
+#### [selector-matches](https://github.com/postcss/postcss-selector-matches)
+
+Transform :matches() W3C CSS pseudo class to more compatible CSS (simpler selectors)
+
+#### [pseudoelements](https://github.com/axa-ch/postcss-pseudoelements)
+
+Add single and double colon peudo selectors
+Normalizes e.g. `::before` to `:before` for wider browser support
+
+#### [autoprefixer](https://github.com/postcss/autoprefixer)
+
+Parse CSS and add vendor prefixes to rules by Can I Use
+
+
+
+### OPTIMIZATION 
+
+#### [calc](https://github.com/postcss/postcss-calc)
+
+Reduce `calc()`.
+
+#### [zindex](https://github.com/ben-eb/postcss-zindex)
+
+Reduce z-index values.
+
+#### [csso](https://github.com/lahmatiy/postcss-csso)
+
+Adding the best CSS compressor to the chain.
+
+
+
+### DEVELOPER FEEDBACK 
+
+#### [at-warn](https://github.com/ben-eb/postcss-at-warn)
+
+Sass like `@warn` for PostCSS. Disabling internal usage of "postcss-reporter".
+
+#### [reporter](https://github.com/postcss/postcss-reporter)
+
+Log PostCSS messages to the console
+
+
 
 
 ## [License](license)
