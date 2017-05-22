@@ -19,14 +19,14 @@ adds a whole chain of fixes for a variety of browser bugs.
 
 ## Features
 
-### MERGING 
+### MERGING
 
 #### [smart-import](https://github.com/sebastian-software/postcss-smart-import)
 
 Smarter `@import()` plugin to include other CSS, Sass, SugarSS files.
 
 
-### URLS/ASSETS 
+### URLS/ASSETS
 
 #### [simple-url](https://github.com/sebastian-software/postcss-simple-url)
 
@@ -40,7 +40,7 @@ for its support for detecting image dimensions and
 base64 based inlining.
 
 
-### CLEANUP 
+### CLEANUP
 
 #### [discard-comments](https://github.com/ben-eb/postcss-discard-comments)
 
@@ -50,7 +50,7 @@ which improves performance (reduces number of AST nodes)
 
 
 
-### SASS INSPIRED 
+### SASS INSPIRED
 
 #### [sassy-mixins](https://github.com/andyjansson/postcss-sassy-mixins)
 
@@ -66,7 +66,7 @@ Unwrap nested rules like how Sass does it.
 
 
 
-### LAYOUT 
+### LAYOUT
 
 #### [lost](https://github.com/peterramsing/lost)
 
@@ -107,7 +107,7 @@ Define custom Media Queries.
 
 
 
-### EFFECTS 
+### EFFECTS
 
 #### [magic-animations](https://github.com/nucliweb/postcss-magic-animations)
 
@@ -181,7 +181,7 @@ Parse CSS and add vendor prefixes to rules by Can I Use
 
 
 
-### OPTIMIZATION 
+### OPTIMIZATION
 
 #### [calc](https://github.com/postcss/postcss-calc)
 
@@ -197,7 +197,7 @@ Adding the best CSS compressor to the chain.
 
 
 
-### DEVELOPER FEEDBACK 
+### DEVELOPER FEEDBACK
 
 #### [at-warn](https://github.com/ben-eb/postcss-at-warn)
 
@@ -210,10 +210,12 @@ Log PostCSS messages to the console
 
 
 
-## [License](license)
+## License
+
+[Apache License Version 2.0, January 2004](license)
 
 ## Copyright
 
 <img src="https://raw.githubusercontent.com/sebastian-software/s15e-javascript/master/assets/sebastiansoftware.png" alt="Sebastian Software GmbH Logo" width="250" height="200"/>
 
-Copyright 2016-2017<br/>[Sebastian Software GmbH](http://www.sebastian-software.de)
+Copyright 2017<br/>[Sebastian Software GmbH](http://www.sebastian-software.de)
