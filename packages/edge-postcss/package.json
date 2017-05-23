@@ -77,7 +77,7 @@
   },
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-preset-env": "^1.4.0",
+    "babel-preset-env": "^1.5.1",
     "jest-cli": "^20.0.3",
     "postcss-load-config": "^1.2.0",
     "prepublish": "^0.16.0",
