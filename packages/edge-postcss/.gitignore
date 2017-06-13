@@ -1,9 +1,3 @@
-# Environment Configuration
-.env
-
-# Build output folders
-build/
-
 # Logs
 logs
 *.log
@@ -16,6 +10,5 @@ pids
 # Dependency directory
 node_modules
 
-# Cache file from ESLint, HardSource
+# Cache file from ESLint
 .eslintcache
-.hardsource
