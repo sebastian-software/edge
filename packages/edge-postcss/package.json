@@ -1,6 +1,6 @@
 {
   "name": "edgecss",
-  "version": "0.4.8",
+  "version": "0.4.9",
   "description": "CSS Processing Configuration by Sebastian Software GmbH",
   "main": "index.js",
   "scripts": {
