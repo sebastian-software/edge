@@ -25,8 +25,8 @@ if (DEV) {
   )
 }
 else {
-  const clientStats = require('../buildClient/stats.json')
-  const serverRender = require('../buildServer/main.js').default
+  const clientStats = require('../build/client/stats.json')
+  const serverRender = require('../build/server/main.js').default
 
   app.use(publicPath, express.static(outputPath))
   app.use(serverRender({ clientStats, outputPath }))
