@@ -1,6 +1,6 @@
 import React from 'react'
 import universal from 'react-universal-component'
-import styles from '../css/App.css'
+import styles from './App.css'
 
 const UniversalExample = universal(() => import('./Example'), {
   resolve: () => require.resolveWeak('./Example'),
