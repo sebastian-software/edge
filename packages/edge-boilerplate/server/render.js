@@ -1,50 +1,24 @@
-import path from "path"
 import React from "react"
 import ReactDOM from "react-dom/server"
 import { flushModuleIds } from "react-universal-component/server"
 import flushChunks from "webpack-flush-chunks"
 import App from "../src/components/App"
 
-export default ({ clientStats, outputPath }) => (req, res, next) => {
-  const app = ReactDOM.renderToString(<App />)
+export default ({ clientStats, outputPath }) => (request, response, next) => {
+  const renderedApp = ReactDOM.renderToString(<App />)
   const moduleIds = flushModuleIds()
 
-  const {
-    // react components:
-    Js,
-    Styles,
+  const { js, styles } = flushChunks(clientStats, {
+    moduleIds,
+    before: [ "bootstrap" ],
+    after: [ "main" ],
 
-    // external stylesheets
-    Css,
+    // only needed if serving css rather than an external stylesheet
+    // note: during development css still serves as a stylesheet
+    outputPath
+  })
 
-    // raw css
-    // strings:
-    js,
-    styles,
-
-    // external stylesheets
-    css,
-
-    // raw css
-    // arrays of file names (not including publicPath):
-    scripts,
-    stylesheets,
-    publicPath
-  } = flushChunks(clientStats, {
-      moduleIds,
-      before: [ "bootstrap" ],
-      after: [ "main" ],
-
-      // only needed if serving css rather than an external stylesheet
-      // note: during development css still serves as a stylesheet
-      outputPath
-    })
-
-  console.log("PATH", req.path)
-  console.log("SERVED SCRIPTS", scripts)
-  console.log("SERVED STYLESHEETS", stylesheets)
-
-  res.send(
+  response.send(
     `<!doctype html>
       <html>
         <head>
@@ -53,24 +27,9 @@ export default ({ clientStats, outputPath }) => (req, res, next) => {
           ${styles}
         </head>
         <body>
-          <div id="root">${app}</div>
+          <div id="root">${renderedApp}</div>
           ${js}
         </body>
-      </html>`,
+      </html>`
   )
-
-  // COMMENT the above `res.send` call
-  // and UNCOMMENT below to test rendering React components:
-  // const html = ReactDOM.renderToStaticMarkup(
-  //   <html>
-  //     <head>
-  //       <Styles />
-  //     </head>
-  //     <body>
-  //       <div id="root" dangerouslySetInnerHTML={{ __html: app }} />
-  //       <Js />
-  //     </body>
-  //   </html>
-  // )
-  // res.send(`<!DOCTYPE html>${html}`)
 }
