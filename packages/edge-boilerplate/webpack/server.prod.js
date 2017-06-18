@@ -6,7 +6,7 @@ const res = p => path.resolve(__dirname, p)
 
 const modeModules = res('../node_modules')
 const entry = res('../server/render.js')
-const output = res('../buildServer')
+const output = res('../build/server')
 
 module.exports = {
   name: 'server',

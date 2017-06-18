@@ -9,9 +9,9 @@
     "start": "npm run clean && NODE_ENV=development babel-watch server/index.js",
     "start:prod": "npm run build && NODE_ENV=production babel-watch server/index.js",
     "build": "npm run build:client && npm run build:server",
-    "build:client": "rimraf buildClient && NODE_ENV=production webpack --progress -p --config webpack/client.prod.js",
-    "build:server": "rimraf buildServer && NODE_ENV=production webpack --progress -p --config webpack/server.prod.js",
-    "clean": "rimraf buildClient buildServer"
+    "build:client": "rimraf build/client/* && NODE_ENV=production webpack --config webpack/client.prod.js",
+    "build:server": "rimraf build/server/* && NODE_ENV=production webpack --config webpack/server.prod.js",
+    "clean": "rimraf build/client/* build/server/*"
   },
   "dependencies": {
     "babel-cli": "^6.24.0",
