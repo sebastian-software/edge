@@ -12,7 +12,7 @@ export default class App extends React.Component {
   // set `show` to `false` to test how asynchronously loaded chunks behave,
   // specifically how css injection is embedded in chunks + corresponding HMR
   state = {
-    show: true
+    show: false
   }
 
   componentDidMount() {
