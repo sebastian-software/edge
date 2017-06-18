@@ -3,7 +3,7 @@
   "plugins": ["syntax-dynamic-import", "transform-class-properties"],
   "env": {
     "development": {
-      "plugins": ["react-hot-loader/babel"]
+
     }
   }
 }
