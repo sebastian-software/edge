@@ -3,6 +3,7 @@ import webpack from "webpack"
 import webpackDevMiddleware from "webpack-dev-middleware-multi-compiler"
 import webpackHotMiddleware from "webpack-hot-middleware"
 import webpackHotServerMiddleware from "webpack-hot-server-middleware"
+
 import clientConfig from "../webpack/client.dev"
 import serverConfig from "../webpack/server.dev"
 
@@ -17,11 +18,8 @@ if (DEV) {
 
   app.use(webpackDevMiddleware(multiCompiler, { publicPath }))
   app.use(webpackHotMiddleware(clientCompiler))
-  app.use(
-
-    // keeps serverRender updated with arg: { clientStats, outputPath }
-    webpackHotServerMiddleware(multiCompiler, { serverRendererOptions: { outputPath } }),
-  )
+  // keeps serverRender updated with arg: { clientStats, outputPath }
+  app.use(webpackHotServerMiddleware(multiCompiler, { serverRendererOptions: { outputPath } }))
 } else {
   const clientStats = require("../build/client/stats.json")
   const serverRender = require("../build/server/main.js").default

@@ -2,11 +2,9 @@ const fs = require("fs")
 const path = require("path")
 const webpack = require("webpack")
 
-const res = (p) => path.resolve(__dirname, p)
-
-const modeModules = res("../node_modules")
-const entry = res("../server/render.js")
-const output = res("../build/server")
+const modeModules = path.resolve(__dirname, "../node_modules")
+const entry = path.resolve(__dirname, "../server/render.js")
+const output = path.resolve(__dirname, "../build/server")
 
 module.exports = {
   name: "server",
