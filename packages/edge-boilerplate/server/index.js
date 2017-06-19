@@ -17,7 +17,14 @@ if (process.env.NODE_ENV === "development") {
   const multiCompiler = webpack([ clientConfig, serverConfig ])
   const clientCompiler = multiCompiler.compilers[0]
 
-  server.use(webpackDevMiddleware(multiCompiler, { publicPath }))
+  server.use(webpackDevMiddleware(multiCompiler, {
+    // required
+    publicPath,
+
+    // display no info to console (only warnings and errors)
+    noInfo: true
+  }))
+
   server.use(webpackHotMiddleware(clientCompiler))
 
   // keeps serverRender updated with arg: { clientStats, outputPath }
