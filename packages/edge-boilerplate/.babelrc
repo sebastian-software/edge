@@ -1,4 +1,13 @@
 {
+  // Faster transpiling for minor loose in formatting
+  "compact": true,
+
+  // Keep origin information alive
+  "sourceMaps": true,
+
+  // Nobody needs the original comments when having source maps
+  "comments": false,
+
   "env": {
     "development": {
       "presets": [
@@ -8,7 +17,9 @@
             "node": "current"
           }
         }],
-        "react"
+
+        "react",
+        "flow"
       ],
 
       "plugins":
