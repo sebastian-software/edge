@@ -6,6 +6,8 @@ const modeModules = path.resolve(__dirname, "../node_modules")
 const entry = path.resolve(__dirname, "../server/render.js")
 const output = path.resolve(__dirname, "../build/server")
 
+const VERBOSE = false
+
 // if you're specifying externals to leave unbundled, you need to tell Webpack
 // to still bundle `react-universal-component`, `webpack-flush-chunks` and
 // `require-universal-module` so that they know they are running
@@ -26,6 +28,20 @@ module.exports = {
   target: "node",
   devtool: "source-map",
 
+  // What information should be printed to the console
+  stats: {
+    colors: true,
+    reasons: VERBOSE,
+    hash: VERBOSE,
+    version: VERBOSE,
+    timings: true,
+    chunks: VERBOSE,
+    chunkModules: VERBOSE,
+    cached: VERBOSE,
+    cachedAssets: VERBOSE
+  },
+  performance: false,
+
   // devtool: 'eval',
   entry: [ entry ],
   externals,
@@ -43,6 +59,7 @@ module.exports = {
       }
     ]
   },
+
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),

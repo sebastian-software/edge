@@ -2,6 +2,8 @@ const path = require("path")
 const webpack = require("webpack")
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
 
+const VERBOSE = false
+
 module.exports = {
   name: "client",
   target: "web",
@@ -17,6 +19,20 @@ module.exports = {
     path: path.resolve(__dirname, "../build/client"),
     publicPath: "/static/"
   },
+
+  // What information should be printed to the console
+  stats: {
+    colors: true,
+    reasons: VERBOSE,
+    hash: VERBOSE,
+    version: VERBOSE,
+    timings: true,
+    chunks: VERBOSE,
+    chunkModules: VERBOSE,
+    cached: VERBOSE,
+    cachedAssets: VERBOSE
+  },
+  performance: false,
 
   module:
   {

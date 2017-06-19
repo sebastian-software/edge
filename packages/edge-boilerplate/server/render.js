@@ -2,10 +2,10 @@ import React from "react"
 import ReactDOM from "react-dom/server"
 import { flushModuleIds } from "react-universal-component/server"
 import flushChunks from "webpack-flush-chunks"
-import App from "../src/components/App"
+import AppRoot from "../src/components/App"
 
 export default ({ clientStats, outputPath }) => (request, response, next) => {
-  const renderedApp = ReactDOM.renderToString(<App />)
+  const renderedApp = ReactDOM.renderToString(<AppRoot />)
   const moduleIds = flushModuleIds()
 
   const { js, styles } = flushChunks(clientStats, {
@@ -23,7 +23,6 @@ export default ({ clientStats, outputPath }) => (request, response, next) => {
     <html>
       <head>
         <meta charset="utf-8">
-        <title>react-universal-component-boilerplate</title>
         ${styles}
       </head>
       <body>

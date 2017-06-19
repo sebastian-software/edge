@@ -11,6 +11,8 @@ const publicPath = clientConfig.output.publicPath
 const outputPath = clientConfig.output.path
 const server = express()
 
+const PORT = 3000
+
 if (process.env.NODE_ENV === "development") {
   const multiCompiler = webpack([ clientConfig, serverConfig ])
   const clientCompiler = multiCompiler.compilers[0]
@@ -19,7 +21,9 @@ if (process.env.NODE_ENV === "development") {
   server.use(webpackHotMiddleware(clientCompiler))
 
   // keeps serverRender updated with arg: { clientStats, outputPath }
-  server.use(webpackHotServerMiddleware(multiCompiler, { serverRendererOptions: { outputPath } }))
+  server.use(webpackHotServerMiddleware(multiCompiler, {
+    serverRendererOptions: { outputPath }
+  }))
 }
 else
 {
@@ -30,6 +34,6 @@ else
   server.use(serverRender({ clientStats, outputPath }))
 }
 
-server.listen(3000, () => {
-  console.log("Listening @ http://localhost:3000/")
+server.listen(PORT, () => {
+  console.log(`Listening @ http://localhost:/${PORT}`)
 })
