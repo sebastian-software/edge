@@ -1,7 +1,6 @@
 const path = require("path")
 const webpack = require("webpack")
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
-const ProgressPlugin = require("webpack/lib/ProgressPlugin")
 
 const VERBOSE = false
 
@@ -80,7 +79,7 @@ module.exports = {
 
 
   plugins: [
-    new ProgressPlugin(),
+    new webpack.ProgressPlugin(),
     new ExtractCssChunks(),
     new webpack.NamedModulesPlugin(),
 

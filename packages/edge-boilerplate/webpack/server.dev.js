@@ -1,7 +1,6 @@
 const fs = require("fs")
 const path = require("path")
 const webpack = require("webpack")
-const ProgressPlugin = require("webpack/lib/ProgressPlugin")
 
 const modeModules = path.resolve(__dirname, "../node_modules")
 const entry = path.resolve(__dirname, "../server/render.js")
@@ -98,7 +97,7 @@ module.exports = {
   },
 
   plugins: [
-    new ProgressPlugin(),
+    new webpack.ProgressPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
     new webpack.DefinePlugin({ "process.env": { NODE_ENV: JSON.stringify("development") } })
