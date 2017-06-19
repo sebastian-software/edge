@@ -40,7 +40,7 @@
     "readable-code": "^3.0.0",
     "rimraf": "^2.6.1",
     "stats-webpack-plugin": "^0.6.1",
-    "webpack": "^2.6.1",
+    "webpack": "beta",
     "webpack-dev-middleware-multi-compiler": "^1.0.0",
     "webpack-flush-chunks": "^1.0.10",
     "webpack-hot-middleware": "^2.18.0",
