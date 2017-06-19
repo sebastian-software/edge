@@ -7,6 +7,17 @@ const UniversalExample = universal(() => import('./Example'), {
   minDelay: 500
 })
 
+const LazyHome = universal(() => import('../views/Home/Home'), {
+  resolve: () => require.resolveWeak('../views/Home/Home'),
+  minDelay: 500
+})
+
+const LazyMissing = universal(() => import('../views/Missing/Missing'), {
+  resolve: () => require.resolveWeak('../views/Missing/Missing'),
+  minDelay: 500
+})
+
+
 export default class App extends React.Component {
   // set `show` to `true` to see dynamic chunks served by initial request
   // set `show` to `false` to test how asynchronously loaded chunks behave,
@@ -28,8 +39,12 @@ export default class App extends React.Component {
     return (
       <div>
         <h1 className={styles.title}>Hello World</h1>
+
         {this.state.show && <UniversalExample />}
         {!this.state.show && 'Async Component Not Requested Yet'}
+
+        <LazyHome/>
+        <LazyMissing/>
       </div>
     )
   }
