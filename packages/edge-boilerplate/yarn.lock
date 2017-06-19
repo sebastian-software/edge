@@ -26,11 +26,19 @@ acorn-dynamic-import@^2.0.0:
   dependencies:
     acorn "^4.0.3"
 
+acorn-es7-plugin@>=1.1.6:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/acorn-es7-plugin/-/acorn-es7-plugin-1.1.7.tgz#f2ee1f3228a90eead1245f9ab1922eb2e71d336b"
+
 acorn-jsx@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-3.0.1.tgz#afdf9488fb1ecefc8348f6fb22f464e32a58b36b"
   dependencies:
     acorn "^3.0.4"
+
+acorn@>=2.5.2, acorn@^5.0.0, acorn@^5.0.1:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.0.3.tgz#c460df08491463f028ccb82eab3730bf01087b3d"
 
 acorn@^3.0.4:
   version "3.3.0"
@@ -39,10 +47,6 @@ acorn@^3.0.4:
 acorn@^4.0.3:
   version "4.0.13"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-4.0.13.tgz#105495ae5361d697bd195c825192e1ad7f253787"
-
-acorn@^5.0.0, acorn@^5.0.1:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.0.3.tgz#c460df08491463f028ccb82eab3730bf01087b3d"
 
 ajv-keywords@^1.0.0:
   version "1.5.1"
@@ -2486,6 +2490,12 @@ fancy-log@^1.1.0:
     chalk "^1.1.1"
     time-stamp "^1.0.0"
 
+fast-async@^6.2.2:
+  version "6.2.2"
+  resolved "https://registry.yarnpkg.com/fast-async/-/fast-async-6.2.2.tgz#dcbbaaacc92209d9179110f1aa5fb72d8174b0b4"
+  dependencies:
+    nodent ">=3.0.17"
+
 fast-deep-equal@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-0.1.0.tgz#5c6f4599aba6b333ee3342e2ed978672f1001f8d"
@@ -4328,6 +4338,20 @@ node-pre-gyp@^0.6.36:
     semver "^5.3.0"
     tar "^2.2.1"
     tar-pack "^3.4.0"
+
+nodent-runtime@>=3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/nodent-runtime/-/nodent-runtime-3.0.4.tgz#a801ecb7bb0f6c39a69b24cc2fa370cfa8b492da"
+
+nodent@>=3.0.17:
+  version "3.0.17"
+  resolved "https://registry.yarnpkg.com/nodent/-/nodent-3.0.17.tgz#22df57d33c5346d6acc3722d9d69fa68bff518e4"
+  dependencies:
+    acorn ">=2.5.2"
+    acorn-es7-plugin ">=1.1.6"
+    nodent-runtime ">=3.0.4"
+    resolve "^1.2.0"
+    source-map "^0.5.6"
 
 nopt@^4.0.1:
   version "4.0.1"
