@@ -38,6 +38,15 @@ module.exports = {
   module:
   {
     rules: [
+      // References to images, fonts, movies, music, etc.
+      {
+        test: /\.(eot|woff|woff2|ttf|otf|svg|png|jpg|jpeg|jp2|jpx|jxr|gif|webp|mp4|mp3|ogg|pdf|html)$/,
+        loader: "file-loader",
+        options: {
+          name: "[name].[ext]",
+          emitFile: true
+        }
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -46,17 +55,30 @@ module.exports = {
       {
         test: /\.css$/,
         use: ExtractCssChunks.extract({
-          use: {
-            loader: "css-loader",
-            options: {
-              modules: true,
-              localIdentName: "[name]__[local]--[hash:base64:5]"
+          use: [
+            {
+              loader: "css-loader",
+              options: {
+                modules: true,
+                localIdentName: "[local]-[hash:base62:8]",
+                import: false,
+                minimize: false
+              }
+            },
+            {
+              loader: "postcss-loader",
+              query:
+              {
+                sourceMap: true
+              }
             }
-          }
+          ]
         })
       }
     ]
   },
+
+
   plugins: [
     new ProgressPlugin(),
     new ExtractCssChunks(),

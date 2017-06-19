@@ -43,20 +43,56 @@ module.exports = {
   },
   performance: false,
 
-  // devtool: 'eval',
   entry: [ entry ],
+
   externals,
-  output: { path: output, filename: "[name].js", libraryTarget: "commonjs2", publicPath: "/static/" },
-  module: {
-    rules: [
-      { test: /\.js$/, exclude: /node_modules/, use: "babel-loader" },
+
+  output: {
+    path: output,
+    filename: "[name].js",
+    libraryTarget: "commonjs2",
+    publicPath: "/static/"
+  },
+
+  module:
+  {
+    rules:
+    [
+      {
+        test: /\.(eot|woff|woff2|ttf|otf|svg|png|jpg|jpeg|jp2|jpx|jxr|gif|webp|mp4|mp3|ogg|pdf|html)$/,
+        loader: "file-loader",
+        options: {
+          name: "[name].[ext]",
+          emitFile: false
+        }
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: "babel-loader"
+      },
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        use: {
-          loader: "css-loader/locals",
-          options: { modules: true, localIdentName: "[name]__[local]--[hash:base64:5]" }
-        }
+        use:
+        [
+          {
+            loader: "css-loader/locals",
+            options: {
+              modules: true,
+              localIdentName: "[local]-[hash:base62:8]",
+              import: false,
+              minimize: false
+            }
+          },
+          {
+            loader: "postcss-loader",
+            query:
+            {
+              sourceMap: true
+            }
+          }
+        ]
       }
     ]
   },
