@@ -7,21 +7,34 @@ module.exports = {
   target: "web",
   devtool: "source-map",
 
-  // devtool: 'eval',
   entry: [
     "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false",
     path.resolve(__dirname, "../src/index.js")
   ],
-  output: { filename: "[name].js", path: path.resolve(__dirname, "../build/client"), publicPath: "/static/" },
-  module: {
+
+  output: {
+    filename: "[name].js",
+    path: path.resolve(__dirname, "../build/client"),
+    publicPath: "/static/"
+  },
+
+  module:
+  {
     rules: [
-      { test: /\.js$/, exclude: /node_modules/, use: "babel-loader" },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: "babel-loader"
+      },
       {
         test: /\.css$/,
         use: ExtractCssChunks.extract({
           use: {
             loader: "css-loader",
-            options: { modules: true, localIdentName: "[name]__[local]--[hash:base64:5]" }
+            options: {
+              modules: true,
+              localIdentName: "[name]__[local]--[hash:base64:5]"
+            }
           }
         })
       }
@@ -39,8 +52,14 @@ module.exports = {
       filename: "[name].js",
       minChunks: Infinity
     }),
+
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.DefinePlugin({ "process.env": { NODE_ENV: JSON.stringify("development") } })
+
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify("development")
+      }
+    })
   ]
 }
