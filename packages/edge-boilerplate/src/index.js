@@ -1,19 +1,16 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import App from "./components/App"
+import AppRoot from "./components/App"
 
-const render = (App) => ReactDOM.render(
-  (
-    <App />
-  ),
-  document.getElementById("root"),
-)
+function render(Root) {
+  ReactDOM.render(<Root/>, document.getElementById("root"))
+}
 
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === "development" && module.hot) {
   module.hot.accept("./components/App.js", () => {
-    const App = require("./components/App").default
-    render(App)
+    const NextRoot = require("./components/App").default
+    render(NextRoot)
   })
 }
 
-render(App)
+render(AppRoot)
