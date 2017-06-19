@@ -1,20 +1,33 @@
-# Flush Chunks Boilerplate (Webpack)
+# Edge Template
 
-This is a boilerplate example for how to use [webpack-flush-chunks](https://github.com/faceyspacey/webpack-flush-chunks)
-in conjunction with [react-universal-component](https://github.com/faceyspacey/react-universal-component) and [extract-css-chunks-webpack-plugin](https://github.com/faceyspacey/extract-css-chunks-webpack-plugin).
+An basic application template for usage of Edge* technologies. Powered by a lot of ideas from various people like
+James Gillmore @faceyspacey and.
 
-It's specifically for when you're using **Webpack** with *React Universal Component's* **`flushModuleIds()`** and *Webpack Flush Chunks's* **`moduleIds`** option.
+## Features
+
+- Server Side React Rendering for excellent SEO Support and very high Mobile Performance.
+- Semi-Automatic Code-Splitting for both CSS and JS.
+- Hot Loading for Client and Server using Webpack Multi Compiler Architecture.
 
 
-## Installation
+WIP:
 
-```
-git clone https://github.com/faceyspacey/flush-chunks-boilerplate-webpack.git
-cd flush-chunks-boilerplate-webpack
-yarn
-```
+- Build Caching using Webpacks Cache-Loader.
+- PostCSS powered CSS pipeline with Sass-inspired features.
+- CSS Modules for Component Style Isolation.
+- Efficient Long-Term-Caching using Hashed File Names.
+- React Helmet for Efficient Header Element Handling
+- Distributed Routing Rules via React Router v4
+- Redux Infrastructure Built-In
 
-> Note: after this point, the readmes are the same for all `flush-chunks-boilerplates` :)
+
+## Technology
+
+- [webpack-flush-chunks](https://github.com/faceyspacey/webpack-flush-chunks)
+- [react-universal-component](https://github.com/faceyspacey/react-universal-component)
+- [extract-css-chunks-webpack-plugin](https://github.com/faceyspacey/extract-css-chunks-webpack-plugin)
+
+
 
 ## Usage
 
@@ -25,23 +38,6 @@ yarn run start:prod
 
 After selecting one of the above commands, open [localhost:3000](http://localhost:3000) in your browser. View the source in the browser to see what chunks are being sent.
 
-
-## Things To Do
-
-- try both commands and examine their corresponding Webpack configs and the corresponding server file: [`server/index.js`](./server/index.js)
-- view the source in your browser to see what the server sends (do this often)
-- open [`src/components/App.js`](./src/components/App.js) and toggle `state.show` between `false` and `true` and
-then view the source in your browser to see when corresponding chunks are sent vs. not sent.
-- open the browser console *Network* tab and see when in fact the `Example.js` chunk is asynchronously loaded (it won't be if `state.show` starts off as `true`, which is desired result, i.e. because the client *synchronously* renders exactly what was rendered on the server)
-- edit the `<App />` and `<Example />` components to see that HMR works--even for split chunks. Do so with both `state.show` pre-set to both
-`false` and `true` to verify HMR works in all scenarios. ***There's warning that may occur on your first edit. Don't worry about it. The change will work and be reflected instantly. It's basically a matter of supression within the `extract-css-chunks-webpack-plugin`***
-- edit and save the CSS files to confirm HMR works for CSS as well, thanks to [extract-css-chunks-webpack-plugin](https://github.com/faceyspacey/extract-css-chunks-webpack-plugin)
-
-- when bundling for production, examine the build folder (or, `build/client` and `build/server` folders when using the Webpack boilerplates) to see exactly what chunks and files are built for you. Notice the `stats.json` file in `build/client`. Notice that every javascript chunk has 2 versions of itself: one ending with the extension `.js` and one ending with `.no_css.js`. This is thanks to
-[extract-css-chunks-webpack-plugin](https://github.com/faceyspacey/extract-css-chunks-webpack-plugin) which prepares an additional javascript file with no CSS (for the smallest possible build sizes) for sending over the wire as part of SSR. The regular one with css injection in it is used when the chunk is asynchronously loaded as your users navigate your app. HMR will work in both cases.
-- open [`server/render.js`](./server/render.js) and follow the directions of what lines to comment and uncomment to test rendering your chunks as strings vs. React components.
-- open [`server/render.js`](./server/render.js) and from the return of `flushCHunks` use `css` instead of `styles` while running in production to see your CSS embedded directly in the response page. View the source in your browser to confirm. *Note: during development, external stylesheets will still be used for HMR to work; this is automatic.*
-- check out the amazing package, [webpack-hot-server-middleware](https://github.com/60frames/webpack-hot-server-middleware), to see how dual-compilation works for both your server and client bundles. It's very fast because it shares compiled files between the 2 bundles. We've been surprised this hasn't been more popular and the defacto solution for rendering both bundles. It's very solid. We think you will like it...Another thing nice about it is how seamlessly it ushers your compilation stats to the render function you pass to express's `app.use`.
 
 
 ## Notes
