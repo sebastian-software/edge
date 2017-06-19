@@ -7,27 +7,29 @@ import webpackHotServerMiddleware from "webpack-hot-server-middleware"
 import clientConfig from "../webpack/client.dev"
 import serverConfig from "../webpack/server.dev"
 
-const DEV = process.env.NODE_ENV === "development"
 const publicPath = clientConfig.output.publicPath
 const outputPath = clientConfig.output.path
-const app = express()
+const server = express()
 
-if (DEV) {
+if (process.env.NODE_ENV === "development") {
   const multiCompiler = webpack([ clientConfig, serverConfig ])
   const clientCompiler = multiCompiler.compilers[0]
 
-  app.use(webpackDevMiddleware(multiCompiler, { publicPath }))
-  app.use(webpackHotMiddleware(clientCompiler))
+  server.use(webpackDevMiddleware(multiCompiler, { publicPath }))
+  server.use(webpackHotMiddleware(clientCompiler))
+
   // keeps serverRender updated with arg: { clientStats, outputPath }
-  app.use(webpackHotServerMiddleware(multiCompiler, { serverRendererOptions: { outputPath } }))
-} else {
+  server.use(webpackHotServerMiddleware(multiCompiler, { serverRendererOptions: { outputPath } }))
+}
+else
+{
   const clientStats = require("../build/client/stats.json")
   const serverRender = require("../build/server/main.js").default
 
-  app.use(publicPath, express.static(outputPath))
-  app.use(serverRender({ clientStats, outputPath }))
+  server.use(publicPath, express.static(outputPath))
+  server.use(serverRender({ clientStats, outputPath }))
 }
 
-app.listen(3000, () => {
+server.listen(3000, () => {
   console.log("Listening @ http://localhost:3000/")
 })

@@ -18,18 +18,18 @@ export default ({ clientStats, outputPath }) => (request, response, next) => {
     outputPath
   })
 
-  response.send(
-    `<!doctype html>
-      <html>
-        <head>
-          <meta charset="utf-8">
-          <title>react-universal-component-boilerplate</title>
-          ${styles}
-        </head>
-        <body>
-          <div id="root">${renderedApp}</div>
-          ${js}
-        </body>
-      </html>`
+  response.send(`
+    <!doctype html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>react-universal-component-boilerplate</title>
+        ${styles}
+      </head>
+      <body>
+        <div id="root">${renderedApp}</div>
+        ${js}
+      </body>
+    </html>`
   )
 }
