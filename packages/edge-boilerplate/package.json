@@ -27,6 +27,7 @@
     "babel-watch": "^2.0.6",
     "cross-env": "^5.0.1",
     "css-loader": "^0.28.4",
+    "edgebabel": "^0.3.0",
     "edgecss": "^0.4.10",
     "express": "^4.15.3",
     "extract-css-chunks-webpack-plugin": "^1.0.15",
