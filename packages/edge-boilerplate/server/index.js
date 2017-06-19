@@ -41,6 +41,4 @@ else
   server.use(serverRender({ clientStats, outputPath }))
 }
 
-server.listen(PORT, () => {
-
-})
+server.listen(PORT, () => {})
