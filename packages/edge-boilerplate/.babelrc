@@ -13,7 +13,7 @@
       "presets": [
         [ "env", {
           // Setting this to false will not transform modules.
-          "modules": false,
+          // "modules": false,
           "useBuiltIns": true,
           "exclude": [ "transform-regenerator" ],
           "targets": {
