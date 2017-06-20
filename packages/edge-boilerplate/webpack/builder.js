@@ -1,6 +1,7 @@
 import path from "path"
 import fs from "fs"
 import webpack from "webpack"
+import webpackPkg from "webpack/package.json"
 import ExtractCssChunks from "extract-css-chunks-webpack-plugin"
 import StatsPlugin from "stats-webpack-plugin"
 
@@ -20,7 +21,7 @@ export default function builder(options = {})
   const isDevelopment = config.env === "development"
   const isProduction = config.env === "production"
 
-  console.log(`Edge Webpack: Generate Config for: ${config.target}@${config.env}`)
+  console.log(`Edge Webpack for Webpack@${webpackPkg.version}: Generating Config for: ${config.target}@${config.env}`)
 
   const name = isServer ? "server" : "client"
   const target = isServer ? "node" : "web"
@@ -137,8 +138,7 @@ export default function builder(options = {})
         names: [ "bootstrap" ],
 
         // needed to put webpack bootstrap code before chunks
-        //
-        filename: isProduction ? "[name].[contenthash].js" : "[name].js",
+        filename: isProduction ? "[name]-[chunkhash].js" : "[name].js",
         minChunks: Infinity
       }) : null,
 
