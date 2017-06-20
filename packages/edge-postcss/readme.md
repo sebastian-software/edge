@@ -1,18 +1,18 @@
-# Edge CSS<br/>[![Sponsored by][sponsor-img]][sponsor] [![Version][npm-version-img]][npm] [![Downloads][npm-downloads-img]][npm] [![Build Status Unix][travis-img]][travis] [![Build Status Windows][appveyor-img]][appveyor] [![Dependencies][deps-img]][deps]
+# Edge PostCSS<br/>[![Sponsored by][sponsor-img]][sponsor] [![Version][npm-version-img]][npm] [![Downloads][npm-downloads-img]][npm] [![Build Status Unix][travis-img]][travis] [![Build Status Windows][appveyor-img]][appveyor] [![Dependencies][deps-img]][deps]
 
 [sponsor-img]: https://img.shields.io/badge/Sponsored%20by-Sebastian%20Software-692446.svg
 [sponsor]: https://www.sebastian-software.de
-[deps]: https://david-dm.org/sebastian-software/edgecss
-[deps-img]: https://david-dm.org/sebastian-software/edgecss.svg
-[npm]: https://www.npmjs.com/package/edgecss
-[npm-downloads-img]: https://img.shields.io/npm/dm/edgecss.svg
-[npm-version-img]: https://img.shields.io/npm/v/edgecss.svg
-[travis-img]: https://img.shields.io/travis/sebastian-software/edgecss/master.svg?branch=master&label=unix%20build
-[appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/edgecss/master.svg?label=windows%20build
-[travis]: https://travis-ci.org/sebastian-software/edgecss
-[appveyor]: https://ci.appveyor.com/project/swernerx/edgecss/branch/master
+[deps]: https://david-dm.org/sebastian-software/edge-postcss
+[deps-img]: https://david-dm.org/sebastian-software/edge-postcss.svg
+[npm]: https://www.npmjs.com/package/edge-postcss
+[npm-downloads-img]: https://img.shields.io/npm/dm/edge-postcss.svg
+[npm-version-img]: https://img.shields.io/npm/v/edge-postcss.svg
+[travis-img]: https://img.shields.io/travis/sebastian-software/edge-postcss/master.svg?branch=master&label=unix%20build
+[appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/edge-postcss/master.svg?label=windows%20build
+[travis]: https://travis-ci.org/sebastian-software/edge-postcss
+[appveyor]: https://ci.appveyor.com/project/swernerx/edge-postcss/branch/master
 
-EdgeCSS is a collection of carefully chosen and configured PostCSS plugins.
+Edge PostCSS is a collection of carefully chosen and configured PostCSS plugins.
 
 It combines some common learnings and conventions from Sass, with some upcoming CSS4 features and
 adds a whole chain of fixes for a variety of browser bugs.
