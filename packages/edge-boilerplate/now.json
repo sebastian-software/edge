@@ -1,0 +1,7 @@
+{
+  "alias": "boilerplate.latest",
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "public": true
+}
