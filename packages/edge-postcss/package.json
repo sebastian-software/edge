@@ -1,7 +1,7 @@
 {
   "name": "edge-postcss",
   "version": "0.4.10",
-  "description": "CSS Processing Configuration by Sebastian Software GmbH",
+  "description": "Edge PostCSS is a collection of carefully chosen and configured PostCSS plugins. Part of the Edge Platform.",
   "main": "index.js",
   "scripts": {
     "start": "edge start",
