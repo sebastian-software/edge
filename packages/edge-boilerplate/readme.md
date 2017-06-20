@@ -14,6 +14,11 @@
 
 Edge Boilerplate is a template for modern web applications. Part of the Edge Platform.
 
+## Demo
+
+- [Latest](https://edge-boilerplate-latest.now.sh/) (Hosted by [now](https://now.sh/))
+
+
 ## Thanks
 
 - James Gillmore @faceyspacey
