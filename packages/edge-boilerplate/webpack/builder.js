@@ -60,6 +60,9 @@ export default function builder(options = {})
     }
   }
 
+  const assetFiles = /\.(eot|woff|woff2|ttf|otf|svg|png|jpg|jpeg|jp2|jpx|jxr|gif|webp|mp4|mp3|ogg|pdf|html)$/
+  const babelFiles = /\.js$/
+  const postcssFiles = /\.css$/
 
   return {
     name,
@@ -83,7 +86,7 @@ export default function builder(options = {})
       rules: [
         // References to images, fonts, movies, music, etc.
         {
-          test: /\.(eot|woff|woff2|ttf|otf|svg|png|jpg|jpeg|jp2|jpx|jxr|gif|webp|mp4|mp3|ogg|pdf|html)$/,
+          test: assetFiles,
           loader: "file-loader",
           options: {
             name: "[name].[ext]",
@@ -93,14 +96,14 @@ export default function builder(options = {})
 
         // Transpile our own JavaScript files using the setup in `.babelrc`.
         {
-          test: /\.js$/,
+          test: babelFiles,
           exclude: /node_modules/,
           use: "babel-loader"
         },
 
         // Use either
         {
-          test: /\.css$/,
+          test: postcssFiles,
           use: isClient ? ExtractCssChunks.extract({
             use: [
               {
