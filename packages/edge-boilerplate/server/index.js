@@ -4,12 +4,13 @@ import webpackDevMiddleware from "webpack-dev-middleware-multi-compiler"
 import webpackHotMiddleware from "webpack-hot-middleware"
 import webpackHotServerMiddleware from "webpack-hot-server-middleware"
 
-import serverConfig from "../webpack/server.dev"
-
-
 import configBuilder from "../webpack/builder"
 const clientConfig = configBuilder({
   target: "client",
+  env: process.env.NODE_ENV
+})
+const serverConfig = configBuilder({
+  target: "server",
   env: process.env.NODE_ENV
 })
 
