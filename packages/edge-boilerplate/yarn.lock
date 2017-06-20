@@ -308,7 +308,7 @@ async@^1.4.0, async@^1.5.0:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
-async@^2.1.2, async@^2.1.4:
+async@^2.1.2, async@^2.1.4, async@^2.3.0:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/async/-/async-2.4.1.tgz#62a56b279c98a11d0987096a01cc3eeb8eb7bbd7"
   dependencies:
@@ -1231,6 +1231,14 @@ builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
 
+cache-loader@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/cache-loader/-/cache-loader-1.0.3.tgz#7717963ec082db068b17a1412deaaa72d21c4e30"
+  dependencies:
+    async "^2.3.0"
+    loader-utils "^1.1.0"
+    mkdirp "^0.5.1"
+
 calipers-gif@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/calipers-gif/-/calipers-gif-2.0.0.tgz#b5eefec3064a77c6dcdbd5bdc51735a01bafdc37"
@@ -1318,13 +1326,9 @@ caniuse-api@^2.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-db@1.0.30000671:
+caniuse-db@1.0.30000671, caniuse-db@^1.0.30000187, caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
   version "1.0.30000671"
   resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000671.tgz#9f071bbc7b96994638ccbaf47829d58a1577a8ed"
-
-caniuse-db@^1.0.30000187, caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30000692"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000692.tgz#3da9a99353adbcea1e142b99f60ecc6216df47a5"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000670, caniuse-lite@^1.0.30000684:
   version "1.0.30000692"

@@ -32,6 +32,7 @@
   "dependencies": {
     "babel-loader": "^7.1.0",
     "babel-watch": "^2.0.6",
+    "cache-loader": "^1.0.3",
     "cross-env": "^5.0.1",
     "css-loader": "^0.28.4",
     "edge-babel": "^0.4.2",

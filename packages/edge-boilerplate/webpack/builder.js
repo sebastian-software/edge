@@ -98,7 +98,10 @@ export default function builder(options = {})
         {
           test: babelFiles,
           exclude: /node_modules/,
-          use: "babel-loader"
+          use: [
+            "cache-loader",
+            "babel-loader"
+          ]
         },
 
         // Use either
@@ -106,6 +109,7 @@ export default function builder(options = {})
           test: postcssFiles,
           use: isClient ? ExtractCssChunks.extract({
             use: [
+              "cache-loader",
               {
                 loader: "css-loader",
                 options: cssLoaderOptions
@@ -113,6 +117,7 @@ export default function builder(options = {})
               postCSSLoaderRule
             ]
           }) : [
+            "cache-loader",
             {
               loader: "css-loader/locals",
               options: cssLoaderOptions
