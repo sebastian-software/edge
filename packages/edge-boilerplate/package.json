@@ -3,8 +3,17 @@
   "description": "Edge Boilerplate is a template for modern web applications. Part of the Edge Platform.",
   "version": "0.0.1",
   "main": "server/index.js",
-  "author": "James Gillmore <james@faceyspacey.com>",
-  "license": "MIT",
+  "author": {
+    "name": "Sebastian Software",
+    "email": "s.werner@sebastian-software.de",
+    "url": "sebastian-software.de"
+  },
+  "pre-commit": "lint-staged",
+  "lint-staged": {
+    "*.js": "eslint",
+    "*.css": "stylelint"
+  },
+  "license": "Apache-2.0",
   "scripts": {
     "start": "npm run clean && cross-env NODE_ENV=development babel-watch server/index.js",
     "start:prod": "npm run build && cross-env NODE_ENV=production babel-watch server/index.js",
