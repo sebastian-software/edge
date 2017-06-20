@@ -1,8 +1,7 @@
-const path = require("path")
-const webpack = require("webpack")
-const fs = require("fs")
-const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
-
+import path from "path"
+import fs from "fs"
+import webpack from "webpack"
+import ExtractCssChunks from "extract-css-chunks-webpack-plugin"
 
 export default function builder(options = {})
 {
