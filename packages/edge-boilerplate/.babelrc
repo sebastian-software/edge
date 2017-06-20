@@ -1,1 +1,1 @@
-{ presets: "edge-babel" }
+{ "presets": "edge-babel" }
