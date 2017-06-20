@@ -16,7 +16,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "dev": "npm run clean && cross-env NODE_ENV=development babel-watch server/index.js",
-    "start": "cross-env NODE_ENV=production babel-watch server/index.js",
+    "start": "cross-env NODE_ENV=production babel-node server/index.js",
     "build": "npm run clean && gulp build",
     "clean": "rimraf build/client/* build/server/*",
     "test": "gulp build && jest",
