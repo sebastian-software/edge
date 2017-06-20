@@ -1,7 +1,11 @@
-# Edge Template
+# Edge Boilerplate
 
-An basic application template for usage of Edge* technologies. Powered by a lot of ideas from various people like
-James Gillmore @faceyspacey and.
+Edge Boilerplate is a template for modern web applications. Part of the Edge Platform.
+
+## Thanks
+
+- James Gillmore @faceyspacey
+
 
 ## Features
 
