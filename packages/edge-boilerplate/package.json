@@ -1,7 +1,7 @@
 {
-  "name": "flush-requires-boilerplate-webpack",
-  "description": "A boilerplate showing how to achieve Universal Code-Splitting and Universal HMR with react-universal-component, webpack-flush-chunks and extract-css-chunks-webpack-plugin",
-  "version": "1.0.0",
+  "name": "edge-boilerplate",
+  "description": "Edge Boilerplate is a template for modern web applications. Part of the Edge Platform.",
+  "version": "0.0.1",
   "main": "server/index.js",
   "author": "James Gillmore <james@faceyspacey.com>",
   "license": "MIT",
@@ -11,15 +11,25 @@
     "build": "npm run build:client && npm run build:server",
     "build:client": "rimraf build/client/* && cross-env NODE_ENV=production webpack --config webpack/client.prod.js",
     "build:server": "rimraf build/server/* && cross-env NODE_ENV=production webpack --config webpack/server.prod.js",
-    "clean": "rimraf build/client/* build/server/*"
+    "clean": "rimraf build/client/* build/server/*",
+    "test": "prepublish && jest",
+    "prepare": "prepublish",
+    "release": "release-it --github.release --npm.publish --non-interactive",
+    "release:minor": "release-it --github.release --npm.publish --non-interactive --increment minor",
+    "release:major": "release-it --github.release --npm.publish --non-interactive --increment major"
+  },
+  "engines": {
+    "node": ">=6.0.0",
+    "yarn": ">=0.21.3",
+    "npm": ">=4.0.0"
   },
   "dependencies": {
     "babel-loader": "^7.0.0",
     "babel-watch": "^2.0.6",
     "cross-env": "^5.0.1",
     "css-loader": "^0.28.4",
-    "edgebabel": "^0.3.1",
-    "edgecss": "^0.4.10",
+    "edge-babel": "^0.4.2",
+    "edge-postcss": "^0.5.0",
     "express": "^4.15.3",
     "extract-css-chunks-webpack-plugin": "^1.0.15",
     "fast-async": "^6.2.2",
