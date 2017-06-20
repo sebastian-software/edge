@@ -2,11 +2,25 @@ import path from "path"
 import fs from "fs"
 import webpack from "webpack"
 import ExtractCssChunks from "extract-css-chunks-webpack-plugin"
+import StatsPlugin from "stats-webpack-plugin"
+
+const defaults = {
+  target: "client",
+  env: process.env.NODE_ENV,
+  verbose: false
+}
 
 export default function builder(options = {})
 {
-  const isServer = options.target === "server"
-  const isClient = options.target === "client"
+  const config = { ...defaults, ...options }
+
+  const isServer = config.target === "server"
+  const isClient = config.target === "client"
+
+  const isDevelopment = config.env === "development"
+  const isProduction = config.env === "production"
+
+  console.log(`Edge Webpack: Generate Config for: ${config.target}@${config.env}`)
 
   const name = isServer ? "server" : "client"
   const target = isServer ? "node" : "web"
@@ -38,13 +52,13 @@ export default function builder(options = {})
     externals: isServer ? serverExternals : undefined,
 
     entry: [
-      isClient ? "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false" : null,
+      isClient && isDevelopment ? "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false" : null,
       isClient ? path.resolve(__dirname, "../src/index.js") : path.resolve(__dirname, "../server/render.js")
     ].filter(Boolean),
 
     output: {
       libraryTarget: isServer ? "commonjs2" : "var",
-      filename: "[name].js",
+      filename: isDevelopment || isServer ? "[name].js" : "[name].[chunkhash].js",
       path: isServer ? path.resolve(__dirname, "../build/server") : path.resolve(__dirname, "../build/client"),
       publicPath: "/static/"
     },
@@ -110,9 +124,12 @@ export default function builder(options = {})
     },
 
     plugins: [
-      // new webpack.ProgressPlugin(),
+      isProduction && isClient ? new StatsPlugin("stats.json") : null,
+
+      isProduction ? new webpack.HashedModuleIdsPlugin() : null,
+      isDevelopment ? new webpack.NamedModulesPlugin() : null,
+
       isClient ? new ExtractCssChunks() : null,
-      new webpack.NamedModulesPlugin(),
       isServer ? new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }) : null,
 
       // only needed when server built with webpack
@@ -120,16 +137,17 @@ export default function builder(options = {})
         names: [ "bootstrap" ],
 
         // needed to put webpack bootstrap code before chunks
-        filename: "[name].js",
+        //
+        filename: isProduction ? "[name].[contenthash].js" : "[name].js",
         minChunks: Infinity
       }) : null,
 
       isClient ? new webpack.HotModuleReplacementPlugin() : null,
-      isClient ? new webpack.NoEmitOnErrorsPlugin() : null,
+      isClient && isDevelopment ? new webpack.NoEmitOnErrorsPlugin() : null,
 
       new webpack.DefinePlugin({
         "process.env": {
-          NODE_ENV: JSON.stringify("development")
+          NODE_ENV: JSON.stringify(options.env)
         }
       })
     ].filter(Boolean)
