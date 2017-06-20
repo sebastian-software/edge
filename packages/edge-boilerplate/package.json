@@ -21,8 +21,7 @@
     "build:client": "rimraf build/client/* && cross-env NODE_ENV=production webpack --config webpack/client.prod.js",
     "build:server": "rimraf build/server/* && cross-env NODE_ENV=production webpack --config webpack/server.prod.js",
     "clean": "rimraf build/client/* build/server/*",
-    "test": "prepublish && jest",
-    "prepare": "prepublish",
+    "test": "jest",
     "release": "release-it --github.release --npm.publish --non-interactive",
     "release:minor": "release-it --github.release --npm.publish --non-interactive --increment minor",
     "release:major": "release-it --github.release --npm.publish --non-interactive --increment major"
@@ -58,5 +57,8 @@
     "webpack-flush-chunks": "^1.0.10",
     "webpack-hot-middleware": "^2.18.0",
     "webpack-hot-server-middleware": "^0.1.0"
+  },
+  "devDependencies": {
+    "jest-cli": "^20.0.4"
   }
 }
