@@ -1,5 +1,5 @@
 {
-  "alias": "boilerplate.latest",
+  "alias": "edge-boilerplate-latest",
   "env": {
     "NODE_ENV": "production"
   },
