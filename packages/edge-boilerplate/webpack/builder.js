@@ -142,7 +142,7 @@ export default function builder(options = {})
         minChunks: Infinity
       }) : null,
 
-      isClient ? new webpack.HotModuleReplacementPlugin() : null,
+      isClient && isDevelopment ? new webpack.HotModuleReplacementPlugin() : null,
       isClient && isDevelopment ? new webpack.NoEmitOnErrorsPlugin() : null,
 
       new webpack.DefinePlugin({
