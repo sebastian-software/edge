@@ -45,6 +45,21 @@ export default function builder(options = {})
     )
 
 
+  const cssLoaderOptions = {
+    modules: true,
+    localIdentName: "[local]-[hash:base62:8]",
+    import: false,
+    minimize: false
+  }
+
+  const postCSSLoaderRule = {
+    loader: "postcss-loader",
+    query:
+    {
+      sourceMap: true
+    }
+  }
+
 
   return {
     name,
@@ -75,50 +90,31 @@ export default function builder(options = {})
             emitFile: isClient
           }
         },
+
+        // Transpile our own JavaScript files using the setup in `.babelrc`.
         {
           test: /\.js$/,
           exclude: /node_modules/,
           use: "babel-loader"
         },
 
+        // Use either
         {
           test: /\.css$/,
           use: isClient ? ExtractCssChunks.extract({
             use: [
               {
                 loader: "css-loader",
-                options: {
-                  modules: true,
-                  localIdentName: "[local]-[hash:base62:8]",
-                  import: false,
-                  minimize: false
-                }
+                options: cssLoaderOptions
               },
-              {
-                loader: "postcss-loader",
-                query:
-                {
-                  sourceMap: true
-                }
-              }
+              postCSSLoaderRule
             ]
           }) : [
             {
               loader: "css-loader/locals",
-              options: {
-                modules: true,
-                localIdentName: "[local]-[hash:base62:8]",
-                import: false,
-                minimize: false
-              }
+              options: cssLoaderOptions
             },
-            {
-              loader: "postcss-loader",
-              query:
-              {
-                sourceMap: true
-              }
-            }
+            postCSSLoaderRule
           ]
         }
       ]
