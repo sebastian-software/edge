@@ -15,9 +15,9 @@
   },
   "license": "Apache-2.0",
   "scripts": {
-    "start": "npm run clean && cross-env NODE_ENV=development babel-watch server/index.js",
-    "start:prod": "npm run clean && npm run build && cross-env NODE_ENV=production babel-watch server/index.js",
-    "build": "gulp build",
+    "dev": "npm run clean && cross-env NODE_ENV=development babel-watch server/index.js",
+    "start": "cross-env NODE_ENV=production babel-watch server/index.js",
+    "build": "npm run clean && gulp build",
     "clean": "rimraf build/client/* build/server/*",
     "test": "gulp build && jest",
     "release": "release-it --github.release --npm.publish --non-interactive",
