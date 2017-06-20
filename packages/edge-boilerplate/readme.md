@@ -1,4 +1,16 @@
-# Edge Boilerplate
+# Edge Boilerplate<br/>[![Sponsored by][sponsor-img]][sponsor] [![Version][npm-version-img]][npm] [![Downloads][npm-downloads-img]][npm] [![Build Status Unix][travis-img]][travis] [![Build Status Windows][appveyor-img]][appveyor] [![Dependencies][deps-img]][deps]
+
+[sponsor-img]: https://img.shields.io/badge/Sponsored%20by-Sebastian%20Software-692446.svg
+[sponsor]: https://www.sebastian-software.de
+[deps]: https://david-dm.org/sebastian-software/edge-boilerplate
+[deps-img]: https://david-dm.org/sebastian-software/edge-boilerplate.svg
+[npm]: https://www.npmjs.com/package/edge-boilerplate
+[npm-downloads-img]: https://img.shields.io/npm/dm/edge-boilerplate.svg
+[npm-version-img]: https://img.shields.io/npm/v/edge-boilerplate.svg
+[travis-img]: https://img.shields.io/travis/sebastian-software/edge-boilerplate/master.svg?branch=master&label=unix%20build
+[appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/edge-boilerplate/master.svg?label=windows%20build
+[travis]: https://travis-ci.org/sebastian-software/edge-boilerplate
+[appveyor]: https://ci.appveyor.com/project/swernerx/edge-boilerplate/branch/master
 
 Edge Boilerplate is a template for modern web applications. Part of the Edge Platform.
 
@@ -12,13 +24,12 @@ Edge Boilerplate is a template for modern web applications. Part of the Edge Pla
 - Server Side React Rendering for excellent SEO Support and very high Mobile Performance.
 - Semi-Automatic Code-Splitting for both CSS and JS.
 - Hot Loading for Client and Server using Webpack Multi Compiler Architecture.
-
+- PostCSS powered CSS pipeline with Sass-inspired features.
+- CSS Modules for Component Style Isolation.
 
 WIP:
 
 - Build Caching using Webpacks Cache-Loader.
-- PostCSS powered CSS pipeline with Sass-inspired features.
-- CSS Modules for Component Style Isolation.
 - Efficient Long-Term-Caching using Hashed File Names.
 - React Helmet for Efficient Header Element Handling
 - Distributed Routing Rules via React Router v4
@@ -32,10 +43,9 @@ WIP:
 - [extract-css-chunks-webpack-plugin](https://github.com/faceyspacey/extract-css-chunks-webpack-plugin)
 
 
-
 ## Usage
 
-```
+```sh
 yarn start
 yarn run start:prod
 ```
@@ -54,6 +64,7 @@ If you haven't rendered your server with Webpack before, now's a good time to gi
 
 
 ## Final Note: Hot Module Replacement
+
 > this basically applies to the universal webpack boilerplates
 
 You will notice that the server code is watched with `babel-watch` in `package.json`. The goal is obviously HMR everywhere, since no matter what some of your code is built outside of Webpack.
@@ -65,3 +76,14 @@ However, when your not editing your `express` code much, and if you're editing w
 If you have a solution to reconnecting the client to HMR after `babel-watch` reloads the server code, we'd love to hear it.
 
 *Long live the dreams of Universal HMR* and ***Universal Code-Splitting!***
+
+
+## License
+
+[Apache License Version 2.0, January 2004](license)
+
+## Copyright
+
+<img src="https://raw.githubusercontent.com/sebastian-software/readable-code/master/assets/sebastiansoftware.png" alt="Sebastian Software GmbH Logo" width="250" height="200"/>
+
+Copyright 2017<br/>[Sebastian Software GmbH](http://www.sebastian-software.de)
