@@ -40,7 +40,7 @@ export default function builder(options = {})
     entry: [
       isClient ? "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false" : null,
       isClient ? path.resolve(__dirname, "../src/index.js") : path.resolve(__dirname, "../server/render.js")
-    ].filter((entry) => entry != null),
+    ].filter(Boolean),
 
     output: {
       libraryTarget: isServer ? "commonjs2" : "var",
@@ -132,6 +132,6 @@ export default function builder(options = {})
           NODE_ENV: JSON.stringify("development")
         }
       })
-    ].filter((entry) => entry != null)
+    ].filter(Boolean)
   }
 }
