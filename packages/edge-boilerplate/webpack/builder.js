@@ -123,7 +123,12 @@ export default function builder(options = {})
     plugins: [
       isProduction && isClient ? new StatsPlugin("stats.json") : null,
 
+      // "Use HashedModuleIdsPlugin to generate IDs that preserves over builds."
+      // Via: https://github.com/webpack/webpack.js.org/issues/652#issuecomment-273324529
       isProduction ? new webpack.HashedModuleIdsPlugin() : null,
+
+      // I would recommend using NamedModulesPlugin during development (better output).
+      // Via: https://github.com/webpack/webpack.js.org/issues/652#issuecomment-273023082
       isDevelopment ? new webpack.NamedModulesPlugin() : null,
 
       isClient ? new ExtractCssChunks() : null,
