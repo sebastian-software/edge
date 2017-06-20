@@ -18,7 +18,7 @@ export default function builder(options = {})
   // to still bundle `react-universal-component`, `webpack-flush-chunks` and
   // `require-universal-module` so that they know they are running
   // within Webpack and can properly make connections to client modules:
-  const externals = fs
+  const serverExternals = fs
     .readdirSync(nodeModules)
     .filter((x) => !(/\.bin|react-universal-component|require-universal-module|webpack-flush-chunks/).test(x))
     .reduce(
@@ -35,7 +35,7 @@ export default function builder(options = {})
     name,
     target,
     devtool,
-    externals: isServer ? externals : undefined,
+    externals: isServer ? serverExternals : undefined,
 
     entry: [
       isClient ? "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false" : null,
