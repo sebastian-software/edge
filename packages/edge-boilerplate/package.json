@@ -30,7 +30,7 @@
     "npm": ">=4.0.0"
   },
   "dependencies": {
-    "babel-loader": "^7.0.0",
+    "babel-loader": "^7.1.0",
     "babel-watch": "^2.0.6",
     "cross-env": "^5.0.1",
     "css-loader": "^0.28.4",
