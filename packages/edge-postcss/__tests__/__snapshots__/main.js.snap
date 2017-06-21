@@ -8,7 +8,6 @@ background-size:304px 85px
 
 exports[`Autoprefixer 1`] = `
 ":-webkit-full-screen a{
-display:-webkit-box;
 display:flex
 }
 
@@ -22,7 +21,6 @@ display:flex
 }
 
 :fullscreen a{
-display:-webkit-box;
 display:-ms-flexbox;
 display:flex
 }"
@@ -76,14 +74,12 @@ font-size:12px
 
 exports[`Easings 1`] = `
 ".snake{
--webkit-transition:all 600ms cubic-bezier(.47,0,.745,.715);
 transition:all 600ms cubic-bezier(.47,0,.745,.715)
 }"
 `;
 
 exports[`Flexbox Fix 1`] = `
 ".elem{
--webkit-box-flex:1;
 -ms-flex:1 1 0%;
 flex:1 1 0%
 }"
@@ -91,7 +87,6 @@ flex:1 1 0%
 
 exports[`Gradient Fix 1`] = `
 ".elem{
-background-image:-webkit-linear-gradient(green,rgba(0,128,0,0));
 background-image:linear-gradient(green,rgba(0,128,0,0))
 }"
 `;
@@ -158,7 +153,6 @@ left:30%
 }
 
 .gridTest>footer{
--webkit-transform:translateX(-50%);
 transform:translateX(-50%);
 max-height:60px;
 max-width:100%;
@@ -200,7 +194,6 @@ left:30%
 }
 
 .gridTest>footer{
--webkit-transform:translateX(-50%);
 transform:translateX(-50%);
 max-height:60px;
 max-width:100%;
@@ -284,42 +277,19 @@ clear:both
 
 exports[`Magic Animations 1`] = `
 ".animation{
--webkit-animation-name:magic;
 animation-name:magic
-}
-
-@-webkit-keyframes magic{
-0%{
-opacity:1;
--webkit-transform-origin:100% 200%;
-transform-origin:100% 200%;
--webkit-transform:scale(1,1) rotate(0deg);
-transform:scale(1,1) rotate(0deg)
-}
-
-to{
-opacity:0;
--webkit-transform-origin:200% 500%;
-transform-origin:200% 500%;
--webkit-transform:scale(0,0) rotate(270deg);
-transform:scale(0,0) rotate(270deg)
-}
 }
 
 @keyframes magic{
 0%{
 opacity:1;
--webkit-transform-origin:100% 200%;
 transform-origin:100% 200%;
--webkit-transform:scale(1,1) rotate(0deg);
 transform:scale(1,1) rotate(0deg)
 }
 
 to{
 opacity:0;
--webkit-transform-origin:200% 500%;
 transform-origin:200% 500%;
--webkit-transform:scale(0,0) rotate(270deg);
 transform:scale(0,0) rotate(270deg)
 }
 }"
@@ -346,6 +316,148 @@ font-weight:400
 exports[`Nested Parent Selector 1`] = `
 "body ul li:first-child{
 margin-top:0
+}"
+`;
+
+exports[`Normalize.css 1`] = `
+".before{
+color:red
+}
+
+html{
+line-height:1.15;
+-ms-text-size-adjust:100%;
+-webkit-text-size-adjust:100%
+}
+
+h1{
+font-size:2em;
+margin:.67em 0
+}
+
+hr{
+box-sizing:content-box;
+height:0;
+overflow:visible
+}
+
+details,main{
+display:block
+}
+
+code,kbd,pre,samp{
+font-family:monospace,monospace;
+font-size:1em
+}
+
+a{
+background-color:transparent;
+-webkit-text-decoration-skip:objects
+}
+
+abbr[title]{
+text-decoration:underline dotted
+}
+
+b,strong{
+font-weight:bolder
+}
+
+small{
+font-size:80%
+}
+
+img{
+border-style:none
+}
+
+svg:not(:root){
+overflow:hidden
+}
+
+button,input,optgroup,select,textarea{
+margin:0
+}
+
+button{
+overflow:visible;
+text-transform:none
+}
+
+[type=button],[type=reset],[type=submit],button{
+-webkit-appearance:button
+}
+
+[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{
+border-style:none;
+padding:0
+}
+
+[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{
+outline:1px dotted ButtonText
+}
+
+fieldset{
+padding:.35em .75em .625em
+}
+
+input{
+overflow:visible
+}
+
+legend{
+color:inherit;
+display:table;
+max-width:100%;
+white-space:normal
+}
+
+progress{
+display:inline-block;
+vertical-align:baseline
+}
+
+select{
+text-transform:none
+}
+
+textarea{
+overflow:auto
+}
+
+[type=checkbox],[type=radio],legend{
+box-sizing:border-box;
+padding:0
+}
+
+[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{
+height:auto
+}
+
+[type=search]{
+-webkit-appearance:textfield;
+outline-offset:-2px
+}
+
+[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{
+-webkit-appearance:none
+}
+
+::-webkit-file-upload-button{
+-webkit-appearance:button;
+font:inherit
+}
+
+summary{
+display:list-item
+}
+
+[hidden],template{
+display:none
+}
+
+.after{
+color:green
 }"
 `;
 
@@ -433,7 +545,6 @@ font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ub
 
 exports[`Transform Shortcut 1`] = `
 ".transform{
--webkit-transform:scale3d(2,1,1) translate3d(10px,20px,0);
 transform:scale3d(2,1,1) translate3d(10px,20px,0)
 }"
 `;
