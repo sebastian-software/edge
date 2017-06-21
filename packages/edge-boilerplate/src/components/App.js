@@ -5,18 +5,15 @@ import styles from './App.css'
 import "normalize.css/normalize.css"
 
 const UniversalExample = universal(() => import('./Example'), {
-  resolve: () => require.resolveWeak('./Example'),
-  minDelay: 500
+  resolve: () => require.resolveWeak('./Example')
 })
 
 const LazyHome = universal(() => import('../views/Home/Home'), {
-  resolve: () => require.resolveWeak('../views/Home/Home'),
-  minDelay: 500
+  resolve: () => require.resolveWeak('../views/Home/Home')
 })
 
 const LazyMissing = universal(() => import('../views/Missing/Missing'), {
-  resolve: () => require.resolveWeak('../views/Missing/Missing'),
-  minDelay: 500
+  resolve: () => require.resolveWeak('../views/Missing/Missing')
 })
 
 
