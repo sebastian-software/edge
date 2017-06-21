@@ -4,6 +4,7 @@ import webpack from "webpack"
 import webpackPkg from "webpack/package.json"
 import ExtractCssChunks from "extract-css-chunks-webpack-plugin"
 import StatsPlugin from "stats-webpack-plugin"
+import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
 
 const defaults = {
   target: "client",
@@ -127,6 +128,10 @@ export default function builder(options = {})
     },
 
     plugins: [
+      // Improve OS compatibility
+      // https://github.com/Urthen/case-sensitive-paths-webpack-plugin
+      new CaseSensitivePathsPlugin(),
+
       isProduction && isClient ? new StatsPlugin("stats.json") : null,
 
       // "Use HashedModuleIdsPlugin to generate IDs that preserves over builds."
