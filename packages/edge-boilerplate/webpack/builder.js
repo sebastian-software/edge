@@ -11,6 +11,22 @@ const defaults = {
   verbose: false
 }
 
+// if you're specifying externals to leave unbundled, you need to tell Webpack
+// to still bundle `react-universal-component`, `webpack-flush-chunks` and
+// `require-universal-module` so that they know they are running
+// within Webpack and can properly make connections to client modules:
+const nodeModules = path.resolve(__dirname, "../node_modules")
+const serverExternals = fs
+  .readdirSync(nodeModules)
+  .filter((x) => !(/\.bin|react-universal-component|require-universal-module|webpack-flush-chunks/).test(x))
+  .reduce(
+    (externals, request) => {
+      externals[request] = `commonjs ${request}`
+      return externals
+    },
+    {},
+  )
+
 export default function builder(options = {})
 {
   const config = { ...defaults, ...options }
@@ -26,24 +42,6 @@ export default function builder(options = {})
   const name = isServer ? "server" : "client"
   const target = isServer ? "node" : "web"
   const devtool = "source-map"
-
-  const nodeModules = path.resolve(__dirname, "../node_modules")
-
-  // if you're specifying externals to leave unbundled, you need to tell Webpack
-  // to still bundle `react-universal-component`, `webpack-flush-chunks` and
-  // `require-universal-module` so that they know they are running
-  // within Webpack and can properly make connections to client modules:
-  const serverExternals = fs
-    .readdirSync(nodeModules)
-    .filter((x) => !(/\.bin|react-universal-component|require-universal-module|webpack-flush-chunks/).test(x))
-    .reduce(
-      (externals, request) => {
-        externals[request] = `commonjs ${request}`
-        return externals
-      },
-      {},
-    )
-
 
   const cssLoaderOptions = {
     modules: true,
