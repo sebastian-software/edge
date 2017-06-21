@@ -47,7 +47,8 @@ export default function builder(options = {})
     modules: true,
     localIdentName: "[local]-[hash:base62:8]",
     import: false,
-    minimize: false
+    minimize: false,
+    sourceMap: true
   }
 
   const postCSSLoaderRule = {
