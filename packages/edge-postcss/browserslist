@@ -1,13 +1,8 @@
-# Pretty static for testing proposes
-
-safari 9
-safari 10
-ie 10
-ie 11
-edge 14
-edge 15
-ios 9
-ios 10
-android 4.3
-android 4.4
-firefox esr
+and_chr >= 55
+chrome >= 55
+edge >= 12
+firefox >= 50
+ie >= 11
+ios_saf >= 10
+safari >= 10
+samsung >= 4
