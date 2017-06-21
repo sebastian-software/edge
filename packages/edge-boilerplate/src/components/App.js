@@ -2,8 +2,6 @@ import React from 'react'
 import universal from 'react-universal-component'
 import styles from './App.css'
 
-import "normalize.css/normalize.css"
-
 const UniversalExample = universal(() => import('./Example'), {
   resolve: () => require.resolveWeak('./Example')
 })
