@@ -54,15 +54,14 @@ export default function builder(options = {})
 
   const postCSSLoaderRule = {
     loader: "postcss-loader",
-    query:
-    {
+    query: {
       sourceMap: true
     }
   }
 
   const assetFiles = /\.(eot|woff|woff2|ttf|otf|svg|png|jpg|jpeg|jp2|jpx|jxr|gif|webp|mp4|mp3|ogg|pdf|html)$/
   const babelFiles = /\.js$/
-  const postcssFiles = /\.css$/
+  const postcssFiles = /\.(css|pcss)$/
 
   return {
     name,
