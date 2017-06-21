@@ -149,6 +149,8 @@ export default function builder(options = {})
         minChunks: Infinity
       }) : null,
 
+      isProduction ? new webpack.optimize.ModuleConcatenationPlugin() : null,
+
       isClient && isDevelopment ? new webpack.HotModuleReplacementPlugin() : null,
       isClient && isDevelopment ? new webpack.NoEmitOnErrorsPlugin() : null,
 
