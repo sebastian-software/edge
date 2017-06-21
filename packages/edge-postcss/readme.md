@@ -66,6 +66,14 @@ Unwrap nested rules like how Sass does it.
 
 
 
+### NORMALIZE
+
+#### [normalize](https://github.com/jonathantneal/postcss-normalize)
+
+Add the useful [normalize rules](https://github.com/jonathantneal/normalize.css) to your CSS as needed by the local [browserslist](http://browserl.ist/) configuration.
+
+
+
 ### LAYOUT
 
 #### [lost](https://github.com/peterramsing/lost)
