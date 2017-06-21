@@ -1,5 +1,9 @@
 @import-normalize;
 
+html {
+  font-family: Source Sans Pro;
+}
+
 .title {
   color: blue;
   font-size: 42px;

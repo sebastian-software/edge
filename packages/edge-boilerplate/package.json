@@ -52,6 +52,7 @@
     "readable-code": "^3.0.1",
     "rimraf": "^2.6.1",
     "run-sequence": "^1.2.2",
+    "source-sans-pro": "^2.0.10",
     "stats-webpack-plugin": "^0.6.1",
     "webpack": "3.0.0",
     "webpack-dev-middleware-multi-compiler": "^1.0.0",
