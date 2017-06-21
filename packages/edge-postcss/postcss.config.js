@@ -68,6 +68,16 @@ module.exports = ({ file, options, env }) => ({
 
 
     // ====================================================
+    // ================= NORMALIZE ========================
+    // ====================================================
+
+    // Add normalize.css as needed - automatically - and optimized for the defined browserslist.
+    // https://github.com/jonathantneal/postcss-normalize
+    "postcss-normalize": {},
+
+
+
+    // ====================================================
     // ================== LAYOUT ==========================
     // ====================================================
 

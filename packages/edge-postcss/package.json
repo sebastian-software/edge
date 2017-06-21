@@ -64,6 +64,7 @@
     "postcss-magic-animations": "^0.3.0",
     "postcss-media-minmax": "^3.0.0",
     "postcss-nested": "^2.0.2",
+    "postcss-normalize": "^4.0.0",
     "postcss-pseudoelements": "^4.0.0",
     "postcss-reporter": "^4.0.0",
     "postcss-responsive-type": "^0.5.1",
