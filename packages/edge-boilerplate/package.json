@@ -32,6 +32,7 @@
   "dependencies": {
     "babel-loader": "^7.1.0",
     "babel-watch": "^2.0.6",
+    "babili-webpack-plugin": "^0.1.1",
     "cache-loader": "^1.0.3",
     "case-sensitive-paths-webpack-plugin": "^2.1.1",
     "cross-env": "^5.0.1",

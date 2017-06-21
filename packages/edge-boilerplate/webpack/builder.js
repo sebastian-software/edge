@@ -4,7 +4,8 @@ import webpack from "webpack"
 import webpackPkg from "webpack/package.json"
 import ExtractCssChunks from "extract-css-chunks-webpack-plugin"
 import StatsPlugin from "stats-webpack-plugin"
-import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
+import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin"
+import BabiliPlugin from "babili-webpack-plugin"
 
 const defaults = {
   target: "client",
@@ -103,6 +104,23 @@ export default function builder(options = {})
           ]
         },
 
+        // Compression on all JS files - in a common postprocessing step
+        {
+          test: babelFiles,
+          enforce: "post",
+          use: [
+            "cache-loader",
+            {
+              loader: "babel-loader",
+              options: {
+                babelrc: false,
+                presets: "babili",
+                plugins: [ "syntax-dynamic-import" ]
+              }
+            }
+          ]
+        },
+
         // Use either
         {
           test: postcssFiles,
@@ -131,6 +149,10 @@ export default function builder(options = {})
       // Improve OS compatibility
       // https://github.com/Urthen/case-sensitive-paths-webpack-plugin
       new CaseSensitivePathsPlugin(),
+
+      // Advanced ES2015 ready JS compression based on Babylon (Babel Parser)
+      // https://github.com/webpack-contrib/babili-webpack-plugin
+      // isProduction ? new BabiliPlugin({ comments : false }) : null,
 
       isProduction && isClient ? new StatsPlugin("stats.json") : null,
 
