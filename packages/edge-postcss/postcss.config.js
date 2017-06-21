@@ -2,8 +2,7 @@
 /* eslint-disable import/no-commonjs */
 /* eslint-disable import/unambiguous */
 
-module.exports = ({ file, options, env }) =>
-({
+module.exports = ({ file, options, env }) => ({
   "plugins":
   {
     // ====================================================
