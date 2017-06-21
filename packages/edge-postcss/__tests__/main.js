@@ -193,6 +193,10 @@ test("System UI", () =>
   compile("body { font-family: system-ui; }")
 )
 
+test("Normalize.css", () =>
+  compile(".before { color: red; } @import-normalize; .after { color: green; }")
+)
+
 
 
 // ====================================================
