@@ -8,6 +8,30 @@ gulp.task("build", (callback) => {
   runSequence("build:client", "build:server", callback)
 })
 
+function checkStats(stats, resolve, reject)
+{
+  if (stats.hasErrors() || stats.hasWarnings())
+  {
+    const jsonStats = stats.toJson()
+
+    if (jsonStats.errors.length) {
+      console.log("ERRORS:")
+      console.log(jsonStats.errors.forEach((entry) => console.error("- ERROR:", entry)))
+    }
+
+    if (jsonStats.warnings.length) {
+      console.log("WARNINGS:")
+      console.log(jsonStats.warnings.forEach((entry) => console.warn("- WARNING:", entry)))
+    }
+
+    if (jsonStats.errors.length) {
+      return reject("There were errors during compilation!")
+    }
+  }
+
+  resolve()
+}
+
 gulp.task("build:server", () =>
 {
   const config = builder({
@@ -15,15 +39,13 @@ gulp.task("build:server", () =>
     env: "production"
   })
 
-  config.plugins.push(new webpack.ProgressPlugin())
-
   return new Promise((resolve, reject) => {
-    webpack(config, (error, stats) => {
-      if (error) {
-        reject("Webpack Server Error:", error)
+    webpack(config, (fatalError, stats) => {
+      if (fatalError) {
+        reject("Webpack Server Error:", fatalError)
+      } else {
+        checkStats(stats, resolve, reject)
       }
-
-      resolve()
     })
   })
 })
@@ -35,15 +57,15 @@ gulp.task("build:client", () =>
     env: "production"
   })
 
-  config.plugins.push(new webpack.ProgressPlugin())
-
-  return new Promise((resolve, reject) => {
-    webpack(config, (error, stats) => {
-      if (error) {
-        reject("Webpack Client Error:", error)
+  return new Promise((resolve, reject) =>
+  {
+    webpack(config, (fatalError, stats) =>
+    {
+      if (fatalError) {
+        reject("Webpack Client Error:", fatalError)
+      } else {
+        checkStats(stats, resolve, reject)
       }
-
-      resolve()
     })
   })
 })
