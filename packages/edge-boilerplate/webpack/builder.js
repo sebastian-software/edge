@@ -8,6 +8,7 @@ import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin"
 import BabiliPlugin from "babili-webpack-plugin"
 var HtmlWebpackPlugin = require("html-webpack-plugin")
 import SriPlugin from "webpack-subresource-integrity"
+import UglifyPlugin from "uglifyjs-webpack-plugin"
 
 const defaults = {
   target: "client",
@@ -108,21 +109,21 @@ export default function builder(options = {}) {
         },
 
         // Compression on all JS files - in a common postprocessing step
-        {
-          test: babelFiles,
-          enforce: "post",
-          use: [
-            "cache-loader",
-            {
-              loader: "babel-loader",
-              options: {
-                babelrc: false,
-                presets: "babili",
-                plugins: [ "syntax-dynamic-import" ]
-              }
-            }
-          ]
-        },
+        // {
+        //   test: babelFiles,
+        //   enforce: "post",
+        //   use: [
+        //     "cache-loader",
+        //     {
+        //       loader: "babel-loader",
+        //       options: {
+        //         babelrc: false,
+        //         presets: "babili",
+        //         plugins: [ "syntax-dynamic-import" ]
+        //       }
+        //     }
+        //   ]
+        // },
 
         // Use either
         {
@@ -175,6 +176,15 @@ export default function builder(options = {}) {
       // isProduction ? new BabiliPlugin({ comments : false }) : null,
 
       isProduction && isClient ? new StatsPlugin("stats.json") : null,
+
+      // Classic UglifyJS for compressing ES5 compatible code.
+      // https://github.com/webpack-contrib/uglifyjs-webpack-plugin
+      isProduction && isClient ? new UglifyPlugin({
+        compress: true,
+        mangle: true,
+        comments: false,
+        sourceMap: true
+      }) : null,
 
       // "Use HashedModuleIdsPlugin to generate IDs that preserves over builds."
       // Via: https://github.com/webpack/webpack.js.org/issues/652#issuecomment-273324529
