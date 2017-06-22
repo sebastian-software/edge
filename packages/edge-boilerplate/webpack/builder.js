@@ -209,7 +209,7 @@ export default function builder(options = {}) {
       isProduction ? new webpack.optimize.ModuleConcatenationPlugin() : null,
 
       isClient && isDevelopment ? new webpack.HotModuleReplacementPlugin() : null,
-      isClient && isDevelopment ? new webpack.NoEmitOnErrorsPlugin() : null,
+      isDevelopment ? new webpack.NoEmitOnErrorsPlugin() : null,
 
       new webpack.DefinePlugin({
         "process.env": {
