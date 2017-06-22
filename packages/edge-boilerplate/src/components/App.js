@@ -1,22 +1,21 @@
-import React from 'react'
-import universal from 'react-universal-component'
-import styles from './App.css'
+import React from "react"
+import universal from "react-universal-component"
+import styles from "./App.css"
 import "./OpenType.css"
 import "./SourceSansPro.css"
 import "./Sanitize.css"
 
-const UniversalExample = universal(() => import('./Example'), {
-  resolve: () => require.resolveWeak('./Example')
+const UniversalExample = universal(() => import("./Example"), {
+  resolve: () => require.resolveWeak("./Example")
 })
 
-const LazyHome = universal(() => import('../views/Home/Home'), {
-  resolve: () => require.resolveWeak('../views/Home/Home')
+const LazyHome = universal(() => import("../views/Home/Home"), {
+  resolve: () => require.resolveWeak("../views/Home/Home")
 })
 
-const LazyMissing = universal(() => import('../views/Missing/Missing'), {
-  resolve: () => require.resolveWeak('../views/Missing/Missing')
+const LazyMissing = universal(() => import("../views/Missing/Missing"), {
+  resolve: () => require.resolveWeak("../views/Missing/Missing")
 })
-
 
 export default class App extends React.Component {
   // set `show` to `true` to see dynamic chunks served by initial request
@@ -30,7 +29,7 @@ export default class App extends React.Component {
     if (this.state.show) return
 
     setTimeout(() => {
-      console.log('now showing <Example />')
+      console.log("now showing <Example />")
       this.setState({ show: true })
     }, 1500)
   }
@@ -41,10 +40,10 @@ export default class App extends React.Component {
         <h1 className={styles.title}>Hello World</h1>
 
         {this.state.show && <UniversalExample />}
-        {!this.state.show && 'Async Component Not Requested Yet'}
+        {!this.state.show && "Async Component Not Requested Yet"}
 
-        <LazyHome/>
-        <LazyMissing/>
+        <LazyHome />
+        <LazyMissing />
       </div>
     )
   }

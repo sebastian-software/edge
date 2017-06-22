@@ -32,6 +32,5 @@ export default ({ clientStats, outputPath }) => (request, response, next) => {
         <div id="root">${renderedApp}</div>
         ${js}
       </body>
-    </html>`
-  )
+    </html>`)
 }

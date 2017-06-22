@@ -23,8 +23,7 @@ class About extends React.Component {
     return this.props.value == null ? this.props.load() : null
   }
 
-  fetchData()
-  {
+  fetchData() {
     // Load data on all preparation steps e.g. on SSR and also on rehydration on client
     // when intially loading this route.
     return this.props.value == null ? this.props.load() : null
