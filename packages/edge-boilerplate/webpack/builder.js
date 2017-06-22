@@ -38,24 +38,27 @@ export default function builder(options = {}) {
   const isDevelopment = config.env === "development"
   const isProduction = config.env === "production"
 
+  const enableSourceMaps = true
+  const writeLegacyOutput = true
+
   console.log(`Edge Webpack for Webpack@${webpackPkg.version}: Generating Config for: ${config.target}@${config.env}`)
 
   const name = isServer ? "server" : "client"
   const target = isServer ? "node" : "web"
-  const devtool = "source-map"
+  const devtool = enableSourceMaps ? "source-map" : null
 
   const cssLoaderOptions = {
     modules: true,
     localIdentName: "[local]-[hash:base62:8]",
     import: false,
     minimize: false,
-    sourceMap: true
+    sourceMap: enableSourceMaps
   }
 
   const postCSSLoaderRule = {
     loader: "postcss-loader",
     query: {
-      sourceMap: true
+      sourceMap: enableSourceMaps
     }
   }
 
