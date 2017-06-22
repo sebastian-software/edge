@@ -40,7 +40,7 @@ export default function builder(options = {}) {
 
   const enableSourceMaps = true
   const writeLegacyOutput = false
-  const bundleCompression = true
+  const bundleCompression = false
 
   console.log(`Edge Webpack for Webpack@${webpackPkg.version}: Generating Config for: ${config.target}@${config.env}`)
   console.log(`- Source Maps: ${enableSourceMaps} - Legacy Output: ${writeLegacyOutput} - Bundle Compression: ${bundleCompression} -`)
