@@ -34,11 +34,11 @@ function checkStats(stats, resolve, reject)
 }
 
 gulp.task("clean:server", () => {
-  removeSync("build/server/*")
+  removeSync("./build/server")
 })
 
 gulp.task("clean:client", () => {
-  removeSync("build/client/*")
+  removeSync("./build/client")
 })
 
 gulp.task("build:server", [ "clean:server" ], () =>
