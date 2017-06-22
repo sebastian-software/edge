@@ -63,6 +63,13 @@ export default function builder(options = {}) {
     }
   }
 
+  const developmentBabelOptions = {
+  }
+
+  const productionBabelOptions = {
+    presets: [ "babili" ]
+  }
+
   const assetFiles = /\.(eot|woff|woff2|ttf|otf|svg|png|jpg|jpeg|jp2|jpx|jxr|gif|webp|mp4|mp3|ogg|pdf|html)$/
   const babelFiles = /\.js$/
   const postcssFiles = /\.(css|pcss)$/
@@ -108,26 +115,34 @@ export default function builder(options = {}) {
           exclude: /node_modules/,
           use: [
             "cache-loader",
-            "babel-loader"
+            {
+              loader: "babel-loader",
+              options: {
+                ...(isProduction ? productionBabelOptions : developmentBabelOptions),
+                babelrc: true
+              }
+            }
           ]
         },
 
-        // Compression on all JS files - in a common postprocessing step
-        // {
-        //   test: babelFiles,
-        //   enforce: "post",
-        //   use: [
-        //     "cache-loader",
-        //     {
-        //       loader: "babel-loader",
-        //       options: {
-        //         babelrc: false,
-        //         presets: "babili",
-        //         plugins: [ "syntax-dynamic-import" ]
-        //       }
-        //     }
-        //   ]
-        // },
+        // Compress other JS files using a loader which is based on babilii as well.
+        // Notice the different include/exclude sections.
+        // This config is also ignoring the project specific .babelrc as code inside
+        // node_modules should be transpiled already.
+        {
+          test: babelFiles,
+          include: /(node_modules)/,
+          use: [
+            "cache-loader",
+            {
+              loader: "babel-loader",
+              options: {
+                ...(isProduction ? productionBabelOptions : developmentBabelOptions),
+                babelrc: false
+              }
+            }
+          ]
+        },
 
         // Use either
         {
