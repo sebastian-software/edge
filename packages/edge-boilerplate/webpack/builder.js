@@ -6,7 +6,7 @@ import ExtractCssChunks from "extract-css-chunks-webpack-plugin"
 import StatsPlugin from "stats-webpack-plugin"
 import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin"
 import BabiliPlugin from "babili-webpack-plugin"
-var HtmlWebpackPlugin = require("html-webpack-plugin")
+import HtmlWebpackPlugin from "html-webpack-plugin"
 import SriPlugin from "webpack-subresource-integrity"
 import UglifyPlugin from "uglifyjs-webpack-plugin"
 
