@@ -26,18 +26,12 @@ class Localization extends React.Component {
         </p>
 
         <p>
-          Today: <br/>
-          <FormattedDate
-            value={Date.now()}
-            year="numeric"
-            month="long"
-            day="numeric"
-            weekday="long"
-          />
+          Today: <br />
+          <FormattedDate value={Date.now()} year="numeric" month="long" day="numeric" weekday="long" />
         </p>
         <p>
-          Yesterday:<br/>
-          <FormattedRelative value={yesterday}/>
+          Yesterday:<br />
+          <FormattedRelative value={yesterday} />
         </p>
 
         <h2>Locale Selector</h2>

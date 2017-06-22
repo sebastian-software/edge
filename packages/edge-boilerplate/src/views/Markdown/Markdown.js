@@ -11,7 +11,7 @@ class Markdown extends React.Component {
     return (
       <article>
         <Helmet title="Markdown" />
-        <MarkdownMdx value="Sebastian"/>
+        <MarkdownMdx value="Sebastian" />
       </article>
     )
   }

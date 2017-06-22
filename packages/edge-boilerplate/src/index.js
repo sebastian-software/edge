@@ -3,7 +3,7 @@ import ReactDOM from "react-dom"
 import AppRoot from "./components/App"
 
 function render(Root) {
-  ReactDOM.render(<Root/>, document.getElementById("root"))
+  ReactDOM.render(<Root />, document.getElementById("root"))
 }
 
 if (process.env.NODE_ENV === "development" && module.hot) {

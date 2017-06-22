@@ -6,9 +6,8 @@ import ExtractCssChunks from "extract-css-chunks-webpack-plugin"
 import StatsPlugin from "stats-webpack-plugin"
 import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin"
 import BabiliPlugin from "babili-webpack-plugin"
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-import SriPlugin from 'webpack-subresource-integrity';
-
+var HtmlWebpackPlugin = require("html-webpack-plugin")
+import SriPlugin from "webpack-subresource-integrity"
 
 const defaults = {
   target: "client",
@@ -24,16 +23,12 @@ const nodeModules = path.resolve(__dirname, "../node_modules")
 const serverExternals = fs
   .readdirSync(nodeModules)
   .filter((x) => !(/\.bin|react-universal-component|require-universal-module|webpack-flush-chunks/).test(x))
-  .reduce(
-    (externals, request) => {
-      externals[request] = `commonjs ${request}`
-      return externals
-    },
-    {},
-  )
+  .reduce((externals, request) => {
+    externals[request] = `commonjs ${request}`
+    return externals
+  }, {})
 
-export default function builder(options = {})
-{
+export default function builder(options = {}) {
   const config = { ...defaults, ...options }
 
   const isServer = config.target === "server"
@@ -74,7 +69,9 @@ export default function builder(options = {})
     externals: isServer ? serverExternals : undefined,
 
     entry: [
-      isClient && isDevelopment ? "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false" : null,
+      isClient && isDevelopment ?
+        "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false" :
+        null,
       isClient ? path.resolve(__dirname, "../src/index.js") : path.resolve(__dirname, "../server/render.js")
     ].filter(Boolean),
 
@@ -83,8 +80,9 @@ export default function builder(options = {})
       filename: isDevelopment || isServer ? "[name].js" : "[name].[chunkhash].js",
       path: isServer ? path.resolve(__dirname, "../build/server") : path.resolve(__dirname, "../build/client"),
       publicPath: "/static/",
+
       // Enable cross-origin loading without credentials - Useful for loading files from CDN
-      crossOriginLoading: 'anonymous',
+      crossOriginLoading: "anonymous"
     },
 
     module: {
@@ -153,16 +151,18 @@ export default function builder(options = {})
     plugins: [
       // Generating static HTML page for simple static deployment
       // https://github.com/jantimon/html-webpack-plugin
-      isProduction && isClient ? new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, '../src/index.ejs')
-      }) : null,
+      isProduction && isClient ?
+        new HtmlWebpackPlugin({
+          template: path.resolve(__dirname, "../src/index.ejs")
+        }) :
+        null,
 
       // Subresource Integrity (SRI) is a security feature that enables browsers to verify that
       // files they fetch (for example, from a CDN) are delivered without unexpected manipulation.
       // https://www.npmjs.com/package/webpack-subresource-integrity
       // Browser-Support: http://caniuse.com/#feat=subresource-integrity
       new SriPlugin({
-        hashFuncNames: ['sha256', 'sha384'],
+        hashFuncNames: [ "sha256", "sha384" ],
         enabled: isProduction && isClient
       }),
 
