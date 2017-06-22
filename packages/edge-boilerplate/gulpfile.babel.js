@@ -16,12 +16,12 @@ function checkStats(stats, resolve, reject)
 
     if (jsonStats.errors.length) {
       console.log("ERRORS:")
-      console.log(jsonStats.errors.forEach((entry) => console.error("- ERROR:", entry)))
+      jsonStats.errors.forEach((entry) => console.error("- ERROR:", entry))
     }
 
     if (jsonStats.warnings.length) {
       console.log("WARNINGS:")
-      console.log(jsonStats.warnings.forEach((entry) => console.warn("- WARNING:", entry)))
+      jsonStats.warnings.forEach((entry) => console.warn("- WARNING:", entry))
     }
 
     if (jsonStats.errors.length) {
