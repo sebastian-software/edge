@@ -39,7 +39,7 @@ export default function builder(options = {}) {
   const isProduction = config.env === "production"
 
   const enableSourceMaps = true
-  const writeLegacyOutput = true
+  const writeLegacyOutput = false
 
   console.log(`Edge Webpack for Webpack@${webpackPkg.version}: Generating Config for: ${config.target}@${config.env}`)
 
@@ -174,20 +174,22 @@ export default function builder(options = {}) {
       // https://github.com/Urthen/case-sensitive-paths-webpack-plugin
       new CaseSensitivePathsPlugin(),
 
-      // Advanced ES2015 ready JS compression based on Babylon (Babel Parser)
-      // https://github.com/webpack-contrib/babili-webpack-plugin
-      // isProduction ? new BabiliPlugin({ comments : false }) : null,
-
+      // Let the server side renderer know about our client side assets
       isProduction && isClient ? new StatsPlugin("stats.json") : null,
 
       // Classic UglifyJS for compressing ES5 compatible code.
       // https://github.com/webpack-contrib/uglifyjs-webpack-plugin
-      isProduction && isClient ? new UglifyPlugin({
+      writeLegacyOutput && isProduction && isClient ? new UglifyPlugin({
         compress: true,
         mangle: true,
         comments: false,
         sourceMap: true
       }) : null,
+
+      // Alternative to Uglify when producing modern output
+      // Advanced ES2015 ready JS compression based on Babylon (Babel Parser)
+      // https://github.com/webpack-contrib/babili-webpack-plugin
+      !writeLegacyOutput && isProduction && isClient ? new BabiliPlugin({ comments: false }) : null,
 
       // "Use HashedModuleIdsPlugin to generate IDs that preserves over builds."
       // Via: https://github.com/webpack/webpack.js.org/issues/652#issuecomment-273324529
