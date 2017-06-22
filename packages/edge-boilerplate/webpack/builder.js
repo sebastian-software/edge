@@ -6,6 +6,8 @@ import ExtractCssChunks from "extract-css-chunks-webpack-plugin"
 import StatsPlugin from "stats-webpack-plugin"
 import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin"
 import BabiliPlugin from "babili-webpack-plugin"
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 const defaults = {
   target: "client",
@@ -146,6 +148,12 @@ export default function builder(options = {})
     },
 
     plugins: [
+      // Generating static HTML page for simple static deployment
+      // https://github.com/jantimon/html-webpack-plugin
+      isProduction && isClient ? new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, '../src/index.ejs')
+      }) : null,
+
       // Improve OS compatibility
       // https://github.com/Urthen/case-sensitive-paths-webpack-plugin
       new CaseSensitivePathsPlugin(),
