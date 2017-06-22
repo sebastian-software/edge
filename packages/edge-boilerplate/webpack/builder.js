@@ -7,6 +7,7 @@ import StatsPlugin from "stats-webpack-plugin"
 import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin"
 import BabiliPlugin from "babili-webpack-plugin"
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+import SriPlugin from 'webpack-subresource-integrity';
 
 
 const defaults = {
@@ -81,7 +82,9 @@ export default function builder(options = {})
       libraryTarget: isServer ? "commonjs2" : "var",
       filename: isDevelopment || isServer ? "[name].js" : "[name].[chunkhash].js",
       path: isServer ? path.resolve(__dirname, "../build/server") : path.resolve(__dirname, "../build/client"),
-      publicPath: "/static/"
+      publicPath: "/static/",
+      // Enable cross-origin loading without credentials - Useful for loading files from CDN
+      crossOriginLoading: 'anonymous',
     },
 
     module: {
@@ -153,6 +156,15 @@ export default function builder(options = {})
       isProduction && isClient ? new HtmlWebpackPlugin({
         template: path.resolve(__dirname, '../src/index.ejs')
       }) : null,
+
+      // Subresource Integrity (SRI) is a security feature that enables browsers to verify that
+      // files they fetch (for example, from a CDN) are delivered without unexpected manipulation.
+      // https://www.npmjs.com/package/webpack-subresource-integrity
+      // Browser-Support: http://caniuse.com/#feat=subresource-integrity
+      new SriPlugin({
+        hashFuncNames: ['sha256', 'sha384'],
+        enabled: isProduction && isClient
+      }),
 
       // Improve OS compatibility
       // https://github.com/Urthen/case-sensitive-paths-webpack-plugin

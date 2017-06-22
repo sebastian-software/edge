@@ -8,6 +8,9 @@ export default ({ clientStats, outputPath }) => (request, response, next) => {
   const renderedApp = ReactDOM.renderToString(<AppRoot />)
   const moduleIds = flushModuleIds()
 
+  // TODO: Support SRI integrity checksums as added by SRI Webpack Plugin
+  // https://www.npmjs.com/package/webpack-subresource-integrity#without-htmlwebpackplugin
+
   const { js, styles } = flushChunks(clientStats, {
     moduleIds,
     before: [ "bootstrap" ],
