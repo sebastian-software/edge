@@ -43,6 +43,7 @@ export default function builder(options = {}) {
   const bundleCompression = true
 
   console.log(`Edge Webpack for Webpack@${webpackPkg.version}: Generating Config for: ${config.target}@${config.env}`)
+  console.log(`- Source Maps: ${enableSourceMaps} - Legacy Output: ${writeLegacyOutput} - Bundle Compression: ${bundleCompression} -`)
 
   const name = isServer ? "server" : "client"
   const target = isServer ? "node" : "web"
@@ -129,7 +130,7 @@ export default function builder(options = {}) {
         // Notice the different include/exclude sections.
         // This config is also ignoring the project specific .babelrc as code inside
         // node_modules should be transpiled already.
-        {
+        bundleCompression ? null : {
           test: babelFiles,
           include: /(node_modules)/,
           use: [
@@ -165,7 +166,7 @@ export default function builder(options = {}) {
             postCSSLoaderRule
           ]
         }
-      ]
+      ].filter(Boolean)
     },
 
     plugins: [
