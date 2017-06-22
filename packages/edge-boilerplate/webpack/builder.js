@@ -40,6 +40,7 @@ export default function builder(options = {}) {
 
   const enableSourceMaps = true
   const writeLegacyOutput = false
+  const bundleCompression = true
 
   console.log(`Edge Webpack for Webpack@${webpackPkg.version}: Generating Config for: ${config.target}@${config.env}`)
 
@@ -180,17 +181,19 @@ export default function builder(options = {}) {
 
       // Classic UglifyJS for compressing ES5 compatible code.
       // https://github.com/webpack-contrib/uglifyjs-webpack-plugin
-      writeLegacyOutput && isProduction && isClient ? new UglifyPlugin({
-        compress: true,
-        mangle: true,
-        comments: false,
-        sourceMap: true
-      }) : null,
+      bundleCompression && writeLegacyOutput && isProduction && isClient ?
+        new UglifyPlugin({
+          compress: true,
+          mangle: true,
+          comments: false,
+          sourceMap: true
+        }) : null,
 
       // Alternative to Uglify when producing modern output
       // Advanced ES2015 ready JS compression based on Babylon (Babel Parser)
       // https://github.com/webpack-contrib/babili-webpack-plugin
-      !writeLegacyOutput && isProduction && isClient ? new BabiliPlugin({ comments: false }) : null,
+      bundleCompression && !writeLegacyOutput && isProduction && isClient ?
+        new BabiliPlugin() : null,
 
       // "Use HashedModuleIdsPlugin to generate IDs that preserves over builds."
       // Via: https://github.com/webpack/webpack.js.org/issues/652#issuecomment-273324529
