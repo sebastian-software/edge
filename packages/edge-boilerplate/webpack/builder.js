@@ -175,6 +175,7 @@ export default function builder(options = {}) {
       new CaseSensitivePathsPlugin(),
 
       // Let the server side renderer know about our client side assets
+      // https://github.com/FormidableLabs/webpack-stats-plugin
       isProduction && isClient ? new StatsPlugin("stats.json") : null,
 
       // Classic UglifyJS for compressing ES5 compatible code.
