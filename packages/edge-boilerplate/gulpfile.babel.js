@@ -3,6 +3,7 @@ import gulp from "gulp"
 import runSequence from "run-sequence"
 import webpack from "webpack"
 import builder from "./webpack/builder"
+import { removeSync } from "fs-extra"
 
 gulp.task("build", (callback) => {
   runSequence("build:client", "build:server", callback)
@@ -32,7 +33,15 @@ function checkStats(stats, resolve, reject)
   resolve()
 }
 
-gulp.task("build:server", () =>
+gulp.task("clean:server", () => {
+  removeSync("build/server/*")
+})
+
+gulp.task("clean:client", () => {
+  removeSync("build/client/*")
+})
+
+gulp.task("build:server", [ "clean:server" ], () =>
 {
   const config = builder({
     target: "server",
@@ -50,7 +59,7 @@ gulp.task("build:server", () =>
   })
 })
 
-gulp.task("build:client", () =>
+gulp.task("build:client", [ "clean:client" ], () =>
 {
   const config = builder({
     target: "client",
