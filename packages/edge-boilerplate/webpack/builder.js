@@ -2,9 +2,15 @@ import path from "path"
 import fs from "fs"
 import webpack from "webpack"
 import webpackPkg from "webpack/package.json"
+
+// CSS Support
 import ExtractCssChunks from "extract-css-chunks-webpack-plugin"
+
+// Core
 import StatsPlugin from "stats-webpack-plugin"
 import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin"
+
+// Generating static HTML pages
 import HtmlWebpackPlugin from "html-webpack-plugin"
 import SriPlugin from "webpack-subresource-integrity"
 
