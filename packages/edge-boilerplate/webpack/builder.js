@@ -13,16 +13,20 @@ import BabiliPlugin from "babili-webpack-plugin"
 import UglifyPlugin from "uglifyjs-webpack-plugin"
 
 import {
+  SERVER_ENTRY,
+  CLIENT_ENTRY,
   SERVER_OUTPUT,
   CLIENT_OUTPUT,
   PUBLIC_PATH
 } from "../config"
 
-
 const defaults = {
   target: "client",
   env: process.env.NODE_ENV,
-  verbose: false
+  verbose: false,
+  enableSourceMaps: true,
+  writeLegacyOutput: false,
+  bundleCompression: false
 }
 
 // if you're specifying externals to leave unbundled, you need to tell Webpack
@@ -47,29 +51,25 @@ export default function builder(options = {}) {
   const isDevelopment = config.env === "development"
   const isProduction = config.env === "production"
 
-  const enableSourceMaps = true
-  const writeLegacyOutput = false
-  const bundleCompression = false
-
   console.log(`Edge Webpack for Webpack@${webpackPkg.version}: Generating Config for: ${config.target}@${config.env}`)
-  console.log(`- Source Maps: ${enableSourceMaps} - Legacy Output: ${writeLegacyOutput} - Bundle Compression: ${bundleCompression} -`)
+  console.log(`- Source Maps: ${config.enableSourceMaps} - Legacy Output: ${config.writeLegacyOutput} - Bundle Compression: ${config.bundleCompression} -`)
 
   const name = isServer ? "server" : "client"
   const target = isServer ? "node" : "web"
-  const devtool = enableSourceMaps ? "source-map" : null
+  const devtool = config.enableSourceMaps ? "source-map" : null
 
   const cssLoaderOptions = {
     modules: true,
     localIdentName: "[local]-[hash:base62:8]",
     import: false,
     minimize: false,
-    sourceMap: enableSourceMaps
+    sourceMap: config.enableSourceMaps
   }
 
   const postCSSLoaderRule = {
     loader: "postcss-loader",
     query: {
-      sourceMap: enableSourceMaps
+      sourceMap: config.enableSourceMaps
     }
   }
 
@@ -94,7 +94,7 @@ export default function builder(options = {}) {
       isClient && isDevelopment ?
         "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false" :
         null,
-      isClient ? path.resolve(__dirname, "../src/client/index.js") : path.resolve(__dirname, "../src/server/index.js")
+      isServer ? SERVER_ENTRY : CLIENT_ENTRY
     ].filter(Boolean),
 
     output: {
@@ -139,7 +139,7 @@ export default function builder(options = {}) {
         // Notice the different include/exclude sections.
         // This config is also ignoring the project specific .babelrc as code inside
         // node_modules should be transpiled already.
-        bundleCompression ? null : {
+        config.bundleCompression ? null : {
           test: babelFiles,
           include: /(node_modules)/,
           use: [
@@ -206,7 +206,7 @@ export default function builder(options = {}) {
 
       // Classic UglifyJS for compressing ES5 compatible code.
       // https://github.com/webpack-contrib/uglifyjs-webpack-plugin
-      bundleCompression && writeLegacyOutput && isProduction && isClient ?
+      config.bundleCompression && config.writeLegacyOutput && isProduction && isClient ?
         new UglifyPlugin({
           compress: true,
           mangle: true,
@@ -217,7 +217,7 @@ export default function builder(options = {}) {
       // Alternative to Uglify when producing modern output
       // Advanced ES2015 ready JS compression based on Babylon (Babel Parser)
       // https://github.com/webpack-contrib/babili-webpack-plugin
-      bundleCompression && !writeLegacyOutput && isProduction && isClient ?
+      config.bundleCompression && !config.writeLegacyOutput && isProduction && isClient ?
         new BabiliPlugin() : null,
 
       // "Use HashedModuleIdsPlugin to generate IDs that preserves over builds."
