@@ -1,1 +1,3 @@
-{ "presets": "edge-babel" }
+{
+  "presets": "babel-preset-edge"
+}
