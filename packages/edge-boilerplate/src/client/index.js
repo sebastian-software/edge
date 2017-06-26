@@ -2,8 +2,9 @@ import React from "react"
 import ReactDOM from "react-dom"
 import AppRoot from "../components/App"
 
-function render(Root) {
-  ReactDOM.render(<Root />, document.getElementById("root"))
+function render(MyRoot) {
+  var content = <MyRoot />
+  ReactDOM.render(content, document.getElementById("root"))
 }
 
 if (process.env.NODE_ENV === "development" && module.hot) {
