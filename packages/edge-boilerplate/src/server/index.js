@@ -2,7 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom/server"
 import { flushModuleIds } from "react-universal-component/server"
 import flushChunks from "webpack-flush-chunks"
-import AppRoot from "../src/components/App"
+import AppRoot from "../components/App"
 
 export default ({ clientStats, outputPath }) => (request, response, next) => {
   const renderedApp = ReactDOM.renderToString(<AppRoot />)

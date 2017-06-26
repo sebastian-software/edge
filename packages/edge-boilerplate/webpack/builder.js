@@ -5,9 +5,11 @@ import webpackPkg from "webpack/package.json"
 import ExtractCssChunks from "extract-css-chunks-webpack-plugin"
 import StatsPlugin from "stats-webpack-plugin"
 import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin"
-import BabiliPlugin from "babili-webpack-plugin"
 import HtmlWebpackPlugin from "html-webpack-plugin"
 import SriPlugin from "webpack-subresource-integrity"
+
+// Compression
+import BabiliPlugin from "babili-webpack-plugin"
 import UglifyPlugin from "uglifyjs-webpack-plugin"
 
 const defaults = {
@@ -85,7 +87,7 @@ export default function builder(options = {}) {
       isClient && isDevelopment ?
         "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false" :
         null,
-      isClient ? path.resolve(__dirname, "../src/index.js") : path.resolve(__dirname, "../server/render.js")
+      isClient ? path.resolve(__dirname, "../src/client/index.js") : path.resolve(__dirname, "../src/server/index.js")
     ].filter(Boolean),
 
     output: {
