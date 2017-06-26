@@ -1,22 +1,16 @@
 import express from "express"
+import { PUBLIC_PATH, CLIENT_OUTPUT, PRODUCTION_PORT } from "../config"
 
-import configBuilder from "../webpack/builder"
-const clientConfig = configBuilder({
-  target: "client",
-  env: "production"
-})
-
-const publicPath = clientConfig.output.publicPath
-const outputPath = clientConfig.output.path
+/* eslint-disable no-console */
 
 const server = express()
 
-const PORT = 3000
+console.log("Public-Path:", PUBLIC_PATH)
+console.log("Output-Path:", CLIENT_OUTPUT)
 
-console.log("Public-Path:", publicPath)
-console.log("Output-Path:", outputPath)
+server.use("/", express.static(CLIENT_OUTPUT))
+server.use(PUBLIC_PATH, express.static(CLIENT_OUTPUT))
 
-server.use("/", express.static(outputPath))
-server.use(publicPath, express.static(outputPath))
-
-server.listen(PORT, () => {})
+server.listen(PRODUCTION_PORT, () => {
+  console.log(`Static Server Started @ Port ${PRODUCTION_PORT}`)
+})
