@@ -19,6 +19,8 @@
     "start:react": "npm run clean && cross-env NODE_ENV=production babel-node server/react.js",
     "start:static": "npm run clean && cross-env NODE_ENV=production babel-node server/static.js",
     "build": "gulp build",
+    "prod": "npm run build && npm run start:react",
+    "dev": "npm run start",
     "now-build": "npm run build",
     "now-start": "npm run start:react",
     "clean": "gulp clean",
