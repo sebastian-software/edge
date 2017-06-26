@@ -198,7 +198,7 @@ export default function builder(options = {}) {
       // https://www.npmjs.com/package/webpack-subresource-integrity
       // Browser-Support: http://caniuse.com/#feat=subresource-integrity
       new SriPlugin({
-        hashFuncNames: [ "sha256", "sha384" ],
+        hashFuncNames: [ "sha256", "sha512" ],
         enabled: isProduction && isClient
       }),
 
