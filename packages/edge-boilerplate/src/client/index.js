@@ -3,7 +3,6 @@ import ReactDOM from "react-dom"
 import AppRoot from "../components/App"
 
 function render(Root) {
-  console.log("XXX:",Root,AppRoot)
   ReactDOM.render(<Root />, document.getElementById("root"))
 }
 

@@ -32,8 +32,8 @@ const defaults = {
   verbose: false,
   enableSourceMaps: true,
   writeLegacyOutput: false,
-  bundleCompression: false,
-  useCacheLoader: false
+  bundleCompression: true,
+  useCacheLoader: true
 }
 
 // if you're specifying externals to leave unbundled, you need to tell Webpack
