@@ -224,8 +224,8 @@ export default function builder(options = {}) {
       // Alternative to Uglify when producing modern output
       // Advanced ES2015 ready JS compression based on Babylon (Babel Parser)
       // https://github.com/webpack-contrib/babili-webpack-plugin
-      // config.bundleCompression && !config.writeLegacyOutput && isProduction && isClient ?
-      //   new BabiliPlugin() : null,
+      config.bundleCompression && !config.writeLegacyOutput && isProduction && isClient ?
+        new BabiliPlugin() : null,
 
       // "Use HashedModuleIdsPlugin to generate IDs that preserves over builds."
       // Via: https://github.com/webpack/webpack.js.org/issues/652#issuecomment-273324529
