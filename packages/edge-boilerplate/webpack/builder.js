@@ -32,7 +32,8 @@ const defaults = {
   verbose: false,
   enableSourceMaps: true,
   writeLegacyOutput: false,
-  bundleCompression: false
+  bundleCompression: false,
+  useCacheLoader: false
 }
 
 // if you're specifying externals to leave unbundled, you need to tell Webpack
@@ -130,7 +131,7 @@ export default function builder(options = {}) {
           test: babelFiles,
           exclude: /node_modules/,
           use: [
-            "cache-loader",
+            config.useCacheLoader ? "cache-loader" : null,
             {
               loader: "babel-loader",
               options: {
@@ -138,7 +139,7 @@ export default function builder(options = {}) {
                 babelrc: true
               }
             }
-          ]
+          ].filter(Boolean)
         },
 
         // Compress other JS files using a loader which is based on babilii as well.
@@ -149,7 +150,7 @@ export default function builder(options = {}) {
           test: babelFiles,
           include: /(node_modules)/,
           use: [
-            "cache-loader",
+            config.useCacheLoader ? "cache-loader" : null,
             {
               loader: "babel-loader",
               options: {
@@ -157,7 +158,7 @@ export default function builder(options = {}) {
                 babelrc: false
               }
             }
-          ]
+          ].filter(Boolean)
         },
 
         // Use either
@@ -165,21 +166,21 @@ export default function builder(options = {}) {
           test: postcssFiles,
           use: isClient ? ExtractCssChunks.extract({
             use: [
-              "cache-loader",
+              config.useCacheLoader ? "cache-loader" : null,
               {
                 loader: "css-loader",
                 options: cssLoaderOptions
               },
               postCSSLoaderRule
-            ]
+            ].filter(Boolean)
           }) : [
-            "cache-loader",
+            config.useCacheLoader ? "cache-loader" : null,
             {
               loader: "css-loader/locals",
               options: cssLoaderOptions
             },
             postCSSLoaderRule
-          ]
+          ].filter(Boolean)
         }
       ].filter(Boolean)
     },
