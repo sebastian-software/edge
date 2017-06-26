@@ -23,7 +23,8 @@ import {
   CLIENT_ENTRY,
   SERVER_OUTPUT,
   CLIENT_OUTPUT,
-  PUBLIC_PATH
+  PUBLIC_PATH,
+  ROOT
 } from "../config"
 
 const defaults = {
@@ -59,11 +60,21 @@ export default function builder(options = {}) {
   const isProduction = config.env === "production"
 
   console.log(`Edge Webpack for Webpack@${webpackPkg.version}: Generating Config for: ${config.target}@${config.env}`)
-  console.log(`- Source Maps: ${config.enableSourceMaps} - Legacy Output: ${config.writeLegacyOutput} - Bundle Compression: ${config.bundleCompression} -`)
+  console.log(`- Source Maps: ${config.enableSourceMaps}`)
+  console.log(`- Legacy ES5 Output: ${config.writeLegacyOutput}`)
+  console.log(`- Bundle Compression: ${config.bundleCompression}`)
+  console.log(`- Use Cache Loader: ${config.useCacheLoader}`)
 
   const name = isServer ? "server" : "client"
   const target = isServer ? "node" : "web"
   const devtool = config.enableSourceMaps ? "source-map" : null
+
+  const cacheLoader = config.useCacheLoader ? {
+    loader: "cache-loader",
+    options: {
+      cacheDirectory: path.resolve(ROOT, `.cache/${config.target}-${config.env}`)
+    }
+  } : null
 
   const cssLoaderOptions = {
     modules: true,
@@ -131,7 +142,7 @@ export default function builder(options = {}) {
           test: babelFiles,
           exclude: /node_modules/,
           use: [
-            config.useCacheLoader ? "cache-loader" : null,
+            cacheLoader,
             {
               loader: "babel-loader",
               options: {
@@ -150,7 +161,7 @@ export default function builder(options = {}) {
           test: babelFiles,
           include: /(node_modules)/,
           use: [
-            config.useCacheLoader ? "cache-loader" : null,
+            cacheLoader,
             {
               loader: "babel-loader",
               options: {
@@ -166,7 +177,7 @@ export default function builder(options = {}) {
           test: postcssFiles,
           use: isClient ? ExtractCssChunks.extract({
             use: [
-              config.useCacheLoader ? "cache-loader" : null,
+              cacheLoader,
               {
                 loader: "css-loader",
                 options: cssLoaderOptions
@@ -174,7 +185,7 @@ export default function builder(options = {}) {
               postCSSLoaderRule
             ].filter(Boolean)
           }) : [
-            config.useCacheLoader ? "cache-loader" : null,
+            cacheLoader,
             {
               loader: "css-loader/locals",
               options: cssLoaderOptions
