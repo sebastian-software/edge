@@ -8,20 +8,20 @@ import { CLIENT_OUTPUT, PUBLIC_PATH, DEVELOPMENT_PORT } from "../config"
 
 /* eslint-disable no-console */
 
-const server = express()
-
 const clientConfig = configBuilder({
   target: "client",
-  env: process.env.NODE_ENV
+  env: "development"
 })
 
 const serverConfig = configBuilder({
   target: "server",
-  env: process.env.NODE_ENV
+  env: "development"
 })
 
 const multiCompiler = webpack([ clientConfig, serverConfig ])
 const clientCompiler = multiCompiler.compilers[0]
+
+const server = express()
 
 server.use(webpackDevMiddleware(multiCompiler, {
   // required
