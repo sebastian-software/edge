@@ -12,6 +12,13 @@ import SriPlugin from "webpack-subresource-integrity"
 import BabiliPlugin from "babili-webpack-plugin"
 import UglifyPlugin from "uglifyjs-webpack-plugin"
 
+import {
+  SERVER_OUTPUT,
+  CLIENT_OUTPUT,
+  PUBLIC_PATH
+} from "../config"
+
+
 const defaults = {
   target: "client",
   env: process.env.NODE_ENV,
@@ -74,7 +81,7 @@ export default function builder(options = {}) {
   }
 
   const assetFiles = /\.(eot|woff|woff2|ttf|otf|svg|png|jpg|jpeg|jp2|jpx|jxr|gif|webp|mp4|mp3|ogg|pdf|html)$/
-  const babelFiles = /\.js$/
+  const babelFiles = /\.(js|mjs)$/
   const postcssFiles = /\.(css|pcss)$/
 
   return {
@@ -93,8 +100,8 @@ export default function builder(options = {}) {
     output: {
       libraryTarget: isServer ? "commonjs2" : "var",
       filename: isDevelopment || isServer ? "[name].js" : "[name].[chunkhash].js",
-      path: isServer ? path.resolve(__dirname, "../build/server") : path.resolve(__dirname, "../build/client"),
-      publicPath: "/static/",
+      path: isServer ? SERVER_OUTPUT : CLIENT_OUTPUT,
+      publicPath: PUBLIC_PATH,
 
       // Enable cross-origin loading without credentials - Useful for loading files from CDN
       crossOriginLoading: "anonymous"
