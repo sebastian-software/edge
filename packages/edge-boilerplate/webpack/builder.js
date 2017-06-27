@@ -137,6 +137,28 @@ export default function builder(options = {}) {
           }
         },
 
+        // JSON
+        {
+          test: /\.json$/,
+          loader: "json-loader",
+          exclude: [
+            /locale-data/
+          ]
+        },
+
+        // YAML
+        {
+          test: /\.(yml|yaml)$/,
+          loaders: [ "json-loader", "yaml-loader" ]
+        },
+
+        // GraphQL support
+        // @see http://dev.apollodata.com/react/webpack.html
+        {
+          test: /\.(graphql|gql)$/,
+          loader: "graphql-tag/loader"
+        },
+
         // Transpile our own JavaScript files using the setup in `.babelrc`.
         {
           test: babelFiles,
