@@ -132,7 +132,7 @@ export default function builder(options = {}) {
           test: assetFiles,
           loader: "file-loader",
           options: {
-            name: "[name].[ext]",
+            name: isProduction ? "file-[hash:base62:8].[ext]" : "[name].[ext]",
             emitFile: isClient
           }
         },
