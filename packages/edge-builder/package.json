@@ -7,6 +7,9 @@
     "email": "s.werner@sebastian-software.de",
     "url": "sebastian-software.de"
   },
+  "bin": {
+    "edge-builder": "./bin/edge-builder"
+  },
   "pre-commit": "lint-staged",
   "lint-staged": {
     "*.js": "eslint",
