@@ -99,8 +99,8 @@ export default function builder(options = {}) {
   }
 
   const assetFiles = /\.(eot|woff|woff2|ttf|otf|svg|png|jpg|jpeg|jp2|jpx|jxr|gif|webp|mp4|mp3|ogg|pdf|html)$/
-  const babelFiles = /\.(js|mjs)$/
-  const postcssFiles = /\.(css|pcss)$/
+  const babelFiles = /\.(js|mjs|jsx)$/
+  const postcssFiles = /\.(css|sss|pcss)$/
 
   return {
     name,
