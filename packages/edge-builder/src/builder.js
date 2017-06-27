@@ -39,6 +39,7 @@ const CLIENT_ENTRY = resolve(process.env.CLIENT_ENTRY)
 const SERVER_OUTPUT = resolve(process.env.SERVER_OUTPUT)
 const CLIENT_OUTPUT = resolve(process.env.CLIENT_OUTPUT)
 const PUBLIC_PATH = process.env.PUBLIC_PATH
+const HTML_TEMPLATE = resolve(ROOT, process.env.HTML_TEMPLATE)
 
 const defaults = {
   target: "client",
@@ -237,7 +238,7 @@ export default function builder(options = {}) {
       // https://github.com/jantimon/html-webpack-plugin
       isProduction && isClient ?
         new HtmlWebpackPlugin({
-          template: resolve(ROOT, "../src/index.ejs")
+          template: HTML_TEMPLATE
         }) :
         null,
 
