@@ -14,6 +14,7 @@
   },
   "license": "Apache-2.0",
   "scripts": {
+    "build": "rollup -c rollup.config.js",
     "test": "jest",
     "release": "git push && release-it --github.release --npm.publish --non-interactive",
     "release:minor": "git push && release-it --github.release --npm.publish --non-interactive --increment minor",
