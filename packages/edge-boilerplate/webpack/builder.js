@@ -126,6 +126,7 @@ export default function builder(options = {}) {
     output: {
       libraryTarget: isServer ? "commonjs2" : "var",
       filename: isDevelopment || isServer ? "[name].js" : "[name].[chunkhash].js",
+      chunkFilename: isDevelopment || isServer ? "[name].js" : "[name]-[chunkhash].js",
       path: isServer ? SERVER_OUTPUT : CLIENT_OUTPUT,
       publicPath: PUBLIC_PATH,
 
@@ -290,7 +291,7 @@ export default function builder(options = {}) {
       // isDevelopment ? new webpack.NamedModulesPlugin() : null,
 
       isClient ? new ExtractCssChunks({
-        filename: "[name].[contenthash:base62:8].css"
+        filename: isDevelopment ? "[name].css" : "[name].[contenthash:base62:8].css"
       }) : null,
       isServer ? new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }) : null,
 
