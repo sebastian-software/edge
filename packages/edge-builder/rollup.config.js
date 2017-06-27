@@ -8,8 +8,8 @@ var config = require("./package.json")
 var external = Object.keys(config.dependencies).concat(builtin)
 
 export default {
-  entry: "src/script.js",
-  dest: "bin/edge",
+  entry: "src/index.js",
+  dest: "bin/edge-builder",
   format: "cjs",
   sourceMap: true,
   external,
