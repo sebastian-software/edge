@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- 6
+- 8
+matrix:
+  fast_finish: true
+notifications:
+  slack:
+    secure: aKQSsYvNfbSGJLGecHwX4+vQEl2BGRq9dbV4AUuE6rthPWOY3bFBOTZhCC0zZEkRmmZjQZYwDpGPJKiE9itNSdw7Rg5j46iBD0WRGRWMSoQ1/05tZ/cTvPLL3dzb/pAbUZU6mgyLZNd8XB/4jAFuPL6lYAD8NcPiz2PCiDhVcJOjUeBsgVDfB1fR1xp+Cy8qiilyfuOhZwvgN4fbGpCb6YA86XAnZ7aiLmM7Y4jIz43lUxjPmhMDZPPelCkt81keF/MV/EZbZrDvfFrlB2atTtDTEgjXDVK3ExBScB/EUSqvTlc3Ui/AfnQRMoyzWrxoH4vy5FfMeH4n+j58rT8FjbfsGMa/hw9tB36DjZdh1rqG7Ae+eBRhGUrYJ0ckuNn4eL8E5LSLGGRyaoz2d6AP78mve2VKAFYNChwNdA871gj+hFc1y2sQDstMTZx3TaqZhcbTlNqWN+lipJ1bZjDpTRsRfLo+KNu8dW8v+nV3tnFegJ/9hke4UgW5/v45pV5DvKZS0A8AJtQKY7Ns3wHs8xc+rCEbxPLE+A8Xg6TIpIfSuvXwb3RJnLJwQhe/TfXAh9rfPvUCpJ5RDyfN0iYn93RUpLVxzbzP7T3hYbnV1dRT+Wz5huQFDrpwZ/oFbQPVK4nQ1byzTKeUVTYlUB3DaP5O/Nq3Gg3GOqtqNfh7Vrg=
+cache:
+  yarn: true
