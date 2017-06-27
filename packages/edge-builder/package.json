@@ -26,6 +26,7 @@
     "npm": ">=4.0.0"
   },
   "dependencies": {
+    "app-root-dir": "^1.0.2",
     "babel-loader": "^7.1.0",
     "babel-preset-edge": "^0.6.0",
     "babili-webpack-plugin": "^0.1.2",
@@ -33,6 +34,7 @@
     "case-sensitive-paths-webpack-plugin": "^2.1.1",
     "cross-env": "^5.0.1",
     "css-loader": "^0.28.4",
+    "dotenv": "^4.0.0",
     "edge-postcss": "^0.6.0",
     "extract-css-chunks-webpack-plugin": "^1.0.15",
     "file-loader": "^0.11.2",

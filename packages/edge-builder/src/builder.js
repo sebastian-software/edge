@@ -26,14 +26,17 @@ import SriPlugin from "webpack-subresource-integrity"
 import BabiliPlugin from "babili-webpack-plugin"
 import UglifyPlugin from "uglifyjs-webpack-plugin"
 
-import {
-  SERVER_ENTRY,
-  CLIENT_ENTRY,
-  SERVER_OUTPUT,
-  CLIENT_OUTPUT,
-  PUBLIC_PATH,
-  ROOT
-} from "../config"
+import dotenv from "dotenv"
+
+// Initialize environment configuration
+dotenv.config()
+
+const SERVER_ENTRY = process.env.SERVER_ENTRY
+const CLIENT_ENTRY = process.env.CLIENT_ENTRY
+const SERVER_OUTPUT = process.env.SERVER_OUTPUT
+const CLIENT_OUTPUT = process.env.CLIENT_OUTPUT
+const PUBLIC_PATH = process.env.PUBLIC_PATH
+const ROOT = process.env.ROOT
 
 const defaults = {
   target: "client",
