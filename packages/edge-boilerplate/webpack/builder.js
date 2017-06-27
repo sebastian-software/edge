@@ -289,7 +289,9 @@ export default function builder(options = {}) {
       // Via: https://github.com/webpack/webpack.js.org/issues/652#issuecomment-273023082
       isDevelopment ? new webpack.NamedModulesPlugin() : null,
 
-      isClient ? new ExtractCssChunks() : null,
+      isClient ? new ExtractCssChunks({
+        filename: "[name].[contenthash:base62:8].css"
+      }) : null,
       isServer ? new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }) : null,
 
       // only needed when server built with webpack
