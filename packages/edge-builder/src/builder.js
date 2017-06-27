@@ -1,6 +1,9 @@
-import path from "path"
 import fs from "fs"
 import webpack from "webpack"
+import { get as getRoot } from "app-root-dir"
+import { resolve } from "path"
+import dotenv from "dotenv"
+
 import webpackPkg from "webpack/package.json"
 
 // Using more modern approach of hashing than "webpack-md5-hash". Somehow the SHA256 version
@@ -26,17 +29,16 @@ import SriPlugin from "webpack-subresource-integrity"
 import BabiliPlugin from "babili-webpack-plugin"
 import UglifyPlugin from "uglifyjs-webpack-plugin"
 
-import dotenv from "dotenv"
 
 // Initialize environment configuration
 dotenv.config()
 
-const SERVER_ENTRY = process.env.SERVER_ENTRY
-const CLIENT_ENTRY = process.env.CLIENT_ENTRY
-const SERVER_OUTPUT = process.env.SERVER_OUTPUT
-const CLIENT_OUTPUT = process.env.CLIENT_OUTPUT
+const ROOT = getRoot()
+const SERVER_ENTRY = resolve(ROOT, process.env.SERVER_ENTRY)
+const CLIENT_ENTRY = resolve(process.env.CLIENT_ENTRY)
+const SERVER_OUTPUT = resolve(process.env.SERVER_OUTPUT)
+const CLIENT_OUTPUT = resolve(process.env.CLIENT_OUTPUT)
 const PUBLIC_PATH = process.env.PUBLIC_PATH
-const ROOT = process.env.ROOT
 
 const defaults = {
   target: "client",
@@ -52,7 +54,7 @@ const defaults = {
 // to still bundle `react-universal-component`, `webpack-flush-chunks` and
 // `require-universal-module` so that they know they are running
 // within Webpack and can properly make connections to client modules:
-const nodeModules = path.resolve(__dirname, "../node_modules")
+const nodeModules = resolve(ROOT, "node_modules")
 const serverExternals = fs
   .readdirSync(nodeModules)
   .filter((x) => !(/\.bin|react-universal-component|require-universal-module|webpack-flush-chunks/).test(x))
@@ -83,7 +85,7 @@ export default function builder(options = {}) {
   const cacheLoader = config.useCacheLoader ? {
     loader: "cache-loader",
     options: {
-      cacheDirectory: path.resolve(ROOT, `.cache/${config.target}-${config.env}`)
+      cacheDirectory: resolve(ROOT, `.cache/${config.target}-${config.env}`)
     }
   } : null
 
@@ -235,7 +237,7 @@ export default function builder(options = {}) {
       // https://github.com/jantimon/html-webpack-plugin
       isProduction && isClient ?
         new HtmlWebpackPlugin({
-          template: path.resolve(__dirname, "../src/index.ejs")
+          template: resolve(ROOT, "../src/index.ejs")
         }) :
         null,
 

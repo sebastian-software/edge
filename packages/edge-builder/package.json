@@ -23,6 +23,10 @@
     "release:minor": "git push && release-it --github.release --npm.publish --non-interactive --increment minor",
     "release:major": "git push && release-it --github.release --npm.publish --non-interactive --increment major"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebastian-software/edge-builder.git"
+  },
   "engines": {
     "node": ">=6.0.0",
     "yarn": ">=0.21.3",
