@@ -2,6 +2,7 @@ import gulp from "gulp"
 import runSequence from "run-sequence"
 import webpack from "webpack"
 import builder from "./builder"
+import devServer from "./server/devServer"
 import { removeSync } from "fs-extra"
 
 gulp.task("build", (callback) => {
@@ -25,40 +26,15 @@ function checkStats(stats, resolve, reject)
     }
 
     if (jsonStats.errors.length) {
-      return reject("There were errors during compilation!")
+      reject("There were errors during compilation!")
+      return
     }
   }
 
   resolve()
 }
 
-gulp.task("clean:server", () => {
-  removeSync("./build/server")
-})
-
-gulp.task("clean:client", () => {
-  removeSync("./build/client")
-})
-
-gulp.task("build:server", [ "clean:server" ], () =>
-{
-  const config = builder({
-    target: "server",
-    env: "production"
-  })
-
-  return new Promise((resolve, reject) => {
-    webpack(config, (fatalError, stats) => {
-      if (fatalError) {
-        reject("Webpack Server Error:", fatalError)
-      } else {
-        checkStats(stats, resolve, reject)
-      }
-    })
-  })
-})
-
-gulp.task("build:client", [ "clean:client" ], () =>
+export function buildClient()
 {
   const config = builder({
     target: "client",
@@ -76,4 +52,36 @@ gulp.task("build:client", [ "clean:client" ], () =>
       }
     })
   })
-})
+}
+
+export function buildServer() {
+  const config = builder({
+    target: "server",
+    env: "production"
+  })
+
+  return new Promise((resolve, reject) => {
+    webpack(config, (fatalError, stats) => {
+      if (fatalError) {
+        reject("Webpack Server Error:", fatalError)
+      } else {
+        checkStats(stats, resolve, reject)
+      }
+    })
+  })
+}
+
+export function cleanServer() {
+  removeSync("./build/server")
+}
+
+export function cleanClient() {
+  removeSync("./build/client")
+}
+
+// Adding gulp tasks
+gulp.task("clean:server", cleanServer)
+gulp.task("clean:client", cleanClient)
+gulp.task("build:server", [ "clean:server" ], buildServer)
+gulp.task("build:client", [ "clean:client" ], buildClient)
+
