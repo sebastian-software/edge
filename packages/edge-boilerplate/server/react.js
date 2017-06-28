@@ -1,5 +1,16 @@
+import { resolve } from "path"
+import { get as getRoot } from "app-root-dir"
+import dotenv from "dotenv"
 import express from "express"
-import { CLIENT_OUTPUT, SERVER_OUTPUT, PUBLIC_PATH, PRODUCTION_PORT } from "../config"
+
+// Initialize environment configuration
+dotenv.config()
+
+const ROOT = getRoot()
+const SERVER_OUTPUT = resolve(ROOT, process.env.SERVER_OUTPUT)
+const CLIENT_OUTPUT = resolve(ROOT, process.env.CLIENT_OUTPUT)
+const PUBLIC_PATH = process.env.PUBLIC_PATH
+const PRODUCTION_PORT = process.env.PRODUCTION_PORT
 
 /* eslint-disable no-console */
 /* eslint-disable import/no-commonjs */
