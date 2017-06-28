@@ -35,9 +35,9 @@ dotenv.config()
 
 const ROOT = getRoot()
 const SERVER_ENTRY = resolve(ROOT, process.env.SERVER_ENTRY)
-const CLIENT_ENTRY = resolve(process.env.CLIENT_ENTRY)
-const SERVER_OUTPUT = resolve(process.env.SERVER_OUTPUT)
-const CLIENT_OUTPUT = resolve(process.env.CLIENT_OUTPUT)
+const CLIENT_ENTRY = resolve(ROOT, process.env.CLIENT_ENTRY)
+const SERVER_OUTPUT = resolve(ROOT, process.env.SERVER_OUTPUT)
+const CLIENT_OUTPUT = resolve(ROOT, process.env.CLIENT_OUTPUT)
 const PUBLIC_PATH = process.env.PUBLIC_PATH
 const HTML_TEMPLATE = resolve(ROOT, process.env.HTML_TEMPLATE)
 
