@@ -1,2 +1,5 @@
 import "readable-code"
-import "edge-builder/bin/edge-builder"
+import { addGulpTasks } from "edge-builder"
+
+addGulpTasks()
+
