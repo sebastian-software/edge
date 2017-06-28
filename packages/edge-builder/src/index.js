@@ -95,12 +95,13 @@ export function startDevServer() {
   return server
 }
 
-// Adding gulp tasks
-gulp.task("clean:server", cleanServer)
-gulp.task("clean:client", cleanClient)
-gulp.task("build:server", [ "clean:server" ], buildServer)
-gulp.task("build:client", [ "clean:client" ], buildClient)
-gulp.task("build", (callback) => {
-  runSequence("build:client", "build:server", callback)
-})
-gulp.task("start:dev", startDevServer)
+export function addGulpTasks() {
+  gulp.task("clean:server", cleanServer)
+  gulp.task("clean:client", cleanClient)
+  gulp.task("build:server", [ "clean:server" ], buildServer)
+  gulp.task("build:client", [ "clean:client" ], buildClient)
+  gulp.task("build", (callback) => {
+    runSequence("build:client", "build:server", callback)
+  })
+  gulp.task("start:dev", startDevServer)
+}
