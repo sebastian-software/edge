@@ -29,17 +29,6 @@ import SriPlugin from "webpack-subresource-integrity"
 import BabiliPlugin from "babili-webpack-plugin"
 import UglifyPlugin from "uglifyjs-webpack-plugin"
 
-// Loaders
-import babelLoader from "babel-loader"
-import cssLoader from "css-loader"
-import cssLoaderLocals from "css-loader/locals"
-import cacheLoader from "cache-loader"
-import graphqlLoader from "graphql-tag/loader"
-import jsonLoader from "json-loader"
-import yamlLoader from "yaml-loader"
-import fileLoader from "file-loader"
-import postcssLoader from "postcss-loader"
-
 
 // Initialize environment configuration
 dotenv.config()
