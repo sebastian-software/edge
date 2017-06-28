@@ -2,10 +2,12 @@ import gulp from "gulp"
 import runSequence from "run-sequence"
 import webpack from "webpack"
 import builder from "./builder"
-import { addDevMiddleware } from "./server"
+import { addDevMiddleware } from "./express/dev"
 import { removeSync } from "fs-extra"
 import dotenv from "dotenv"
 import express from "express"
+
+export { addDevMiddleware }
 
 // Initialize environment configuration
 dotenv.config()

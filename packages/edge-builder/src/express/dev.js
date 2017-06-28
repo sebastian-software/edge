@@ -5,7 +5,7 @@ import webpack from "webpack"
 import webpackDevMiddleware from "webpack-dev-middleware"
 import webpackHotMiddleware from "webpack-hot-middleware"
 import webpackHotServerMiddleware from "webpack-hot-server-middleware"
-import configBuilder from "./builder"
+import configBuilder from "../builder"
 
 // Initialize environment configuration
 dotenv.config()
