@@ -36,7 +36,9 @@ import cssLoaderLocals from "css-loader/locals"
 import cacheLoader from "cache-loader"
 import graphqlLoader from "graphql-tag/loader"
 import jsonLoader from "json-loader"
+import yamlLoader from "yaml-loader"
 import fileLoader from "file-loader"
+import postcssLoader from "postcss-loader"
 
 
 // Initialize environment configuration
