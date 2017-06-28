@@ -31,9 +31,6 @@ Edge Boilerplate is a template for modern web applications. Part of the Edge Pla
 - Hot Loading for Client and Server using Webpack Multi Compiler Architecture.
 - PostCSS powered CSS pipeline with Sass-inspired features.
 - CSS Modules for Component Style Isolation.
-
-WIP:
-
 - Build Caching using Webpacks Cache-Loader.
 - Efficient Long-Term-Caching using Hashed File Names.
 - React Helmet for Efficient Header Element Handling
