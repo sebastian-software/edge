@@ -55,7 +55,6 @@
     "react-universal-component": "^1.2.6",
     "readable-code": "^3.2.0",
     "rimraf": "^2.6.1",
-    "run-sequence": "^1.2.2",
     "source-sans-pro": "^2.0.10"
   },
   "devDependencies": {
