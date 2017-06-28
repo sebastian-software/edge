@@ -10,6 +10,8 @@
   "bin": {
     "edge-builder": "./bin/edge-builder"
   },
+  "main": "lib/node.commonjs.js",
+  "module": "lib/node.esmodule.js",
   "pre-commit": "lint-staged",
   "lint-staged": {
     "*.js": "eslint",
@@ -17,7 +19,7 @@
   },
   "license": "Apache-2.0",
   "scripts": {
-    "prepare": "npm run build",
+    "prepare": "prepublish && npm run build",
     "build": "rollup -c rollup.config.js",
     "test": "jest",
     "release": "git push && release-it --github.release --npm.publish --non-interactive",
@@ -55,6 +57,7 @@
     "loader-utils": "^1.1.0",
     "lodash": "^4.17.4",
     "postcss-loader": "^2.0.6",
+    "prepublish": "^0.16.3",
     "readable-code": "^3.2.0",
     "rimraf": "^2.6.1",
     "run-sequence": "^1.2.2",

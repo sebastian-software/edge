@@ -2,12 +2,15 @@ import gulp from "gulp"
 import runSequence from "run-sequence"
 import webpack from "webpack"
 import builder from "./builder"
-import devServer from "./server/devServer"
+import { addDevMiddleware } from "./server"
 import { removeSync } from "fs-extra"
+import dotenv from "dotenv"
+import express from "express"
 
-gulp.task("build", (callback) => {
-  runSequence("build:client", "build:server", callback)
-})
+// Initialize environment configuration
+dotenv.config()
+
+const DEVELOPMENT_PORT = process.env.DEVELOPMENT_PORT
 
 function checkStats(stats, resolve, reject)
 {
@@ -79,9 +82,25 @@ export function cleanClient() {
   removeSync("./build/client")
 }
 
+export function startDevServer() {
+  const server = express()
+
+  addDevMiddleware(server)
+
+  /* eslint-disable no-console */
+  server.listen(DEVELOPMENT_PORT, () => {
+    console.log(`Development Server Started @ Port ${DEVELOPMENT_PORT}`)
+  })
+
+  return server
+}
+
 // Adding gulp tasks
 gulp.task("clean:server", cleanServer)
 gulp.task("clean:client", cleanClient)
 gulp.task("build:server", [ "clean:server" ], buildServer)
 gulp.task("build:client", [ "clean:client" ], buildClient)
-
+gulp.task("build", (callback) => {
+  runSequence("build:client", "build:server", callback)
+})
+gulp.task("start:dev", startDevServer)
