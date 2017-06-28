@@ -29,6 +29,15 @@ import SriPlugin from "webpack-subresource-integrity"
 import BabiliPlugin from "babili-webpack-plugin"
 import UglifyPlugin from "uglifyjs-webpack-plugin"
 
+// Loaders
+import babelLoader from "babel-loader"
+import cssLoader from "css-loader"
+import cssLoaderLocals from "css-loader/locals"
+import cacheLoader from "cache-loader"
+import graphqlLoader from "graphql-tag/loader"
+import jsonLoader from "json-loader"
+import fileLoader from "file-loader"
+
 
 // Initialize environment configuration
 dotenv.config()
@@ -83,8 +92,8 @@ export default function builder(options = {}) {
   const target = isServer ? "node" : "web"
   const devtool = config.enableSourceMaps ? "source-map" : null
 
-  const cacheLoader = config.useCacheLoader ? {
-    loader: "cache-loader",
+  const cacheLoaderConfig = config.useCacheLoader ? {
+    loader: cacheLoader,
     options: {
       cacheDirectory: resolve(ROOT, `.cache/${config.target}-${config.env}`)
     }
@@ -99,7 +108,7 @@ export default function builder(options = {}) {
   }
 
   const postCSSLoaderRule = {
-    loader: "postcss-loader",
+    loader: postcssLoader,
     query: {
       sourceMap: config.enableSourceMaps
     }
@@ -145,7 +154,7 @@ export default function builder(options = {}) {
         // References to images, fonts, movies, music, etc.
         {
           test: assetFiles,
-          loader: "file-loader",
+          loader: fileLoader,
           options: {
             name: isProduction ? "file-[hash:base62:8].[ext]" : "[name].[ext]",
             emitFile: isClient
@@ -155,7 +164,7 @@ export default function builder(options = {}) {
         // JSON
         {
           test: /\.json$/,
-          loader: "json-loader",
+          loader: jsonLoader,
           exclude: [
             /locale-data/
           ]
@@ -164,14 +173,14 @@ export default function builder(options = {}) {
         // YAML
         {
           test: /\.(yml|yaml)$/,
-          loaders: [ "json-loader", "yaml-loader" ]
+          loaders: [ jsonLoader, yamlLoader ]
         },
 
         // GraphQL support
         // @see http://dev.apollodata.com/react/webpack.html
         {
           test: /\.(graphql|gql)$/,
-          loader: "graphql-tag/loader"
+          loader: graphqlLoader
         },
 
         // Transpile our own JavaScript files using the setup in `.babelrc`.
@@ -179,9 +188,9 @@ export default function builder(options = {}) {
           test: babelFiles,
           exclude: /node_modules/,
           use: [
-            cacheLoader,
+            cacheLoaderConfig,
             {
-              loader: "babel-loader",
+              loader: babelLoader,
               options: {
                 ...(isProduction ? productionBabelOptions : developmentBabelOptions),
                 babelrc: true
@@ -198,9 +207,9 @@ export default function builder(options = {}) {
           test: babelFiles,
           include: /(node_modules)/,
           use: [
-            cacheLoader,
+            cacheLoaderConfig,
             {
-              loader: "babel-loader",
+              loader: babelLoader,
               options: {
                 ...(isProduction ? productionBabelOptions : developmentBabelOptions),
                 babelrc: false
@@ -214,17 +223,17 @@ export default function builder(options = {}) {
           test: postcssFiles,
           use: isClient ? ExtractCssChunks.extract({
             use: [
-              cacheLoader,
+              cacheLoaderConfig,
               {
-                loader: "css-loader",
+                loader: cssLoader,
                 options: cssLoaderOptions
               },
               postCSSLoaderRule
             ].filter(Boolean)
           }) : [
-            cacheLoader,
+            cacheLoaderConfig,
             {
-              loader: "css-loader/locals",
+              loader: cssLoaderLocals,
               options: cssLoaderOptions
             },
             postCSSLoaderRule
