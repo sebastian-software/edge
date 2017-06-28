@@ -94,8 +94,8 @@ export default function builder(options = {}) {
   const target = isServer ? "node" : "web"
   const devtool = config.enableSourceMaps ? "source-map" : null
 
-  const cacheLoaderConfig = config.useCacheLoader ? {
-    loader: cacheLoader,
+  const cacheLoader = config.useCacheLoader ? {
+    loader: "cache-loader",
     options: {
       cacheDirectory: resolve(ROOT, `.cache/${config.target}-${config.env}`)
     }
@@ -110,7 +110,7 @@ export default function builder(options = {}) {
   }
 
   const postCSSLoaderRule = {
-    loader: postcssLoader,
+    loader: "postcss-loader",
     query: {
       sourceMap: config.enableSourceMaps
     }
@@ -156,7 +156,7 @@ export default function builder(options = {}) {
         // References to images, fonts, movies, music, etc.
         {
           test: assetFiles,
-          loader: fileLoader,
+          loader: "file-loader",
           options: {
             name: isProduction ? "file-[hash:base62:8].[ext]" : "[name].[ext]",
             emitFile: isClient
@@ -166,7 +166,7 @@ export default function builder(options = {}) {
         // JSON
         {
           test: /\.json$/,
-          loader: jsonLoader,
+          loader: "json-loader",
           exclude: [
             /locale-data/
           ]
@@ -175,14 +175,14 @@ export default function builder(options = {}) {
         // YAML
         {
           test: /\.(yml|yaml)$/,
-          loaders: [ jsonLoader, yamlLoader ]
+          loaders: [ "json-loader", "yaml-loader" ]
         },
 
         // GraphQL support
         // @see http://dev.apollodata.com/react/webpack.html
         {
           test: /\.(graphql|gql)$/,
-          loader: graphqlLoader
+          loader: "graphql-tag/loader"
         },
 
         // Transpile our own JavaScript files using the setup in `.babelrc`.
@@ -190,9 +190,9 @@ export default function builder(options = {}) {
           test: babelFiles,
           exclude: /node_modules/,
           use: [
-            cacheLoaderConfig,
+            cacheLoader,
             {
-              loader: babelLoader,
+              loader: "babel-loader",
               options: {
                 ...(isProduction ? productionBabelOptions : developmentBabelOptions),
                 babelrc: true
@@ -209,9 +209,9 @@ export default function builder(options = {}) {
           test: babelFiles,
           include: /(node_modules)/,
           use: [
-            cacheLoaderConfig,
+            cacheLoader,
             {
-              loader: babelLoader,
+              loader: "babel-loader",
               options: {
                 ...(isProduction ? productionBabelOptions : developmentBabelOptions),
                 babelrc: false
@@ -225,17 +225,17 @@ export default function builder(options = {}) {
           test: postcssFiles,
           use: isClient ? ExtractCssChunks.extract({
             use: [
-              cacheLoaderConfig,
+              cacheLoader,
               {
-                loader: cssLoader,
+                loader: "css-loader",
                 options: cssLoaderOptions
               },
               postCSSLoaderRule
             ].filter(Boolean)
           }) : [
-            cacheLoaderConfig,
+            cacheLoader,
             {
-              loader: cssLoaderLocals,
+              loader: "css-loader/locals",
               options: cssLoaderOptions
             },
             postCSSLoaderRule
