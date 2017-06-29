@@ -266,11 +266,11 @@ export default function builder(options = {}) {
 
       // "Use HashedModuleIdsPlugin to generate IDs that preserves over builds."
       // Via: https://github.com/webpack/webpack.js.org/issues/652#issuecomment-273324529
-      // isProduction ? new webpack.HashedModuleIdsPlugin() : null,
+      isProduction ? new webpack.HashedModuleIdsPlugin() : null,
 
       // I would recommend using NamedModulesPlugin during development (better output).
       // Via: https://github.com/webpack/webpack.js.org/issues/652#issuecomment-273023082
-      // isDevelopment ? new webpack.NamedModulesPlugin() : null,
+      isDevelopment ? new webpack.NamedModulesPlugin() : null,
 
       isClient ? new ExtractCssChunks({
         filename: isDevelopment ? "[name].css" : "[name].[contenthash:base62:8].css"
