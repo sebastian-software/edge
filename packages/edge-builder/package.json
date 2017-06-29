@@ -58,7 +58,7 @@
     "loader-utils": "^1.1.0",
     "lodash": "^4.17.4",
     "postcss-loader": "^2.0.6",
-    "prepublish": "^0.16.3",
+    "prepublish": "^0.17.0",
     "readable-code": "^3.2.0",
     "rimraf": "^2.6.1",
     "run-sequence": "^1.2.2",
