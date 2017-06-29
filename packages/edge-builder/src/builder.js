@@ -76,7 +76,8 @@ export default function builder(options = {}) {
   const isProduction = config.env === "production"
 
   console.log(`Edge Webpack for Webpack@${webpackPkg.version}`)
-  console.log(`- Generating Config for: ${config.target}@${config.env}`)
+  console.log(`- Target: ${config.target}`)
+  console.log(`- Environment: ${config.env}`)
   console.log(`- Enable Source Maps: ${config.enableSourceMaps}`)
   console.log(`- Legacy ES5 Output: ${config.writeLegacyOutput}`)
   console.log(`- Bundle Compression: ${config.bundleCompression}`)
@@ -210,6 +211,12 @@ export default function builder(options = {}) {
     },
 
     plugins: [
+      new webpack.DefinePlugin({
+        "process.env": {
+          NODE_ENV: JSON.stringify(options.env)
+        }
+      }),
+
       // Generating static HTML page for simple static deployment
       // https://github.com/jantimon/html-webpack-plugin
       isProduction && isClient ?
@@ -289,13 +296,7 @@ export default function builder(options = {}) {
       isProduction ? new webpack.optimize.ModuleConcatenationPlugin() : null,
 
       isClient && isDevelopment ? new webpack.HotModuleReplacementPlugin() : null,
-      isDevelopment ? new webpack.NoEmitOnErrorsPlugin() : null,
-
-      new webpack.DefinePlugin({
-        "process.env": {
-          NODE_ENV: JSON.stringify(options.env)
-        }
-      })
+      isDevelopment ? new webpack.NoEmitOnErrorsPlugin() : null
     ].filter(Boolean)
   }
 }
