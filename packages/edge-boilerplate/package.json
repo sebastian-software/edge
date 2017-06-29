@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "babel-preset-edge": "^0.6.0",
+    "babel-watch": "^2.0.6",
     "cross-env": "^5.0.1",
     "edge-builder": "^0.2.7",
     "edge-postcss": "^0.6.0",
