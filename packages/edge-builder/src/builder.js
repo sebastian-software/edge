@@ -73,8 +73,9 @@ export default function builder(options = {}) {
   const isDevelopment = config.env === "development"
   const isProduction = config.env === "production"
 
-  console.log(`Edge Webpack for Webpack@${webpackPkg.version}: Generating Config for: ${config.target}@${config.env}`)
-  console.log(`- Source Maps: ${config.enableSourceMaps}`)
+  console.log(`Edge Webpack for Webpack@${webpackPkg.version}`)
+  console.log(`- Generating Config for: ${config.target}@${config.env}`)
+  console.log(`- Enable Source Maps: ${config.enableSourceMaps}`)
   console.log(`- Legacy ES5 Output: ${config.writeLegacyOutput}`)
   console.log(`- Bundle Compression: ${config.bundleCompression}`)
   console.log(`- Use Cache Loader: ${config.useCacheLoader}`)
@@ -103,13 +104,6 @@ export default function builder(options = {}) {
     query: {
       sourceMap: config.enableSourceMaps
     }
-  }
-
-  const developmentBabelOptions = {
-  }
-
-  const productionBabelOptions = {
-    presets: [ "babili" ]
   }
 
   const assetFiles = /\.(eot|woff|woff2|ttf|otf|svg|png|jpg|jpeg|jp2|jpx|jxr|gif|webp|mp4|mp3|ogg|pdf|html)$/
@@ -183,27 +177,7 @@ export default function builder(options = {}) {
             {
               loader: "babel-loader",
               options: {
-                ...(isProduction ? productionBabelOptions : developmentBabelOptions),
                 babelrc: true
-              }
-            }
-          ].filter(Boolean)
-        },
-
-        // Compress other JS files using a loader which is based on babilii as well.
-        // Notice the different include/exclude sections.
-        // This config is also ignoring the project specific .babelrc as code inside
-        // node_modules should be transpiled already.
-        config.bundleCompression ? null : {
-          test: babelFiles,
-          include: /(node_modules)/,
-          use: [
-            cacheLoader,
-            {
-              loader: "babel-loader",
-              options: {
-                ...(isProduction ? productionBabelOptions : developmentBabelOptions),
-                babelrc: false
               }
             }
           ].filter(Boolean)
@@ -286,7 +260,9 @@ export default function builder(options = {}) {
       // Advanced ES2015 ready JS compression based on Babylon (Babel Parser)
       // https://github.com/webpack-contrib/babili-webpack-plugin
       config.bundleCompression && !config.writeLegacyOutput && isProduction && isClient ?
-        new BabiliPlugin() : null,
+        new BabiliPlugin({
+          comments: false
+        }) : null,
 
       // "Use HashedModuleIdsPlugin to generate IDs that preserves over builds."
       // Via: https://github.com/webpack/webpack.js.org/issues/652#issuecomment-273324529
