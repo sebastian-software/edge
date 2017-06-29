@@ -43,7 +43,7 @@
     "babel-preset-edge": "^0.6.0",
     "babel-watch": "^2.0.6",
     "cross-env": "^5.0.1",
-    "edge-builder": "^0.2.8",
+    "edge-builder": "^0.2.10",
     "edge-postcss": "^0.6.0",
     "express": "^4.15.3",
     "fs-extra": "^3.0.1",
