@@ -64,6 +64,8 @@ const serverExternals = fs
     return externals
   }, {})
 
+const babiliOptions = {}
+
 export default function builder(options = {}) {
   const config = { ...defaults, ...options }
 
@@ -260,9 +262,7 @@ export default function builder(options = {}) {
       // Advanced ES2015 ready JS compression based on Babylon (Babel Parser)
       // https://github.com/webpack-contrib/babili-webpack-plugin
       config.bundleCompression && !config.writeLegacyOutput && isProduction && isClient ?
-        new BabiliPlugin({
-          comments: false
-        }) : null,
+        new BabiliPlugin(babiliOptions, { comments: false }) : null,
 
       // "Use HashedModuleIdsPlugin to generate IDs that preserves over builds."
       // Via: https://github.com/webpack/webpack.js.org/issues/652#issuecomment-273324529
