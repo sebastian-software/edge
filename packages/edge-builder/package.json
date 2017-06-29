@@ -21,7 +21,7 @@
   "scripts": {
     "prepare": "npm run build",
     "build": "prepublish && rollup -c rollup.config.js",
-    "test": "jest",
+    "test": "npm run build && bin/edge-builder && jest",
     "release": "git push && release-it --github.release --npm.publish --non-interactive",
     "release:minor": "git push && release-it --github.release --npm.publish --non-interactive --increment minor",
     "release:major": "git push && release-it --github.release --npm.publish --non-interactive --increment major"
