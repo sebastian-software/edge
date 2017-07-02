@@ -69,6 +69,11 @@ const babiliOptions = {}
 export default function builder(options = {}) {
   const config = { ...defaults, ...options }
 
+  // process.env.NODE_ENV is typically set but still could be undefined. Fix that.
+  if (config.env == null) {
+    config.env = "development"
+  }
+
   const isServer = config.target === "server"
   const isClient = config.target === "client"
 
