@@ -40,11 +40,11 @@
     "npm": ">=4.0.0"
   },
   "dependencies": {
-    "babel-preset-edge": "^0.7.1",
+    "babel-preset-edge": "^0.9.3",
     "babel-watch": "^2.0.6",
     "cross-env": "^5.0.1",
-    "edge-builder": "^0.2.12",
-    "edge-postcss": "^0.6.0",
+    "edge-builder": "^0.2.13",
+    "edge-postcss": "^0.6.1",
     "express": "^4.15.3",
     "fs-extra": "^3.0.1",
     "react": "^15.6.1",
@@ -54,7 +54,7 @@
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
     "react-universal-component": "^1.4.1",
-    "readable-code": "^3.2.0",
+    "readable-code": "^3.3.2",
     "redux": "^3.7.1",
     "rimraf": "^2.6.1",
     "source-sans-pro": "^2.0.10"
