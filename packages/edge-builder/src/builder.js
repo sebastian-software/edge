@@ -191,6 +191,7 @@ export default function builder(options = {}) {
               loader: "babel-loader",
               options: {
                 babelrc: true,
+                cacheDirectory: true,
                 forceEnv: BABEL_ENV
               }
             }
