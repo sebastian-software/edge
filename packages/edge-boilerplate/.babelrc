@@ -30,6 +30,12 @@
       ]
     },
 
+    "production": {
+      "presets": [
+        [ "edge", { "target": "current", "modules": "commonjs" }]
+      ]
+    },
+
     "test": {
       "presets": [
         [ "edge", { "target": "test" }]
