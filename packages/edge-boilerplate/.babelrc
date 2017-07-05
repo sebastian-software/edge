@@ -1,3 +1,19 @@
 {
-  "presets": [ "edge" ]
+  "env": {
+    "production": {
+      "presets": [
+        [ "edge", { "target": "browser" }]
+      ]
+    },
+    "development": {
+      "presets": [
+        [ "edge", { "target": "modern", "modules": "commonjs" }]
+      ]
+    },
+    "test": {
+      "presets": [
+        [ "edge", { "target": "test" }]
+      ]
+    }
+  }
 }
