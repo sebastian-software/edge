@@ -5,7 +5,13 @@ module.exports = {
         {
           test: /\.(mjs|js|jsx)$/,
           loader: "babel-loader",
-          exclude: /node_modules/
+          exclude: /node_modules/,
+          options: {
+            babelrc: false,
+            presets: [
+              [ "edge", { target: "modern" }]
+            ]
+          }
         },
         {
           test: /\.(eot|woff|woff2|ttf|otf|svg|png|jpg|jpeg|jp2|jpx|jxr|gif|webp|mp4|mp3|ogg|pdf|html)$/,
