@@ -38,7 +38,7 @@
   "dependencies": {
     "app-root-dir": "^1.0.2",
     "babel-loader": "^7.1.1",
-    "babel-preset-edge": "^0.9.3",
+    "babel-preset-edge": "^0.9.4",
     "babili-webpack-plugin": "^0.1.2",
     "cache-loader": "^1.0.3",
     "case-sensitive-paths-webpack-plugin": "^2.1.1",
