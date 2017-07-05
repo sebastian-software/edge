@@ -49,7 +49,7 @@ const defaults = {
   writeLegacyOutput: false,
   bundleCompression: true,
   useCacheLoader: true,
-  babelEnvPrefix: "edge-"
+  babelEnvPrefix: "edge"
 }
 
 // if you're specifying externals to leave unbundled, you need to tell Webpack
