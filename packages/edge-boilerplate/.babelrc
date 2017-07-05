@@ -1,15 +1,35 @@
 {
   "env": {
-    "production": {
+    "edge-development-client": {
+      "presets": [
+        [ "edge", { "target": "modern" }]
+      ]
+    },
+
+    "edge-development-server": {
+      "presets": [
+        [ "edge", { "target": "current" }]
+      ]
+    },
+
+    "edge-production-client": {
       "presets": [
         [ "edge", { "target": "browser" }]
       ]
     },
-    "development": {
+
+    "edge-production-server": {
       "presets": [
-        [ "edge", { "target": "modern", "modules": "commonjs" }]
+        [ "edge", { "target": "script" }]
       ]
     },
+
+    "development": {
+      "presets": [
+        [ "edge", { "target": "current", "modules": "commonjs" }]
+      ]
+    },
+
     "test": {
       "presets": [
         [ "edge", { "target": "test" }]
