@@ -72,6 +72,7 @@
     "react-intl": "^2.3.0",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
     "react-universal-component": "^1.4.1",
     "readable-code": "^3.3.2",
     "redux": "^3.7.1",
