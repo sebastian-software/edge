@@ -2,7 +2,7 @@
   "env": {
     "edge-development-client": {
       "presets": [
-        [ "edge", { "target": "modern" }]
+        [ "edge", { "target": "browser" }]
       ]
     },
 

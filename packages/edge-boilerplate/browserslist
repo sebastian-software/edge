@@ -1,18 +1,16 @@
 [production]
-and_chr >= 59
-chrome >= 57
-edge >= 12
-firefox >= 52
-ie >= 11
-ios_saf >= 10
 safari >= 10
-samsung >= 4
+ios >= 10
+edge >= 13
+chrome >= 50
+chromeandroid >= 50
+firefox >= 50
+ie >= 11
 
 [development]
-last 2 and_chr versions
-last 2 chrome versions
-last 2 edge versions
-last 2 firefox versions
-last 2 ios_saf versions
-last 2 safari versions
-last 2 samsung versions
+safari >= 10.1
+ios >= 10.3
+edge >= 15
+chrome >= 58
+chromeandroid >= 58
+firefox >= 53
