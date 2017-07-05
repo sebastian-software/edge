@@ -48,7 +48,8 @@ const defaults = {
   enableSourceMaps: true,
   writeLegacyOutput: false,
   bundleCompression: true,
-  useCacheLoader: true
+  useCacheLoader: true,
+  babelEnvPrefix: "edge-"
 }
 
 // if you're specifying externals to leave unbundled, you need to tell Webpack
@@ -80,9 +81,12 @@ export default function builder(options = {}) {
   const isDevelopment = config.env === "development"
   const isProduction = config.env === "production"
 
+  const BABEL_ENV = `${config.babelEnvPrefix}-${config.env}-${config.target}`
+
   console.log(`Edge Webpack for Webpack@${webpackPkg.version}`)
   console.log(`- Target: ${config.target}`)
   console.log(`- Environment: ${config.env}`)
+  console.log(`- Babel Env: ${BABEL_ENV}`)
   console.log(`- Enable Source Maps: ${config.enableSourceMaps}`)
   console.log(`- Legacy ES5 Output: ${config.writeLegacyOutput}`)
   console.log(`- Bundle Compression: ${config.bundleCompression}`)
@@ -180,12 +184,14 @@ export default function builder(options = {}) {
         {
           test: babelFiles,
           exclude: /node_modules/,
-          use: [
+          use:
+          [
             cacheLoader,
             {
               loader: "babel-loader",
               options: {
-                babelrc: true
+                babelrc: true,
+                forceEnv: BABEL_ENV
               }
             }
           ].filter(Boolean)
@@ -195,7 +201,8 @@ export default function builder(options = {}) {
         {
           test: postcssFiles,
           use: isClient ? ExtractCssChunks.extract({
-            use: [
+            use:
+            [
               cacheLoader,
               {
                 loader: "css-loader",
