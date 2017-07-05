@@ -99,11 +99,11 @@ export default function builder(options = {}) {
   const cacheLoader = config.useCacheLoader ? {
     loader: "cache-loader",
     options: {
-      cacheDirectory: resolve(ROOT, `.cache/loader/${config.target}-${config.env}`)
+      cacheDirectory: resolve(ROOT, `.cache/loader-${config.target}-${config.env}`)
     }
   } : null
 
-  const BABEL_CACHE = resolve(ROOT, `.cache/babel/${config.target}-${config.env}`)
+  const BABEL_CACHE = resolve(ROOT, `.cache/babel-${config.target}-${config.env}`)
 
   const cssLoaderOptions = {
     modules: true,
