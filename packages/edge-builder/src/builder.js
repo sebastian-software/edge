@@ -29,6 +29,9 @@ import SriPlugin from "webpack-subresource-integrity"
 import BabiliPlugin from "babili-webpack-plugin"
 import UglifyPlugin from "uglifyjs-webpack-plugin"
 
+import BundleAnalyzerPlugin from "webpack-bundle-analyzer"
+
+
 
 // Initialize environment configuration
 dotenv.config()
@@ -47,7 +50,7 @@ const defaults = {
   verbose: false,
   enableSourceMaps: true,
   writeLegacyOutput: false,
-  bundleCompression: true,
+  bundleCompression: "uglify", // either "uglify", "babili" or null
   useCacheLoader: true,
   babelEnvPrefix: "edge"
 }
@@ -259,6 +262,24 @@ export default function builder(options = {}) {
       // Automatically assign quite useful and matching chunk names based on file names.
       new ChunkNames(),
 
+      // Analyse bundle in production
+      isClient && isProduction ? new BundleAnalyzerPlugin.BundleAnalyzerPlugin({
+        analyzerMode: "static",
+        defaultSizes: "gzip",
+        // logLevel: "silent",
+        openAnalyzer: false,
+        reportFilename: "report-client.html"
+      }) : null,
+
+      // Analyse bundle in production
+      isServer && isProduction ? new BundleAnalyzerPlugin.BundleAnalyzerPlugin({
+        analyzerMode: "static",
+        defaultSizes: "parsed",
+        // logLevel: "silent",
+        openAnalyzer: false,
+        reportFilename: "report-server.html"
+      }) : null,
+
       // We use this so that our generated [chunkhash]'s are only different if
       // the content for our respective chunks have changed.  This optimises
       // our long term browser caching strategy for our client bundle, avoiding
@@ -272,18 +293,26 @@ export default function builder(options = {}) {
 
       // Classic UglifyJS for compressing ES5 compatible code.
       // https://github.com/webpack-contrib/uglifyjs-webpack-plugin
-      config.bundleCompression && config.writeLegacyOutput && isProduction && isClient ?
+      config.bundleCompression === "uglify" && config.writeLegacyOutput && isProduction && isClient ?
         new UglifyPlugin({
-          compress: true,
-          mangle: true,
-          comments: false,
-          sourceMap: true
+          uglifyOptions: {
+            // https://github.com/mishoo/UglifyJS2#compress-options
+            compress: {
+              unsafe_math: true,
+              unsafe_proto: true,
+              keep_infinity: true,
+              passes: 3
+            },
+            output: {
+              ascii_only: true
+            }
+          }
         }) : null,
 
       // Alternative to Uglify when producing modern output
       // Advanced ES2015 ready JS compression based on Babylon (Babel Parser)
       // https://github.com/webpack-contrib/babili-webpack-plugin
-      config.bundleCompression && !config.writeLegacyOutput && isProduction && isClient ?
+      config.bundleCompression === "babili" && !config.writeLegacyOutput && isProduction && isClient ?
         new BabiliPlugin(babiliOptions, { comments: false }) : null,
 
       // "Use HashedModuleIdsPlugin to generate IDs that preserves over builds."
