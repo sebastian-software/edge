@@ -298,11 +298,13 @@ export default function builder(options = {}) {
             compress: {
               unsafe_math: true,
               unsafe_proto: true,
-              keep_infinity: true,
-              passes: 3
+              keep_infinity: true, // good for chrome performance
+              passes: 3 // try hard to use less code
             },
             output: {
-              ascii_only: true
+              ascii_only: true, // fix for problematic code like emoticons
+              semicolons: false, // more readable output
+              comments: false
             }
           }
         }) : null,
