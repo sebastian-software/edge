@@ -62,7 +62,7 @@
     "babel-watch": "^2.0.6",
     "classnames": "^2.2.5",
     "cross-env": "^5.0.1",
-    "edge-builder": "^0.3.7",
+    "edge-builder": "^0.3.10",
     "edge-postcss": "^0.6.1",
     "express": "^4.15.3",
     "fs-extra": "^3.0.1",
