@@ -32,6 +32,3 @@ notifications:
 cache:
   # global npm cache
   - "%APPDATA%\\npm-cache"
-
-  # global Yarn cache
-  - "%LOCALAPPDATA%\\Yarn"
