@@ -356,6 +356,7 @@ background-color:transparent;
 }
 
 abbr[title]{
+-webkit-text-decoration:underline dotted;
 text-decoration:underline dotted
 }
 
