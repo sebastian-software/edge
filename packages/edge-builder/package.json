@@ -8,7 +8,7 @@
     "url": "sebastian-software.de"
   },
   "bin": {
-    "edge-builder": "bin/edge-builder"
+    "edge": "bin/edge"
   },
   "main": "lib/node.commonjs.js",
   "module": "lib/node.esmodules.js",
