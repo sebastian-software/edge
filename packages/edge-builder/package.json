@@ -72,6 +72,7 @@
     "webpack-hot-middleware": "^2.18.2",
     "webpack-hot-server-middleware": "^0.1.0",
     "webpack-subresource-integrity": "^1.0.1",
+    "worker-loader": "^0.8.1",
     "yaml-loader": "^0.5.0"
   },
   "devDependencies": {
