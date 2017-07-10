@@ -2,6 +2,9 @@
 /* eslint-disable import/no-commonjs */
 /* eslint-disable import/unambiguous */
 
+var appRootDir = require("app-root-dir").get()
+var path = require("path")
+
 module.exports = ({ file, options, env }) => ({
   "plugins":
   {
@@ -49,6 +52,16 @@ module.exports = ({ file, options, env }) => ({
     // ====================================================
     // ================ SASS INSPIRED =====================
     // ====================================================
+
+    // Enabling configuration maps.
+    // Reading default configuration map from root source folder.
+    // https://github.com/pascalduez/postcss-map
+    "postcss-map": {
+      basePath: "src/",
+      maps: [
+        "Config.yml"
+      ]
+    },
 
     // Sass-like mixins
     // Needs to be executed before any variable handling plugins

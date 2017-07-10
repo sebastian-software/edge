@@ -70,6 +70,12 @@ color:rgba(255,255,0,.9)
 }"
 `;
 
+exports[`Config Maps 1`] = `
+"h1{
+background:darkyellow
+}"
+`;
+
 exports[`Custom Media 1`] = `
 "@media (max-width:30em){
 body{

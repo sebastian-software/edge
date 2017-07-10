@@ -65,6 +65,10 @@ test("Asset Size", () =>
 // ================ SASS INSPIRED =====================
 // ====================================================
 
+test("Config Maps", () =>
+  compile("h1 { background: map(Config, bgcolor); }")
+)
+
 test("Sassy Mixins", () =>
   compile("@mixin simple{ color: red; } h1 { @include simple; }")
 )
