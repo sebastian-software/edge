@@ -281,12 +281,6 @@ export default function builder(options = {}) {
         reportFilename: "report.html"
       }) : null,
 
-      // Compress static files with zopfli (gzip) compression
-      // https://github.com/webpack-contrib/zopfli-webpack-plugin
-      isProduction && isClient ? new ZopfliPlugin({
-        test: compressableAssets
-      }) : null,
-
       // We use this so that our generated [chunkhash]'s are only different if
       // the content for our respective chunks have changed.  This optimises
       // our long term browser caching strategy for our client bundle, avoiding
@@ -349,7 +343,16 @@ export default function builder(options = {}) {
       isProduction ? new webpack.optimize.ModuleConcatenationPlugin() : null,
 
       isClient && isDevelopment ? new webpack.HotModuleReplacementPlugin() : null,
-      isDevelopment ? new webpack.NoEmitOnErrorsPlugin() : null
+      isDevelopment ? new webpack.NoEmitOnErrorsPlugin() : null,
+
+      // Compress static files with zopfli (gzip) compression
+      // https://github.com/webpack-contrib/zopfli-webpack-plugin
+      isProduction && isClient ? new ZopfliPlugin({
+        test: compressableAssets,
+        verbose: true
+      }) : null
+
+
     ].filter(Boolean)
   }
 }
