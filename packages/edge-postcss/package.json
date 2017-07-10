@@ -65,7 +65,7 @@
     "postcss-media-minmax": "^3.0.0",
     "postcss-nested": "^2.0.2",
     "postcss-normalize": "^4.0.0",
-    "postcss-pseudoelements": "^4.0.0",
+    "postcss-pseudoelements": "^5.0.0",
     "postcss-reporter": "^4.0.0",
     "postcss-responsive-type": "^0.5.1",
     "postcss-sassy-mixins": "^2.1.0",
@@ -82,7 +82,7 @@
     "gulp-cli": "^1.3.0",
     "jest-cli": "^20.0.4",
     "postcss-load-config": "^1.2.0",
-    "prepublish": "^0.20.1",
+    "prepublish": "^1.0.2",
     "readable-code": "^3.3.2"
   }
 }
