@@ -114,6 +114,10 @@ module.exports = ({ file, options, env }) => ({
     // https://github.com/postcss/postcss-color-function
     "postcss-color-function": {},
 
+    // Create smooth linear-gradients that approximate easing functions.
+    // https://github.com/larsenwork/postcss-easing-gradients
+    "postcss-easing-gradients": {},
+
 
 
     // ====================================================

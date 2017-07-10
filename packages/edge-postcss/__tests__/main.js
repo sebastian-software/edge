@@ -133,6 +133,15 @@ test("Color Function", () =>
   compile(".yellow { color: color(yellow a(90%)) }")
 )
 
+test("Easing Gradients", () =>
+  compile(`
+.demo {
+  background: scrim-gradient(
+    black,
+    transparent
+  );
+}`))
+
 
 
 
