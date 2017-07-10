@@ -30,6 +30,7 @@ import BabiliPlugin from "babili-webpack-plugin"
 import UglifyPlugin from "uglifyjs-webpack-plugin"
 
 import BundleAnalyzerPlugin from "webpack-bundle-analyzer"
+import ZopfliPlugin from "zopfli-webpack-plugin"
 
 
 
@@ -68,6 +69,8 @@ const serverExternals = fs
   }, {})
 
 const babiliOptions = {}
+
+const compressableAssets = /\.(ttf|otf|svg|pdf|html|ico|txt|md|html|js|css|json|xml)$/
 
 export default function builder(options = {}) {
   const config = { ...defaults, ...options }
@@ -276,6 +279,12 @@ export default function builder(options = {}) {
         logLevel: "silent",
         openAnalyzer: false,
         reportFilename: "report.html"
+      }) : null,
+
+      // Compress static files with zopfli (gzip) compression
+      // https://github.com/webpack-contrib/zopfli-webpack-plugin
+      isProduction && isClient ? new ZopfliPlugin({
+        test: compressableAssets
       }) : null,
 
       // We use this so that our generated [chunkhash]'s are only different if
