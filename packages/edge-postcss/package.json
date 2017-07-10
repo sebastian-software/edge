@@ -33,7 +33,7 @@
     "email": "s.werner@sebastian-software.de",
     "url": "sebastian-software.de"
   },
-  "license": "MIT",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/sebastian-software/edge-postcss/issues"
   },
@@ -47,6 +47,7 @@
     "postcss-advanced-variables": "^1.2.2",
     "postcss-assets": "^4.1.0",
     "postcss-at-warn": "^1.0.0",
+    "postcss-better-colors": "^0.1.1",
     "postcss-calc": "^6.0.0",
     "postcss-clearfix": "^1.0.0",
     "postcss-color-function": "^4.0.0",

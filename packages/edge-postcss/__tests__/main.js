@@ -125,6 +125,10 @@ test("Flow Root", () =>
 // ================== COLOR ===========================
 // ====================================================
 
+test("Improved Color Palette", () =>
+  compile(".red { color: red; }")
+)
+
 test("RGBA with Hex", () =>
   compile(".red { color: rgba(#f11, 0.8); }")
 )

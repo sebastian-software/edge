@@ -115,6 +115,12 @@ module.exports = ({ file, options, env }) => ({
     // ================== COLOR ===========================
     // ====================================================
 
+    // Transform CSS2 color keywords to a custom palette
+    // https://github.com/sebastian-software/postcss-better-colors
+    "postcss-better-colors": {
+      "palette": "mrmrs"
+    },
+
     // Adds shorthand hex methods to rbga() values.
     // https://github.com/seaneking/postcss-hexrgba
     "postcss-hexrgba": {},
