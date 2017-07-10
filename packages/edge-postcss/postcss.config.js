@@ -21,8 +21,8 @@ module.exports = ({ file, options, env }) => ({
 
     // Re-rebasing url()-referenced assets during processing.
     // Respects locations of imported files and PostCSS configured output location.
-    // https://github.com/sebastian-software/postcss-simple-url
-    "postcss-simple-url": {},
+    // https://github.com/sebastian-software/postcss-smart-asset
+    "postcss-smart-asset": {},
 
     // Asset Manager for PostCSS. For us mainly interesting
     // for its support for detecting image dimensions and
