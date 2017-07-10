@@ -28,7 +28,7 @@ const selectedTasks = command.input
 const flags = command.flags
 
 console.log(chalk.bold("EDGE " + chalk.green("v" + pkg.version)))
-console.log(commands)
+console.log(selectedTasks)
 console.log(flags)
 
 const availableTasks = [

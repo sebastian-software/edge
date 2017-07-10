@@ -60,7 +60,7 @@
     "lodash": "^4.17.4",
     "meow": "^3.7.0",
     "postcss-loader": "^2.0.6",
-    "prepublish": "^1.0.3",
+    "prepublish": "^1.0.6",
     "readable-code": "^3.3.3",
     "rimraf": "^2.6.1",
     "run-sequence": "^2.0.0",
