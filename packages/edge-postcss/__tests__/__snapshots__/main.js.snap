@@ -6,6 +6,12 @@ background-size:304px 85px
 }"
 `;
 
+exports[`Asset URL 1`] = `
+".icon{
+background:url(../fixtures/formula.png)
+}"
+`;
+
 exports[`Autoprefixer 1`] = `
 ":-webkit-full-screen a{
 display:flex
@@ -206,6 +212,19 @@ left:50%
 exports[`Hex with Alpha 1`] = `
 ".blue{
 color:rgba(17,17,255,.8)
+}"
+`;
+
+exports[`Import Basic 1`] = `
+".root{
+color:red
+}"
+`;
+
+exports[`Import with Merge 1`] = `
+".section{
+color:#00d;
+background:#333
 }"
 `;
 
@@ -516,25 +535,6 @@ background:red
 exports[`Selector matches() 1`] = `
 "p.special,p:first-child{
 color:red
-}"
-`;
-
-exports[`Simple URL 1`] = `
-".icon{
-background:url(../fixtures/formula.png)
-}"
-`;
-
-exports[`Smart Import Basic 1`] = `
-".root{
-color:red
-}"
-`;
-
-exports[`Smart Import with Merge 1`] = `
-".section{
-color:#00d;
-background:#333
 }"
 `;
 

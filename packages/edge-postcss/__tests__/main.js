@@ -37,11 +37,11 @@ function compile(input) {
 // ================== MERGING =========================
 // ====================================================
 
-test("Smart Import Basic", () =>
+test("Import Basic", () =>
   compile("@import './fixtures/import-a.css';")
 )
 
-test("Smart Import with Merge", () =>
+test("Import with Merge", () =>
   compile("@import './fixtures/import-b.css'; .section { background: #333; }")
 )
 
@@ -51,7 +51,7 @@ test("Smart Import with Merge", () =>
 // ================= URLS/ASSETS ======================
 // ====================================================
 
-test("Simple URL", () =>
+test("Asset URL", () =>
   compile(".icon { background: url('./fixtures/formula.png'); }")
 )
 

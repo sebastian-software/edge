@@ -9,9 +9,9 @@ module.exports = ({ file, options, env }) => ({
     // ================== MERGING =========================
     // ====================================================
 
-    // Smarter `@import()` plugin to include other CSS, Sass, SugarSS files.
-    // https://github.com/sebastian-software/postcss-smart-import
-    "postcss-smart-import": {},
+    // `@import()` plugin to include other PostCSS compatible files.
+    // https://github.com/postcss/postcss-import
+    "postcss-import": {},
 
 
 

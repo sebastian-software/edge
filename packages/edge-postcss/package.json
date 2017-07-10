@@ -60,6 +60,7 @@
     "postcss-gradient-transparency-fix": "^2.0.0",
     "postcss-grid-kiss": "^1.4.0",
     "postcss-hexrgba": "^0.2.1",
+    "postcss-import": "^10.0.0",
     "postcss-input-style": "^0.3.0",
     "postcss-magic-animations": "^0.3.0",
     "postcss-media-minmax": "^3.0.0",
@@ -71,7 +72,6 @@
     "postcss-sassy-mixins": "^2.1.0",
     "postcss-selector-matches": "^3.0.1",
     "postcss-smart-asset": "^0.1.4",
-    "postcss-smart-import": "^0.7.5",
     "postcss-transform-shortcut": "^2.0.1",
     "postcss-will-change": "^2.0.0",
     "postcss-zindex": "^2.2.0"
