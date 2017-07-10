@@ -58,11 +58,11 @@
     "npm": ">=4.0.0"
   },
   "dependencies": {
-    "babel-preset-edge": "^0.9.5",
-    "babel-watch": "^2.0.6",
+    "babel-preset-edge": "^0.9.6",
+    "babel-watch": "^2.0.7",
     "classnames": "^2.2.5",
     "cross-env": "^5.0.1",
-    "edge-builder": "^0.3.11",
+    "edge-builder": "^0.3.13",
     "edge-postcss": "^0.6.2",
     "express": "^4.15.3",
     "fs-extra": "^3.0.1",
@@ -74,7 +74,7 @@
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
     "react-universal-component": "^1.5.0",
-    "readable-code": "^3.3.2",
+    "readable-code": "^3.3.3",
     "redux": "^3.7.1",
     "rimraf": "^2.6.1",
     "source-sans-pro": "^2.0.10"
