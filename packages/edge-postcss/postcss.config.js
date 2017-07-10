@@ -92,6 +92,10 @@ module.exports = ({ file, options, env }) => ({
       "screwIE": true
     },
 
+    // Clearfix fallback for `display: flow-root`
+    // https://github.com/fliptheweb/postcss-flow-root
+    "postcss-flow-root": {},
+
 
 
     // ====================================================

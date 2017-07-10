@@ -111,6 +111,10 @@ test("Grid KISS", () =>
   `)
 )
 
+test("Flow Root", () =>
+  compile(".selector { display: flow-root; }")
+)
+
 
 
 // ====================================================

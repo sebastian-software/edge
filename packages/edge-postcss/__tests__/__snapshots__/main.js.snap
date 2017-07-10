@@ -91,6 +91,15 @@ flex:1 1 0%
 }"
 `;
 
+exports[`Flow Root 1`] = `
+".selector{
+display:flow-root;
+-webkit-column-count:1;
+-moz-column-count:1;
+column-count:1
+}"
+`;
+
 exports[`Gradient Fix 1`] = `
 ".elem{
 background-image:linear-gradient(green,rgba(0,128,0,0))

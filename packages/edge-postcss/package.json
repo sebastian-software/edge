@@ -56,6 +56,7 @@
     "postcss-discard-comments": "^2.0.4",
     "postcss-easings": "^1.0.0",
     "postcss-flexbugs-fixes": "^3.0.0",
+    "postcss-flow-root": "0.0.3",
     "postcss-font-family-system-ui": "^2.0.1",
     "postcss-gradient-transparency-fix": "^2.0.0",
     "postcss-grid-kiss": "^1.4.0",
