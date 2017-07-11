@@ -58,6 +58,7 @@
     "loader-utils": "^1.1.0",
     "lodash": "^4.17.4",
     "meow": "^3.7.0",
+    "ora": "^1.3.0",
     "postcss-loader": "^2.0.6",
     "prepublish": "^1.0.6",
     "readable-code": "^3.3.3",
