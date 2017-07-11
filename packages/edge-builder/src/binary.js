@@ -51,4 +51,4 @@ async function executeTasks() {
   }
 }
 
-console.log(executeTasks())
+process.nextTick(executeTasks)
