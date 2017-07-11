@@ -59,6 +59,10 @@ test("Asset Size", () =>
   compile(".icon { background-size: width('./fixtures/formula.png') height('./fixtures/formula.png'); }")
 )
 
+test("Import with Asset URL", () =>
+  compile("@import './fixtures/import-c.css';")
+)
+
 
 
 // ====================================================
