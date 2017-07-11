@@ -62,8 +62,8 @@
     "babel-watch": "^2.0.7",
     "classnames": "^2.2.5",
     "cross-env": "^5.0.1",
-    "edge-builder": "^0.3.13",
-    "edge-postcss": "^0.6.2",
+    "edge-builder": "^0.4.2",
+    "edge-postcss": "^0.7.0",
     "express": "^4.15.3",
     "fs-extra": "^3.0.1",
     "react": "^15.6.1",
@@ -88,8 +88,8 @@
     "identity-obj-proxy": "^3.0.0",
     "jest-cli": "^20.0.4",
     "licensee": "^4.4.0",
-    "react-styleguidist": "^5.5.3",
+    "react-styleguidist": "^5.5.4",
     "react-test-renderer": "^15.6.1",
-    "stylelint": "^7.12.0"
+    "stylelint": "^7.13.0"
   }
 }
