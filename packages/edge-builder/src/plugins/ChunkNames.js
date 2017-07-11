@@ -49,10 +49,10 @@ export default class ChunkNames
     compiler.plugin("compilation", (compilation) => {
       compilation.plugin("optimize", () => {
         compilation.chunks.forEach((chunk) => {
-          var firstModule = chunk.modules[0]
-          if (firstModule) {
-            var userRequest = firstModule.userRequest
-            var rawRequest = firstModule.rawRequest
+          var entryModule = chunk.entryModule
+          if (entryModule) {
+            var userRequest = entryModule.userRequest
+            var rawRequest = entryModule.rawRequest
             var oldName = chunk.name
             if (userRequest && oldName == null) {
               chunk.name = generateChunkName(userRequest, rawRequest)
