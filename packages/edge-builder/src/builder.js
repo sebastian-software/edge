@@ -32,7 +32,11 @@ import UglifyPlugin from "uglifyjs-webpack-plugin"
 import BundleAnalyzerPlugin from "webpack-bundle-analyzer"
 import ZopfliPlugin from "zopfli-webpack-plugin"
 
+import { getHashDigest } from "loader-utils"
 
+const CACHE_HASH_TYPE = "sha256"
+const CACHE_DIGEST_TYPE = "base62"
+const CACHE_DIGEST_LENGTH = 4
 
 // Initialize environment configuration
 dotenv.config()
@@ -88,13 +92,16 @@ export default function builder(options = {}) {
 
   const BABEL_ENV = `${config.babelEnvPrefix}-${config.env}-${config.target}`
 
-  console.log(`Edge Webpack for Webpack@${webpackPkg.version}`)
+  const PROJECT_CONFIG = require(resolve(ROOT, "package.json"))
+  const CACHE_HASH = getHashDigest(JSON.stringify(PROJECT_CONFIG), CACHE_HASH_TYPE, CACHE_DIGEST_TYPE, CACHE_DIGEST_LENGTH)
+
   console.log(`- Target: ${config.target}`)
   console.log(`- Environment: ${config.env}`)
   console.log(`- Babel Env: ${BABEL_ENV}`)
   console.log(`- Enable Source Maps: ${config.enableSourceMaps}`)
   console.log(`- Bundle Compression: ${config.bundleCompression}`)
   console.log(`- Use Cache Loader: ${config.useCacheLoader}`)
+  console.log(`- Cache Hash: ${CACHE_HASH}`)
 
   const name = isServer ? "server" : "client"
   const target = isServer ? "node" : "web"
@@ -103,11 +110,11 @@ export default function builder(options = {}) {
   const cacheLoader = config.useCacheLoader ? {
     loader: "cache-loader",
     options: {
-      cacheDirectory: resolve(ROOT, `.cache/loader-${config.target}-${config.env}`)
+      cacheDirectory: resolve(ROOT, `.cache/loader-${CACHE_HASH}-${config.target}-${config.env}`)
     }
   } : null
 
-  const BABEL_CACHE = resolve(ROOT, `.cache/babel-${config.target}-${config.env}`)
+  const BABEL_CACHE = null
 
   const cssLoaderOptions = {
     modules: true,
