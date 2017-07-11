@@ -35,6 +35,11 @@ const availableTasks = [
   { task: "dev", commands: [ startDevServer ] }
 ]
 
+// Prevent deprecation messages which should not be displayed to the end user
+if (!flags.verbose) {
+  process.noDeprecation = true
+}
+
 async function executeCommands(listOfCommands) {
   for (let command of listOfCommands) {
     await command(flags)
