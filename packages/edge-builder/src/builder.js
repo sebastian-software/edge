@@ -347,12 +347,10 @@ export default function builder(options = {}) {
 
       // Compress static files with zopfli (gzip) compression
       // https://github.com/webpack-contrib/zopfli-webpack-plugin
-      isProduction && isClient ? new ZopfliPlugin({
-        test: compressableAssets,
-        verbose: true
-      }) : null
-
-
+      // isProduction && isClient ? new ZopfliPlugin({
+      //   test: compressableAssets,
+      //   verbose: true
+      // }) : null
     ].filter(Boolean)
   }
 }
