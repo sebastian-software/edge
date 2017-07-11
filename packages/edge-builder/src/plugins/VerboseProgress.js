@@ -33,10 +33,7 @@ export default class VerboseProgress {
     function update(module) {
       handler(
         0.1 + doneModules / Math.max(lastModulesCount, moduleCount) * 0.6,
-        "building modules",
-        `${doneModules}/${moduleCount} modules`,
-        `${activeModules.length} active`,
-        activeModules[activeModules.length - 1]
+        `building modules ${doneModules}/${moduleCount}`
       )
     }
 
