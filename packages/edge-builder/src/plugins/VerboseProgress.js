@@ -31,8 +31,14 @@ export default class VerboseProgress {
     function moduleDone(module) {
       doneModules += 1
 
-      let humanIndex = lastModule.lastIndexOf("!")
-      let humanModuleId = humanIndex === -1 ? lastModule : lastModule.slice(humanIndex + 1, lastModule.length)
+      let humanIndex
+      let humanModuleId = lastModule
+
+      humanIndex = humanModuleId.lastIndexOf(" ")
+      humanModuleId = humanIndex === -1 ? humanModuleId : humanModuleId.slice(humanIndex + 1, humanModuleId.length)
+
+      humanIndex = humanModuleId.lastIndexOf("!")
+      humanModuleId = humanIndex === -1 ? humanModuleId : humanModuleId.slice(humanIndex + 1, humanModuleId.length)
 
       humanModuleId = relative(ROOT, humanModuleId).replace(/^node_modules\//, "~/")
 
