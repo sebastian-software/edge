@@ -4,6 +4,7 @@ import updateNotifier from "update-notifier"
 import { buildClient, buildServer, cleanClient, cleanServer } from "./commands/build"
 import { startDevServer } from "./commands/dev"
 import pkg from "../package.json"
+import "nodent-runtime"
 
 // Parse arguments
 const command = meow(`
@@ -28,25 +29,26 @@ const selectedTasks = command.input
 const flags = command.flags
 
 console.log(chalk.bold("EDGE " + chalk.green("v" + pkg.version)))
-console.log(selectedTasks)
-console.log(flags)
 
 const availableTasks = [
   { task: "build", commands: [ cleanClient, cleanServer, buildClient, buildServer ] },
   { task: "dev", commands: [ startDevServer ] }
 ]
 
-function executeCommands(listOfCommands) {
-  listOfCommands.forEach((command) => {
-    console.log("Executing...")
-    command()
-  })
+async function executeCommands(listOfCommands) {
+  for (let command of listOfCommands) {
+    await command(flags)
+  }
 }
 
-for (let taskName of selectedTasks) {
-  for (let taskConfig of availableTasks) {
-    if (taskConfig.task === taskName) {
-      executeCommands(taskConfig.commands)
+async function executeTasks() {
+  for (let taskName of selectedTasks) {
+    for (let taskConfig of availableTasks) {
+      if (taskConfig.task === taskName) {
+        await executeCommands(taskConfig.commands)
+      }
     }
   }
 }
+
+console.log(executeTasks())
