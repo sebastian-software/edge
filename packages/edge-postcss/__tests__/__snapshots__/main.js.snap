@@ -1,8 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Asset Size (Same Folder) 1`] = `
+".icon{
+background-size:304px 85px
+}"
+`;
+
 exports[`Asset Size 1`] = `
 ".icon{
 background-size:304px 85px
+}"
+`;
+
+exports[`Asset URL (Same Folder) 1`] = `
+".icon{
+background:url(./formula.png)
 }"
 `;
 

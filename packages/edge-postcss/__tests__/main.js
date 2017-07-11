@@ -32,6 +32,15 @@ function compile(input) {
     .then((result) => expect(format(result.css)).toMatchSnapshot())
 }
 
+function compileSameFolder(input) {
+  let allOptions = { ...options, from: "__tests__/fixtures/main.css", to: "__tests__/fixtures/main.out.css" }
+
+  return postcss(plugins)
+    .process(input, allOptions)
+    .then((result) => expect(format(result.css)).toMatchSnapshot())
+}
+
+
 
 // ====================================================
 // ================== MERGING =========================
@@ -55,8 +64,16 @@ test("Asset URL", () =>
   compile(".icon { background: url('./fixtures/formula.png'); }")
 )
 
+test("Asset URL (Same Folder)", () =>
+  compileSameFolder(".icon { background: url('./formula.png'); }")
+)
+
 test("Asset Size", () =>
   compile(".icon { background-size: width('./fixtures/formula.png') height('./fixtures/formula.png'); }")
+)
+
+test("Asset Size (Same Folder)", () =>
+  compileSameFolder(".icon { background-size: width('./formula.png') height('./formula.png'); }")
 )
 
 test("Import with Asset URL", () =>
