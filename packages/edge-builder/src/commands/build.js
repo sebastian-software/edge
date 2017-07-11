@@ -67,8 +67,10 @@ export function buildServer() {
 
 export function cleanServer() {
   removeSync("./build/server")
+  return Promise.resolve()
 }
 
 export function cleanClient() {
   removeSync("./build/client")
+  return Promise.resolve()
 }
