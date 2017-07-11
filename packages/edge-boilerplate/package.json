@@ -63,7 +63,7 @@
     "classnames": "^2.2.5",
     "cross-env": "^5.0.1",
     "edge-builder": "^0.4.2",
-    "edge-postcss": "^0.7.0",
+    "edge-postcss": "^0.7.2",
     "express": "^4.15.3",
     "fs-extra": "^3.0.1",
     "react": "^15.6.1",
