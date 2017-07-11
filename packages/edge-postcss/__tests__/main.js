@@ -63,6 +63,14 @@ test("Import with Asset URL", () =>
   compile("@import './fixtures/import-c.css';")
 )
 
+test("Import with SVG URL", () =>
+  compile("@import './fixtures/other/Home.css';")
+)
+
+test("Import with Webfonts", () =>
+  compile("@import './fixtures/font/SourceSansPro.css';")
+)
+
 
 
 // ====================================================
