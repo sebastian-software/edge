@@ -31,8 +31,9 @@ const flags = command.flags
 console.log(chalk.bold("EDGE " + chalk.green("v" + pkg.version)))
 
 const availableTasks = [
+  { task: "clean", commands: [ cleanClient, cleanServer ] },
   { task: "build", commands: [ cleanClient, cleanServer, buildClient, buildServer ] },
-  { task: "dev", commands: [ startDevServer ] }
+  { task: "dev", commands: [ cleanClient, cleanServer, startDevServer ] }
 ]
 
 // Prevent deprecation messages which should not be displayed to the end user
