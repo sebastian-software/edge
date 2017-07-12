@@ -39,6 +39,7 @@ console.log(chalk.bold("EDGE " + chalk.green("v" + pkg.version)))
 const availableTasks = [
   { task: "clean", commands: [ cleanClient, cleanServer ] },
   { task: "build", commands: [ cleanClient, cleanServer, buildClient, buildServer ] },
+  { task: "build:server", commands: [ cleanServer, buildServer ] },
   { task: "dev", commands: [ cleanClient, cleanServer, startDevServer ] }
 ]
 
