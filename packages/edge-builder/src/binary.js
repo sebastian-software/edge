@@ -15,6 +15,12 @@ const command = meow(`
     --verbose, -v   Generate verbose output messages.
     --quiet, -q     Reduce amount of output messages to warnings and errors.
 
+  Commands:
+    dev             Start development server
+    build           Build production appliction
+    build:server    Build server part of production appliction
+    clean           Clean up all generated files
+
 `, {
     alias: {
       v: "verbose",
