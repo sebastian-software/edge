@@ -53,7 +53,10 @@ const CHECK_ENVS = [
 const envParameters = Object.keys(process.env)
 const missingParameters = CHECK_ENVS.filter((key) => !envParameters.includes(key))
 if (missingParameters.length > 0)
-  throw new Error(`Missing environment parameters ${missingParameters.join(", ")}`)
+  throw new Error(
+    `Missing environment parameters ${missingParameters.join(", ")}.\n` +
+    `Hint: Please provide a proper .env file`
+  )
 
 const ROOT = getRoot()
 const SERVER_ENTRY = resolve(ROOT, process.env.SERVER_ENTRY)
