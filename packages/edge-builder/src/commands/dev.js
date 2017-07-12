@@ -4,14 +4,21 @@ import { addDevMiddleware } from "../express/dev"
 const DEVELOPMENT_PORT = process.env.DEVELOPMENT_PORT
 
 export function startDevServer() {
+  console.log("Creating development server...")
   const server = express()
 
-  addDevMiddleware(server)
+  const compiler = addDevMiddleware(server)
 
   /* eslint-disable no-console */
-  server.listen(DEVELOPMENT_PORT, () => {
-    console.log(`Development Server Started @ Port ${DEVELOPMENT_PORT}`)
-  })
+  compiler.plugin("done", (stats) => {
+    if (!stats.hasErrors()) {
+      console.log("Code compiled successfully.")
 
-  return server
+      server.listen(DEVELOPMENT_PORT, () => {
+        console.log(`Development Server Started @ Port ${DEVELOPMENT_PORT}`)
+      })
+    } else {
+      console.log("!!! Errors")
+    }
+  })
 }

@@ -44,4 +44,6 @@ export function addDevMiddleware(server) {
       outputPath: CLIENT_OUTPUT
     }
   }))
+
+  return multiCompiler
 }
