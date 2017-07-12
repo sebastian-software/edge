@@ -41,6 +41,20 @@ const CACHE_DIGEST_LENGTH = 4
 // Initialize environment configuration
 dotenv.config()
 
+const CHECK_ENVS = [
+  "SERVER_ENTRY",
+  "CLIENT_ENTRY",
+  "SERVER_OUTPUT",
+  "CLIENT_OUTPUT",
+  "PUBLIC_PATH",
+  "HTML_TEMPLATE",
+  "DEVELOPMENT_PORT"
+]
+const envParameters = Object.keys(process.env)
+const missingParameters = CHECK_ENVS.filter((key) => !envParameters.includes(key))
+if (missingParameters.length > 0)
+  throw new Error(`Missing environment parameters ${missingParameters.join(", ")}`)
+
 const ROOT = getRoot()
 const SERVER_ENTRY = resolve(ROOT, process.env.SERVER_ENTRY)
 const CLIENT_ENTRY = resolve(ROOT, process.env.CLIENT_ENTRY)
