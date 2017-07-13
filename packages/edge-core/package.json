@@ -1,12 +1,48 @@
 {
   "name": "edge-core",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Core JavaScript Infrastructure for Edge. Part of the Edge Platform.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "prepublish",
+    "release": "release-it --github.release --npm.publish --non-interactive",
+    "release:minor": "release-it --github.release --npm.publish --non-interactive --increment minor",
+    "release:major": "release-it --github.release --npm.publish --non-interactive --increment major"
+  },
+  "engines": {
+    "node": ">=6.0.0",
+    "yarn": ">=0.21.3",
+    "npm": ">=4.0.0"
+  },
+  "pre-commit": "lint-staged",
+  "lint-staged": {
+    "*.js": "eslint",
+    "*.mjs": "eslint",
+    "*.css": "stylelint",
+    "*.pcss": "stylelint",
+    "*.sss": "stylelint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebastian-software/edge-core.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": {
+    "name": "Sebastian Software",
+    "email": "s.werner@sebastian-software.de",
+    "url": "sebastian-software.de"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/sebastian-software/edge-core/issues"
+  },
+  "homepage": "https://github.com/sebastian-software/edge-core#readme",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "cross-env": "^5.0.1",
+    "jest-cli": "^20.0.4",
+    "lint-staged": "^3.6.1",
+    "readable-code": "^3.0.0"
+  }
 }
