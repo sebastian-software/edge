@@ -130,11 +130,11 @@ export default function builder(options = {}) {
   const PREFIX = chalk.bold(config.target.toUpperCase())
 
   console.log(chalk.underline(`${PREFIX} Configuration:`))
-  console.log(`- Environment: ${config.env}`)
-  console.log(`- Babel Environment: ${BABEL_ENV}`)
-  console.log(`- Enable Source Maps: ${config.enableSourceMaps}`)
-  console.log(`- Bundle Compression: ${config.bundleCompression}`)
-  console.log(`- Use Cache Loader: ${config.useCacheLoader} [Hash: ${CACHE_HASH}]`)
+  console.log(`→ Environment: ${config.env}`)
+  console.log(`→ Babel Environment: ${BABEL_ENV}`)
+  console.log(`→ Enable Source Maps: ${config.enableSourceMaps}`)
+  console.log(`→ Bundle Compression: ${config.bundleCompression}`)
+  console.log(`→ Use Cache Loader: ${config.useCacheLoader} [Hash: ${CACHE_HASH}]`)
 
   const name = isServer ? "server" : "client"
   const target = isServer ? "node" : "web"
