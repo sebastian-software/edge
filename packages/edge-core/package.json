@@ -37,9 +37,9 @@
     "url": "https://github.com/sebastian-software/edge-core/issues"
   },
   "homepage": "https://github.com/sebastian-software/edge-core#readme",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
+    "prepublish": "^1.0.6",
     "cross-env": "^5.0.1",
     "jest-cli": "^20.0.4",
     "lint-staged": "^3.6.1",
