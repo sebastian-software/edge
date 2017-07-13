@@ -15,17 +15,17 @@ export function startDevServer() {
   /* eslint-disable no-console */
   compiler.plugin("done", (stats) => {
     if (!stats.hasErrors()) {
-      console.log(chalk.green("Code compiled successfully."))
+      console.log(chalk.green("Webpack compiled successfully."))
 
       if (!serverIsStarted) {
         serverIsStarted = true
 
         server.listen(DEVELOPMENT_PORT, () => {
-          console.log(`Development Server Started @ Port ${DEVELOPMENT_PORT}`)
+          console.log(`Development server started @${DEVELOPMENT_PORT}`)
         })
       }
     } else {
-      console.error("Build failed!")
+      console.error("Webpack failed!")
     }
   })
 }

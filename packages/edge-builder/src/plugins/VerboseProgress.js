@@ -12,19 +12,24 @@ import { relative } from "path"
 const ROOT = getRoot()
 
 export default class VerboseProgress {
+  constructor({ prefix }) {
+    this.prefix = prefix
+  }
+
   apply(compiler) {
     let doneModules = 0
     let spinner = null
     let lastModule = null
+    const prefix = this.prefix ? this.prefix + " " : ""
 
     function display(message) {
       if (message !== "") {
-        spinner.text = message
+        spinner.text = prefix + message
 
         // We somehow have to force rendering otherwise busy Webpack wouldn't let us.
         spinner.render()
       } else {
-        spinner.succeed("Done!")
+        spinner.succeed(prefix + "Done!")
       }
     }
 

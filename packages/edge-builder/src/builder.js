@@ -3,6 +3,7 @@ import webpack from "webpack"
 import { get as getRoot } from "app-root-dir"
 import { resolve } from "path"
 import dotenv from "dotenv"
+import chalk from "chalk"
 
 import webpackPkg from "webpack/package.json"
 
@@ -37,6 +38,23 @@ import { getHashDigest } from "loader-utils"
 const CACHE_HASH_TYPE = "sha256"
 const CACHE_DIGEST_TYPE = "base62"
 const CACHE_DIGEST_LENGTH = 4
+
+// https://github.com/mishoo/UglifyJS2#compress-options
+const UGLIFY_OPTIONS = {
+  compress: {
+    unsafe_math: true,
+    unsafe_proto: true,
+    keep_infinity: true, // good for chrome performance
+    passes: 3 // try hard to use less code
+  },
+  output: {
+    ascii_only: true, // fix for problematic code like emoticons
+    semicolons: false, // more readable output
+    comments: false
+  }
+}
+
+const BABILI_OPTIONS = {}
 
 // Initialize environment configuration
 dotenv.config()
@@ -89,8 +107,6 @@ const serverExternals = fs
     return externals
   }, {})
 
-const babiliOptions = {}
-
 const compressableAssets = /\.(ttf|otf|svg|pdf|html|ico|txt|md|html|js|css|json|xml)$/
 
 export default function builder(options = {}) {
@@ -111,14 +127,14 @@ export default function builder(options = {}) {
 
   const PROJECT_CONFIG = require(resolve(ROOT, "package.json"))
   const CACHE_HASH = getHashDigest(JSON.stringify(PROJECT_CONFIG), CACHE_HASH_TYPE, CACHE_DIGEST_TYPE, CACHE_DIGEST_LENGTH)
+  const PREFIX = chalk.bold(config.target.toUpperCase())
 
-  console.log(`- Target: ${config.target}`)
+  console.log(chalk.underline(`${PREFIX} Configuration:`))
   console.log(`- Environment: ${config.env}`)
-  console.log(`- Babel Env: ${BABEL_ENV}`)
+  console.log(`- Babel Environment: ${BABEL_ENV}`)
   console.log(`- Enable Source Maps: ${config.enableSourceMaps}`)
   console.log(`- Bundle Compression: ${config.bundleCompression}`)
-  console.log(`- Use Cache Loader: ${config.useCacheLoader}`)
-  console.log(`- Cache Hash: ${CACHE_HASH}`)
+  console.log(`- Use Cache Loader: ${config.useCacheLoader} [Hash: ${CACHE_HASH}]`)
 
   const name = isServer ? "server" : "client"
   const target = isServer ? "node" : "web"
@@ -282,7 +298,9 @@ export default function builder(options = {}) {
       new CaseSensitivePathsPlugin(),
 
       // Custom progress plugin
-      new VerboseProgress(),
+      new VerboseProgress({
+        prefix: PREFIX
+      }),
 
       // Automatically assign quite useful and matching chunk names based on file names.
       new ChunkNames(),
@@ -320,27 +338,14 @@ export default function builder(options = {}) {
       // https://github.com/webpack-contrib/uglifyjs-webpack-plugin
       config.bundleCompression === "uglify" && isProduction && isClient ?
         new UglifyPlugin({
-          uglifyOptions: {
-            // https://github.com/mishoo/UglifyJS2#compress-options
-            compress: {
-              unsafe_math: true,
-              unsafe_proto: true,
-              keep_infinity: true, // good for chrome performance
-              passes: 3 // try hard to use less code
-            },
-            output: {
-              ascii_only: true, // fix for problematic code like emoticons
-              semicolons: false, // more readable output
-              comments: false
-            }
-          }
+          uglifyOptions: UGLIFY_OPTIONS
         }) : null,
 
       // Alternative to Uglify when producing modern output
       // Advanced ES2015 ready JS compression based on Babylon (Babel Parser)
       // https://github.com/webpack-contrib/babili-webpack-plugin
       config.bundleCompression === "babili" && isProduction && isClient ?
-        new BabiliPlugin(babiliOptions, { comments: false }) : null,
+        new BabiliPlugin(BABILI_OPTIONS, { comments: false }) : null,
 
       // "Use HashedModuleIdsPlugin to generate IDs that preserves over builds."
       // Via: https://github.com/webpack/webpack.js.org/issues/652#issuecomment-273324529
