@@ -1,7 +1,7 @@
 {
   "name": "edge-builder",
   "description": "Edge Builder is a build tool for modern web applications. Part of the Edge Platform.",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "author": {
     "name": "Sebastian Software",
     "email": "s.werner@sebastian-software.de",
