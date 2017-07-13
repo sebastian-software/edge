@@ -4,7 +4,6 @@ import updateNotifier from "update-notifier"
 import { buildClient, buildServer, cleanClient, cleanServer } from "./commands/build"
 import { startDevServer } from "./commands/dev"
 import pkg from "../package.json"
-import "nodent-runtime"
 
 // Parse arguments
 const command = meow(`
