@@ -83,6 +83,7 @@ export function ensureIntlSupport(locale, nonce = "") {
 
   const intlUrl = require("!file-loader!lean-intl/locale-data/" + locale + ".json")
 
+  console.log("Loading Lean-Intl Polyfill...")
   return import("lean-intl").then((IntlPolyfill) => {
     console.log("Loading Lean-Intl Data:", intlUrl)
     return fetch(intlUrl).then((response) => {
