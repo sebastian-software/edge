@@ -42,20 +42,35 @@ function generateChunkName(request, rawRequest) {
   return result
 }
 
+function getFirstModule(iterable) {
+  for (let entry of iterable) {
+    return entry
+  }
+}
+
 export default class ChunkNames
 {
+  constructor({ debug = false }) {
+    this.debug = debug
+  }
+
   apply(compiler)
   {
+    const debug = this.debug
+
     compiler.plugin("compilation", (compilation) => {
       compilation.plugin("optimize", () => {
         compilation.chunks.forEach((chunk) => {
-          var entryModule = chunk.entryModule
-          if (entryModule) {
-            var userRequest = entryModule.userRequest
-            var rawRequest = entryModule.rawRequest
+          var firstModule = getFirstModule(chunk.modulesIterable)
+          if (firstModule) {
+            var userRequest = firstModule.userRequest
+            var rawRequest = firstModule.rawRequest
             var oldName = chunk.name
             if (userRequest && oldName == null) {
               chunk.name = generateChunkName(userRequest, rawRequest)
+              if (debug) {
+                console.log("Assigned ChunkName:", chunk.name)
+              }
             }
           }
         })
