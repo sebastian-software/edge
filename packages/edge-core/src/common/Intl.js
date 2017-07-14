@@ -1,6 +1,7 @@
 import "isomorphic-fetch"
 import areIntlLocalesSupported from "intl-locales-supported"
 import { addLocaleData } from "react-intl"
+import { interopRequireDefault } from "babel-helpers"
 
 const PREFER_NATIVE = false
 
@@ -94,8 +95,9 @@ export function ensureIntlSupport(locale, nonce = "") {
   Promise.all([
     import("lean-intl"),
     fetch(intlUrl).then((response) => response.json())
-  ]).then((IntlPolyfill, intlData) => {
-    const IntlPolyfillClass = IntlPolyfill.__esModule && IntlPolyfill.default ?  IntlPolyfill.default : IntlPolyfill
+  ]).then(([ IntlPolyfill, intlData ]) => {
+    // Rewriting import() to require.ensure unfortunately does not work with ESM correctly as it seems
+    const IntlPolyfillClass = interopRequireDefault(IntlPolyfill).default
 
     // Inject loaded locale specific data
     IntlPolyfillClass.__addLocaleData(intlData)
