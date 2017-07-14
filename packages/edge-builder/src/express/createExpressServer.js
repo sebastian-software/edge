@@ -139,7 +139,7 @@ export default function createExpressServer({ customMiddleware })
   server.use(createLocaleMiddleware({
     priority: [ "query", "cookie", "accept-language", "default" ],
     default: process.env.DEFAULT_LOCALE.replace(/-/, "_"),
-    allowed: process.env.ALLOWED_LOCALES.map((entry) => entry.replace(/-/, "_"))
+    allowed: process.env.SUPPORTED_LOCALES.split(",").map((entry) => entry.replace(/-/, "_"))
   }))
 
   // Parse application/x-www-form-urlencoded

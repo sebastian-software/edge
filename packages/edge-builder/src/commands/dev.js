@@ -1,12 +1,15 @@
-import express from "express"
 import chalk from "chalk"
+
+import createExpress from "../express/createExpressServer"
 import { addDevMiddleware } from "../express/dev"
 
 const DEVELOPMENT_PORT = process.env.DEVELOPMENT_PORT
 
 export function startDevServer() {
   console.log("Creating development server...")
-  const server = express()
+  const server = createExpress({
+
+  })
 
   const compiler = addDevMiddleware(server)
 
