@@ -18,7 +18,7 @@ pretty.skipNodeFiles()
 // this will skip all the trace lines about express` core and sub-modules
 pretty.skipPackage("express")
 
-export default function createExpressServer({ customMiddleware })
+export default function createExpressServer({ customMiddleware = null, enableCSP = false })
 {
   // Create our express based server.
   const server = express()
@@ -63,7 +63,7 @@ export default function createExpressServer({ customMiddleware })
   // The CSP configuration is an optional item for helmet, however you should
   // not remove it without making a serious consideration that you do not require
   // the added security.
-  const cspConfig = {
+  const cspConfig = enableCSP ? {
     directives: {
       defaultSrc: [ "'self'" ],
 
@@ -98,9 +98,11 @@ export default function createExpressServer({ customMiddleware })
 
       childSrc: [ "'self'" ]
     }
-  }
+  } : null
 
-  server.use(helmet.contentSecurityPolicy(cspConfig))
+  if (cspConfig) {
+    server.use(helmet.contentSecurityPolicy(cspConfig))
+  }
 
   // The xssFilter middleware sets the X-XSS-Protection header to prevent
   // reflected XSS attacks.
