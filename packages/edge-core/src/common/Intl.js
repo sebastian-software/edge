@@ -52,6 +52,8 @@ export function ensureReactIntlSupport(language, nonce = "") {
     return Promise.resolve(false)
   }
 
+  // Explicitely receive the URL instead of the real file content.
+  // Benefit: Don't process all these files by Webpack and just copy them over to the destination folder.
   const reactIntlUrl = require("!file-loader!react-intl/locale-data/" + language + ".js")
   console.log("Loading React-Intl Data:", reactIntlUrl)
   return fetch(reactIntlUrl).then((response) => {
@@ -81,6 +83,8 @@ export function ensureIntlSupport(locale, nonce = "") {
     console.warn("See also: https://github.com/nodejs/node/wiki/Intl")
   }
 
+  // Explicitely receive the URL instead of the real file content.
+  // Benefit: Don't process all these files by Webpack and just copy them over to the destination folder.
   const intlUrl = require("!file-loader!lean-intl/locale-data/" + locale + ".json")
 
   console.log("Loading Lean-Intl Polyfill...")
