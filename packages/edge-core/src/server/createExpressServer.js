@@ -4,10 +4,11 @@ import uuid from "uuid"
 import parameterProtection from "hpp"
 import helmet from "helmet"
 import PrettyError from "pretty-error"
-import favicon from "serve-favicon"
 import createLocaleMiddleware from "express-locale"
 import cookieParser from "cookie-parser"
 import bodyParser from "body-parser"
+import { get as getRoot } from "app-root-dir"
+import { resolve as resolvePath } from "path"
 
 const pretty = new PrettyError()
 
@@ -17,13 +18,10 @@ pretty.skipNodeFiles()
 // this will skip all the trace lines about express` core and sub-modules
 pretty.skipPackage("express")
 
-export default function createExpressServer(config)
+export default function createExpressServer({ customMiddleware })
 {
   // Create our express based server.
   const server = express()
-
-  // Create new middleware to serve a favicon from the given path to a favicon file.
-  server.use(favicon(`${ABSOLUTE_PUBLIC_PATH}/favicon.ico`))
 
   // Attach a unique "nonce" to every response. This allows use to declare
   // inline scripts as being safe for execution against our content security policy.
@@ -102,14 +100,6 @@ export default function createExpressServer(config)
     }
   }
 
-  if (process.env.NODE_ENV === "development") {
-    // When in development mode we need to add our secondary express server that
-    // is used to host our client bundle to our csp config.
-    Object.keys(cspConfig.directives).forEach((directive) =>
-      cspConfig.directives[directive].push(`localhost:${process.env.CLIENT_DEVSERVER_PORT}`)
-    )
-  }
-
   server.use(helmet.contentSecurityPolicy(cspConfig))
 
   // The xssFilter middleware sets the X-XSS-Protection header to prevent
@@ -132,8 +122,8 @@ export default function createExpressServer(config)
   // @see https://helmetjs.github.io/docs/dont-sniff-mimetype/
   server.use(helmet.noSniff())
 
-  if (config.customMiddleware)
-    config.customMiddleware.forEach(
+  if (customMiddleware)
+    customMiddleware.forEach(
       (middleware) => {
         if (middleware instanceof Array)
           server.use(...middleware)
@@ -148,8 +138,8 @@ export default function createExpressServer(config)
   // Detect client locale and match it with configuration
   server.use(createLocaleMiddleware({
     priority: [ "query", "cookie", "accept-language", "default" ],
-    default: config.DEFAULT_LOCALE.replace(/-/, "_"),
-    allowed: config.ALLOWED_LOCALES.map((entry) => entry.replace(/-/, "_"))
+    default: process.env.DEFAULT_LOCALE.replace(/-/, "_"),
+    allowed: process.env.ALLOWED_LOCALES.map((entry) => entry.replace(/-/, "_"))
   }))
 
   // Parse application/x-www-form-urlencoded
@@ -163,15 +153,11 @@ export default function createExpressServer(config)
   server.use(shrinkRay())
 
   // Configure static serving of our webpack bundled client files.
+  const ABSOLUTE_CLIENT_OUTPUT_PATH = resolvePath(getRoot(), process.env.CLIENT_OUTPUT)
   server.use(
-    process.env.CLIENT_BUNDLE_HTTP_PATH,
-    express.static(ABSOLUTE_CLIENT_OUTPUT_PATH, {
-      maxAge: process.env.CLIENT_BUNDLE_CACHE_MAXAGE
-    })
+    process.env.PUBLIC_PATH,
+    express.static(ABSOLUTE_CLIENT_OUTPUT_PATH)
   )
-
-  // Configure static serving of our "public" root http path static files.
-  server.use(express.static(ABSOLUTE_PUBLIC_PATH))
 
   return server
 }
