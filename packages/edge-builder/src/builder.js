@@ -133,7 +133,7 @@ export default function builder(options = {}) {
   const PREFIX = chalk.bold(config.target.toUpperCase())
 
   const DEFAULT_LOCALE = process.env.DEFAULT_LOCALE
-  const SUPPORTED_LOCALES = process.env.SUPPORTED_LOCALES
+  const SUPPORTED_LOCALES = process.env.SUPPORTED_LOCALES.split(",")
 
   const name = isServer ? "server" : "client"
   const target = isServer ? "node" : "web"
