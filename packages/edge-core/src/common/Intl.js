@@ -4,7 +4,7 @@ import { addLocaleData } from "react-intl"
 
 const PREFER_NATIVE = false
 
-export function injectCode({ code, url }) {
+export function injectCode({ code, url, nonce }) {
   if (process.env.TARGET === "web") {
     return new Promise((resolve, reject) => {
       var result = false
@@ -18,7 +18,10 @@ export function injectCode({ code, url }) {
       }
 
       scriptElem.async = true
-      scriptElem.setAttribute("nonce", nonce)
+
+      if (nonce) {
+        scriptElem.setAttribute("nonce", nonce)
+      }
 
       scriptElem.onload = scriptElem.onreadystatechange = () => {
         if (!result && (!this.readyState || this.readyState === "complete")) {
@@ -36,7 +39,7 @@ export function injectCode({ code, url }) {
   }
 }
 
-export function ensureReactIntlSupport(language) {
+export function ensureReactIntlSupport(language, nonce = "") {
   // Locale Data in Node.js:
   // When using React Intl in Node.js (same for the Intl.js polyfill), all locale data will be
   // loaded into memory. This makes it easier to write a universal/isomorphic React app with
@@ -61,7 +64,7 @@ export function ensureReactIntlSupport(language) {
   })
 }
 
-export function ensureIntlSupport(locale) {
+export function ensureIntlSupport(locale, nonce = "") {
   // Determine if the built-in `Intl` has the locale data we need.
   if (PREFER_NATIVE && global.Intl && areIntlLocalesSupported([ locale ])) {
     return Promise.resolve(false)
@@ -81,6 +84,7 @@ export function ensureIntlSupport(locale) {
   const intlUrl = require("!file-loader!lean-intl/locale-data/" + locale + ".json")
 
   return import("lean-intl").then((IntlPolyfill) => {
+    console.log("Loading Lean-Intl Data:", intlUrl)
     return fetch(intlUrl).then((response) => {
       return response.json().then((parsed) => {
         IntlPolyfill.__addLocaleData(parsed)
