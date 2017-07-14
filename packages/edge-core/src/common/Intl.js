@@ -2,13 +2,7 @@ import "isomorphic-fetch"
 import areIntlLocalesSupported from "intl-locales-supported"
 import { addLocaleData } from "react-intl"
 
-const PREFER_NATIVE = true
-
-var nonce
-
-if (process.env.TARGET === "web") {
-  nonce = document.querySelector("script[nonce]").getAttribute("nonce")
-}
+const PREFER_NATIVE = false
 
 export function injectCode({ code, url }) {
   if (process.env.TARGET === "web") {
@@ -40,10 +34,6 @@ export function injectCode({ code, url }) {
     new Function(code)()
     return Promise.resolve(true)
   }
-}
-
-export function ensureMessages(url) {
-  return fetch(url).then((response) => response.json())
 }
 
 export function ensureReactIntlSupport(language) {
@@ -81,7 +71,7 @@ export function ensureIntlSupport(locale) {
   // Node binary with all locale data. We recommend doing this if you control the container
   // your Node app runs in, otherwise you'll want to polyfill Intl in Node.
   // Via: https://github.com/yahoo/react-intl/wiki#i18n-in-javascript
-  if (process.env.TARGET === "node")
+  if (PREFER_NATIVE === false && process.env.TARGET === "node")
   {
     /* eslint-disable no-console */
     console.warn("Your NodeJS installation does not include full ICU locale data! Fallback to polyfill!")

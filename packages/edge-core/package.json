@@ -48,6 +48,7 @@
   },
   "homepage": "https://github.com/sebastian-software/edge-core#readme",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.3",

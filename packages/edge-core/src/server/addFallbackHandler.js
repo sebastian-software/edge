@@ -14,6 +14,7 @@ export default function addFallbackHandler(server) {
   // even if they aren't used, otherwise it won't be used.
   server.use((error, request, response, next) => {
     if (error) {
+      /* eslint-disable no-console */
       console.log(error)
       console.log(error.stack)
     }

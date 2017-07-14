@@ -8,6 +8,9 @@ const composeEnhancers = (process.env.TARGET === "web" &&
 
 /**
  * Placeholder for a non active reducer in Redux.
+ *
+ * @param previousState {Object} Previous state.
+ * @param action {string} Action which is being dispatched.
  */
 export function emptyReducer(previousState = {}, action) {
   return previousState
@@ -16,6 +19,8 @@ export function emptyReducer(previousState = {}, action) {
 
 /**
  * Placeholder for a non active middleware in Redux.
+ *
+ * @param store {Object} Store object to work with.
  */
 export function emptyMiddleware(store) {
   return (next) => {
@@ -63,6 +68,14 @@ export function getLanguage(state) {
  */
 export function getRegion(state) {
   return state.ssr.region
+}
+
+
+/**
+ * Selector for quering the nonce which must be used for injecting script tags.
+ */
+export function getNonce(state) {
+  return state.ssr.nonce
 }
 
 
