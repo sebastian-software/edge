@@ -132,6 +132,9 @@ export default function builder(options = {}) {
   const CACHE_HASH = getHashDigest(JSON.stringify(PROJECT_CONFIG), CACHE_HASH_TYPE, CACHE_DIGEST_TYPE, CACHE_DIGEST_LENGTH)
   const PREFIX = chalk.bold(config.target.toUpperCase())
 
+  const DEFAULT_LOCALE = process.env.DEFAULT_LOCALE
+  const SUPPORTED_LOCALES = process.env.SUPPORTED_LOCALES
+
   const name = isServer ? "server" : "client"
   const target = isServer ? "node" : "web"
   const devtool = config.enableSourceMaps ? "source-map" : null
@@ -143,6 +146,8 @@ export default function builder(options = {}) {
   console.log(`→ Enable Source Maps: ${devtool}`)
   console.log(`→ Bundle Compression: ${config.bundleCompression}`)
   console.log(`→ Use Cache Loader: ${config.useCacheLoader} [Hash: ${CACHE_HASH}]`)
+  console.log(`→ Default Locale: ${DEFAULT_LOCALE}`)
+  console.log(`→ Supported Locales: ${SUPPORTED_LOCALES}`)
 
   const cacheLoader = config.useCacheLoader ? {
     loader: "cache-loader",
@@ -273,7 +278,9 @@ export default function builder(options = {}) {
       new webpack.DefinePlugin({
         "process.env": {
           NODE_ENV: JSON.stringify(options.env),
-          TARGET: JSON.stringify(target)
+          TARGET: JSON.stringify(target),
+          DEFAULT_LOCALE: JSON.stringify(DEFAULT_LOCALE),
+          SUPPORTED_LOCALES: JSON.stringify(SUPPORTED_LOCALES)
         }
       }),
 
