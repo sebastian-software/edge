@@ -7,4 +7,4 @@ export {
 
 export { default as deepFetch } from "./common/deepFetch"
 export { createApolloClient } from "./common/Apollo"
-export { ensureIntlSupport, ensureReactIntlSupport, ensureMessages } from "./common/Intl"
+export { ensureIntlSupport, ensureReactIntlSupport } from "./common/Intl"
