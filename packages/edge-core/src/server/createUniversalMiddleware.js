@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import React from "react"
 import { renderToString } from "react-dom/server"
-import { StaticRouter } from "react-router"
 import Helmet from "react-helmet"
 import { ApolloProvider } from "react-apollo"
 import { IntlProvider } from "react-intl"
@@ -67,15 +66,13 @@ async function renderFull({ request, response, nonce, Root, apolloClient, reduxS
     loadMessages(language)
   ])
 
-  console.log("Server: Rendering app with data...")
+  console.log("Server: Rendering app with data...", request.url)
 
   let WrappedRoot = (
     <IntlProvider locale={locale} messages={messages}>
-      <StaticRouter location={request.url} context={routingContext}>
-        <ApolloProvider client={apolloClient} store={reduxStore}>
-          <Root/>
-        </ApolloProvider>
-      </StaticRouter>
+      <ApolloProvider client={apolloClient} store={reduxStore}>
+        <Root/>
+      </ApolloProvider>
     </IntlProvider>
   )
 
