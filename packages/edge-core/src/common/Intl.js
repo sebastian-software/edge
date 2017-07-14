@@ -59,7 +59,7 @@ export function ensureReactIntlSupport(language) {
     return Promise.resolve(false)
   }
 
-  const reactIntlUrl = require("react-intl/locale-data/" + language + ".js")
+  const reactIntlUrl = require("!file-loader!react-intl/locale-data/" + language + ".js")
   console.log("Loading React-Intl Data:", reactIntlUrl)
   return fetch(reactIntlUrl).then((response) => {
     return response.text().then((code) => {
@@ -88,7 +88,7 @@ export function ensureIntlSupport(locale) {
     console.warn("See also: https://github.com/nodejs/node/wiki/Intl")
   }
 
-  const intlUrl = require("lean-intl/locale-data/" + locale + ".json")
+  const intlUrl = require("!file-loader!lean-intl/locale-data/" + locale + ".json")
 
   return import("lean-intl").then((IntlPolyfill) => {
     return fetch(intlUrl).then((response) => {
