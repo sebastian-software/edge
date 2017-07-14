@@ -90,21 +90,23 @@ export function ensureIntlSupport(locale, nonce = "") {
   console.log("Loading Lean-Intl Polyfill...")
   console.log("Loading Lean-Intl Data:", intlUrl)
 
+  // Load Polyfill and data in parallel
   Promise.all([
     import("lean-intl"),
     fetch(intlUrl).then((response) => response.json())
   ]).then((IntlPolyfill, intlData) => {
     const IntlPolyfillClass = IntlPolyfill.__esModule && IntlPolyfill.default ?  IntlPolyfill.default : IntlPolyfill
 
-    IntlPolyfill.__addLocaleData(intlData)
+    // Inject loaded locale specific data
+    IntlPolyfillClass.__addLocaleData(intlData)
 
     // `Intl` exists, but it doesn't have the data we need, so load the
     // polyfill and patch the constructors we need with the polyfill's.
     if (global.Intl) {
-      Intl.NumberFormat = IntlPolyfill.NumberFormat
-      Intl.DateTimeFormat = IntlPolyfill.DateTimeFormat
+      Intl.NumberFormat = IntlPolyfillClass.NumberFormat
+      Intl.DateTimeFormat = IntlPolyfillClass.DateTimeFormat
     } else {
-      global.Intl = IntlPolyfill
+      global.Intl = IntlPolyfillClass
     }
 
     return Promise.resolve(true)
