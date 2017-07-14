@@ -58,7 +58,7 @@ async function renderFull({ request, response, nonce, Root, apolloClient, reduxS
   const routingContext = {}
   const locale = `${language}-${region}`
   const reduxState = reduxStore.getState()
-  const ssrData = reduxState.ssr
+  const edgeData = reduxState.edge
 
   const [ intl, reactIntl, messages ] = await Promise.all([
     ensureIntlSupport(locale),
@@ -159,7 +159,7 @@ export default function createUniversalMiddleware({ Root, State, ssrData, loadMe
 
     // Pass object with all Server Side Rendering (SSR) related data to the client
     const initialState = {
-      ssr: {
+      edge: {
         ...ssrData,
         locale,
         language,

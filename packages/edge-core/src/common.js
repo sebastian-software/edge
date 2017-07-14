@@ -1,7 +1,7 @@
 export {
   createReduxStore, createRootReducer,
   emptyReducer, emptyMiddleware, emptyEnhancer,
-  ssrReducer,
+  edgeReducer,
   getRegion, getLanguage, getLocale
 } from "./common/State"
 

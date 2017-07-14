@@ -42,7 +42,7 @@ export function emptyEnhancer(param) {
 /**
  * Dummy reducer for exporting server-side data to the client-side application.
  */
-export function ssrReducer(previousState = {}, action) {
+export function edgeReducer(previousState = {}, action) {
   return previousState
 }
 
@@ -51,7 +51,7 @@ export function ssrReducer(previousState = {}, action) {
  * Selector for quering the current locale e.g. de-DE, en-US, ...
  */
 export function getLocale(state) {
-  return state.ssr.locale
+  return state.edge.locale
 }
 
 
@@ -59,7 +59,7 @@ export function getLocale(state) {
  * Selector for quering the current language e.g. de, en, fr, es, ...
  */
 export function getLanguage(state) {
-  return state.ssr.language
+  return state.edge.language
 }
 
 
@@ -67,7 +67,7 @@ export function getLanguage(state) {
  * Selector for quering the current region e.g. DE, BR, PT, ...
  */
 export function getRegion(state) {
-  return state.ssr.region
+  return state.edge.region
 }
 
 
@@ -75,7 +75,7 @@ export function getRegion(state) {
  * Selector for quering the nonce which must be used for injecting script tags.
  */
 export function getNonce(state) {
-  return state.ssr.nonce
+  return state.edge.nonce
 }
 
 
@@ -85,7 +85,7 @@ export function getNonce(state) {
 export function createRootReducer(reducers) {
   return combineReducers({
     ...reducers,
-    ssr: ssrReducer
+    edge: edgeReducer
   })
 }
 

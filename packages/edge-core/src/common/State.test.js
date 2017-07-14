@@ -45,7 +45,7 @@ test("Create Redux Store - With Apollo and URL", () => {
   const reducers = {}
   const middlewares = []
   const enhancers = []
-  const initialData = { ssr: { apolloUri: "http://my.apollo.uri" } }
+  const initialData = { edge: { apolloUri: "http://my.apollo.uri" } }
   const reduxStore = createReduxStore({ reducers, middlewares, enhancers, initialData, apolloClient })
   expect(reduxStore).toBeDefined()
   expect(typeof reduxStore).toBe("object")

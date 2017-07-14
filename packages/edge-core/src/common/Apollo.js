@@ -3,7 +3,7 @@ import { ApolloClient, createNetworkInterface, createBatchingNetworkInterface } 
 export function createApolloClient(config = {})
 {
   const { headers, initialState = {}, batchRequests = false, trustNetwork = true, queryDeduplication = true } = config
-  const apolloUri = initialState.ssr && initialState.ssr.apolloUri
+  const apolloUri = initialState.edge && initialState.edge.apolloUri
 
   const hasApollo = apolloUri != null
   const ssrMode = process.env.TARGET === "node"
