@@ -1,31 +1,24 @@
 language: node_js
-
 node_js:
-  - 6
-  - 8
-
+- 6
+- 8
 matrix:
   fast_finish: true
-
 env:
 - CXX=g++-4.8
-
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
+    - ubuntu-toolchain-r-test
     packages:
-      - g++-4.8
-
+    - g++-4.8
 before_install:
-  - npm install -g npm@latest
-  - npm --version
-
+- npm install -g npm@latest
+- npm --version
 notifications:
   email: false
   slack:
-    secure: aKQSsYvNfbSGJLGecHwX4+vQEl2BGRq9dbV4AUuE6rthPWOY3bFBOTZhCC0zZEkRmmZjQZYwDpGPJKiE9itNSdw7Rg5j46iBD0WRGRWMSoQ1/05tZ/cTvPLL3dzb/pAbUZU6mgyLZNd8XB/4jAFuPL6lYAD8NcPiz2PCiDhVcJOjUeBsgVDfB1fR1xp+Cy8qiilyfuOhZwvgN4fbGpCb6YA86XAnZ7aiLmM7Y4jIz43lUxjPmhMDZPPelCkt81keF/MV/EZbZrDvfFrlB2atTtDTEgjXDVK3ExBScB/EUSqvTlc3Ui/AfnQRMoyzWrxoH4vy5FfMeH4n+j58rT8FjbfsGMa/hw9tB36DjZdh1rqG7Ae+eBRhGUrYJ0ckuNn4eL8E5LSLGGRyaoz2d6AP78mve2VKAFYNChwNdA871gj+hFc1y2sQDstMTZx3TaqZhcbTlNqWN+lipJ1bZjDpTRsRfLo+KNu8dW8v+nV3tnFegJ/9hke4UgW5/v45pV5DvKZS0A8AJtQKY7Ns3wHs8xc+rCEbxPLE+A8Xg6TIpIfSuvXwb3RJnLJwQhe/TfXAh9rfPvUCpJ5RDyfN0iYn93RUpLVxzbzP7T3hYbnV1dRT+Wz5huQFDrpwZ/oFbQPVK4nQ1byzTKeUVTYlUB3DaP5O/Nq3Gg3GOqtqNfh7Vrg=
-
+    secure: hcV0nADiIIpDuWezDehjC0RM4hOuyx5B2aiTFiMWhnz+NBR3naA6A1BPpXBk3jodTfg30FnopYaW38l2gcG+4O63q1aPBMAF1jFNEKDMKkNzwT9rOuEFLtWBZvQl7AHCBpfFnaX8KOZeUIMBLy1dnR+1fCcvxZ2wuEOw3cjiph1jG5UIqd/o/bWMIoN1Bhm/irYg+fWLbJNz3YWI66l6RpcNtEA+sWnAR+375ei1qIont0AEy/NNprujcFno7C2PAqT3KO3j0iNrUp4q3zZLo8NHLe0lrnVMtsZCq3y+xa/3w2lI0hm6RebcBEhe4lj45AeAzGEttDCuQmCth4WpDqwoRHBCS33P5WIie6CpL0QTWRQb1oMcYnjiabuhaaIsbZVgCZptsJCCtU7FSVIwcwIwL35HL51aP/DD6CXCTGDkksaebar77N1SLc7MirmpKrQUC5PDLo53WNr9WWUEMEzVoSYL6Gh7zoKLhH2QXKS34Dk5hMBJt3tuOyDjw10VCh4rAS9MjsAcVaV3yqPfl/qMEB1+53GID9IoNuVMwjuHXrj3SKYf4pjObWyf6WsyRBvh5Z3RiTK1ug4v834CB2trp6XIAKk3tZePhcftY66dicrIY4mOV/247m2p88dsUpg/wTvsAGdrVVNjiX+hTIeaAJcHPwBcco/IZ7wVIHY=
 cache:
   directories:
-  - $HOME/.npm
+  - "$HOME/.npm"
