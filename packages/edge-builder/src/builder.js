@@ -107,6 +107,9 @@ const serverExternals = fs
     return externals
   }, {})
 
+const assetFiles = /\.(eot|woff|woff2|ttf|otf|svg|png|jpg|jpeg|jp2|jpx|jxr|gif|webp|mp4|mp3|ogg|pdf|html|ico)$/
+const babelFiles = /\.(js|mjs|jsx)$/
+const postcssFiles = /\.(css|sss|pcss)$/
 const compressableAssets = /\.(ttf|otf|svg|pdf|html|ico|txt|md|html|js|css|json|xml)$/
 
 export default function builder(options = {}) {
@@ -129,16 +132,17 @@ export default function builder(options = {}) {
   const CACHE_HASH = getHashDigest(JSON.stringify(PROJECT_CONFIG), CACHE_HASH_TYPE, CACHE_DIGEST_TYPE, CACHE_DIGEST_LENGTH)
   const PREFIX = chalk.bold(config.target.toUpperCase())
 
-  console.log(chalk.underline(`${PREFIX} Configuration:`))
-  console.log(`→ Environment: ${config.env}`)
-  console.log(`→ Babel Environment: ${BABEL_ENV}`)
-  console.log(`→ Enable Source Maps: ${config.enableSourceMaps}`)
-  console.log(`→ Bundle Compression: ${config.bundleCompression}`)
-  console.log(`→ Use Cache Loader: ${config.useCacheLoader} [Hash: ${CACHE_HASH}]`)
-
   const name = isServer ? "server" : "client"
   const target = isServer ? "node" : "web"
   const devtool = config.enableSourceMaps ? "source-map" : null
+
+  console.log(chalk.underline(`${PREFIX} Configuration:`))
+  console.log(`→ Environment: ${config.env}`)
+  console.log(`→ Build Target: ${target}`)
+  console.log(`→ Babel Environment: ${BABEL_ENV}`)
+  console.log(`→ Enable Source Maps: ${devtool}`)
+  console.log(`→ Bundle Compression: ${config.bundleCompression}`)
+  console.log(`→ Use Cache Loader: ${config.useCacheLoader} [Hash: ${CACHE_HASH}]`)
 
   const cacheLoader = config.useCacheLoader ? {
     loader: "cache-loader",
@@ -163,10 +167,6 @@ export default function builder(options = {}) {
       sourceMap: config.enableSourceMaps
     }
   }
-
-  const assetFiles = /\.(eot|woff|woff2|ttf|otf|svg|png|jpg|jpeg|jp2|jpx|jxr|gif|webp|mp4|mp3|ogg|pdf|html|ico)$/
-  const babelFiles = /\.(js|mjs|jsx)$/
-  const postcssFiles = /\.(css|sss|pcss)$/
 
   return {
     name,
@@ -272,7 +272,8 @@ export default function builder(options = {}) {
     plugins: [
       new webpack.DefinePlugin({
         "process.env": {
-          NODE_ENV: JSON.stringify(options.env)
+          NODE_ENV: JSON.stringify(options.env),
+          TARGET: JSON.stringify(target)
         }
       }),
 
