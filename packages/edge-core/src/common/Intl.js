@@ -88,23 +88,27 @@ export function ensureIntlSupport(locale, nonce = "") {
   const intlUrl = require("!file-loader!lean-intl/locale-data/" + locale + ".json")
 
   console.log("Loading Lean-Intl Polyfill...")
-  return import("lean-intl").then((IntlPolyfill) => {
-    console.log("Loading Lean-Intl Data:", intlUrl)
-    return fetch(intlUrl).then((response) => {
-      return response.json().then((parsed) => {
-        IntlPolyfill.__addLocaleData(parsed)
+  console.log("Loading Lean-Intl Data:", intlUrl)
 
-        // `Intl` exists, but it doesn't have the data we need, so load the
-        // polyfill and patch the constructors we need with the polyfill's.
-        if (global.Intl) {
-          Intl.NumberFormat = IntlPolyfill.NumberFormat
-          Intl.DateTimeFormat = IntlPolyfill.DateTimeFormat
-        } else {
-          global.Intl = IntlPolyfill
-        }
+  Promise.all([
+    import("lean-intl"),
+    fetch(intlUrl).then((response) => response.json())
+  ]).then((IntlPolyfill, intlData) => {
+    const IntlPolyfillClass = IntlPolyfill.__esModule && IntlPolyfill.default ?  IntlPolyfill.default : IntlPolyfill
 
-        return Promise.resolve(true)
-      })
-    })
+    IntlPolyfill.__addLocaleData(intlData)
+
+    // `Intl` exists, but it doesn't have the data we need, so load the
+    // polyfill and patch the constructors we need with the polyfill's.
+    if (global.Intl) {
+      Intl.NumberFormat = IntlPolyfill.NumberFormat
+      Intl.DateTimeFormat = IntlPolyfill.DateTimeFormat
+    } else {
+      global.Intl = IntlPolyfill
+    }
+
+    return Promise.resolve(true)
+  }).catch((error) => {
+    console.error("Unable to initialize lean-intl locale subsystem:", error)
   })
 }
