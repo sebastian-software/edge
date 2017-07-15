@@ -1,6 +1,6 @@
 {
   "name": "edge-core",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Core JavaScript Infrastructure for Edge. Part of the Edge Platform.",
   "main": "lib/node.commonjs.js",
   "module": "lib/node.esmodules.js",
