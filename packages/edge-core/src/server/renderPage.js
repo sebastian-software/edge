@@ -14,9 +14,13 @@ import Helmet from "react-helmet"
  * @param config.scripts {string} [""] Scripts to inject into the page.
  * @returns The full HTML page in the form of a React element.
  */
-export default function renderPage({ html, initialState = {},
-  nonce, locale, styles, scripts }) {
-
+export default function renderPage({
+  html,
+  initialState = {},
+  nonce,
+  locale, styles,
+  scripts
+}) {
   const helmet = Helmet.renderStatic()
   const inlineCode = `APP_STATE=${serialize(initialState, { isJSON: true })};`
 
