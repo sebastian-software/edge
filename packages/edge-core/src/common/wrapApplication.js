@@ -3,13 +3,13 @@ import { Provider } from "react-redux"
 import { ApolloProvider } from "react-apollo"
 import { IntlProvider } from "react-intl"
 
-export default function wrapApplication(Application, { locale, messages, apolloClient, reduxStore }) {
+export default function wrapApplication(Application, { locale, apolloClient, reduxStore }) {
   let Wrapped = Application
 
   if (apolloClient) {
     Wrapped = (
       <ApolloProvider client={apolloClient} store={reduxStore}>
-        <Wrapped/>
+        {Wrapped}
       </ApolloProvider>
     )
   }
@@ -17,15 +17,15 @@ export default function wrapApplication(Application, { locale, messages, apolloC
   if (reduxStore) {
     Wrapped = (
       <Provider store={reduxStore}>
-        <Wrapped/>
+        {Wrapped}
       </Provider>
     )
   }
 
   if (locale) {
     Wrapped = (
-      <IntlProvider locale={locale} messages={messages}>
-        <Wrapped/>
+      <IntlProvider locale={locale}>
+        {Wrapped}
       </IntlProvider>
     )
   }
