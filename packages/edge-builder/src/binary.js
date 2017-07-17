@@ -2,6 +2,7 @@ import meow from "meow"
 import chalk from "chalk"
 import updateNotifier from "update-notifier"
 import Promise from "bluebird"
+import { get as getRoot } from "app-root-dir"
 
 import { buildClient, buildServer, cleanClient, cleanServer } from "./commands/build"
 import { startDevServer } from "./commands/dev"
@@ -29,10 +30,13 @@ const command = meow(`
     }
 })
 
+const appPkg = require(getRoot() + "/package.json")
+const appInfo = " running on " + chalk.bold.blue(appPkg.name) + "-" + appPkg.version
+
 const selectedTasks = command.input
 const flags = command.flags
 
-console.log(chalk.bold("EDGE " + chalk.green("v" + pkg.version)))
+console.log(chalk.bold("EDGE " + chalk.green("v" + pkg.version)) + appInfo)
 
 // Check for updates first
 updateNotifier({ pkg }).notify()
