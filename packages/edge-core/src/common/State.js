@@ -82,11 +82,17 @@ export function getNonce(state) {
 /**
  * Bundles the given reducers into a root reducer for the application
  */
-export function createRootReducer(reducers) {
-  return combineReducers({
+export function createRootReducer(reducers, apolloClient) {
+  const allReducers = {
     ...reducers,
     edge: edgeReducer
-  })
+  }
+
+  if (apolloClient) {
+    allReducers.apollo = apolloClient.reducer()
+  }
+
+  return combineReducers(allReducers)
 }
 
 
@@ -97,9 +103,7 @@ export function createRootReducer(reducers) {
 export function createReduxStore(config = {}) {
   const { reducers = {}, middlewares = [], enhancers = [], initialState, apolloClient } = config
 
-  const rootReducer = apolloClient ?
-    createRootReducer({ ...reducers, apollo: apolloClient.reducer() }) :
-    createRootReducer(reducers)
+  const rootReducer = createRootReducer(reducers, apolloClient)
 
   const rootEnhancers = composeEnhancers(
     applyMiddleware(
