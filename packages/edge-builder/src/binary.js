@@ -1,6 +1,8 @@
 import meow from "meow"
 import chalk from "chalk"
 import updateNotifier from "update-notifier"
+import Promise from "bluebird"
+
 import { buildClient, buildServer, cleanClient, cleanServer } from "./commands/build"
 import { startDevServer } from "./commands/dev"
 import pkg from "../package.json"
@@ -47,10 +49,10 @@ if (!flags.verbose) {
   process.noDeprecation = true
 }
 
-async function executeCommands(listOfCommands) {
-  for (let command of listOfCommands) {
-    await command(flags)
-  }
+/* eslint-disable no-process-exit */
+
+function executeCommands(listOfCommands) {
+  return Promise.each(listOfCommands, (item) => item())
 }
 
 async function executeTasks() {
