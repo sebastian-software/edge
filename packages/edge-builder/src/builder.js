@@ -250,7 +250,10 @@ export default function builder(options = {}) {
               loader: "babel-loader",
               options: {
                 babelrc: true,
-                forceEnv: BABEL_ENV
+                forceEnv: BABEL_ENV,
+                plugins: [
+                  "dual-import"
+                ]
               }
             }
           ].filter(Boolean)
@@ -375,6 +378,7 @@ export default function builder(options = {}) {
       isClient ? new ExtractCssChunks({
         filename: isDevelopment ? "[name].css" : "[name].[contenthash:base62:8].css"
       }) : null,
+
       isServer ? new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }) : null,
 
       // only needed when server built with webpack
