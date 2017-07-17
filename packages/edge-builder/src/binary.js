@@ -29,14 +29,15 @@ const command = meow(`
     }
 })
 
-// Check for updates first
-updateNotifier({ pkg }).notify()
-
 const selectedTasks = command.input
 const flags = command.flags
 
 console.log(chalk.bold("EDGE " + chalk.green("v" + pkg.version)))
 
+// Check for updates first
+updateNotifier({ pkg }).notify()
+
+// List of tasks we have available
 const availableTasks = [
   { task: "clean", commands: [ cleanClient, cleanServer ] },
   { task: "build", commands: [ cleanClient, cleanServer, buildClient, buildServer ] },
