@@ -197,6 +197,16 @@ export default function builder(options = {}) {
 
     module: {
       rules: [
+        {
+          test: babelFiles,
+          use: [ "source-map-loader" ],
+          enforce: "pre",
+          exclude: [
+            /intl-/,
+            /apollo-/
+          ]
+        },
+
         // References to images, fonts, movies, music, etc.
         {
           test: assetFiles,
