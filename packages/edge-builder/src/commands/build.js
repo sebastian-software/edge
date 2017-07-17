@@ -1,7 +1,10 @@
 import webpack from "webpack"
-import { removeSync } from "fs-extra"
+import { remove } from "fs-extra"
+import { promisify } from "bluebird"
 
 import builder from "../builder"
+
+const removePromise = promisify(remove)
 
 function checkStats(stats, resolve, reject)
 {
@@ -66,11 +69,9 @@ export function buildServer() {
 }
 
 export function cleanServer() {
-  removeSync("./build/server")
-  return Promise.resolve()
+  return removePromise("./build/server")
 }
 
 export function cleanClient() {
-  removeSync("./build/client")
-  return Promise.resolve()
+  return removePromise("./build/client")
 }
