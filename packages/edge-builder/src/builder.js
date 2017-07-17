@@ -156,8 +156,6 @@ export default function builder(options = {}) {
     }
   } : null
 
-  const BABEL_CACHE = null
-
   const cssLoaderOptions = {
     modules: true,
     localIdentName: "[local]-[hash:base62:8]",
@@ -242,7 +240,6 @@ export default function builder(options = {}) {
               loader: "babel-loader",
               options: {
                 babelrc: true,
-                cacheDirectory: BABEL_CACHE,
                 forceEnv: BABEL_ENV
               }
             }
