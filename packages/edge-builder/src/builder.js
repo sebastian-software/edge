@@ -321,9 +321,9 @@ export default function builder(options = {}) {
       }),
 
       // Automatically assign quite useful and matching chunk names based on file names.
-      new ChunkNames({
-        debug: false
-      }),
+      // new ChunkNames({
+      //   debug: false
+      // }),
 
       // Analyse bundle in production
       isClient && isProduction ? new BundleAnalyzerPlugin.BundleAnalyzerPlugin({
