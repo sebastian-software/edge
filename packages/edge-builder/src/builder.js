@@ -15,6 +15,9 @@ import WebpackDigestHash from "./plugins/ChunkHash"
 import ChunkNames from "./plugins/ChunkNames"
 import VerboseProgress from "./plugins/VerboseProgress"
 
+// DLL Support
+import AutoDllPlugin from "autodll-webpack-plugin"
+
 // CSS Support
 import ExtractCssChunks from "extract-css-chunks-webpack-plugin"
 
@@ -41,6 +44,18 @@ const CACHE_HASH_TYPE = "sha256"
 const CACHE_DIGEST_TYPE = "base62"
 const CACHE_DIGEST_LENGTH = 4
 
+function removeEmptyKeys(source)
+{
+  var copy = {}
+  for (var key in source)
+  {
+    if (!(source[key] == null || source[key].length === 0))
+      copy[key] = source[key]
+  }
+
+  return copy
+}
+
 // https://github.com/mishoo/UglifyJS2#compress-options
 const UGLIFY_OPTIONS = {
   compress: {
@@ -64,11 +79,15 @@ dotenv.config()
 const CHECK_ENVS = [
   "SERVER_ENTRY",
   "CLIENT_ENTRY",
+  "SERVER_VENDOR",
+  "CLIENT_VENDOR",
   "SERVER_OUTPUT",
   "CLIENT_OUTPUT",
   "PUBLIC_PATH",
   "HTML_TEMPLATE",
-  "DEVELOPMENT_PORT"
+  "DEVELOPMENT_PORT",
+  "DEFAULT_LOCALE",
+  "SUPPORTED_LOCALES"
 ]
 const envParameters = Object.keys(process.env)
 const missingParameters = CHECK_ENVS.filter((key) => !envParameters.includes(key))
@@ -81,6 +100,8 @@ if (missingParameters.length > 0)
 const ROOT = getRoot()
 const SERVER_ENTRY = resolve(ROOT, process.env.SERVER_ENTRY)
 const CLIENT_ENTRY = resolve(ROOT, process.env.CLIENT_ENTRY)
+const SERVER_VENDOR = resolve(ROOT, process.env.SERVER_VENDOR)
+const CLIENT_VENDOR = resolve(ROOT, process.env.CLIENT_VENDOR)
 const SERVER_OUTPUT = resolve(ROOT, process.env.SERVER_OUTPUT)
 const CLIENT_OUTPUT = resolve(ROOT, process.env.CLIENT_OUTPUT)
 const PUBLIC_PATH = process.env.PUBLIC_PATH
@@ -137,6 +158,8 @@ export default function builder(options = {}) {
   const DEFAULT_LOCALE = process.env.DEFAULT_LOCALE
   const SUPPORTED_LOCALES = process.env.SUPPORTED_LOCALES.split(",")
 
+  const USE_AUTODLL = false
+
   const name = isServer ? "server" : "client"
   const target = isServer ? "node" : "web"
   const devtool = config.enableSourceMaps ? "source-map" : null
@@ -177,18 +200,23 @@ export default function builder(options = {}) {
     name,
     target,
     devtool,
+    context: ROOT,
     externals: isServer ? serverExternals : undefined,
 
-    entry: [
-      isClient && isDevelopment ?
-        "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false" :
-        null,
-      isServer ? SERVER_ENTRY : CLIENT_ENTRY
-    ].filter(Boolean),
+    entry: removeEmptyKeys({
+      main: [
+        isClient && isDevelopment ?
+          "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false" :
+          null,
+        isServer ? SERVER_ENTRY : CLIENT_ENTRY
+      ].filter(Boolean),
+
+      vendor: !USE_AUTODLL ? (isServer ? SERVER_VENDOR : CLIENT_VENDOR) : null
+    }),
 
     output: {
       libraryTarget: isServer ? "commonjs2" : "var",
-      filename: isDevelopment || isServer ? "[name].js" : "[name].[chunkhash].js",
+      filename: isDevelopment || isServer ? "[name].js" : "[name]-[chunkhash].js",
       chunkFilename: isDevelopment || isServer ? "[name].js" : "[name]-[chunkhash].js",
       path: isServer ? SERVER_OUTPUT : CLIENT_OUTPUT,
       publicPath: PUBLIC_PATH,
@@ -329,6 +357,22 @@ export default function builder(options = {}) {
       //   debug: false
       // }),
 
+      // Automatically generate a re-used DLL file for faster compilation times.
+      // https://github.com/asfktz/autodll-webpack-plugin
+      // Waiting for https://github.com/faceyspacey/webpack-flush-chunks/issues/18
+      // https://github.com/asfktz/autodll-webpack-plugin/issues/23
+      USE_AUTODLL ? new AutoDllPlugin({
+        filename: "[name]-[chunkhash].js",
+        context: ROOT,
+        debug: true,
+        inject: isProduction && isClient,
+        entry: {
+          vendor: [
+            isServer ? SERVER_VENDOR : CLIENT_VENDOR
+          ]
+        }
+      }) : null,
+
       // Analyse bundle in production
       isClient && isProduction ? new BundleAnalyzerPlugin.BundleAnalyzerPlugin({
         analyzerMode: "static",
@@ -386,7 +430,7 @@ export default function builder(options = {}) {
       isDevelopment ? new webpack.NamedModulesPlugin() : null,
 
       isClient ? new ExtractCssChunks({
-        filename: isDevelopment ? "[name].css" : "[name].[contenthash:base62:8].css"
+        filename: isDevelopment ? "[name].css" : "[name]-[contenthash:base62:8].css"
       }) : null,
 
       isServer ? new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }) : null,
