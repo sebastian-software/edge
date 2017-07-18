@@ -202,6 +202,7 @@ export default function builder(options = {}) {
           use: [ "source-map-loader" ],
           enforce: "pre",
           exclude: [
+            // These packages point to sources which do not exist
             /intl-/,
             /apollo-/
           ]
