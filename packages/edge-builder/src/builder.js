@@ -203,6 +203,7 @@ export default function builder(options = {}) {
           enforce: "pre",
           exclude: [
             // These packages point to sources which do not exist
+            // See also: https://github.com/webpack-contrib/source-map-loader/issues/18
             /intl-/,
             /apollo-/
           ]
