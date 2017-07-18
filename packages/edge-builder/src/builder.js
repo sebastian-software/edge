@@ -33,6 +33,8 @@ import UglifyPlugin from "uglifyjs-webpack-plugin"
 import BundleAnalyzerPlugin from "webpack-bundle-analyzer"
 import ZopfliPlugin from "zopfli-webpack-plugin"
 
+import WriteFilePlugin from "write-file-webpack-plugin"
+
 import { getHashDigest } from "loader-utils"
 
 const CACHE_HASH_TYPE = "sha256"
@@ -343,6 +345,12 @@ export default function builder(options = {}) {
         logLevel: "silent",
         openAnalyzer: false,
         reportFilename: "report.html"
+      }) : null,
+
+      // Forces webpack-dev-server program to write bundle files to the file system.
+      // https://github.com/gajus/write-file-webpack-plugin
+      isClient && isDevelopment ? new WriteFilePlugin({
+        log: true
       }) : null,
 
       // We use this so that our generated [chunkhash]'s are only different if
