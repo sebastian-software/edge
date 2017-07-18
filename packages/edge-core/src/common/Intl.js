@@ -3,7 +3,6 @@ import areIntlLocalesSupported from "intl-locales-supported"
 import { addLocaleData } from "react-intl"
 
 const PREFER_NATIVE = true
-const LOADER_PREFIX = "!file-loader?name=intl/[name]-[hash:base62:8].[ext]!"
 
 export function injectCode({ code, url, nonce }) {
   if (process.env.TARGET === "web") {
@@ -55,7 +54,7 @@ export function ensureReactIntlSupport(language, nonce = "") {
 
   // Explicitely receive the URL instead of the real file content.
   // Benefit: Don't process all these files by Webpack and just copy them over to the destination folder.
-  const reactIntlUrl = require(LOADER_PREFIX + "react-intl/locale-data/" + language + ".js")
+  const reactIntlUrl = require("!file-loader?name=intl/[name]-[hash:base62:8].[ext]!react-intl/locale-data/" + language + ".js")
   console.log("Loading React-Intl Data:", reactIntlUrl)
   return fetch(reactIntlUrl).then((response) => {
     return response.text().then((code) => {
@@ -86,7 +85,7 @@ export function ensureIntlSupport(locale, nonce = "") {
 
   // Explicitely receive the URL instead of the real file content.
   // Benefit: Don't process all these files by Webpack and just copy them over to the destination folder.
-  const intlUrl = require(LOADER_PREFIX + "lean-intl/locale-data/" + locale + ".json")
+  const intlUrl = require("!file-loader?name=intl/[name]-[hash:base62:8].[ext]!lean-intl/locale-data/" + locale + ".json")
 
   console.log("Loading Lean-Intl Polyfill...")
   console.log("Loading Lean-Intl Data:", intlUrl)
