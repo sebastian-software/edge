@@ -44,6 +44,7 @@
     "babel-preset-edge": "^0.9.7",
     "babili-webpack-plugin": "^0.1.2",
     "body-parser": "^1.17.2",
+    "bundle-buddy": "^0.1.2",
     "cache-loader": "^1.0.3",
     "case-sensitive-paths-webpack-plugin": "^2.1.1",
     "chalk": "^2.0.1",
