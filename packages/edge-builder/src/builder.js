@@ -204,14 +204,13 @@ export default function builder(options = {}) {
     externals: isServer ? serverExternals : undefined,
 
     entry: removeEmptyKeys({
+      vendor: !USE_AUTODLL ? (isServer ? SERVER_VENDOR : CLIENT_VENDOR) : null,
       main: [
         isClient && isDevelopment ?
           "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false" :
           null,
         isServer ? SERVER_ENTRY : CLIENT_ENTRY
-      ].filter(Boolean),
-
-      vendor: !USE_AUTODLL ? (isServer ? SERVER_VENDOR : CLIENT_VENDOR) : null
+      ].filter(Boolean)
     }),
 
     output: {
@@ -435,12 +434,20 @@ export default function builder(options = {}) {
 
       isServer ? new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }) : null,
 
-      // only needed when server built with webpack
-      isClient ? new webpack.optimize.CommonsChunkPlugin({
-        names: [ "bootstrap" ],
+      // Extract Webpack bootstrap code with knowledge about chunks into separate cachable package.
+      // isClient ? new webpack.optimize.CommonsChunkPlugin({
+      //   names: [ "bootstrap" ],
 
-        // needed to put webpack bootstrap code before chunks
-        filename: isProduction ? "[name]-[chunkhash].js" : "[name].js",
+      //   // needed to put webpack bootstrap code before chunks
+      //   filename: isProduction ? "[name]-[chunkhash].js" : "[name].js",
+      //   minChunks: Infinity
+      // }) : null,
+
+      // https://webpack.js.org/plugins/commons-chunk-plugin/#explicit-vendor-chunk
+      !USE_AUTODLL && isClient ? new webpack.optimize.CommonsChunkPlugin({
+        name: "vendor",
+
+        // With more entries, this ensures that no other module goes into the vendor chunk
         minChunks: Infinity
       }) : null,
 
