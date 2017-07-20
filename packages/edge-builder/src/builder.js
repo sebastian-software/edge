@@ -185,6 +185,8 @@ export default function builder(options = {}) {
     modules: true,
     localIdentName: "[local]-[hash:base62:8]",
     import: false,
+
+    // We are using CSS-O as part of our PostCSS-Chain
     minimize: false,
     sourceMap: config.enableSourceMaps
   }
