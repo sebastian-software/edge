@@ -174,6 +174,11 @@ export default function builder(options = {}) {
   const DEFAULT_LOCALE = process.env.DEFAULT_LOCALE
   const SUPPORTED_LOCALES = new Set(process.env.SUPPORTED_LOCALES.split(","))
 
+  // Make sure that all plain languages where the full locale is given are also supported
+  for (let entry of SUPPORTED_LOCALES) {
+    SUPPORTED_LOCALES.add(entry.split("-")[0])
+  }
+
   const USE_AUTODLL = false
 
   const name = isServer ? "server" : "client"
@@ -188,7 +193,7 @@ export default function builder(options = {}) {
   console.log(`→ Bundle Compression: ${config.bundleCompression}`)
   console.log(`→ Use Cache Loader: ${config.useCacheLoader} [Hash: ${CACHE_HASH}]`)
   console.log(`→ Default Locale: ${DEFAULT_LOCALE}`)
-  console.log(`→ Supported Locales: ${SUPPORTED_LOCALES}`)
+  console.log(`→ Supported Locales: ${Array.from(SUPPORTED_LOCALES.keys())}`)
 
   const cacheLoader = config.useCacheLoader ? {
     loader: "cache-loader",
@@ -334,7 +339,9 @@ export default function builder(options = {}) {
     },
 
     plugins: [
-      new webpack.NormalModuleReplacementPlugin(/locale-data\/([a-zA-Z0-9-]+)/, function(resource) {
+      // Completely filter out locale data for locales we definitely do not support
+      // This is actually massive for bundling times, bundle sizes and all.
+      new webpack.NormalModuleReplacementPlugin(/locale-data\/([a-zA-Z0-9-]+)/, (resource) => {
         if (!SUPPORTED_LOCALES.has(RegExp.$1)) {
           resource.request = "node-noop"
         }
@@ -345,7 +352,7 @@ export default function builder(options = {}) {
           NODE_ENV: JSON.stringify(options.env),
           TARGET: JSON.stringify(target),
           DEFAULT_LOCALE: JSON.stringify(DEFAULT_LOCALE),
-          SUPPORTED_LOCALES: JSON.stringify(SUPPORTED_LOCALES)
+          SUPPORTED_LOCALES: JSON.stringify(Array.from(SUPPORTED_LOCALES.keys()))
         }
       }),
 
