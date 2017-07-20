@@ -172,7 +172,7 @@ export default function builder(options = {}) {
   const PREFIX = chalk.bold(config.target.toUpperCase())
 
   const DEFAULT_LOCALE = process.env.DEFAULT_LOCALE
-  const SUPPORTED_LOCALES = process.env.SUPPORTED_LOCALES.split(",")
+  const SUPPORTED_LOCALES = new Set(process.env.SUPPORTED_LOCALES.split(","))
 
   const USE_AUTODLL = false
 
@@ -334,6 +334,12 @@ export default function builder(options = {}) {
     },
 
     plugins: [
+      new webpack.NormalModuleReplacementPlugin(/locale-data\/([a-zA-Z0-9-]+)/, function(resource) {
+        if (!SUPPORTED_LOCALES.has(RegExp.$1)) {
+          resource.request = "node-noop"
+        }
+      }),
+
       new webpack.DefinePlugin({
         "process.env": {
           NODE_ENV: JSON.stringify(options.env),
