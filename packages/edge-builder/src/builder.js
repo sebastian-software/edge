@@ -58,15 +58,31 @@ function removeEmptyKeys(source)
 
 // https://github.com/mishoo/UglifyJS2#compress-options
 const UGLIFY_OPTIONS = {
+  /* eslint-disable camelcase */
+
   compress: {
+    // Only risky for some rare floating point situations
     unsafe_math: true,
+
+    // optimize expressions like Array.prototype.slice.call(a) into [].slice.call(a)
     unsafe_proto: true,
-    keep_infinity: true, // good for chrome performance
-    passes: 3 // try hard to use less code
+
+    // Good for Chrome performance
+    keep_infinity: true,
+
+    // Try harder to export less code
+    passes: 2
   },
+
   output: {
-    ascii_only: true, // fix for problematic code like emoticons
-    semicolons: false, // more readable output
+    // Fix for problematic code like emoticons
+    ascii_only: true,
+
+    // More readable output
+    // Whenever possible we will use a newline instead of a semicolon
+    semicolons: false,
+
+    // Remove all comments, don't even keep tons of copyright comments
     comments: false
   }
 }
@@ -413,6 +429,8 @@ export default function builder(options = {}) {
       // https://github.com/webpack-contrib/uglifyjs-webpack-plugin
       config.bundleCompression === "uglify" && isProduction && isClient ?
         new UglifyPlugin({
+          sourceMap: config.enableSourceMaps,
+          comments: false,
           uglifyOptions: UGLIFY_OPTIONS
         }) : null,
 
