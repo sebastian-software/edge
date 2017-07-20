@@ -410,9 +410,7 @@ export default function builder(options = {}) {
 
       // Forces webpack-dev-server program to write bundle files to the file system.
       // https://github.com/gajus/write-file-webpack-plugin
-      isClient && isDevelopment ? new WriteFilePlugin({
-        log: true
-      }) : null,
+      isClient && isDevelopment ? new WriteFilePlugin() : null,
 
       // We use this so that our generated [chunkhash]'s are only different if
       // the content for our respective chunks have changed.  This optimises
