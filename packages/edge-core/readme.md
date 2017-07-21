@@ -12,7 +12,7 @@
 [travis]: https://travis-ci.org/sebastian-software/edge-core
 [appveyor]: https://ci.appveyor.com/project/swernerx/edge-core/branch/master
 
-TODO
+> The Edge Platform helps you focus on business logic rather than dealing with massive tooling, common patterns, complex configurations.
 
 
 
