@@ -183,6 +183,11 @@ export default function builder(options = {}) {
     return Array.from(languages.keys())
   })()
 
+
+  const LEAN_INTL_REGEXP = new RegExp("\\b" + SUPPORTED_LOCALES.join("\.json\\b|\\b") + "\.json\\b")
+  const REACT_INTL_REGEXP = new RegExp("\\b" + SUPPORTED_LANGUAGES.join("\\b|\\b") + "\\b")
+
+
   const USE_AUTODLL = false
 
   const name = isServer ? "server" : "client"
@@ -346,11 +351,10 @@ export default function builder(options = {}) {
     plugins: [
       // Completely filter out locale data for locales we definitely do not support
       // This is actually massive for bundling times, bundle sizes and all.
-      new webpack.NormalModuleReplacementPlugin(/locale-data\/([a-zA-Z0-9-]+)/, (resource) => {
-        if (!SUPPORTED_LOCALES.has(RegExp.$1)) {
-          resource.request = "node-noop"
-        }
-      }),
+      // Currently supports lean-intl and react-intl. We should propbably add more libraries
+      // here over time e.g. momentjs and other locale data dependent stuff.
+      new webpack.ContextReplacementPlugin(/lean-intl\/locale-data/, LEAN_INTL_REGEXP),
+      new webpack.ContextReplacementPlugin(/react-intl\/locale-data/, REACT_INTL_REGEXP),
 
       new webpack.DefinePlugin({
         "process.env": {
