@@ -1,45 +1,9 @@
-import "isomorphic-fetch"
 import areIntlLocalesSupported from "intl-locales-supported"
 import { addLocaleData } from "react-intl"
 
 const PREFER_NATIVE = true
 
-export function injectCode({ code, url, nonce }) {
-  if (process.env.TARGET === "web") {
-    return new Promise((resolve, reject) => {
-      var result = false
-      var injectReference = document.getElementsByTagName("script")[0]
-      var scriptElem = document.createElement("script")
-
-      if (url) {
-        scriptElem.src = url
-      } else if (code) {
-        scriptElem.innerText = code
-      }
-
-      scriptElem.async = true
-
-      if (nonce) {
-        scriptElem.setAttribute("nonce", nonce)
-      }
-
-      scriptElem.onload = scriptElem.onreadystatechange = () => {
-        if (!result && (!this.readyState || this.readyState === "complete")) {
-          result = true
-          resolve(true)
-        }
-      }
-      scriptElem.onerror = scriptElem.onabort = reject
-      injectReference.parentNode.insertBefore(scriptElem, injectReference)
-    })
-  } else {
-    /* eslint-disable no-new-func */
-    new Function(code)()
-    return Promise.resolve(true)
-  }
-}
-
-export function ensureReactIntlSupport(language, nonce = "") {
+export function ensureReactIntlSupport(language) {
   // Locale Data in Node.js:
   // When using React Intl in Node.js (same for the Intl.js polyfill), all locale data will be
   // loaded into memory. This makes it easier to write a universal/isomorphic React app with
@@ -50,23 +14,14 @@ export function ensureReactIntlSupport(language, nonce = "") {
   // the Promise in that case.
   if (process.env.TARGET === "node") {
     return Promise.resolve(false)
+  } else {
+    /* eslint-disable no-inline-comments */
+    return import(/* webpackChunkName: "intl/[request]" */ `react-intl/locale-data/${language}`)
+      .then((response) => addLocaleData(response))
   }
-
-  // Explicitely receive the URL instead of the real file content.
-  // Benefit: Don't process all these files by Webpack and just copy them over to the destination folder.
-  const reactIntlUrl = require("!file-loader?name=intl/[name]-[hash:base62:8].[ext]!react-intl/locale-data/" + language + ".js")
-  console.log("Loading React-Intl Data:", reactIntlUrl)
-  return fetch(reactIntlUrl).then((response) => {
-    return response.text().then((code) => {
-      // This stuff is crappy but it's a way to work with the UMD packages of React-Intl.
-      // See also: https://github.com/yahoo/react-intl/issues/853
-      injectCode({ code })
-      addLocaleData(ReactIntlLocaleData[language])
-    })
-  })
 }
 
-export function ensureIntlSupport(locale, nonce = "") {
+export function ensureIntlSupport(locale) {
   // Determine if the built-in `Intl` has the locale data we need.
   if (PREFER_NATIVE && global.Intl && areIntlLocalesSupported([ locale ])) {
     return Promise.resolve(false)
@@ -85,15 +40,15 @@ export function ensureIntlSupport(locale, nonce = "") {
 
   // Explicitely receive the URL instead of the real file content.
   // Benefit: Don't process all these files by Webpack and just copy them over to the destination folder.
-  const intlUrl = require("!file-loader?name=intl/[name]-[hash:base62:8].[ext]!lean-intl/locale-data/" + locale + ".json")
+  // const intlUrl = require("!file-loader?name=intl/[name]-[hash:base62:8].[ext]!lean-intl/locale-data/" + locale + ".json")
 
   console.log("Loading Lean-Intl Polyfill...")
-  console.log("Loading Lean-Intl Data:", intlUrl)
 
   // Load Polyfill and data in parallel
-  Promise.all([
-    import("lean-intl"),
-    fetch(intlUrl).then((response) => response.json())
+  return Promise.all([
+    /* eslint-disable no-inline-comments */
+    import(/* webpackChunkName: "intl" */ "lean-intl"),
+    import(/* webpackChunkName: "intl/[request]" */ `intl/locale-data/${locale}`)
   ]).then(([ IntlPolyfill, intlData ]) => {
     // Rewriting import() to require.ensure unfortunately does not work with ESM correctly as it seems
     const IntlPolyfillClass = IntlPolyfill.default || IntlPolyfill
@@ -111,7 +66,5 @@ export function ensureIntlSupport(locale, nonce = "") {
     }
 
     return Promise.resolve(true)
-  }).catch((error) => {
-    console.error("Unable to initialize lean-intl locale subsystem:", error)
   })
 }
