@@ -1,7 +1,10 @@
+src
 __tests__
+
 appveyor.yml
 browserslist
 gulpfile.babel.js
+
 .editorconfig
 .eslintignore
 .babelrc
