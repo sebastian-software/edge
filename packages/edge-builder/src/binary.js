@@ -56,7 +56,9 @@ const availableTasks = [
   { task: "dev", commands: [ cleanClient, cleanServer, startDevServer ] },
   { task: "start:dev", commands: [ cleanClient, cleanServer, startDevServer ] },
   { task: "start:react", commands: [ cleanClient, cleanServer, buildClient, buildServer, startReactServer ] },
-  { task: "start:static", commands: [ cleanClient, cleanServer, buildClient, startStaticServer ] }
+  { task: "start:react:plain", commands: [ startReactServer ] },
+  { task: "start:static", commands: [ cleanClient, cleanServer, buildClient, startStaticServer ] },
+  { task: "start:static:plain", commands: [ startStaticServer ] }
 ]
 
 // Prevent deprecation messages which should not be displayed to the end user

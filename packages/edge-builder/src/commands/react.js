@@ -3,6 +3,8 @@ import { get as getRoot } from "app-root-dir"
 import dotenv from "dotenv"
 import express from "express"
 
+import createExpress from "../express/createExpressServer"
+
 // Initialize environment configuration
 dotenv.config()
 
@@ -17,7 +19,7 @@ const PRODUCTION_PORT = process.env.PRODUCTION_PORT
 /* eslint-disable security/detect-non-literal-require */
 
 export function startReactServer() {
-  const server = express()
+  const server = createExpress({})
 
   const clientStats = require(`${CLIENT_OUTPUT}/stats.json`)
   const serverRender = require(`${SERVER_OUTPUT}/main.js`).default

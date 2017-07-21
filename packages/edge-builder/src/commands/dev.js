@@ -7,9 +7,7 @@ const DEVELOPMENT_PORT = process.env.DEVELOPMENT_PORT
 
 export function startDevServer() {
   console.log("Creating development server...")
-  const server = createExpress({
-
-  })
+  const server = createExpress({})
 
   const compiler = addDevMiddleware(server)
 

@@ -3,6 +3,8 @@ import { get as getRoot } from "app-root-dir"
 import dotenv from "dotenv"
 import express from "express"
 
+import createExpress from "../express/createExpressServer"
+
 // Initialize environment configuration
 dotenv.config()
 
@@ -14,7 +16,7 @@ const PRODUCTION_PORT = process.env.PRODUCTION_PORT
 /* eslint-disable no-console */
 
 export function startStaticServer() {
-  const server = express()
+  const server = createExpress({})
 
   server.use("/", express.static(CLIENT_OUTPUT))
   server.use(PUBLIC_PATH, express.static(CLIENT_OUTPUT))
