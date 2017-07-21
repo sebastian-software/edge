@@ -335,10 +335,15 @@ exports[`Lost Grid 1`] = `
 width:calc(24.975% - 22.5px)
 }
 
+.grid:nth-child(12n+1):after,.grid:nth-child(n):after{
+content:'';
+display:block;
+clear:both
+}
+
 .grid:nth-child(n){
 float:left;
-margin-right:30px;
-clear:none
+margin-right:30px
 }
 
 .grid:last-child{
@@ -348,10 +353,6 @@ margin-right:0
 .grid:nth-child(12n){
 margin-right:0;
 float:right
-}
-
-.grid:nth-child(12n+1){
-clear:both
 }"
 `;
 
