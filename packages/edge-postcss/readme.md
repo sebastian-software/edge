@@ -12,7 +12,9 @@
 [travis]: https://travis-ci.org/sebastian-software/edge-postcss
 [appveyor]: https://ci.appveyor.com/project/swernerx/edge-postcss/branch/master
 
-Edge PostCSS is a collection of carefully chosen and configured PostCSS plugins.
+Edge PostCSS is a collection of carefully chosen and configured PostCSS plugins. Part of the Edge Platform.
+
+> The Edge Platform helps you focus on business logic rather than dealing with massive tooling, common patterns, complex configurations.
 
 It combines some common learnings and conventions from Sass, with some upcoming CSS4 features and
 adds a whole chain of fixes for a variety of browser bugs.
