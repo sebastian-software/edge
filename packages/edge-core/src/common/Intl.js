@@ -44,7 +44,7 @@ export function ensureIntlSupport(locale) {
   return Promise.all([
     /* eslint-disable no-inline-comments */
     import(/* webpackChunkName: "intl" */ "lean-intl"),
-    import(/* webpackChunkName: "intl/[request]" */ `intl/locale-data/${locale}`)
+    import(/* webpackChunkName: "intl/[request]" */ `lean-intl/locale-data/${locale}`)
   ]).then(([ IntlPolyfill, intlData ]) => {
     // Rewriting import() to require.ensure unfortunately does not work with ESM correctly as it seems
     const IntlPolyfillClass = IntlPolyfill.default || IntlPolyfill
