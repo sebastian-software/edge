@@ -6,9 +6,7 @@ import { addDevMiddleware } from "../express/dev"
 const DEVELOPMENT_PORT = process.env.DEVELOPMENT_PORT
 
 export function startDevServer() {
-  console.log("Creating development server...")
   const server = createExpress({})
-
   const compiler = addDevMiddleware(server)
 
   let serverIsStarted = false
@@ -22,7 +20,7 @@ export function startDevServer() {
         serverIsStarted = true
 
         server.listen(DEVELOPMENT_PORT, () => {
-          console.log(`Development server started @${DEVELOPMENT_PORT}`)
+          console.log(`Development Server started @ Port ${DEVELOPMENT_PORT}`)
         })
       }
     } else {
