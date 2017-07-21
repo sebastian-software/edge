@@ -6,6 +6,9 @@ import { get as getRoot } from "app-root-dir"
 
 import { buildClient, buildServer, cleanClient, cleanServer } from "./commands/build"
 import { startDevServer } from "./commands/dev"
+import { startReactServer } from "./commands/react"
+import { startStaticServer } from "./commands/static"
+
 import pkg from "../package.json"
 
 // Parse arguments
@@ -19,10 +22,13 @@ const command = meow(`
 
   Commands:
     dev             Start development server
+    start:dev       Start development server
+    start:react     Start production universal React server
+    start:static    Start production static server
     build           Build production appliction
-    build:server    Build server part of production appliction
+    build:client    Build client part of production application
+    build:server    Build server part of production application
     clean           Clean up all generated files
-
 `, {
     alias: {
       v: "verbose",
@@ -45,8 +51,12 @@ updateNotifier({ pkg }).notify()
 const availableTasks = [
   { task: "clean", commands: [ cleanClient, cleanServer ] },
   { task: "build", commands: [ cleanClient, cleanServer, buildClient, buildServer ] },
+  { task: "build:client", commands: [ cleanClient, buildClient ] },
   { task: "build:server", commands: [ cleanServer, buildServer ] },
-  { task: "dev", commands: [ cleanClient, cleanServer, startDevServer ] }
+  { task: "dev", commands: [ cleanClient, cleanServer, startDevServer ] },
+  { task: "start:dev", commands: [ cleanClient, cleanServer, startDevServer ] },
+  { task: "start:react", commands: [ cleanClient, cleanServer, buildClient, buildServer, startReactServer ] },
+  { task: "start:static", commands: [ cleanClient, cleanServer, buildClient, startStaticServer ] }
 ]
 
 // Prevent deprecation messages which should not be displayed to the end user
