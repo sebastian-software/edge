@@ -2,4 +2,5 @@
 
 export * from "./common"
 
+export { default as getBrowserLocale } from "./client/getBrowserLocale"
 export { default as renderApp } from "./client/renderApp"
