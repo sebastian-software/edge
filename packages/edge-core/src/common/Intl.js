@@ -38,11 +38,7 @@ export function ensureIntlSupport(locale) {
     console.warn("See also: https://github.com/nodejs/node/wiki/Intl")
   }
 
-  // Explicitely receive the URL instead of the real file content.
-  // Benefit: Don't process all these files by Webpack and just copy them over to the destination folder.
-  // const intlUrl = require("!file-loader?name=intl/[name]-[hash:base62:8].[ext]!lean-intl/locale-data/" + locale + ".json")
-
-  console.log("Loading Lean-Intl Polyfill...")
+  console.log("Loading Intl Polyfill...")
 
   // Load Polyfill and data in parallel
   return Promise.all([
