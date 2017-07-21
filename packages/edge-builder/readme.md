@@ -14,10 +14,7 @@
 
 Edge Builder is a build tool for modern web applications. Part of the Edge Platform.
 
-
-## Thanks
-
-- James Gillmore @faceyspacey
+> It helps you focus on business logic rather than dealing with massive libraries, patterns, configurations etc.
 
 
 ## Features
