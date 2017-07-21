@@ -172,12 +172,16 @@ export default function builder(options = {}) {
   const PREFIX = chalk.bold(config.target.toUpperCase())
 
   const DEFAULT_LOCALE = process.env.DEFAULT_LOCALE
-  const SUPPORTED_LOCALES = new Set(process.env.SUPPORTED_LOCALES.split(","))
+  const SUPPORTED_LOCALES = process.env.SUPPORTED_LOCALES.split(",")
 
   // Make sure that all plain languages where the full locale is given are also supported
-  for (let entry of SUPPORTED_LOCALES) {
-    SUPPORTED_LOCALES.add(entry.split("-")[0])
-  }
+  const SUPPORTED_LANGUAGES = (() => {
+    const languages = new Set()
+    for (let entry of SUPPORTED_LOCALES) {
+      languages.add(entry.split("-")[0])
+    }
+    return Array.from(languages.keys())
+  })()
 
   const USE_AUTODLL = false
 
@@ -193,7 +197,8 @@ export default function builder(options = {}) {
   console.log(`→ Bundle Compression: ${config.bundleCompression}`)
   console.log(`→ Use Cache Loader: ${config.useCacheLoader} [Hash: ${CACHE_HASH}]`)
   console.log(`→ Default Locale: ${DEFAULT_LOCALE}`)
-  console.log(`→ Supported Locales: ${Array.from(SUPPORTED_LOCALES.keys())}`)
+  console.log(`→ Supported Locales: ${SUPPORTED_LOCALES}`)
+  console.log(`→ Supported Languages: ${SUPPORTED_LANGUAGES}`)
 
   const cacheLoader = config.useCacheLoader ? {
     loader: "cache-loader",
@@ -352,7 +357,8 @@ export default function builder(options = {}) {
           NODE_ENV: JSON.stringify(options.env),
           TARGET: JSON.stringify(target),
           DEFAULT_LOCALE: JSON.stringify(DEFAULT_LOCALE),
-          SUPPORTED_LOCALES: JSON.stringify(Array.from(SUPPORTED_LOCALES.keys()))
+          SUPPORTED_LOCALES: JSON.stringify(SUPPORTED_LOCALES),
+          SUPPORTED_LANGUAGES: JSON.stringify(SUPPORTED_LANGUAGES)
         }
       }),
 
