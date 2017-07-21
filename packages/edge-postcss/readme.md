@@ -23,14 +23,14 @@ adds a whole chain of fixes for a variety of browser bugs.
 
 ### MERGING
 
-#### [smart-import](https://github.com/sebastian-software/postcss-smart-import)
+#### [import](https://github.com/postcss/postcss-import)
 
 Smarter `@import()` plugin to include other CSS, Sass, SugarSS files.
 
 
 ### URLS/ASSETS
 
-#### [simple-url](https://github.com/sebastian-software/postcss-simple-url)
+#### [smart-asset](https://github.com/sebastian-software/postcss-smart-asset)
 
 Re-rebasing url()-referenced assets during processing.
 Respects locations of imported files and PostCSS configured output location.
