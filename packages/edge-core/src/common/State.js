@@ -47,28 +47,6 @@ export function edgeReducer(previousState = {}, action) {
 }
 
 
-/**
- * Selector for quering the current locale e.g. de-DE, en-US, ...
- */
-export function getLocale(state) {
-  return state.edge.locale
-}
-
-
-/**
- * Selector for quering the current language e.g. de, en, fr, es, ...
- */
-export function getLanguage(state) {
-  return state.edge.language
-}
-
-
-/**
- * Selector for quering the current region e.g. DE, BR, PT, ...
- */
-export function getRegion(state) {
-  return state.edge.region
-}
 
 
 /**

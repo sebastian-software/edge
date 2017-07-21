@@ -59,3 +59,35 @@ export function requiresReactIntl() {
 export function installReactIntl(response) {
   addLocaleData(response)
 }
+
+
+/**
+ * Dummy reducer for exporting server-side data to the client-side application.
+ */
+export function intlReducer(previousState = {}, action) {
+  return previousState
+}
+
+
+/**
+ * Selector for quering the current locale e.g. de-DE, en-US, ...
+ */
+export function getLocale(state) {
+  return state.intl.locale
+}
+
+
+/**
+ * Selector for quering the current language e.g. de, en, fr, es, ...
+ */
+export function getLanguage(state) {
+  return state.intl.language
+}
+
+
+/**
+ * Selector for quering the current region e.g. DE, BR, PT, ...
+ */
+export function getRegion(state) {
+  return state.intl.region
+}
