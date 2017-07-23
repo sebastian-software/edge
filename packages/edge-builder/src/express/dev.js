@@ -32,6 +32,9 @@ export function addDevMiddleware(server) {
     // required
     publicPath: PUBLIC_PATH,
 
+    // we have our custom error handling for webpack which offers far better DX
+    quiet: true,
+
     // display no info to console (only warnings and errors)
     noInfo: true
   }))

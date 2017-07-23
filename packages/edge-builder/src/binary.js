@@ -83,7 +83,12 @@ async function executeTasks() {
   for (let taskName of selectedTasks) {
     for (let taskConfig of availableTasks) {
       if (taskConfig.task === taskName) {
-        await executeCommands(taskConfig.commands)
+        try{
+          await executeCommands(taskConfig.commands)
+        } catch(error) {
+          console.error(chalk.bold.red("Failed to execute task: " + taskName))
+          process.exit(1)
+        }
       }
     }
   }
