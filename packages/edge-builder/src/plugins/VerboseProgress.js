@@ -45,9 +45,28 @@ export default class VerboseProgress {
       humanIndex = humanModuleId.lastIndexOf("!")
       humanModuleId = humanIndex === -1 ? humanModuleId : humanModuleId.slice(humanIndex + 1, humanModuleId.length)
 
+      humanIndex = humanModuleId.indexOf("?")
+      humanModuleId = humanIndex === -1 ? humanModuleId : humanModuleId.slice(0, humanIndex)
+
       humanModuleId = relative(ROOT, humanModuleId).replace(/^node_modules\//, "~/")
 
-      display(`Building Modules ${humanModuleId} - Done: ${doneModules}...`)
+      if (humanModuleId.startsWith('"') && humanModuleId.endsWith('"')) {
+        humanModuleId = humanModuleId.slice(1, -1)
+      }
+
+      // Ignore Context Logic Imports
+      if (humanModuleId.includes("|")) {
+        return
+      }
+
+      // Exclude hard to read directly relative modules
+      if (humanModuleId.startsWith("..")) {
+        return
+      }
+
+      if (/^[a-zA-Z0-9\-_/~\.]{0,50}$/.test(humanModuleId)) {
+        display(`Building Modules ${humanModuleId}...`)
+      }
     }
 
     compiler.plugin("compilation", (compilation) => {
