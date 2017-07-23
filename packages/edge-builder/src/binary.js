@@ -87,6 +87,7 @@ async function executeTasks() {
           await executeCommands(taskConfig.commands)
         } catch(error) {
           console.error(chalk.bold.red("Failed to execute task: " + taskName))
+          console.error(error)
           process.exit(1)
         }
       }
