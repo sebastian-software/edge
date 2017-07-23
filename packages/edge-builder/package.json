@@ -73,6 +73,7 @@
     "postcss-loader": "^2.0.6",
     "prepublish": "^1.1.0",
     "pretty-error": "^2.1.1",
+    "react-dev-utils": "^3.0.2",
     "readable-code": "^3.4.0",
     "rimraf": "^2.6.1",
     "run-sequence": "^2.0.0",

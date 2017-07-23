@@ -3,6 +3,7 @@ import chalk from "chalk"
 import updateNotifier from "update-notifier"
 import Promise from "bluebird"
 import { get as getRoot } from "app-root-dir"
+import clearConsole from "react-dev-utils/clearConsole"
 
 import { buildClient, buildServer, cleanClient, cleanServer } from "./commands/build"
 import { startDevServer } from "./commands/dev"
@@ -41,6 +42,12 @@ const appInfo = " running on " + chalk.bold.blue(appPkg.name) + "-" + appPkg.ver
 
 const selectedTasks = command.input
 const flags = command.flags
+
+const IS_INTERACTIVE = process.stdout.isTTY
+
+if (IS_INTERACTIVE) {
+  clearConsole()
+}
 
 console.log(chalk.bold("EDGE " + chalk.green("v" + pkg.version)) + appInfo)
 
