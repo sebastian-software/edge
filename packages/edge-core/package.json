@@ -1,6 +1,6 @@
 {
   "name": "edge-core",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Core JavaScript Infrastructure for Edge. Part of the Edge Platform.",
   "main": "lib/node.commonjs.js",
   "module": "lib/node.esmodules.js",
@@ -64,6 +64,7 @@
     "react-universal-component": "^1.5.0",
     "redux": "^3.7.2",
     "redux-first-router": "^1.8.9",
+    "redux-first-router-link": "^1.1.1",
     "redux-immutable-state-invariant": "^2.0.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
