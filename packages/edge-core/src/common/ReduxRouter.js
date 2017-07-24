@@ -5,8 +5,11 @@ const createHistory = process.env.TARGET === "web" ?
   require("history/createBrowserHistory").default :
   require("history/createMemoryHistory").default
 
-const history = createHistory()
+export function createReduxRouter(routes, path = null, config = {}) {
+  // match initial route to express path
+  const history = createHistory({
+    initialEntries: path ? [ path ] : null
+  })
 
-export function createReduxRouter(routes, config = {}) {
   return connectRoutes(history, routes)
 }
