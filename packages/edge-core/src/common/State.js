@@ -7,7 +7,6 @@ const composeEnhancers = (process.env.TARGET === "web" &&
   process.env.NODE_ENV === "development" &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
 
-
 /**
  * Placeholder for a non active reducer in Redux.
  *
@@ -42,7 +41,8 @@ export function emptyEnhancer(param) {
 
 
 /**
- * Dummy reducer for exporting server-side data to the client-side application.
+ * Dummy reducer for exporting Edge Platform specific server-side data
+ * to the client-side application.
  */
 export function edgeReducer(previousState = {}, action) {
   return previousState
@@ -62,13 +62,24 @@ export function getNonce(state) {
 /**
  * Bundles the given reducers into a root reducer for the application
  */
-export function createRootReducer(reducers, apolloClient) {
+export function createRootReducer(reducers, reduxRouter = null, apolloClient = null) {
   const allReducers = {
+    // Application specific reducers
     ...reducers,
+
+    // Edge Platform Data
     edge: edgeReducer,
+
+    // Localization Support
     intl: intlReducer
   }
 
+  // Integration point for Redux First Router
+  if (reduxRouter) {
+    allReducers.location = reduxRouter.reducer
+  }
+
+  // Support for Apollo-based GraphQL backends
   if (apolloClient) {
     allReducers.apollo = apolloClient.reducer()
   }
@@ -82,9 +93,16 @@ export function createRootReducer(reducers, apolloClient) {
  *
  */
 export function createReduxStore(config = {}) {
-  const { reducers = {}, middlewares = [], enhancers = [], initialState, apolloClient } = config
+  const {
+    reducers = {},
+    middlewares = [],
+    enhancers = [],
+    initialState = {},
+    reduxRouter = null,
+    apolloClient = null
+  } = config
 
-  const rootReducer = createRootReducer(reducers, apolloClient)
+  const rootReducer = createRootReducer(reducers, reduxRouter, apolloClient)
 
   const rootEnhancers = composeEnhancers(
     applyMiddleware(
@@ -96,7 +114,13 @@ export function createReduxStore(config = {}) {
       process.env.NODE_ENV === "development" ?
         require("redux-immutable-state-invariant").default() : emptyMiddleware,
 
+      // Basic Promise based async handling
       thunk,
+
+      // Redux Router First Middleware
+      reduxRouter ? reduxRouter.middleware : emptyMiddleware,
+
+      // Application specific middlewares
       ...middlewares,
 
       // Add automatic state change logging for client application
@@ -105,6 +129,11 @@ export function createReduxStore(config = {}) {
       process.env.TARGET === "web" ?
         require("redux-logger").createLogger({ collapsed: true }) : emptyMiddleware
     ),
+
+    // Redux First Router Enhancer
+    reduxRouter ? reduxRouter.enhancer : emptyEnhancer,
+
+    // Application specific enhancers
     ...enhancers
   )
 

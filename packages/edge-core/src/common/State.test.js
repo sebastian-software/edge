@@ -1,5 +1,6 @@
 import { createReduxStore, createRootReducer } from "./State"
-import { createApolloClient } from "./Apollo"
+import { createApolloClient } from "./ApolloClient"
+import { createReduxRouter } from "./ReduxRouter"
 
 test("Create Redux Store - Basic", () => {
   const reducers = {}
@@ -61,4 +62,17 @@ test("Create Root Reducer with one reducer", () => {
   }
 
   expect(createRootReducer({ dummy })).toBeDefined()
+})
+
+test("Create Redux Store - With Redux Router", () => {
+  const reduxRouter = createReduxRouter()
+  expect(reduxRouter).toBeDefined()
+  expect(typeof reduxRouter).toBe("object")
+
+  const reducers = {}
+  const middlewares = []
+  const enhancers = []
+  const reduxStore = createReduxStore({ reducers, middlewares, enhancers, reduxRouter })
+  expect(reduxStore).toBeDefined()
+  expect(typeof reduxStore).toBe("object")
 })

@@ -4,7 +4,8 @@ export {
   edgeReducer
 } from "./common/State"
 
-export { createApolloClient } from "./common/Apollo"
+export { createApolloClient } from "./common/ApolloClient"
+export { createReduxRouter } from "./common/ReduxRouter"
 
 export {
   requiresIntlPolyfill,

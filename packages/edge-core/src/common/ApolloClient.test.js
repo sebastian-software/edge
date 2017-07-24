@@ -1,4 +1,4 @@
-import { createApolloClient } from "./Apollo"
+import { createApolloClient } from "./ApolloClient"
 
 test("Create Apollo Client - No Data", () => {
   expect(createApolloClient()).toBeDefined()
