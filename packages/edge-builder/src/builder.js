@@ -205,10 +205,13 @@ export default function builder(options = {}) {
   console.log(`→ Supported Locales: ${SUPPORTED_LOCALES}`)
   console.log(`→ Supported Languages: ${SUPPORTED_LANGUAGES}`)
 
+  const CACHE_LOADER_DIRECTORY = resolve(ROOT, `.cache/loader-${CACHE_HASH}-${config.target}-${config.env}`)
+  const UFLIFY_CACHE_DIRECTORY = resolve(ROOT, `.cache/uglify-${CACHE_HASH}-${config.target}-${config.env}`)
+
   const cacheLoader = config.useCacheLoader ? {
     loader: "cache-loader",
     options: {
-      cacheDirectory: resolve(ROOT, `.cache/loader-${CACHE_HASH}-${config.target}-${config.env}`)
+      cacheDirectory: CACHE_LOADER_DIRECTORY
     }
   } : null
 
@@ -451,6 +454,9 @@ export default function builder(options = {}) {
       config.bundleCompression === "uglify" && isProduction && isClient ?
         new UglifyPlugin({
           sourceMap: config.enableSourceMaps,
+          parallel: {
+            cache: UFLIFY_CACHE_DIRECTORY
+          },
           uglifyOptions: UGLIFY_OPTIONS
         }) : null,
 
