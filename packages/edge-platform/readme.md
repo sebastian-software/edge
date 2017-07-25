@@ -22,8 +22,8 @@ Project Name | NPM Status | Build Status | Dependency Status
 [builder-npm]: https://www.npmjs.com/package/edge-builder
 [builder-npm-downloads-img]: https://img.shields.io/npm/dm/edge-builder.svg
 [builder-npm-version-img]: https://img.shields.io/npm/v/edge-builder.svg
-[builder-travis-img]: https://img.shields.io/travis/sebastian-software/edge-builder/master.svg?branch=master&label=unix%20build
-[builder-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/edge-builder/master.svg?label=windows%20build
+[builder-travis-img]: https://img.shields.io/travis/sebastian-software/edge-builder/master.svg?branch=master&label=unix
+[builder-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/edge-builder/master.svg?label=windows
 [builder-travis]: https://travis-ci.org/sebastian-software/edge-builder
 [builder-appveyor]: https://ci.appveyor.com/project/swernerx/edge-builder/branch/master
 
@@ -33,8 +33,8 @@ Project Name | NPM Status | Build Status | Dependency Status
 [boilerplate-npm]: https://www.npmjs.com/package/edge-boilerplate
 [boilerplate-npm-downloads-img]: https://img.shields.io/npm/dm/edge-boilerplate.svg
 [boilerplate-npm-version-img]: https://img.shields.io/npm/v/edge-boilerplate.svg
-[boilerplate-travis-img]: https://img.shields.io/travis/sebastian-software/edge-boilerplate/master.svg?branch=master&label=unix%20build
-[boilerplate-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/edge-boilerplate/master.svg?label=windows%20build
+[boilerplate-travis-img]: https://img.shields.io/travis/sebastian-software/edge-boilerplate/master.svg?branch=master&label=unix
+[boilerplate-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/edge-boilerplate/master.svg?label=windows
 [boilerplate-travis]: https://travis-ci.org/sebastian-software/edge-boilerplate
 [boilerplate-appveyor]: https://ci.appveyor.com/project/swernerx/edge-boilerplate/branch/master
 
@@ -44,8 +44,8 @@ Project Name | NPM Status | Build Status | Dependency Status
 [postcss-npm]: https://www.npmjs.com/package/edge-postcss
 [postcss-npm-downloads-img]: https://img.shields.io/npm/dm/edge-postcss.svg
 [postcss-npm-version-img]: https://img.shields.io/npm/v/edge-postcss.svg
-[postcss-travis-img]: https://img.shields.io/travis/sebastian-software/edge-postcss/master.svg?branch=master&label=unix%20build
-[postcss-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/edge-postcss/master.svg?label=windows%20build
+[postcss-travis-img]: https://img.shields.io/travis/sebastian-software/edge-postcss/master.svg?branch=master&label=unix
+[postcss-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/edge-postcss/master.svg?label=windows
 [postcss-travis]: https://travis-ci.org/sebastian-software/edge-postcss
 [postcss-appveyor]: https://ci.appveyor.com/project/swernerx/edge-postcss/branch/master
 
@@ -55,8 +55,8 @@ Project Name | NPM Status | Build Status | Dependency Status
 [babel-npm]: https://www.npmjs.com/package/babel-preset-edge
 [babel-npm-downloads-img]: https://img.shields.io/npm/dm/babel-preset-edge.svg
 [babel-npm-version-img]: https://img.shields.io/npm/v/babel-preset-edge.svg
-[babel-travis-img]: https://img.shields.io/travis/sebastian-software/babel-preset-edge/master.svg?branch=master&label=unix%20build
-[babel-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/babel-preset-edge/master.svg?label=windows%20build
+[babel-travis-img]: https://img.shields.io/travis/sebastian-software/babel-preset-edge/master.svg?branch=master&label=unix
+[babel-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/babel-preset-edge/master.svg?label=windows
 [babel-travis]: https://travis-ci.org/sebastian-software/babel-preset-edge
 [babel-appveyor]: https://ci.appveyor.com/project/swernerx/babel-preset-edge/branch/master
 
@@ -66,8 +66,8 @@ Project Name | NPM Status | Build Status | Dependency Status
 [intl-npm]: https://www.npmjs.com/package/lean-intl
 [intl-npm-downloads-img]: https://img.shields.io/npm/dm/lean-intl.svg
 [intl-npm-version-img]: https://img.shields.io/npm/v/lean-intl.svg
-[intl-travis-img]: https://img.shields.io/travis/sebastian-software/lean-intl/master.svg?branch=master&label=unix%20build
-[intl-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/lean-intl/master.svg?label=windows%20build
+[intl-travis-img]: https://img.shields.io/travis/sebastian-software/lean-intl/master.svg?branch=master&label=unix
+[intl-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/lean-intl/master.svg?label=windows
 [intl-travis]: https://travis-ci.org/sebastian-software/lean-intl
 [intl-appveyor]: https://ci.appveyor.com/project/swernerx/lean-intl/branch/master
 
@@ -77,8 +77,8 @@ Project Name | NPM Status | Build Status | Dependency Status
 [prepublish-npm]: https://www.npmjs.com/package/prepublish
 [prepublish-npm-downloads-img]: https://img.shields.io/npm/dm/prepublish.svg
 [prepublish-npm-version-img]: https://img.shields.io/npm/v/prepublish.svg
-[prepublish-travis-img]: https://img.shields.io/travis/sebastian-software/prepublish/master.svg?branch=master&label=unix%20build
-[prepublish-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/prepublish/master.svg?label=windows%20build
+[prepublish-travis-img]: https://img.shields.io/travis/sebastian-software/prepublish/master.svg?branch=master&label=unix
+[prepublish-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/prepublish/master.svg?label=windows
 [prepublish-travis]: https://travis-ci.org/sebastian-software/prepublish
 [prepublish-appveyor]: https://ci.appveyor.com/project/swernerx/prepublish/branch/master
 
@@ -88,8 +88,8 @@ Project Name | NPM Status | Build Status | Dependency Status
 [readable-npm]: https://www.npmjs.com/package/readable-code
 [readable-npm-downloads-img]: https://img.shields.io/npm/dm/readable-code.svg
 [readable-npm-version-img]: https://img.shields.io/npm/v/readable-code.svg
-[readable-travis-img]: https://img.shields.io/travis/sebastian-software/readable-code/master.svg?branch=master&label=unix%20build
-[readable-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/readable-code/master.svg?label=windows%20build
+[readable-travis-img]: https://img.shields.io/travis/sebastian-software/readable-code/master.svg?branch=master&label=unix
+[readable-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/readable-code/master.svg?label=windows
 [readable-travis]: https://travis-ci.org/sebastian-software/readable-code
 [readable-appveyor]: https://ci.appveyor.com/project/swernerx/readable-code/branch/master
 
@@ -99,8 +99,8 @@ Project Name | NPM Status | Build Status | Dependency Status
 [smartasset-npm]: https://www.npmjs.com/package/postcss-smart-asset
 [smartasset-npm-downloads-img]: https://img.shields.io/npm/dm/postcss-smart-asset.svg
 [smartasset-npm-version-img]: https://img.shields.io/npm/v/postcss-smart-asset.svg
-[smartasset-travis-img]: https://img.shields.io/travis/sebastian-software/postcss-smart-asset/master.svg?branch=master&label=unix%20build
-[smartasset-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/postcss-smart-asset/master.svg?label=windows%20build
+[smartasset-travis-img]: https://img.shields.io/travis/sebastian-software/postcss-smart-asset/master.svg?branch=master&label=unix
+[smartasset-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/postcss-smart-asset/master.svg?label=windows
 [smartasset-travis]: https://travis-ci.org/sebastian-software/postcss-smart-asset
 [smartasset-appveyor]: https://ci.appveyor.com/project/swernerx/postcss-smart-asset/branch/master
 
@@ -110,8 +110,8 @@ Project Name | NPM Status | Build Status | Dependency Status
 [rebase-npm]: https://www.npmjs.com/package/rollup-plugin-rebase
 [rebase-npm-downloads-img]: https://img.shields.io/npm/dm/rollup-plugin-rebase.svg
 [rebase-npm-version-img]: https://img.shields.io/npm/v/rollup-plugin-rebase.svg
-[rebase-travis-img]: https://img.shields.io/travis/sebastian-software/rollup-plugin-rebase/master.svg?branch=master&label=unix%20build
-[rebase-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/rollup-plugin-rebase/master.svg?label=windows%20build
+[rebase-travis-img]: https://img.shields.io/travis/sebastian-software/rollup-plugin-rebase/master.svg?branch=master&label=unix
+[rebase-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/rollup-plugin-rebase/master.svg?label=windows
 [rebase-travis]: https://travis-ci.org/sebastian-software/rollup-plugin-rebase
 [rebase-appveyor]: https://ci.appveyor.com/project/swernerx/rollup-plugin-rebase/branch/master
 
