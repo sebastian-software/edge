@@ -62,7 +62,7 @@
     "postcss-flow-root": "0.0.3",
     "postcss-font-family-system-ui": "^2.0.1",
     "postcss-gradient-transparency-fix": "^2.0.0",
-    "postcss-grid-kiss": "^1.4.0",
+    "postcss-grid-kiss": "^1.4.1",
     "postcss-hexrgba": "^0.2.1",
     "postcss-import": "^10.0.0",
     "postcss-input-style": "^0.3.0",
@@ -88,6 +88,6 @@
     "jest-cli": "^20.0.4",
     "postcss-load-config": "^1.2.0",
     "prepublish": "^1.1.0",
-    "readable-code": "^3.3.7"
+    "readable-code": "^3.4.0"
   }
 }
