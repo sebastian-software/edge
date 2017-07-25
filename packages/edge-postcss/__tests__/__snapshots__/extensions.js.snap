@@ -8,6 +8,48 @@ clear:both
 }"
 `;
 
+exports[`Initial - All 1`] = `
+"ul{
+border-collapse:separate;
+border-spacing:0;
+caption-side:top;
+cursor:auto;
+direction:ltr;
+empty-cells:show;
+font-family:serif;
+font-size:medium;
+font-style:normal;
+font-variant:normal;
+font-weight:400;
+font-stretch:normal;
+line-height:normal;
+-webkit-hyphens:none;
+-ms-hyphens:none;
+hyphens:none;
+letter-spacing:normal;
+list-style:disc outside none;
+-moz-tab-size:8;
+tab-size:8;
+text-align:left;
+-moz-text-align-last:auto;
+text-align-last:auto;
+text-indent:0;
+text-shadow:none;
+text-transform:none;
+visibility:visible;
+white-space:normal;
+widows:2;
+word-spacing:normal;
+all:initial
+}"
+`;
+
+exports[`Initial 1`] = `
+"h1{
+font-family:initial
+}"
+`;
+
 exports[`Normalize.css 1`] = `
 ".before{
 color:#ff4136

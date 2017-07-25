@@ -19,3 +19,11 @@ test("System UI", () =>
 test("Normalize.css", () =>
   compile(".before { color: red; } @import-normalize; .after { color: green; }")
 )
+
+test("Initial", () =>
+  compile("h1 { font-family: initial; }")
+)
+
+test("Initial - All", () =>
+  compile("ul { all: initial; }")
+)

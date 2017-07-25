@@ -70,6 +70,7 @@
     "postcss-grid-kiss": "^1.4.1",
     "postcss-hexrgba": "^0.2.1",
     "postcss-import": "^10.0.0",
+    "postcss-initial": "^2.0.0",
     "postcss-input-style": "^0.3.0",
     "postcss-magic-animations": "^0.3.0",
     "postcss-map": "^0.9.0",

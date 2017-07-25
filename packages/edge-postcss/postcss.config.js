@@ -186,6 +186,13 @@ module.exports = ({ file, options, env }) => ({
     // ================= EXTENSIONS =======================
     // ====================================================
 
+    // Support for "initial" keyword for CSS properties + support for
+    // "all" property to reset all inherited styles.
+    // https://github.com/maximkoretskiy/postcss-initial
+    "postcss-initial": {
+      "reset": "inherited"
+    },
+
     // Automagical responsive typography. Adds a responsive property to font-size,
     // line-height and letter-spacing that generates complex calc and vw based font sizes.
     // https://github.com/seaneking/postcss-responsive-type
