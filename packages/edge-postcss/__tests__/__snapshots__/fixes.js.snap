@@ -27,6 +27,20 @@ flex:1 1 0%
 }"
 `;
 
+exports[`Font Variant 1`] = `
+"h2{
+-webkit-font-feature-settings:\\"c2sc\\";
+font-feature-settings:\\"c2sc\\";
+font-variant-caps:small-caps
+}
+
+table{
+-webkit-font-feature-settings:\\"lnum\\";
+font-feature-settings:\\"lnum\\";
+font-variant-numeric:lining-nums
+}"
+`;
+
 exports[`Gradient Fix 1`] = `
 ".elem{
 background-image:linear-gradient(green,rgba(0,128,0,0))

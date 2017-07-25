@@ -19,6 +19,8 @@ empty-cells:show;
 font-family:serif;
 font-size:medium;
 font-style:normal;
+-webkit-font-feature-settings:normal;
+font-feature-settings:normal;
 font-variant:normal;
 font-weight:400;
 font-stretch:normal;

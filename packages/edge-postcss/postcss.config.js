@@ -221,6 +221,10 @@ module.exports = ({ file, options, env }) => ({
     // ================== FIXES ===========================
     // ====================================================
 
+    // Transform W3C CSS font variant properties to more compatible CSS (font-feature-settings).
+    // https://github.com/postcss/postcss-font-variant
+    "postcss-font-variant": {},
+
     // Fix up CSS gradients with transparency for older browsers
     // https://github.com/gilmoreorless/postcss-gradient-transparency-fix
     "postcss-gradient-transparency-fix": {},

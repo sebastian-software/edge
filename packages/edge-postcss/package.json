@@ -68,6 +68,7 @@
     "postcss-flexbugs-fixes": "^3.0.0",
     "postcss-flow-root": "0.0.3",
     "postcss-font-family-system-ui": "^2.0.1",
+    "postcss-font-variant": "^3.0.0",
     "postcss-gradient-transparency-fix": "^2.0.0",
     "postcss-grid-kiss": "^1.4.1",
     "postcss-hexrgba": "^0.2.1",
