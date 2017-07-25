@@ -28,3 +28,10 @@ test("Easing Gradients", () =>
     transparent
   );
 }`))
+
+test("CSS4 HSL", () =>
+  compile(`
+.hsl {
+  color: hsl(0 100% 50%);
+  border-color: hsl(200grad 100% 50% / 20%);
+}`))

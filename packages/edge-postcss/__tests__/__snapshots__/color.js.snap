@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`CSS4 HSL 1`] = `
+".hsl{
+color:red;
+border-color:rgba(0,255,255,.2)
+}"
+`;
+
 exports[`Color Function 1`] = `
 ".yellow{
 color:rgba(255,220,0,.9)
