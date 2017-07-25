@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Asset Size (Same Folder) 1`] = `
+".icon{
+background-size:304px 85px
+}"
+`;
+
+exports[`Asset Size 1`] = `
+".icon{
+background-size:304px 85px
+}"
+`;
+
+exports[`Asset URL (Same Folder) 1`] = `
+".icon{
+background:url(./formula.png)
+}"
+`;
+
+exports[`Asset URL 1`] = `
+".icon{
+background:url(../fixtures/formula.png)
+}"
+`;
+
+exports[`Import with Asset URL 1`] = `
+".image{
+background:url(../fixtures/formula.png)
+}"
+`;
+
+exports[`Import with SVG URL 1`] = `
+".preloader{
+background:url(../fixtures/other/logo.svg);
+border:1px solid #000
+}"
+`;
+
+exports[`Import with Webfonts 1`] = `
+"@font-face{
+src:url(../fixtures/font/SourceSansPro-Light.otf.woff2) format(\\"woff2\\"),url(../fixtures/font/SourceSansPro-Light.otf.woff) format(\\"woff\\");
+font-family:Source Sans Pro;
+font-weight:300;
+font-style:normal
+}"
+`;

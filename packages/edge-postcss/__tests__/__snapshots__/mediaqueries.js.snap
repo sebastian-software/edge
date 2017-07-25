@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Custom Media 1`] = `
+"@media (max-width:30em){
+body{
+font-size:12px
+}
+}"
+`;
+
+exports[`Media Query Min/Max 1`] = `
+"@media screen and (min-width:500px) and (max-width:1200px){
+.elem{
+display:block
+}
+}"
+`;

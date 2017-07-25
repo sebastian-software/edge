@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Import Basic 1`] = `
+".root{
+color:red
+}"
+`;
+
+exports[`Import with Merge 1`] = `
+".section{
+color:#00d;
+background:#333
+}"
+`;

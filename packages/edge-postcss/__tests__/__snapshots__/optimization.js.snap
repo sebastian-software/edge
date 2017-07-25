@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSS-O (Optimizer) 1`] = `
+".elem{
+color:red
+}"
+`;
+
+exports[`Calc Keep 1`] = `
+".elem{
+width:calc(100px + 2%)
+}"
+`;
+
+exports[`Calc Trivial 1`] = `
+".elem{
+width:310px
+}"
+`;
+
+exports[`Calc Variable 1`] = `
+".elem{
+width:210px
+}"
+`;
+
+exports[`zIndex 1`] = `
+".first{
+z-index:1
+}
+
+.second{
+z-index:2
+}"
+`;

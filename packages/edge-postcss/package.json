@@ -37,6 +37,11 @@
   "bugs": {
     "url": "https://github.com/sebastian-software/edge-postcss/issues"
   },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "core.js"
+    ]
+  },
   "homepage": "https://github.com/sebastian-software/edge-postcss#readme",
   "dependencies": {
     "app-root-dir": "^1.0.2",

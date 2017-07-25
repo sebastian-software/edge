@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Autoprefixer 1`] = `
+":-webkit-full-screen a{
+display:flex
+}
+
+:-moz-full-screen a{
+display:flex
+}
+
+:-ms-fullscreen a{
+display:-ms-flexbox;
+display:flex
+}
+
+:fullscreen a{
+display:-ms-flexbox;
+display:flex
+}"
+`;
+
+exports[`Flexbox Fix 1`] = `
+".elem{
+-ms-flex:1 1 0%;
+flex:1 1 0%
+}"
+`;
+
+exports[`Gradient Fix 1`] = `
+".elem{
+background-image:linear-gradient(green,rgba(0,128,0,0))
+}"
+`;
+
+exports[`Input Style Fixes 1`] = `
+"input[type=range]::-webkit-slider-runnable-track{
+-webkit-appearance:none;
+height:3px
+}
+
+input[type=range]::-moz-range-track{
+-moz-appearance:none;
+height:3px
+}
+
+input[type=range]::-ms-track{
+height:3px
+}
+
+input[type=range]{
+-webkit-appearance:none
+}
+
+input[type=range]::-webkit-slider-thumb{
+-webkit-appearance:none;
+width:16px;
+height:8px
+}
+
+input[type=range]::-moz-range-thumb{
+-moz-appearance:none;
+width:16px;
+height:8px
+}
+
+input[type=range]::-ms-thumb{
+width:16px;
+height:8px
+}
+
+input[type=range]::-moz-focus-outer{
+border:0
+}"
+`;
+
+exports[`Pseudoelements 1`] = `
+"a:before{
+color:#ff4136
+}"
+`;
+
+exports[`Selector matches() 1`] = `
+"p.special,p:first-child{
+color:#ff4136
+}"
+`;

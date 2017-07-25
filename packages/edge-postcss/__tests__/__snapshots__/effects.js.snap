@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Easings 1`] = `
+".snake{
+transition:all 600ms cubic-bezier(.47,0,.745,.715)
+}"
+`;
+
+exports[`Magic Animations 1`] = `
+".animation{
+animation-name:magic
+}
+
+@keyframes magic{
+0%{
+opacity:1;
+transform-origin:100% 200%;
+transform:scale(1,1) rotate(0deg)
+}
+
+to{
+opacity:0;
+transform-origin:200% 500%;
+transform:scale(0,0) rotate(270deg)
+}
+}"
+`;
+
+exports[`Pleeease Filters 1`] = `
+".box{
+filter:url('data:image/svg+xml;
+charset=utf-8,<svg xmlns=\\"http://www.w3.org/2000/svg\\"><filter id=\\"filter\\"><feGaussianBlur in=\\"SourceAlpha\\" stdDeviation=\\"20\\" /><feOffset dx=\\"17\\" dy=\\"17\\" result=\\"offsetblur\\" /><feFlood flood-color=\\"rgba(0,0,255,1)\\" /><feComposite in2=\\"offsetblur\\" operator=\\"in\\" /><feMerge><feMergeNode /><feMergeNode in=\\"SourceGraphic\\" /></feMerge></filter></svg>#filter');
+-webkit-filter:drop-shadow(16px 16px 20px #00f);
+filter:drop-shadow(16px 16px 20px #00f)
+}"
+`;
+
+exports[`Transform Shortcut 1`] = `
+".transform{
+transform:scale3d(2,1,1) translate3d(10px,20px,0)
+}"
+`;
+
+exports[`Will Change Compat 1`] = `
+".scaled{
+-webkit-backface-visibility:hidden;
+backface-visibility:hidden;
+will-change:width
+}"
+`;
