@@ -9,6 +9,7 @@
 Project Name | NPM Status | Build Status | Dependency Status
 ------------ | ---------- | ------------ | -------------------------------------
 [Edge Builder][builder-home] | [![Version][builder-npm-version-img]][builder-npm] [![Downloads][builder-npm-downloads-img]][builder-npm] | [![Build Status Unix][builder-travis-img]][builder-travis] [![Build Status Windows][builder-appveyor-img]][builder-appveyor] | [![Dependencies][builder-deps-img]][builder-deps]
+[Edge Core][core-home] | [![Version][core-npm-version-img]][core-npm] [![Downloads][core-npm-downloads-img]][core-npm] | [![Build Status Unix][core-travis-img]][core-travis] [![Build Status Windows][core-appveyor-img]][core-appveyor] | [![Dependencies][core-deps-img]][core-deps]
 [Edge Boilerplate][boilerplate-home] | [![Version][boilerplate-npm-version-img]][boilerplate-npm] [![Downloads][boilerplate-npm-downloads-img]][boilerplate-npm] | [![Build Status Unix][boilerplate-travis-img]][boilerplate-travis] [![Build Status Windows][boilerplate-appveyor-img]][boilerplate-appveyor] | [![Dependencies][boilerplate-deps-img]][boilerplate-deps]
 [Edge PostCSS][postcss-home] | [![Version][postcss-npm-version-img]][postcss-npm] [![Downloads][postcss-npm-downloads-img]][postcss-npm] | [![Build Status Unix][postcss-travis-img]][postcss-travis] [![Build Status Windows][postcss-appveyor-img]][postcss-appveyor] | [![Dependencies][postcss-deps-img]][postcss-deps]
 [Edge Babel][babel-home] | [![Version][babel-npm-version-img]][babel-npm] [![Downloads][babel-npm-downloads-img]][babel-npm] | [![Build Status Unix][babel-travis-img]][babel-travis] [![Build Status Windows][babel-appveyor-img]][babel-appveyor] | [![Dependencies][babel-deps-img]][babel-deps]
@@ -28,6 +29,17 @@ Project Name | NPM Status | Build Status | Dependency Status
 [builder-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/edge-builder/master.svg?label=windows
 [builder-travis]: https://travis-ci.org/sebastian-software/edge-builder
 [builder-appveyor]: https://ci.appveyor.com/project/swernerx/edge-builder/branch/master
+
+[core-home]: https://github.com/sebastian-software/edge-core
+[core-deps]: https://david-dm.org/sebastian-software/edge-core
+[core-deps-img]: https://david-dm.org/sebastian-software/edge-core.svg
+[core-npm]: https://www.npmjs.com/package/edge-core
+[core-npm-downloads-img]: https://img.shields.io/npm/dm/edge-core.svg
+[core-npm-version-img]: https://img.shields.io/npm/v/edge-core.svg
+[core-travis-img]: https://img.shields.io/travis/sebastian-software/edge-core/master.svg?branch=master&label=unix
+[core-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/edge-core/master.svg?label=windows
+[core-travis]: https://travis-ci.org/sebastian-software/edge-core
+[core-appveyor]: https://ci.appveyor.com/project/swernerx/edge-core/branch/master
 
 [boilerplate-home]: https://github.com/sebastian-software/edge-boilerplate
 [boilerplate-deps]: https://david-dm.org/sebastian-software/edge-boilerplate
@@ -119,6 +131,8 @@ Project Name | NPM Status | Build Status | Dependency Status
 
 
 ## Core Technologies
+
+> "Understanding the architectural decisions behind the tools you are using is perhaps more important than the many things a new package does for you." — James Gillmore
 
 ### Tooling
 
