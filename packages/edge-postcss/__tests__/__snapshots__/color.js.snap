@@ -1,9 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CSS4 HSL 1`] = `
+exports[`CSS4 HSL Colors 1`] = `
 ".hsl{
 color:red;
 border-color:rgba(0,255,255,.2)
+}"
+`;
+
+exports[`CSS4 HWB Colors 1`] = `
+".hwb{
+color:rgba(128,255,0,.5)
 }"
 `;
 

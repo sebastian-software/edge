@@ -125,9 +125,13 @@ module.exports = ({ file, options, env }) => ({
     // https://github.com/seaneking/postcss-hexrgba
     "postcss-hexrgba": {},
 
-    // CSS4 HSL Syntax
+    // Transform CSS4 HSL Syntax into CSS3 HSL
     // https://github.com/dmarchena/postcss-color-hsl
     "postcss-color-hsl": {},
+
+    // Transform W3C CSS hwb() function to more compatible CSS (rgb() or rgba()).
+    // https://github.com/postcss/postcss-color-hwb
+    "postcss-color-hwb": {},
 
     // Transform RGBA hexadecimal notations (#RRGGBBAA or #RGBA) to more compatible CSS (rgba())
     // https://github.com/postcss/postcss-color-hex-alpha

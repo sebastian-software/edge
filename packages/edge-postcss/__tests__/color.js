@@ -29,9 +29,16 @@ test("Easing Gradients", () =>
   );
 }`))
 
-test("CSS4 HSL", () =>
+test("CSS4 HSL Colors", () =>
   compile(`
 .hsl {
   color: hsl(0 100% 50%);
   border-color: hsl(200grad 100% 50% / 20%);
 }`))
+
+test("CSS4 HWB Colors", () =>
+  compile(`
+.hwb {
+  color: hwb(90, 0%, 0%, 0.5);
+}`))
+
