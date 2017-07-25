@@ -1,5 +1,7 @@
 # Edge Platform<br/>[![Sponsored by][sponsor-img]][sponsor]
 
+> Edge Platform helps you focus on business logic rather than dealing with complex dependencies and build configurations.
+
 [sponsor-img]: https://img.shields.io/badge/Sponsored%20by-Sebastian%20Software-692446.svg
 [sponsor]: https://www.sebastian-software.de
 
@@ -114,6 +116,48 @@ Project Name | NPM Status | Build Status | Dependency Status
 [rebase-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/rollup-plugin-rebase/master.svg?label=windows
 [rebase-travis]: https://travis-ci.org/sebastian-software/rollup-plugin-rebase
 [rebase-appveyor]: https://ci.appveyor.com/project/swernerx/rollup-plugin-rebase/branch/master
+
+
+## Core Technologies
+
+### Tooling
+
+- Webpack: Bundling for SPAs.
+  - Loaders: Assets, JSON, YAML, GraphQL, ...
+  - Plugins:
+- Rollup: Bundling for Libraries and Executables.
+- PostCSS: CSS Transformation Chain.
+  - CSS Modules enabled.
+- ESLint: Linting for JavaScript files.
+  - Plugins for React, Security, Imports, ...
+- Stylelint: Linting for CSS files.
+- Prettier: Autoformatting for JavaScript, CSS, JSON, GraphQL and more.
+- Uglify-ES: ES2015 capable JavaScript compression
+- Babili: ES2015+ capable JavaScript compression
+- Zopfli: Highly optimized Compression of Resources
+
+### React Development
+
+- React: Core UI View Library
+- Redux: State Container with great developer experience
+- Apollo Client: Connect to GraphQL endpoints
+- Universal Component: Dynamically load chunks
+- Lean Intl: Alternative to Intl Polyfill
+- CSS Modules: Sandboxed Component-centric Styles
+
+### Server
+
+- Express: Effectively the standard Web Server in NodeJS
+- Cookie Parser:
+- Express Locale: Locale Detection
+- Helmet:
+- HPP
+
+### Helpers
+
+- AppRootDir: Detect of project root directory
+- Webpack Hot Server Middleware: Multi Compiler Infrastructure for our Development Server
+- React Dev Utils: Collection of Libraries from Facebook to improve DX in React Development
 
 
 ## License
