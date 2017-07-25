@@ -13,6 +13,8 @@ Project Name | NPM Status | Build Status | Dependency Status
 [Lean Intl][intl-home] | [![Version][intl-npm-version-img]][intl-npm] [![Downloads][intl-npm-downloads-img]][intl-npm] | [![Build Status Unix][intl-travis-img]][intl-travis] [![Build Status Windows][intl-appveyor-img]][intl-appveyor] | [![Dependencies][intl-deps-img]][intl-deps]
 [Prepublish][prepublish-home] | [![Version][prepublish-npm-version-img]][prepublish-npm] [![Downloads][prepublish-npm-downloads-img]][prepublish-npm] | [![Build Status Unix][prepublish-travis-img]][prepublish-travis] [![Build Status Windows][prepublish-appveyor-img]][prepublish-appveyor] | [![Dependencies][prepublish-deps-img]][prepublish-deps]
 [Readable Code][readable-home] | [![Version][readable-npm-version-img]][readable-npm] [![Downloads][readable-npm-downloads-img]][readable-npm] | [![Build Status Unix][readable-travis-img]][readable-travis] [![Build Status Windows][readable-appveyor-img]][readable-appveyor] | [![Dependencies][readable-deps-img]][readable-deps]
+[PostCSS Smart Asset][smartasset-home] | [![Version][smartasset-npm-version-img]][smartasset-npm] [![Downloads][smartasset-npm-downloads-img]][smartasset-npm] | [![Build Status Unix][smartasset-travis-img]][smartasset-travis] [![Build Status Windows][smartasset-appveyor-img]][smartasset-appveyor] | [![Dependencies][smartasset-deps-img]][smartasset-deps]
+[Rollup Rebase][rebase-home] | [![Version][rebase-npm-version-img]][rebase-npm] [![Downloads][rebase-npm-downloads-img]][rebase-npm] | [![Build Status Unix][rebase-travis-img]][rebase-travis] [![Build Status Windows][rebase-appveyor-img]][rebase-appveyor] | [![Dependencies][rebase-deps-img]][rebase-deps]
 
 [builder-home]: https://github.com/sebastian-software/edge-builder
 [builder-deps]: https://david-dm.org/sebastian-software/edge-builder
@@ -80,18 +82,38 @@ Project Name | NPM Status | Build Status | Dependency Status
 [prepublish-travis]: https://travis-ci.org/sebastian-software/prepublish
 [prepublish-appveyor]: https://ci.appveyor.com/project/swernerx/prepublish/branch/master
 
-[readable-code-home]: https://github.com/sebastian-software/readable-code
-[readable-code-deps]: https://david-dm.org/sebastian-software/readable-code
-[readable-code-deps-img]: https://david-dm.org/sebastian-software/readable-code.svg
-[readable-code-npm]: https://www.npmjs.com/package/readable-code
-[readable-code-npm-downloads-img]: https://img.shields.io/npm/dm/readable-code.svg
-[readable-code-npm-version-img]: https://img.shields.io/npm/v/readable-code.svg
-[readable-code-travis-img]: https://img.shields.io/travis/sebastian-software/readable-code/master.svg?branch=master&label=unix%20build
-[readable-code-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/readable-code/master.svg?label=windows%20build
-[readable-code-travis]: https://travis-ci.org/sebastian-software/readable-code
-[readable-code-appveyor]: https://ci.appveyor.com/project/swernerx/readable-code/branch/master
+[readable-home]: https://github.com/sebastian-software/readable-code
+[readable-deps]: https://david-dm.org/sebastian-software/readable-code
+[readable-deps-img]: https://david-dm.org/sebastian-software/readable-code.svg
+[readable-npm]: https://www.npmjs.com/package/readable-code
+[readable-npm-downloads-img]: https://img.shields.io/npm/dm/readable-code.svg
+[readable-npm-version-img]: https://img.shields.io/npm/v/readable-code.svg
+[readable-travis-img]: https://img.shields.io/travis/sebastian-software/readable-code/master.svg?branch=master&label=unix%20build
+[readable-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/readable-code/master.svg?label=windows%20build
+[readable-travis]: https://travis-ci.org/sebastian-software/readable-code
+[readable-appveyor]: https://ci.appveyor.com/project/swernerx/readable-code/branch/master
 
+[smartasset-home]: https://github.com/sebastian-software/postcss-smart-asset
+[smartasset-deps]: https://david-dm.org/sebastian-software/postcss-smart-asset
+[smartasset-deps-img]: https://david-dm.org/sebastian-software/postcss-smart-asset.svg
+[smartasset-npm]: https://www.npmjs.com/package/postcss-smart-asset
+[smartasset-npm-downloads-img]: https://img.shields.io/npm/dm/postcss-smart-asset.svg
+[smartasset-npm-version-img]: https://img.shields.io/npm/v/postcss-smart-asset.svg
+[smartasset-travis-img]: https://img.shields.io/travis/sebastian-software/postcss-smart-asset/master.svg?branch=master&label=unix%20build
+[smartasset-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/postcss-smart-asset/master.svg?label=windows%20build
+[smartasset-travis]: https://travis-ci.org/sebastian-software/postcss-smart-asset
+[smartasset-appveyor]: https://ci.appveyor.com/project/swernerx/postcss-smart-asset/branch/master
 
+[rebase-home]: https://github.com/sebastian-software/rollup-plugin-rebase
+[rebase-deps]: https://david-dm.org/sebastian-software/rollup-plugin-rebase
+[rebase-deps-img]: https://david-dm.org/sebastian-software/rollup-plugin-rebase.svg
+[rebase-npm]: https://www.npmjs.com/package/rollup-plugin-rebase
+[rebase-npm-downloads-img]: https://img.shields.io/npm/dm/rollup-plugin-rebase.svg
+[rebase-npm-version-img]: https://img.shields.io/npm/v/rollup-plugin-rebase.svg
+[rebase-travis-img]: https://img.shields.io/travis/sebastian-software/rollup-plugin-rebase/master.svg?branch=master&label=unix%20build
+[rebase-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/rollup-plugin-rebase/master.svg?label=windows%20build
+[rebase-travis]: https://travis-ci.org/sebastian-software/rollup-plugin-rebase
+[rebase-appveyor]: https://ci.appveyor.com/project/swernerx/rollup-plugin-rebase/branch/master
 
 
 ## License
