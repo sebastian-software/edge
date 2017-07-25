@@ -5,7 +5,7 @@
 
 
 Project Name | NPM Status | Build Status | Dependency Status
--------------------------------------------------------------------------------
+------------ | ---------- | ------------ | -------------------------------------
 [Edge Builder][builder-home] | [![Version][builder-npm-version-img]][builder-npm] [![Downloads][builder-npm-downloads-img]][builder-npm] | [![Build Status Unix][builder-travis-img]][builder-travis] [![Build Status Windows][builder-appveyor-img]][builder-appveyor] | [![Dependencies][builder-deps-img]][builder-deps]
 [Edge Boilerplate][boilerplate-home] | [![Version][boilerplate-npm-version-img]][boilerplate-npm] [![Downloads][boilerplate-npm-downloads-img]][boilerplate-npm] | [![Build Status Unix][boilerplate-travis-img]][boilerplate-travis] [![Build Status Windows][boilerplate-appveyor-img]][boilerplate-appveyor] | [![Dependencies][boilerplate-deps-img]][boilerplate-deps]
 [Edge PostCSS][postcss-home] | [![Version][postcss-npm-version-img]][postcss-npm] [![Downloads][postcss-npm-downloads-img]][postcss-npm] | [![Build Status Unix][postcss-travis-img]][postcss-travis] [![Build Status Windows][postcss-appveyor-img]][postcss-appveyor] | [![Dependencies][postcss-deps-img]][postcss-deps]
