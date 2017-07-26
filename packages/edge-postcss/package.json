@@ -78,7 +78,7 @@
     "postcss-magic-animations": "^0.3.0",
     "postcss-map": "^0.9.0",
     "postcss-media-minmax": "^3.0.0",
-    "postcss-nested": "^2.0.4",
+    "postcss-nested": "^2.1.0",
     "postcss-normalize": "^4.0.0",
     "postcss-pseudoelements": "^5.0.0",
     "postcss-reporter": "^4.0.0",
