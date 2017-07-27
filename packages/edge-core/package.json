@@ -61,9 +61,9 @@
     "react-redux": "^5.0.5",
     "react-test-renderer": "^15.6.1",
     "react-tree-walker": "^2.1.2",
-    "react-universal-component": "^1.5.0",
+    "react-universal-component": "^2.0.14",
     "redux": "^3.7.2",
-    "redux-first-router": "^1.8.9",
+    "redux-first-router": "^1.8.10",
     "redux-first-router-link": "^1.1.1",
     "redux-immutable-state-invariant": "^2.0.0",
     "redux-logger": "^3.0.6",
@@ -74,7 +74,7 @@
     "prepublish": "^1.1.0",
     "cross-env": "^5.0.1",
     "jest-cli": "^20.0.4",
-    "readable-code": "^3.4.0",
+    "readable-code": "^3.4.1",
     "rimraf": "^2.6.1"
   }
 }
