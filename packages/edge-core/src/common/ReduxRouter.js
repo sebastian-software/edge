@@ -7,9 +7,9 @@ const createHistory = process.env.TARGET === "web" ?
 
 export function createReduxRouter(routes, path = null, config = {}) {
   // match initial route to express path
-  const history = createHistory({
-    initialEntries: path ? [ path ] : null
-  })
+  const history = path ? createHistory({
+    initialEntries: [ path ]
+  }) : createHistory()
 
   return connectRoutes(history, routes)
 }
