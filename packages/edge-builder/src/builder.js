@@ -283,15 +283,6 @@ export default function builder(options = {}) {
           }
         },
 
-        // JSON
-        {
-          test: /\.json$/,
-          loader: "json-loader",
-          exclude: [
-            /locale-data/
-          ]
-        },
-
         // YAML
         {
           test: /\.(yml|yaml)$/,
