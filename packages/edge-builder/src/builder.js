@@ -319,7 +319,7 @@ export default function builder(options = {}) {
                 babelrc: true,
                 forceEnv: BABEL_ENV,
                 plugins: [
-                  "dual-import"
+                  "universal-import"
                 ]
               }
             }
