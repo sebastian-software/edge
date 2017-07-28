@@ -316,10 +316,7 @@ export default function builder(options = {}) {
               loader: "babel-loader",
               options: {
                 babelrc: true,
-                forceEnv: BABEL_ENV,
-                plugins: [
-                  "universal-import"
-                ]
+                forceEnv: BABEL_ENV
               }
             }
           ].filter(Boolean)
