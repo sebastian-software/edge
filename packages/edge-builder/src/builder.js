@@ -12,7 +12,6 @@ import webpackPkg from "webpack/package.json"
 // This is basically a replacement of md5 with the loader-utils implementation which also supports
 // shorter generated hashes based on base62 encoding instead of hex.
 import WebpackDigestHash from "./plugins/ChunkHash"
-import ChunkNames from "./plugins/ChunkNames"
 import VerboseProgress from "./plugins/VerboseProgress"
 
 // DLL Support
@@ -394,11 +393,6 @@ export default function builder(options = {}) {
       new VerboseProgress({
         prefix: PREFIX
       }),
-
-      // Automatically assign quite useful and matching chunk names based on file names.
-      // new ChunkNames({
-      //   debug: false
-      // }),
 
       // Automatically generate a re-used DLL file for faster compilation times.
       // https://github.com/asfktz/autodll-webpack-plugin
