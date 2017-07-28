@@ -1,6 +1,6 @@
 {
   "name": "edge-postcss",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Edge PostCSS is a collection of carefully chosen and configured PostCSS plugins. Part of the Edge Platform.",
   "main": "postcss.config.js",
   "scripts": {
