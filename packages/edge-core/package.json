@@ -71,10 +71,10 @@
     "serialize-javascript": "^1.4.0"
   },
   "devDependencies": {
-    "prepublish": "^1.1.0",
+    "prepublish": "^1.1.3",
     "cross-env": "^5.0.1",
     "jest-cli": "^20.0.4",
-    "readable-code": "^3.4.2",
+    "readable-code": "^3.4.4",
     "rimraf": "^2.6.1"
   }
 }
