@@ -80,7 +80,7 @@
     "source-map-loader": "^0.2.1",
     "source-map-support": "^0.4.15",
     "stats-webpack-plugin": "^0.6.1",
-    "uglify-es": "^3.0.26",
+    "uglify-es": "^3.0.27",
     "uglifyjs-webpack-plugin": "^1.0.0-beta.2",
     "update-notifier": "^2.2.0",
     "uuid": "^3.1.0",
