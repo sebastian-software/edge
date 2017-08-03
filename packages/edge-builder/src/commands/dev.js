@@ -5,7 +5,6 @@ import createExpress from "../express/createExpressServer"
 import { addDevMiddleware } from "../express/dev"
 
 const DEVELOPMENT_PORT = process.env.DEVELOPMENT_PORT
-const IS_INTERACTIVE = process.stdout.isTTY
 
 export function startDevServer() {
   /* eslint-disable no-console */
