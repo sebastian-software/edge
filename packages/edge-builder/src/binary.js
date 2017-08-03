@@ -37,7 +37,7 @@ const command = meow(`
     dev             Start development server
     start:dev       Start development server
     start:react     Start production universal React server
-    start:static    Start production static server
+    start:static    Start production static server (alpha)
     build           Build production appliction
     build:client    Build client part of production application
     build:server    Build server part of production application
