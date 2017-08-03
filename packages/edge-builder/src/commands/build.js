@@ -8,9 +8,10 @@ import builder from "../builder"
 
 const removePromise = promisify(remove)
 
-export function buildClient()
+export function buildClient(config = {})
 {
-  const config = builder({
+  const webpackConfig = builder({
+    ...config,
     target: "client",
     env: "production"
   })
@@ -18,7 +19,7 @@ export function buildClient()
   return new Promise((resolve, reject) =>
   {
     /* eslint-disable no-console */
-    webpack(config, (fatalError, stats) =>
+    webpack(webpackConfig, (fatalError, stats) =>
     {
       if (fatalError) {
         const fatalMsg = `Fatal error during compiling client: ${fatalError}`
@@ -46,15 +47,16 @@ export function buildClient()
   })
 }
 
-export function buildServer() {
-  const config = builder({
+export function buildServer(config = {}) {
+  const webpackConfig = builder({
+    ...config,
     target: "server",
     env: "production"
   })
 
   return new Promise((resolve, reject) => {
     /* eslint-disable no-console */
-    webpack(config, (fatalError, stats) => {
+    webpack(webpackConfig, (fatalError, stats) => {
       if (fatalError) {
         const fatalMsg = `Fatal error during compiling server: ${fatalError}`
         console.log(chalk.red(fatalMsg))
@@ -81,10 +83,10 @@ export function buildServer() {
   })
 }
 
-export function cleanServer() {
+export function cleanServer(config = {}) {
   return removePromise("./build/server")
 }
 
-export function cleanClient() {
+export function cleanClient(config = {}) {
   return removePromise("./build/client")
 }
