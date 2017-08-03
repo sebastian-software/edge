@@ -18,7 +18,7 @@ pretty.skipNodeFiles()
 // this will skip all the trace lines about express` core and sub-modules
 pretty.skipPackage("express")
 
-export default function createExpressServer(config = {})
+export default function createExpressServer(config = {}, customMiddleware = [])
 {
   // Create our express based server.
   const server = express()
@@ -124,8 +124,8 @@ export default function createExpressServer(config = {})
   // @see https://helmetjs.github.io/docs/dont-sniff-mimetype/
   server.use(helmet.noSniff())
 
-  if (config.customMiddleware)
-    config.customMiddleware.forEach(
+  if (customMiddleware)
+    customMiddleware.forEach(
       (middleware) => {
         if (middleware instanceof Array)
           server.use(...middleware)

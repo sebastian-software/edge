@@ -85,34 +85,6 @@ const BABILI_OPTIONS = {}
 
 const ROOT = getRoot()
 
-const defaults = {
-  target: "client",
-
-  env: process.env.NODE_ENV,
-  enableSourceMaps: true,
-
-  // either "uglify", "babili" or null
-  bundleCompression: "uglify",
-
-  useCacheLoader: true,
-  babelEnvPrefix: "edge",
-
-  serverEntry: "src/server/index.js",
-  clientEntry: "src/client/index.js",
-  serverVendor: "src/server/vendor.js",
-  clientVendor: "src/client/vendor.js",
-
-  htmlTemplate: "src/index.ejs",
-
-  serverOutput: "build/server",
-  clientOutput: "build/client",
-
-  publicPath: "/static/",
-
-  defaultLocale: "en-US",
-  supportedLocales: [ "en-US", "es-ES", "de-DE" ]
-}
-
 // if you're specifying externals to leave unbundled, you need to tell Webpack
 // to still bundle `react-universal-component`, `webpack-flush-chunks` and
 // `require-universal-module` so that they know they are running
@@ -131,17 +103,15 @@ const babelFiles = /\.(js|mjs|jsx)$/
 const postcssFiles = /\.(css|sss|pcss)$/
 const compressableAssets = /\.(ttf|otf|svg|pdf|html|ico|txt|md|html|js|css|json|xml)$/
 
-export default function builder(options = {}) {
-  const config = { ...defaults, ...options }
-
-  const SERVER_ENTRY = resolve(ROOT, config.serverEntry)
-  const CLIENT_ENTRY = resolve(ROOT, config.clientEntry)
-  const SERVER_VENDOR = resolve(ROOT, config.serverVendor)
-  const CLIENT_VENDOR = resolve(ROOT, config.clientVendor)
-  const SERVER_OUTPUT = resolve(ROOT, config.serverOutput)
-  const CLIENT_OUTPUT = resolve(ROOT, config.clientOutput)
+export default function builder(config = {}) {
+  const SERVER_ENTRY = config.serverEntry
+  const CLIENT_ENTRY = config.clientEntry
+  const SERVER_VENDOR = config.serverVendor
+  const CLIENT_VENDOR = config.clientVendor
+  const SERVER_OUTPUT = config.serverOutput
+  const CLIENT_OUTPUT = config.clientOutput
   const PUBLIC_PATH = config.publicPath
-  const HTML_TEMPLATE = resolve(ROOT, config.htmlTemplate)
+  const HTML_TEMPLATE = config.htmlTemplate
   const BABEL_ENV = `${config.babelEnvPrefix}-${config.env}-${config.target}`
 
   const PROJECT_CONFIG = require(resolve(ROOT, "package.json"))
@@ -155,9 +125,6 @@ export default function builder(options = {}) {
 
   const DEFAULT_LOCALE = config.defaultLocale
   const SUPPORTED_LOCALES = config.supportedLocales
-
-
-
 
   // process.env.NODE_ENV is typically set but still could be undefined. Fix that.
   if (config.env == null) {
@@ -347,7 +314,7 @@ export default function builder(options = {}) {
 
       new webpack.DefinePlugin({
         "process.env": {
-          NODE_ENV: JSON.stringify(options.env),
+          NODE_ENV: JSON.stringify(config.env),
           TARGET: JSON.stringify(target)
         }
       }),

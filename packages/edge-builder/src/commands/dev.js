@@ -4,10 +4,10 @@ import chalk from "chalk"
 import createExpress from "../express/createExpressServer"
 import { addDevMiddleware } from "../express/dev"
 
-export function startDevServer(config = {}) {
+export function startDevServer(config = {}, customMiddleware = []) {
   /* eslint-disable no-console */
 
-  const server = createExpress(config)
+  const server = createExpress(config, customMiddleware)
   const multiCompiler = addDevMiddleware(server, config)
 
   // const clientCompiler = multiCompiler.compilers[0]
