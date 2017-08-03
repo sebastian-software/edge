@@ -105,7 +105,7 @@ async function executeTasks() {
   }
 }
 
-if (selectedTasks) {
+if (selectedTasks.length > 0) {
   process.nextTick(executeTasks)
 } else {
   command.showHelp()
