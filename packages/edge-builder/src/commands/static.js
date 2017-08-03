@@ -5,22 +5,15 @@ import express from "express"
 
 import createExpress from "../express/createExpressServer"
 
-// Initialize environment configuration
-dotenv.config()
-
-const ROOT = getRoot()
-const CLIENT_OUTPUT = resolve(ROOT, process.env.CLIENT_OUTPUT)
-const PRODUCTION_PORT = process.env.PRODUCTION_PORT
-
 /* eslint-disable no-console */
-
-export function startStaticServer() {
-  const server = createExpress({})
+export function startStaticServer(config = {}) {
+  const server = createExpress(config)
+  const clientOutput = resolve(getRoot(), config.clientOutput)
 
   // TODO: Match all possible routes
-  server.use("/", express.static(CLIENT_OUTPUT))
+  server.use("/", express.static(clientOutput))
 
-  server.listen(PRODUCTION_PORT, () => {
-    console.log(`Static Server Started @ Port ${PRODUCTION_PORT}`)
+  server.listen(process.env.SERVER_PORT, () => {
+    console.log(`Static Server Started @ Port ${process.env.SERVER_PORT}`)
   })
 }

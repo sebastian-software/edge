@@ -7,20 +7,15 @@ import webpackHotMiddleware from "webpack-hot-middleware"
 import webpackHotServerMiddleware from "webpack-hot-server-middleware"
 import configBuilder from "../builder"
 
-// Initialize environment configuration
-dotenv.config()
-
-const ROOT = getRoot()
-const CLIENT_OUTPUT = resolve(ROOT, process.env.CLIENT_OUTPUT)
-const PUBLIC_PATH = process.env.PUBLIC_PATH
-
-export function addDevMiddleware(server) {
+export function addDevMiddleware(server, config) {
   const clientConfig = configBuilder({
+    ...config,
     target: "client",
     env: "development"
   })
 
   const serverConfig = configBuilder({
+    ...config,
     target: "server",
     env: "development"
   })
@@ -30,7 +25,7 @@ export function addDevMiddleware(server) {
 
   server.use(webpackDevMiddleware(multiCompiler, {
     // required
-    publicPath: PUBLIC_PATH,
+    publicPath: config.publicPath,
 
     // we have our custom error handling for webpack which offers far better DX
     quiet: true,
@@ -44,7 +39,7 @@ export function addDevMiddleware(server) {
   // keeps serverRender updated with arg: { clientStats, outputPath }
   server.use(webpackHotServerMiddleware(multiCompiler, {
     serverRendererOptions: {
-      outputPath: CLIENT_OUTPUT
+      outputPath: resolve(getRoot(), config.clientOutput)
     }
   }))
 

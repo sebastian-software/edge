@@ -4,13 +4,11 @@ import chalk from "chalk"
 import createExpress from "../express/createExpressServer"
 import { addDevMiddleware } from "../express/dev"
 
-const DEVELOPMENT_PORT = process.env.DEVELOPMENT_PORT
-
-export function startDevServer() {
+export function startDevServer(config = {}) {
   /* eslint-disable no-console */
 
-  const server = createExpress({})
-  const multiCompiler = addDevMiddleware(server)
+  const server = createExpress(config)
+  const multiCompiler = addDevMiddleware(server, config)
 
   // const clientCompiler = multiCompiler.compilers[0]
   // const serverCompiler = multiCompiler.compilers[1]
@@ -46,8 +44,8 @@ export function startDevServer() {
     if (!stats.hasErrors() && !serverIsStarted) {
       serverIsStarted = true
 
-      server.listen(DEVELOPMENT_PORT, () => {
-        console.log(`Development Server started @ Port ${DEVELOPMENT_PORT}`)
+      server.listen(process.env.SERVER_PORT, () => {
+        console.log(`Development Server started @ Port ${process.env.SERVER_PORT}`)
       })
     }
   })
