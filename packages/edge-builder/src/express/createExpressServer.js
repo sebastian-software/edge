@@ -18,7 +18,7 @@ pretty.skipNodeFiles()
 // this will skip all the trace lines about express` core and sub-modules
 pretty.skipPackage("express")
 
-export default function createExpressServer({ customMiddleware = null, enableCSP = false })
+export default function createExpressServer(config = {})
 {
   // Create our express based server.
   const server = express()
@@ -63,7 +63,7 @@ export default function createExpressServer({ customMiddleware = null, enableCSP
   // The CSP configuration is an optional item for helmet, however you should
   // not remove it without making a serious consideration that you do not require
   // the added security.
-  const cspConfig = enableCSP ? {
+  const cspConfig = config.enableCSP ? {
     directives: {
       defaultSrc: [ "'self'" ],
 
@@ -79,7 +79,7 @@ export default function createExpressServer({ customMiddleware = null, enableCSP
         // @see https://helmetjs.github.io/docs/csp/
         (request, response) => `'nonce-${response.locals.nonce}'`,
 
-        // FIXME: Required for eval-source-maps (devtool in webpack)
+        // Required for eval-source-maps (devtool in webpack)
         process.env.NODE_ENV === "development" ? "'unsafe-eval'" : ""
       ].filter((value) => value !== ""),
 
@@ -124,8 +124,8 @@ export default function createExpressServer({ customMiddleware = null, enableCSP
   // @see https://helmetjs.github.io/docs/dont-sniff-mimetype/
   server.use(helmet.noSniff())
 
-  if (customMiddleware)
-    customMiddleware.forEach(
+  if (config.customMiddleware)
+    config.customMiddleware.forEach(
       (middleware) => {
         if (middleware instanceof Array)
           server.use(...middleware)
@@ -140,8 +140,8 @@ export default function createExpressServer({ customMiddleware = null, enableCSP
   // Detect client locale and match it with configuration
   server.use(createLocaleMiddleware({
     priority: [ "query", "cookie", "accept-language", "default" ],
-    default: process.env.DEFAULT_LOCALE.replace(/-/, "_"),
-    allowed: process.env.SUPPORTED_LOCALES.split(",").map((entry) => entry.replace(/-/, "_"))
+    default: config.defaultLocale.replace(/-/, "_"),
+    allowed: config.supportedLocales.map((entry) => entry.replace(/-/, "_"))
   }))
 
   // Parse application/x-www-form-urlencoded
@@ -155,10 +155,9 @@ export default function createExpressServer({ customMiddleware = null, enableCSP
   server.use(shrinkRay())
 
   // Configure static serving of our webpack bundled client files.
-  const ABSOLUTE_CLIENT_OUTPUT_PATH = resolvePath(getRoot(), process.env.CLIENT_OUTPUT)
   server.use(
-    process.env.PUBLIC_PATH,
-    express.static(ABSOLUTE_CLIENT_OUTPUT_PATH)
+    config.publicPath,
+    express.static(resolvePath(getRoot(), config.clientOutput))
   )
 
   return server
