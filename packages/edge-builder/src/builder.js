@@ -352,10 +352,7 @@ export default function builder(options = {}) {
       new webpack.DefinePlugin({
         "process.env": {
           NODE_ENV: JSON.stringify(options.env),
-          TARGET: JSON.stringify(target),
-          DEFAULT_LOCALE: JSON.stringify(DEFAULT_LOCALE),
-          SUPPORTED_LOCALES: JSON.stringify(SUPPORTED_LOCALES),
-          SUPPORTED_LANGUAGES: JSON.stringify(SUPPORTED_LANGUAGES)
+          TARGET: JSON.stringify(target)
         }
       }),
 
