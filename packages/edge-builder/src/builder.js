@@ -2,7 +2,6 @@ import fs from "fs"
 import webpack from "webpack"
 import { get as getRoot } from "app-root-dir"
 import { resolve } from "path"
-import dotenv from "dotenv"
 import chalk from "chalk"
 
 import webpackPkg from "webpack/package.json"
@@ -38,10 +37,6 @@ import ZopfliPlugin from "zopfli-webpack-plugin"
 import WriteFilePlugin from "write-file-webpack-plugin"
 
 import { getHashDigest } from "loader-utils"
-
-const CACHE_HASH_TYPE = "sha256"
-const CACHE_DIGEST_TYPE = "base62"
-const CACHE_DIGEST_LENGTH = 4
 
 function removeEmptyKeys(source)
 {
@@ -88,48 +83,34 @@ const UGLIFY_OPTIONS = {
 
 const BABILI_OPTIONS = {}
 
-// Initialize environment configuration
-dotenv.config()
-
-const CHECK_ENVS = [
-  "SERVER_ENTRY",
-  "CLIENT_ENTRY",
-  "SERVER_VENDOR",
-  "CLIENT_VENDOR",
-  "SERVER_OUTPUT",
-  "CLIENT_OUTPUT",
-  "PUBLIC_PATH",
-  "HTML_TEMPLATE",
-  "DEVELOPMENT_PORT",
-  "DEFAULT_LOCALE",
-  "SUPPORTED_LOCALES"
-]
-const envParameters = Object.keys(process.env)
-const missingParameters = CHECK_ENVS.filter((key) => !envParameters.includes(key))
-if (missingParameters.length > 0)
-  throw new Error(
-    `Missing environment parameters ${missingParameters.join(", ")}.\n` +
-    `Hint: Please provide a proper .env file`
-  )
-
 const ROOT = getRoot()
-const SERVER_ENTRY = resolve(ROOT, process.env.SERVER_ENTRY)
-const CLIENT_ENTRY = resolve(ROOT, process.env.CLIENT_ENTRY)
-const SERVER_VENDOR = resolve(ROOT, process.env.SERVER_VENDOR)
-const CLIENT_VENDOR = resolve(ROOT, process.env.CLIENT_VENDOR)
-const SERVER_OUTPUT = resolve(ROOT, process.env.SERVER_OUTPUT)
-const CLIENT_OUTPUT = resolve(ROOT, process.env.CLIENT_OUTPUT)
-const PUBLIC_PATH = process.env.PUBLIC_PATH
-const HTML_TEMPLATE = resolve(ROOT, process.env.HTML_TEMPLATE)
 
 const defaults = {
   target: "client",
+
   env: process.env.NODE_ENV,
-  verbose: false,
   enableSourceMaps: true,
-  bundleCompression: "uglify", // either "uglify", "babili" or null
+
+  // either "uglify", "babili" or null
+  bundleCompression: "uglify",
+
   useCacheLoader: true,
-  babelEnvPrefix: "edge"
+  babelEnvPrefix: "edge",
+
+  serverEntry: "src/server/index.js",
+  clientEntry: "src/client/index.js",
+  serverVendor: "src/server/vendor.js",
+  clientVendor: "src/client/vendor.js",
+
+  htmlTemplate: "src/index.ejs",
+
+  serverOutput: "build/server",
+  clientOutput: "build/client",
+
+  publicPath: "/static/",
+
+  defaultLocale: "en-US",
+  supportedLocales: [ "en-US", "es-ES", "de-DE" ]
 }
 
 // if you're specifying externals to leave unbundled, you need to tell Webpack
@@ -153,6 +134,31 @@ const compressableAssets = /\.(ttf|otf|svg|pdf|html|ico|txt|md|html|js|css|json|
 export default function builder(options = {}) {
   const config = { ...defaults, ...options }
 
+  const SERVER_ENTRY = resolve(ROOT, config.serverEntry)
+  const CLIENT_ENTRY = resolve(ROOT, config.clientEntry)
+  const SERVER_VENDOR = resolve(ROOT, config.serverVendor)
+  const CLIENT_VENDOR = resolve(ROOT, config.clientVendor)
+  const SERVER_OUTPUT = resolve(ROOT, config.serverOutput)
+  const CLIENT_OUTPUT = resolve(ROOT, config.clientOutput)
+  const PUBLIC_PATH = config.publicPath
+  const HTML_TEMPLATE = resolve(ROOT, config.htmlTemplate)
+  const BABEL_ENV = `${config.babelEnvPrefix}-${config.env}-${config.target}`
+
+  const PROJECT_CONFIG = require(resolve(ROOT, "package.json"))
+
+  const CACHE_HASH_TYPE = "sha256"
+  const CACHE_DIGEST_TYPE = "base62"
+  const CACHE_DIGEST_LENGTH = 4
+  const CACHE_HASH = getHashDigest(JSON.stringify(PROJECT_CONFIG), CACHE_HASH_TYPE, CACHE_DIGEST_TYPE, CACHE_DIGEST_LENGTH)
+
+  const PREFIX = chalk.bold(config.target.toUpperCase())
+
+  const DEFAULT_LOCALE = config.defaultLocale
+  const SUPPORTED_LOCALES = config.supportedLocales
+
+
+
+
   // process.env.NODE_ENV is typically set but still could be undefined. Fix that.
   if (config.env == null) {
     config.env = "development"
@@ -164,16 +170,7 @@ export default function builder(options = {}) {
   const isDevelopment = config.env === "development"
   const isProduction = config.env === "production"
 
-  const BABEL_ENV = `${config.babelEnvPrefix}-${config.env}-${config.target}`
-
-  const PROJECT_CONFIG = require(resolve(ROOT, "package.json"))
-  const CACHE_HASH = getHashDigest(JSON.stringify(PROJECT_CONFIG), CACHE_HASH_TYPE, CACHE_DIGEST_TYPE, CACHE_DIGEST_LENGTH)
-  const PREFIX = chalk.bold(config.target.toUpperCase())
-
-  const DEFAULT_LOCALE = process.env.DEFAULT_LOCALE
-  const SUPPORTED_LOCALES = process.env.SUPPORTED_LOCALES.split(",")
-
-  // Make sure that all plain languages where the full locale is given are also supported
+  // Extract plain languages from configured locales
   const SUPPORTED_LANGUAGES = (() => {
     const languages = new Set()
     for (let entry of SUPPORTED_LOCALES) {
@@ -181,7 +178,6 @@ export default function builder(options = {}) {
     }
     return Array.from(languages.keys())
   })()
-
 
   const LEAN_INTL_REGEXP = new RegExp("\\b" + SUPPORTED_LOCALES.join("\.json\\b|\\b") + "\.json\\b")
   const REACT_INTL_REGEXP = new RegExp("\\b" + SUPPORTED_LANGUAGES.join("\\b|\\b") + "\\b")
