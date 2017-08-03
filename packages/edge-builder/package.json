@@ -48,6 +48,7 @@
     "case-sensitive-paths-webpack-plugin": "^2.1.1",
     "chalk": "^2.0.1",
     "cookie-parser": "^1.4.3",
+    "cosmiconfig": "^2.2.2",
     "cross-env": "^5.0.2",
     "css-loader": "^0.28.4",
     "dotenv": "^4.0.0",
