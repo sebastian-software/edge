@@ -1,6 +1,3 @@
-import { resolve } from "path"
-import { get as getRoot } from "app-root-dir"
-import dotenv from "dotenv"
 import webpack from "webpack"
 import webpackDevMiddleware from "webpack-dev-middleware"
 import webpackHotMiddleware from "webpack-hot-middleware"
@@ -39,7 +36,7 @@ export function addDevMiddleware(server, config) {
   // keeps serverRender updated with arg: { clientStats, outputPath }
   server.use(webpackHotServerMiddleware(multiCompiler, {
     serverRendererOptions: {
-      outputPath: resolve(getRoot(), config.clientOutput)
+      outputPath: config.clientOutput
     }
   }))
 

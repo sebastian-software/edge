@@ -7,8 +7,6 @@ import PrettyError from "pretty-error"
 import createLocaleMiddleware from "express-locale"
 import cookieParser from "cookie-parser"
 import bodyParser from "body-parser"
-import { get as getRoot } from "app-root-dir"
-import { resolve as resolvePath } from "path"
 
 const pretty = new PrettyError()
 
@@ -157,7 +155,7 @@ export default function createExpressServer(config = {}, customMiddleware = [])
   // Configure static serving of our webpack bundled client files.
   server.use(
     config.publicPath,
-    express.static(resolvePath(getRoot(), config.clientOutput))
+    express.static(config.clientOutput)
   )
 
   return server
