@@ -138,8 +138,8 @@ export default function createExpressServer(config = {}, customMiddleware = [])
   // Detect client locale and match it with configuration
   server.use(createLocaleMiddleware({
     priority: [ "query", "cookie", "accept-language", "default" ],
-    default: config.defaultLocale.replace(/-/, "_"),
-    allowed: config.supportedLocales.map((entry) => entry.replace(/-/, "_"))
+    default: config.locale.default.replace(/-/, "_"),
+    allowed: config.locale.supported.map((entry) => entry.replace(/-/, "_"))
   }))
 
   // Parse application/x-www-form-urlencoded
@@ -154,8 +154,8 @@ export default function createExpressServer(config = {}, customMiddleware = [])
 
   // Configure static serving of our webpack bundled client files.
   server.use(
-    config.publicPath,
-    express.static(config.clientOutput)
+    config.output.public,
+    express.static(config.output.client)
   )
 
   return server

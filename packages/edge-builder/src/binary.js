@@ -3,8 +3,8 @@ import chalk from "chalk"
 import updateNotifier from "update-notifier"
 import Promise from "bluebird"
 import clearConsole from "react-dev-utils/clearConsole"
-import { ROOT, getConfig } from "./common"
 
+import { ROOT, getConfig } from "./common"
 import { buildClient, buildServer, cleanClient, cleanServer } from "./commands/build"
 import { startDevServer } from "./commands/dev"
 import { startReactServer } from "./commands/react"
@@ -83,12 +83,11 @@ if (!flags.verbose) {
 /* eslint-disable no-process-exit, max-depth, no-console, no-use-extend-native/no-use-extend-native */
 
 function executeCommands(listOfCommands, config) {
-  const mergedConfig = { ...config, ...flags }
-  return Promise.each(listOfCommands, (item) => item(mergedConfig))
+  return Promise.each(listOfCommands, (item) => item(config))
 }
 
 async function executeTasks() {
-  const config = await getConfig()
+  const config = await getConfig(flags)
 
   for (let taskName of selectedTasks) {
     for (let taskConfig of availableTasks) {

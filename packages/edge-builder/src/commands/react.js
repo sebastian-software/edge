@@ -7,12 +7,12 @@ import createExpress from "../express/createExpressServer"
 export function startReactServer(config = {}, customMiddleware = []) {
   const server = createExpress(config, customMiddleware)
 
-  const clientStats = require(`${config.clientOutput}/stats.json`)
-  const serverRender = require(`${config.serverOutput}/main.js`).default
+  const clientStats = require(`${config.output.client}/stats.json`)
+  const serverRender = require(`${config.output.server}/main.js`).default
 
   server.use(serverRender({
     clientStats,
-    clientOutput: config.clientOutput
+    clientOutput: config.output.client
   }))
 
   server.listen(process.env.SERVER_PORT, () => {

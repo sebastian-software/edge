@@ -22,7 +22,7 @@ export function addDevMiddleware(server, config) {
 
   server.use(webpackDevMiddleware(multiCompiler, {
     // required
-    publicPath: config.publicPath,
+    publicPath: config.output.public,
 
     // we have our custom error handling for webpack which offers far better DX
     quiet: true,
@@ -36,7 +36,7 @@ export function addDevMiddleware(server, config) {
   // keeps serverRender updated with arg: { clientStats, outputPath }
   server.use(webpackHotServerMiddleware(multiCompiler, {
     serverRendererOptions: {
-      outputPath: config.clientOutput
+      outputPath: config.output.client
     }
   }))
 

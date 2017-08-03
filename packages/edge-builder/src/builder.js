@@ -104,15 +104,11 @@ const postcssFiles = /\.(css|sss|pcss)$/
 const compressableAssets = /\.(ttf|otf|svg|pdf|html|ico|txt|md|html|js|css|json|xml)$/
 
 export default function builder(config = {}) {
-  const SERVER_ENTRY = config.serverEntry
-  const CLIENT_ENTRY = config.clientEntry
-  const SERVER_VENDOR = config.serverVendor
-  const CLIENT_VENDOR = config.clientVendor
-  const SERVER_OUTPUT = config.serverOutput
-  const CLIENT_OUTPUT = config.clientOutput
-  const PUBLIC_PATH = config.publicPath
-  const HTML_TEMPLATE = config.htmlTemplate
-  const BABEL_ENV = `${config.babelEnvPrefix}-${config.env}-${config.target}`
+  const SERVER_OUTPUT = config.output.server
+  const CLIENT_OUTPUT = config.output.client
+
+  const HTML_TEMPLATE = config.entry.htmlTemplate
+  const BABEL_ENV = `${config.build.babelEnvPrefix}-${config.env}-${config.target}`
 
   const PROJECT_CONFIG = require(resolve(ROOT, "package.json"))
 
@@ -123,8 +119,8 @@ export default function builder(config = {}) {
 
   const PREFIX = chalk.bold(config.target.toUpperCase())
 
-  const DEFAULT_LOCALE = config.defaultLocale
-  const SUPPORTED_LOCALES = config.supportedLocales
+  const DEFAULT_LOCALE = config.locale.default
+  const SUPPORTED_LOCALES = config.locale.supported
 
   // process.env.NODE_ENV is typically set but still could be undefined. Fix that.
   if (config.env == null) {
@@ -149,12 +145,11 @@ export default function builder(config = {}) {
   const LEAN_INTL_REGEXP = new RegExp("\\b" + SUPPORTED_LOCALES.join("\.json\\b|\\b") + "\.json\\b")
   const REACT_INTL_REGEXP = new RegExp("\\b" + SUPPORTED_LANGUAGES.join("\\b|\\b") + "\\b")
 
-
   const USE_AUTODLL = false
 
   const name = isServer ? "server" : "client"
   const target = isServer ? "node" : "web"
-  const devtool = config.enableSourceMaps ? "source-map" : null
+  const devtool = config.build.enableSourceMaps ? "source-map" : false
 
   console.log(chalk.underline(`${PREFIX} Configuration:`))
   console.log(`→ Environment: ${config.env}`)
@@ -163,8 +158,8 @@ export default function builder(config = {}) {
   if (config.verbose) {
     console.log(`→ Babel Environment: ${BABEL_ENV}`)
     console.log(`→ Enable Source Maps: ${devtool}`)
-    console.log(`→ Bundle Compression: ${config.bundleCompression}`)
-    console.log(`→ Use Cache Loader: ${config.useCacheLoader} [Hash: ${CACHE_HASH}]`)
+    console.log(`→ Bundle Compression: ${config.build.bundleCompression}`)
+    console.log(`→ Use Cache Loader: ${config.build.useCacheLoader} [Hash: ${CACHE_HASH}]`)
     console.log(`→ Default Locale: ${DEFAULT_LOCALE}`)
     console.log(`→ Supported Locales: ${SUPPORTED_LOCALES}`)
     console.log(`→ Supported Languages: ${SUPPORTED_LANGUAGES}`)
@@ -173,7 +168,7 @@ export default function builder(config = {}) {
   const CACHE_LOADER_DIRECTORY = resolve(ROOT, `.cache/loader-${CACHE_HASH}-${config.target}-${config.env}`)
   const UFLIFY_CACHE_DIRECTORY = resolve(ROOT, `.cache/uglify-${CACHE_HASH}-${config.target}-${config.env}`)
 
-  const cacheLoader = config.useCacheLoader ? {
+  const cacheLoader = config.build.useCacheLoader ? {
     loader: "cache-loader",
     options: {
       cacheDirectory: CACHE_LOADER_DIRECTORY
@@ -187,13 +182,13 @@ export default function builder(config = {}) {
 
     // We are using CSS-O as part of our PostCSS-Chain
     minimize: false,
-    sourceMap: config.enableSourceMaps
+    sourceMap: config.build.enableSourceMaps
   }
 
   const postCSSLoaderRule = {
     loader: "postcss-loader",
     query: {
-      sourceMap: config.enableSourceMaps
+      sourceMap: config.build.enableSourceMaps
     }
   }
 
@@ -205,12 +200,12 @@ export default function builder(config = {}) {
     externals: isServer ? serverExternals : undefined,
 
     entry: removeEmptyKeys({
-      vendor: !USE_AUTODLL ? (isServer ? SERVER_VENDOR : CLIENT_VENDOR) : null,
+      vendor: !USE_AUTODLL ? (isServer ? config.entry.serverVendor : config.entry.clientVendor) : null,
       main: [
         isClient && isDevelopment ?
           "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false" :
           null,
-        isServer ? SERVER_ENTRY : CLIENT_ENTRY
+        isServer ? config.entry.serverMain : config.entry.clientMain
       ].filter(Boolean)
     }),
 
@@ -219,7 +214,7 @@ export default function builder(config = {}) {
       filename: isDevelopment || isServer ? "[name].js" : "[name]-[chunkhash].js",
       chunkFilename: isDevelopment || isServer ? "[name].js" : "[name]-[chunkhash].js",
       path: isServer ? SERVER_OUTPUT : CLIENT_OUTPUT,
-      publicPath: PUBLIC_PATH,
+      publicPath: config.output.public,
 
       // Enable cross-origin loading without credentials - Useful for loading files from CDN
       crossOriginLoading: "anonymous"
@@ -356,7 +351,7 @@ export default function builder(config = {}) {
         inject: isProduction && isClient,
         entry: {
           vendor: [
-            isServer ? SERVER_VENDOR : CLIENT_VENDOR
+            isServer ? config.entry.serverVendor : config.entry.clientVendor
           ]
         }
       }) : null,
@@ -396,9 +391,9 @@ export default function builder(config = {}) {
 
       // Classic UglifyJS for compressing ES5 compatible code.
       // https://github.com/webpack-contrib/uglifyjs-webpack-plugin
-      config.bundleCompression === "uglify" && isProduction && isClient ?
+      config.build.bundleCompression === "uglify" && isProduction && isClient ?
         new UglifyPlugin({
-          sourceMap: config.enableSourceMaps,
+          sourceMap: config.build.enableSourceMaps,
           parallel: {
             cache: UFLIFY_CACHE_DIRECTORY
           },
@@ -408,7 +403,7 @@ export default function builder(config = {}) {
       // Alternative to Uglify when producing modern output
       // Advanced ES2015 ready JS compression based on Babylon (Babel Parser)
       // https://github.com/webpack-contrib/babili-webpack-plugin
-      config.bundleCompression === "babili" && isProduction && isClient ?
+      config.build.bundleCompression === "babili" && isProduction && isClient ?
         new BabiliPlugin(BABILI_OPTIONS, { comments: false }) : null,
 
       // "Use HashedModuleIdsPlugin to generate IDs that preserves over builds."
