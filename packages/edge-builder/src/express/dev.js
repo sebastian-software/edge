@@ -5,17 +5,8 @@ import webpackHotServerMiddleware from "webpack-hot-server-middleware"
 import configBuilder from "../builder"
 
 export function addDevMiddleware(server, config) {
-  const clientConfig = configBuilder({
-    ...config,
-    target: "client",
-    env: "development"
-  })
-
-  const serverConfig = configBuilder({
-    ...config,
-    target: "server",
-    env: "development"
-  })
+  const clientConfig = configBuilder("client", "development", config)
+  const serverConfig = configBuilder("server", "development", config)
 
   const multiCompiler = webpack([ clientConfig, serverConfig ])
   const clientCompiler = multiCompiler.compilers[0]

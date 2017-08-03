@@ -10,11 +10,7 @@ const removePromise = promisify(remove)
 
 export function buildClient(config = {})
 {
-  const webpackConfig = builder({
-    ...config,
-    target: "client",
-    env: "production"
-  })
+  const webpackConfig = builder("client", "production", config)
 
   return new Promise((resolve, reject) =>
   {
@@ -48,11 +44,7 @@ export function buildClient(config = {})
 }
 
 export function buildServer(config = {}) {
-  const webpackConfig = builder({
-    ...config,
-    target: "server",
-    env: "production"
-  })
+  const webpackConfig = builder("server", "production", config)
 
   return new Promise((resolve, reject) => {
     /* eslint-disable no-console */

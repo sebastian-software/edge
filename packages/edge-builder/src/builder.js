@@ -103,12 +103,12 @@ const babelFiles = /\.(js|mjs|jsx)$/
 const postcssFiles = /\.(css|sss|pcss)$/
 const compressableAssets = /\.(ttf|otf|svg|pdf|html|ico|txt|md|html|js|css|json|xml)$/
 
-export default function builder(config = {}) {
+export default function builder(target, env = "development", config = {}) {
   const SERVER_OUTPUT = config.output.server
   const CLIENT_OUTPUT = config.output.client
 
   const HTML_TEMPLATE = config.entry.htmlTemplate
-  const BABEL_ENV = `${config.build.babelEnvPrefix}-${config.env}-${config.target}`
+  const BABEL_ENV = `${config.build.babelEnvPrefix}-${env}-${target}`
 
   const PROJECT_CONFIG = require(resolve(ROOT, "package.json"))
 
@@ -117,21 +117,16 @@ export default function builder(config = {}) {
   const CACHE_DIGEST_LENGTH = 4
   const CACHE_HASH = getHashDigest(JSON.stringify(PROJECT_CONFIG), CACHE_HASH_TYPE, CACHE_DIGEST_TYPE, CACHE_DIGEST_LENGTH)
 
-  const PREFIX = chalk.bold(config.target.toUpperCase())
+  const PREFIX = chalk.bold(target.toUpperCase())
 
   const DEFAULT_LOCALE = config.locale.default
   const SUPPORTED_LOCALES = config.locale.supported
 
-  // process.env.NODE_ENV is typically set but still could be undefined. Fix that.
-  if (config.env == null) {
-    config.env = "development"
-  }
+  const isServer = target === "server"
+  const isClient = target === "client"
 
-  const isServer = config.target === "server"
-  const isClient = config.target === "client"
-
-  const isDevelopment = config.env === "development"
-  const isProduction = config.env === "production"
+  const isDevelopment = env === "development"
+  const isProduction = env === "production"
 
   // Extract plain languages from configured locales
   const SUPPORTED_LANGUAGES = (() => {
@@ -148,12 +143,12 @@ export default function builder(config = {}) {
   const USE_AUTODLL = false
 
   const name = isServer ? "server" : "client"
-  const target = isServer ? "node" : "web"
+  const webpackTarget = isServer ? "node" : "web"
   const devtool = config.build.enableSourceMaps ? "source-map" : false
 
   console.log(chalk.underline(`${PREFIX} Configuration:`))
-  console.log(`→ Environment: ${config.env}`)
-  console.log(`→ Build Target: ${target}`)
+  console.log(`→ Environment: ${env}`)
+  console.log(`→ Webpack Target: ${webpackTarget}`)
 
   if (config.verbose) {
     console.log(`→ Babel Environment: ${BABEL_ENV}`)
@@ -165,8 +160,8 @@ export default function builder(config = {}) {
     console.log(`→ Supported Languages: ${SUPPORTED_LANGUAGES}`)
   }
 
-  const CACHE_LOADER_DIRECTORY = resolve(ROOT, `.cache/loader-${CACHE_HASH}-${config.target}-${config.env}`)
-  const UFLIFY_CACHE_DIRECTORY = resolve(ROOT, `.cache/uglify-${CACHE_HASH}-${config.target}-${config.env}`)
+  const CACHE_LOADER_DIRECTORY = resolve(ROOT, `.cache/loader-${CACHE_HASH}-${target}-${env}`)
+  const UFLIFY_CACHE_DIRECTORY = resolve(ROOT, `.cache/uglify-${CACHE_HASH}-${target}-${env}`)
 
   const cacheLoader = config.build.useCacheLoader ? {
     loader: "cache-loader",
@@ -194,7 +189,7 @@ export default function builder(config = {}) {
 
   return {
     name,
-    target,
+    target: webpackTarget,
     devtool,
     context: ROOT,
     externals: isServer ? serverExternals : undefined,
@@ -309,7 +304,7 @@ export default function builder(config = {}) {
 
       new webpack.DefinePlugin({
         "process.env": {
-          NODE_ENV: JSON.stringify(config.env),
+          NODE_ENV: JSON.stringify(env),
           TARGET: JSON.stringify(target)
         }
       }),
