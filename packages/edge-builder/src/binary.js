@@ -2,8 +2,8 @@ import meow from "meow"
 import chalk from "chalk"
 import updateNotifier from "update-notifier"
 import Promise from "bluebird"
-import { get as getRoot } from "app-root-dir"
 import clearConsole from "react-dev-utils/clearConsole"
+import { ROOT, getConfig } from "./common"
 
 import { buildClient, buildServer, cleanClient, cleanServer } from "./commands/build"
 import { startDevServer } from "./commands/dev"
@@ -12,12 +12,24 @@ import { startStaticServer } from "./commands/static"
 
 import pkg from "../package.json"
 
+const appPkg = require(ROOT + "/package.json")
+const appInfo = " running on " + chalk.bold.blue(appPkg.name) + "-" + appPkg.version
+
+const IS_INTERACTIVE = process.stdout.isTTY
+
+if (IS_INTERACTIVE) {
+  clearConsole()
+}
+
+console.log(chalk.bold("EDGE " + chalk.green("v" + pkg.version)) + appInfo)
+
 // Parse arguments
 const command = meow(`
   Usage:
     $ edge <command>
 
   Options:
+    --config        Path to configuration file.
     --verbose, -v   Generate verbose output messages.
     --quiet, -q     Reduce amount of output messages to warnings and errors.
 
@@ -37,22 +49,17 @@ const command = meow(`
     }
 })
 
-const appPkg = require(getRoot() + "/package.json")
-const appInfo = " running on " + chalk.bold.blue(appPkg.name) + "-" + appPkg.version
-
 const selectedTasks = command.input
 const flags = command.flags
 
-const IS_INTERACTIVE = process.stdout.isTTY
-
-if (IS_INTERACTIVE) {
-  clearConsole()
-}
-
-console.log(chalk.bold("EDGE " + chalk.green("v" + pkg.version)) + appInfo)
-
 // Check for updates first
-updateNotifier({ pkg }).notify()
+/* eslint-disable no-magic-numbers */
+updateNotifier({
+  pkg,
+
+  // check every hour
+  updateCheckInterval: 1000 * 60 * 60
+}).notify()
 
 // List of tasks we have available
 const availableTasks = [
@@ -73,20 +80,23 @@ if (!flags.verbose) {
   process.noDeprecation = true
 }
 
-/* eslint-disable no-process-exit */
+/* eslint-disable no-process-exit, max-depth, no-console, no-use-extend-native/no-use-extend-native */
 
-function executeCommands(listOfCommands) {
-  return Promise.each(listOfCommands, (item) => item())
+function executeCommands(listOfCommands, config) {
+  const mergedConfig = { ...config, ...flags }
+  return Promise.each(listOfCommands, (item) => item(mergedConfig))
 }
 
 async function executeTasks() {
+  const config = await getConfig()
+
   for (let taskName of selectedTasks) {
     for (let taskConfig of availableTasks) {
       if (taskConfig.task === taskName) {
-        try{
-          await executeCommands(taskConfig.commands)
-        } catch(error) {
-          console.error(chalk.bold.red("Failed to execute task: " + taskName))
+        try {
+          await executeCommands(taskConfig.commands, config)
+        } catch (error) {
+          console.error(chalk.bold.red(`Failed to execute task: ${taskName}!`))
           console.error(error)
           process.exit(1)
         }
@@ -95,4 +105,8 @@ async function executeTasks() {
   }
 }
 
-process.nextTick(executeTasks)
+if (selectedTasks) {
+  process.nextTick(executeTasks)
+} else {
+  command.showHelp()
+}
