@@ -196,13 +196,16 @@ export default function builder(options = {}) {
   console.log(chalk.underline(`${PREFIX} Configuration:`))
   console.log(`→ Environment: ${config.env}`)
   console.log(`→ Build Target: ${target}`)
-  console.log(`→ Babel Environment: ${BABEL_ENV}`)
-  console.log(`→ Enable Source Maps: ${devtool}`)
-  console.log(`→ Bundle Compression: ${config.bundleCompression}`)
-  console.log(`→ Use Cache Loader: ${config.useCacheLoader} [Hash: ${CACHE_HASH}]`)
-  console.log(`→ Default Locale: ${DEFAULT_LOCALE}`)
-  console.log(`→ Supported Locales: ${SUPPORTED_LOCALES}`)
-  console.log(`→ Supported Languages: ${SUPPORTED_LANGUAGES}`)
+
+  if (config.verbose) {
+    console.log(`→ Babel Environment: ${BABEL_ENV}`)
+    console.log(`→ Enable Source Maps: ${devtool}`)
+    console.log(`→ Bundle Compression: ${config.bundleCompression}`)
+    console.log(`→ Use Cache Loader: ${config.useCacheLoader} [Hash: ${CACHE_HASH}]`)
+    console.log(`→ Default Locale: ${DEFAULT_LOCALE}`)
+    console.log(`→ Supported Locales: ${SUPPORTED_LOCALES}`)
+    console.log(`→ Supported Languages: ${SUPPORTED_LANGUAGES}`)
+  }
 
   const CACHE_LOADER_DIRECTORY = resolve(ROOT, `.cache/loader-${CACHE_HASH}-${config.target}-${config.env}`)
   const UFLIFY_CACHE_DIRECTORY = resolve(ROOT, `.cache/uglify-${CACHE_HASH}-${config.target}-${config.env}`)
