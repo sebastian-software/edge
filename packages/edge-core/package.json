@@ -6,6 +6,7 @@
   "module": "lib/node.esmodules.js",
   "browser": "lib/browser.esmodules.js",
   "scripts": {
+    "size": "prepublish && size-limit",
     "test": "jest",
     "prepare": "rimraf lib && prepublish",
     "release": "release-it --github.release --npm.publish --non-interactive",
@@ -46,6 +47,16 @@
   "bugs": {
     "url": "https://github.com/sebastian-software/edge-core/issues"
   },
+  "size-limit": [
+    {
+      "path": "lib/browser.esmodules.js",
+      "limit": "120 KB"
+    },
+    {
+      "path": "lib/node.esmodules.js",
+      "limit": "100 KB"
+    }
+  ],
   "homepage": "https://github.com/sebastian-software/edge-core#readme",
   "dependencies": {
     "history": "^4.6.3",
@@ -68,7 +79,8 @@
     "redux-immutable-state-invariant": "^2.0.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "serialize-javascript": "^1.4.0"
+    "serialize-javascript": "^1.4.0",
+    "size-limit": "^0.8.0"
   },
   "devDependencies": {
     "prepublish": "^1.1.3",
