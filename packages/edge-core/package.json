@@ -72,7 +72,7 @@
     "react-redux": "^5.0.5",
     "react-test-renderer": "^15.6.1",
     "react-tree-walker": "^2.1.2",
-    "react-universal-component": "^2.1.5",
+    "react-universal-component": "^2.3.0",
     "redux": "^3.7.2",
     "redux-first-router": "^1.9.10",
     "redux-first-router-link": "^1.1.3",
