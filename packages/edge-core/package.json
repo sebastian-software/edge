@@ -7,7 +7,7 @@
   "browser": "lib/browser.esmodules.js",
   "scripts": {
     "size": "prepublish && size-limit",
-    "test": "jest",
+    "test": "jest && npm run size",
     "prepare": "rimraf lib && prepublish",
     "release": "release-it --github.release --npm.publish --non-interactive",
     "release:minor": "release-it --github.release --npm.publish --non-interactive --increment minor",
