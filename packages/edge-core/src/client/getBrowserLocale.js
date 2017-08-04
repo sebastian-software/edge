@@ -1,5 +1,10 @@
-export default function getBrowserLocale(supported) {
-  const supported = new Set()
+/**
+ * Returns the browser locale settings based on available locales and browser settings.
+ *
+ * @param {Array} supportedLocales List of supported locales by the application.
+ */
+export default function getBrowserLocale(supportedLocales) {
+  const supported = new Set(supportedLocales)
   const available = new Set()
 
   // Modern standard: Support by modern Chrome, Safari and Firefox
