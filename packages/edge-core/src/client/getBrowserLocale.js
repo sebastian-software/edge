@@ -1,5 +1,5 @@
-export default function getBrowserLocale() {
-  const supported = new Set(process.env.SUPPORTED_LOCALES)
+export default function getBrowserLocale(supported) {
+  const supported = new Set()
   const available = new Set()
 
   // Modern standard: Support by modern Chrome, Safari and Firefox
