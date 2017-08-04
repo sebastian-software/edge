@@ -52,11 +52,11 @@
   },
   "size-limit": [
     {
-      "path": "lib/browser.esmodules.js",
+      "path": "lib/browser.es5.esm.js",
       "limit": "120 KB"
     },
     {
-      "path": "lib/node.esmodules.js",
+      "path": "lib/node.es5.esm.js",
       "limit": "100 KB"
     }
   ],
