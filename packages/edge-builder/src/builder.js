@@ -219,13 +219,18 @@ export default function builder(target, env = "development", config = {}) {
       rules: [
         {
           test: babelFiles,
-          use: [ "source-map-loader" ],
+          loader: "source-map-loader",
           enforce: "pre",
+          options: {
+            quiet: true
+          },
           exclude: [
             // These packages point to sources which do not exist
             // See also: https://github.com/webpack-contrib/source-map-loader/issues/18
+            // Waiting for PR: https://github.com/webpack-contrib/source-map-loader/pull/50
             /intl-/,
-            /apollo-/
+            /apollo-/,
+            /zen-observable-ts/
           ]
         },
 
