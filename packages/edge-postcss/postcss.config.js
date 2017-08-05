@@ -3,7 +3,7 @@
 /* eslint-disable import/unambiguous */
 
 var appRootDir = require("app-root-dir").get()
-var path = require("path")
+var resolve = require("path").resolve
 
 module.exports = ({ file, options, env }) => ({
   "plugins":
@@ -57,7 +57,7 @@ module.exports = ({ file, options, env }) => ({
     // Reading default configuration map from root source folder.
     // https://github.com/pascalduez/postcss-map
     "postcss-map": {
-      basePath: "src/",
+      basePath: resolve(appRootDir, "src/"),
       maps: [
         "Config.yml"
       ]
