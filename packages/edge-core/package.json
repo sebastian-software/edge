@@ -65,7 +65,7 @@
     "history": "^4.6.3",
     "identity-obj-proxy": "^3.0.0",
     "intl-locales-supported": "^1.0.0",
-    "lean-intl": "^2.3.3",
+    "lean-intl": "^2.3.4",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-apollo": "^1.4.10",
@@ -85,9 +85,9 @@
     "serialize-javascript": "^1.4.0"
   },
   "devDependencies": {
-    "prepublish": "^1.2.7",
     "cross-env": "^5.0.3",
     "jest-cli": "^20.0.4",
+    "prepublish": "^1.2.7",
     "readable-code": "^3.4.9",
     "rimraf": "^2.6.1",
     "size-limit": "^0.8.0"
