@@ -92,7 +92,6 @@
   },
   "devDependencies": {
     "babel-preset-edge": "^1.1.2",
-    "gulp-cli": "^1.4.0",
     "jest-cli": "^20.0.4",
     "postcss-load-config": "^1.2.0",
     "prepublish": "^1.2.6",
