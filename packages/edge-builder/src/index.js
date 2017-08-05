@@ -1,4 +1,3 @@
-import gulp from "gulp"
 import runSequence from "run-sequence"
 import { addDevMiddleware } from "./express/dev"
 import dotenv from "dotenv"
@@ -44,15 +43,4 @@ export function createNotification(options)
     default:
       console.log(message)
   }
-}
-
-export function addGulpTasks() {
-  gulp.task("clean:server", cleanServer)
-  gulp.task("clean:client", cleanClient)
-  gulp.task("build:server", [ "clean:server" ], buildServer)
-  gulp.task("build:client", [ "clean:client" ], buildClient)
-  gulp.task("build", (callback) => {
-    runSequence("build:client", "build:server", callback)
-  })
-  gulp.task("start:dev", startDevServer)
 }

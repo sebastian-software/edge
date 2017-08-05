@@ -13,9 +13,6 @@ import webpackPkg from "webpack/package.json"
 import WebpackDigestHash from "./plugins/ChunkHash"
 import VerboseProgress from "./plugins/VerboseProgress"
 
-// DLL Support
-import AutoDllPlugin from "autodll-webpack-plugin"
-
 // CSS Support
 import ExtractCssChunks from "extract-css-chunks-webpack-plugin"
 
@@ -33,8 +30,6 @@ import UglifyPlugin from "uglifyjs-webpack-plugin"
 
 import BundleAnalyzerPlugin from "webpack-bundle-analyzer"
 import ZopfliPlugin from "zopfli-webpack-plugin"
-
-import WriteFilePlugin from "write-file-webpack-plugin"
 
 import { getHashDigest } from "loader-utils"
 
@@ -140,8 +135,6 @@ export default function builder(target, env = "development", config = {}) {
   const LEAN_INTL_REGEXP = new RegExp("\\b" + SUPPORTED_LOCALES.join("\.json\\b|\\b") + "\.json\\b")
   const REACT_INTL_REGEXP = new RegExp("\\b" + SUPPORTED_LANGUAGES.join("\\b|\\b") + "\\b")
 
-  const USE_AUTODLL = false
-
   const name = isServer ? "server" : "client"
   const webpackTarget = isServer ? "node" : "web"
   const devtool = config.build.enableSourceMaps ? "source-map" : false
@@ -195,7 +188,7 @@ export default function builder(target, env = "development", config = {}) {
     externals: isServer ? serverExternals : undefined,
 
     entry: removeEmptyKeys({
-      vendor: !USE_AUTODLL ? (isServer ? config.entry.serverVendor : config.entry.clientVendor) : null,
+      vendor: (isServer ? config.entry.serverVendor : config.entry.clientVendor),
       main: [
         isClient && isDevelopment ?
           "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false" :
@@ -340,22 +333,6 @@ export default function builder(target, env = "development", config = {}) {
         prefix: PREFIX
       }),
 
-      // Automatically generate a re-used DLL file for faster compilation times.
-      // https://github.com/asfktz/autodll-webpack-plugin
-      // Waiting for https://github.com/faceyspacey/webpack-flush-chunks/issues/18
-      // https://github.com/asfktz/autodll-webpack-plugin/issues/23
-      USE_AUTODLL ? new AutoDllPlugin({
-        filename: "[name]-[chunkhash].js",
-        context: ROOT,
-        debug: true,
-        inject: isProduction && isClient,
-        entry: {
-          vendor: [
-            isServer ? config.entry.serverVendor : config.entry.clientVendor
-          ]
-        }
-      }) : null,
-
       // Analyse bundle in production
       isClient && isProduction ? new BundleAnalyzerPlugin.BundleAnalyzerPlugin({
         analyzerMode: "static",
@@ -373,10 +350,6 @@ export default function builder(target, env = "development", config = {}) {
         openAnalyzer: false,
         reportFilename: "report.html"
       }) : null,
-
-      // Forces webpack-dev-server program to write bundle files to the file system.
-      // https://github.com/gajus/write-file-webpack-plugin
-      // isClient && isDevelopment ? new WriteFilePlugin() : null,
 
       // We use this so that our generated [chunkhash]'s are only different if
       // the content for our respective chunks have changed.  This optimises
@@ -430,7 +403,7 @@ export default function builder(target, env = "development", config = {}) {
       // }) : null,
 
       // https://webpack.js.org/plugins/commons-chunk-plugin/#explicit-vendor-chunk
-      !USE_AUTODLL && isClient ? new webpack.optimize.CommonsChunkPlugin({
+      isClient ? new webpack.optimize.CommonsChunkPlugin({
         name: "vendor",
 
         // With more entries, this ensures that no other module goes into the vendor chunk

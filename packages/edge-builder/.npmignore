@@ -6,16 +6,13 @@ src
 
 .babelrc
 .editorconfig
-.eslintcache
-.eslintignore
-.eslintrc.yml
-.gitignore
+.eslint*
+.git*
 .npmignore
 .travis.yml
 .flowconfig
 
 appveyor.yml
-gulpfile.babel.js
 package-lock.json
 rollup.config.js
 yarn.lock
