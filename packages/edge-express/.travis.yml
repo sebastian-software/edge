@@ -8,7 +8,7 @@ matrix:
   fast_finish: true
 
 env:
-- CXX=g++-4.8
+  - CXX=g++-4.8
 
 addons:
   apt:
@@ -23,8 +23,8 @@ before_install:
 notifications:
   email: false
   slack:
-    secure: aurtUgL9JMlqnYcgGcE5FWigEI8gRpu1uL5Na2qxXVpbVCn09d4YQf1a0bvCcR8czjhFoMLpEjYYwW17tZVRO0DuZrBZaHR3k8VIKcTjYndJcgH4fmDR1Og9DudO/yB1l7pPrIrhp7rLZN+bYKgl9mDQgPJlQQP5WLkaY8do2Y3r/ZzMQV4127vllHkhIB+YSgQk8RqUy3+rLD5+J9BukNGrcEBkZ8O0EkqVgauKzv2NjIsGQ3gWIXNi6FLOTxMka920Wvs1QHxQQHOlzUfaMasEH8Ha+LnqTP0V03oyu0+iVlW1BiWpnD4CBQCRvfktNWUf5QiPsuVKN/USdoys2wc1j5bXiF2mjPeGYUD4FbyamJlpVytuoKpj1hZTO3fWJm8vvi3fDP16G4nMY12I3aXlLg35Fmvdadw7RAZRuWD+ny8EAieAKzSykNP+1q7KwiGkmyQ8OgSKhaPGM8QmyEUtFaJELWPCNPIYY61uzODxtpGr2FMePzlFDf43CYXY41j1w5PzZfjqgkfSpD3FOWzxlZtKygNBZX3E7OdDzki0rsB/JXtDwoKkPnY94xcujwP9UkKLbeeyxndcOjGaRfHVrxoulLg8g+gd3JATC5rsgaE/TgOFJALoDiaKYAKOSnvYemXSaDwNTOp8jQYEurURxTyANLc2uwGLuC/xmA8=
+    secure: DLIGNSCjyl3LuqI84eU/kKBtbe6NnPNMIFn+TkKHdnrnsE02Wm5JK0mEIYcDx2KeQrx2LJCjl1jbmart00UxvHgaq8vB7R5yNKKb/A8Cy2cWmWr/z+Jrc6qt9LtMzabyZI9vddrWSCVqYcnRM+aG3YIS1eL8AIznGmgLXfih9R4djyRooYSpqNmMYUfgFdRwlsuRmwQvqk5DkxZ12Br9xla5yMGS/mOJfN+nqZcHQFpeCguM3l7XU5c1BTCXfg9Fq43Nbb/zIsfwq/PjrZVDTPbo6y6wR+JRsO3mzovvcbqeOHnj2aEEF5Dh89gZo3ZZb0NlF74he9i0W6n7npmQobMWoB8Ghm+v83MbpECOo4vqqX09MvTw/E6AqmhJufnb19IvhVX4zW5cHrXm8r4URoPltylJiBpwtmoKVvdt31sdew7gwQzUMCL8B6SxWvxwIzPrlRyiEdUSeWXXOp+HUJ4etu+5re4icJlohpkYDrjksu3yAaW29XtqFj+y2QRwyGeHe/73lteH/CMQ8/ndnp5Pt9GKAV4QWqlTBfWqjHtCW+92jUzigJuU8G5Yc7m8EOktLV70Bv4kdcm7Y04BPn2mTQjnmp1HxLsuoEYPKolTn+5FDgBedzFW/x8v+Lg3yWHtrxoWnRMZaJyv4J67JMCuP7Kg96x75XbPU2tsbKk=
 
 cache:
   directories:
-  - $HOME/.npm
+    - "$HOME/.npm"
