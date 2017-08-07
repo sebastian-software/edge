@@ -18,8 +18,8 @@ const defaultFolder = {
 export default function createExpressServer({
   locale = defaultLocale,
   folder = defaultFolder,
-  setupMiddleware = [],
-  dynamicMiddleware = [],
+  afterSecurity = [],
+  beforeFallback = [],
   enableCSP = false,
   enableNonce = false
 }) {
@@ -29,8 +29,15 @@ export default function createExpressServer({
   addErrorMiddleware(server)
   addSecurityMiddleware(server, { enableCSP, enableNonce })
 
-  if (setupMiddleware.length > 0) {
-    server.use(...setupMiddleware)
+  // Allow for some early additions for middleware
+  if (afterSecurity.length > 0) {
+    afterSecurity.forEach((middleware) => {
+      if (middleware instanceof Array) {
+        server.use(...middleware)
+      } else {
+        server.use(middleware)
+      }
+    })
   }
 
   addCoreMiddleware(server, { locale })
@@ -40,8 +47,15 @@ export default function createExpressServer({
     server.use(folder.public, express.static(folder.path))
   }
 
-  if (dynamicMiddleware.length > 0) {
-    server.use(...dynamicMiddleware)
+  // Allow for some late additions for middleware
+  if (beforeFallback.length > 0) {
+    beforeFallback.forEach((middleware) => {
+      if (middleware instanceof Array) {
+        server.use(...middleware)
+      } else {
+        server.use(middleware)
+      }
+    })
   }
 
   // For all things which did not went well.
