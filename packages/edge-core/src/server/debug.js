@@ -85,10 +85,10 @@ export function getRelevantFrames(frames) {
 /**
  * Processes a single CallSite entry to filter out build tool related or internal APIs.
  * During this process the method also uses source maps to figure out the original source location.
- * The CallSite API is documented in here: https://github.com/v8/v8/wiki/Stack-Trace-API#customizing-stack-traces
+ * The CallSite API is documented in here: https://github.com/v8/v8/wiki/Stack-Trace-API#customizing-stack-traces.
  *
  * @param {CallSite} frame The current CallSite object to process.
- * @returns {string} Stringified CallSite object with usage of source maps to refer source location,
+ * @returns {string} Stringified CallSite object with usage of source maps to refer source location.
  */
 export function frameToString(frame)
 {
@@ -128,9 +128,9 @@ export function frameToString(frame)
  * Build the stack property for V8 as V8 is documented to use whatever this call returns
  * as the value of the stack property.
  *
- * @param {Error} nativeError Native JavaScript Error Object
- * @param {CallSite[]} structuredStackTrace a structured representation of the stack
- * @returns {String} Generated `stack` property for error object
+ * @param {Error} nativeError Native JavaScript Error Object.
+ * @param {CallSite[]} structuredStackTrace A structured representation of the stack.
+ * @returns {string} Generated `stack` property for error object.
  */
 export function prepareStackTrace(nativeError, structuredStackTrace)
 {
@@ -165,10 +165,10 @@ export function prepareStackTrace(nativeError, structuredStackTrace)
 
 
 /**
- * Highlights the given stacktrace object using `chalk
+ * Highlights the given stacktrace object using `chalk.
  *
- * @param {Stack} Stacktrace result string
- * @returns {String} Highlighted stack trace for NodeJS
+ * @param {Stack} stack Stacktrace result string.
+ * @returns {string} Highlighted stack trace for NodeJS.
  */
 export function highlightStack(stack)
 {
@@ -187,9 +187,9 @@ export function highlightStack(stack)
 
 
 /**
- * Logs the given error to the NodeJS console
+ * Logs the given error to the NodeJS console.
  *
- * @param {Error} nativeError Native JavaScript Error Object
+ * @param {Error} nativeError Native JavaScript Error Object.
  */
 export function logError(nativeError)
 {
@@ -217,7 +217,9 @@ export function logError(nativeError)
 
 
 /**
- * Enable enhanced stack traces
+ * Enable enhanced stack traces.
+ *
+ * @param {boolean} debug Whether debugging should be enabled.
  */
 export function enableEnhancedStackTraces(debug = false)
 {
