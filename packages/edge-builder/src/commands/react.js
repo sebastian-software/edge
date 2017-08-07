@@ -1,19 +1,27 @@
-import { createExpress } from "edge-server"
+/* eslint-disable no-console, import/no-commonjs, security/detect-non-literal-require */
 
-/* eslint-disable no-console */
-/* eslint-disable import/no-commonjs */
-/* eslint-disable security/detect-non-literal-require */
+import { createExpressServer } from "edge-express"
 
-export function startReactServer(config = {}, customMiddleware = []) {
-  const server = createExpress(config, customMiddleware)
+export function startReactServer(buildConfig = {}) {
+  const clientStats = require(`${buildConfig.output.client}/stats.json`)
+  const serverRender = require(`${buildConfig.output.server}/main.js`).default
 
-  const clientStats = require(`${config.output.client}/stats.json`)
-  const serverRender = require(`${config.output.server}/main.js`).default
-
-  server.use(serverRender({
-    clientStats,
-    clientOutput: config.output.client
-  }))
+  const server = createExpressServer({
+    staticConfig: {
+      public: buildConfig.output.public,
+      path: buildConfig.output.client
+    },
+    localeConfig: buildConfig.locale,
+    afterSecurity: [],
+    beforeFallback: [
+      serverRender({
+        clientStats,
+        clientOutput: buildConfig.output.client
+      })
+    ],
+    enableCSP: process.env.ENABLE_CSP,
+    enableNonce: process.env.ENABLE_NONCE
+  })
 
   server.listen(process.env.SERVER_PORT, () => {
     console.log(`React Server Started @ Port ${process.env.SERVER_PORT}`)

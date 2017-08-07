@@ -1,21 +1,57 @@
+/* eslint-disable no-console */
+
 import formatWebpackMessages from "react-dev-utils/formatWebpackMessages"
 import chalk from "chalk"
 import webpack from "webpack"
 import webpackDevMiddleware from "webpack-dev-middleware"
 import webpackHotMiddleware from "webpack-hot-middleware"
 import webpackHotServerMiddleware from "webpack-hot-server-middleware"
-import { createExpress } from "edge-server"
+import { createExpressServer } from "edge-express"
 
 import configBuilder from "../builder"
 
-export function startDevServer(config = {}, customMiddleware = []) {
-  /* eslint-disable no-console */
+export function startDevServer(config = {}) {
+  const clientConfig = configBuilder("client", "development", config)
+  const serverConfig = configBuilder("server", "development", config)
 
-  const server = createExpress(config, customMiddleware)
-  const multiCompiler = addDevMiddleware(server, config)
+  const multiCompiler = webpack([ clientConfig, serverConfig ])
+  const clientCompiler = multiCompiler.compilers[0]
 
-  // const clientCompiler = multiCompiler.compilers[0]
-  // const serverCompiler = multiCompiler.compilers[1]
+  const devMiddleware = webpackDevMiddleware(multiCompiler, {
+    // required
+    publicPath: config.output.public,
+
+    // we have our custom error handling for webpack which offers far better DX
+    quiet: true,
+
+    // display no info to console (only warnings and errors)
+    noInfo: true
+  })
+
+  const hotMiddleware = webpackHotMiddleware(clientCompiler)
+
+  // keeps serverRender updated with arg: { clientStats, outputPath }
+  const hotServerMiddleware = webpackHotServerMiddleware(multiCompiler, {
+    serverRendererOptions: {
+      outputPath: config.output.client
+    }
+  })
+
+  const server = createExpressServer({
+    staticConfig: {
+      public: config.output.public,
+      path: config.output.client
+    },
+    localeConfig: config.locale,
+    afterSecurity: [],
+    beforeFallback: [
+      devMiddleware,
+      hotMiddleware,
+      hotServerMiddleware
+    ],
+    enableCSP: process.env.ENABLE_CSP,
+    enableNonce: process.env.ENABLE_NONCE
+  })
 
   let serverIsStarted = false
 
@@ -53,34 +89,4 @@ export function startDevServer(config = {}, customMiddleware = []) {
       })
     }
   })
-}
-
-export function addDevMiddleware(server, config) {
-  const clientConfig = configBuilder("client", "development", config)
-  const serverConfig = configBuilder("server", "development", config)
-
-  const multiCompiler = webpack([ clientConfig, serverConfig ])
-  const clientCompiler = multiCompiler.compilers[0]
-
-  server.use(webpackDevMiddleware(multiCompiler, {
-    // required
-    publicPath: config.output.public,
-
-    // we have our custom error handling for webpack which offers far better DX
-    quiet: true,
-
-    // display no info to console (only warnings and errors)
-    noInfo: true
-  }))
-
-  server.use(webpackHotMiddleware(clientCompiler))
-
-  // keeps serverRender updated with arg: { clientStats, outputPath }
-  server.use(webpackHotServerMiddleware(multiCompiler, {
-    serverRendererOptions: {
-      outputPath: config.output.client
-    }
-  }))
-
-  return multiCompiler
 }

@@ -1,12 +1,22 @@
-import express from "express"
-import { createExpress } from "edge-server"
-
 /* eslint-disable no-console */
-export function startStaticServer(config = {}, customMiddleware = []) {
-  const server = createExpress(config, customMiddleware)
 
-  // TODO: Match all possible routes
-  server.use("/", express.static(config.output.client))
+import { static as staticMiddleware } from "express"
+import { createExpressServer } from "edge-express"
+
+export function startStaticServer(buildConfig = {}) {
+  const server = createExpressServer({
+    staticConfig: {
+      public: buildConfig.output.public,
+      path: buildConfig.output.client
+    },
+    localeConfig: buildConfig.locale,
+    afterSecurity: [],
+    beforeFallback: [
+      [ "/", staticMiddleware(buildConfig.output.client) ]
+    ],
+    enableCSP: process.env.ENABLE_CSP,
+    enableNonce: process.env.ENABLE_NONCE
+  })
 
   server.listen(process.env.SERVER_PORT, () => {
     console.log(`Static Server Started @ Port ${process.env.SERVER_PORT}`)
