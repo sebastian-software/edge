@@ -38,9 +38,9 @@ export default function getBrowserLocale(supportedLocales) {
 
   // Return only the first match
   const first = Array.from(available.values())[0]
-  return {
+  return first ? {
     locale: first,
     language: first.split("-")[0],
     region: first.split("-")[1] || first.split("-")[0].toUpperCase()
-  }
+  } : null
 }
