@@ -10,14 +10,14 @@ const defaultLocale = {
   supported: [ "en-US" ]
 }
 
-const defaultFolder = {
+const defaultStatic = {
   public: "/static/",
   path: "build/client"
 }
 
 export default function createExpressServer({
-  locale = defaultLocale,
-  folder = defaultFolder,
+  localeConfig = defaultLocale,
+  staticConfig = defaultStatic,
   afterSecurity = [],
   beforeFallback = [],
   enableCSP = false,
@@ -40,11 +40,11 @@ export default function createExpressServer({
     })
   }
 
-  addCoreMiddleware(server, { locale })
+  addCoreMiddleware(server, { locale: localeConfig })
 
   // Configure static serving of our webpack bundled client files.
-  if (folder) {
-    server.use(folder.public, express.static(folder.path))
+  if (staticConfig) {
+    server.use(staticConfig.public, express.static(staticConfig.path))
   }
 
   // Allow for some late additions for middleware
