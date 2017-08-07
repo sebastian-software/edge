@@ -45,6 +45,7 @@
     "chalk": "^2.0.1",
     "cosmiconfig": "^2.2.2",
     "css-loader": "^0.28.4",
+    "edge-express": "^0.1.1",
     "express": "^4.15.3",
     "extract-css-chunks-webpack-plugin": "^2.0.16",
     "file-loader": "^0.11.2",
