@@ -1,6 +1,6 @@
 {
-  "name": "edge-server",
-  "description": "Edge Server is a centralized Express-based HTTP server with sophisticated built-in security.",
+  "name": "edge-express",
+  "description": "Edge Express is a centralized Express-based HTTP server with sophisticated built-in security.",
   "version": "0.1.0",
   "author": {
     "name": "Sebastian Software",
@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sebastian-software/edge-server.git"
+    "url": "git+https://github.com/sebastian-software/edge-express.git"
   },
   "engines": {
     "node": ">=6.0.0",
