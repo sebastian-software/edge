@@ -47,7 +47,7 @@ const command = meow(`
       v: "verbose",
       q: "quiet"
     }
-})
+  })
 
 const selectedTasks = command.input
 const flags = command.flags

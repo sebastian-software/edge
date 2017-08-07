@@ -1,4 +1,4 @@
-import createExpress from "../express/createExpressServer"
+import { createExpress } from "edge-server"
 
 /* eslint-disable no-console */
 /* eslint-disable import/no-commonjs */

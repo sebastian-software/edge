@@ -1,6 +1,5 @@
 import express from "express"
-
-import createExpress from "../express/createExpressServer"
+import { createExpress } from "edge-server"
 
 /* eslint-disable no-console */
 export function startStaticServer(config = {}, customMiddleware = []) {

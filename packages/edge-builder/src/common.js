@@ -1,4 +1,3 @@
-import dotenv from "dotenv"
 import cosmiconfig from "cosmiconfig"
 import { get as getRoot } from "app-root-dir"
 import { relative, resolve } from "path"
@@ -9,9 +8,6 @@ import jsome from "jsome"
 import defaultConfig from "./defaultConfig"
 
 /* eslint-disable no-process-exit, no-console */
-
-// Initialize environment configuration
-dotenv.config()
 
 // Export common understanding of what ROOT is
 export const ROOT = getRoot()
