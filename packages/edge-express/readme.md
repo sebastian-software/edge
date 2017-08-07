@@ -18,7 +18,20 @@ Edge Server is a centralized Express-based HTTP server with sophisticated built-
 
 ## Features
 
+- Express Security with Helmet and HPP.
+- Improved Express Error Handling.
+- Custom "setup" and "dynamic" middleware as needed.
+- Support for Body-Parser, JSON, Cookies and Static serving out-of-the-box.
+- Bundled for Node6 + Node8 (Different Library Outputs).
 
+
+## Public API
+
+- `addCoreMiddleware()`
+- `addErrorMiddleware()`
+- `addFallbackHandler()`
+- `addSecurityMiddleware()`
+- `createExpressServer()`
 
 
 

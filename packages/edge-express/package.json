@@ -7,8 +7,12 @@
     "email": "s.werner@sebastian-software.de",
     "url": "sebastian-software.de"
   },
-  "main": "lib/node.commonjs.js",
-  "module": "lib/node.esmodules.js",
+  "main": "lib/index.es5.cjs.js",
+  "module": "lib/index.es5.esm.js",
+  "main:es2015": "lib/index.es2015.cjs.js",
+  "module:es2015": "lib/index.es2015.esm.js",
+  "main:modern": "lib/index.modern.cjs.js",
+  "module:modern": "lib/index.modern.esm.js",
   "pre-commit": "lint-staged",
   "lint-staged": {
     "*.js": "eslint"
@@ -16,7 +20,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "prepare": "npm run build",
-    "build": "rimraf bin && rimraf lib && prepublish",
+    "build": "rimraf lib && prepublish",
     "test": "npm run build && jest",
     "release": "git push && release-it --github.release --npm.publish --non-interactive",
     "release:minor": "git push && release-it --github.release --npm.publish --non-interactive --increment minor",
