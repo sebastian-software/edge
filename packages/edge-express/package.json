@@ -1,7 +1,7 @@
 {
   "name": "edge-server",
   "description": "Edge Server is a centralized Express-based HTTP server with sophisticated built-in security.",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": {
     "name": "Sebastian Software",
     "email": "s.werner@sebastian-software.de",
