@@ -16,8 +16,6 @@ Edge Builder is a build tool for modern web applications. Part of the Edge Platf
 
 > The Edge Platform helps you focus on business logic rather than dealing with massive tooling, common patterns, complex configurations.
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7323b58c5ae849f98126de866c410938)](https://www.codacy.com/app/info_6/edge-builder?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sebastian-software/edge-builder&amp;utm_campaign=Badge_Grade)
-
 ## Features
 
 - Semi-Automatic Code-Splitting for both CSS and JS.
