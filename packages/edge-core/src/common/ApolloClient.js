@@ -1,16 +1,20 @@
 import { ApolloClient, createNetworkInterface, createBatchingNetworkInterface } from "react-apollo"
 
-export function createApolloClient(config = {})
-{
-  const { headers, initialState = {}, batchRequests = false, trustNetwork = true, queryDeduplication = true } = config
+export function createApolloClient(config = {}) {
+  const {
+    headers,
+    initialState = {},
+    batchRequests = false,
+    trustNetwork = true,
+    queryDeduplication = true
+  } = config
   const apolloUri = initialState.edge && initialState.edge.apolloUri
 
   const hasApollo = apolloUri != null
   const ssrMode = process.env.TARGET === "node"
   var client
 
-  if (hasApollo)
-  {
+  if (hasApollo) {
     var opts = {
       credentials: trustNetwork ? "include" : "same-origin",
 
@@ -21,16 +25,13 @@ export function createApolloClient(config = {})
 
     var networkInterface
 
-    if (batchRequests)
-    {
+    if (batchRequests) {
       networkInterface = createBatchingNetworkInterface({
         uri: apolloUri,
         batchInterval: 10,
         opts
       })
-    }
-    else
-    {
+    } else {
       networkInterface = createNetworkInterface({
         uri: apolloUri,
         opts
@@ -42,9 +43,7 @@ export function createApolloClient(config = {})
       queryDeduplication,
       networkInterface
     })
-  }
-  else
-  {
+  } else {
     client = new ApolloClient({
       ssrMode,
       queryDeduplication
