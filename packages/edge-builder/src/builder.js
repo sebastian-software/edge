@@ -87,11 +87,13 @@ const ROOT = getRoot()
 const nodeModules = resolve(ROOT, "node_modules")
 const serverExternals = fs
   .readdirSync(nodeModules)
-  .filter((x) => !(/\.bin|react-universal-component|require-universal-module|webpack-flush-chunks/).test(x))
+  .filter((x) => !/\.bin|react-universal-component|webpack-flush-chunks/.test(x))
   .reduce((externals, request) => {
     externals[request] = `commonjs ${request}`
     return externals
   }, {})
+
+serverExternals['react-dom/server'] = 'commonjs react-dom/server'
 
 const assetFiles = /\.(eot|woff|woff2|ttf|otf|svg|png|jpg|jpeg|jp2|jpx|jxr|gif|webp|mp4|mp3|ogg|pdf|html|ico)$/
 const babelFiles = /\.(js|mjs|jsx)$/
