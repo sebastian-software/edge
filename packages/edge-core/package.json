@@ -10,7 +10,7 @@
   "browser:es2015": "lib/browser.es2015.esm.js",
   "scripts": {
     "size-limit": "size-limit",
-    "size": "npm pack && npm run size-limit",
+    "size": "npm run prepack && npm run size-limit",
     "test": "jest && npm run size",
     "prepack": "rimraf lib && prepublish",
     "release": "release-it --github.release --npm.publish --non-interactive",
