@@ -219,6 +219,7 @@ export default function builder(target, env = "development", config = {}) {
             // Waiting for PR: https://github.com/webpack-contrib/source-map-loader/pull/50
             /intl-/,
             /apollo-/,
+            /react-apollo/,
             /zen-observable-ts/
           ]
         },
