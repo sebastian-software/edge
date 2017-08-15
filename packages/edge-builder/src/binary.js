@@ -8,7 +8,6 @@ import { ROOT, getConfig } from "./common"
 import { buildClient, buildServer, cleanClient, cleanServer } from "./commands/build"
 import { startDevServer } from "./commands/dev"
 import { startReactServer } from "./commands/react"
-import { startStaticServer } from "./commands/static"
 
 import pkg from "../package.json"
 
@@ -37,7 +36,6 @@ const command = meow(`
     dev             Start development server
     start:dev       Start development server
     start:react     Start production universal React server
-    start:static    Start production static server (alpha)
     build           Build production appliction
     build:client    Build client part of production application
     build:server    Build server part of production application
@@ -70,9 +68,7 @@ const availableTasks = [
   { task: "dev", commands: [ cleanClient, cleanServer, startDevServer ] },
   { task: "start:dev", commands: [ cleanClient, cleanServer, startDevServer ] },
   { task: "start:react", commands: [ cleanClient, cleanServer, buildClient, buildServer, startReactServer ] },
-  { task: "start:react:plain", commands: [ startReactServer ] },
-  { task: "start:static", commands: [ cleanClient, cleanServer, buildClient, startStaticServer ] },
-  { task: "start:static:plain", commands: [ startStaticServer ] }
+  { task: "start:react:plain", commands: [ startReactServer ] }
 ]
 
 // Prevent deprecation messages which should not be displayed to the end user
