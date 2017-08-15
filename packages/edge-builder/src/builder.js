@@ -104,7 +104,7 @@ export default function builder(target, env = "development", config = {}) {
   const SERVER_OUTPUT = config.output.server
   const CLIENT_OUTPUT = config.output.client
 
-  const HTML_TEMPLATE = config.entry.htmlTemplate
+  // const HTML_TEMPLATE = config.entry.htmlTemplate
   const BABEL_ENV = `${config.build.babelEnvPrefix}-${env}-${target}`
 
   const PROJECT_CONFIG = require(resolve(ROOT, "package.json"))
@@ -311,11 +311,13 @@ export default function builder(target, env = "development", config = {}) {
 
       // Generating static HTML page for simple static deployment
       // https://github.com/jantimon/html-webpack-plugin
+      /*
       isProduction && isClient ?
         new HtmlWebpackPlugin({
           template: HTML_TEMPLATE
         }) :
         null,
+      */
 
       // Subresource Integrity (SRI) is a security feature that enables browsers to verify that
       // files they fetch (for example, from a CDN) are delivered without unexpected manipulation.
