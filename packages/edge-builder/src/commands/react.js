@@ -15,8 +15,7 @@ export function startReactServer(buildConfig = {}) {
     afterSecurity: [],
     beforeFallback: [
       serverRender({
-        clientStats,
-        clientOutput: buildConfig.output.client
+        clientStats
       })
     ],
     enableCSP: process.env.ENABLE_CSP !== "false",
@@ -24,6 +23,6 @@ export function startReactServer(buildConfig = {}) {
   })
 
   server.listen(process.env.SERVER_PORT, () => {
-    console.log(`React Server Started @ Port ${process.env.SERVER_PORT}`)
+    console.log(`Production Server Started @ Port ${process.env.SERVER_PORT}`)
   })
 }
