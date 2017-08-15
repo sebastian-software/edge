@@ -1,3 +1,5 @@
+/* eslint-disable max-params, max-statements, complexity */
+
 import fs from "fs"
 import webpack from "webpack"
 import { get as getRoot } from "app-root-dir"
@@ -12,6 +14,8 @@ import webpackPkg from "webpack/package.json"
 // shorter generated hashes based on base62 encoding instead of hex.
 import WebpackDigestHash from "./plugins/ChunkHash"
 import VerboseProgress from "./plugins/VerboseProgress"
+
+import getServerExternals from "./webpack/util/getServerExternals"
 
 // CSS Support
 import ExtractCssChunks from "extract-css-chunks-webpack-plugin"
@@ -79,21 +83,6 @@ const UGLIFY_OPTIONS = {
 const BABILI_OPTIONS = {}
 
 const ROOT = getRoot()
-
-// if you're specifying externals to leave unbundled, you need to tell Webpack
-// to still bundle `react-universal-component`, `webpack-flush-chunks` and
-// `require-universal-module` so that they know they are running
-// within Webpack and can properly make connections to client modules:
-const nodeModules = resolve(ROOT, "node_modules")
-const serverExternals = fs
-  .readdirSync(nodeModules)
-  .filter((x) => !/\.bin|react-universal-component|webpack-flush-chunks/.test(x))
-  .reduce((externals, request) => {
-    externals[request] = `commonjs ${request}`
-    return externals
-  }, {})
-
-serverExternals['react-dom/server'] = 'commonjs react-dom/server'
 
 const assetFiles = /\.(eot|woff|woff2|ttf|otf|svg|png|jpg|jpeg|jp2|jpx|jxr|gif|webp|mp4|mp3|ogg|pdf|html|ico)$/
 const babelFiles = /\.(js|mjs|jsx)$/
@@ -182,12 +171,17 @@ export default function builder(target, env = "development", config = {}) {
     }
   }
 
+  // Just bundle the NodeJS files which are from the local project instead
+  // of a deep self-contained bundle.
+  // See also: https://nolanlawson.com/2016/08/15/the-cost-of-small-modules/
+  const useLightNodeBundle = false
+
   return {
     name,
     target: webpackTarget,
     devtool,
     context: ROOT,
-    externals: isServer ? serverExternals : undefined,
+    externals: isServer ? getServerExternals(useLightNodeBundle) : undefined,
 
     entry: removeEmptyKeys({
       vendor: (isServer ? config.entry.serverVendor : config.entry.clientVendor),
