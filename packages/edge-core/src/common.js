@@ -18,3 +18,4 @@ export {
 
 export { default as wrapApplication } from "./common/wrapApplication"
 export { default as deepFetch } from "./common/deepFetch"
+export { default as routed } from "./common/routed"
