@@ -7,5 +7,11 @@
  * @returns {Promise} Promise which resolves with the default import of imported file (asynchronous, lazy loaded).
  */
 export default function loadImport(wrapped, load = true) {
-  return load ? wrapped.then((module) => module.default) : Promise.resolve(null)
+  if (load) {
+    return wrapped.then((module) => {
+      return module && module.__esModule ? module.default : module
+    })
+  } else {
+    return Promise.resolve(null)
+  }
 }

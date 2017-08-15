@@ -11,5 +11,10 @@ import { CHUNK_NAMES } from "react-universal-component"
  */
 export default function loadImport(wrapped, load = true) {
   CHUNK_NAMES.add(wrapped.chunkName())
-  return load ? __webpack_require__(wrapped.resolve()).default : null
+  if (load) {
+    const module = __webpack_require__(wrapped.resolve())
+    return module && module.__esModule ? module.default : module
+  } else {
+    return null
+  }
 }
