@@ -49,8 +49,8 @@ export function startDevServer(config = {}) {
       hotMiddleware,
       hotServerMiddleware
     ],
-    enableCSP: process.env.ENABLE_CSP,
-    enableNonce: process.env.ENABLE_NONCE
+    enableCSP: process.env.ENABLE_CSP !== "false",
+    enableNonce: process.env.ENABLE_NONCE !== "false"
   })
 
   let serverIsStarted = false
