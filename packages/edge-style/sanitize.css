@@ -1,17 +1,12 @@
 /*! sanitize.css v5.0.0 | CC0 License | github.com/jonathantneal/sanitize.css */
 
-/* Document (https://html.spec.whatwg.org/multipage/semantics.html#semantics)
-   ========================================================================== */
-
 /**
- * 1. Remove repeating backgrounds in all browsers (opinionated).
  * 2. Add box sizing inheritence in all browsers (opinionated).
  */
 
 *,
 ::before,
 ::after {
-	background-repeat: no-repeat; /* 1 */
 	box-sizing: inherit; /* 2 */
 }
 
@@ -29,30 +24,11 @@
 /**
  * 1. Add border box sizing in all browsers (opinionated).
  * 2. Add the default cursor in all browsers (opinionated).
- * 3. Prevent font size adjustments after orientation changes in IE and iOS.
  */
 
 html {
 	box-sizing: border-box; /* 1 */
 	cursor: default; /* 2 */
-	-ms-text-size-adjust: 100%; /* 3 */
-	-webkit-text-size-adjust: 100%; /* 3 */
-}
-
-/* Sections (https://html.spec.whatwg.org/multipage/semantics.html#sections)
-   ========================================================================== */
-
-/**
- * Add the correct display in IE 9-.
- */
-
-article,
-aside,
-footer,
-header,
-nav,
-section {
-	display: block;
 }
 
 /**
@@ -61,49 +37,6 @@ section {
 
 body {
 	margin: 0;
-}
-
-/**
- * Correct the font size and margin on `h1` elements within `section` and
- * `article` contexts in Chrome, Firefox, and Safari.
- */
-
-h1 {
-	font-size: 2em;
-	margin: .67em 0;
-}
-
-/* Grouping content (https://html.spec.whatwg.org/multipage/semantics.html#grouping-content)
-   ========================================================================== */
-
-/**
- * Add the correct display in IE 9-.
- * 1. Add the correct display in IE.
- */
-
-figcaption,
-figure,
-main { /* 1 */
-	display: block;
-}
-
-/**
- * Add the correct margin in IE 8.
- */
-
-figure {
-	margin: 1em 40px;
-}
-
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-
-hr {
-	box-sizing: content-box; /* 1 */
-	height: 0; /* 1 */
-	overflow: visible; /* 2 */
 }
 
 /**
