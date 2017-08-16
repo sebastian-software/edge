@@ -7,6 +7,7 @@
   "style": "edge-style.css",
   "scripts": {
     "test": "stylelint edge-style.css",
+    "pretty": "prettier --parser postcss --write edge-style.css && stylelint --fix edge-style.css",
     "prepack": "rimraf lib && prepublish",
     "release": "git push && release-it --github.release --npm.publish --non-interactive",
     "release:minor": "git push && release-it --github.release --npm.publish --non-interactive --increment minor",

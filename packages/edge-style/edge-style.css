@@ -32,6 +32,7 @@ Edge Base CSS
 
 html {
   box-sizing: border-box;
+
   cursor: default;
 }
 
@@ -132,9 +133,9 @@ textarea,
  */
 
 [aria-hidden="false"][hidden]:not(:focus) {
-  clip: rect(0, 0, 0, 0);
-  display: inherit;
   position: absolute;
+  display: inherit;
+  clip: rect(0, 0, 0, 0);
 }
 
 /*
@@ -149,6 +150,7 @@ textarea,
 /*
  * Reset margins and paddings on all block level elements
  */
+
 html,
 body,
 p,
@@ -175,8 +177,8 @@ h6,
 button,
 input,
 select {
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 /**
@@ -188,9 +190,9 @@ select {
  */
 
 ::selection {
+  background-color: #accef7; /* 3. */
   color: inherit; /* 1. */
   text-shadow: inherit; /* 2. */
-  background-color: #accef7; /* 3. */
 }
 
 html,
