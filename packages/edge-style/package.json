@@ -1,19 +1,18 @@
 {
-  "name": "sanitize.css",
+  "name": "edge-css-base",
   "version": "5.0.0",
   "description": "The best-practices CSS foundation",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "jonathantneal/sanitize.css",
-  "homepage": "https://jonathantneal.github.io/sanitize.css",
-  "bugs": "https://github.com/jonathantneal/sanitize.css/issues",
-  "main": "sanitize.css",
-  "style": "sanitize.css",
+  "repository": "jonathantneal/edge-css-base",
+  "bugs": "https://github.com/jonathantneal/edge-css-base/issues",
+  "main": "edge-css-base",
+  "style": "edge-css-base",
   "files": [
-    "sanitize.css"
+    "edge-css-base"
   ],
   "scripts": {
-    "test": "stylelint sanitize.css"
+    "test": "stylelint edge-css-base"
   },
   "devDependencies": {
     "prettier": "^1.5.3",
