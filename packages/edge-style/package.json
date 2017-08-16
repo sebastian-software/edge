@@ -16,6 +16,7 @@
     "test": "stylelint sanitize.css"
   },
   "devDependencies": {
+    "prettier": "^1.5.3",
     "stylelint": "^8.0.0",
     "stylelint-config-dev": "^2.0.0"
   },

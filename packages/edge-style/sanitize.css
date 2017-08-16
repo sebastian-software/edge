@@ -48,23 +48,6 @@ nav ul {
 	list-style: none;
 }
 
-/*
- * Remove the text shadow on text selections (opinionated).
- * 1. Restore the coloring undone by defining the text shadow (opinionated).
- */
-
-::-moz-selection {
-	background-color: #b3d4fc; /* 1 */
-	color: #000000; /* 1 */
-	text-shadow: none;
-}
-
-::selection {
-	background-color: #b3d4fc; /* 1 */
-	color: #000000; /* 1 */
-	text-shadow: none;
-}
-
 /* Embedded content (https://html.spec.whatwg.org/multipage/embedded-content.html#embedded-content)
    ========================================================================== */
 
