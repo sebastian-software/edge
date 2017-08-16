@@ -47,8 +47,7 @@
     "url": "https://github.com/sebastian-software/edge-style/issues"
   },
   "homepage": "https://github.com/sebastian-software/edge-style#readme",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "prepublish": "^1.3.0",
     "readable-code": "^3.4.11",
