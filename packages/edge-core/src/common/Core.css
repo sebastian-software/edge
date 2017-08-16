@@ -1,9 +1,9 @@
 /* stylelint-disable selector-max-type, selector-max-universal */
 
+@import-normalize;
+
 @import "./Sanitize.css";
 @import "./OpenType.css";
-
-@import-normalize;
 
 /*
   apply a natural box layout model to all elements, but allowing
