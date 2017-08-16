@@ -1,4 +1,8 @@
-/*! sanitize.css v5.0.0 | CC0 License | github.com/jonathantneal/sanitize.css */
+/*!
+Edge Base CSS
+*/
+
+@import-normalize;
 
 /**
  * Add box sizing inheritence in all browsers (opinionated).
