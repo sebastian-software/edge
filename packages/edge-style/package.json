@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "browser": "lib/index.js",
   "scripts": {
-    "test": "stylelint edge-style.css",
+    "test": "stylelint src/*.css",
     "prepack": "rimraf lib && prepublish",
     "release": "git push && release-it --github.release --npm.publish --non-interactive",
     "release:minor": "git push && release-it --github.release --npm.publish --non-interactive --increment minor",
