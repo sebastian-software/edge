@@ -1,9 +1,6 @@
 # sanitize.css <a href="https://github.com/jonathantneal/sanitize.css"><img src="https://jonathantneal.github.io/sanitize.css/logo.svg" alt="sanitize.css logo" width="80" height="80" align="right"></a>
 
 [![NPM Version][npm-img]][npm-url]
-[![Bower Version][bow-img]][bow-url]
-[![CDNJS Version][cdn-img]][cdn-url]
-[![Build Status][cli-img]][cli-url]
 [![License][lic-img]][lic-url]
 [![Gitter Chat][git-img]][git-url]
 
@@ -13,16 +10,10 @@ developed alongside [normalize.css], so every normalization includes the
 browsers or browser versions being targeted, and every opinionated change is
 marked and documented.
 
-##### NPM
+#####
 
 ```sh
-npm install --save sanitize.css
-```
-
-##### Bower
-
-```sh
-bower install --save sanitize-css
+npm install --save edge-core-style
 ```
 
 ## Features
