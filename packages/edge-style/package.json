@@ -2,12 +2,10 @@
   "name": "edge-style",
   "version": "0.0.1",
   "description": "Styling Essentials for Edge. Part of the Edge Platform.",
-  "main": "edge-style.css",
-  "browser": "edge-style.css",
-  "style": "edge-style.css",
+  "main": "lib/index.js",
+  "browser": "lib/index.js",
   "scripts": {
     "test": "stylelint edge-style.css",
-    "pretty": "prettier --parser postcss --write edge-style.css && stylelint --fix edge-style.css",
     "prepack": "rimraf lib && prepublish",
     "release": "git push && release-it --github.release --npm.publish --non-interactive",
     "release:minor": "git push && release-it --github.release --npm.publish --non-interactive --increment minor",
@@ -21,10 +19,7 @@
   "pre-commit": "lint-staged",
   "lint-staged": {
     "*.js": "eslint",
-    "*.mjs": "eslint",
-    "*.css": "stylelint",
-    "*.pcss": "stylelint",
-    "*.sss": "stylelint"
+    "*.css": "stylelint"
   },
   "repository": {
     "type": "git",
