@@ -1,0 +1,94 @@
+html,
+body,
+table {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0,
+    "onum" 1, "lnum" 0, "dlig" 0; /* 2. */
+}
+
+/**
+ * Turn on discretionary ligatures for larger headings
+ */
+
+h1,
+h2,
+h3 {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0,
+    "onum" 1, "lnum" 0, "dlig" 1;
+}
+
+/**
+ * 1. Change all letters to uppercase
+ * 2. Turn on small caps for upper and lowercase letters
+ */
+
+abbr {
+  text-transform: uppercase; /* 1 */
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0,
+    "onum" 1, "lnum" 0, "smcp" 1, "c2sc" 1; /* 2 */
+}
+
+time {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0,
+    "onum" 1, "lnum" 0;
+}
+
+/*
+ * Turn off kerning and ligatures,
+ * Turn on lining, tabular numerals, slashed zero
+ */
+
+pre,
+kbd,
+samp,
+code {
+  font-feature-settings: "kern" 0, "liga" 0, "calt" 1, "dlig" 0, "pnum" 0,
+    "tnum" 1, "onum" 0, "lnum" 1, "zero" 1;
+}
+
+/**
+ * Turn on proper supercript numerals
+ */
+
+sup {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0,
+    "onum" 1, "lnum" 0, "dlig" 0, "sups" 1;
+}
+
+/**
+ * Turn on proper subscript numerals
+ */
+
+sub {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0,
+    "onum" 1, "lnum" 0, "dlig" 0, "subs" 1;
+}
+
+/**
+ * Turns on lining, proportional numerals without clarified zeroes
+ * TODO: Additional input modes https://developer.mozilla.org/en/docs/Web/HTML/Element/Input#attr-inputmode
+ */
+
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="number"],
+input[type="range"],
+input[type="tel"],
+input[type="week"] {
+  font-feature-settings: "kern" 0, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0,
+    "onum" 0, "lnum" 1, "zero" 0;
+}
+
+/* Tables
+========================================================================== */
+
+/**
+ * Turns on tabular, lining numerals and slashed zero
+ */
+
+tbody,
+caption {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 0, "tnum" 1,
+    "onum" 0, "lnum" 1, "zero" 1;
+}

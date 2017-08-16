@@ -1,0 +1,92 @@
+/**
+ * Add text decoration inheritance in all browsers (opinionated).
+ * Add vertical alignment inheritence in all browsers (opinionated).
+ */
+
+::before,
+::after {
+  text-decoration: inherit;
+  vertical-align: inherit;
+}
+
+/**
+	* Remove the list style on navigation lists in all browsers (opinionated).
+	*/
+
+nav ol,
+nav ul {
+  list-style: none;
+}
+
+/*
+	* Change the alignment on media elements in all browers (opinionated).
+	*/
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+/**
+	* Change the fill color to match the text color in all browsers (opinionated).
+	*/
+
+svg {
+  fill: currentColor;
+}
+
+/**
+	* Inherit styling in all browsers (opinionated).
+	*/
+
+button,
+input,
+select,
+textarea {
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/**
+	* Change the resize direction on textareas in all browsers (opinionated).
+	*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+	* Remove the tapping delay on clickable elements (opinionated).
+	*/
+
+a,
+area,
+button,
+input,
+label,
+select,
+summary,
+textarea,
+[tabindex] {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+/**
+	* 1. Inherit style issues with custom selections, per robsterlini.co.uk/journal/opentype-and-selection-dont-mix
+	* 2. Turn on kerning, standard ligatures, and proportional, oldstyle numerals
+	*    Turn off all other ligatures, tabular, lining numerals, and alternates
+			 Uses same settings for tables
+	* 3. Hard-codes fallback text selection for issue #18, color is Chrome’s per via http://stackoverflow.com/a/16094931/864799
+	*/
+
+::selection {
+  background-color: #accef7; /* 3. */
+  color: inherit; /* 1. */
+  text-shadow: inherit; /* 2. */
+}

@@ -1,0 +1,17 @@
+/**
+ * Add box sizing inheritence in all browsers (opinionated).
+ */
+
+*,
+::before,
+::after {
+  box-sizing: inherit;
+}
+
+/**
+ * Add border box sizing in all browsers (opinionated).
+ */
+
+html {
+  box-sizing: border-box;
+}

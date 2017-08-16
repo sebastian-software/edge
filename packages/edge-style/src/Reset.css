@@ -1,0 +1,33 @@
+/*
+ * Reset margins and paddings on all block level elements
+ */
+
+html,
+body,
+p,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+blockquote,
+figure,
+fieldset,
+legend,
+textarea,
+pre,
+iframe,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+input,
+select {
+  padding: 0;
+  margin: 0;
+}
