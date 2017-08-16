@@ -2,3 +2,4 @@ extends:
   ./node_modules/readable-code/.stylelintrc.yml
 rules:
   selector-max-type: null
+  value-list-comma-newline-after: null
