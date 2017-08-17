@@ -1,192 +1,60 @@
-# sanitize.css <a href="https://github.com/jonathantneal/sanitize.css"><img src="https://jonathantneal.github.io/sanitize.css/logo.svg" alt="sanitize.css logo" width="80" height="80" align="right"></a>
+# Edge Style <br/>[![Sponsored by][sponsor-img]][sponsor] [![Version][npm-version-img]][npm] [![Downloads][npm-downloads-img]][npm] [![Build Status Unix][travis-img]][travis] [![Build Status Windows][appveyor-img]][appveyor] [![Dependencies][deps-img]][deps]
 
-[![NPM Version][npm-img]][npm-url]
-[![License][lic-img]][lic-url]
-[![Gitter Chat][git-img]][git-url]
+[sponsor-img]: https://img.shields.io/badge/Sponsored%20by-Sebastian%20Software-692446.svg
+[sponsor]: https://www.sebastian-software.de
+[deps]: https://david-dm.org/sebastian-software/edge-style
+[deps-img]: https://david-dm.org/sebastian-software/edge-style.svg
+[npm]: https://www.npmjs.com/package/edge-style
+[npm-downloads-img]: https://img.shields.io/npm/dm/edge-style.svg
+[npm-version-img]: https://img.shields.io/npm/v/edge-style.svg
+[travis-img]: https://img.shields.io/travis/sebastian-software/edge-style/master.svg?branch=master&label=unix%20build
+[appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/edge-style/master.svg?label=windows%20build
+[travis]: https://travis-ci.org/sebastian-software/edge-style
+[appveyor]: https://ci.appveyor.com/project/swernerx/edge-style/branch/master
 
-[sanitize.css] is a CSS library that corrects broken and missing styles in all
-browsers, preserving useful defaults rather than unstyling everything. It’s
-developed alongside [normalize.css], so every normalization includes the
-browsers or browser versions being targeted, and every opinionated change is
-marked and documented.
+> The Edge Platform helps you focus on business logic rather than dealing with massive tooling, common patterns, complex configurations.
 
-#####
-
-```sh
-npm install --save edge-core-style
-```
+We know the hassle of adding basic sensible styling to your Single Page Application.
+Interestingly there were a lot of seperate
 
 ## Features
 
-##### Box sizing should be inherited and default to border-box
+- Normalize: Based on normalize.css but using the application's customized browerslist: Why add the full normalize if you can only use what's needed?
+- Reset: Reset of all margins and paddings on block level elements: Layouting is easier when having a blank slate.
+- Sanitize: Sanitizes typical gotchas and non ideal legacy standards.
+- Box Sizing: Configures all elements and their shadow elements to use `border-box`.
+- Aria: Implements some best practises on ARIA markup.
+- OpenType: Tweaks default behavior of all native elements to use advanced OpenType features where useful.
+- Intl: Localized configuration for HTML quotes.
 
-```css
-* {
-	box-sizing: inherit;
-}
+## Installation
 
-html {
-	box-sizing: border-box;
-}
+```
+npm install --save-dev edge-style
 ```
 
-##### Backgrounds should not repeat by default
+Edge Style requires a PostCSS-based setup where [postcss-normalize](https://github.com/jonathantneal/postcss-normalize) is enabled in the PostCSS configuration.
 
-```css
-* {
-	background-repeat: no-repeat;
-}
+Other than that Edge Style works effectively without any further plugins as there is e.g. no selector nesting being used inside the source files. It couldn't hurt to add [autoprefixer](https://github.com/postcss/autoprefixer) though for managing the minimum amount of prefixes required by your [browserslist](http://browserl.ist/).
+
+## Usage
+
+Anywhere in your application code just import the full package. Ideally it should be the first thing to include on the client side. There is no need for integrating it on the server side code (SSR).
+
+```js
+import "edge-style"
 ```
 
-##### Cursor should only change to hint non-obvious interfaces
+## Related
 
-```css
-html {
-	cursor: default;
-}
-```
+- [Edge PostCSS](https://github.com/sebastian-software/edge-postcss) is our very own PostCSS plugin configuration which comes with autoprefixer and postcss-normalize built-in.
 
-##### Documents should not use a margin for outer padding
 
-```css
-body {
-	margin: 0;
-}
-```
 
-##### Navigation lists should not include a marker style
+## [License](license)
 
-```css
-nav ol, nav ul {
-	list-style: none;
-}
-```
+## Copyright
 
-##### Text selections should not include text shadows
+<img src="https://raw.githubusercontent.com/sebastian-software/readable-code/master/assets/sebastiansoftware.png" alt="Sebastian Software GmbH Logo" width="250" height="200"/>
 
-```css
-::selection {
-	text-shadow: none;
-}
-```
-
-##### Media elements should align to the text center of other content
-
-```css
-audio, canvas, iframe, img, svg, video {
-	vertical-align: middle;
-}
-```
-
-##### SVGs should fallback to their surrounding text color
-
-```css
-svg {
-	fill: currentColor;
-}
-```
-
-##### Tables should not include additional border spacing
-
-```css
-table {
-	border-collapse: collapse;
-}
-```
-
-##### Form controls should be easily style-able
-
-```css
-button, input, select, textarea {
-	color: inherit;
-	font-size: inherit;
-	line-height: inherit;
-}
-```
-
-##### Textarea should only resize vertically by default
-
-```css
-textarea {
-	resize: vertical;
-}
-```
-
-##### Single taps should be dispatched immediately on clickable elements
-
-```css
-a, area, button, input, label, select, summary, textarea, [tabindex] {
-	-ms-touch-action: manipulation;
-	touch-action: manipulation;
-}
-```
-
-##### ARIA roles should include visual cursor hints
-
-```css
-[aria-busy="true"] {
-	cursor: progress;
-}
-
-[aria-controls] {
-	cursor: pointer;
-}
-
-[aria-disabled] {
-	cursor: default;
-}
-```
-
-##### Visually hidden content should remain accessible
-
-```css
-[aria-hidden="false"][hidden]:not(:focus) {
-	clip: rect(0, 0, 0, 0);
-	display: inherit;
-	position: absolute;
-}
-```
-
-## Differences
-
-[normalize.css] and [sanitize.css] correct browser bugs while carefully testing
-and documenting changes. normalize.css styles adhere to css specifications.
-sanitize.css styles adhere to common developer expectations and preferences.
-[reset.css] unstyles all elements. Both sanitize.css and normalize.css are
-maintained in sync.
-
-## Support
-
-At present, sanitize.css supports the current and previous major releases of
-popular web browsers. When a new version is released, we begin supporting that
-newer version and stop supporting the third version back. Additionally, many
-older browsers remain supported without supplementary CSS.
-
-Currently tested and supported browsers in the latest release include
-**Android 4.3-4.4+**, **Chrome 50-51+**, **Edge 12-13+**, **Firefox 46-47+**,
-**Internet Explorer 10-11**, **iOS 7-8+**, **Opera 37-38+**, **Safari 8-9+**,
-and **Windows Phone 8.1+**.
-
-Additionally tested and supported browsers (requiring little supplementary CSS)
-include **Internet Explorer 9** and **Safari 7**.
-
-## License
-
-**sanitize.css** is dedicated to the [public domain](LICENSE.md).
-
-[bow-img]: https://img.shields.io/bower/v/sanitize-css.svg
-[bow-url]: https://libraries.io/bower/sanitize-css
-[cdn-img]: https://img.shields.io/cdnjs/v/10up-sanitize.css.svg
-[cdn-url]: https://cdnjs.com/libraries/10up-sanitize.css
-[cli-img]: https://img.shields.io/travis/jonathantneal/sanitize.css.svg
-[cli-url]: https://travis-ci.org/jonathantneal/sanitize.css
-[git-img]: https://img.shields.io/badge/chat-gitter-blue.svg
-[git-url]: https://gitter.im/jonathantneal/sanitize.css
-[lic-img]: https://img.shields.io/npm/l/sanitize.css.svg
-[lic-url]: LICENSE.md
-[npm-img]: https://img.shields.io/npm/v/sanitize.css.svg
-[npm-url]: https://www.npmjs.com/package/sanitize.css
-
-[normalize.css]: https://github.com/necolas/normalize.css
-[reset.css]: http://meyerweb.com/eric/tools/css/reset/
-[sanitize.css]: https://github.com/jonathantneal/sanitize.css
+Copyright 2017<br/>[Sebastian Software GmbH](http://www.sebastian-software.de)
