@@ -1,6 +1,8 @@
+/* stylelint-disable selector-max-universal */
+
 /**
- * Add text decoration inheritance in all browsers (opinionated).
- * Add vertical alignment inheritence in all browsers (opinionated).
+ * Add text decoration inheritance in all browsers.
+ * Add vertical alignment inheritence in all browsers.
  */
 
 ::before,
@@ -10,17 +12,27 @@
 }
 
 /**
-	* Remove the list style on navigation lists in all browsers (opinionated).
-	*/
+ * Set `background-repeat: no-repeat` to all elements and pseudo elements.
+ */
+
+*,
+::before,
+::after {
+  background-repeat: no-repeat;
+}
+
+/**
+ * Remove the list style on navigation lists in all browsers.
+ */
 
 nav ol,
 nav ul {
   list-style: none;
 }
 
-/*
-	* Change the alignment on media elements in all browers (opinionated).
-	*/
+/**
+ * Change the alignment on media elements in all browers.
+ */
 
 audio,
 canvas,
@@ -32,7 +44,7 @@ video {
 }
 
 /**
-	* Change the fill color to match the text color in all browsers (opinionated).
+	* Change the fill color to match the text color in all browsers.
 	*/
 
 svg {
@@ -40,29 +52,38 @@ svg {
 }
 
 /**
-	* Inherit styling in all browsers (opinionated).
-	*/
+ * Inherit color and font styling in all browsers.
+ */
 
 button,
 input,
+optgroup,
 select,
 textarea {
   color: inherit;
-  font-size: inherit;
+  font: inherit;
   line-height: inherit;
 }
 
 /**
-	* Change the resize direction on textareas in all browsers (opinionated).
-	*/
+ * Restore the font weight unset by the previous rule.
+ */
+
+optgroup {
+  font-weight: bold;
+}
+
+/**
+ * Change the resize direction on textareas in all browsers.
+ */
 
 textarea {
   resize: vertical;
 }
 
 /*
-	* Remove the tapping delay on clickable elements (opinionated).
-	*/
+ * Remove the tapping delay on clickable elements.
+ */
 
 a,
 area,
@@ -78,12 +99,12 @@ textarea,
 }
 
 /**
-	* 1. Inherit style issues with custom selections, per robsterlini.co.uk/journal/opentype-and-selection-dont-mix
-	* 2. Turn on kerning, standard ligatures, and proportional, oldstyle numerals
-	*    Turn off all other ligatures, tabular, lining numerals, and alternates
-			 Uses same settings for tables
-	* 3. Hard-codes fallback text selection for issue #18, color is Chrome’s per via http://stackoverflow.com/a/16094931/864799
-	*/
+ * 1. Inherit style issues with custom selections, per robsterlini.co.uk/journal/opentype-and-selection-dont-mix
+ * 2. Turn on kerning, standard ligatures, and proportional, oldstyle numerals
+ *    Turn off all other ligatures, tabular, lining numerals, and alternates
+ *    Uses same settings for tables
+ * 3. Hard-codes fallback text selection for issue #18, color is Chrome’s per via http://stackoverflow.com/a/16094931/864799
+ */
 
 ::selection {
   background-color: #accef7; /* 3. */
