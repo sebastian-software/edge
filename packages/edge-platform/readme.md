@@ -10,6 +10,7 @@ Project Name | NPM Status | Build Status | Dependency Status
 ------------ | ---------- | ------------ | -------------------------------------
 [Edge Builder][builder-home] | [![Version][builder-npm-version-img]][builder-npm] [![Downloads][builder-npm-downloads-img]][builder-npm] | [![Build Status Unix][builder-travis-img]][builder-travis] [![Build Status Windows][builder-appveyor-img]][builder-appveyor] | [![Dependencies][builder-deps-img]][builder-deps]
 [Edge Core][core-home] | [![Version][core-npm-version-img]][core-npm] [![Downloads][core-npm-downloads-img]][core-npm] | [![Build Status Unix][core-travis-img]][core-travis] [![Build Status Windows][core-appveyor-img]][core-appveyor] | [![Dependencies][core-deps-img]][core-deps]
+[Edge Style][style-home] | [![Version][style-npm-version-img]][style-npm] [![Downloads][style-npm-downloads-img]][style-npm] | [![Build Status Unix][style-travis-img]][style-travis] [![Build Status Windows][style-appveyor-img]][style-appveyor] | [![Dependencies][style-deps-img]][style-deps]
 [Edge Express][core-home] | [![Version][express-npm-version-img]][express-npm] [![Downloads][express-npm-downloads-img]][express-npm] | [![Build Status Unix][express-travis-img]][express-travis] [![Build Status Windows][express-appveyor-img]][express-appveyor] | [![Dependencies][express-deps-img]][express-deps]
 [Edge Boilerplate][boilerplate-home] | [![Version][boilerplate-npm-version-img]][boilerplate-npm] [![Downloads][boilerplate-npm-downloads-img]][boilerplate-npm] | [![Build Status Unix][boilerplate-travis-img]][boilerplate-travis] [![Build Status Windows][boilerplate-appveyor-img]][boilerplate-appveyor] | [![Dependencies][boilerplate-deps-img]][boilerplate-deps]
 [Edge PostCSS][postcss-home] | [![Version][postcss-npm-version-img]][postcss-npm] [![Downloads][postcss-npm-downloads-img]][postcss-npm] | [![Build Status Unix][postcss-travis-img]][postcss-travis] [![Build Status Windows][postcss-appveyor-img]][postcss-appveyor] | [![Dependencies][postcss-deps-img]][postcss-deps]
@@ -41,6 +42,17 @@ Project Name | NPM Status | Build Status | Dependency Status
 [core-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/edge-core/master.svg?label=windows
 [core-travis]: https://travis-ci.org/sebastian-software/edge-core
 [core-appveyor]: https://ci.appveyor.com/project/swernerx/edge-core/branch/master
+
+[style-home]: https://github.com/sebastian-software/edge-style
+[style-deps]: https://david-dm.org/sebastian-software/edge-style
+[style-deps-img]: https://david-dm.org/sebastian-software/edge-style.svg
+[style-npm]: https://www.npmjs.com/package/edge-style
+[style-npm-downloads-img]: https://img.shields.io/npm/dm/edge-style.svg
+[style-npm-version-img]: https://img.shields.io/npm/v/edge-style.svg
+[style-travis-img]: https://img.shields.io/travis/sebastian-software/edge-style/master.svg?branch=master&label=unix
+[style-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/edge-style/master.svg?label=windows
+[style-travis]: https://travis-ci.org/sebastian-software/edge-style
+[style-appveyor]: https://ci.appveyor.com/project/swernerx/edge-style/branch/master
 
 [express-home]: https://github.com/sebastian-software/edge-express
 [express-deps]: https://david-dm.org/sebastian-software/edge-express
