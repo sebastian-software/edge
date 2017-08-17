@@ -1,1 +1,5 @@
+/*
+ * This depends on postcss-normalize to select the amount of normalization
+ * required by the projects browserslist.
+ */
 @import-normalize;
