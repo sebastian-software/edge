@@ -23,20 +23,20 @@ export function requiresIntlPolyfill(locale) {
   return true
 }
 
-export function installIntlPolyfill([ IntlPolyfill, intlData ]) {
-  // Rewriting import() to require.ensure unfortunately does not work with ESM correctly as it seems
-  const IntlPolyfillClass = IntlPolyfill.default || IntlPolyfill
-
-  // Inject loaded locale specific data
-  IntlPolyfillClass.__addLocaleData(intlData)
+export function installIntlPolyfill() {
+  const Polyfill = global.IntlPolyfill
+  if (Polyfill) {
+    console.log("Can't find IntlPolyfill global!")
+    return
+  }
 
   // `Intl` exists, but it doesn't have the data we need, so load the
   // polyfill and patch the constructors we need with the polyfill's.
   if (global.Intl) {
-    Intl.NumberFormat = IntlPolyfillClass.NumberFormat
-    Intl.DateTimeFormat = IntlPolyfillClass.DateTimeFormat
+    Intl.NumberFormat = Polyfill.NumberFormat
+    Intl.DateTimeFormat = Polyfill.DateTimeFormat
   } else {
-    global.Intl = IntlPolyfillClass
+    global.Intl = Polyfill
   }
 }
 
