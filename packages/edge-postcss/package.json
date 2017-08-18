@@ -48,7 +48,7 @@
     "autoprefixer": "^7.1.2",
     "lost": "^8.2.0",
     "pleeease-filters": "^4.0.0",
-    "postcss": "^6.0.8",
+    "postcss": "^6.0.9",
     "postcss-advanced-variables": "^1.2.2",
     "postcss-assets": "^4.2.0",
     "postcss-at-warn": "^1.0.0",
@@ -78,7 +78,7 @@
     "postcss-magic-animations": "^0.3.0",
     "postcss-map": "^0.9.0",
     "postcss-media-minmax": "^3.0.0",
-    "postcss-nested": "^2.1.0",
+    "postcss-nested": "^2.1.2",
     "postcss-normalize": "^4.0.0",
     "postcss-pseudoelements": "^5.0.0",
     "postcss-reporter": "^5.0.0",
@@ -91,10 +91,10 @@
     "postcss-zindex": "^2.2.0"
   },
   "devDependencies": {
-    "babel-preset-edge": "^1.1.3",
+    "babel-preset-edge": "^1.2.0",
     "jest-cli": "^20.0.4",
     "postcss-load-config": "^1.2.0",
-    "prepublish": "^1.2.7",
-    "readable-code": "^3.4.11"
+    "prepublish": "^1.3.0",
+    "readable-code": "^3.4.12"
   }
 }
