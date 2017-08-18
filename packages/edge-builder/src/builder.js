@@ -123,7 +123,7 @@ export default function builder(target, env = "development", config = {}) {
     return Array.from(languages.keys())
   })()
 
-  const LEAN_INTL_REGEXP = new RegExp("\\b" + SUPPORTED_LOCALES.join("\.json\\b|\\b") + "\.json\\b")
+  const LEAN_INTL_REGEXP = new RegExp("\\b" + SUPPORTED_LOCALES.join("\\b|\\b") + "\\b")
   const REACT_INTL_REGEXP = new RegExp("\\b" + SUPPORTED_LANGUAGES.join("\\b|\\b") + "\\b")
 
   const name = isServer ? "server" : "client"
