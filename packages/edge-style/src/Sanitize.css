@@ -70,7 +70,8 @@ textarea {
  */
 
 optgroup {
-  font-weight: bold;
+  /* bold == 700 */
+  font-weight: 700;
 }
 
 /**
@@ -94,16 +95,17 @@ select,
 summary,
 textarea,
 [tabindex] {
-  -ms-touch-action: manipulation;
   touch-action: manipulation;
 }
 
 /**
- * 1. Inherit style issues with custom selections, per robsterlini.co.uk/journal/opentype-and-selection-dont-mix
+ * 1. Inherit style issues with custom selections, per
+ *    robsterlini.co.uk/journal/opentype-and-selection-dont-mix
  * 2. Turn on kerning, standard ligatures, and proportional, oldstyle numerals
  *    Turn off all other ligatures, tabular, lining numerals, and alternates
  *    Uses same settings for tables
- * 3. Hard-codes fallback text selection for issue #18, color is Chrome’s per via http://stackoverflow.com/a/16094931/864799
+ * 3. Hard-codes fallback text selection for issue #18, color is Chrome’s
+ *    per via http://stackoverflow.com/a/16094931/864799
  */
 
 ::selection {
