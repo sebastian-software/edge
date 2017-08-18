@@ -19,13 +19,13 @@ Interestingly there were a lot of seperate
 
 ## Features
 
-- Normalize: Based on normalize.css but using the application's customized browerslist: Why add the full normalize if you can only use what's needed?
-- Reset: Reset of all margins and paddings on block level elements: Layouting is easier when having a blank slate.
-- Sanitize: Sanitizes typical gotchas and non ideal legacy standards.
-- Box Sizing: Configures all elements and their shadow elements to use `border-box`.
-- Aria: Implements some best practises on ARIA markup.
-- OpenType: Tweaks default behavior of all native elements to use advanced OpenType features where useful.
-- Intl: Localized configuration for HTML quotes.
+- **Normalize**: Based on normalize.css but using the application's customized browerslist: Why add the full normalize if you can only use what's needed?
+- **Reset**: Reset of all margins and paddings on block level elements: Layouting is easier when having a blank slate.
+- **Sanitize**: Sanitizes typical gotchas and non ideal legacy standards.
+- **Box Sizing**: Configures all elements and their shadow elements to use `border-box`.
+- **Aria**: Implements some best practises on ARIA markup.
+- **OpenType**: Tweaks default behavior of all native elements to use advanced OpenType features where useful.
+- **Intl**: Localized configuration for HTML quotes.
 
 ## Installation
 
@@ -51,7 +51,10 @@ import "edge-style"
 
 
 
-## [License](license)
+## License
+
+[Apache License Version 2.0, January 2004](license)
+
 
 ## Copyright
 
