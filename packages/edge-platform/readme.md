@@ -5,6 +5,7 @@
 [sponsor-img]: https://img.shields.io/badge/Sponsored%20by-Sebastian%20Software-692446.svg
 [sponsor]: https://www.sebastian-software.de
 
+## Platform Components
 
 Project Name | NPM Status | Build Status | Dependency Status
 ------------ | ---------- | ------------ | -------------------------------------
@@ -15,6 +16,12 @@ Project Name | NPM Status | Build Status | Dependency Status
 [Edge Boilerplate][boilerplate-home] | [![Version][boilerplate-npm-version-img]][boilerplate-npm] [![Downloads][boilerplate-npm-downloads-img]][boilerplate-npm] | [![Build Status Unix][boilerplate-travis-img]][boilerplate-travis] [![Build Status Windows][boilerplate-appveyor-img]][boilerplate-appveyor] | [![Dependencies][boilerplate-deps-img]][boilerplate-deps]
 [Edge PostCSS][postcss-home] | [![Version][postcss-npm-version-img]][postcss-npm] [![Downloads][postcss-npm-downloads-img]][postcss-npm] | [![Build Status Unix][postcss-travis-img]][postcss-travis] [![Build Status Windows][postcss-appveyor-img]][postcss-appveyor] | [![Dependencies][postcss-deps-img]][postcss-deps]
 [Edge Babel][babel-home] | [![Version][babel-npm-version-img]][babel-npm] [![Downloads][babel-npm-downloads-img]][babel-npm] | [![Build Status Unix][babel-travis-img]][babel-travis] [![Build Status Windows][babel-appveyor-img]][babel-appveyor] | [![Dependencies][babel-deps-img]][babel-deps]
+
+
+## Foundation Technologies
+
+Project Name | NPM Status | Build Status | Dependency Status
+------------ | ---------- | ------------ | -------------------------------------
 [Lean Intl][intl-home] | [![Version][intl-npm-version-img]][intl-npm] [![Downloads][intl-npm-downloads-img]][intl-npm] | [![Build Status Unix][intl-travis-img]][intl-travis] [![Build Status Windows][intl-appveyor-img]][intl-appveyor] | [![Dependencies][intl-deps-img]][intl-deps]
 [Prepublish][prepublish-home] | [![Version][prepublish-npm-version-img]][prepublish-npm] [![Downloads][prepublish-npm-downloads-img]][prepublish-npm] | [![Build Status Unix][prepublish-travis-img]][prepublish-travis] [![Build Status Windows][prepublish-appveyor-img]][prepublish-appveyor] | [![Dependencies][prepublish-deps-img]][prepublish-deps]
 [Readable Code][readable-home] | [![Version][readable-npm-version-img]][readable-npm] [![Downloads][readable-npm-downloads-img]][readable-npm] | - | [![Dependencies][readable-deps-img]][readable-deps]
