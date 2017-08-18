@@ -15,7 +15,8 @@
 > The Edge Platform helps you focus on business logic rather than dealing with massive tooling, common patterns, complex configurations.
 
 We know the hassle of adding basic sensible styling to your Single Page Application.
-Interestingly there were a lot of seperate
+Interestingly there were a lot of seperate libraries and solutions but not a useful combination of all of it.
+Edge Style is our take on delivering same basic styling for SPAs.
 
 ## Features
 
