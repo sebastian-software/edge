@@ -3,7 +3,7 @@ import semver from 'semver';
 /**
  * This is where all the magic comes from, specially crafted for `useragent`.
  */
-const regexps = require('../lib/regexps');
+const regexps = require('./regexps');
 
 /**
  * Reduce references by storing the lookups.
@@ -629,4 +629,4 @@ export function fromJSON(details) {
  * @type {String}
  * @api public
  */
-export const version = require('./package.json').version;
+export const version = require('../package.json').version;

@@ -1,7 +1,7 @@
-describe('useragent/features', () => {
+describe('useragent/satisfies', () => {
   'use strict';
 
-  const useragent = require('../src'), features = require('../features'), ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_1) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.24 Safari/535.2";
+  const useragent = require('../src'), ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_1) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.24 Safari/535.2";
 
   describe('#satisfies', () => {
     it('should satisfy that range selector', () => {
