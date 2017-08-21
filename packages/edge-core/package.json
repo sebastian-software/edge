@@ -58,6 +58,8 @@
   ],
   "homepage": "https://github.com/sebastian-software/edge-core#readme",
   "dependencies": {
+    "bluebird": "^3.5.0",
+    "chalk": "^2.1.0",
     "history": "^4.6.3",
     "identity-obj-proxy": "^3.0.0",
     "intl-locales-supported": "^1.0.0",
@@ -80,6 +82,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "serialize-javascript": "^1.4.0",
+    "source-map-support": "^0.4.16",
     "unfetch": "^3.0.0"
   },
   "devDependencies": {
