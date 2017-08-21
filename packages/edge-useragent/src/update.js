@@ -1,20 +1,20 @@
-'use strict';
+"use strict"
 
 /**
  * Build in Native modules.
  */
-import path from 'path';
+import path from "path"
 
-import fs from 'fs';
-import vm from 'vm';
-import tmp from 'tmp';
+import fs from "fs"
+import vm from "vm"
+import tmp from "tmp"
 
 /**
  * Third party modules.
  */
-import request from 'request';
+import request from "request"
 
-import yaml from 'yamlparser';
+import yaml from "yamlparser"
 
 /**
  * Update the regexp.js file
@@ -24,42 +24,45 @@ import yaml from 'yamlparser';
  */
 export function update(callback) {
   // Prepend local additions that are missing from the source
-  fs.readFile(exports.before, 'utf8', function reading(err, before) {
-    if (err) return callback(err);
+  fs.readFile(exports.before, "utf8", function reading(err, before) {
+    if (err) return callback(err)
 
     // Fetch the remote resource as that is frequently updated
     request(exports.remote, function downloading(err, res, remote) {
-      if (err) return callback(err);
-      if (res.statusCode !== 200) return callback(new Error('Invalid statusCode returned'));
+      if (err) return callback(err)
+      if (res.statusCode !== 200)
+        return callback(new Error("Invalid statusCode returned"))
 
       // Append get some local additions that are missing from the source
-      fs.readFile(exports.after, 'utf8', function reading(err, after) {
-        if (err) return callback(err);
+      fs.readFile(exports.after, "utf8", function reading(err, after) {
+        if (err) return callback(err)
 
         // Parse the contents
-        exports.parse([ before, remote, after ], function parsing(err, results, source) {
-          callback(err, results);
+        exports.parse([before, remote, after], function parsing(
+          err,
+          results,
+          source
+        ) {
+          callback(err, results)
 
-          if (!source || err) return;
+          if (!source || err) return
 
           //
           // Save to a tmp file to avoid potential concurrency issues.
           //
           tmp.file((err, tempFilePath) => {
-            if (err) return;
+            if (err) return
 
             fs.writeFile(tempFilePath, source, function idk(err) {
               if (err) return
 
-              fs.rename(tempFilePath, exports.output, err => {
-
-              });
-            });
-          });
-        });
-      });
-    });
-  });
+              fs.rename(tempFilePath, exports.output, err => {})
+            })
+          })
+        })
+      })
+    })
+  })
 }
 
 /**
@@ -70,110 +73,126 @@ export function update(callback) {
  * @api public
  */
 export function parse(sources, callback) {
-  const results = {};
+  const results = {}
 
   const data = sources.reduce(function parser(memo, data) {
     // Try to repair some of the odd structures that are in the yaml files
     // before parsing it so we generate a uniform structure:
 
     // Normalize the Operating system versions:
-    data = data.replace(/os_v([1-3])_replacement/gim, function replace(match, version) {
-      return `v${version}_replacement`;
-    });
+    data = data.replace(/os_v([1-3])_replacement/gim, function replace(
+      match,
+      version
+    ) {
+      return `v${version}_replacement`
+    })
 
     // Make sure that we are able to parse the yaml string
-    try { data = yaml.eval(data); }
-    catch (e) {
-      callback(e);
-      callback = null;
-      return memo;
+    try {
+      data = yaml.eval(data)
+    } catch (e) {
+      callback(e)
+      callback = null
+      return memo
     }
 
     // merge the data with the memo;
     Object.keys(data).forEach(key => {
-      const results = data[key];
-      memo[key] = memo[key] || [];
+      const results = data[key]
+      memo[key] = memo[key] || []
 
       for (let i = 0, l = results.length; i < l; i++) {
-        memo[key].push(results[i]);
+        memo[key].push(results[i])
       }
-    });
+    })
 
-    return memo;
-  }, {});
+    return memo
+  }, {})
 
-  [
-      {
-          resource: 'user_agent_parsers'
-        , replacement: 'family_replacement'
-        , name: 'browser'
-      }
-    , {
-          resource: 'device_parsers'
-        , replacement: 'device_replacement'
-        , name: 'device'
-      }
-    , {
-          resource: 'os_parsers'
-        , replacement: 'os_replacement'
-        , name: 'os'
-      }
+  ;[
+    {
+      resource: "user_agent_parsers",
+      replacement: "family_replacement",
+      name: "browser"
+    },
+    {
+      resource: "device_parsers",
+      replacement: "device_replacement",
+      name: "device"
+    },
+    {
+      resource: "os_parsers",
+      replacement: "os_replacement",
+      name: "os"
+    }
   ].forEach(function parsing(details) {
-    results[details.resource] = results[details.resource] || [];
+    results[details.resource] = results[details.resource] || []
 
-    const resources = data[details.resource];
-    const name = details.resource.replace('_parsers', '');
-    let resource;
-    let parser;
+    const resources = data[details.resource]
+    const name = details.resource.replace("_parsers", "")
+    let resource
+    let parser
 
     for (let i = 0, l = resources.length; i < l; i++) {
-      resource = resources[i];
+      resource = resources[i]
 
       // We need to JSON stringify the data to properly add slashes escape other
       // kinds of crap in the RegularExpression. If we don't do thing we get
       // some illegal token warnings.
-      parser = 'parser = Object.create(null);\n';
-      parser += `parser[0] = new RegExp(${JSON.stringify(resource.regex)});\n`;
+      parser = "parser = Object.create(null);\n"
+      parser += `parser[0] = new RegExp(${JSON.stringify(resource.regex)});\n`
 
       // Check if we have replacement for the parsed family name
       if (resource[details.replacement]) {
-        parser += `parser[1] = "${resource[details.replacement].replace('"', '\\"')}";`;
+        parser += `parser[1] = "${resource[details.replacement].replace(
+          '"',
+          '\\"'
+        )}";`
       } else {
-        parser += 'parser[1] = 0;';
+        parser += "parser[1] = 0;"
       }
 
-      parser += '\n';
+      parser += "\n"
 
       if (resource.v1_replacement) {
-        parser += `parser[2] = "${resource.v1_replacement.replace('"', '\\"')}";`;
+        parser += `parser[2] = "${resource.v1_replacement.replace(
+          '"',
+          '\\"'
+        )}";`
       } else {
-        parser += 'parser[2] = 0;';
+        parser += "parser[2] = 0;"
       }
 
-      parser += '\n';
+      parser += "\n"
 
       if (resource.v2_replacement) {
-        parser += `parser[3] = "${resource.v2_replacement.replace('"', '\\"')}";`;
+        parser += `parser[3] = "${resource.v2_replacement.replace(
+          '"',
+          '\\"'
+        )}";`
       } else {
-        parser += 'parser[3] = 0;';
+        parser += "parser[3] = 0;"
       }
 
-      parser += '\n';
+      parser += "\n"
 
       if (resource.v3_replacement) {
-        parser += `parser[4] = "${resource.v3_replacement.replace('"', '\\"')}";`;
+        parser += `parser[4] = "${resource.v3_replacement.replace(
+          '"',
+          '\\"'
+        )}";`
       } else {
-        parser += 'parser[4] = 0;';
+        parser += "parser[4] = 0;"
       }
 
-      parser += '\n';
-      parser += `exports.${details.name}[${i}] = parser;`;
-      results[details.resource].push(parser);
+      parser += "\n"
+      parser += `exports.${details.name}[${i}] = parser;`
+      results[details.resource].push(parser)
     }
-  });
+  })
 
   // Generate a correct format
-  exports.generate(results, callback);
+  exports.generate(results, callback)
 }
 
 /**
@@ -184,36 +203,39 @@ export function parse(sources, callback) {
  * @api public
  */
 export function generate(results, callback) {
-  const regexps  = [
-      '"use strict";'
-    , exports.LEADER
-    , 'var parser;'
-    , 'exports.browser = Object.create(null);'
-    , results.user_agent_parsers.join('\n')
-    , `exports.browser.length = ${results.user_agent_parsers.length};`
+  const regexps = [
+    '"use strict";',
+    exports.LEADER,
+    "var parser;",
+    "exports.browser = Object.create(null);",
+    results.user_agent_parsers.join("\n"),
+    `exports.browser.length = ${results.user_agent_parsers.length};`,
 
-    , 'exports.device = Object.create(null);'
-    , results.device_parsers.join('\n')
-    , `exports.device.length = ${results.device_parsers.length};`
+    "exports.device = Object.create(null);",
+    results.device_parsers.join("\n"),
+    `exports.device.length = ${results.device_parsers.length};`,
 
-    , 'exports.os = Object.create(null);'
-    , results.os_parsers.join('\n')
-    , `exports.os.length = ${results.os_parsers.length};`
-  ].join('\n\n');
+    "exports.os = Object.create(null);",
+    results.os_parsers.join("\n"),
+    `exports.os.length = ${results.os_parsers.length};`
+  ].join("\n\n")
 
   // Now that we have generated the structure for the RegExps export file we
   // need to validate that we created a JavaScript compatible file, if we would
   // write the file without checking it's content we could be breaking the
   // module.
   const sandbox = {
-      exports: {} // Emulate a module context, so everything is attached here
-  };
+    exports: {} // Emulate a module context, so everything is attached here
+  }
 
   // Crossing our fingers that it worked
-  try { vm.runInNewContext(regexps, sandbox, 'validating.vm'); }
-  catch (e) { return callback(e, null, regexps); }
+  try {
+    vm.runInNewContext(regexps, sandbox, "validating.vm")
+  } catch (e) {
+    return callback(e, null, regexps)
+  }
 
-  callback(undefined, sandbox.exports, regexps);
+  callback(undefined, sandbox.exports, regexps)
 }
 
 /**
@@ -222,7 +244,8 @@ export function generate(results, callback) {
  * @type {String}
  * @api private
  */
-export const remote = 'https://raw.githubusercontent.com/ua-parser/uap-core/master/regexes.yaml';
+export const remote =
+  "https://raw.githubusercontent.com/ua-parser/uap-core/master/regexes.yaml"
 
 /**
  * The locations of our local regexes yaml files.
@@ -230,9 +253,19 @@ export const remote = 'https://raw.githubusercontent.com/ua-parser/uap-core/mast
  * @type {String}
  * @api private
  */
-export const before = path.resolve(__dirname, '..', 'static', 'user_agent.before.yaml');
+export const before = path.resolve(
+  __dirname,
+  "..",
+  "static",
+  "user_agent.before.yaml"
+)
 
-export const after = path.resolve(__dirname, '..', 'static', 'user_agent.after.yaml');
+export const after = path.resolve(
+  __dirname,
+  "..",
+  "static",
+  "user_agent.after.yaml"
+)
 
 /**
  * The the output location for the generated regexps file
@@ -240,7 +273,7 @@ export const after = path.resolve(__dirname, '..', 'static', 'user_agent.after.y
  * @type {String}
  * @api private
  */
-export const output = path.resolve(__dirname, 'regexps.js');
+export const output = path.resolve(__dirname, "regexps.js")
 
 /**
  * The leader that needs to be added so people know they shouldn't touch all the
