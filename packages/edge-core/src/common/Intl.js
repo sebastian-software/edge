@@ -25,7 +25,7 @@ export function requiresIntlPolyfill(locale) {
 
 export function installIntlPolyfill() {
   const Polyfill = global.IntlPolyfill
-  if (Polyfill) {
+  if (!Polyfill) {
     console.log("Can't find IntlPolyfill global!")
     return
   }
