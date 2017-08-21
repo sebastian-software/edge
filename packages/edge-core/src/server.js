@@ -14,9 +14,9 @@ if (!global.fetch) {
 }
 
 export * from "./common"
+export * from "./server/loadImport"
 
 export { default as renderPage } from "./server/renderPage"
 export { default as getLocaleData } from "./server/getLocaleData"
-export { default as loadImport } from "./server/loadImport"
 
 export * from "./server/debug"
