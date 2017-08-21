@@ -1,6 +1,6 @@
 {
   "name": "edge-useragent",
-  "version": "2.2.1",
+  "version": "3.0.0",
   "description": "High performance user agent string parser for modern environments. Part of the Edge Platform.",
   "main": "lib/index.es5.cjs.js",
   "module": "lib/index.es5.esm.js",
