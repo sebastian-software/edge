@@ -1,7 +1,7 @@
 {
   "name": "useragent",
   "version": "2.2.1",
-  "description": "Fastest, most accurate & effecient user agent string parser, uses Browserscope's research for parsing",
+  "description": "Fastest, most accurate & efficient user agent string parser, uses Browserscope's research for parsing",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
   "keywords": [
@@ -48,8 +48,8 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register $(find test -name '*.test.js')",
     "qa": "mocha --compilers js:babel-core/register --ui exports $(find test -name '*.qa.js')",
-    "update": "node ./bin/update.js",
-    "prepublish": "npm run update"
+    "update": "babel-node ./bin/update.js",
+    "prepare": "npm run update && prepublish"
   },
   "dependencies": {
     "lru-cache": "4.1.x",
