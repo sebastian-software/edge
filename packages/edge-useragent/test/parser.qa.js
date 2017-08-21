@@ -1,4 +1,4 @@
-import useragent from "../"
+import { parse } from "../src"
 import should from "should"
 import yaml from "yamlparser"
 import fs from "fs"
@@ -6,12 +6,7 @@ import fs from "fs"
 // run over the testcases, some might fail, some might not. This is just qu
 // test to see if we can parse without errors, and with a reasonable amount
 // of errors.
-;[
-  "testcases.yaml",
-  "static.custom.yaml",
-  "firefoxes.yaml",
-  "pgts.yaml"
-].forEach(filename => {
+["static.custom.yaml", "firefoxes.yaml", "pgts.yaml"].forEach(filename => {
   let testcases = fs
     .readFileSync(`${__dirname}/fixtures/${filename}`)
     .toString()
@@ -34,7 +29,7 @@ import fs from "fs"
     }
 
     exports[`${filename}: ${test.user_agent_string}`] = () => {
-      const agent = useragent.parse(test.user_agent_string, js_ua)
+      const agent = parse(test.user_agent_string, js_ua)
 
       agent.family.should.equal(test.family)
       // we need to test if v1 is a string, because the yamlparser transforms
