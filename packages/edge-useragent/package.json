@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "mocha": "*",
+    "readable-code": "^3.4.12",
     "request": "2.81.x",
     "semver": "5.4.x",
     "should": "*",
