@@ -1,3 +1,4 @@
+
 /**
  * TL;DR: Don't touch this.
  *
@@ -8,6401 +9,1837 @@
 
 var parser;
 
-exports.browser = Object.create(null);
+var browser = [];
 
-parser = Object.create(null);
-parser[0] = new RegExp("(Rival IQ, rivaliq.com)");
-parser[1] = "Rival IQ";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[0] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CFNetwork)(?:/(\\d+)\\.(\\d+)\\.?(\\d+)?)?");
-parser[1] = "CFNetwork";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[1] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Pingdom.com_bot_version_)(\\d+)\\.(\\d+)");
-parser[1] = "PingdomBot";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[2] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(PingdomTMS)/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "PingdomBot";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[3] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(\\(StatusCake\\))");
-parser[1] = "StatusCakeBot";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[4] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(facebookexternalhit)/(\\d+)\\.(\\d+)");
-parser[1] = "FacebookBot";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[5] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Google.*/\\+/web/snippet");
-parser[1] = "GooglePlusBot";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[6] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("via ggpht.com GoogleImageProxy");
-parser[1] = "GmailImageProxy";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[7] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Twitterbot)/(\\d+)\\.(\\d+)");
-parser[1] = "TwitterBot";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[8] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("/((?:Ant-)?Nutch|[A-z]+[Bb]ot|[A-z]+[Ss]pider|Axtaris|fetchurl|Isara|ShopSalad|Tailsweep)[ \\-](\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[9] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\b(008|Altresium|Argus|BaiduMobaider|BoardReader|DNSGroup|DataparkSearch|EDI|Goodzer|Grub|INGRID|Infohelfer|LinkedInBot|LOOQ|Nutch|PathDefender|Peew|PostPost|Steeler|Twitterbot|VSE|WebCrunch|WebZIP|Y!J-BR[A-Z]|YahooSeeker|envolk|sproose|wminer)/(\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[10] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(MSIE) (\\d+)\\.(\\d+)([a-z]\\d?)?;.* MSIECrawler");
-parser[1] = "MSIECrawler";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[11] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Google-HTTP-Java-Client|Apache-HttpClient|http%20client|Python-urllib|HttpMonitor|TLSProber|WinHTTP|JNLP|okhttp)(?:[ /](\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?)?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[12] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(1470\\.net crawler|50\\.nu|8bo Crawler Bot|Aboundex|Accoona-[A-z]+-Agent|AdsBot-Google(?:-[a-z]+)?|altavista|AppEngine-Google|archive.*?\\.org_bot|archiver|Ask Jeeves|[Bb]ai[Dd]u[Ss]pider(?:-[A-Za-z]+)*|bingbot|BingPreview|blitzbot|BlogBridge|Bloglovin|BoardReader(?: [A-Za-z]+)*|boitho.com-dc|BotSeer|\\b\\w*favicon\\w*\\b|\\bYeti(?:-[a-z]+)?|Catchpoint(?: bot)?|[Cc]harlotte|Checklinks|clumboot|Comodo HTTP\\(S\\) Crawler|Comodo-Webinspector-Crawler|ConveraCrawler|CRAWL-E|CrawlConvera|Daumoa(?:-feedfetcher)?|Feed Seeker Bot|Feedbin|findlinks|Flamingo_SearchEngine|FollowSite Bot|furlbot|Genieo|gigabot|GomezAgent|gonzo1|(?:[a-zA-Z]+-)?Googlebot(?:-[a-zA-Z]+)?|Google SketchUp|grub-client|gsa-crawler|heritrix|HiddenMarket|holmes|HooWWWer|htdig|ia_archiver|ICC-Crawler|Icarus6j|ichiro(?:/mobile)?|IconSurf|IlTrovatore(?:-Setaccio)?|InfuzApp|Innovazion Crawler|InternetArchive|IP2[a-z]+Bot|jbot\\b|KaloogaBot|Kraken|Kurzor|larbin|LEIA|LesnikBot|Linguee Bot|LinkAider|LinkedInBot|Lite Bot|Llaut|lycos|Mail\\.RU_Bot|masscan|masidani_bot|Mediapartners-Google|Microsoft .*? Bot|mogimogi|mozDex|MJ12bot|msnbot(?:-media *)?|msrbot|Mtps Feed Aggregation System|netresearch|Netvibes|NewsGator[^/]*|^NING|Nutch[^/]*|Nymesis|ObjectsSearch|Orbiter|OOZBOT|PagePeeker|PagesInventory|PaxleFramework|Peeplo Screenshot Bot|PlantyNet_WebRobot|Pompos|Qwantify|Read%20Later|Reaper|RedCarpet|Retreiver|Riddler|Rival IQ|scooter|Scrapy|Scrubby|searchsight|seekbot|semanticdiscovery|Simpy|SimplePie|SEOstats|SimpleRSS|SiteCon|Slackbot-LinkExpanding|Slack-ImgProxy|Slurp|snappy|Speedy Spider|Squrl Java|Stringer|TheUsefulbot|ThumbShotsBot|Thumbshots\\.ru|Tiny Tiny RSS|TwitterBot|WhatsApp|URL2PNG|Vagabondo|VoilaBot|^vortex|Votay bot|^voyager|WASALive.Bot|Web-sniffer|WebThumb|WeSEE:[A-z]+|WhatWeb|WIRE|WordPress|Wotbox|www\\.almaden\\.ibm\\.com|Xenu(?:.s)? Link Sleuth|Xerka [A-z]+Bot|yacy(?:bot)?|Yahoo[a-z]*Seeker|Yahoo! Slurp|Yandex\\w+|YodaoBot(?:-[A-z]+)?|YottaaMonitor|Yowedo|^Zao|^Zao-Crawler|ZeBot_www\\.ze\\.bz|ZooShot|ZyBorg)(?:[ /]v?(\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?)?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[13] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:\\/[A-Za-z0-9\\.]+)? *([A-Za-z0-9 \\-_\\!\\[\\]:]*(?:[Aa]rchiver|[Ii]ndexer|[Ss]craper|[Bb]ot|[Ss]pider|[Cc]rawl[a-z]*))/(\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[14] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:\\/[A-Za-z0-9\\.]+)? *([A-Za-z0-9 _\\!\\[\\]:]*(?:[Aa]rchiver|[Ii]ndexer|[Ss]craper|[Bb]ot|[Ss]pider|[Cc]rawl[a-z]*)) (\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[15] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("((?:[A-z0-9]+|[A-z\\-]+ ?)?(?: the )?(?:[Ss][Pp][Ii][Dd][Ee][Rr]|[Ss]crape|[A-Za-z0-9-]*(?:[^C][^Uu])[Bb]ot|[Cc][Rr][Aa][Ww][Ll])[A-z0-9]*)(?:(?:[ /]| v)(\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?)?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[16] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(HbbTV)/(\\d+)\\.(\\d+)\\.(\\d+) \\(");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[17] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Chimera|SeaMonkey|Camino)/(\\d+)\\.(\\d+)\\.?([ab]?\\d+[a-z]*)?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[18] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\[FB.*;(FBAV)/(\\d+)(?:\\.(\\d+)(?:\\.(\\d)+)?)?");
-parser[1] = "Facebook";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[19] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\[(Pinterest)/[^\\]]+\\]");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[20] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Pinterest)(?: for Android(?: Tablet)?)?/(\\d+)(?:\\.(\\d+)(?:\\.(\\d)+)?)?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[21] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(PaleMoon)/(\\d+)\\.(\\d+)\\.?(\\d+)?");
-parser[1] = "Pale Moon";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[22] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Fennec)/(\\d+)\\.(\\d+)\\.?([ab]?\\d+[a-z]*)");
-parser[1] = "Firefox Mobile";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[23] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Fennec)/(\\d+)\\.(\\d+)(pre)");
-parser[1] = "Firefox Mobile";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[24] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Fennec)/(\\d+)\\.(\\d+)");
-parser[1] = "Firefox Mobile";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[25] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:Mobile|Tablet);.*(Firefox)/(\\d+)\\.(\\d+)");
-parser[1] = "Firefox Mobile";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[26] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Namoroka|Shiretoko|Minefield)/(\\d+)\\.(\\d+)\\.(\\d+(?:pre)?)");
-parser[1] = "Firefox ($1)";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[27] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Firefox)/(\\d+)\\.(\\d+)(a\\d+[a-z]*)");
-parser[1] = "Firefox Alpha";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[28] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Firefox)/(\\d+)\\.(\\d+)(b\\d+[a-z]*)");
-parser[1] = "Firefox Beta";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[29] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Firefox)-(?:\\d+\\.\\d+)?/(\\d+)\\.(\\d+)(a\\d+[a-z]*)");
-parser[1] = "Firefox Alpha";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[30] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Firefox)-(?:\\d+\\.\\d+)?/(\\d+)\\.(\\d+)(b\\d+[a-z]*)");
-parser[1] = "Firefox Beta";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[31] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Namoroka|Shiretoko|Minefield)/(\\d+)\\.(\\d+)([ab]\\d+[a-z]*)?");
-parser[1] = "Firefox ($1)";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[32] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Firefox).*Tablet browser (\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "MicroB";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[33] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(MozillaDeveloperPreview)/(\\d+)\\.(\\d+)([ab]\\d+[a-z]*)?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[34] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(FxiOS)/(\\d+)\\.(\\d+)(\\.(\\d+))?(\\.(\\d+))?");
-parser[1] = "Firefox iOS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[35] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Flock)/(\\d+)\\.(\\d+)(b\\d+?)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[36] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(RockMelt)/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[37] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Navigator)/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "Netscape";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[38] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Navigator)/(\\d+)\\.(\\d+)([ab]\\d+)");
-parser[1] = "Netscape";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[39] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Netscape6)/(\\d+)\\.(\\d+)\\.?([ab]?\\d+)?");
-parser[1] = "Netscape";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[40] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(MyIBrow)/(\\d+)\\.(\\d+)");
-parser[1] = "My Internet Browser";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[41] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(UC? ?Browser|UCWEB|U3)[ /]?(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "UC Browser";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[42] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Opera Tablet).*Version/(\\d+)\\.(\\d+)(?:\\.(\\d+))?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[43] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Opera Mini)(?:/att)?/?(\\d+)?(?:\\.(\\d+))?(?:\\.(\\d+))?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[44] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Opera)/.+Opera Mobi.+Version/(\\d+)\\.(\\d+)");
-parser[1] = "Opera Mobile";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[45] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Opera)/(\\d+)\\.(\\d+).+Opera Mobi");
-parser[1] = "Opera Mobile";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[46] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Opera Mobi.+(Opera)(?:/|\\s+)(\\d+)\\.(\\d+)");
-parser[1] = "Opera Mobile";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[47] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Opera Mobi");
-parser[1] = "Opera Mobile";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[48] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Opera)/9.80.*Version/(\\d+)\\.(\\d+)(?:\\.(\\d+))?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[49] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:Mobile Safari).*(OPR)/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "Opera Mobile";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[50] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:Chrome).*(OPR)/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "Opera";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[51] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Coast)/(\\d+).(\\d+).(\\d+)");
-parser[1] = "Opera Coast";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[52] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(OPiOS)/(\\d+).(\\d+).(\\d+)");
-parser[1] = "Opera Mini";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[53] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Chrome/.+( MMS)/(\\d+).(\\d+).(\\d+)");
-parser[1] = "Opera Neon";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[54] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(hpw|web)OS/(\\d+)\\.(\\d+)(?:\\.(\\d+))?");
-parser[1] = "webOS Browser";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[55] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(luakit)");
-parser[1] = "LuaKit";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[56] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Snowshoe)/(\\d+)\\.(\\d+).(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[57] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Gecko/\\d+ (Lightning)/(\\d+)\\.(\\d+)\\.?((?:[ab]?\\d+[a-z]*)|(?:\\d*))");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[58] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Firefox)/(\\d+)\\.(\\d+)\\.(\\d+(?:pre)?) \\(Swiftfox\\)");
-parser[1] = "Swiftfox";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[59] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Firefox)/(\\d+)\\.(\\d+)([ab]\\d+[a-z]*)? \\(Swiftfox\\)");
-parser[1] = "Swiftfox";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[60] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(rekonq)/(\\d+)\\.(\\d+)\\.?(\\d+)? Safari");
-parser[1] = "Rekonq";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[61] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("rekonq");
-parser[1] = "Rekonq";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[62] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(conkeror|Conkeror)/(\\d+)\\.(\\d+)\\.?(\\d+)?");
-parser[1] = "Conkeror";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[63] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(konqueror)/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "Konqueror";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[64] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(WeTab)-Browser");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[65] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Comodo_Dragon)/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "Comodo Dragon";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[66] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Symphony) (\\d+).(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[67] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("PLAYSTATION 3.+WebKit");
-parser[1] = "NetFront NX";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[68] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("PLAYSTATION 3");
-parser[1] = "NetFront";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[69] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(PlayStation Portable)");
-parser[1] = "NetFront";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[70] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(PlayStation Vita)");
-parser[1] = "NetFront NX";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[71] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("AppleWebKit.+ (NX)/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "NetFront NX";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[72] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Nintendo 3DS)");
-parser[1] = "NetFront NX";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[73] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Silk)/(\\d+)\\.(\\d+)(?:\\.([0-9\\-]+))?");
-parser[1] = "Amazon Silk";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[74] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Puffin)/(\\d+)\\.(\\d+)(?:\\.(\\d+))?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[75] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Windows Phone .*(Edge)/(\\d+)\\.(\\d+)");
-parser[1] = "Edge Mobile";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[76] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(SamsungBrowser)/(\\d+)\\.(\\d+)");
-parser[1] = "Samsung Internet";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[77] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(SznProhlizec)/(\\d+)\\.(\\d+)(?:\\.(\\d+))?");
-parser[1] = "Seznam.cz";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[78] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(coc_coc_browser)/(\\d+)\\.(\\d+)(?:\\.(\\d+))?");
-parser[1] = "Coc Coc";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[79] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(baidubrowser)[/\\s](\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?");
-parser[1] = "Baidu Browser";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[80] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(FlyFlow)/(\\d+)\\.(\\d+)");
-parser[1] = "Baidu Explorer";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[81] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(MxBrowser)/(\\d+)\\.(\\d+)(?:\\.(\\d+))?");
-parser[1] = "Maxthon";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[82] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Crosswalk)/(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[83] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; wv\\).+(Chrome)/(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "Chrome Mobile WebView";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[84] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CrMo)/(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "Chrome Mobile";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[85] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CriOS)/(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "Chrome Mobile iOS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[86] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Chrome)/(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+) Mobile(?:[ /]|$)");
-parser[1] = "Chrome Mobile";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[87] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp(" Mobile .*(Chrome)/(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "Chrome Mobile";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[88] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(chromeframe)/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "Chrome Frame";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[89] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(SLP Browser)/(\\d+)\\.(\\d+)");
-parser[1] = "Tizen Browser";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[90] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(SE 2\\.X) MetaSr (\\d+)\\.(\\d+)");
-parser[1] = "Sogou Explorer";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[91] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(MQQBrowser/Mini)(?:(\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?)?");
-parser[1] = "QQ Browser Mini";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[92] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(MQQBrowser)(?:/(\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?)?");
-parser[1] = "QQ Browser Mobile";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[93] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(QQBrowser)(?:/(\\d+)(?:\\.(\\d+)\\.(\\d+)(?:\\.(\\d+))?)?)?");
-parser[1] = "QQ Browser";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[94] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Rackspace Monitoring)/(\\d+)\\.(\\d+)");
-parser[1] = "RackspaceBot";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[95] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(PyAMF)/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[96] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(YaBrowser)/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "Yandex Browser";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[97] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Chrome)/(\\d+)\\.(\\d+)\\.(\\d+).* MRCHROME");
-parser[1] = "Mail.ru Chromium Browser";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[98] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(AOL) (\\d+)\\.(\\d+); AOLBuild (\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[99] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Slack_SSB)/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "Slack Desktop Client";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[100] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(HipChat)/?(\\d+)?");
-parser[1] = "HipChat Desktop Client";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[101] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\b(MobileIron|FireWeb|Jasmine|ANTGalio|Midori|Fresco|Lobo|PaleMoon|Maxthon|Lynx|OmniWeb|Dillo|Camino|Demeter|Fluid|Fennec|Epiphany|Shiira|Sunrise|Spotify|Flock|Netscape|Lunascape|WebPilot|NetFront|Netfront|Konqueror|SeaMonkey|Kazehakase|Vienna|Iceape|Iceweasel|IceWeasel|Iron|K-Meleon|Sleipnir|Galeon|GranParadiso|Opera Mini|iCab|NetNewsWire|ThunderBrowse|Iris|UP\\.Browser|Bunjalloo|Google Earth|Raven for Mac|Openwave|MacOutlook|Electron)/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[102] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Microsoft Office Outlook 12\\.\\d+\\.\\d+|MSOffice 12");
-parser[1] = "Outlook";
-parser[2] = "2007";
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[103] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Microsoft Outlook 14\\.\\d+\\.\\d+|MSOffice 14");
-parser[1] = "Outlook";
-parser[2] = "2010";
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[104] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Microsoft Outlook 15\\.\\d+\\.\\d+");
-parser[1] = "Outlook";
-parser[2] = "2013";
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[105] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Microsoft Outlook (?:Mail )?16\\.\\d+\\.\\d+");
-parser[1] = "Outlook";
-parser[2] = "2016";
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[106] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Outlook-Express\\/7\\.0.*");
-parser[1] = "Windows Live Mail";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[107] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Airmail) (\\d+)\\.(\\d+)(?:\\.(\\d+))?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[108] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Thunderbird)/(\\d+)\\.(\\d+)(?:\\.(\\d+(?:pre)?))?");
-parser[1] = "Thunderbird";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[109] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Postbox)/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "Postbox";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[110] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Barca(?:Pro)?)/(\\d+)\\.(\\d+)(?:\\.(\\d+))?");
-parser[1] = "Barca";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[111] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Lotus-Notes)/(\\d+)\\.(\\d+)(?:\\.(\\d+))?");
-parser[1] = "Lotus Notes";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[112] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Vivaldi)/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[113] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Edge)/(\\d+)(?:\\.(\\d+))?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[114] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(brave)/(\\d+)\\.(\\d+)\\.(\\d+) Chrome");
-parser[1] = "Brave";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[115] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Chrome)/(\\d+)\\.(\\d+)\\.(\\d+)[\\d.]* Iron[^/]");
-parser[1] = "Iron";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[116] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\b(Dolphin)(?: |HDCN/|/INT\\-)(\\d+)\\.(\\d+)\\.?(\\d+)?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[117] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("HeadlessChrome");
-parser[1] = "HeadlessChrome";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[118] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(bingbot|Bolt|AdobeAIR|Jasmine|IceCat|Skyfire|Midori|Maxthon|Lynx|Arora|IBrowse|Dillo|Camino|Shiira|Fennec|Phoenix|Flock|Netscape|Lunascape|Epiphany|WebPilot|Opera Mini|Opera|NetFront|Netfront|Konqueror|Googlebot|SeaMonkey|Kazehakase|Vienna|Iceape|Iceweasel|IceWeasel|Iron|K-Meleon|Sleipnir|Galeon|GranParadiso|iCab|iTunes|MacAppStore|NetNewsWire|Space Bison|Stainless|Orca|Dolfin|BOLT|Minimo|Tizen Browser|Polaris|Abrowser|Planetweb|ICE Browser|mDolphin|qutebrowser|Otter|QupZilla|MailBar|kmail2|YahooMobileMail|ExchangeWebServices|ExchangeServicesClient|Dragon|Outlook-iOS-Android)/(\\d+)\\.(\\d+)(?:\\.(\\d+))?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[119] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Chromium|Chrome)/(\\d+)\\.(\\d+)(?:\\.(\\d+))?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[120] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(IEMobile)[ /](\\d+)\\.(\\d+)");
-parser[1] = "IE Mobile";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[121] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(BacaBerita App)\\/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[122] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(iRider|Crazy Browser|SkipStone|iCab|Lunascape|Sleipnir|Maemo Browser) (\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[123] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(iCab|Lunascape|Opera|Android|Jasmine|Polaris|Microsoft SkyDriveSync|The Bat!) (\\d+)\\.(\\d+)\\.?(\\d+)?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[124] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Kindle)/(\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[125] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Android) Donut");
-parser[1] = 0;
-parser[2] = "1";
-parser[3] = "2";
-parser[4] = 0;
-exports.browser[126] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Android) Eclair");
-parser[1] = 0;
-parser[2] = "2";
-parser[3] = "1";
-parser[4] = 0;
-exports.browser[127] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Android) Froyo");
-parser[1] = 0;
-parser[2] = "2";
-parser[3] = "2";
-parser[4] = 0;
-exports.browser[128] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Android) Gingerbread");
-parser[1] = 0;
-parser[2] = "2";
-parser[3] = "3";
-parser[4] = 0;
-exports.browser[129] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Android) Honeycomb");
-parser[1] = 0;
-parser[2] = "3";
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[130] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(MSIE) (\\d+)\\.(\\d+).*XBLWP7");
-parser[1] = "IE Large Screen";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[131] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Obigo)InternetBrowser");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[132] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Obigo)\\-Browser");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[133] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Obigo|OBIGO)[^\\d]*(\\d+)(?:.(\\d+))?");
-parser[1] = "Obigo";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[134] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(MAXTHON|Maxthon) (\\d+)\\.(\\d+)");
-parser[1] = "Maxthon";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[135] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Maxthon|MyIE2|Uzbl|Shiira)");
-parser[1] = 0;
-parser[2] = "0";
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[136] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(BrowseX) \\((\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[137] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(NCSA_Mosaic)/(\\d+)\\.(\\d+)");
-parser[1] = "NCSA Mosaic";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[138] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(POLARIS)/(\\d+)\\.(\\d+)");
-parser[1] = "Polaris";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[139] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Embider)/(\\d+)\\.(\\d+)");
-parser[1] = "Polaris";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[140] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(BonEcho)/(\\d+)\\.(\\d+)\\.?([ab]?\\d+)?");
-parser[1] = "Bon Echo";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[141] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(iPod|iPhone|iPad).+Version/(\\d+)\\.(\\d+)(?:\\.(\\d+))?.*[ +]Safari");
-parser[1] = "Mobile Safari";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[142] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(iPod|iPhone|iPad).+Version/(\\d+)\\.(\\d+)(?:\\.(\\d+))?");
-parser[1] = "Mobile Safari UI/WKWebView";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[143] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(iPod|iPod touch|iPhone|iPad);.*CPU.*OS[ +](\\d+)_(\\d+)(?:_(\\d+))?.*Mobile.*[ +]Safari");
-parser[1] = "Mobile Safari";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[144] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(iPod|iPod touch|iPhone|iPad);.*CPU.*OS[ +](\\d+)_(\\d+)(?:_(\\d+))?.*Mobile");
-parser[1] = "Mobile Safari UI/WKWebView";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[145] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(iPod|iPhone|iPad).* Safari");
-parser[1] = "Mobile Safari";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[146] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(iPod|iPhone|iPad)");
-parser[1] = "Mobile Safari UI/WKWebView";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[147] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(AvantGo) (\\d+).(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[148] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(OneBrowser)/(\\d+).(\\d+)");
-parser[1] = "ONE Browser";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[149] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Avant)");
-parser[1] = 0;
-parser[2] = "1";
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[150] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(QtCarBrowser)");
-parser[1] = 0;
-parser[2] = "1";
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[151] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("^(iBrowser/Mini)(\\d+).(\\d+)");
-parser[1] = "iBrowser Mini";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[152] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("^(iBrowser|iRAPP)/(\\d+).(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[153] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("^(Nokia)");
-parser[1] = "Nokia Services (WAP) Browser";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[154] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(NokiaBrowser)/(\\d+)\\.(\\d+).(\\d+)\\.(\\d+)");
-parser[1] = "Nokia Browser";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[155] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(NokiaBrowser)/(\\d+)\\.(\\d+).(\\d+)");
-parser[1] = "Nokia Browser";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[156] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(NokiaBrowser)/(\\d+)\\.(\\d+)");
-parser[1] = "Nokia Browser";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[157] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(BrowserNG)/(\\d+)\\.(\\d+).(\\d+)");
-parser[1] = "Nokia Browser";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[158] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Series60)/5\\.0");
-parser[1] = "Nokia Browser";
-parser[2] = "7";
-parser[3] = "0";
-parser[4] = 0;
-exports.browser[159] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Series60)/(\\d+)\\.(\\d+)");
-parser[1] = "Nokia OSS Browser";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[160] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(S40OviBrowser)/(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "Ovi Browser";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[161] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Nokia)[EN]?(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[162] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(PlayBook).+RIM Tablet OS (\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "BlackBerry WebKit";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[163] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Black[bB]erry|BB10).+Version/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "BlackBerry WebKit";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[164] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Black[bB]erry)\\s?(\\d+)");
-parser[1] = "BlackBerry";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[165] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(OmniWeb)/v(\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[166] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Blazer)/(\\d+)\\.(\\d+)");
-parser[1] = "Palm Blazer";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[167] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Pre)/(\\d+)\\.(\\d+)");
-parser[1] = "Palm Pre";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[168] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(ELinks)/(\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[169] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(ELinks) \\((\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[170] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Links) \\((\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[171] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(QtWeb) Internet Browser/(\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[172] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(PhantomJS)/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[173] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(AppleWebKit)/(\\d+)\\.?(\\d+)?\\+ .* Safari");
-parser[1] = "WebKit Nightly";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[174] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Version)/(\\d+)\\.(\\d+)(?:\\.(\\d+))?.*Safari/");
-parser[1] = "Safari";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[175] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Safari)/\\d+");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[176] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(OLPC)/Update(\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[177] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(OLPC)/Update()\\.(\\d+)");
-parser[1] = 0;
-parser[2] = "0";
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[178] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(SEMC\\-Browser)/(\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[179] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Teleca)");
-parser[1] = "Teleca Browser";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[180] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Phantom)/V(\\d+)\\.(\\d+)");
-parser[1] = "Phantom Browser";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[181] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Trident(.*)rv.(\\d+)\\.(\\d+)");
-parser[1] = "IE";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[182] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Espial)/(\\d+)(?:\\.(\\d+))?(?:\\.(\\d+))?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[183] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(AppleWebKit)/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "Apple Mail";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[184] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Firefox)/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[185] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Firefox)/(\\d+)\\.(\\d+)(pre|[ab]\\d+[a-z]*)?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[186] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("([MS]?IE) (\\d+)\\.(\\d+)");
-parser[1] = "IE";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[187] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(python-requests)/(\\d+)\\.(\\d+)");
-parser[1] = "Python Requests";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[188] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\b(Windows-Update-Agent|Microsoft-CryptoAPI|SophosUpdateManager|SophosAgent|Debian APT-HTTP|Ubuntu APT-HTTP|libcurl-agent|libwww-perl|urlgrabber|curl|Wget|OpenBSD ftp|jupdate)(?:[ /](\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?)?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[189] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Java)[/ ]{0,1}\\d+\\.(\\d+)\\.(\\d+)[_-]*([a-zA-Z0-9]+)*");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[190] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("^(Roku)/DVP-(\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[191] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Kurio)\\/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "Kurio App";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[192] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Wget)/(\\d+)\\.(\\d+)\\.?([ab]?\\d+[a-z]*)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[193] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(curl)/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "cURL";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.browser[194] = parser;
+browser[0] = [new RegExp("(Rival IQ, rivaliq.com)"),"Rival IQ",0,0,0];
 
-exports.browser.length = 195;
+browser[1] = [new RegExp("(CFNetwork)(?:/(\\d+)\\.(\\d+)\\.?(\\d+)?)?"),"CFNetwork",0,0,0];
 
-exports.device = Object.create(null);
+browser[2] = [new RegExp("(Pingdom.com_bot_version_)(\\d+)\\.(\\d+)"),"PingdomBot",0,0,0];
 
-parser = Object.create(null);
-parser[0] = new RegExp("(Rival IQ, rivaliq.com)");
-parser[1] = "Spider";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[0] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:(?:iPhone|Windows CE|Windows Phone|Android).*(?:(?:Bot|Yeti)-Mobile|YRSpider|BingPreview|bots?/\\d|(?:bot|spider)\\.html)|AdsBot-Google-Mobile.*iPhone)");
-parser[1] = "Spider";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[1] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:DoCoMo|\\bMOT\\b|\\bLG\\b|Nokia|Samsung|SonyEricsson).*(?:(?:Bot|Yeti)-Mobile|bots?/\\d|(?:bot|crawler)\\.html|(?:jump|google|Wukong)bot|ichiro/mobile|/spider|YahooSeeker)");
-parser[1] = "Spider";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[2] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\bSmartWatch *\\( *([^;]+) *; *([^;]+) *;");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[3] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Android Application[^\\-]+ - (Sony) ?(Ericsson)? (.+) \\w+ - ");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[4] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Android Application[^\\-]+ - (?:HTC|HUAWEI|LGE|LENOVO|MEDION|TCT) (HTC|HUAWEI|LG|LENOVO|MEDION|ALCATEL)[ _\\-](.+) \\w+ - ");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[5] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Android Application[^\\-]+ - ([^ ]+) (.+) \\w+ - ");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[6] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *([BLRQ]C\\d{4}[A-Z]+) +Build/");
-parser[1] = "3Q $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[7] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:3Q_)([^;/]+) +Build");
-parser[1] = "3Q $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[8] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Android [34].*; *(A100|A101|A110|A200|A210|A211|A500|A501|A510|A511|A700(?: Lite| 3G)?|A701|B1-A71|A1-\\d{3}|B1-\\d{3}|V360|V370|W500|W500P|W501|W501P|W510|W511|W700|Slider SL101|DA22[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[9] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *Acer Iconia Tab ([^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[10] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Z1[1235]0|E320[^/]*|S500|S510|Liquid[^;/]*|Iconia A\\d+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[11] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Acer |ACER )([^;/]+) Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[12] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Advent )?(Vega(?:Bean|Comb)?).* Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[13] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Ainol )?((?:NOVO|[Nn]ovo)[^;/]+) Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[14] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *AIRIS[ _\\-]?([^/;\\)]+) *(?:;|\\)|Build)");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[15] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(OnePAD[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[16] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *Airpad[ \\-]([^;/]+) Build");
-parser[1] = "Airpad $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[17] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(one ?touch) (EVO7|T10|T20) Build");
-parser[1] = "Alcatel One Touch $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[18] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:alcatel[ _])?(?:(?:one[ _]?touch[ _])|ot[ \\-])([^;/]+);? Build");
-parser[1] = "Alcatel One Touch $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[19] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(TCL)[ _]([^;/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[20] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Vodafone Smart II|Optimus_Madrid) Build");
-parser[1] = "Alcatel $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[21] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *BASE_Lutea_3 Build");
-parser[1] = "Alcatel One Touch 998";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[22] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *BASE_Varia Build");
-parser[1] = "Alcatel One Touch 918D";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[23] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *((?:FINE|Fine)\\d[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[24] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(ALLVIEW[ _]?|Allview[ _]?)((?:Speed|SPEED).*) Build/");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[25] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(ALLVIEW[ _]?|Allview[ _]?)?(AX1_Shine|AX2_Frenzy) Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[26] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(ALLVIEW[ _]?|Allview[ _]?)([^;/]*) Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[27] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(A13-MID) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[28] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Allwinner)[ _\\-]?([^;/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[29] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(A651|A701B?|A702|A703|A705|A706|A707|A711|A712|A713|A717|A722|A785|A801|A802|A803|A901|A902|A1002|A1003|A1006|A1007|A9701|A9703|Q710|Q80) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[30] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:AMOI|Amoi)[ _]([^;/]+) Build");
-parser[1] = "Amoi $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[31] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("^(?:AMOI|Amoi)[ _]([^;/]+) Linux");
-parser[1] = "Amoi $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[32] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(MW(?:0[789]|10)[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[33] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(G7|M1013|M1015G|M11[CG]?|M-?12[B]?|M15|M19[G]?|M30[ACQ]?|M31[GQ]|M32|M33[GQ]|M36|M37|M38|M701T|M710|M712B|M713|M715G|M716G|M71(?:G|GS|T)?|M72[T]?|M73[T]?|M75[GT]?|M77G|M79T|M7L|M7LN|M81|M810|M81T|M82|M92|M92KS|M92S|M717G|M721|M722G|M723|M725G|M739|M785|M791|M92SK|M93D) Build");
-parser[1] = "Aoson $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[34] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *Aoson ([^;/]+) Build");
-parser[1] = "Aoson $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[35] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *[Aa]panda[ _\\-]([^;/]+) Build");
-parser[1] = "Apanda $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[36] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:ARCHOS|Archos) ?(GAMEPAD.*?)(?: Build|[;/\\(\\)\\-])");
-parser[1] = "Archos $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[37] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("ARCHOS; GOGI; ([^;]+);");
-parser[1] = "Archos $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[38] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:ARCHOS|Archos)[ _]?(.*?)(?: Build|[;/\\(\\)\\-]|$)");
-parser[1] = "Archos $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[39] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(AN(?:7|8|9|10|13)[A-Z0-9]{1,4}) Build");
-parser[1] = "Archos $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[40] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(A28|A32|A43|A70(?:BHT|CHT|HB|S|X)|A101(?:B|C|IT)|A7EB|A7EB-WK|101G9|80G9) Build");
-parser[1] = "Archos $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[41] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(PAD-FMD[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[42] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(BioniQ) ?([^;/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[43] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(AN\\d[^;/]+|ARCHM\\d+) Build");
-parser[1] = "Arnova $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[44] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:ARNOVA|Arnova) ?([^;/]+) Build");
-parser[1] = "Arnova $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[45] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:ASSISTANT )?(AP)-?([1789]\\d{2}[A-Z]{0,2}|80104) Build");
-parser[1] = "Assistant $1-$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[46] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(ME17\\d[^;/]*|ME3\\d{2}[^;/]+|K00[A-Z]|Nexus 10|Nexus 7(?: 2013)?|PadFone[^;/]*|Transformer[^;/]*|TF\\d{3}[^;/]*|eeepc) Build");
-parser[1] = "Asus $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[47] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *ASUS[ _]*([^;/]+) Build");
-parser[1] = "Asus $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[48] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *Garmin-Asus ([^;/]+) Build");
-parser[1] = "Garmin-Asus $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[49] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Garminfone) Build");
-parser[1] = "Garmin $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[50] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; (@TAB-[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[51] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(T-(?:07|[^0]\\d)[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[52] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Axioo[ _\\-]([^;/]+)|(picopad)[ _\\-]([^;/]+)) Build");
-parser[1] = "Axioo $1$2 $3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[53] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(V(?:100|700|800)[^;/]*) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[54] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(IBAK\\-[^;/]*) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[55] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(HY5001|HY6501|X12|X21|I5) Build");
-parser[1] = "Bedove $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[56] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(JC-[^;/]*) Build");
-parser[1] = "Benss $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[57] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(BB) ([^;/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[58] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(BlackBird)[ _](I8.*) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[59] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(BlackBird)[ _](.*) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[60] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *([0-9]+BP[EM][^;/]*|Endeavour[^;/]+) Build");
-parser[1] = "Blaupunkt $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[61] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *((?:BLU|Blu)[ _\\-])([^;/]+) Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[62] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:BMOBILE )?(Blu|BLU|DASH [^;/]+|VIVO 4\\.3|TANK 4\\.5) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[63] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(TOUCH\\d[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[64] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(AX5\\d+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[65] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *([Bb]q) ([^;/]+);? Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[66] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Maxwell [^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[67] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *((?:B-Tab|B-TAB) ?\\d[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[68] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Broncho) ([^;/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[69] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *CAPTIVA ([^;/]+) Build");
-parser[1] = "Captiva $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[70] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(C771|CAL21|IS11CA) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[71] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Cat|CAT) ([^;/]+) Build");
-parser[1] = "Cat $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[72] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Cat)(Nova.*) Build");
-parser[1] = "Cat $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[73] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(INM8002KP|ADM8000KP_[AB]) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[74] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:[Cc]elkon[ _\\*]|CELKON[ _\\*])([^;/\\)]+) ?(?:Build|;|\\))");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[75] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Build/(?:[Cc]elkon)+_?([^;/_\\)]+)");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[76] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(CT)-?(\\d+) Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[77] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(A19|A19Q|A105|A107[^;/\\)]*) ?(?:Build|;|\\))");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[78] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(TPC[0-9]{4,5}) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[79] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Cloudfone)[ _](Excite)([^ ][^;/]+) Build");
-parser[1] = "$1 $2 $3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[80] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Excite|ICE)[ _](\\d+[^;/]+) Build");
-parser[1] = "Cloudfone $1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[81] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Cloudfone|CloudPad)[ _]([^;/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[82] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *((?:Aquila|Clanga|Rapax)[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[83] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:CFW-|Kyros )?(MID[0-9]{4}(?:[ABC]|SR|TV)?)(\\(3G\\)-4G| GB 8K| 3G| 8K| GB)? *(?:Build|[;\\)])");
-parser[1] = "CobyKyros $1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[84] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *([^;/]*)Coolpad[ _]([^;/]+) Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[85] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(CUBE[ _])?([KU][0-9]+ ?GT.*|A5300) Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[86] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *CUBOT ([^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[87] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(BOBBY) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[88] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Dslide [^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[89] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(XCD)[ _]?(28|35) Build");
-parser[1] = "Dell $1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[90] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(001DL) Build");
-parser[1] = "Dell $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[91] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Dell|DELL) (Streak) Build");
-parser[1] = "Dell $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[92] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(101DL|GS01|Streak Pro[^;/]*) Build");
-parser[1] = "Dell $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[93] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *([Ss]treak ?7) Build");
-parser[1] = "Dell $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[94] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Mini-3iX) Build");
-parser[1] = "Dell $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[95] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Dell|DELL)[ _](Aero|Venue|Thunder|Mini.*|Streak[ _]Pro) Build");
-parser[1] = "Dell $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[96] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *Dell[ _]([^;/]+) Build");
-parser[1] = "Dell $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[97] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *Dell ([^;/]+) Build");
-parser[1] = "Dell $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[98] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(TA[CD]-\\d+[^;/]*) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[99] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(iP[789]\\d{2}(?:-3G)?|IP10\\d{2}(?:-8GB)?) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[100] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(AirTab)[ _\\-]([^;/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[101] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(F\\-\\d[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[102] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(HT-03A) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[103] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(HT\\-\\d[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[104] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(L\\-\\d[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[105] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(N\\-\\d[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[106] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(P\\-\\d[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[107] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(SC\\-\\d[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[108] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(SH\\-\\d[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[109] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(SO\\-\\d[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[110] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(T\\-0[12][^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[111] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(DOOV)[ _]([^;/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[112] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Enot|ENOT)[ -]?([^;/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[113] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *[^;/]+ Build/(?:CROSS|Cross)+[ _\\-]([^\\)]+)");
-parser[1] = "CROSS $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[114] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(CROSS|Cross)[ _\\-]([^;/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[115] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *Explay[_ ](.+?)(?:[\\)]| Build)");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[116] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(IQ.*) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[117] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Fly|FLY)[ _](IQ[^;]+|F[34]\\d+[^;]*);? Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[118] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(M532|Q572|FJL21) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[119] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(G1) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[120] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Geeksphone) ([^;/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[121] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(G[^F]?FIVE) ([^;/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[122] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Gionee)[ _\\-]([^;/]+)(?:/[^;/]+)? Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[123] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(GN\\d+[A-Z]?|INFINITY_PASSION|Ctrl_V1) Build");
-parser[1] = "Gionee $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[124] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(E3) Build/JOP40D");
-parser[1] = "Gionee $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[125] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *((?:FONE|QUANTUM|INSIGNIA) \\d+[^;/]*|PLAYTAB) Build");
-parser[1] = "GoClever $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[126] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *GOCLEVER ([^;/]+) Build");
-parser[1] = "GoClever $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[127] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Glass \\d+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[128] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Pixel \\w+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[129] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(GSmart)[ -]([^/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[130] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(imx5[13]_[^/]+) Build");
-parser[1] = "Freescale $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[131] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *Haier[ _\\-]([^/]+) Build");
-parser[1] = "Haier $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[132] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(PAD1016) Build");
-parser[1] = "Haipad $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[133] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(M701|M7|M8|M9) Build");
-parser[1] = "Haipad $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[134] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(SN\\d+T[^;\\)/]*)(?: Build|[;\\)])");
-parser[1] = "Hannspree $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[135] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Build/HCL ME Tablet ([^;\\)]+)[\\);]");
-parser[1] = "HCLme $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[136] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *([^;\\/]+) Build/HCL");
-parser[1] = "HCLme $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[137] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(MID-?\\d{4}C[EM]) Build");
-parser[1] = "Hena $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[138] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(EG\\d{2,}|HS-[^;/]+|MIRA[^;/]+) Build");
-parser[1] = "Hisense $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[139] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(andromax[^;/]+) Build");
-parser[1] = "Hisense $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[140] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:AMAZE[ _](S\\d+)|(S\\d+)[ _]AMAZE) Build");
-parser[1] = "AMAZE $1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[141] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(PlayBook) Build");
-parser[1] = "HP $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[142] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *HP ([^/]+) Build");
-parser[1] = "HP $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[143] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *([^/]+_tenderloin) Build");
-parser[1] = "HP TouchPad";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[144] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(HUAWEI |Huawei-)?([UY][^;/]+) Build/(?:Huawei|HUAWEI)([UY][^\\);]+)\\)");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[145] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *([^;/]+) Build[/ ]Huawei(MT1-U06|[A-Z]+\\d+[^\\);]+)[^\\);]*\\)");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[146] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(S7|M860) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[147] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *((?:HUAWEI|Huawei)[ \\-]?)(MediaPad) Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[148] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *((?:HUAWEI[ _]?|Huawei[ _])?Ascend[ _])([^;/]+) Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[149] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *((?:HUAWEI|Huawei)[ _\\-]?)((?:G700-|MT-)[^;/]+) Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[150] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *((?:HUAWEI|Huawei)[ _\\-]?)([^;/]+) Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[151] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(MediaPad[^;]+|SpringBoard) Build/Huawei");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[152] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *([^;]+) Build/(?:Huawei|HUAWEI)");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[153] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *([Uu])([89]\\d{3}) Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[154] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Ideos |IDEOS )(S7) Build");
-parser[1] = "Huawei Ideos$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[155] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Ideos |IDEOS )([^;/]+\\s*|\\s*)Build");
-parser[1] = "Huawei Ideos$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[156] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Orange Daytona|Pulse|Pulse Mini|Vodafone 858|C8500|C8600|C8650|C8660|Nexus 6P|ATH-.+?) Build[/ ]");
-parser[1] = "Huawei $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[157] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *HTC[ _]([^;]+); Windows Phone");
-parser[1] = "HTC $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[158] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:HTC[ _/])+([^ _/]+)(?:[/\\\\]1\\.0 | V|/| +)\\d+\\.\\d[\\d\\.]*(?: *Build|\\))");
-parser[1] = "HTC $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[159] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:HTC[ _/])+([^ _/]+)(?:[ _/]([^ _/]+))?(?:[/\\\\]1\\.0 | V|/| +)\\d+\\.\\d[\\d\\.]*(?: *Build|\\))");
-parser[1] = "HTC $1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[160] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:HTC[ _/])+([^ _/]+)(?:[ _/]([^ _/]+)(?:[ _/]([^ _/]+))?)?(?:[/\\\\]1\\.0 | V|/| +)\\d+\\.\\d[\\d\\.]*(?: *Build|\\))");
-parser[1] = "HTC $1 $2 $3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[161] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:HTC[ _/])+([^ _/]+)(?:[ _/]([^ _/]+)(?:[ _/]([^ _/]+)(?:[ _/]([^ _/]+))?)?)?(?:[/\\\\]1\\.0 | V|/| +)\\d+\\.\\d[\\d\\.]*(?: *Build|\\))");
-parser[1] = "HTC $1 $2 $3 $4";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[162] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:(?:HTC|htc)(?:_blocked)*[ _/])+([^ _/;]+)(?: *Build|[;\\)]| - )");
-parser[1] = "HTC $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[163] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:(?:HTC|htc)(?:_blocked)*[ _/])+([^ _/]+)(?:[ _/]([^ _/;\\)]+))?(?: *Build|[;\\)]| - )");
-parser[1] = "HTC $1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[164] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:(?:HTC|htc)(?:_blocked)*[ _/])+([^ _/]+)(?:[ _/]([^ _/]+)(?:[ _/]([^ _/;\\)]+))?)?(?: *Build|[;\\)]| - )");
-parser[1] = "HTC $1 $2 $3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[165] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:(?:HTC|htc)(?:_blocked)*[ _/])+([^ _/]+)(?:[ _/]([^ _/]+)(?:[ _/]([^ _/]+)(?:[ _/]([^ /;]+))?)?)?(?: *Build|[;\\)]| - )");
-parser[1] = "HTC $1 $2 $3 $4";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[166] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("HTC Streaming Player [^\\/]*/[^\\/]*/ htc_([^/]+) /");
-parser[1] = "HTC $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[167] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:[;,] *|^)(?:htccn_chs-)?HTC[ _-]?([^;]+?)(?: *Build|clay|Android|-?Mozilla| Opera| Profile| UNTRUSTED|[;/\\(\\)]|$)");
-parser[1] = "HTC $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[168] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(A6277|ADR6200|ADR6300|ADR6350|ADR6400[A-Z]*|ADR6425[A-Z]*|APX515CKT|ARIA|Desire[^_ ]*|Dream|EndeavorU|Eris|Evo|Flyer|HD2|Hero|HERO200|Hero CDMA|HTL21|Incredible|Inspire[A-Z0-9]*|Legend|Liberty|Nexus ?(?:One|HD2)|One|One S C2|One[ _]?(?:S|V|X\\+?)\\w*|PC36100|PG06100|PG86100|S31HT|Sensation|Wildfire)(?: Build|[/;\\(\\)])");
-parser[1] = "HTC $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[169] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(ADR6200|ADR6400L|ADR6425LVW|Amaze|DesireS?|EndeavorU|Eris|EVO|Evo\\d[A-Z]+|HD2|IncredibleS?|Inspire[A-Z0-9]*|Inspire[A-Z0-9]*|Sensation[A-Z0-9]*|Wildfire)[ _-](.+?)(?:[/;\\)]|Build|MIUI|1\\.0)");
-parser[1] = "HTC $1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[170] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *HYUNDAI (T\\d[^/]*) Build");
-parser[1] = "Hyundai $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[171] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *HYUNDAI ([^;/]+) Build");
-parser[1] = "Hyundai $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[172] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(X700|Hold X|MB-6900) Build");
-parser[1] = "Hyundai $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[173] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:iBall[ _\\-])?(Andi)[ _]?(\\d[^;/]*) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[174] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(IBall)(?:[ _]([^;/]+)|) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[175] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(NT-\\d+[^ ;/]*|Net[Tt]AB [^;/]+|Mercury [A-Z]+|iconBIT)(?: S/N:[^;/]+)? Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[176] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(IMO)[ _]([^;/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[177] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *i-?mobile[ _]([^/]+) Build/");
-parser[1] = "i-mobile $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[178] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(i-(?:style|note)[^/]*) Build/");
-parser[1] = "i-mobile $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[179] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(ImPAD) ?(\\d+(?:.)*) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[180] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Infinix)[ _]([^;/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[181] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Informer)[ \\-]([^;/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[182] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(TAB) ?([78][12]4) Build");
-parser[1] = "Intenso $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[183] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Intex[ _])?(AQUA|Aqua)([ _\\.\\-])([^;/]+) *(?:Build|;)");
-parser[1] = "$1$2$3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[184] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:INTEX|Intex)(?:[_ ]([^\\ _;/]+))(?:[_ ]([^\\ _;/]+))? *(?:Build|;)");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[185] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *([iI]Buddy)[ _]?(Connect)(?:_|\\?_| )?([^;/]*) *(?:Build|;)");
-parser[1] = "$1 $2 $3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[186] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(I-Buddy)[ _]([^;/]+) *(?:Build|;)");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[187] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(iOCEAN) ([^/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[188] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(TP\\d+(?:\\.\\d+)?\\-\\d[^;/]+) Build");
-parser[1] = "ionik $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[189] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(M702pro) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[190] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(DE88Plus|MD70) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[191] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *IVIO[_\\-]([^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[192] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(TPC-\\d+|JAY-TECH) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[193] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(JY-[^;/]+|G[234]S?) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[194] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(JXD)[ _\\-]([^;/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[195] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *Karbonn[ _]?([^;/]+) *(?:Build|;)");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[196] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *([^;]+) Build/Karbonn");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[197] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(A11|A39|A37|A34|ST8|ST10|ST7|Smart Tab3|Smart Tab2|Titanium S\\d) +Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[198] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(IS01|IS03|IS05|IS\\d{2}SH) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[199] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(IS04) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[200] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(IS06|IS\\d{2}PT) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[201] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(IS11S) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[202] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(IS11CA) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[203] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(IS11LG) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[204] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(IS11N) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[205] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(IS11PT) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[206] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(IS12F) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[207] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(IS12M) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[208] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(IS12S) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[209] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(ISW11F) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[210] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(ISW11HT) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[211] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(ISW11K) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[212] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(ISW11M) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[213] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(ISW11SC) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[214] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(ISW12HT) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[215] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(ISW13HT) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[216] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(ISW?[0-9]{2}[A-Z]{0,2}) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[217] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(INFOBAR [^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[218] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(JOYPAD|Joypad)[ _]([^;/]+) Build/");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[219] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Vox|VOX|Arc|K080) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[220] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\b(Kobo Touch)\\b");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[221] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(K-Touch)[ _]([^;/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[222] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *((?:EV|KM)-S\\d+[A-Z]?) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[223] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Zio|Hydro|Torque|Event|EVENT|Echo|Milano|Rise|URBANO PROGRESSO|WX04K|WX06K|WX10K|KYL21|101K|C5[12]\\d{2}) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[224] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:LAVA[ _])?IRIS[ _\\-]?([^/;\\)]+) *(?:;|\\)|Build)");
-parser[1] = "Iris $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[225] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *LAVA[ _]([^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[226] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:(Aspire A1)|(?:LEMON|Lemon)[ _]([^;/]+))_? Build");
-parser[1] = "Lemon $1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[227] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(TAB-1012) Build/");
-parser[1] = "Lenco $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[228] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; Lenco ([^;/]+) Build/");
-parser[1] = "Lenco $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[229] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(A1_07|A2107A-H|S2005A-H|S1-37AH0) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[230] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Idea[Tp]ab)[ _]([^;/]+);? Build");
-parser[1] = "Lenovo $1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[231] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Idea(?:Tab|pad)) ?([^;/]+) Build");
-parser[1] = "Lenovo $1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[232] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(ThinkPad) ?(Tablet) Build/");
-parser[1] = "Lenovo $1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[233] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:LNV-)?(?:=?[Ll]enovo[ _\\-]?|LENOVO[ _])+(.+?)(?:Build|[;/\\)])");
-parser[1] = "Lenovo $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[234] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("[;,] (?:Vodafone )?(SmartTab) ?(II) ?(\\d+) Build/");
-parser[1] = "Lenovo $1 $2 $3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[235] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Ideapad )?K1 Build/");
-parser[1] = "Lenovo Ideapad K1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[236] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(3GC101|3GW10[01]|A390) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[237] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\b(?:Lenovo|LENOVO)+[ _\\-]?([^,;:/ ]+)");
-parser[1] = "Lenovo $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[238] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(MFC\\d+)[A-Z]{2}([^;,/]*),? Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[239] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(E[34][0-9]{2}|LS[6-8][0-9]{2}|VS[6-9][0-9]+[^;/]+|Nexus 4|Nexus 5X?|GT540f?|Optimus (?:2X|G|4X HD)|OptimusX4HD) *(?:Build|;)");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[240] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("[;:] *(L-\\d+[A-Z]|LGL\\d+[A-Z]?)(?:/V\\d+)? *(?:Build|[;\\)])");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[241] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(LG-)([A-Z]{1,2}\\d{2,}[^,;/\\)\\(]*?)(?:Build| V\\d+|[,;/\\)\\(]|$)");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[242] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(LG[ \\-]|LG)([^;/]+)[;/]? Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[243] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("^(LG)-([^;/]+)/ Mozilla/.*; Android");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[244] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Web0S); Linux/(SmartTV)");
-parser[1] = "LG $1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[245] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *((?:SMB|smb)[^;/]+) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[246] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Malata|MALATA) ([^;/]+) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[247] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(MS[45][0-9]{3}|MID0[568][NS]?|MID[1-9]|MID[78]0[1-9]|MID970[1-9]|MID100[1-9]) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[248] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(M1052|M806|M9000|M9100|M9701|MID100|MID120|MID125|MID130|MID135|MID140|MID701|MID710|MID713|MID727|MID728|MID731|MID732|MID733|MID735|MID736|MID737|MID760|MID800|MID810|MID820|MID830|MID833|MID835|MID860|MID900|MID930|MID933|MID960|MID980) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[249] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(GenxDroid7|MSD7.*|AX\\d.*|Tab 701|Tab 722) Build/");
-parser[1] = "Maxx $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[250] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(M-PP[^;/]+|PhonePad ?\\d{2,}[^;/]+) Build");
-parser[1] = "Mediacom $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[251] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(M-MP[^;/]+|SmartPad ?\\d{2,}[^;/]+) Build");
-parser[1] = "Mediacom $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[252] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:MD_)?LIFETAB[ _]([^;/]+) Build");
-parser[1] = "Medion Lifetab $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[253] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *MEDION ([^;/]+) Build");
-parser[1] = "Medion $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[254] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(M030|M031|M035|M040|M065|m9) Build");
-parser[1] = "Meizu $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[255] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:meizu_|MEIZU )(.+?) *(?:Build|[;\\)])");
-parser[1] = "Meizu $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[256] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Micromax[ _](A111|A240)|(A111|A240)) Build");
-parser[1] = "Micromax $1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[257] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *Micromax[ _](A\\d{2,3}[^;/]*) Build");
-parser[1] = "Micromax $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[258] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(A\\d{2}|A[12]\\d{2}|A90S|A110Q) Build");
-parser[1] = "Micromax $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[259] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *Micromax[ _](P\\d{3}[^;/]*) Build");
-parser[1] = "Micromax $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[260] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(P\\d{3}|P\\d{3}\\(Funbook\\)) Build");
-parser[1] = "Micromax $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[261] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(MITO)[ _\\-]?([^;/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[262] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Cynus)[ _](F5|T\\d|.+?) *(?:Build|[;/\\)])");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[263] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(MODECOM )?(FreeTab) ?([^;/]+) Build");
-parser[1] = "$1$2 $3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[264] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(MODECOM )([^;/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[265] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(MZ\\d{3}\\+?|MZ\\d{3} 4G|Xoom|XOOM[^;/]*) Build");
-parser[1] = "Motorola $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[266] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Milestone )(XT[^;/]*) Build");
-parser[1] = "Motorola $1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[267] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Motoroi ?x|Droid X|DROIDX) Build");
-parser[1] = "Motorola $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[268] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Droid[^;/]*|DROID[^;/]*|Milestone[^;/]*|Photon|Triumph|Devour|Titanium) Build");
-parser[1] = "Motorola $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[269] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(A555|A85[34][^;/]*|A95[356]|ME[58]\\d{2}\\+?|ME600|ME632|ME722|MB\\d{3}\\+?|MT680|MT710|MT870|MT887|MT917|WX435|WX453|WX44[25]|XT\\d{3,4}[A-Z\\+]*|CL[iI]Q|CL[iI]Q XT) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[270] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Motorola MOT-|Motorola[ _\\-]|MOT\\-?)([^;/]+) Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[271] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Moto[_ ]?|MOT\\-)([^;/]+) Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[272] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *((?:MP[DQ]C|MPG\\d{1,4}|MP\\d{3,4}|MID(?:(?:10[234]|114|43|7[247]|8[24]|7)C|8[01]1))[^;/]*) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[273] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:MSI[ _])?(Primo\\d+|Enjoy[ _\\-][^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[274] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *Multilaser[ _]([^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[275] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(My)[_]?(Pad)[ _]([^;/]+) Build");
-parser[1] = "$1$2 $3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[276] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(My)\\|?(Phone)[ _]([^;/]+) Build");
-parser[1] = "$1$2 $3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[277] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(A\\d+)[ _](Duo)? Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[278] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(myTab[^;/]*) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[279] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(NABI2?-)([^;/]+) Build/");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[280] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(N-\\d+[CDE]) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[281] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; ?(NEC-)(.*) Build/");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[282] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(LT-NA7) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[283] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(NXM\\d+[A-z0-9_]*|Next\\d[A-z0-9_ \\-]*|NEXT\\d[A-z0-9_ \\-]*|Nextbook [A-z0-9_ ]*|DATAM803HC|M805)(?: Build|[\\);])");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[284] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Nokia)([ _\\-]*)([^;/]*) Build");
-parser[1] = "$1$2$3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[285] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Nook ?|Barnes & Noble Nook |BN )([^;/]+) Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[286] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(NOOK )?(BNRV200|BNRV200A|BNTV250|BNTV250A|BNTV400|BNTV600|LogicPD Zoom2) Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[287] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; Build/(Nook)");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[288] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(OP110|OliPad[^;/]+) Build");
-parser[1] = "Olivetti $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[289] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *OMEGA[ _\\-](MID[^;/]+) Build");
-parser[1] = "Omega $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[290] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("^(MID7500|MID\\d+) Mozilla/5\\.0 \\(iPad;");
-parser[1] = "Omega $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[291] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *((?:CIUS|cius)[^;/]*) Build");
-parser[1] = "Openpeak $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[292] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Find ?(?:5|7a)|R8[012]\\d{1,2}|T703\\d{0,1}|U70\\d{1,2}T?|X90\\d{1,2}) Build");
-parser[1] = "Oppo $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[293] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *OPPO ?([^;/]+) Build/");
-parser[1] = "Oppo $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[294] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Odys\\-|ODYS\\-|ODYS )([^;/]+) Build");
-parser[1] = "Odys $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[295] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(SELECT) ?(7) Build");
-parser[1] = "Odys $1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[296] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(PEDI)_(PLUS)_(W) Build");
-parser[1] = "Odys $1 $2 $3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[297] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(AEON|BRAVIO|FUSION|FUSION2IN1|Genio|EOS10|IEOS[^;/]*|IRON|Loox|LOOX|LOOX Plus|Motion|NOON|NOON_PRO|NEXT|OPOS|PEDI[^;/]*|PRIME[^;/]*|STUDYTAB|TABLO|Tablet-PC-4|UNO_X8|XELIO[^;/]*|Xelio ?\\d+ ?[Pp]ro|XENO10|XPRESS PRO) Build");
-parser[1] = "Odys $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[298] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; (ONE [a-zA-Z]\\d+) Build/");
-parser[1] = "OnePlus $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[299] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; (ONEPLUS [a-zA-Z]\\d+) Build/");
-parser[1] = "OnePlus $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[300] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(TP-\\d+) Build/");
-parser[1] = "Orion $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[301] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(G100W?) Build/");
-parser[1] = "PackardBell $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[302] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Panasonic)[_ ]([^;/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[303] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(FZ-A1B|JT-B1) Build");
-parser[1] = "Panasonic $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[304] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(dL1|DL1) Build");
-parser[1] = "Panasonic $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[305] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(SKY[ _])?(IM\\-[AT]\\d{3}[^;/]+).* Build/");
-parser[1] = "Pantech $1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[306] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *((?:ADR8995|ADR910L|ADR930L|ADR930VW|PTL21|P8000)(?: 4G)?) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[307] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *Pantech([^;/]+).* Build/");
-parser[1] = "Pantech $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[308] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(papyre)[ _\\-]([^;/]+) Build/");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[309] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Touchlet )?(X10\\.[^;/]+) Build/");
-parser[1] = "Pearl $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[310] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; PHICOMM (i800) Build/");
-parser[1] = "Phicomm $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[311] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; PHICOMM ([^;/]+) Build/");
-parser[1] = "Phicomm $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[312] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(FWS\\d{3}[^;/]+) Build/");
-parser[1] = "Phicomm $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[313] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(D633|D822|D833|T539|T939|V726|W335|W336|W337|W3568|W536|W5510|W626|W632|W6350|W6360|W6500|W732|W736|W737|W7376|W820|W832|W8355|W8500|W8510|W930) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[314] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Philips|PHILIPS)[ _]([^;/]+) Build");
-parser[1] = "Philips $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[315] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Android 4\\..*; *(M[12356789]|U[12368]|S[123])\\ ?(pro)? Build");
-parser[1] = "Pipo $1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[316] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(MOMO[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[317] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Polaroid[ _])?((?:MIDC\\d{3,}|PMID\\d{2,}|PTAB\\d{3,})[^;/]*)(\\/[^;/]*)? Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[318] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Polaroid )(Tablet) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[319] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(POMP)[ _\\-](.+?) *(?:Build|[;/\\)])");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[320] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(TB07STA|TB10STA|TB07FTA|TB10FTA) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[321] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Positivo )?((?:YPY|Ypy)[^;/]+) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[322] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(MOB-[^;/]+) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[323] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *POV[ _\\-]([^;/]+) Build/");
-parser[1] = "POV $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[324] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *((?:TAB-PLAYTAB|TAB-PROTAB|PROTAB|PlayTabPro|Mobii[ _\\-]|TAB-P)[^;/]*) Build/");
-parser[1] = "POV $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[325] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Prestigio )?((?:PAP|PMP)\\d[^;/]+) Build/");
-parser[1] = "Prestigio $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[326] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(PLT[0-9]{4}.*) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[327] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(A2|A5|A8|A900)_?(Classic)? Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[328] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Q[Mm]obile)_([^_]+)_([^_]+) Build");
-parser[1] = "Qmobile $2 $3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[329] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Q\\-?[Mm]obile)[_ ](A[^;/]+) Build");
-parser[1] = "Qmobile $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[330] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Q\\-Smart)[ _]([^;/]+) Build/");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[331] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Q\\-?[Mm]obile)[ _\\-](S[^;/]+) Build/");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[332] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(TA1013) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[333] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; (RCT\\w+) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[334] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(RK\\d+),? Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[335] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp(" Build/(RK\\d+)");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[336] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(SAMSUNG |Samsung )?((?:Galaxy (?:Note II|S\\d)|GT-I9082|GT-I9205|GT-N7\\d{3}|SM-N9005)[^;/]*)\\/?[^;/]* Build/");
-parser[1] = "Samsung $1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[337] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Google )?(Nexus [Ss](?: 4G)?) Build/");
-parser[1] = "Samsung $1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[338] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(SAMSUNG |Samsung )([^\\/]*)\\/[^ ]* Build/");
-parser[1] = "Samsung $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[339] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Galaxy(?: Ace| Nexus| S ?II+|Nexus S| with MCR 1.2| Mini Plus 4G)?) Build/");
-parser[1] = "Samsung $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[340] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(SAMSUNG[ _\\-] *)+([^;/]+) Build");
-parser[1] = "Samsung $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[341] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(SAMSUNG-)?(GT\\-[BINPS]\\d{4}[^\\/]*)(\\/[^ ]*) Build");
-parser[1] = "Samsung $1$2$3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[342] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:; *|^)((?:GT\\-[BIiNPS]\\d{4}|I9\\d{2}0[A-Za-z\\+]?\\b)[^;/\\)]*?)(?:Build|Linux|MIUI|[;/\\)])");
-parser[1] = "Samsung $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[343] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; (SAMSUNG-)([A-Za-z0-9\\-]+).* Build/");
-parser[1] = "Samsung $1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[344] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *((?:SCH|SGH|SHV|SHW|SPH|SC|SM)\\-[A-Za-z0-9 ]+)(/?[^ ]*)? Build");
-parser[1] = "Samsung $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[345] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp(" ((?:SCH)\\-[A-Za-z0-9 ]+)(/?[^ ]*)? Build");
-parser[1] = "Samsung $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[346] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Behold ?(?:2|II)|YP\\-G[^;/]+|EK-GC100|SCL21|I9300) Build");
-parser[1] = "Samsung $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[347] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(SH\\-?\\d\\d[^;/]+|SBM\\d[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[348] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(SHARP[ -])([^;/]+) Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[349] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(SPX[_\\-]\\d[^;/]*) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[350] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(SX7\\-PEARL\\.GmbH) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[351] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(SP[T]?\\-\\d{2}[^;/]*) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[352] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(SK\\-.*) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[353] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:SKYTEX|SX)-([^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[354] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(IMAGINE [^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[355] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(SmartQ) ?([^;/]+) Build/");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[356] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(WF7C|WF10C|SBT[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[357] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(SBM(?:003SH|005SH|006SH|007SH|102SH)) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[358] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(003P|101P|101P11C|102P) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[359] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(00\\dZ) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[360] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; HTC(X06HT) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[361] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(001HT|X06HT) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[362] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(201M) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[363] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(ST\\d{4}.*)Build/ST");
-parser[1] = "Trekstor $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[364] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(ST\\d{4}.*) Build/");
-parser[1] = "Trekstor $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[365] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Sony ?Ericsson ?)([^;/]+) Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[366] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *((?:SK|ST|E|X|LT|MK|MT|WT)\\d{2}[a-z0-9]*(?:-o)?|R800i|U20i) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[367] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Xperia (?:A8|Arc|Acro|Active|Live with Walkman|Mini|Neo|Play|Pro|Ray|X\\d+)[^;/]*) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[368] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; Sony (Tablet[^;/]+) Build");
-parser[1] = "Sony $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[369] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; Sony ([^;/]+) Build");
-parser[1] = "Sony $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[370] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Sony)([A-Za-z0-9\\-]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[371] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Xperia [^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[372] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(C(?:1[0-9]|2[0-9]|53|55|6[0-9])[0-9]{2}|D[25]\\d{3}|D6[56]\\d{2}) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[373] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(SGP\\d{3}|SGPT\\d{2}) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[374] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(NW-Z1000Series) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[375] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("PLAYSTATION 3");
-parser[1] = "PlayStation 3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[376] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(PlayStation (?:Portable|Vita|\\d+))");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[377] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *((?:CSL_Spice|Spice|SPICE|CSL)[ _\\-]?)?([Mm][Ii])([ _\\-])?(\\d{3}[^;/]*) Build/");
-parser[1] = "$1$2$3$4";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[378] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Sprint )(.+?) *(?:Build|[;/])");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[379] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\b(Sprint)[: ]([^;,/ ]+)");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[380] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(TAGI[ ]?)(MID) ?([^;/]+) Build/");
-parser[1] = "$1$2$3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[381] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Oyster500|Opal 800) Build");
-parser[1] = "Tecmobile $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[382] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(TECNO[ _])([^;/]+) Build/");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[383] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *Android for (Telechips|Techvision) ([^ ]+) ");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[384] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(T-Hub2) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[385] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(PAD) ?(100[12]) Build/");
-parser[1] = "Terra $1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[386] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(T[BM]-\\d{3}[^;/]+) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[387] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(tolino [^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[388] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *Build/.* (TOLINO_BROWSER)");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[389] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:CJ[ -])?(ThL|THL)[ -]([^;/]+) Build/");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[390] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(T100|T200|T5|W100|W200|W8s) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[391] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(T-Mobile[ _]G2[ _]Touch) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[392] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(T-Mobile[ _]G2) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[393] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(T-Mobile myTouch Q) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[394] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(T-Mobile myTouch) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[395] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(T-Mobile_Espresso) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[396] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(T-Mobile G1) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[397] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\b(T-Mobile ?)?(myTouch)[ _]?([34]G)[ _]?([^\\/]*) (?:Mozilla|Build)");
-parser[1] = "$1$2 $3 $4";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[398] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\b(T-Mobile)_([^_]+)_(.*) Build");
-parser[1] = "$1 $2 $3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[399] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\b(T-Mobile)[_ ]?(.*?)Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[400] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp(" (ATP[0-9]{4}) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[401] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp(" *(TOOKY)[ _\\-]([^;/]+) ?(?:Build|;)");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[402] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\b(TOSHIBA_AC_AND_AZ|TOSHIBA_FOLIO_AND_A|FOLIO_AND_A)");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[403] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *([Ff]olio ?100) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[404] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(AT[0-9]{2,3}(?:\\-A|LE\\-A|PE\\-A|SE|a)?|AT7-A|AT1S0|Hikari-iFrame/WDPF-[^;/]+|THRiVE|Thrive) Build/");
-parser[1] = "Toshiba $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[405] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(TM-MID\\d+[^;/]+|TOUCHMATE|MID-750) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[406] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(TM-SM\\d+[^;/]+) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[407] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(A10 [Bb]asic2?) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[408] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(TREQ[ _\\-])([^;/]+) Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[409] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(X-?5|X-?3) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[410] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(A502\\+?|A936|A603|X1|X2) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[411] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(TOUCH(?:TAB|PAD).+?) Build/");
-parser[1] = "Versus $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[412] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(VERTU) ([^;/]+) Build/");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[413] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Videocon)[ _\\-]([^;/]+) *(?:Build|;)");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[414] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp(" (VT\\d{2}[A-Za-z]*) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[415] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *((?:ViewPad|ViewPhone|VSD)[^;/]+) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[416] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(ViewSonic-)([^;/]+) Build/");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[417] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(GTablet.*) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[418] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *([Vv]ivo)[ _]([^;/]+) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[419] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Vodafone) (.*) Build/");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[420] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Walton[ _\\-])?(Primo[ _\\-][^;/]+) Build");
-parser[1] = "Walton $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[421] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:WIKO[ \\-])?(CINK\\+?|BARRY|BLOOM|DARKFULL|DARKMOON|DARKNIGHT|DARKSIDE|FIZZ|HIGHWAY|IGGY|OZZY|RAINBOW|STAIRWAY|SUBLIM|WAX|CINK [^;/]+) Build/");
-parser[1] = "Wiko $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[422] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *WellcoM-([^;/]+) Build");
-parser[1] = "Wellcom $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[423] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:(WeTab)-Browser|; (wetab) Build)");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[424] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(AT-AS[^;/]+) Build");
-parser[1] = "Wolfgang $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[425] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Woxter|Wxt) ([^;/]+) Build");
-parser[1] = "Woxter $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[426] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Xenta |Luna )?(TAB[234][0-9]{2}|TAB0[78]-\\d{3}|TAB0?9-\\d{3}|TAB1[03]-\\d{3}|SMP\\d{2}-\\d{3}) Build/");
-parser[1] = "Yarvik $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[427] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *([A-Z]{2,4})(M\\d{3,}[A-Z]{2})([^;\\)\\/]*)(?: Build|[;\\)])");
-parser[1] = "Yifang $1$2$3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[428] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *((MI|HM|MI-ONE|Redmi)[ -](NOTE |Note )?[^;/]*) (Build|MIUI)/");
-parser[1] = "XiaoMi $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[429] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *XOLO[ _]([^;/]*tab.*) Build");
-parser[1] = "Xolo $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[430] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *XOLO[ _]([^;/]+) Build");
-parser[1] = "Xolo $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[431] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(q\\d0{2,3}[a-z]?) Build");
-parser[1] = "Xolo $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[432] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(PAD ?[79]\\d+[^;/]*|TelePAD\\d+[^;/]) Build");
-parser[1] = "Xoro $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[433] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:(?:ZOPO|Zopo)[ _]([^;/]+)|(ZP ?(?:\\d{2}[^;/]+|C2))|(C[2379])) Build");
-parser[1] = "$1$2$3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[434] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(ZiiLABS) (Zii[^;/]*) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[435] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Zii)_([^;/]*) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[436] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(ARIZONA|(?:ATLAS|Atlas) W|D930|Grand (?:[SX][^;]*|Era|Memo[^;]*)|JOE|(?:Kis|KIS)\\b[^;]*|Libra|Light [^;]*|N8[056][01]|N850L|N8000|N9[15]\\d{2}|N9810|NX501|Optik|(?:Vip )Racer[^;]*|RacerII|RACERII|San Francisco[^;]*|V9[AC]|V55|V881|Z[679][0-9]{2}[A-z]?) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[437] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *([A-Z]\\d+)_USA_[^;]* Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[438] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(SmartTab\\d+)[^;]* Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[439] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Blade|BLADE|ZTE-BLADE)([^;/]*) Build");
-parser[1] = "ZTE Blade$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[440] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:Skate|SKATE|ZTE-SKATE)([^;/]*) Build");
-parser[1] = "ZTE Skate$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[441] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(Orange |Optimus )(Monte Carlo|San Francisco) Build");
-parser[1] = "$1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[442] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(?:ZXY-ZTE_|ZTE\\-U |ZTE[\\- _]|ZTE-C[_ ])([^;/]+) Build");
-parser[1] = "ZTE $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[443] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; (BASE) (lutea|Lutea 2|Tab[^;]*) Build");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[444] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; (Avea inTouch 2|soft stone|tmn smart a7|Movistar[ _]Link) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[445] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(vp9plus)\\)");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[446] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; ?(Cloud[ _]Z5|z1000|Z99 2G|z99|z930|z999|z990|z909|Z919|z900) Build/");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[447] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; ?(KFOT|Kindle Fire) Build\\b");
-parser[1] = "Kindle Fire";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[448] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; ?(KFOTE|Amazon Kindle Fire2) Build\\b");
-parser[1] = "Kindle Fire 2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[449] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; ?(KFTT) Build\\b");
-parser[1] = "Kindle Fire HD";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[450] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; ?(KFJWI) Build\\b");
-parser[1] = "Kindle Fire HD 8.9\" WiFi";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[451] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; ?(KFJWA) Build\\b");
-parser[1] = "Kindle Fire HD 8.9\" 4G";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[452] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; ?(KFSOWI) Build\\b");
-parser[1] = "Kindle Fire HD 7\" WiFi";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[453] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; ?(KFTHWI) Build\\b");
-parser[1] = "Kindle Fire HDX 7\" WiFi";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[454] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; ?(KFTHWA) Build\\b");
-parser[1] = "Kindle Fire HDX 7\" 4G";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[455] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; ?(KFAPWI) Build\\b");
-parser[1] = "Kindle Fire HDX 8.9\" WiFi";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[456] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; ?(KFAPWA) Build\\b");
-parser[1] = "Kindle Fire HDX 8.9\" 4G";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[457] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; ?Amazon ([^;/]+) Build\\b");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[458] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; ?(Kindle) Build\\b");
-parser[1] = "Kindle";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[459] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; ?(Silk)/(\\d+)\\.(\\d+)(?:\\.([0-9\\-]+))? Build\\b");
-parser[1] = "Kindle Fire";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[460] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp(" (Kindle)/(\\d+\\.\\d+)");
-parser[1] = "Kindle";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[461] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp(" (Silk|Kindle)/(\\d+)\\.");
-parser[1] = "Kindle";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[462] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(sprd)\\-([^/]+)/");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[463] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(H\\d{2}00\\+?) Build");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[464] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(iphone|iPhone5) Build/");
-parser[1] = "Xianghe $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[465] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; *(e\\d{4}[a-z]?_?v\\d+|v89_[^;/]+)[^;/]+ Build/");
-parser[1] = "Xianghe $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[466] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\bUSCC[_\\-]?([^ ;/\\)]+)");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[467] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?)?(?:ALCATEL)[^;]*; *([^;,\\)]+)");
-parser[1] = "Alcatel $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[468] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?|WpsLondonTest; ?)?(?:ASUS|Asus)[^;]*; *([^;,\\)]+)");
-parser[1] = "Asus $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[469] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?)?(?:DELL|Dell)[^;]*; *([^;,\\)]+)");
-parser[1] = "Dell $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[470] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?|WpsLondonTest; ?)?(?:HTC|Htc|HTC_blocked[^;]*)[^;]*; *(?:HTC)?([^;,\\)]+)");
-parser[1] = "HTC $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[471] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?)?(?:HUAWEI)[^;]*; *(?:HUAWEI )?([^;,\\)]+)");
-parser[1] = "Huawei $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[472] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?)?(?:LG|Lg)[^;]*; *(?:LG[ \\-])?([^;,\\)]+)");
-parser[1] = "LG $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[473] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?)?(?:rv:11; )?(?:NOKIA|Nokia)[^;]*; *(?:NOKIA ?|Nokia ?|LUMIA ?|[Ll]umia ?)*(\\d{3,}[^;\\)]*)");
-parser[1] = "Lumia $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[474] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?)?(?:NOKIA|Nokia)[^;]*; *(RM-\\d{3,})");
-parser[1] = "Nokia $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[475] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)]|WPDesktop;) ?(?:ARM; ?Touch; ?|Touch; ?)?(?:NOKIA|Nokia)[^;]*; *(?:NOKIA ?|Nokia ?|LUMIA ?|[Ll]umia ?)*([^;\\)]+)");
-parser[1] = "Nokia $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[476] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?)?(?:Microsoft(?: Corporation)?)[^;]*; *([^;,\\)]+)");
-parser[1] = "Microsoft $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[477] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?|WpsLondonTest; ?)?(?:SAMSUNG)[^;]*; *(?:SAMSUNG )?([^;,\\.\\)]+)");
-parser[1] = "Samsung $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[478] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?|WpsLondonTest; ?)?(?:TOSHIBA|FujitsuToshibaMobileCommun)[^;]*; *([^;,\\)]+)");
-parser[1] = "Toshiba $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[479] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?|WpsLondonTest; ?)?([^;]+); *([^;,\\)]+)");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[480] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:^|; )SAMSUNG\\-([A-Za-z0-9\\-]+).* Bada/");
-parser[1] = "Samsung $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[481] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\(Mobile; ALCATEL ?(One|ONE) ?(Touch|TOUCH) ?([^;/]+)(?:/[^;]+)?; rv:[^\\)]+\\) Gecko/[^\\/]+ Firefox/");
-parser[1] = "Alcatel $1 $2 $3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[482] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\(Mobile; (?:ZTE([^;]+)|(OpenC)); rv:[^\\)]+\\) Gecko/[^\\/]+ Firefox/");
-parser[1] = "ZTE $1$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[483] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Nokia(N[0-9]+)([A-z_\\-][A-z0-9_\\-]*)");
-parser[1] = "Nokia $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[484] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:NOKIA|Nokia)(?:\\-| *)(?:([A-Za-z0-9]+)\\-[0-9a-f]{32}|([A-Za-z0-9\\-]+)(?:UCBrowser)|([A-Za-z0-9\\-]+))");
-parser[1] = "Nokia $1$2$3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[485] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Lumia ([A-Za-z0-9\\-]+)");
-parser[1] = "Lumia $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[486] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\(Symbian; U; S60 V5; [A-z]{2}\\-[A-z]{2}; (SonyEricsson|Samsung|Nokia|LG)([^;/]+)\\)");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[487] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\(Symbian(?:/3)?; U; ([^;]+);");
-parser[1] = "Nokia $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[488] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("BB10; ([A-Za-z0-9\\- ]+)\\)");
-parser[1] = "BlackBerry $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[489] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Play[Bb]ook.+RIM Tablet OS");
-parser[1] = "BlackBerry Playbook";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[490] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Black[Bb]erry ([0-9]+);");
-parser[1] = "BlackBerry $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[491] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Black[Bb]erry([0-9]+)");
-parser[1] = "BlackBerry $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[492] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Black[Bb]erry;");
-parser[1] = "BlackBerry";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[493] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Pre|Pixi)/\\d+\\.\\d+");
-parser[1] = "Palm $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[494] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Palm([0-9]+)");
-parser[1] = "Palm $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[495] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Treo([A-Za-z0-9]+)");
-parser[1] = "Palm Treo $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[496] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("webOS.*(P160U(?:NA)?)/(\\d+).(\\d+)");
-parser[1] = "HP Veer";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[497] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Touch[Pp]ad)/\\d+\\.\\d+");
-parser[1] = "HP TouchPad";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[498] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("HPiPAQ([A-Za-z0-9]+)/\\d+.\\d+");
-parser[1] = "HP iPAQ $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[499] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("PDA; (PalmOS)/sony/model ([a-z]+)/Revision");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[500] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Apple\\s?TV)");
-parser[1] = "AppleTV";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[501] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(QtCarBrowser)");
-parser[1] = "Tesla Model S";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[502] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(iPhone|iPad|iPod)(\\d+,\\d+)");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[503] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(iPad)(?:;| Simulator;)");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[504] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(iPod)(?:;| touch;| Simulator;)");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[505] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(iPhone)(?:;| Simulator;)");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[506] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("CFNetwork/.* Darwin/\\d.*\\(((?:Mac|iMac|PowerMac|PowerBook)[^\\d]*)(\\d+)(?:,|%2C)(\\d+)");
-parser[1] = "$1$2,$3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[507] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("CFNetwork/.* Darwin/\\d+\\.\\d+\\.\\d+ \\(x86_64\\)");
-parser[1] = "Mac";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[508] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("CFNetwork/.* Darwin/\\d");
-parser[1] = "iOS-Device";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[509] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("acer_([A-Za-z0-9]+)_");
-parser[1] = "Acer $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[510] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:ALCATEL|Alcatel)-([A-Za-z0-9\\-]+)");
-parser[1] = "Alcatel $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[511] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:Amoi|AMOI)\\-([A-Za-z0-9]+)");
-parser[1] = "Amoi $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[512] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:; |\\/|^)((?:Transformer (?:Pad|Prime) |Transformer |PadFone[ _]?)[A-Za-z0-9]*)");
-parser[1] = "Asus $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[513] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:asus.*?ASUS|Asus|ASUS|asus)[\\- ;]*((?:Transformer (?:Pad|Prime) |Transformer |Padfone |Nexus[ _])?[A-Za-z0-9]+)");
-parser[1] = "Asus $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[514] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\bBIRD[ \\-\\.]([A-Za-z0-9]+)");
-parser[1] = "Bird $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[515] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\bDell ([A-Za-z0-9]+)");
-parser[1] = "Dell $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[516] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("DoCoMo/2\\.0 ([A-Za-z0-9]+)");
-parser[1] = "DoCoMo $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[517] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("([A-Za-z0-9]+)_W;FOMA");
-parser[1] = "DoCoMo $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[518] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("([A-Za-z0-9]+);FOMA");
-parser[1] = "DoCoMo $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[519] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\b(?:HTC/|HTC/[a-z0-9]+/)?HTC[ _\\-;]? *(.*?)(?:-?Mozilla|fingerPrint|[;/\\(\\)]|$)");
-parser[1] = "HTC $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[520] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Huawei([A-Za-z0-9]+)");
-parser[1] = "Huawei $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[521] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("HUAWEI-([A-Za-z0-9]+)");
-parser[1] = "Huawei $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[522] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("vodafone([A-Za-z0-9]+)");
-parser[1] = "Huawei Vodafone $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[523] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("i\\-mate ([A-Za-z0-9]+)");
-parser[1] = "i-mate $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[524] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Kyocera\\-([A-Za-z0-9]+)");
-parser[1] = "Kyocera $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[525] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("KWC\\-([A-Za-z0-9]+)");
-parser[1] = "Kyocera $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[526] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Lenovo[_\\-]([A-Za-z0-9]+)");
-parser[1] = "Lenovo $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[527] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(HbbTV)/[0-9]+\\.[0-9]+\\.[0-9]+ \\([^;]*; *(LG)E *; *([^;]*) *;[^;]*;[^;]*;\\)");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[528] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(HbbTV)/1\\.1\\.1.*CE-HTML/1\\.\\d;(Vendor/)*(THOM[^;]*?)[;\\s](?:.*SW-Version/.*)*(LF[^;]+);?");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[529] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(HbbTV)(?:/1\\.1\\.1)?(?: ?\\(;;;;;\\))?; *CE-HTML(?:/1\\.\\d)?; *([^ ]+) ([^;]+);");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[530] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(HbbTV)/1\\.1\\.1 \\(;;;;;\\) Maple_2011");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[531] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(HbbTV)/[0-9]+\\.[0-9]+\\.[0-9]+ \\([^;]*; *(?:CUS:([^;]*)|([^;]+)) *; *([^;]*) *;.*;");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[532] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(HbbTV)/[0-9]+\\.[0-9]+\\.[0-9]+");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[533] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("LGE; (?:Media\\/)?([^;]*);[^;]*;[^;]*;?\\); \"?LG NetCast(\\.TV|\\.Media|)-\\d+");
-parser[1] = "NetCast$2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[534] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("InettvBrowser/[0-9]+\\.[0-9A-Z]+ \\([^;]*;(Sony)([^;]*);[^;]*;[^\\)]*\\)");
-parser[1] = "Inettv";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[535] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("InettvBrowser/[0-9]+\\.[0-9A-Z]+ \\([^;]*;([^;]*);[^;]*;[^\\)]*\\)");
-parser[1] = "Inettv";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[536] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:InettvBrowser|TSBNetTV|NETTV|HBBTV)");
-parser[1] = "Inettv";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[537] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Series60/\\d\\.\\d (LG)[\\-]?([A-Za-z0-9 \\-]+)");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[538] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\b(?:LGE[ \\-]LG\\-(?:AX)?|LGE |LGE?-LG|LGE?[ \\-]|LG[ /\\-]|lg[\\-])([A-Za-z0-9]+)\\b");
-parser[1] = "LG $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[539] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:^LG[\\-]?|^LGE[\\-/]?)([A-Za-z]+[0-9]+[A-Za-z]*)");
-parser[1] = "LG $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[540] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("^LG([0-9]+[A-Za-z]*)");
-parser[1] = "LG $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[541] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(KIN\\.[^ ]+) (\\d+)\\.(\\d+)");
-parser[1] = "Microsoft $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[542] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:MSIE|XBMC).*\\b(Xbox)\\b");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[543] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("; ARM; Trident/6\\.0; Touch[\\);]");
-parser[1] = "Microsoft Surface RT";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[544] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Motorola\\-([A-Za-z0-9]+)");
-parser[1] = "Motorola $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[545] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("MOTO\\-([A-Za-z0-9]+)");
-parser[1] = "Motorola $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[546] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("MOT\\-([A-z0-9][A-z0-9\\-]*)");
-parser[1] = "Motorola $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[547] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Nintendo WiiU");
-parser[1] = "Nintendo Wii U";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[548] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Nintendo (DS|3DS|DSi|Wii);");
-parser[1] = "Nintendo $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[549] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:Pantech|PANTECH)[ _-]?([A-Za-z0-9\\-]+)");
-parser[1] = "Pantech $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[550] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Philips([A-Za-z0-9]+)");
-parser[1] = "Philips $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[551] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Philips ([A-Za-z0-9]+)");
-parser[1] = "Philips $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[552] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(SMART-TV); .* Tizen ");
-parser[1] = "Samsung $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[553] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("SymbianOS/9\\.\\d.* Samsung[/\\-]([A-Za-z0-9 \\-]+)");
-parser[1] = "Samsung $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[554] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Samsung)(SGH)(i[0-9]+)");
-parser[1] = "$1 $2$3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[555] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("SAMSUNG-ANDROID-MMS/([^;/]+)");
-parser[1] = "$1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[556] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("SAMSUNG(?:; |[ -/])([A-Za-z0-9\\-]+)");
-parser[1] = "Samsung $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[557] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Dreamcast)");
-parser[1] = "Sega $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[558] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("^SIE-([A-Za-z0-9]+)");
-parser[1] = "Siemens $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[559] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Softbank/[12]\\.0/([A-Za-z0-9]+)");
-parser[1] = "Softbank $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[560] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("SonyEricsson ?([A-Za-z0-9\\-]+)");
-parser[1] = "Ericsson $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[561] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Android [^;]+; ([^ ]+) (Sony)/");
-parser[1] = "$2 $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[562] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Sony)(?:BDP\\/|\\/)?([^ /;\\)]+)[ /;\\)]");
-parser[1] = "$1 $2";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[563] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Puffin/[\\d\\.]+IT");
-parser[1] = "iPad";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[564] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Puffin/[\\d\\.]+IP");
-parser[1] = "iPhone";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[565] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Puffin/[\\d\\.]+AT");
-parser[1] = "Generic Tablet";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[566] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Puffin/[\\d\\.]+AP");
-parser[1] = "Generic Smartphone";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[567] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Android[\\- ][\\d]+\\.[\\d]+; [A-Za-z]{2}\\-[A-Za-z]{0,2}; WOWMobile (.+) Build[/ ]");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[568] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Android[\\- ][\\d]+\\.[\\d]+\\-update1; [A-Za-z]{2}\\-[A-Za-z]{0,2} *; *(.+?) Build[/ ]");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[569] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Android[\\- ][\\d]+(?:\\.[\\d]+){1,2}; *[A-Za-z]{2}[_\\-][A-Za-z]{0,2}\\-? *; *(.+?) Build[/ ]");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[570] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Android[\\- ][\\d]+(?:\\.[\\d]+){1,2}; *[A-Za-z]{0,2}\\- *; *(.+?) Build[/ ]");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[571] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Android[\\- ][\\d]+(?:\\.[\\d]+){1,2}; *[a-z]{0,2}[_\\-]?[A-Za-z]{0,2};? Build[/ ]");
-parser[1] = "Generic Smartphone";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[572] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Android[\\- ][\\d]+(?:\\.[\\d]+){1,2}; *\\-?[A-Za-z]{2}; *(.+?) Build[/ ]");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[573] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Android[\\- ][\\d]+(?:\\.[\\d]+){1,2}(?:;.*)?; *(.+?) Build[/ ]");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[574] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(GoogleTV)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[575] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(WebTV)/\\d+.\\d+");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[576] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("^(Roku)/DVP-\\d+\\.\\d+");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[577] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Android 3\\.\\d|Opera Tablet|Tablet; .+Firefox/|Android.*(?:Tab|Pad))");
-parser[1] = "Generic Tablet";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[578] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Symbian|\\bS60(Version|V\\d)|\\bS60\\b|\\((Series 60|Windows Mobile|Palm OS|Bada); Opera Mini|Windows CE|Opera Mobi|BREW|Brew|Mobile; .+Firefox/|iPhone OS|Android|MobileSafari|Windows *Phone|\\(webOS/|PalmOS)");
-parser[1] = "Generic Smartphone";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[579] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(hiptop|avantgo|plucker|xiino|blazer|elaine)");
-parser[1] = "Generic Smartphone";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[580] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(bot|zao|borg|DBot|oegp|silk|Xenu|zeal|^NING|CCBot|crawl|htdig|lycos|slurp|teoma|voila|yahoo|Sogou|CiBra|Nutch|^Java/|^JNLP/|Daumoa|Genieo|ichiro|larbin|pompos|Scrapy|snappy|speedy|spider|msnbot|msrbot|vortex|^vortex|crawler|favicon|indexer|Riddler|scooter|scraper|scrubby|WhatWeb|WinHTTP|bingbot|BingPreview|openbot|gigabot|furlbot|polybot|seekbot|^voyager|archiver|Icarus6j|mogimogi|Netvibes|blitzbot|altavista|charlotte|findlinks|Retreiver|TLSProber|WordPress|SeznamBot|ProoXiBot|wsr\\-agent|Squrl Java|EtaoSpider|PaperLiBot|SputnikBot|A6\\-Indexer|netresearch|searchsight|baiduspider|YisouSpider|ICC\\-Crawler|http%20client|Python-urllib|dataparksearch|converacrawler|Screaming Frog|AppEngine-Google|YahooCacheSystem|fast\\-webcrawler|Sogou Pic Spider|semanticdiscovery|Innovazion Crawler|facebookexternalhit|Google.*/\\+/web/snippet|Google-HTTP-Java-Client|BlogBridge|IlTrovatore-Setaccio|InternetArchive|GomezAgent|WebThumbnail|heritrix|NewsGator|PagePeeker|Reaper|ZooShot|holmes|NL-Crawler|Pingdom|StatusCake|WhatsApp|masscan|Google Web Preview|Qwantify)");
-parser[1] = "Spider";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[581] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("^(1207|3gso|4thp|501i|502i|503i|504i|505i|506i|6310|6590|770s|802s|a wa|acer|acs\\-|airn|alav|asus|attw|au\\-m|aur |aus |abac|acoo|aiko|alco|alca|amoi|anex|anny|anyw|aptu|arch|argo|bmobile|bell|bird|bw\\-n|bw\\-u|beck|benq|bilb|blac|c55/|cdm\\-|chtm|capi|comp|cond|dall|dbte|dc\\-s|dica|ds\\-d|ds12|dait|devi|dmob|doco|dopo|dorado|el(?:38|39|48|49|50|55|58|68)|el[3456]\\d{2}dual|erk0|esl8|ex300|ez40|ez60|ez70|ezos|ezze|elai|emul|eric|ezwa|fake|fly\\-|fly_|g\\-mo|g1 u|g560|gf\\-5|grun|gene|go.w|good|grad|hcit|hd\\-m|hd\\-p|hd\\-t|hei\\-|hp i|hpip|hs\\-c|htc |htc\\-|htca|htcg)");
-parser[1] = "Generic Feature Phone";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[582] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("^(htcp|htcs|htct|htc_|haie|hita|huaw|hutc|i\\-20|i\\-go|i\\-ma|i\\-mobile|i230|iac|iac\\-|iac/|ig01|im1k|inno|iris|jata|kddi|kgt|kgt/|kpt |kwc\\-|klon|lexi|lg g|lg\\-a|lg\\-b|lg\\-c|lg\\-d|lg\\-f|lg\\-g|lg\\-k|lg\\-l|lg\\-m|lg\\-o|lg\\-p|lg\\-s|lg\\-t|lg\\-u|lg\\-w|lg/k|lg/l|lg/u|lg50|lg54|lge\\-|lge/|leno|m1\\-w|m3ga|m50/|maui|mc01|mc21|mcca|medi|meri|mio8|mioa|mo01|mo02|mode|modo|mot |mot\\-|mt50|mtp1|mtv |mate|maxo|merc|mits|mobi|motv|mozz|n100|n101|n102|n202|n203|n300|n302|n500|n502|n505|n700|n701|n710|nec\\-|nem\\-|newg|neon)");
-parser[1] = "Generic Feature Phone";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[583] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("^(netf|noki|nzph|o2 x|o2\\-x|opwv|owg1|opti|oran|ot\\-s|p800|pand|pg\\-1|pg\\-2|pg\\-3|pg\\-6|pg\\-8|pg\\-c|pg13|phil|pn\\-2|pt\\-g|palm|pana|pire|pock|pose|psio|qa\\-a|qc\\-2|qc\\-3|qc\\-5|qc\\-7|qc07|qc12|qc21|qc32|qc60|qci\\-|qwap|qtek|r380|r600|raks|rim9|rove|s55/|sage|sams|sc01|sch\\-|scp\\-|sdk/|se47|sec\\-|sec0|sec1|semc|sgh\\-|shar|sie\\-|sk\\-0|sl45|slid|smb3|smt5|sp01|sph\\-|spv |spv\\-|sy01|samm|sany|sava|scoo|send|siem|smar|smit|soft|sony|t\\-mo|t218|t250|t600|t610|t618|tcl\\-|tdg\\-|telm|tim\\-|ts70|tsm\\-|tsm3|tsm5|tx\\-9|tagt)");
-parser[1] = "Generic Feature Phone";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[584] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("^(talk|teli|topl|tosh|up.b|upg1|utst|v400|v750|veri|vk\\-v|vk40|vk50|vk52|vk53|vm40|vx98|virg|vertu|vite|voda|vulc|w3c |w3c\\-|wapj|wapp|wapu|wapm|wig |wapi|wapr|wapv|wapy|wapa|waps|wapt|winc|winw|wonu|x700|xda2|xdag|yas\\-|your|zte\\-|zeto|aste|audi|avan|blaz|brew|brvw|bumb|ccwa|cell|cldc|cmd\\-|dang|eml2|fetc|hipt|http|ibro|idea|ikom|ipaq|jbro|jemu|jigs|keji|kyoc|kyok|libw|m\\-cr|midp|mmef|moto|mwbp|mywa|newt|nok6|o2im|pant|pdxg|play|pluc|port|prox|rozo|sama|seri|smal|symb|treo|upsi|vx52|vx53|vx60|vx61|vx70|vx80|vx81|vx83|vx85|wap\\-|webc|whit|wmlb|xda\\-|xda_)");
-parser[1] = "Generic Feature Phone";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[585] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("^(Ice)$");
-parser[1] = "Generic Feature Phone";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[586] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(wap[\\-\\ ]browser|maui|netfront|obigo|teleca|up\\.browser|midp|Opera Mini)");
-parser[1] = "Generic Feature Phone";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.device[587] = parser;
+browser[3] = [new RegExp("(PingdomTMS)/(\\d+)\\.(\\d+)\\.(\\d+)"),"PingdomBot",0,0,0];
 
-exports.device.length = 588;
+browser[4] = [new RegExp("(\\(StatusCake\\))"),"StatusCakeBot",0,0,0];
 
-exports.os = Object.create(null);
+browser[5] = [new RegExp("(facebookexternalhit)/(\\d+)\\.(\\d+)"),"FacebookBot",0,0,0];
 
-parser = Object.create(null);
-parser[0] = new RegExp("HbbTV/\\d+\\.\\d+\\.\\d+ \\( ;(LG)E ;NetCast 4.0");
-parser[1] = 0;
-parser[2] = "2013";
-parser[3] = 0;
-parser[4] = 0;
-exports.os[0] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("HbbTV/\\d+\\.\\d+\\.\\d+ \\( ;(LG)E ;NetCast 3.0");
-parser[1] = 0;
-parser[2] = "2012";
-parser[3] = 0;
-parser[4] = 0;
-exports.os[1] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("HbbTV/1.1.1 \\(;;;;;\\) Maple_2011");
-parser[1] = "Samsung";
-parser[2] = "2011";
-parser[3] = 0;
-parser[4] = 0;
-exports.os[2] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("HbbTV/\\d+\\.\\d+\\.\\d+ \\(;(Samsung);SmartTV([0-9]{4});.*FXPDEUC");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = "UE40F7000";
-parser[4] = 0;
-exports.os[3] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("HbbTV/\\d+\\.\\d+\\.\\d+ \\(;(Samsung);SmartTV([0-9]{4});.*MST12DEUC");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = "UE32F4500";
-parser[4] = 0;
-exports.os[4] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("HbbTV/1.1.1 \\(; (Philips);.*NETTV/4");
-parser[1] = 0;
-parser[2] = "2013";
-parser[3] = 0;
-parser[4] = 0;
-exports.os[5] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("HbbTV/1.1.1 \\(; (Philips);.*NETTV/3");
-parser[1] = 0;
-parser[2] = "2012";
-parser[3] = 0;
-parser[4] = 0;
-exports.os[6] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("HbbTV/1.1.1 \\(; (Philips);.*NETTV/2");
-parser[1] = 0;
-parser[2] = "2011";
-parser[3] = 0;
-parser[4] = 0;
-exports.os[7] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("HbbTV/\\d+\\.\\d+\\.\\d+.*(firetv)-firefox-plugin (\\d+).(\\d+).(\\d+)");
-parser[1] = "FireHbbTV";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[8] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("HbbTV/\\d+\\.\\d+\\.\\d+ \\(.*; ?([a-zA-Z]+) ?;.*(201[1-9]).*\\)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[9] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Windows Phone) (?:OS[ /])?(\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[10] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone)[ +]+(\\d+)[_\\.](\\d+)(?:[_\\.](\\d+))?.*Outlook-iOS-Android");
-parser[1] = "iOS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[11] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Android)[ \\-/](\\d+)\\.(\\d+)(?:[.\\-]([a-z0-9]+))?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[12] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Android) Donut");
-parser[1] = 0;
-parser[2] = "1";
-parser[3] = "2";
-parser[4] = 0;
-exports.os[13] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Android) Eclair");
-parser[1] = 0;
-parser[2] = "2";
-parser[3] = "1";
-parser[4] = 0;
-exports.os[14] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Android) Froyo");
-parser[1] = 0;
-parser[2] = "2";
-parser[3] = "2";
-parser[4] = 0;
-exports.os[15] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Android) Gingerbread");
-parser[1] = 0;
-parser[2] = "2";
-parser[3] = "3";
-parser[4] = 0;
-exports.os[16] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Android) Honeycomb");
-parser[1] = 0;
-parser[2] = "3";
-parser[3] = 0;
-parser[4] = 0;
-exports.os[17] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("^UCWEB.*; (Adr) (\\d+)\\.(\\d+)(?:[.\\-]([a-z0-9]+))?;");
-parser[1] = "Android";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[18] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("^UCWEB.*; (iPad|iPh|iPd) OS (\\d+)_(\\d+)(?:_(\\d+))?;");
-parser[1] = "iOS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[19] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("^UCWEB.*; (wds) (\\d+)\\.(\\d+)(?:\\.(\\d+))?;");
-parser[1] = "Windows Phone";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[20] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("^(JUC).*; ?U; ?(?:Android)?(\\d+)\\.(\\d+)(?:[\\.\\-]([a-z0-9]+))?");
-parser[1] = "Android";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[21] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Silk-Accelerated=[a-z]{4,5})");
-parser[1] = "Android";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[22] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(XBLWP7)");
-parser[1] = "Windows Phone";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[23] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Windows ?Mobile)");
-parser[1] = "Windows Mobile";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[24] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Windows (?:NT 5\\.2|NT 5\\.1))");
-parser[1] = "Windows XP";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[25] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Windows NT 6\\.1)");
-parser[1] = "Windows 7";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[26] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Windows NT 6\\.0)");
-parser[1] = "Windows Vista";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[27] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Win 9x 4\\.90)");
-parser[1] = "Windows ME";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[28] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Windows 98|Windows XP|Windows ME|Windows 95|Windows CE|Windows 7|Windows NT 4\\.0|Windows Vista|Windows 2000|Windows 3.1)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[29] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Windows NT 6\\.2; ARM;)");
-parser[1] = "Windows RT";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[30] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Windows NT 6\\.2)");
-parser[1] = "Windows 8";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[31] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Windows NT 6\\.3; ARM;)");
-parser[1] = "Windows RT 8.1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[32] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Windows NT 6\\.3)");
-parser[1] = "Windows 8.1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[33] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Windows NT 6\\.4)");
-parser[1] = "Windows 10";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[34] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Windows NT 10\\.0)");
-parser[1] = "Windows 10";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[35] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Windows NT 5\\.0)");
-parser[1] = "Windows 2000";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[36] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(WinNT4.0)");
-parser[1] = "Windows NT 4.0";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[37] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Windows ?CE)");
-parser[1] = "Windows CE";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[38] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Win ?(95|98|3.1|NT|ME|2000)");
-parser[1] = "Windows $1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[39] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Win16");
-parser[1] = "Windows 3.1";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[40] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Win32");
-parser[1] = "Windows 95";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[41] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Tizen)[/ ](\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[42] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("((?:Mac[ +]?|; )OS[ +]X)[\\s+/](?:(\\d+)[_.](\\d+)(?:[_.](\\d+))?|Mach-O)");
-parser[1] = "Mac OS X";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[43] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp(" (Dar)(win)/(9).(\\d+).*\\((?:i386|x86_64|Power Macintosh)\\)");
-parser[1] = "Mac OS X";
-parser[2] = "10";
-parser[3] = "5";
-parser[4] = 0;
-exports.os[44] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp(" (Dar)(win)/(10).(\\d+).*\\((?:i386|x86_64)\\)");
-parser[1] = "Mac OS X";
-parser[2] = "10";
-parser[3] = "6";
-parser[4] = 0;
-exports.os[45] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp(" (Dar)(win)/(11).(\\d+).*\\((?:i386|x86_64)\\)");
-parser[1] = "Mac OS X";
-parser[2] = "10";
-parser[3] = "7";
-parser[4] = 0;
-exports.os[46] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp(" (Dar)(win)/(12).(\\d+).*\\((?:i386|x86_64)\\)");
-parser[1] = "Mac OS X";
-parser[2] = "10";
-parser[3] = "8";
-parser[4] = 0;
-exports.os[47] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp(" (Dar)(win)/(13).(\\d+).*\\((?:i386|x86_64)\\)");
-parser[1] = "Mac OS X";
-parser[2] = "10";
-parser[3] = "9";
-parser[4] = 0;
-exports.os[48] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Mac_PowerPC");
-parser[1] = "Mac OS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[49] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(?:PPC|Intel) (Mac OS X)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[50] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Apple\\s?TV)(?:/(\\d+)\\.(\\d+))?");
-parser[1] = "ATV OS X";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[51] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS)[ +]+(\\d+)[_\\.](\\d+)(?:[_\\.](\\d+))?");
-parser[1] = "iOS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[52] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(iPhone|iPad|iPod); Opera");
-parser[1] = "iOS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[53] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(iPhone|iPad|iPod).*Mac OS X.*Version/(\\d+)\\.(\\d+)");
-parser[1] = "iOS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[54] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CFNetwork)/(5)48\\.0\\.3.* Darwin/11\\.0\\.0");
-parser[1] = "iOS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[55] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CFNetwork)/(5)48\\.(0)\\.4.* Darwin/(1)1\\.0\\.0");
-parser[1] = "iOS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[56] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CFNetwork)/(5)48\\.(1)\\.4");
-parser[1] = "iOS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[57] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CFNetwork)/(4)85\\.1(3)\\.9");
-parser[1] = "iOS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[58] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CFNetwork)/(6)09\\.(1)\\.4");
-parser[1] = "iOS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[59] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CFNetwork)/(6)(0)9");
-parser[1] = "iOS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[60] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CFNetwork)/6(7)2\\.(1)\\.13");
-parser[1] = "iOS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[61] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CFNetwork)/6(7)2\\.(1)\\.(1)4");
-parser[1] = "iOS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[62] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CF)(Network)/6(7)(2)\\.1\\.15");
-parser[1] = "iOS";
-parser[2] = "7";
-parser[3] = "1";
-parser[4] = 0;
-exports.os[63] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CFNetwork)/6(7)2\\.(0)\\.(?:2|8)");
-parser[1] = "iOS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[64] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CFNetwork)/709\\.1");
-parser[1] = "iOS";
-parser[2] = "8";
-parser[3] = "0.b5";
-parser[4] = 0;
-exports.os[65] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CF)(Network)/711\\.(\\d)");
-parser[1] = "iOS";
-parser[2] = "8";
-parser[3] = 0;
-parser[4] = 0;
-exports.os[66] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CF)(Network)/(720)\\.(\\d)");
-parser[1] = "Mac OS X";
-parser[2] = "10";
-parser[3] = "10";
-parser[4] = 0;
-exports.os[67] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CF)(Network)/(760)\\.(\\d)");
-parser[1] = "Mac OS X";
-parser[2] = "10";
-parser[3] = "11";
-parser[4] = 0;
-exports.os[68] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CF)(Network)/758\\.(\\d)");
-parser[1] = "iOS";
-parser[2] = "9";
-parser[3] = 0;
-parser[4] = 0;
-exports.os[69] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CF)(Network)/808\\.(\\d)");
-parser[1] = "iOS";
-parser[2] = "10";
-parser[3] = 0;
-parser[4] = 0;
-exports.os[70] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("CFNetwork/.* Darwin/16\\.\\d+.*\\(x86_64\\)");
-parser[1] = "Mac OS X";
-parser[2] = "10";
-parser[3] = "12";
-parser[4] = 0;
-exports.os[71] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("CFNetwork/8.* Darwin/15\\.\\d+.*\\(x86_64\\)");
-parser[1] = "Mac OS X";
-parser[2] = "10";
-parser[3] = "11";
-parser[4] = 0;
-exports.os[72] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("CFNetwork/.* Darwin/(9)\\.\\d+");
-parser[1] = "iOS";
-parser[2] = "1";
-parser[3] = 0;
-parser[4] = 0;
-exports.os[73] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("CFNetwork/.* Darwin/(10)\\.\\d+");
-parser[1] = "iOS";
-parser[2] = "4";
-parser[3] = 0;
-parser[4] = 0;
-exports.os[74] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("CFNetwork/.* Darwin/(11)\\.\\d+");
-parser[1] = "iOS";
-parser[2] = "5";
-parser[3] = 0;
-parser[4] = 0;
-exports.os[75] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("CFNetwork/.* Darwin/(13)\\.\\d+");
-parser[1] = "iOS";
-parser[2] = "6";
-parser[3] = 0;
-parser[4] = 0;
-exports.os[76] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("CFNetwork/6.* Darwin/(14)\\.\\d+");
-parser[1] = "iOS";
-parser[2] = "7";
-parser[3] = 0;
-parser[4] = 0;
-exports.os[77] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("CFNetwork/7.* Darwin/(14)\\.\\d+");
-parser[1] = "iOS";
-parser[2] = "8";
-parser[3] = "0";
-parser[4] = 0;
-exports.os[78] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("CFNetwork/7.* Darwin/(15)\\.\\d+");
-parser[1] = "iOS";
-parser[2] = "9";
-parser[3] = "0";
-parser[4] = 0;
-exports.os[79] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("CFNetwork/8.* Darwin/(16)\\.\\d+");
-parser[1] = "iOS";
-parser[2] = "10";
-parser[3] = 0;
-parser[4] = 0;
-exports.os[80] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\b(iOS[ /]|iOS; |iPhone(?:/| v|[ _]OS[/,]|; | OS : |\\d,\\d/|\\d,\\d; )|iPad/)(\\d{1,2})[_\\.](\\d{1,2})(?:[_\\.](\\d+))?");
-parser[1] = "iOS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[81] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\((iOS);");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[82] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(tvOS)/(\\d+).(\\d+)");
-parser[1] = "tvOS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[83] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CrOS) [a-z0-9_]+ (\\d+)\\.(\\d+)(?:\\.(\\d+))?");
-parser[1] = "Chrome OS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[84] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("([Dd]ebian)");
-parser[1] = "Debian";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[85] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Linux Mint)(?:/(\\d+))?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[86] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Mandriva)(?: Linux)?/(?:[\\d.-]+m[a-z]{2}(\\d+).(\\d))?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[87] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Symbian[Oo][Ss])[/ ](\\d+)\\.(\\d+)");
-parser[1] = "Symbian OS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[88] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Symbian/3).+NokiaBrowser/7\\.3");
-parser[1] = "Symbian^3 Anna";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[89] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Symbian/3).+NokiaBrowser/7\\.4");
-parser[1] = "Symbian^3 Belle";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[90] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Symbian/3)");
-parser[1] = "Symbian^3";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[91] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\b(Series 60|SymbOS|S60Version|S60V\\d|S60\\b)");
-parser[1] = "Symbian OS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[92] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(MeeGo)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[93] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Symbian [Oo][Ss]");
-parser[1] = "Symbian OS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[94] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Series40;");
-parser[1] = "Nokia Series 40";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[95] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("Series30Plus;");
-parser[1] = "Nokia Series 30 Plus";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[96] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(BB10);.+Version/(\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "BlackBerry OS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[97] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Black[Bb]erry)[0-9a-z]+/(\\d+)\\.(\\d+)\\.(\\d+)(?:\\.(\\d+))?");
-parser[1] = "BlackBerry OS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[98] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Black[Bb]erry).+Version/(\\d+)\\.(\\d+)\\.(\\d+)(?:\\.(\\d+))?");
-parser[1] = "BlackBerry OS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[99] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(RIM Tablet OS) (\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "BlackBerry Tablet OS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[100] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Play[Bb]ook)");
-parser[1] = "BlackBerry Tablet OS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[101] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Black[Bb]erry)");
-parser[1] = "BlackBerry OS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[102] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\((?:Mobile|Tablet);.+Gecko/18.0 Firefox/\\d+\\.\\d+");
-parser[1] = "Firefox OS";
-parser[2] = "1";
-parser[3] = "0";
-parser[4] = "1";
-exports.os[103] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\((?:Mobile|Tablet);.+Gecko/18.1 Firefox/\\d+\\.\\d+");
-parser[1] = "Firefox OS";
-parser[2] = "1";
-parser[3] = "1";
-parser[4] = 0;
-exports.os[104] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\((?:Mobile|Tablet);.+Gecko/26.0 Firefox/\\d+\\.\\d+");
-parser[1] = "Firefox OS";
-parser[2] = "1";
-parser[3] = "2";
-parser[4] = 0;
-exports.os[105] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\((?:Mobile|Tablet);.+Gecko/28.0 Firefox/\\d+\\.\\d+");
-parser[1] = "Firefox OS";
-parser[2] = "1";
-parser[3] = "3";
-parser[4] = 0;
-exports.os[106] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\((?:Mobile|Tablet);.+Gecko/30.0 Firefox/\\d+\\.\\d+");
-parser[1] = "Firefox OS";
-parser[2] = "1";
-parser[3] = "4";
-parser[4] = 0;
-exports.os[107] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\((?:Mobile|Tablet);.+Gecko/32.0 Firefox/\\d+\\.\\d+");
-parser[1] = "Firefox OS";
-parser[2] = "2";
-parser[3] = "0";
-parser[4] = 0;
-exports.os[108] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\((?:Mobile|Tablet);.+Gecko/34.0 Firefox/\\d+\\.\\d+");
-parser[1] = "Firefox OS";
-parser[2] = "2";
-parser[3] = "1";
-parser[4] = 0;
-exports.os[109] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\((?:Mobile|Tablet);.+Firefox/\\d+\\.\\d+");
-parser[1] = "Firefox OS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[110] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(BREW)[ /](\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[111] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(BREW);");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[112] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Brew MP|BMP)[ /](\\d+)\\.(\\d+)\\.(\\d+)");
-parser[1] = "Brew MP";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[113] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("BMP;");
-parser[1] = "Brew MP";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[114] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(GoogleTV)(?: (\\d+)\\.(\\d+)(?:\\.(\\d+))?|/[\\da-z]+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[115] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(WebTV)/(\\d+).(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[116] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(CrKey)(?:[/](\\d+)\\.(\\d+)(?:\\.(\\d+))?)?");
-parser[1] = "Chromecast";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[117] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(hpw|web)OS/(\\d+)\\.(\\d+)(?:\\.(\\d+))?");
-parser[1] = "webOS";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[118] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(VRE);");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[119] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Fedora|Red Hat|PCLinuxOS|Puppy|Ubuntu|Kindle|Bada|Lubuntu|BackTrack|Slackware|(?:Free|Open|Net|\\b)BSD)[/ ](\\d+)\\.(\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[120] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Linux)[ /](\\d+)\\.(\\d+)(?:\\.(\\d+))?.*gentoo");
-parser[1] = "Gentoo";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[121] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("\\((Bada);");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[122] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Windows|Android|WeTab|Maemo|Web0S)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[123] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Ubuntu|Kubuntu|Arch Linux|CentOS|Slackware|Gentoo|openSUSE|SUSE|Red Hat|Fedora|PCLinuxOS|Mageia|(?:Free|Open|Net|\\b)BSD)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[124] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(Linux)(?:[ /](\\d+)\\.(\\d+)(?:\\.(\\d+))?)?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[125] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("SunOS");
-parser[1] = "Solaris";
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[126] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("^(Roku)/DVP-(\\d+)\\.(\\d+)");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[127] = parser;
-parser = Object.create(null);
-parser[0] = new RegExp("(iOS) (\\d+)\\.(\\d+)(?:\\.(\\d+))?");
-parser[1] = 0;
-parser[2] = 0;
-parser[3] = 0;
-parser[4] = 0;
-exports.os[128] = parser;
+browser[6] = [new RegExp("Google.*/\\+/web/snippet"),"GooglePlusBot",0,0,0];
 
-exports.os.length = 129;
+browser[7] = [new RegExp("via ggpht.com GoogleImageProxy"),"GmailImageProxy",0,0,0];
+
+browser[8] = [new RegExp("(Twitterbot)/(\\d+)\\.(\\d+)"),"TwitterBot",0,0,0];
+
+browser[9] = [new RegExp("/((?:Ant-)?Nutch|[A-z]+[Bb]ot|[A-z]+[Ss]pider|Axtaris|fetchurl|Isara|ShopSalad|Tailsweep)[ \\-](\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?"),0,0,0,0];
+
+browser[10] = [new RegExp("\\b(008|Altresium|Argus|BaiduMobaider|BoardReader|DNSGroup|DataparkSearch|EDI|Goodzer|Grub|INGRID|Infohelfer|LinkedInBot|LOOQ|Nutch|PathDefender|Peew|PostPost|Steeler|Twitterbot|VSE|WebCrunch|WebZIP|Y!J-BR[A-Z]|YahooSeeker|envolk|sproose|wminer)/(\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?"),0,0,0,0];
+
+browser[11] = [new RegExp("(MSIE) (\\d+)\\.(\\d+)([a-z]\\d?)?;.* MSIECrawler"),"MSIECrawler",0,0,0];
+
+browser[12] = [new RegExp("(Google-HTTP-Java-Client|Apache-HttpClient|http%20client|Python-urllib|HttpMonitor|TLSProber|WinHTTP|JNLP|okhttp)(?:[ /](\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?)?"),0,0,0,0];
+
+browser[13] = [new RegExp("(1470\\.net crawler|50\\.nu|8bo Crawler Bot|Aboundex|Accoona-[A-z]+-Agent|AdsBot-Google(?:-[a-z]+)?|altavista|AppEngine-Google|archive.*?\\.org_bot|archiver|Ask Jeeves|[Bb]ai[Dd]u[Ss]pider(?:-[A-Za-z]+)*|bingbot|BingPreview|blitzbot|BlogBridge|Bloglovin|BoardReader(?: [A-Za-z]+)*|boitho.com-dc|BotSeer|\\b\\w*favicon\\w*\\b|\\bYeti(?:-[a-z]+)?|Catchpoint(?: bot)?|[Cc]harlotte|Checklinks|clumboot|Comodo HTTP\\(S\\) Crawler|Comodo-Webinspector-Crawler|ConveraCrawler|CRAWL-E|CrawlConvera|Daumoa(?:-feedfetcher)?|Feed Seeker Bot|Feedbin|findlinks|Flamingo_SearchEngine|FollowSite Bot|furlbot|Genieo|gigabot|GomezAgent|gonzo1|(?:[a-zA-Z]+-)?Googlebot(?:-[a-zA-Z]+)?|Google SketchUp|grub-client|gsa-crawler|heritrix|HiddenMarket|holmes|HooWWWer|htdig|ia_archiver|ICC-Crawler|Icarus6j|ichiro(?:/mobile)?|IconSurf|IlTrovatore(?:-Setaccio)?|InfuzApp|Innovazion Crawler|InternetArchive|IP2[a-z]+Bot|jbot\\b|KaloogaBot|Kraken|Kurzor|larbin|LEIA|LesnikBot|Linguee Bot|LinkAider|LinkedInBot|Lite Bot|Llaut|lycos|Mail\\.RU_Bot|masscan|masidani_bot|Mediapartners-Google|Microsoft .*? Bot|mogimogi|mozDex|MJ12bot|msnbot(?:-media *)?|msrbot|Mtps Feed Aggregation System|netresearch|Netvibes|NewsGator[^/]*|^NING|Nutch[^/]*|Nymesis|ObjectsSearch|Orbiter|OOZBOT|PagePeeker|PagesInventory|PaxleFramework|Peeplo Screenshot Bot|PlantyNet_WebRobot|Pompos|Qwantify|Read%20Later|Reaper|RedCarpet|Retreiver|Riddler|Rival IQ|scooter|Scrapy|Scrubby|searchsight|seekbot|semanticdiscovery|Simpy|SimplePie|SEOstats|SimpleRSS|SiteCon|Slackbot-LinkExpanding|Slack-ImgProxy|Slurp|snappy|Speedy Spider|Squrl Java|Stringer|TheUsefulbot|ThumbShotsBot|Thumbshots\\.ru|Tiny Tiny RSS|TwitterBot|WhatsApp|URL2PNG|Vagabondo|VoilaBot|^vortex|Votay bot|^voyager|WASALive.Bot|Web-sniffer|WebThumb|WeSEE:[A-z]+|WhatWeb|WIRE|WordPress|Wotbox|www\\.almaden\\.ibm\\.com|Xenu(?:.s)? Link Sleuth|Xerka [A-z]+Bot|yacy(?:bot)?|Yahoo[a-z]*Seeker|Yahoo! Slurp|Yandex\\w+|YodaoBot(?:-[A-z]+)?|YottaaMonitor|Yowedo|^Zao|^Zao-Crawler|ZeBot_www\\.ze\\.bz|ZooShot|ZyBorg)(?:[ /]v?(\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?)?"),0,0,0,0];
+
+browser[14] = [new RegExp("(?:\\/[A-Za-z0-9\\.]+)? *([A-Za-z0-9 \\-_\\!\\[\\]:]*(?:[Aa]rchiver|[Ii]ndexer|[Ss]craper|[Bb]ot|[Ss]pider|[Cc]rawl[a-z]*))/(\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?"),0,0,0,0];
+
+browser[15] = [new RegExp("(?:\\/[A-Za-z0-9\\.]+)? *([A-Za-z0-9 _\\!\\[\\]:]*(?:[Aa]rchiver|[Ii]ndexer|[Ss]craper|[Bb]ot|[Ss]pider|[Cc]rawl[a-z]*)) (\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?"),0,0,0,0];
+
+browser[16] = [new RegExp("((?:[A-z0-9]+|[A-z\\-]+ ?)?(?: the )?(?:[Ss][Pp][Ii][Dd][Ee][Rr]|[Ss]crape|[A-Za-z0-9-]*(?:[^C][^Uu])[Bb]ot|[Cc][Rr][Aa][Ww][Ll])[A-z0-9]*)(?:(?:[ /]| v)(\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?)?"),0,0,0,0];
+
+browser[17] = [new RegExp("(HbbTV)/(\\d+)\\.(\\d+)\\.(\\d+) \\("),0,0,0,0];
+
+browser[18] = [new RegExp("(Chimera|SeaMonkey|Camino)/(\\d+)\\.(\\d+)\\.?([ab]?\\d+[a-z]*)?"),0,0,0,0];
+
+browser[19] = [new RegExp("\\[FB.*;(FBAV)/(\\d+)(?:\\.(\\d+)(?:\\.(\\d)+)?)?"),"Facebook",0,0,0];
+
+browser[20] = [new RegExp("\\[(Pinterest)/[^\\]]+\\]"),0,0,0,0];
+
+browser[21] = [new RegExp("(Pinterest)(?: for Android(?: Tablet)?)?/(\\d+)(?:\\.(\\d+)(?:\\.(\\d)+)?)?"),0,0,0,0];
+
+browser[22] = [new RegExp("(PaleMoon)/(\\d+)\\.(\\d+)\\.?(\\d+)?"),"Pale Moon",0,0,0];
+
+browser[23] = [new RegExp("(Fennec)/(\\d+)\\.(\\d+)\\.?([ab]?\\d+[a-z]*)"),"Firefox Mobile",0,0,0];
+
+browser[24] = [new RegExp("(Fennec)/(\\d+)\\.(\\d+)(pre)"),"Firefox Mobile",0,0,0];
+
+browser[25] = [new RegExp("(Fennec)/(\\d+)\\.(\\d+)"),"Firefox Mobile",0,0,0];
+
+browser[26] = [new RegExp("(?:Mobile|Tablet);.*(Firefox)/(\\d+)\\.(\\d+)"),"Firefox Mobile",0,0,0];
+
+browser[27] = [new RegExp("(Namoroka|Shiretoko|Minefield)/(\\d+)\\.(\\d+)\\.(\\d+(?:pre)?)"),"Firefox ($1)",0,0,0];
+
+browser[28] = [new RegExp("(Firefox)/(\\d+)\\.(\\d+)(a\\d+[a-z]*)"),"Firefox Alpha",0,0,0];
+
+browser[29] = [new RegExp("(Firefox)/(\\d+)\\.(\\d+)(b\\d+[a-z]*)"),"Firefox Beta",0,0,0];
+
+browser[30] = [new RegExp("(Firefox)-(?:\\d+\\.\\d+)?/(\\d+)\\.(\\d+)(a\\d+[a-z]*)"),"Firefox Alpha",0,0,0];
+
+browser[31] = [new RegExp("(Firefox)-(?:\\d+\\.\\d+)?/(\\d+)\\.(\\d+)(b\\d+[a-z]*)"),"Firefox Beta",0,0,0];
+
+browser[32] = [new RegExp("(Namoroka|Shiretoko|Minefield)/(\\d+)\\.(\\d+)([ab]\\d+[a-z]*)?"),"Firefox ($1)",0,0,0];
+
+browser[33] = [new RegExp("(Firefox).*Tablet browser (\\d+)\\.(\\d+)\\.(\\d+)"),"MicroB",0,0,0];
+
+browser[34] = [new RegExp("(MozillaDeveloperPreview)/(\\d+)\\.(\\d+)([ab]\\d+[a-z]*)?"),0,0,0,0];
+
+browser[35] = [new RegExp("(FxiOS)/(\\d+)\\.(\\d+)(\\.(\\d+))?(\\.(\\d+))?"),"Firefox iOS",0,0,0];
+
+browser[36] = [new RegExp("(Flock)/(\\d+)\\.(\\d+)(b\\d+?)"),0,0,0,0];
+
+browser[37] = [new RegExp("(RockMelt)/(\\d+)\\.(\\d+)\\.(\\d+)"),0,0,0,0];
+
+browser[38] = [new RegExp("(Navigator)/(\\d+)\\.(\\d+)\\.(\\d+)"),"Netscape",0,0,0];
+
+browser[39] = [new RegExp("(Navigator)/(\\d+)\\.(\\d+)([ab]\\d+)"),"Netscape",0,0,0];
+
+browser[40] = [new RegExp("(Netscape6)/(\\d+)\\.(\\d+)\\.?([ab]?\\d+)?"),"Netscape",0,0,0];
+
+browser[41] = [new RegExp("(MyIBrow)/(\\d+)\\.(\\d+)"),"My Internet Browser",0,0,0];
+
+browser[42] = [new RegExp("(UC? ?Browser|UCWEB|U3)[ /]?(\\d+)\\.(\\d+)\\.(\\d+)"),"UC Browser",0,0,0];
+
+browser[43] = [new RegExp("(Opera Tablet).*Version/(\\d+)\\.(\\d+)(?:\\.(\\d+))?"),0,0,0,0];
+
+browser[44] = [new RegExp("(Opera Mini)(?:/att)?/?(\\d+)?(?:\\.(\\d+))?(?:\\.(\\d+))?"),0,0,0,0];
+
+browser[45] = [new RegExp("(Opera)/.+Opera Mobi.+Version/(\\d+)\\.(\\d+)"),"Opera Mobile",0,0,0];
+
+browser[46] = [new RegExp("(Opera)/(\\d+)\\.(\\d+).+Opera Mobi"),"Opera Mobile",0,0,0];
+
+browser[47] = [new RegExp("Opera Mobi.+(Opera)(?:/|\\s+)(\\d+)\\.(\\d+)"),"Opera Mobile",0,0,0];
+
+browser[48] = [new RegExp("Opera Mobi"),"Opera Mobile",0,0,0];
+
+browser[49] = [new RegExp("(Opera)/9.80.*Version/(\\d+)\\.(\\d+)(?:\\.(\\d+))?"),0,0,0,0];
+
+browser[50] = [new RegExp("(?:Mobile Safari).*(OPR)/(\\d+)\\.(\\d+)\\.(\\d+)"),"Opera Mobile",0,0,0];
+
+browser[51] = [new RegExp("(?:Chrome).*(OPR)/(\\d+)\\.(\\d+)\\.(\\d+)"),"Opera",0,0,0];
+
+browser[52] = [new RegExp("(Coast)/(\\d+).(\\d+).(\\d+)"),"Opera Coast",0,0,0];
+
+browser[53] = [new RegExp("(OPiOS)/(\\d+).(\\d+).(\\d+)"),"Opera Mini",0,0,0];
+
+browser[54] = [new RegExp("Chrome/.+( MMS)/(\\d+).(\\d+).(\\d+)"),"Opera Neon",0,0,0];
+
+browser[55] = [new RegExp("(hpw|web)OS/(\\d+)\\.(\\d+)(?:\\.(\\d+))?"),"webOS Browser",0,0,0];
+
+browser[56] = [new RegExp("(luakit)"),"LuaKit",0,0,0];
+
+browser[57] = [new RegExp("(Snowshoe)/(\\d+)\\.(\\d+).(\\d+)"),0,0,0,0];
+
+browser[58] = [new RegExp("Gecko/\\d+ (Lightning)/(\\d+)\\.(\\d+)\\.?((?:[ab]?\\d+[a-z]*)|(?:\\d*))"),0,0,0,0];
+
+browser[59] = [new RegExp("(Firefox)/(\\d+)\\.(\\d+)\\.(\\d+(?:pre)?) \\(Swiftfox\\)"),"Swiftfox",0,0,0];
+
+browser[60] = [new RegExp("(Firefox)/(\\d+)\\.(\\d+)([ab]\\d+[a-z]*)? \\(Swiftfox\\)"),"Swiftfox",0,0,0];
+
+browser[61] = [new RegExp("(rekonq)/(\\d+)\\.(\\d+)\\.?(\\d+)? Safari"),"Rekonq",0,0,0];
+
+browser[62] = [new RegExp("rekonq"),"Rekonq",0,0,0];
+
+browser[63] = [new RegExp("(conkeror|Conkeror)/(\\d+)\\.(\\d+)\\.?(\\d+)?"),"Conkeror",0,0,0];
+
+browser[64] = [new RegExp("(konqueror)/(\\d+)\\.(\\d+)\\.(\\d+)"),"Konqueror",0,0,0];
+
+browser[65] = [new RegExp("(WeTab)-Browser"),0,0,0,0];
+
+browser[66] = [new RegExp("(Comodo_Dragon)/(\\d+)\\.(\\d+)\\.(\\d+)"),"Comodo Dragon",0,0,0];
+
+browser[67] = [new RegExp("(Symphony) (\\d+).(\\d+)"),0,0,0,0];
+
+browser[68] = [new RegExp("PLAYSTATION 3.+WebKit"),"NetFront NX",0,0,0];
+
+browser[69] = [new RegExp("PLAYSTATION 3"),"NetFront",0,0,0];
+
+browser[70] = [new RegExp("(PlayStation Portable)"),"NetFront",0,0,0];
+
+browser[71] = [new RegExp("(PlayStation Vita)"),"NetFront NX",0,0,0];
+
+browser[72] = [new RegExp("AppleWebKit.+ (NX)/(\\d+)\\.(\\d+)\\.(\\d+)"),"NetFront NX",0,0,0];
+
+browser[73] = [new RegExp("(Nintendo 3DS)"),"NetFront NX",0,0,0];
+
+browser[74] = [new RegExp("(Silk)/(\\d+)\\.(\\d+)(?:\\.([0-9\\-]+))?"),"Amazon Silk",0,0,0];
+
+browser[75] = [new RegExp("(Puffin)/(\\d+)\\.(\\d+)(?:\\.(\\d+))?"),0,0,0,0];
+
+browser[76] = [new RegExp("Windows Phone .*(Edge)/(\\d+)\\.(\\d+)"),"Edge Mobile",0,0,0];
+
+browser[77] = [new RegExp("(SamsungBrowser)/(\\d+)\\.(\\d+)"),"Samsung Internet",0,0,0];
+
+browser[78] = [new RegExp("(SznProhlizec)/(\\d+)\\.(\\d+)(?:\\.(\\d+))?"),"Seznam.cz",0,0,0];
+
+browser[79] = [new RegExp("(coc_coc_browser)/(\\d+)\\.(\\d+)(?:\\.(\\d+))?"),"Coc Coc",0,0,0];
+
+browser[80] = [new RegExp("(baidubrowser)[/\\s](\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?"),"Baidu Browser",0,0,0];
+
+browser[81] = [new RegExp("(FlyFlow)/(\\d+)\\.(\\d+)"),"Baidu Explorer",0,0,0];
+
+browser[82] = [new RegExp("(MxBrowser)/(\\d+)\\.(\\d+)(?:\\.(\\d+))?"),"Maxthon",0,0,0];
+
+browser[83] = [new RegExp("(Crosswalk)/(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)"),0,0,0,0];
+
+browser[84] = [new RegExp("; wv\\).+(Chrome)/(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)"),"Chrome Mobile WebView",0,0,0];
+
+browser[85] = [new RegExp("(CrMo)/(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)"),"Chrome Mobile",0,0,0];
+
+browser[86] = [new RegExp("(CriOS)/(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)"),"Chrome Mobile iOS",0,0,0];
+
+browser[87] = [new RegExp("(Chrome)/(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+) Mobile(?:[ /]|$)"),"Chrome Mobile",0,0,0];
+
+browser[88] = [new RegExp(" Mobile .*(Chrome)/(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)"),"Chrome Mobile",0,0,0];
+
+browser[89] = [new RegExp("(chromeframe)/(\\d+)\\.(\\d+)\\.(\\d+)"),"Chrome Frame",0,0,0];
+
+browser[90] = [new RegExp("(SLP Browser)/(\\d+)\\.(\\d+)"),"Tizen Browser",0,0,0];
+
+browser[91] = [new RegExp("(SE 2\\.X) MetaSr (\\d+)\\.(\\d+)"),"Sogou Explorer",0,0,0];
+
+browser[92] = [new RegExp("(MQQBrowser/Mini)(?:(\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?)?"),"QQ Browser Mini",0,0,0];
+
+browser[93] = [new RegExp("(MQQBrowser)(?:/(\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?)?"),"QQ Browser Mobile",0,0,0];
+
+browser[94] = [new RegExp("(QQBrowser)(?:/(\\d+)(?:\\.(\\d+)\\.(\\d+)(?:\\.(\\d+))?)?)?"),"QQ Browser",0,0,0];
+
+browser[95] = [new RegExp("(Rackspace Monitoring)/(\\d+)\\.(\\d+)"),"RackspaceBot",0,0,0];
+
+browser[96] = [new RegExp("(PyAMF)/(\\d+)\\.(\\d+)\\.(\\d+)"),0,0,0,0];
+
+browser[97] = [new RegExp("(YaBrowser)/(\\d+)\\.(\\d+)\\.(\\d+)"),"Yandex Browser",0,0,0];
+
+browser[98] = [new RegExp("(Chrome)/(\\d+)\\.(\\d+)\\.(\\d+).* MRCHROME"),"Mail.ru Chromium Browser",0,0,0];
+
+browser[99] = [new RegExp("(AOL) (\\d+)\\.(\\d+); AOLBuild (\\d+)"),0,0,0,0];
+
+browser[100] = [new RegExp("(Slack_SSB)/(\\d+)\\.(\\d+)\\.(\\d+)"),"Slack Desktop Client",0,0,0];
+
+browser[101] = [new RegExp("(HipChat)/?(\\d+)?"),"HipChat Desktop Client",0,0,0];
+
+browser[102] = [new RegExp("\\b(MobileIron|FireWeb|Jasmine|ANTGalio|Midori|Fresco|Lobo|PaleMoon|Maxthon|Lynx|OmniWeb|Dillo|Camino|Demeter|Fluid|Fennec|Epiphany|Shiira|Sunrise|Spotify|Flock|Netscape|Lunascape|WebPilot|NetFront|Netfront|Konqueror|SeaMonkey|Kazehakase|Vienna|Iceape|Iceweasel|IceWeasel|Iron|K-Meleon|Sleipnir|Galeon|GranParadiso|Opera Mini|iCab|NetNewsWire|ThunderBrowse|Iris|UP\\.Browser|Bunjalloo|Google Earth|Raven for Mac|Openwave|MacOutlook|Electron)/(\\d+)\\.(\\d+)\\.(\\d+)"),0,0,0,0];
+
+browser[103] = [new RegExp("Microsoft Office Outlook 12\\.\\d+\\.\\d+|MSOffice 12"),"Outlook","2007",0,0];
+
+browser[104] = [new RegExp("Microsoft Outlook 14\\.\\d+\\.\\d+|MSOffice 14"),"Outlook","2010",0,0];
+
+browser[105] = [new RegExp("Microsoft Outlook 15\\.\\d+\\.\\d+"),"Outlook","2013",0,0];
+
+browser[106] = [new RegExp("Microsoft Outlook (?:Mail )?16\\.\\d+\\.\\d+"),"Outlook","2016",0,0];
+
+browser[107] = [new RegExp("Outlook-Express\\/7\\.0.*"),"Windows Live Mail",0,0,0];
+
+browser[108] = [new RegExp("(Airmail) (\\d+)\\.(\\d+)(?:\\.(\\d+))?"),0,0,0,0];
+
+browser[109] = [new RegExp("(Thunderbird)/(\\d+)\\.(\\d+)(?:\\.(\\d+(?:pre)?))?"),"Thunderbird",0,0,0];
+
+browser[110] = [new RegExp("(Postbox)/(\\d+)\\.(\\d+)\\.(\\d+)"),"Postbox",0,0,0];
+
+browser[111] = [new RegExp("(Barca(?:Pro)?)/(\\d+)\\.(\\d+)(?:\\.(\\d+))?"),"Barca",0,0,0];
+
+browser[112] = [new RegExp("(Lotus-Notes)/(\\d+)\\.(\\d+)(?:\\.(\\d+))?"),"Lotus Notes",0,0,0];
+
+browser[113] = [new RegExp("(Vivaldi)/(\\d+)\\.(\\d+)\\.(\\d+)"),0,0,0,0];
+
+browser[114] = [new RegExp("(Edge)/(\\d+)(?:\\.(\\d+))?"),0,0,0,0];
+
+browser[115] = [new RegExp("(brave)/(\\d+)\\.(\\d+)\\.(\\d+) Chrome"),"Brave",0,0,0];
+
+browser[116] = [new RegExp("(Chrome)/(\\d+)\\.(\\d+)\\.(\\d+)[\\d.]* Iron[^/]"),"Iron",0,0,0];
+
+browser[117] = [new RegExp("\\b(Dolphin)(?: |HDCN/|/INT\\-)(\\d+)\\.(\\d+)\\.?(\\d+)?"),0,0,0,0];
+
+browser[118] = [new RegExp("HeadlessChrome"),"HeadlessChrome",0,0,0];
+
+browser[119] = [new RegExp("(bingbot|Bolt|AdobeAIR|Jasmine|IceCat|Skyfire|Midori|Maxthon|Lynx|Arora|IBrowse|Dillo|Camino|Shiira|Fennec|Phoenix|Flock|Netscape|Lunascape|Epiphany|WebPilot|Opera Mini|Opera|NetFront|Netfront|Konqueror|Googlebot|SeaMonkey|Kazehakase|Vienna|Iceape|Iceweasel|IceWeasel|Iron|K-Meleon|Sleipnir|Galeon|GranParadiso|iCab|iTunes|MacAppStore|NetNewsWire|Space Bison|Stainless|Orca|Dolfin|BOLT|Minimo|Tizen Browser|Polaris|Abrowser|Planetweb|ICE Browser|mDolphin|qutebrowser|Otter|QupZilla|MailBar|kmail2|YahooMobileMail|ExchangeWebServices|ExchangeServicesClient|Dragon|Outlook-iOS-Android)/(\\d+)\\.(\\d+)(?:\\.(\\d+))?"),0,0,0,0];
+
+browser[120] = [new RegExp("(Chromium|Chrome)/(\\d+)\\.(\\d+)(?:\\.(\\d+))?"),0,0,0,0];
+
+browser[121] = [new RegExp("(IEMobile)[ /](\\d+)\\.(\\d+)"),"IE Mobile",0,0,0];
+
+browser[122] = [new RegExp("(BacaBerita App)\\/(\\d+)\\.(\\d+)\\.(\\d+)"),0,0,0,0];
+
+browser[123] = [new RegExp("(iRider|Crazy Browser|SkipStone|iCab|Lunascape|Sleipnir|Maemo Browser) (\\d+)\\.(\\d+)\\.(\\d+)"),0,0,0,0];
+
+browser[124] = [new RegExp("(iCab|Lunascape|Opera|Android|Jasmine|Polaris|Microsoft SkyDriveSync|The Bat!) (\\d+)\\.(\\d+)\\.?(\\d+)?"),0,0,0,0];
+
+browser[125] = [new RegExp("(Kindle)/(\\d+)\\.(\\d+)"),0,0,0,0];
+
+browser[126] = [new RegExp("(Android) Donut"),0,"1","2",0];
+
+browser[127] = [new RegExp("(Android) Eclair"),0,"2","1",0];
+
+browser[128] = [new RegExp("(Android) Froyo"),0,"2","2",0];
+
+browser[129] = [new RegExp("(Android) Gingerbread"),0,"2","3",0];
+
+browser[130] = [new RegExp("(Android) Honeycomb"),0,"3",0,0];
+
+browser[131] = [new RegExp("(MSIE) (\\d+)\\.(\\d+).*XBLWP7"),"IE Large Screen",0,0,0];
+
+browser[132] = [new RegExp("(Obigo)InternetBrowser"),0,0,0,0];
+
+browser[133] = [new RegExp("(Obigo)\\-Browser"),0,0,0,0];
+
+browser[134] = [new RegExp("(Obigo|OBIGO)[^\\d]*(\\d+)(?:.(\\d+))?"),"Obigo",0,0,0];
+
+browser[135] = [new RegExp("(MAXTHON|Maxthon) (\\d+)\\.(\\d+)"),"Maxthon",0,0,0];
+
+browser[136] = [new RegExp("(Maxthon|MyIE2|Uzbl|Shiira)"),0,"0",0,0];
+
+browser[137] = [new RegExp("(BrowseX) \\((\\d+)\\.(\\d+)\\.(\\d+)"),0,0,0,0];
+
+browser[138] = [new RegExp("(NCSA_Mosaic)/(\\d+)\\.(\\d+)"),"NCSA Mosaic",0,0,0];
+
+browser[139] = [new RegExp("(POLARIS)/(\\d+)\\.(\\d+)"),"Polaris",0,0,0];
+
+browser[140] = [new RegExp("(Embider)/(\\d+)\\.(\\d+)"),"Polaris",0,0,0];
+
+browser[141] = [new RegExp("(BonEcho)/(\\d+)\\.(\\d+)\\.?([ab]?\\d+)?"),"Bon Echo",0,0,0];
+
+browser[142] = [new RegExp("(iPod|iPhone|iPad).+Version/(\\d+)\\.(\\d+)(?:\\.(\\d+))?.*[ +]Safari"),"Mobile Safari",0,0,0];
+
+browser[143] = [new RegExp("(iPod|iPhone|iPad).+Version/(\\d+)\\.(\\d+)(?:\\.(\\d+))?"),"Mobile Safari UI/WKWebView",0,0,0];
+
+browser[144] = [new RegExp("(iPod|iPod touch|iPhone|iPad);.*CPU.*OS[ +](\\d+)_(\\d+)(?:_(\\d+))?.*Mobile.*[ +]Safari"),"Mobile Safari",0,0,0];
+
+browser[145] = [new RegExp("(iPod|iPod touch|iPhone|iPad);.*CPU.*OS[ +](\\d+)_(\\d+)(?:_(\\d+))?.*Mobile"),"Mobile Safari UI/WKWebView",0,0,0];
+
+browser[146] = [new RegExp("(iPod|iPhone|iPad).* Safari"),"Mobile Safari",0,0,0];
+
+browser[147] = [new RegExp("(iPod|iPhone|iPad)"),"Mobile Safari UI/WKWebView",0,0,0];
+
+browser[148] = [new RegExp("(AvantGo) (\\d+).(\\d+)"),0,0,0,0];
+
+browser[149] = [new RegExp("(OneBrowser)/(\\d+).(\\d+)"),"ONE Browser",0,0,0];
+
+browser[150] = [new RegExp("(Avant)"),0,"1",0,0];
+
+browser[151] = [new RegExp("(QtCarBrowser)"),0,"1",0,0];
+
+browser[152] = [new RegExp("^(iBrowser/Mini)(\\d+).(\\d+)"),"iBrowser Mini",0,0,0];
+
+browser[153] = [new RegExp("^(iBrowser|iRAPP)/(\\d+).(\\d+)"),0,0,0,0];
+
+browser[154] = [new RegExp("^(Nokia)"),"Nokia Services (WAP) Browser",0,0,0];
+
+browser[155] = [new RegExp("(NokiaBrowser)/(\\d+)\\.(\\d+).(\\d+)\\.(\\d+)"),"Nokia Browser",0,0,0];
+
+browser[156] = [new RegExp("(NokiaBrowser)/(\\d+)\\.(\\d+).(\\d+)"),"Nokia Browser",0,0,0];
+
+browser[157] = [new RegExp("(NokiaBrowser)/(\\d+)\\.(\\d+)"),"Nokia Browser",0,0,0];
+
+browser[158] = [new RegExp("(BrowserNG)/(\\d+)\\.(\\d+).(\\d+)"),"Nokia Browser",0,0,0];
+
+browser[159] = [new RegExp("(Series60)/5\\.0"),"Nokia Browser","7","0",0];
+
+browser[160] = [new RegExp("(Series60)/(\\d+)\\.(\\d+)"),"Nokia OSS Browser",0,0,0];
+
+browser[161] = [new RegExp("(S40OviBrowser)/(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)"),"Ovi Browser",0,0,0];
+
+browser[162] = [new RegExp("(Nokia)[EN]?(\\d+)"),0,0,0,0];
+
+browser[163] = [new RegExp("(PlayBook).+RIM Tablet OS (\\d+)\\.(\\d+)\\.(\\d+)"),"BlackBerry WebKit",0,0,0];
+
+browser[164] = [new RegExp("(Black[bB]erry|BB10).+Version/(\\d+)\\.(\\d+)\\.(\\d+)"),"BlackBerry WebKit",0,0,0];
+
+browser[165] = [new RegExp("(Black[bB]erry)\\s?(\\d+)"),"BlackBerry",0,0,0];
+
+browser[166] = [new RegExp("(OmniWeb)/v(\\d+)\\.(\\d+)"),0,0,0,0];
+
+browser[167] = [new RegExp("(Blazer)/(\\d+)\\.(\\d+)"),"Palm Blazer",0,0,0];
+
+browser[168] = [new RegExp("(Pre)/(\\d+)\\.(\\d+)"),"Palm Pre",0,0,0];
+
+browser[169] = [new RegExp("(ELinks)/(\\d+)\\.(\\d+)"),0,0,0,0];
+
+browser[170] = [new RegExp("(ELinks) \\((\\d+)\\.(\\d+)"),0,0,0,0];
+
+browser[171] = [new RegExp("(Links) \\((\\d+)\\.(\\d+)"),0,0,0,0];
+
+browser[172] = [new RegExp("(QtWeb) Internet Browser/(\\d+)\\.(\\d+)"),0,0,0,0];
+
+browser[173] = [new RegExp("(PhantomJS)/(\\d+)\\.(\\d+)\\.(\\d+)"),0,0,0,0];
+
+browser[174] = [new RegExp("(AppleWebKit)/(\\d+)\\.?(\\d+)?\\+ .* Safari"),"WebKit Nightly",0,0,0];
+
+browser[175] = [new RegExp("(Version)/(\\d+)\\.(\\d+)(?:\\.(\\d+))?.*Safari/"),"Safari",0,0,0];
+
+browser[176] = [new RegExp("(Safari)/\\d+"),0,0,0,0];
+
+browser[177] = [new RegExp("(OLPC)/Update(\\d+)\\.(\\d+)"),0,0,0,0];
+
+browser[178] = [new RegExp("(OLPC)/Update()\\.(\\d+)"),0,"0",0,0];
+
+browser[179] = [new RegExp("(SEMC\\-Browser)/(\\d+)\\.(\\d+)"),0,0,0,0];
+
+browser[180] = [new RegExp("(Teleca)"),"Teleca Browser",0,0,0];
+
+browser[181] = [new RegExp("(Phantom)/V(\\d+)\\.(\\d+)"),"Phantom Browser",0,0,0];
+
+browser[182] = [new RegExp("Trident(.*)rv.(\\d+)\\.(\\d+)"),"IE",0,0,0];
+
+browser[183] = [new RegExp("(Espial)/(\\d+)(?:\\.(\\d+))?(?:\\.(\\d+))?"),0,0,0,0];
+
+browser[184] = [new RegExp("(AppleWebKit)/(\\d+)\\.(\\d+)\\.(\\d+)"),"Apple Mail",0,0,0];
+
+browser[185] = [new RegExp("(Firefox)/(\\d+)\\.(\\d+)\\.(\\d+)"),0,0,0,0];
+
+browser[186] = [new RegExp("(Firefox)/(\\d+)\\.(\\d+)(pre|[ab]\\d+[a-z]*)?"),0,0,0,0];
+
+browser[187] = [new RegExp("([MS]?IE) (\\d+)\\.(\\d+)"),"IE",0,0,0];
+
+browser[188] = [new RegExp("(python-requests)/(\\d+)\\.(\\d+)"),"Python Requests",0,0,0];
+
+browser[189] = [new RegExp("\\b(Windows-Update-Agent|Microsoft-CryptoAPI|SophosUpdateManager|SophosAgent|Debian APT-HTTP|Ubuntu APT-HTTP|libcurl-agent|libwww-perl|urlgrabber|curl|Wget|OpenBSD ftp|jupdate)(?:[ /](\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?)?"),0,0,0,0];
+
+browser[190] = [new RegExp("(Java)[/ ]{0,1}\\d+\\.(\\d+)\\.(\\d+)[_-]*([a-zA-Z0-9]+)*"),0,0,0,0];
+
+browser[191] = [new RegExp("^(Roku)/DVP-(\\d+)\\.(\\d+)"),0,0,0,0];
+
+browser[192] = [new RegExp("(Kurio)\\/(\\d+)\\.(\\d+)\\.(\\d+)"),"Kurio App",0,0,0];
+
+browser[193] = [new RegExp("(Wget)/(\\d+)\\.(\\d+)\\.?([ab]?\\d+[a-z]*)"),0,0,0,0];
+
+browser[194] = [new RegExp("(curl)/(\\d+)\\.(\\d+)\\.(\\d+)"),"cURL",0,0,0];
+
+
+var device = [];
+
+device[0] = [new RegExp("(Rival IQ, rivaliq.com)"),"Spider",0,0,0];
+
+device[1] = [new RegExp("(?:(?:iPhone|Windows CE|Windows Phone|Android).*(?:(?:Bot|Yeti)-Mobile|YRSpider|BingPreview|bots?/\\d|(?:bot|spider)\\.html)|AdsBot-Google-Mobile.*iPhone)"),"Spider",0,0,0];
+
+device[2] = [new RegExp("(?:DoCoMo|\\bMOT\\b|\\bLG\\b|Nokia|Samsung|SonyEricsson).*(?:(?:Bot|Yeti)-Mobile|bots?/\\d|(?:bot|crawler)\\.html|(?:jump|google|Wukong)bot|ichiro/mobile|/spider|YahooSeeker)"),"Spider",0,0,0];
+
+device[3] = [new RegExp("\\bSmartWatch *\\( *([^;]+) *; *([^;]+) *;"),"$1 $2",0,0,0];
+
+device[4] = [new RegExp("Android Application[^\\-]+ - (Sony) ?(Ericsson)? (.+) \\w+ - "),"$1 $2",0,0,0];
+
+device[5] = [new RegExp("Android Application[^\\-]+ - (?:HTC|HUAWEI|LGE|LENOVO|MEDION|TCT) (HTC|HUAWEI|LG|LENOVO|MEDION|ALCATEL)[ _\\-](.+) \\w+ - "),"$1 $2",0,0,0];
+
+device[6] = [new RegExp("Android Application[^\\-]+ - ([^ ]+) (.+) \\w+ - "),"$1 $2",0,0,0];
+
+device[7] = [new RegExp("; *([BLRQ]C\\d{4}[A-Z]+) +Build/"),"3Q $1",0,0,0];
+
+device[8] = [new RegExp("; *(?:3Q_)([^;/]+) +Build"),"3Q $1",0,0,0];
+
+device[9] = [new RegExp("Android [34].*; *(A100|A101|A110|A200|A210|A211|A500|A501|A510|A511|A700(?: Lite| 3G)?|A701|B1-A71|A1-\\d{3}|B1-\\d{3}|V360|V370|W500|W500P|W501|W501P|W510|W511|W700|Slider SL101|DA22[^;/]+) Build"),"$1",0,0,0];
+
+device[10] = [new RegExp("; *Acer Iconia Tab ([^;/]+) Build"),"$1",0,0,0];
+
+device[11] = [new RegExp("; *(Z1[1235]0|E320[^/]*|S500|S510|Liquid[^;/]*|Iconia A\\d+) Build"),"$1",0,0,0];
+
+device[12] = [new RegExp("; *(Acer |ACER )([^;/]+) Build"),"$1$2",0,0,0];
+
+device[13] = [new RegExp("; *(Advent )?(Vega(?:Bean|Comb)?).* Build"),"$1$2",0,0,0];
+
+device[14] = [new RegExp("; *(Ainol )?((?:NOVO|[Nn]ovo)[^;/]+) Build"),"$1$2",0,0,0];
+
+device[15] = [new RegExp("; *AIRIS[ _\\-]?([^/;\\)]+) *(?:;|\\)|Build)"),"$1",0,0,0];
+
+device[16] = [new RegExp("; *(OnePAD[^;/]+) Build"),"$1",0,0,0];
+
+device[17] = [new RegExp("; *Airpad[ \\-]([^;/]+) Build"),"Airpad $1",0,0,0];
+
+device[18] = [new RegExp("; *(one ?touch) (EVO7|T10|T20) Build"),"Alcatel One Touch $2",0,0,0];
+
+device[19] = [new RegExp("; *(?:alcatel[ _])?(?:(?:one[ _]?touch[ _])|ot[ \\-])([^;/]+);? Build"),"Alcatel One Touch $1",0,0,0];
+
+device[20] = [new RegExp("; *(TCL)[ _]([^;/]+) Build"),"$1 $2",0,0,0];
+
+device[21] = [new RegExp("; *(Vodafone Smart II|Optimus_Madrid) Build"),"Alcatel $1",0,0,0];
+
+device[22] = [new RegExp("; *BASE_Lutea_3 Build"),"Alcatel One Touch 998",0,0,0];
+
+device[23] = [new RegExp("; *BASE_Varia Build"),"Alcatel One Touch 918D",0,0,0];
+
+device[24] = [new RegExp("; *((?:FINE|Fine)\\d[^;/]+) Build"),"$1",0,0,0];
+
+device[25] = [new RegExp("; *(ALLVIEW[ _]?|Allview[ _]?)((?:Speed|SPEED).*) Build/"),"$1$2",0,0,0];
+
+device[26] = [new RegExp("; *(ALLVIEW[ _]?|Allview[ _]?)?(AX1_Shine|AX2_Frenzy) Build"),"$1$2",0,0,0];
+
+device[27] = [new RegExp("; *(ALLVIEW[ _]?|Allview[ _]?)([^;/]*) Build"),"$1$2",0,0,0];
+
+device[28] = [new RegExp("; *(A13-MID) Build"),"$1",0,0,0];
+
+device[29] = [new RegExp("; *(Allwinner)[ _\\-]?([^;/]+) Build"),"$1 $2",0,0,0];
+
+device[30] = [new RegExp("; *(A651|A701B?|A702|A703|A705|A706|A707|A711|A712|A713|A717|A722|A785|A801|A802|A803|A901|A902|A1002|A1003|A1006|A1007|A9701|A9703|Q710|Q80) Build"),"$1",0,0,0];
+
+device[31] = [new RegExp("; *(?:AMOI|Amoi)[ _]([^;/]+) Build"),"Amoi $1",0,0,0];
+
+device[32] = [new RegExp("^(?:AMOI|Amoi)[ _]([^;/]+) Linux"),"Amoi $1",0,0,0];
+
+device[33] = [new RegExp("; *(MW(?:0[789]|10)[^;/]+) Build"),"$1",0,0,0];
+
+device[34] = [new RegExp("; *(G7|M1013|M1015G|M11[CG]?|M-?12[B]?|M15|M19[G]?|M30[ACQ]?|M31[GQ]|M32|M33[GQ]|M36|M37|M38|M701T|M710|M712B|M713|M715G|M716G|M71(?:G|GS|T)?|M72[T]?|M73[T]?|M75[GT]?|M77G|M79T|M7L|M7LN|M81|M810|M81T|M82|M92|M92KS|M92S|M717G|M721|M722G|M723|M725G|M739|M785|M791|M92SK|M93D) Build"),"Aoson $1",0,0,0];
+
+device[35] = [new RegExp("; *Aoson ([^;/]+) Build"),"Aoson $1",0,0,0];
+
+device[36] = [new RegExp("; *[Aa]panda[ _\\-]([^;/]+) Build"),"Apanda $1",0,0,0];
+
+device[37] = [new RegExp("; *(?:ARCHOS|Archos) ?(GAMEPAD.*?)(?: Build|[;/\\(\\)\\-])"),"Archos $1",0,0,0];
+
+device[38] = [new RegExp("ARCHOS; GOGI; ([^;]+);"),"Archos $1",0,0,0];
+
+device[39] = [new RegExp("(?:ARCHOS|Archos)[ _]?(.*?)(?: Build|[;/\\(\\)\\-]|$)"),"Archos $1",0,0,0];
+
+device[40] = [new RegExp("; *(AN(?:7|8|9|10|13)[A-Z0-9]{1,4}) Build"),"Archos $1",0,0,0];
+
+device[41] = [new RegExp("; *(A28|A32|A43|A70(?:BHT|CHT|HB|S|X)|A101(?:B|C|IT)|A7EB|A7EB-WK|101G9|80G9) Build"),"Archos $1",0,0,0];
+
+device[42] = [new RegExp("; *(PAD-FMD[^;/]+) Build"),"$1",0,0,0];
+
+device[43] = [new RegExp("; *(BioniQ) ?([^;/]+) Build"),"$1 $2",0,0,0];
+
+device[44] = [new RegExp("; *(AN\\d[^;/]+|ARCHM\\d+) Build"),"Arnova $1",0,0,0];
+
+device[45] = [new RegExp("; *(?:ARNOVA|Arnova) ?([^;/]+) Build"),"Arnova $1",0,0,0];
+
+device[46] = [new RegExp("; *(?:ASSISTANT )?(AP)-?([1789]\\d{2}[A-Z]{0,2}|80104) Build"),"Assistant $1-$2",0,0,0];
+
+device[47] = [new RegExp("; *(ME17\\d[^;/]*|ME3\\d{2}[^;/]+|K00[A-Z]|Nexus 10|Nexus 7(?: 2013)?|PadFone[^;/]*|Transformer[^;/]*|TF\\d{3}[^;/]*|eeepc) Build"),"Asus $1",0,0,0];
+
+device[48] = [new RegExp("; *ASUS[ _]*([^;/]+) Build"),"Asus $1",0,0,0];
+
+device[49] = [new RegExp("; *Garmin-Asus ([^;/]+) Build"),"Garmin-Asus $1",0,0,0];
+
+device[50] = [new RegExp("; *(Garminfone) Build"),"Garmin $1",0,0,0];
+
+device[51] = [new RegExp("; (@TAB-[^;/]+) Build"),"$1",0,0,0];
+
+device[52] = [new RegExp("; *(T-(?:07|[^0]\\d)[^;/]+) Build"),"$1",0,0,0];
+
+device[53] = [new RegExp("; *(?:Axioo[ _\\-]([^;/]+)|(picopad)[ _\\-]([^;/]+)) Build"),"Axioo $1$2 $3",0,0,0];
+
+device[54] = [new RegExp("; *(V(?:100|700|800)[^;/]*) Build"),"$1",0,0,0];
+
+device[55] = [new RegExp("; *(IBAK\\-[^;/]*) Build"),"$1",0,0,0];
+
+device[56] = [new RegExp("; *(HY5001|HY6501|X12|X21|I5) Build"),"Bedove $1",0,0,0];
+
+device[57] = [new RegExp("; *(JC-[^;/]*) Build"),"Benss $1",0,0,0];
+
+device[58] = [new RegExp("; *(BB) ([^;/]+) Build"),"$1 $2",0,0,0];
+
+device[59] = [new RegExp("; *(BlackBird)[ _](I8.*) Build"),"$1 $2",0,0,0];
+
+device[60] = [new RegExp("; *(BlackBird)[ _](.*) Build"),"$1 $2",0,0,0];
+
+device[61] = [new RegExp("; *([0-9]+BP[EM][^;/]*|Endeavour[^;/]+) Build"),"Blaupunkt $1",0,0,0];
+
+device[62] = [new RegExp("; *((?:BLU|Blu)[ _\\-])([^;/]+) Build"),"$1$2",0,0,0];
+
+device[63] = [new RegExp("; *(?:BMOBILE )?(Blu|BLU|DASH [^;/]+|VIVO 4\\.3|TANK 4\\.5) Build"),"$1",0,0,0];
+
+device[64] = [new RegExp("; *(TOUCH\\d[^;/]+) Build"),"$1",0,0,0];
+
+device[65] = [new RegExp("; *(AX5\\d+) Build"),"$1",0,0,0];
+
+device[66] = [new RegExp("; *([Bb]q) ([^;/]+);? Build"),"$1 $2",0,0,0];
+
+device[67] = [new RegExp("; *(Maxwell [^;/]+) Build"),"$1",0,0,0];
+
+device[68] = [new RegExp("; *((?:B-Tab|B-TAB) ?\\d[^;/]+) Build"),"$1",0,0,0];
+
+device[69] = [new RegExp("; *(Broncho) ([^;/]+) Build"),"$1 $2",0,0,0];
+
+device[70] = [new RegExp("; *CAPTIVA ([^;/]+) Build"),"Captiva $1",0,0,0];
+
+device[71] = [new RegExp("; *(C771|CAL21|IS11CA) Build"),"$1",0,0,0];
+
+device[72] = [new RegExp("; *(?:Cat|CAT) ([^;/]+) Build"),"Cat $1",0,0,0];
+
+device[73] = [new RegExp("; *(?:Cat)(Nova.*) Build"),"Cat $1",0,0,0];
+
+device[74] = [new RegExp("; *(INM8002KP|ADM8000KP_[AB]) Build"),"$1",0,0,0];
+
+device[75] = [new RegExp("; *(?:[Cc]elkon[ _\\*]|CELKON[ _\\*])([^;/\\)]+) ?(?:Build|;|\\))"),"$1",0,0,0];
+
+device[76] = [new RegExp("Build/(?:[Cc]elkon)+_?([^;/_\\)]+)"),"$1",0,0,0];
+
+device[77] = [new RegExp("; *(CT)-?(\\d+) Build"),"$1$2",0,0,0];
+
+device[78] = [new RegExp("; *(A19|A19Q|A105|A107[^;/\\)]*) ?(?:Build|;|\\))"),"$1",0,0,0];
+
+device[79] = [new RegExp("; *(TPC[0-9]{4,5}) Build"),"$1",0,0,0];
+
+device[80] = [new RegExp("; *(Cloudfone)[ _](Excite)([^ ][^;/]+) Build"),"$1 $2 $3",0,0,0];
+
+device[81] = [new RegExp("; *(Excite|ICE)[ _](\\d+[^;/]+) Build"),"Cloudfone $1 $2",0,0,0];
+
+device[82] = [new RegExp("; *(Cloudfone|CloudPad)[ _]([^;/]+) Build"),"$1 $2",0,0,0];
+
+device[83] = [new RegExp("; *((?:Aquila|Clanga|Rapax)[^;/]+) Build"),"$1",0,0,0];
+
+device[84] = [new RegExp("; *(?:CFW-|Kyros )?(MID[0-9]{4}(?:[ABC]|SR|TV)?)(\\(3G\\)-4G| GB 8K| 3G| 8K| GB)? *(?:Build|[;\\)])"),"CobyKyros $1$2",0,0,0];
+
+device[85] = [new RegExp("; *([^;/]*)Coolpad[ _]([^;/]+) Build"),"$1$2",0,0,0];
+
+device[86] = [new RegExp("; *(CUBE[ _])?([KU][0-9]+ ?GT.*|A5300) Build"),"$1$2",0,0,0];
+
+device[87] = [new RegExp("; *CUBOT ([^;/]+) Build"),"$1",0,0,0];
+
+device[88] = [new RegExp("; *(BOBBY) Build"),"$1",0,0,0];
+
+device[89] = [new RegExp("; *(Dslide [^;/]+) Build"),"$1",0,0,0];
+
+device[90] = [new RegExp("; *(XCD)[ _]?(28|35) Build"),"Dell $1$2",0,0,0];
+
+device[91] = [new RegExp("; *(001DL) Build"),"Dell $1",0,0,0];
+
+device[92] = [new RegExp("; *(?:Dell|DELL) (Streak) Build"),"Dell $1",0,0,0];
+
+device[93] = [new RegExp("; *(101DL|GS01|Streak Pro[^;/]*) Build"),"Dell $1",0,0,0];
+
+device[94] = [new RegExp("; *([Ss]treak ?7) Build"),"Dell $1",0,0,0];
+
+device[95] = [new RegExp("; *(Mini-3iX) Build"),"Dell $1",0,0,0];
+
+device[96] = [new RegExp("; *(?:Dell|DELL)[ _](Aero|Venue|Thunder|Mini.*|Streak[ _]Pro) Build"),"Dell $1",0,0,0];
+
+device[97] = [new RegExp("; *Dell[ _]([^;/]+) Build"),"Dell $1",0,0,0];
+
+device[98] = [new RegExp("; *Dell ([^;/]+) Build"),"Dell $1",0,0,0];
+
+device[99] = [new RegExp("; *(TA[CD]-\\d+[^;/]*) Build"),"$1",0,0,0];
+
+device[100] = [new RegExp("; *(iP[789]\\d{2}(?:-3G)?|IP10\\d{2}(?:-8GB)?) Build"),"$1",0,0,0];
+
+device[101] = [new RegExp("; *(AirTab)[ _\\-]([^;/]+) Build"),"$1 $2",0,0,0];
+
+device[102] = [new RegExp("; *(F\\-\\d[^;/]+) Build"),"$1",0,0,0];
+
+device[103] = [new RegExp("; *(HT-03A) Build"),"$1",0,0,0];
+
+device[104] = [new RegExp("; *(HT\\-\\d[^;/]+) Build"),"$1",0,0,0];
+
+device[105] = [new RegExp("; *(L\\-\\d[^;/]+) Build"),"$1",0,0,0];
+
+device[106] = [new RegExp("; *(N\\-\\d[^;/]+) Build"),"$1",0,0,0];
+
+device[107] = [new RegExp("; *(P\\-\\d[^;/]+) Build"),"$1",0,0,0];
+
+device[108] = [new RegExp("; *(SC\\-\\d[^;/]+) Build"),"$1",0,0,0];
+
+device[109] = [new RegExp("; *(SH\\-\\d[^;/]+) Build"),"$1",0,0,0];
+
+device[110] = [new RegExp("; *(SO\\-\\d[^;/]+) Build"),"$1",0,0,0];
+
+device[111] = [new RegExp("; *(T\\-0[12][^;/]+) Build"),"$1",0,0,0];
+
+device[112] = [new RegExp("; *(DOOV)[ _]([^;/]+) Build"),"$1 $2",0,0,0];
+
+device[113] = [new RegExp("; *(Enot|ENOT)[ -]?([^;/]+) Build"),"$1 $2",0,0,0];
+
+device[114] = [new RegExp("; *[^;/]+ Build/(?:CROSS|Cross)+[ _\\-]([^\\)]+)"),"CROSS $1",0,0,0];
+
+device[115] = [new RegExp("; *(CROSS|Cross)[ _\\-]([^;/]+) Build"),"$1 $2",0,0,0];
+
+device[116] = [new RegExp("; *Explay[_ ](.+?)(?:[\\)]| Build)"),"$1",0,0,0];
+
+device[117] = [new RegExp("; *(IQ.*) Build"),"$1",0,0,0];
+
+device[118] = [new RegExp("; *(Fly|FLY)[ _](IQ[^;]+|F[34]\\d+[^;]*);? Build"),"$1 $2",0,0,0];
+
+device[119] = [new RegExp("; *(M532|Q572|FJL21) Build/"),"$1",0,0,0];
+
+device[120] = [new RegExp("; *(G1) Build"),"$1",0,0,0];
+
+device[121] = [new RegExp("; *(Geeksphone) ([^;/]+) Build"),"$1 $2",0,0,0];
+
+device[122] = [new RegExp("; *(G[^F]?FIVE) ([^;/]+) Build"),"$1 $2",0,0,0];
+
+device[123] = [new RegExp("; *(Gionee)[ _\\-]([^;/]+)(?:/[^;/]+)? Build"),"$1 $2",0,0,0];
+
+device[124] = [new RegExp("; *(GN\\d+[A-Z]?|INFINITY_PASSION|Ctrl_V1) Build"),"Gionee $1",0,0,0];
+
+device[125] = [new RegExp("; *(E3) Build/JOP40D"),"Gionee $1",0,0,0];
+
+device[126] = [new RegExp("; *((?:FONE|QUANTUM|INSIGNIA) \\d+[^;/]*|PLAYTAB) Build"),"GoClever $1",0,0,0];
+
+device[127] = [new RegExp("; *GOCLEVER ([^;/]+) Build"),"GoClever $1",0,0,0];
+
+device[128] = [new RegExp("; *(Glass \\d+) Build"),"$1",0,0,0];
+
+device[129] = [new RegExp("; *(Pixel \\w+) Build"),"$1",0,0,0];
+
+device[130] = [new RegExp("; *(GSmart)[ -]([^/]+) Build"),"$1 $2",0,0,0];
+
+device[131] = [new RegExp("; *(imx5[13]_[^/]+) Build"),"Freescale $1",0,0,0];
+
+device[132] = [new RegExp("; *Haier[ _\\-]([^/]+) Build"),"Haier $1",0,0,0];
+
+device[133] = [new RegExp("; *(PAD1016) Build"),"Haipad $1",0,0,0];
+
+device[134] = [new RegExp("; *(M701|M7|M8|M9) Build"),"Haipad $1",0,0,0];
+
+device[135] = [new RegExp("; *(SN\\d+T[^;\\)/]*)(?: Build|[;\\)])"),"Hannspree $1",0,0,0];
+
+device[136] = [new RegExp("Build/HCL ME Tablet ([^;\\)]+)[\\);]"),"HCLme $1",0,0,0];
+
+device[137] = [new RegExp("; *([^;\\/]+) Build/HCL"),"HCLme $1",0,0,0];
+
+device[138] = [new RegExp("; *(MID-?\\d{4}C[EM]) Build"),"Hena $1",0,0,0];
+
+device[139] = [new RegExp("; *(EG\\d{2,}|HS-[^;/]+|MIRA[^;/]+) Build"),"Hisense $1",0,0,0];
+
+device[140] = [new RegExp("; *(andromax[^;/]+) Build"),"Hisense $1",0,0,0];
+
+device[141] = [new RegExp("; *(?:AMAZE[ _](S\\d+)|(S\\d+)[ _]AMAZE) Build"),"AMAZE $1$2",0,0,0];
+
+device[142] = [new RegExp("; *(PlayBook) Build"),"HP $1",0,0,0];
+
+device[143] = [new RegExp("; *HP ([^/]+) Build"),"HP $1",0,0,0];
+
+device[144] = [new RegExp("; *([^/]+_tenderloin) Build"),"HP TouchPad",0,0,0];
+
+device[145] = [new RegExp("; *(HUAWEI |Huawei-)?([UY][^;/]+) Build/(?:Huawei|HUAWEI)([UY][^\\);]+)\\)"),"$1$2",0,0,0];
+
+device[146] = [new RegExp("; *([^;/]+) Build[/ ]Huawei(MT1-U06|[A-Z]+\\d+[^\\);]+)[^\\);]*\\)"),"$1",0,0,0];
+
+device[147] = [new RegExp("; *(S7|M860) Build"),"$1",0,0,0];
+
+device[148] = [new RegExp("; *((?:HUAWEI|Huawei)[ \\-]?)(MediaPad) Build"),"$1$2",0,0,0];
+
+device[149] = [new RegExp("; *((?:HUAWEI[ _]?|Huawei[ _])?Ascend[ _])([^;/]+) Build"),"$1$2",0,0,0];
+
+device[150] = [new RegExp("; *((?:HUAWEI|Huawei)[ _\\-]?)((?:G700-|MT-)[^;/]+) Build"),"$1$2",0,0,0];
+
+device[151] = [new RegExp("; *((?:HUAWEI|Huawei)[ _\\-]?)([^;/]+) Build"),"$1$2",0,0,0];
+
+device[152] = [new RegExp("; *(MediaPad[^;]+|SpringBoard) Build/Huawei"),"$1",0,0,0];
+
+device[153] = [new RegExp("; *([^;]+) Build/(?:Huawei|HUAWEI)"),"$1",0,0,0];
+
+device[154] = [new RegExp("; *([Uu])([89]\\d{3}) Build"),"$1$2",0,0,0];
+
+device[155] = [new RegExp("; *(?:Ideos |IDEOS )(S7) Build"),"Huawei Ideos$1",0,0,0];
+
+device[156] = [new RegExp("; *(?:Ideos |IDEOS )([^;/]+\\s*|\\s*)Build"),"Huawei Ideos$1",0,0,0];
+
+device[157] = [new RegExp("; *(Orange Daytona|Pulse|Pulse Mini|Vodafone 858|C8500|C8600|C8650|C8660|Nexus 6P|ATH-.+?) Build[/ ]"),"Huawei $1",0,0,0];
+
+device[158] = [new RegExp("; *HTC[ _]([^;]+); Windows Phone"),"HTC $1",0,0,0];
+
+device[159] = [new RegExp("; *(?:HTC[ _/])+([^ _/]+)(?:[/\\\\]1\\.0 | V|/| +)\\d+\\.\\d[\\d\\.]*(?: *Build|\\))"),"HTC $1",0,0,0];
+
+device[160] = [new RegExp("; *(?:HTC[ _/])+([^ _/]+)(?:[ _/]([^ _/]+))?(?:[/\\\\]1\\.0 | V|/| +)\\d+\\.\\d[\\d\\.]*(?: *Build|\\))"),"HTC $1 $2",0,0,0];
+
+device[161] = [new RegExp("; *(?:HTC[ _/])+([^ _/]+)(?:[ _/]([^ _/]+)(?:[ _/]([^ _/]+))?)?(?:[/\\\\]1\\.0 | V|/| +)\\d+\\.\\d[\\d\\.]*(?: *Build|\\))"),"HTC $1 $2 $3",0,0,0];
+
+device[162] = [new RegExp("; *(?:HTC[ _/])+([^ _/]+)(?:[ _/]([^ _/]+)(?:[ _/]([^ _/]+)(?:[ _/]([^ _/]+))?)?)?(?:[/\\\\]1\\.0 | V|/| +)\\d+\\.\\d[\\d\\.]*(?: *Build|\\))"),"HTC $1 $2 $3 $4",0,0,0];
+
+device[163] = [new RegExp("; *(?:(?:HTC|htc)(?:_blocked)*[ _/])+([^ _/;]+)(?: *Build|[;\\)]| - )"),"HTC $1",0,0,0];
+
+device[164] = [new RegExp("; *(?:(?:HTC|htc)(?:_blocked)*[ _/])+([^ _/]+)(?:[ _/]([^ _/;\\)]+))?(?: *Build|[;\\)]| - )"),"HTC $1 $2",0,0,0];
+
+device[165] = [new RegExp("; *(?:(?:HTC|htc)(?:_blocked)*[ _/])+([^ _/]+)(?:[ _/]([^ _/]+)(?:[ _/]([^ _/;\\)]+))?)?(?: *Build|[;\\)]| - )"),"HTC $1 $2 $3",0,0,0];
+
+device[166] = [new RegExp("; *(?:(?:HTC|htc)(?:_blocked)*[ _/])+([^ _/]+)(?:[ _/]([^ _/]+)(?:[ _/]([^ _/]+)(?:[ _/]([^ /;]+))?)?)?(?: *Build|[;\\)]| - )"),"HTC $1 $2 $3 $4",0,0,0];
+
+device[167] = [new RegExp("HTC Streaming Player [^\\/]*/[^\\/]*/ htc_([^/]+) /"),"HTC $1",0,0,0];
+
+device[168] = [new RegExp("(?:[;,] *|^)(?:htccn_chs-)?HTC[ _-]?([^;]+?)(?: *Build|clay|Android|-?Mozilla| Opera| Profile| UNTRUSTED|[;/\\(\\)]|$)"),"HTC $1",0,0,0];
+
+device[169] = [new RegExp("; *(A6277|ADR6200|ADR6300|ADR6350|ADR6400[A-Z]*|ADR6425[A-Z]*|APX515CKT|ARIA|Desire[^_ ]*|Dream|EndeavorU|Eris|Evo|Flyer|HD2|Hero|HERO200|Hero CDMA|HTL21|Incredible|Inspire[A-Z0-9]*|Legend|Liberty|Nexus ?(?:One|HD2)|One|One S C2|One[ _]?(?:S|V|X\\+?)\\w*|PC36100|PG06100|PG86100|S31HT|Sensation|Wildfire)(?: Build|[/;\\(\\)])"),"HTC $1",0,0,0];
+
+device[170] = [new RegExp("; *(ADR6200|ADR6400L|ADR6425LVW|Amaze|DesireS?|EndeavorU|Eris|EVO|Evo\\d[A-Z]+|HD2|IncredibleS?|Inspire[A-Z0-9]*|Inspire[A-Z0-9]*|Sensation[A-Z0-9]*|Wildfire)[ _-](.+?)(?:[/;\\)]|Build|MIUI|1\\.0)"),"HTC $1 $2",0,0,0];
+
+device[171] = [new RegExp("; *HYUNDAI (T\\d[^/]*) Build"),"Hyundai $1",0,0,0];
+
+device[172] = [new RegExp("; *HYUNDAI ([^;/]+) Build"),"Hyundai $1",0,0,0];
+
+device[173] = [new RegExp("; *(X700|Hold X|MB-6900) Build"),"Hyundai $1",0,0,0];
+
+device[174] = [new RegExp("; *(?:iBall[ _\\-])?(Andi)[ _]?(\\d[^;/]*) Build"),"$1 $2",0,0,0];
+
+device[175] = [new RegExp("; *(IBall)(?:[ _]([^;/]+)|) Build"),"$1 $2",0,0,0];
+
+device[176] = [new RegExp("; *(NT-\\d+[^ ;/]*|Net[Tt]AB [^;/]+|Mercury [A-Z]+|iconBIT)(?: S/N:[^;/]+)? Build"),"$1",0,0,0];
+
+device[177] = [new RegExp("; *(IMO)[ _]([^;/]+) Build"),"$1 $2",0,0,0];
+
+device[178] = [new RegExp("; *i-?mobile[ _]([^/]+) Build/"),"i-mobile $1",0,0,0];
+
+device[179] = [new RegExp("; *(i-(?:style|note)[^/]*) Build/"),"i-mobile $1",0,0,0];
+
+device[180] = [new RegExp("; *(ImPAD) ?(\\d+(?:.)*) Build"),"$1 $2",0,0,0];
+
+device[181] = [new RegExp("; *(Infinix)[ _]([^;/]+) Build"),"$1 $2",0,0,0];
+
+device[182] = [new RegExp("; *(Informer)[ \\-]([^;/]+) Build"),"$1 $2",0,0,0];
+
+device[183] = [new RegExp("; *(TAB) ?([78][12]4) Build"),"Intenso $1",0,0,0];
+
+device[184] = [new RegExp("; *(?:Intex[ _])?(AQUA|Aqua)([ _\\.\\-])([^;/]+) *(?:Build|;)"),"$1$2$3",0,0,0];
+
+device[185] = [new RegExp("; *(?:INTEX|Intex)(?:[_ ]([^\\ _;/]+))(?:[_ ]([^\\ _;/]+))? *(?:Build|;)"),"$1 $2",0,0,0];
+
+device[186] = [new RegExp("; *([iI]Buddy)[ _]?(Connect)(?:_|\\?_| )?([^;/]*) *(?:Build|;)"),"$1 $2 $3",0,0,0];
+
+device[187] = [new RegExp("; *(I-Buddy)[ _]([^;/]+) *(?:Build|;)"),"$1 $2",0,0,0];
+
+device[188] = [new RegExp("; *(iOCEAN) ([^/]+) Build"),"$1 $2",0,0,0];
+
+device[189] = [new RegExp("; *(TP\\d+(?:\\.\\d+)?\\-\\d[^;/]+) Build"),"ionik $1",0,0,0];
+
+device[190] = [new RegExp("; *(M702pro) Build"),"$1",0,0,0];
+
+device[191] = [new RegExp("; *(DE88Plus|MD70) Build"),"$1",0,0,0];
+
+device[192] = [new RegExp("; *IVIO[_\\-]([^;/]+) Build"),"$1",0,0,0];
+
+device[193] = [new RegExp("; *(TPC-\\d+|JAY-TECH) Build"),"$1",0,0,0];
+
+device[194] = [new RegExp("; *(JY-[^;/]+|G[234]S?) Build"),"$1",0,0,0];
+
+device[195] = [new RegExp("; *(JXD)[ _\\-]([^;/]+) Build"),"$1 $2",0,0,0];
+
+device[196] = [new RegExp("; *Karbonn[ _]?([^;/]+) *(?:Build|;)"),"$1",0,0,0];
+
+device[197] = [new RegExp("; *([^;]+) Build/Karbonn"),"$1",0,0,0];
+
+device[198] = [new RegExp("; *(A11|A39|A37|A34|ST8|ST10|ST7|Smart Tab3|Smart Tab2|Titanium S\\d) +Build"),"$1",0,0,0];
+
+device[199] = [new RegExp("; *(IS01|IS03|IS05|IS\\d{2}SH) Build"),"$1",0,0,0];
+
+device[200] = [new RegExp("; *(IS04) Build"),"$1",0,0,0];
+
+device[201] = [new RegExp("; *(IS06|IS\\d{2}PT) Build"),"$1",0,0,0];
+
+device[202] = [new RegExp("; *(IS11S) Build"),"$1",0,0,0];
+
+device[203] = [new RegExp("; *(IS11CA) Build"),"$1",0,0,0];
+
+device[204] = [new RegExp("; *(IS11LG) Build"),"$1",0,0,0];
+
+device[205] = [new RegExp("; *(IS11N) Build"),"$1",0,0,0];
+
+device[206] = [new RegExp("; *(IS11PT) Build"),"$1",0,0,0];
+
+device[207] = [new RegExp("; *(IS12F) Build"),"$1",0,0,0];
+
+device[208] = [new RegExp("; *(IS12M) Build"),"$1",0,0,0];
+
+device[209] = [new RegExp("; *(IS12S) Build"),"$1",0,0,0];
+
+device[210] = [new RegExp("; *(ISW11F) Build"),"$1",0,0,0];
+
+device[211] = [new RegExp("; *(ISW11HT) Build"),"$1",0,0,0];
+
+device[212] = [new RegExp("; *(ISW11K) Build"),"$1",0,0,0];
+
+device[213] = [new RegExp("; *(ISW11M) Build"),"$1",0,0,0];
+
+device[214] = [new RegExp("; *(ISW11SC) Build"),"$1",0,0,0];
+
+device[215] = [new RegExp("; *(ISW12HT) Build"),"$1",0,0,0];
+
+device[216] = [new RegExp("; *(ISW13HT) Build"),"$1",0,0,0];
+
+device[217] = [new RegExp("; *(ISW?[0-9]{2}[A-Z]{0,2}) Build"),"$1",0,0,0];
+
+device[218] = [new RegExp("; *(INFOBAR [^;/]+) Build"),"$1",0,0,0];
+
+device[219] = [new RegExp("; *(JOYPAD|Joypad)[ _]([^;/]+) Build/"),"$1 $2",0,0,0];
+
+device[220] = [new RegExp("; *(Vox|VOX|Arc|K080) Build/"),"$1",0,0,0];
+
+device[221] = [new RegExp("\\b(Kobo Touch)\\b"),"$1",0,0,0];
+
+device[222] = [new RegExp("; *(K-Touch)[ _]([^;/]+) Build"),"$1 $2",0,0,0];
+
+device[223] = [new RegExp("; *((?:EV|KM)-S\\d+[A-Z]?) Build"),"$1",0,0,0];
+
+device[224] = [new RegExp("; *(Zio|Hydro|Torque|Event|EVENT|Echo|Milano|Rise|URBANO PROGRESSO|WX04K|WX06K|WX10K|KYL21|101K|C5[12]\\d{2}) Build/"),"$1",0,0,0];
+
+device[225] = [new RegExp("; *(?:LAVA[ _])?IRIS[ _\\-]?([^/;\\)]+) *(?:;|\\)|Build)"),"Iris $1",0,0,0];
+
+device[226] = [new RegExp("; *LAVA[ _]([^;/]+) Build"),"$1",0,0,0];
+
+device[227] = [new RegExp("; *(?:(Aspire A1)|(?:LEMON|Lemon)[ _]([^;/]+))_? Build"),"Lemon $1$2",0,0,0];
+
+device[228] = [new RegExp("; *(TAB-1012) Build/"),"Lenco $1",0,0,0];
+
+device[229] = [new RegExp("; Lenco ([^;/]+) Build/"),"Lenco $1",0,0,0];
+
+device[230] = [new RegExp("; *(A1_07|A2107A-H|S2005A-H|S1-37AH0) Build"),"$1",0,0,0];
+
+device[231] = [new RegExp("; *(Idea[Tp]ab)[ _]([^;/]+);? Build"),"Lenovo $1 $2",0,0,0];
+
+device[232] = [new RegExp("; *(Idea(?:Tab|pad)) ?([^;/]+) Build"),"Lenovo $1 $2",0,0,0];
+
+device[233] = [new RegExp("; *(ThinkPad) ?(Tablet) Build/"),"Lenovo $1 $2",0,0,0];
+
+device[234] = [new RegExp("; *(?:LNV-)?(?:=?[Ll]enovo[ _\\-]?|LENOVO[ _])+(.+?)(?:Build|[;/\\)])"),"Lenovo $1",0,0,0];
+
+device[235] = [new RegExp("[;,] (?:Vodafone )?(SmartTab) ?(II) ?(\\d+) Build/"),"Lenovo $1 $2 $3",0,0,0];
+
+device[236] = [new RegExp("; *(?:Ideapad )?K1 Build/"),"Lenovo Ideapad K1",0,0,0];
+
+device[237] = [new RegExp("; *(3GC101|3GW10[01]|A390) Build/"),"$1",0,0,0];
+
+device[238] = [new RegExp("\\b(?:Lenovo|LENOVO)+[ _\\-]?([^,;:/ ]+)"),"Lenovo $1",0,0,0];
+
+device[239] = [new RegExp("; *(MFC\\d+)[A-Z]{2}([^;,/]*),? Build"),"$1$2",0,0,0];
+
+device[240] = [new RegExp("; *(E[34][0-9]{2}|LS[6-8][0-9]{2}|VS[6-9][0-9]+[^;/]+|Nexus 4|Nexus 5X?|GT540f?|Optimus (?:2X|G|4X HD)|OptimusX4HD) *(?:Build|;)"),"$1",0,0,0];
+
+device[241] = [new RegExp("[;:] *(L-\\d+[A-Z]|LGL\\d+[A-Z]?)(?:/V\\d+)? *(?:Build|[;\\)])"),"$1",0,0,0];
+
+device[242] = [new RegExp("; *(LG-)([A-Z]{1,2}\\d{2,}[^,;/\\)\\(]*?)(?:Build| V\\d+|[,;/\\)\\(]|$)"),"$1$2",0,0,0];
+
+device[243] = [new RegExp("; *(LG[ \\-]|LG)([^;/]+)[;/]? Build"),"$1$2",0,0,0];
+
+device[244] = [new RegExp("^(LG)-([^;/]+)/ Mozilla/.*; Android"),"$1 $2",0,0,0];
+
+device[245] = [new RegExp("(Web0S); Linux/(SmartTV)"),"LG $1 $2",0,0,0];
+
+device[246] = [new RegExp("; *((?:SMB|smb)[^;/]+) Build/"),"$1",0,0,0];
+
+device[247] = [new RegExp("; *(?:Malata|MALATA) ([^;/]+) Build/"),"$1",0,0,0];
+
+device[248] = [new RegExp("; *(MS[45][0-9]{3}|MID0[568][NS]?|MID[1-9]|MID[78]0[1-9]|MID970[1-9]|MID100[1-9]) Build/"),"$1",0,0,0];
+
+device[249] = [new RegExp("; *(M1052|M806|M9000|M9100|M9701|MID100|MID120|MID125|MID130|MID135|MID140|MID701|MID710|MID713|MID727|MID728|MID731|MID732|MID733|MID735|MID736|MID737|MID760|MID800|MID810|MID820|MID830|MID833|MID835|MID860|MID900|MID930|MID933|MID960|MID980) Build/"),"$1",0,0,0];
+
+device[250] = [new RegExp("; *(GenxDroid7|MSD7.*|AX\\d.*|Tab 701|Tab 722) Build/"),"Maxx $1",0,0,0];
+
+device[251] = [new RegExp("; *(M-PP[^;/]+|PhonePad ?\\d{2,}[^;/]+) Build"),"Mediacom $1",0,0,0];
+
+device[252] = [new RegExp("; *(M-MP[^;/]+|SmartPad ?\\d{2,}[^;/]+) Build"),"Mediacom $1",0,0,0];
+
+device[253] = [new RegExp("; *(?:MD_)?LIFETAB[ _]([^;/]+) Build"),"Medion Lifetab $1",0,0,0];
+
+device[254] = [new RegExp("; *MEDION ([^;/]+) Build"),"Medion $1",0,0,0];
+
+device[255] = [new RegExp("; *(M030|M031|M035|M040|M065|m9) Build"),"Meizu $1",0,0,0];
+
+device[256] = [new RegExp("; *(?:meizu_|MEIZU )(.+?) *(?:Build|[;\\)])"),"Meizu $1",0,0,0];
+
+device[257] = [new RegExp("; *(?:Micromax[ _](A111|A240)|(A111|A240)) Build"),"Micromax $1$2",0,0,0];
+
+device[258] = [new RegExp("; *Micromax[ _](A\\d{2,3}[^;/]*) Build"),"Micromax $1",0,0,0];
+
+device[259] = [new RegExp("; *(A\\d{2}|A[12]\\d{2}|A90S|A110Q) Build"),"Micromax $1",0,0,0];
+
+device[260] = [new RegExp("; *Micromax[ _](P\\d{3}[^;/]*) Build"),"Micromax $1",0,0,0];
+
+device[261] = [new RegExp("; *(P\\d{3}|P\\d{3}\\(Funbook\\)) Build"),"Micromax $1",0,0,0];
+
+device[262] = [new RegExp("; *(MITO)[ _\\-]?([^;/]+) Build"),"$1 $2",0,0,0];
+
+device[263] = [new RegExp("; *(Cynus)[ _](F5|T\\d|.+?) *(?:Build|[;/\\)])"),"$1 $2",0,0,0];
+
+device[264] = [new RegExp("; *(MODECOM )?(FreeTab) ?([^;/]+) Build"),"$1$2 $3",0,0,0];
+
+device[265] = [new RegExp("; *(MODECOM )([^;/]+) Build"),"$1 $2",0,0,0];
+
+device[266] = [new RegExp("; *(MZ\\d{3}\\+?|MZ\\d{3} 4G|Xoom|XOOM[^;/]*) Build"),"Motorola $1",0,0,0];
+
+device[267] = [new RegExp("; *(Milestone )(XT[^;/]*) Build"),"Motorola $1$2",0,0,0];
+
+device[268] = [new RegExp("; *(Motoroi ?x|Droid X|DROIDX) Build"),"Motorola $1",0,0,0];
+
+device[269] = [new RegExp("; *(Droid[^;/]*|DROID[^;/]*|Milestone[^;/]*|Photon|Triumph|Devour|Titanium) Build"),"Motorola $1",0,0,0];
+
+device[270] = [new RegExp("; *(A555|A85[34][^;/]*|A95[356]|ME[58]\\d{2}\\+?|ME600|ME632|ME722|MB\\d{3}\\+?|MT680|MT710|MT870|MT887|MT917|WX435|WX453|WX44[25]|XT\\d{3,4}[A-Z\\+]*|CL[iI]Q|CL[iI]Q XT) Build"),"$1",0,0,0];
+
+device[271] = [new RegExp("; *(Motorola MOT-|Motorola[ _\\-]|MOT\\-?)([^;/]+) Build"),"$1$2",0,0,0];
+
+device[272] = [new RegExp("; *(Moto[_ ]?|MOT\\-)([^;/]+) Build"),"$1$2",0,0,0];
+
+device[273] = [new RegExp("; *((?:MP[DQ]C|MPG\\d{1,4}|MP\\d{3,4}|MID(?:(?:10[234]|114|43|7[247]|8[24]|7)C|8[01]1))[^;/]*) Build"),"$1",0,0,0];
+
+device[274] = [new RegExp("; *(?:MSI[ _])?(Primo\\d+|Enjoy[ _\\-][^;/]+) Build"),"$1",0,0,0];
+
+device[275] = [new RegExp("; *Multilaser[ _]([^;/]+) Build"),"$1",0,0,0];
+
+device[276] = [new RegExp("; *(My)[_]?(Pad)[ _]([^;/]+) Build"),"$1$2 $3",0,0,0];
+
+device[277] = [new RegExp("; *(My)\\|?(Phone)[ _]([^;/]+) Build"),"$1$2 $3",0,0,0];
+
+device[278] = [new RegExp("; *(A\\d+)[ _](Duo)? Build"),"$1 $2",0,0,0];
+
+device[279] = [new RegExp("; *(myTab[^;/]*) Build"),"$1",0,0,0];
+
+device[280] = [new RegExp("; *(NABI2?-)([^;/]+) Build/"),"$1$2",0,0,0];
+
+device[281] = [new RegExp("; *(N-\\d+[CDE]) Build/"),"$1",0,0,0];
+
+device[282] = [new RegExp("; ?(NEC-)(.*) Build/"),"$1$2",0,0,0];
+
+device[283] = [new RegExp("; *(LT-NA7) Build/"),"$1",0,0,0];
+
+device[284] = [new RegExp("; *(NXM\\d+[A-z0-9_]*|Next\\d[A-z0-9_ \\-]*|NEXT\\d[A-z0-9_ \\-]*|Nextbook [A-z0-9_ ]*|DATAM803HC|M805)(?: Build|[\\);])"),"$1",0,0,0];
+
+device[285] = [new RegExp("; *(Nokia)([ _\\-]*)([^;/]*) Build"),"$1$2$3",0,0,0];
+
+device[286] = [new RegExp("; *(Nook ?|Barnes & Noble Nook |BN )([^;/]+) Build"),"$1$2",0,0,0];
+
+device[287] = [new RegExp("; *(NOOK )?(BNRV200|BNRV200A|BNTV250|BNTV250A|BNTV400|BNTV600|LogicPD Zoom2) Build"),"$1$2",0,0,0];
+
+device[288] = [new RegExp("; Build/(Nook)"),"$1",0,0,0];
+
+device[289] = [new RegExp("; *(OP110|OliPad[^;/]+) Build"),"Olivetti $1",0,0,0];
+
+device[290] = [new RegExp("; *OMEGA[ _\\-](MID[^;/]+) Build"),"Omega $1",0,0,0];
+
+device[291] = [new RegExp("^(MID7500|MID\\d+) Mozilla/5\\.0 \\(iPad;"),"Omega $1",0,0,0];
+
+device[292] = [new RegExp("; *((?:CIUS|cius)[^;/]*) Build"),"Openpeak $1",0,0,0];
+
+device[293] = [new RegExp("; *(Find ?(?:5|7a)|R8[012]\\d{1,2}|T703\\d{0,1}|U70\\d{1,2}T?|X90\\d{1,2}) Build"),"Oppo $1",0,0,0];
+
+device[294] = [new RegExp("; *OPPO ?([^;/]+) Build/"),"Oppo $1",0,0,0];
+
+device[295] = [new RegExp("; *(?:Odys\\-|ODYS\\-|ODYS )([^;/]+) Build"),"Odys $1",0,0,0];
+
+device[296] = [new RegExp("; *(SELECT) ?(7) Build"),"Odys $1 $2",0,0,0];
+
+device[297] = [new RegExp("; *(PEDI)_(PLUS)_(W) Build"),"Odys $1 $2 $3",0,0,0];
+
+device[298] = [new RegExp("; *(AEON|BRAVIO|FUSION|FUSION2IN1|Genio|EOS10|IEOS[^;/]*|IRON|Loox|LOOX|LOOX Plus|Motion|NOON|NOON_PRO|NEXT|OPOS|PEDI[^;/]*|PRIME[^;/]*|STUDYTAB|TABLO|Tablet-PC-4|UNO_X8|XELIO[^;/]*|Xelio ?\\d+ ?[Pp]ro|XENO10|XPRESS PRO) Build"),"Odys $1",0,0,0];
+
+device[299] = [new RegExp("; (ONE [a-zA-Z]\\d+) Build/"),"OnePlus $1",0,0,0];
+
+device[300] = [new RegExp("; (ONEPLUS [a-zA-Z]\\d+) Build/"),"OnePlus $1",0,0,0];
+
+device[301] = [new RegExp("; *(TP-\\d+) Build/"),"Orion $1",0,0,0];
+
+device[302] = [new RegExp("; *(G100W?) Build/"),"PackardBell $1",0,0,0];
+
+device[303] = [new RegExp("; *(Panasonic)[_ ]([^;/]+) Build"),"$1 $2",0,0,0];
+
+device[304] = [new RegExp("; *(FZ-A1B|JT-B1) Build"),"Panasonic $1",0,0,0];
+
+device[305] = [new RegExp("; *(dL1|DL1) Build"),"Panasonic $1",0,0,0];
+
+device[306] = [new RegExp("; *(SKY[ _])?(IM\\-[AT]\\d{3}[^;/]+).* Build/"),"Pantech $1$2",0,0,0];
+
+device[307] = [new RegExp("; *((?:ADR8995|ADR910L|ADR930L|ADR930VW|PTL21|P8000)(?: 4G)?) Build/"),"$1",0,0,0];
+
+device[308] = [new RegExp("; *Pantech([^;/]+).* Build/"),"Pantech $1",0,0,0];
+
+device[309] = [new RegExp("; *(papyre)[ _\\-]([^;/]+) Build/"),"$1 $2",0,0,0];
+
+device[310] = [new RegExp("; *(?:Touchlet )?(X10\\.[^;/]+) Build/"),"Pearl $1",0,0,0];
+
+device[311] = [new RegExp("; PHICOMM (i800) Build/"),"Phicomm $1",0,0,0];
+
+device[312] = [new RegExp("; PHICOMM ([^;/]+) Build/"),"Phicomm $1",0,0,0];
+
+device[313] = [new RegExp("; *(FWS\\d{3}[^;/]+) Build/"),"Phicomm $1",0,0,0];
+
+device[314] = [new RegExp("; *(D633|D822|D833|T539|T939|V726|W335|W336|W337|W3568|W536|W5510|W626|W632|W6350|W6360|W6500|W732|W736|W737|W7376|W820|W832|W8355|W8500|W8510|W930) Build"),"$1",0,0,0];
+
+device[315] = [new RegExp("; *(?:Philips|PHILIPS)[ _]([^;/]+) Build"),"Philips $1",0,0,0];
+
+device[316] = [new RegExp("Android 4\\..*; *(M[12356789]|U[12368]|S[123])\\ ?(pro)? Build"),"Pipo $1$2",0,0,0];
+
+device[317] = [new RegExp("; *(MOMO[^;/]+) Build"),"$1",0,0,0];
+
+device[318] = [new RegExp("; *(?:Polaroid[ _])?((?:MIDC\\d{3,}|PMID\\d{2,}|PTAB\\d{3,})[^;/]*)(\\/[^;/]*)? Build/"),"$1",0,0,0];
+
+device[319] = [new RegExp("; *(?:Polaroid )(Tablet) Build/"),"$1",0,0,0];
+
+device[320] = [new RegExp("; *(POMP)[ _\\-](.+?) *(?:Build|[;/\\)])"),"$1 $2",0,0,0];
+
+device[321] = [new RegExp("; *(TB07STA|TB10STA|TB07FTA|TB10FTA) Build/"),"$1",0,0,0];
+
+device[322] = [new RegExp("; *(?:Positivo )?((?:YPY|Ypy)[^;/]+) Build/"),"$1",0,0,0];
+
+device[323] = [new RegExp("; *(MOB-[^;/]+) Build/"),"$1",0,0,0];
+
+device[324] = [new RegExp("; *POV[ _\\-]([^;/]+) Build/"),"POV $1",0,0,0];
+
+device[325] = [new RegExp("; *((?:TAB-PLAYTAB|TAB-PROTAB|PROTAB|PlayTabPro|Mobii[ _\\-]|TAB-P)[^;/]*) Build/"),"POV $1",0,0,0];
+
+device[326] = [new RegExp("; *(?:Prestigio )?((?:PAP|PMP)\\d[^;/]+) Build/"),"Prestigio $1",0,0,0];
+
+device[327] = [new RegExp("; *(PLT[0-9]{4}.*) Build/"),"$1",0,0,0];
+
+device[328] = [new RegExp("; *(A2|A5|A8|A900)_?(Classic)? Build"),"$1 $2",0,0,0];
+
+device[329] = [new RegExp("; *(Q[Mm]obile)_([^_]+)_([^_]+) Build"),"Qmobile $2 $3",0,0,0];
+
+device[330] = [new RegExp("; *(Q\\-?[Mm]obile)[_ ](A[^;/]+) Build"),"Qmobile $2",0,0,0];
+
+device[331] = [new RegExp("; *(Q\\-Smart)[ _]([^;/]+) Build/"),"$1 $2",0,0,0];
+
+device[332] = [new RegExp("; *(Q\\-?[Mm]obile)[ _\\-](S[^;/]+) Build/"),"$1 $2",0,0,0];
+
+device[333] = [new RegExp("; *(TA1013) Build"),"$1",0,0,0];
+
+device[334] = [new RegExp("; (RCT\\w+) Build/"),"$1",0,0,0];
+
+device[335] = [new RegExp("; *(RK\\d+),? Build/"),"$1",0,0,0];
+
+device[336] = [new RegExp(" Build/(RK\\d+)"),"$1",0,0,0];
+
+device[337] = [new RegExp("; *(SAMSUNG |Samsung )?((?:Galaxy (?:Note II|S\\d)|GT-I9082|GT-I9205|GT-N7\\d{3}|SM-N9005)[^;/]*)\\/?[^;/]* Build/"),"Samsung $1$2",0,0,0];
+
+device[338] = [new RegExp("; *(Google )?(Nexus [Ss](?: 4G)?) Build/"),"Samsung $1$2",0,0,0];
+
+device[339] = [new RegExp("; *(SAMSUNG |Samsung )([^\\/]*)\\/[^ ]* Build/"),"Samsung $2",0,0,0];
+
+device[340] = [new RegExp("; *(Galaxy(?: Ace| Nexus| S ?II+|Nexus S| with MCR 1.2| Mini Plus 4G)?) Build/"),"Samsung $1",0,0,0];
+
+device[341] = [new RegExp("; *(SAMSUNG[ _\\-] *)+([^;/]+) Build"),"Samsung $2",0,0,0];
+
+device[342] = [new RegExp("; *(SAMSUNG-)?(GT\\-[BINPS]\\d{4}[^\\/]*)(\\/[^ ]*) Build"),"Samsung $1$2$3",0,0,0];
+
+device[343] = [new RegExp("(?:; *|^)((?:GT\\-[BIiNPS]\\d{4}|I9\\d{2}0[A-Za-z\\+]?\\b)[^;/\\)]*?)(?:Build|Linux|MIUI|[;/\\)])"),"Samsung $1",0,0,0];
+
+device[344] = [new RegExp("; (SAMSUNG-)([A-Za-z0-9\\-]+).* Build/"),"Samsung $1$2",0,0,0];
+
+device[345] = [new RegExp("; *((?:SCH|SGH|SHV|SHW|SPH|SC|SM)\\-[A-Za-z0-9 ]+)(/?[^ ]*)? Build"),"Samsung $1",0,0,0];
+
+device[346] = [new RegExp(" ((?:SCH)\\-[A-Za-z0-9 ]+)(/?[^ ]*)? Build"),"Samsung $1",0,0,0];
+
+device[347] = [new RegExp("; *(Behold ?(?:2|II)|YP\\-G[^;/]+|EK-GC100|SCL21|I9300) Build"),"Samsung $1",0,0,0];
+
+device[348] = [new RegExp("; *(SH\\-?\\d\\d[^;/]+|SBM\\d[^;/]+) Build"),"$1",0,0,0];
+
+device[349] = [new RegExp("; *(SHARP[ -])([^;/]+) Build"),"$1$2",0,0,0];
+
+device[350] = [new RegExp("; *(SPX[_\\-]\\d[^;/]*) Build/"),"$1",0,0,0];
+
+device[351] = [new RegExp("; *(SX7\\-PEARL\\.GmbH) Build/"),"$1",0,0,0];
+
+device[352] = [new RegExp("; *(SP[T]?\\-\\d{2}[^;/]*) Build/"),"$1",0,0,0];
+
+device[353] = [new RegExp("; *(SK\\-.*) Build/"),"$1",0,0,0];
+
+device[354] = [new RegExp("; *(?:SKYTEX|SX)-([^;/]+) Build"),"$1",0,0,0];
+
+device[355] = [new RegExp("; *(IMAGINE [^;/]+) Build"),"$1",0,0,0];
+
+device[356] = [new RegExp("; *(SmartQ) ?([^;/]+) Build/"),"$1 $2",0,0,0];
+
+device[357] = [new RegExp("; *(WF7C|WF10C|SBT[^;/]+) Build"),"$1",0,0,0];
+
+device[358] = [new RegExp("; *(SBM(?:003SH|005SH|006SH|007SH|102SH)) Build"),"$1",0,0,0];
+
+device[359] = [new RegExp("; *(003P|101P|101P11C|102P) Build"),"$1",0,0,0];
+
+device[360] = [new RegExp("; *(00\\dZ) Build/"),"$1",0,0,0];
+
+device[361] = [new RegExp("; HTC(X06HT) Build"),"$1",0,0,0];
+
+device[362] = [new RegExp("; *(001HT|X06HT) Build"),"$1",0,0,0];
+
+device[363] = [new RegExp("; *(201M) Build"),"$1",0,0,0];
+
+device[364] = [new RegExp("; *(ST\\d{4}.*)Build/ST"),"Trekstor $1",0,0,0];
+
+device[365] = [new RegExp("; *(ST\\d{4}.*) Build/"),"Trekstor $1",0,0,0];
+
+device[366] = [new RegExp("; *(Sony ?Ericsson ?)([^;/]+) Build"),"$1$2",0,0,0];
+
+device[367] = [new RegExp("; *((?:SK|ST|E|X|LT|MK|MT|WT)\\d{2}[a-z0-9]*(?:-o)?|R800i|U20i) Build"),"$1",0,0,0];
+
+device[368] = [new RegExp("; *(Xperia (?:A8|Arc|Acro|Active|Live with Walkman|Mini|Neo|Play|Pro|Ray|X\\d+)[^;/]*) Build"),"$1",0,0,0];
+
+device[369] = [new RegExp("; Sony (Tablet[^;/]+) Build"),"Sony $1",0,0,0];
+
+device[370] = [new RegExp("; Sony ([^;/]+) Build"),"Sony $1",0,0,0];
+
+device[371] = [new RegExp("; *(Sony)([A-Za-z0-9\\-]+) Build"),"$1 $2",0,0,0];
+
+device[372] = [new RegExp("; *(Xperia [^;/]+) Build"),"$1",0,0,0];
+
+device[373] = [new RegExp("; *(C(?:1[0-9]|2[0-9]|53|55|6[0-9])[0-9]{2}|D[25]\\d{3}|D6[56]\\d{2}) Build"),"$1",0,0,0];
+
+device[374] = [new RegExp("; *(SGP\\d{3}|SGPT\\d{2}) Build"),"$1",0,0,0];
+
+device[375] = [new RegExp("; *(NW-Z1000Series) Build"),"$1",0,0,0];
+
+device[376] = [new RegExp("PLAYSTATION 3"),"PlayStation 3",0,0,0];
+
+device[377] = [new RegExp("(PlayStation (?:Portable|Vita|\\d+))"),"$1",0,0,0];
+
+device[378] = [new RegExp("; *((?:CSL_Spice|Spice|SPICE|CSL)[ _\\-]?)?([Mm][Ii])([ _\\-])?(\\d{3}[^;/]*) Build/"),"$1$2$3$4",0,0,0];
+
+device[379] = [new RegExp("; *(Sprint )(.+?) *(?:Build|[;/])"),"$1$2",0,0,0];
+
+device[380] = [new RegExp("\\b(Sprint)[: ]([^;,/ ]+)"),"$1$2",0,0,0];
+
+device[381] = [new RegExp("; *(TAGI[ ]?)(MID) ?([^;/]+) Build/"),"$1$2$3",0,0,0];
+
+device[382] = [new RegExp("; *(Oyster500|Opal 800) Build"),"Tecmobile $1",0,0,0];
+
+device[383] = [new RegExp("; *(TECNO[ _])([^;/]+) Build/"),"$1$2",0,0,0];
+
+device[384] = [new RegExp("; *Android for (Telechips|Techvision) ([^ ]+) "),"$1 $2",0,0,0];
+
+device[385] = [new RegExp("; *(T-Hub2) Build/"),"$1",0,0,0];
+
+device[386] = [new RegExp("; *(PAD) ?(100[12]) Build/"),"Terra $1$2",0,0,0];
+
+device[387] = [new RegExp("; *(T[BM]-\\d{3}[^;/]+) Build/"),"$1",0,0,0];
+
+device[388] = [new RegExp("; *(tolino [^;/]+) Build"),"$1",0,0,0];
+
+device[389] = [new RegExp("; *Build/.* (TOLINO_BROWSER)"),"$1",0,0,0];
+
+device[390] = [new RegExp("; *(?:CJ[ -])?(ThL|THL)[ -]([^;/]+) Build/"),"$1 $2",0,0,0];
+
+device[391] = [new RegExp("; *(T100|T200|T5|W100|W200|W8s) Build/"),"$1",0,0,0];
+
+device[392] = [new RegExp("; *(T-Mobile[ _]G2[ _]Touch) Build"),"$1",0,0,0];
+
+device[393] = [new RegExp("; *(T-Mobile[ _]G2) Build"),"$1",0,0,0];
+
+device[394] = [new RegExp("; *(T-Mobile myTouch Q) Build"),"$1",0,0,0];
+
+device[395] = [new RegExp("; *(T-Mobile myTouch) Build"),"$1",0,0,0];
+
+device[396] = [new RegExp("; *(T-Mobile_Espresso) Build"),"$1",0,0,0];
+
+device[397] = [new RegExp("; *(T-Mobile G1) Build"),"$1",0,0,0];
+
+device[398] = [new RegExp("\\b(T-Mobile ?)?(myTouch)[ _]?([34]G)[ _]?([^\\/]*) (?:Mozilla|Build)"),"$1$2 $3 $4",0,0,0];
+
+device[399] = [new RegExp("\\b(T-Mobile)_([^_]+)_(.*) Build"),"$1 $2 $3",0,0,0];
+
+device[400] = [new RegExp("\\b(T-Mobile)[_ ]?(.*?)Build"),"$1 $2",0,0,0];
+
+device[401] = [new RegExp(" (ATP[0-9]{4}) Build"),"$1",0,0,0];
+
+device[402] = [new RegExp(" *(TOOKY)[ _\\-]([^;/]+) ?(?:Build|;)"),"$1 $2",0,0,0];
+
+device[403] = [new RegExp("\\b(TOSHIBA_AC_AND_AZ|TOSHIBA_FOLIO_AND_A|FOLIO_AND_A)"),"$1",0,0,0];
+
+device[404] = [new RegExp("; *([Ff]olio ?100) Build/"),"$1",0,0,0];
+
+device[405] = [new RegExp("; *(AT[0-9]{2,3}(?:\\-A|LE\\-A|PE\\-A|SE|a)?|AT7-A|AT1S0|Hikari-iFrame/WDPF-[^;/]+|THRiVE|Thrive) Build/"),"Toshiba $1",0,0,0];
+
+device[406] = [new RegExp("; *(TM-MID\\d+[^;/]+|TOUCHMATE|MID-750) Build"),"$1",0,0,0];
+
+device[407] = [new RegExp("; *(TM-SM\\d+[^;/]+) Build"),"$1",0,0,0];
+
+device[408] = [new RegExp("; *(A10 [Bb]asic2?) Build/"),"$1",0,0,0];
+
+device[409] = [new RegExp("; *(TREQ[ _\\-])([^;/]+) Build"),"$1$2",0,0,0];
+
+device[410] = [new RegExp("; *(X-?5|X-?3) Build/"),"$1",0,0,0];
+
+device[411] = [new RegExp("; *(A502\\+?|A936|A603|X1|X2) Build/"),"$1",0,0,0];
+
+device[412] = [new RegExp("(TOUCH(?:TAB|PAD).+?) Build/"),"Versus $1",0,0,0];
+
+device[413] = [new RegExp("(VERTU) ([^;/]+) Build/"),"$1 $2",0,0,0];
+
+device[414] = [new RegExp("; *(Videocon)[ _\\-]([^;/]+) *(?:Build|;)"),"$1 $2",0,0,0];
+
+device[415] = [new RegExp(" (VT\\d{2}[A-Za-z]*) Build"),"$1",0,0,0];
+
+device[416] = [new RegExp("; *((?:ViewPad|ViewPhone|VSD)[^;/]+) Build/"),"$1",0,0,0];
+
+device[417] = [new RegExp("; *(ViewSonic-)([^;/]+) Build/"),"$1$2",0,0,0];
+
+device[418] = [new RegExp("; *(GTablet.*) Build/"),"$1",0,0,0];
+
+device[419] = [new RegExp("; *([Vv]ivo)[ _]([^;/]+) Build"),"$1 $2",0,0,0];
+
+device[420] = [new RegExp("(Vodafone) (.*) Build/"),"$1 $2",0,0,0];
+
+device[421] = [new RegExp("; *(?:Walton[ _\\-])?(Primo[ _\\-][^;/]+) Build"),"Walton $1",0,0,0];
+
+device[422] = [new RegExp("; *(?:WIKO[ \\-])?(CINK\\+?|BARRY|BLOOM|DARKFULL|DARKMOON|DARKNIGHT|DARKSIDE|FIZZ|HIGHWAY|IGGY|OZZY|RAINBOW|STAIRWAY|SUBLIM|WAX|CINK [^;/]+) Build/"),"Wiko $1",0,0,0];
+
+device[423] = [new RegExp("; *WellcoM-([^;/]+) Build"),"Wellcom $1",0,0,0];
+
+device[424] = [new RegExp("(?:(WeTab)-Browser|; (wetab) Build)"),"$1",0,0,0];
+
+device[425] = [new RegExp("; *(AT-AS[^;/]+) Build"),"Wolfgang $1",0,0,0];
+
+device[426] = [new RegExp("; *(?:Woxter|Wxt) ([^;/]+) Build"),"Woxter $1",0,0,0];
+
+device[427] = [new RegExp("; *(?:Xenta |Luna )?(TAB[234][0-9]{2}|TAB0[78]-\\d{3}|TAB0?9-\\d{3}|TAB1[03]-\\d{3}|SMP\\d{2}-\\d{3}) Build/"),"Yarvik $1",0,0,0];
+
+device[428] = [new RegExp("; *([A-Z]{2,4})(M\\d{3,}[A-Z]{2})([^;\\)\\/]*)(?: Build|[;\\)])"),"Yifang $1$2$3",0,0,0];
+
+device[429] = [new RegExp("; *((MI|HM|MI-ONE|Redmi)[ -](NOTE |Note )?[^;/]*) (Build|MIUI)/"),"XiaoMi $1",0,0,0];
+
+device[430] = [new RegExp("; *XOLO[ _]([^;/]*tab.*) Build"),"Xolo $1",0,0,0];
+
+device[431] = [new RegExp("; *XOLO[ _]([^;/]+) Build"),"Xolo $1",0,0,0];
+
+device[432] = [new RegExp("; *(q\\d0{2,3}[a-z]?) Build"),"Xolo $1",0,0,0];
+
+device[433] = [new RegExp("; *(PAD ?[79]\\d+[^;/]*|TelePAD\\d+[^;/]) Build"),"Xoro $1",0,0,0];
+
+device[434] = [new RegExp("; *(?:(?:ZOPO|Zopo)[ _]([^;/]+)|(ZP ?(?:\\d{2}[^;/]+|C2))|(C[2379])) Build"),"$1$2$3",0,0,0];
+
+device[435] = [new RegExp("; *(ZiiLABS) (Zii[^;/]*) Build"),"$1 $2",0,0,0];
+
+device[436] = [new RegExp("; *(Zii)_([^;/]*) Build"),"$1 $2",0,0,0];
+
+device[437] = [new RegExp("; *(ARIZONA|(?:ATLAS|Atlas) W|D930|Grand (?:[SX][^;]*|Era|Memo[^;]*)|JOE|(?:Kis|KIS)\\b[^;]*|Libra|Light [^;]*|N8[056][01]|N850L|N8000|N9[15]\\d{2}|N9810|NX501|Optik|(?:Vip )Racer[^;]*|RacerII|RACERII|San Francisco[^;]*|V9[AC]|V55|V881|Z[679][0-9]{2}[A-z]?) Build"),"$1",0,0,0];
+
+device[438] = [new RegExp("; *([A-Z]\\d+)_USA_[^;]* Build"),"$1",0,0,0];
+
+device[439] = [new RegExp("; *(SmartTab\\d+)[^;]* Build"),"$1",0,0,0];
+
+device[440] = [new RegExp("; *(?:Blade|BLADE|ZTE-BLADE)([^;/]*) Build"),"ZTE Blade$1",0,0,0];
+
+device[441] = [new RegExp("; *(?:Skate|SKATE|ZTE-SKATE)([^;/]*) Build"),"ZTE Skate$1",0,0,0];
+
+device[442] = [new RegExp("; *(Orange |Optimus )(Monte Carlo|San Francisco) Build"),"$1$2",0,0,0];
+
+device[443] = [new RegExp("; *(?:ZXY-ZTE_|ZTE\\-U |ZTE[\\- _]|ZTE-C[_ ])([^;/]+) Build"),"ZTE $1",0,0,0];
+
+device[444] = [new RegExp("; (BASE) (lutea|Lutea 2|Tab[^;]*) Build"),"$1 $2",0,0,0];
+
+device[445] = [new RegExp("; (Avea inTouch 2|soft stone|tmn smart a7|Movistar[ _]Link) Build"),"$1",0,0,0];
+
+device[446] = [new RegExp("; *(vp9plus)\\)"),"$1",0,0,0];
+
+device[447] = [new RegExp("; ?(Cloud[ _]Z5|z1000|Z99 2G|z99|z930|z999|z990|z909|Z919|z900) Build/"),"$1",0,0,0];
+
+device[448] = [new RegExp("; ?(KFOT|Kindle Fire) Build\\b"),"Kindle Fire",0,0,0];
+
+device[449] = [new RegExp("; ?(KFOTE|Amazon Kindle Fire2) Build\\b"),"Kindle Fire 2",0,0,0];
+
+device[450] = [new RegExp("; ?(KFTT) Build\\b"),"Kindle Fire HD",0,0,0];
+
+device[451] = [new RegExp("; ?(KFJWI) Build\\b"),"Kindle Fire HD 8.9\" WiFi",0,0,0];
+
+device[452] = [new RegExp("; ?(KFJWA) Build\\b"),"Kindle Fire HD 8.9\" 4G",0,0,0];
+
+device[453] = [new RegExp("; ?(KFSOWI) Build\\b"),"Kindle Fire HD 7\" WiFi",0,0,0];
+
+device[454] = [new RegExp("; ?(KFTHWI) Build\\b"),"Kindle Fire HDX 7\" WiFi",0,0,0];
+
+device[455] = [new RegExp("; ?(KFTHWA) Build\\b"),"Kindle Fire HDX 7\" 4G",0,0,0];
+
+device[456] = [new RegExp("; ?(KFAPWI) Build\\b"),"Kindle Fire HDX 8.9\" WiFi",0,0,0];
+
+device[457] = [new RegExp("; ?(KFAPWA) Build\\b"),"Kindle Fire HDX 8.9\" 4G",0,0,0];
+
+device[458] = [new RegExp("; ?Amazon ([^;/]+) Build\\b"),"$1",0,0,0];
+
+device[459] = [new RegExp("; ?(Kindle) Build\\b"),"Kindle",0,0,0];
+
+device[460] = [new RegExp("; ?(Silk)/(\\d+)\\.(\\d+)(?:\\.([0-9\\-]+))? Build\\b"),"Kindle Fire",0,0,0];
+
+device[461] = [new RegExp(" (Kindle)/(\\d+\\.\\d+)"),"Kindle",0,0,0];
+
+device[462] = [new RegExp(" (Silk|Kindle)/(\\d+)\\."),"Kindle",0,0,0];
+
+device[463] = [new RegExp("(sprd)\\-([^/]+)/"),"$1 $2",0,0,0];
+
+device[464] = [new RegExp("; *(H\\d{2}00\\+?) Build"),"$1",0,0,0];
+
+device[465] = [new RegExp("; *(iphone|iPhone5) Build/"),"Xianghe $1",0,0,0];
+
+device[466] = [new RegExp("; *(e\\d{4}[a-z]?_?v\\d+|v89_[^;/]+)[^;/]+ Build/"),"Xianghe $1",0,0,0];
+
+device[467] = [new RegExp("\\bUSCC[_\\-]?([^ ;/\\)]+)"),"$1",0,0,0];
+
+device[468] = [new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?)?(?:ALCATEL)[^;]*; *([^;,\\)]+)"),"Alcatel $1",0,0,0];
+
+device[469] = [new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?|WpsLondonTest; ?)?(?:ASUS|Asus)[^;]*; *([^;,\\)]+)"),"Asus $1",0,0,0];
+
+device[470] = [new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?)?(?:DELL|Dell)[^;]*; *([^;,\\)]+)"),"Dell $1",0,0,0];
+
+device[471] = [new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?|WpsLondonTest; ?)?(?:HTC|Htc|HTC_blocked[^;]*)[^;]*; *(?:HTC)?([^;,\\)]+)"),"HTC $1",0,0,0];
+
+device[472] = [new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?)?(?:HUAWEI)[^;]*; *(?:HUAWEI )?([^;,\\)]+)"),"Huawei $1",0,0,0];
+
+device[473] = [new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?)?(?:LG|Lg)[^;]*; *(?:LG[ \\-])?([^;,\\)]+)"),"LG $1",0,0,0];
+
+device[474] = [new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?)?(?:rv:11; )?(?:NOKIA|Nokia)[^;]*; *(?:NOKIA ?|Nokia ?|LUMIA ?|[Ll]umia ?)*(\\d{3,}[^;\\)]*)"),"Lumia $1",0,0,0];
+
+device[475] = [new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?)?(?:NOKIA|Nokia)[^;]*; *(RM-\\d{3,})"),"Nokia $1",0,0,0];
+
+device[476] = [new RegExp("(?:Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)]|WPDesktop;) ?(?:ARM; ?Touch; ?|Touch; ?)?(?:NOKIA|Nokia)[^;]*; *(?:NOKIA ?|Nokia ?|LUMIA ?|[Ll]umia ?)*([^;\\)]+)"),"Nokia $1",0,0,0];
+
+device[477] = [new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?)?(?:Microsoft(?: Corporation)?)[^;]*; *([^;,\\)]+)"),"Microsoft $1",0,0,0];
+
+device[478] = [new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?|WpsLondonTest; ?)?(?:SAMSUNG)[^;]*; *(?:SAMSUNG )?([^;,\\.\\)]+)"),"Samsung $1",0,0,0];
+
+device[479] = [new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?|WpsLondonTest; ?)?(?:TOSHIBA|FujitsuToshibaMobileCommun)[^;]*; *([^;,\\)]+)"),"Toshiba $1",0,0,0];
+
+device[480] = [new RegExp("Windows Phone [^;]+; .*?IEMobile/[^;\\)]+[;\\)] ?(?:ARM; ?Touch; ?|Touch; ?|WpsLondonTest; ?)?([^;]+); *([^;,\\)]+)"),"$1 $2",0,0,0];
+
+device[481] = [new RegExp("(?:^|; )SAMSUNG\\-([A-Za-z0-9\\-]+).* Bada/"),"Samsung $1",0,0,0];
+
+device[482] = [new RegExp("\\(Mobile; ALCATEL ?(One|ONE) ?(Touch|TOUCH) ?([^;/]+)(?:/[^;]+)?; rv:[^\\)]+\\) Gecko/[^\\/]+ Firefox/"),"Alcatel $1 $2 $3",0,0,0];
+
+device[483] = [new RegExp("\\(Mobile; (?:ZTE([^;]+)|(OpenC)); rv:[^\\)]+\\) Gecko/[^\\/]+ Firefox/"),"ZTE $1$2",0,0,0];
+
+device[484] = [new RegExp("Nokia(N[0-9]+)([A-z_\\-][A-z0-9_\\-]*)"),"Nokia $1",0,0,0];
+
+device[485] = [new RegExp("(?:NOKIA|Nokia)(?:\\-| *)(?:([A-Za-z0-9]+)\\-[0-9a-f]{32}|([A-Za-z0-9\\-]+)(?:UCBrowser)|([A-Za-z0-9\\-]+))"),"Nokia $1$2$3",0,0,0];
+
+device[486] = [new RegExp("Lumia ([A-Za-z0-9\\-]+)"),"Lumia $1",0,0,0];
+
+device[487] = [new RegExp("\\(Symbian; U; S60 V5; [A-z]{2}\\-[A-z]{2}; (SonyEricsson|Samsung|Nokia|LG)([^;/]+)\\)"),"$1 $2",0,0,0];
+
+device[488] = [new RegExp("\\(Symbian(?:/3)?; U; ([^;]+);"),"Nokia $1",0,0,0];
+
+device[489] = [new RegExp("BB10; ([A-Za-z0-9\\- ]+)\\)"),"BlackBerry $1",0,0,0];
+
+device[490] = [new RegExp("Play[Bb]ook.+RIM Tablet OS"),"BlackBerry Playbook",0,0,0];
+
+device[491] = [new RegExp("Black[Bb]erry ([0-9]+);"),"BlackBerry $1",0,0,0];
+
+device[492] = [new RegExp("Black[Bb]erry([0-9]+)"),"BlackBerry $1",0,0,0];
+
+device[493] = [new RegExp("Black[Bb]erry;"),"BlackBerry",0,0,0];
+
+device[494] = [new RegExp("(Pre|Pixi)/\\d+\\.\\d+"),"Palm $1",0,0,0];
+
+device[495] = [new RegExp("Palm([0-9]+)"),"Palm $1",0,0,0];
+
+device[496] = [new RegExp("Treo([A-Za-z0-9]+)"),"Palm Treo $1",0,0,0];
+
+device[497] = [new RegExp("webOS.*(P160U(?:NA)?)/(\\d+).(\\d+)"),"HP Veer",0,0,0];
+
+device[498] = [new RegExp("(Touch[Pp]ad)/\\d+\\.\\d+"),"HP TouchPad",0,0,0];
+
+device[499] = [new RegExp("HPiPAQ([A-Za-z0-9]+)/\\d+.\\d+"),"HP iPAQ $1",0,0,0];
+
+device[500] = [new RegExp("PDA; (PalmOS)/sony/model ([a-z]+)/Revision"),"$1",0,0,0];
+
+device[501] = [new RegExp("(Apple\\s?TV)"),"AppleTV",0,0,0];
+
+device[502] = [new RegExp("(QtCarBrowser)"),"Tesla Model S",0,0,0];
+
+device[503] = [new RegExp("(iPhone|iPad|iPod)(\\d+,\\d+)"),"$1",0,0,0];
+
+device[504] = [new RegExp("(iPad)(?:;| Simulator;)"),"$1",0,0,0];
+
+device[505] = [new RegExp("(iPod)(?:;| touch;| Simulator;)"),"$1",0,0,0];
+
+device[506] = [new RegExp("(iPhone)(?:;| Simulator;)"),"$1",0,0,0];
+
+device[507] = [new RegExp("CFNetwork/.* Darwin/\\d.*\\(((?:Mac|iMac|PowerMac|PowerBook)[^\\d]*)(\\d+)(?:,|%2C)(\\d+)"),"$1$2,$3",0,0,0];
+
+device[508] = [new RegExp("CFNetwork/.* Darwin/\\d+\\.\\d+\\.\\d+ \\(x86_64\\)"),"Mac",0,0,0];
+
+device[509] = [new RegExp("CFNetwork/.* Darwin/\\d"),"iOS-Device",0,0,0];
+
+device[510] = [new RegExp("acer_([A-Za-z0-9]+)_"),"Acer $1",0,0,0];
+
+device[511] = [new RegExp("(?:ALCATEL|Alcatel)-([A-Za-z0-9\\-]+)"),"Alcatel $1",0,0,0];
+
+device[512] = [new RegExp("(?:Amoi|AMOI)\\-([A-Za-z0-9]+)"),"Amoi $1",0,0,0];
+
+device[513] = [new RegExp("(?:; |\\/|^)((?:Transformer (?:Pad|Prime) |Transformer |PadFone[ _]?)[A-Za-z0-9]*)"),"Asus $1",0,0,0];
+
+device[514] = [new RegExp("(?:asus.*?ASUS|Asus|ASUS|asus)[\\- ;]*((?:Transformer (?:Pad|Prime) |Transformer |Padfone |Nexus[ _])?[A-Za-z0-9]+)"),"Asus $1",0,0,0];
+
+device[515] = [new RegExp("\\bBIRD[ \\-\\.]([A-Za-z0-9]+)"),"Bird $1",0,0,0];
+
+device[516] = [new RegExp("\\bDell ([A-Za-z0-9]+)"),"Dell $1",0,0,0];
+
+device[517] = [new RegExp("DoCoMo/2\\.0 ([A-Za-z0-9]+)"),"DoCoMo $1",0,0,0];
+
+device[518] = [new RegExp("([A-Za-z0-9]+)_W;FOMA"),"DoCoMo $1",0,0,0];
+
+device[519] = [new RegExp("([A-Za-z0-9]+);FOMA"),"DoCoMo $1",0,0,0];
+
+device[520] = [new RegExp("\\b(?:HTC/|HTC/[a-z0-9]+/)?HTC[ _\\-;]? *(.*?)(?:-?Mozilla|fingerPrint|[;/\\(\\)]|$)"),"HTC $1",0,0,0];
+
+device[521] = [new RegExp("Huawei([A-Za-z0-9]+)"),"Huawei $1",0,0,0];
+
+device[522] = [new RegExp("HUAWEI-([A-Za-z0-9]+)"),"Huawei $1",0,0,0];
+
+device[523] = [new RegExp("vodafone([A-Za-z0-9]+)"),"Huawei Vodafone $1",0,0,0];
+
+device[524] = [new RegExp("i\\-mate ([A-Za-z0-9]+)"),"i-mate $1",0,0,0];
+
+device[525] = [new RegExp("Kyocera\\-([A-Za-z0-9]+)"),"Kyocera $1",0,0,0];
+
+device[526] = [new RegExp("KWC\\-([A-Za-z0-9]+)"),"Kyocera $1",0,0,0];
+
+device[527] = [new RegExp("Lenovo[_\\-]([A-Za-z0-9]+)"),"Lenovo $1",0,0,0];
+
+device[528] = [new RegExp("(HbbTV)/[0-9]+\\.[0-9]+\\.[0-9]+ \\([^;]*; *(LG)E *; *([^;]*) *;[^;]*;[^;]*;\\)"),"$1",0,0,0];
+
+device[529] = [new RegExp("(HbbTV)/1\\.1\\.1.*CE-HTML/1\\.\\d;(Vendor/)*(THOM[^;]*?)[;\\s](?:.*SW-Version/.*)*(LF[^;]+);?"),"$1",0,0,0];
+
+device[530] = [new RegExp("(HbbTV)(?:/1\\.1\\.1)?(?: ?\\(;;;;;\\))?; *CE-HTML(?:/1\\.\\d)?; *([^ ]+) ([^;]+);"),"$1",0,0,0];
+
+device[531] = [new RegExp("(HbbTV)/1\\.1\\.1 \\(;;;;;\\) Maple_2011"),"$1",0,0,0];
+
+device[532] = [new RegExp("(HbbTV)/[0-9]+\\.[0-9]+\\.[0-9]+ \\([^;]*; *(?:CUS:([^;]*)|([^;]+)) *; *([^;]*) *;.*;"),"$1",0,0,0];
+
+device[533] = [new RegExp("(HbbTV)/[0-9]+\\.[0-9]+\\.[0-9]+"),"$1",0,0,0];
+
+device[534] = [new RegExp("LGE; (?:Media\\/)?([^;]*);[^;]*;[^;]*;?\\); \"?LG NetCast(\\.TV|\\.Media|)-\\d+"),"NetCast$2",0,0,0];
+
+device[535] = [new RegExp("InettvBrowser/[0-9]+\\.[0-9A-Z]+ \\([^;]*;(Sony)([^;]*);[^;]*;[^\\)]*\\)"),"Inettv",0,0,0];
+
+device[536] = [new RegExp("InettvBrowser/[0-9]+\\.[0-9A-Z]+ \\([^;]*;([^;]*);[^;]*;[^\\)]*\\)"),"Inettv",0,0,0];
+
+device[537] = [new RegExp("(?:InettvBrowser|TSBNetTV|NETTV|HBBTV)"),"Inettv",0,0,0];
+
+device[538] = [new RegExp("Series60/\\d\\.\\d (LG)[\\-]?([A-Za-z0-9 \\-]+)"),"$1 $2",0,0,0];
+
+device[539] = [new RegExp("\\b(?:LGE[ \\-]LG\\-(?:AX)?|LGE |LGE?-LG|LGE?[ \\-]|LG[ /\\-]|lg[\\-])([A-Za-z0-9]+)\\b"),"LG $1",0,0,0];
+
+device[540] = [new RegExp("(?:^LG[\\-]?|^LGE[\\-/]?)([A-Za-z]+[0-9]+[A-Za-z]*)"),"LG $1",0,0,0];
+
+device[541] = [new RegExp("^LG([0-9]+[A-Za-z]*)"),"LG $1",0,0,0];
+
+device[542] = [new RegExp("(KIN\\.[^ ]+) (\\d+)\\.(\\d+)"),"Microsoft $1",0,0,0];
+
+device[543] = [new RegExp("(?:MSIE|XBMC).*\\b(Xbox)\\b"),"$1",0,0,0];
+
+device[544] = [new RegExp("; ARM; Trident/6\\.0; Touch[\\);]"),"Microsoft Surface RT",0,0,0];
+
+device[545] = [new RegExp("Motorola\\-([A-Za-z0-9]+)"),"Motorola $1",0,0,0];
+
+device[546] = [new RegExp("MOTO\\-([A-Za-z0-9]+)"),"Motorola $1",0,0,0];
+
+device[547] = [new RegExp("MOT\\-([A-z0-9][A-z0-9\\-]*)"),"Motorola $1",0,0,0];
+
+device[548] = [new RegExp("Nintendo WiiU"),"Nintendo Wii U",0,0,0];
+
+device[549] = [new RegExp("Nintendo (DS|3DS|DSi|Wii);"),"Nintendo $1",0,0,0];
+
+device[550] = [new RegExp("(?:Pantech|PANTECH)[ _-]?([A-Za-z0-9\\-]+)"),"Pantech $1",0,0,0];
+
+device[551] = [new RegExp("Philips([A-Za-z0-9]+)"),"Philips $1",0,0,0];
+
+device[552] = [new RegExp("Philips ([A-Za-z0-9]+)"),"Philips $1",0,0,0];
+
+device[553] = [new RegExp("(SMART-TV); .* Tizen "),"Samsung $1",0,0,0];
+
+device[554] = [new RegExp("SymbianOS/9\\.\\d.* Samsung[/\\-]([A-Za-z0-9 \\-]+)"),"Samsung $1",0,0,0];
+
+device[555] = [new RegExp("(Samsung)(SGH)(i[0-9]+)"),"$1 $2$3",0,0,0];
+
+device[556] = [new RegExp("SAMSUNG-ANDROID-MMS/([^;/]+)"),"$1",0,0,0];
+
+device[557] = [new RegExp("SAMSUNG(?:; |[ -/])([A-Za-z0-9\\-]+)"),"Samsung $1",0,0,0];
+
+device[558] = [new RegExp("(Dreamcast)"),"Sega $1",0,0,0];
+
+device[559] = [new RegExp("^SIE-([A-Za-z0-9]+)"),"Siemens $1",0,0,0];
+
+device[560] = [new RegExp("Softbank/[12]\\.0/([A-Za-z0-9]+)"),"Softbank $1",0,0,0];
+
+device[561] = [new RegExp("SonyEricsson ?([A-Za-z0-9\\-]+)"),"Ericsson $1",0,0,0];
+
+device[562] = [new RegExp("Android [^;]+; ([^ ]+) (Sony)/"),"$2 $1",0,0,0];
+
+device[563] = [new RegExp("(Sony)(?:BDP\\/|\\/)?([^ /;\\)]+)[ /;\\)]"),"$1 $2",0,0,0];
+
+device[564] = [new RegExp("Puffin/[\\d\\.]+IT"),"iPad",0,0,0];
+
+device[565] = [new RegExp("Puffin/[\\d\\.]+IP"),"iPhone",0,0,0];
+
+device[566] = [new RegExp("Puffin/[\\d\\.]+AT"),"Generic Tablet",0,0,0];
+
+device[567] = [new RegExp("Puffin/[\\d\\.]+AP"),"Generic Smartphone",0,0,0];
+
+device[568] = [new RegExp("Android[\\- ][\\d]+\\.[\\d]+; [A-Za-z]{2}\\-[A-Za-z]{0,2}; WOWMobile (.+) Build[/ ]"),0,0,0,0];
+
+device[569] = [new RegExp("Android[\\- ][\\d]+\\.[\\d]+\\-update1; [A-Za-z]{2}\\-[A-Za-z]{0,2} *; *(.+?) Build[/ ]"),0,0,0,0];
+
+device[570] = [new RegExp("Android[\\- ][\\d]+(?:\\.[\\d]+){1,2}; *[A-Za-z]{2}[_\\-][A-Za-z]{0,2}\\-? *; *(.+?) Build[/ ]"),0,0,0,0];
+
+device[571] = [new RegExp("Android[\\- ][\\d]+(?:\\.[\\d]+){1,2}; *[A-Za-z]{0,2}\\- *; *(.+?) Build[/ ]"),0,0,0,0];
+
+device[572] = [new RegExp("Android[\\- ][\\d]+(?:\\.[\\d]+){1,2}; *[a-z]{0,2}[_\\-]?[A-Za-z]{0,2};? Build[/ ]"),"Generic Smartphone",0,0,0];
+
+device[573] = [new RegExp("Android[\\- ][\\d]+(?:\\.[\\d]+){1,2}; *\\-?[A-Za-z]{2}; *(.+?) Build[/ ]"),0,0,0,0];
+
+device[574] = [new RegExp("Android[\\- ][\\d]+(?:\\.[\\d]+){1,2}(?:;.*)?; *(.+?) Build[/ ]"),0,0,0,0];
+
+device[575] = [new RegExp("(GoogleTV)"),0,0,0,0];
+
+device[576] = [new RegExp("(WebTV)/\\d+.\\d+"),0,0,0,0];
+
+device[577] = [new RegExp("^(Roku)/DVP-\\d+\\.\\d+"),0,0,0,0];
+
+device[578] = [new RegExp("(Android 3\\.\\d|Opera Tablet|Tablet; .+Firefox/|Android.*(?:Tab|Pad))"),"Generic Tablet",0,0,0];
+
+device[579] = [new RegExp("(Symbian|\\bS60(Version|V\\d)|\\bS60\\b|\\((Series 60|Windows Mobile|Palm OS|Bada); Opera Mini|Windows CE|Opera Mobi|BREW|Brew|Mobile; .+Firefox/|iPhone OS|Android|MobileSafari|Windows *Phone|\\(webOS/|PalmOS)"),"Generic Smartphone",0,0,0];
+
+device[580] = [new RegExp("(hiptop|avantgo|plucker|xiino|blazer|elaine)"),"Generic Smartphone",0,0,0];
+
+device[581] = [new RegExp("(bot|zao|borg|DBot|oegp|silk|Xenu|zeal|^NING|CCBot|crawl|htdig|lycos|slurp|teoma|voila|yahoo|Sogou|CiBra|Nutch|^Java/|^JNLP/|Daumoa|Genieo|ichiro|larbin|pompos|Scrapy|snappy|speedy|spider|msnbot|msrbot|vortex|^vortex|crawler|favicon|indexer|Riddler|scooter|scraper|scrubby|WhatWeb|WinHTTP|bingbot|BingPreview|openbot|gigabot|furlbot|polybot|seekbot|^voyager|archiver|Icarus6j|mogimogi|Netvibes|blitzbot|altavista|charlotte|findlinks|Retreiver|TLSProber|WordPress|SeznamBot|ProoXiBot|wsr\\-agent|Squrl Java|EtaoSpider|PaperLiBot|SputnikBot|A6\\-Indexer|netresearch|searchsight|baiduspider|YisouSpider|ICC\\-Crawler|http%20client|Python-urllib|dataparksearch|converacrawler|Screaming Frog|AppEngine-Google|YahooCacheSystem|fast\\-webcrawler|Sogou Pic Spider|semanticdiscovery|Innovazion Crawler|facebookexternalhit|Google.*/\\+/web/snippet|Google-HTTP-Java-Client|BlogBridge|IlTrovatore-Setaccio|InternetArchive|GomezAgent|WebThumbnail|heritrix|NewsGator|PagePeeker|Reaper|ZooShot|holmes|NL-Crawler|Pingdom|StatusCake|WhatsApp|masscan|Google Web Preview|Qwantify)"),"Spider",0,0,0];
+
+device[582] = [new RegExp("^(1207|3gso|4thp|501i|502i|503i|504i|505i|506i|6310|6590|770s|802s|a wa|acer|acs\\-|airn|alav|asus|attw|au\\-m|aur |aus |abac|acoo|aiko|alco|alca|amoi|anex|anny|anyw|aptu|arch|argo|bmobile|bell|bird|bw\\-n|bw\\-u|beck|benq|bilb|blac|c55/|cdm\\-|chtm|capi|comp|cond|dall|dbte|dc\\-s|dica|ds\\-d|ds12|dait|devi|dmob|doco|dopo|dorado|el(?:38|39|48|49|50|55|58|68)|el[3456]\\d{2}dual|erk0|esl8|ex300|ez40|ez60|ez70|ezos|ezze|elai|emul|eric|ezwa|fake|fly\\-|fly_|g\\-mo|g1 u|g560|gf\\-5|grun|gene|go.w|good|grad|hcit|hd\\-m|hd\\-p|hd\\-t|hei\\-|hp i|hpip|hs\\-c|htc |htc\\-|htca|htcg)"),"Generic Feature Phone",0,0,0];
+
+device[583] = [new RegExp("^(htcp|htcs|htct|htc_|haie|hita|huaw|hutc|i\\-20|i\\-go|i\\-ma|i\\-mobile|i230|iac|iac\\-|iac/|ig01|im1k|inno|iris|jata|kddi|kgt|kgt/|kpt |kwc\\-|klon|lexi|lg g|lg\\-a|lg\\-b|lg\\-c|lg\\-d|lg\\-f|lg\\-g|lg\\-k|lg\\-l|lg\\-m|lg\\-o|lg\\-p|lg\\-s|lg\\-t|lg\\-u|lg\\-w|lg/k|lg/l|lg/u|lg50|lg54|lge\\-|lge/|leno|m1\\-w|m3ga|m50/|maui|mc01|mc21|mcca|medi|meri|mio8|mioa|mo01|mo02|mode|modo|mot |mot\\-|mt50|mtp1|mtv |mate|maxo|merc|mits|mobi|motv|mozz|n100|n101|n102|n202|n203|n300|n302|n500|n502|n505|n700|n701|n710|nec\\-|nem\\-|newg|neon)"),"Generic Feature Phone",0,0,0];
+
+device[584] = [new RegExp("^(netf|noki|nzph|o2 x|o2\\-x|opwv|owg1|opti|oran|ot\\-s|p800|pand|pg\\-1|pg\\-2|pg\\-3|pg\\-6|pg\\-8|pg\\-c|pg13|phil|pn\\-2|pt\\-g|palm|pana|pire|pock|pose|psio|qa\\-a|qc\\-2|qc\\-3|qc\\-5|qc\\-7|qc07|qc12|qc21|qc32|qc60|qci\\-|qwap|qtek|r380|r600|raks|rim9|rove|s55/|sage|sams|sc01|sch\\-|scp\\-|sdk/|se47|sec\\-|sec0|sec1|semc|sgh\\-|shar|sie\\-|sk\\-0|sl45|slid|smb3|smt5|sp01|sph\\-|spv |spv\\-|sy01|samm|sany|sava|scoo|send|siem|smar|smit|soft|sony|t\\-mo|t218|t250|t600|t610|t618|tcl\\-|tdg\\-|telm|tim\\-|ts70|tsm\\-|tsm3|tsm5|tx\\-9|tagt)"),"Generic Feature Phone",0,0,0];
+
+device[585] = [new RegExp("^(talk|teli|topl|tosh|up.b|upg1|utst|v400|v750|veri|vk\\-v|vk40|vk50|vk52|vk53|vm40|vx98|virg|vertu|vite|voda|vulc|w3c |w3c\\-|wapj|wapp|wapu|wapm|wig |wapi|wapr|wapv|wapy|wapa|waps|wapt|winc|winw|wonu|x700|xda2|xdag|yas\\-|your|zte\\-|zeto|aste|audi|avan|blaz|brew|brvw|bumb|ccwa|cell|cldc|cmd\\-|dang|eml2|fetc|hipt|http|ibro|idea|ikom|ipaq|jbro|jemu|jigs|keji|kyoc|kyok|libw|m\\-cr|midp|mmef|moto|mwbp|mywa|newt|nok6|o2im|pant|pdxg|play|pluc|port|prox|rozo|sama|seri|smal|symb|treo|upsi|vx52|vx53|vx60|vx61|vx70|vx80|vx81|vx83|vx85|wap\\-|webc|whit|wmlb|xda\\-|xda_)"),"Generic Feature Phone",0,0,0];
+
+device[586] = [new RegExp("^(Ice)$"),"Generic Feature Phone",0,0,0];
+
+device[587] = [new RegExp("(wap[\\-\\ ]browser|maui|netfront|obigo|teleca|up\\.browser|midp|Opera Mini)"),"Generic Feature Phone",0,0,0];
+
+
+var os = [];
+
+os[0] = [new RegExp("HbbTV/\\d+\\.\\d+\\.\\d+ \\( ;(LG)E ;NetCast 4.0"),0,"2013",0,0];
+
+os[1] = [new RegExp("HbbTV/\\d+\\.\\d+\\.\\d+ \\( ;(LG)E ;NetCast 3.0"),0,"2012",0,0];
+
+os[2] = [new RegExp("HbbTV/1.1.1 \\(;;;;;\\) Maple_2011"),"Samsung","2011",0,0];
+
+os[3] = [new RegExp("HbbTV/\\d+\\.\\d+\\.\\d+ \\(;(Samsung);SmartTV([0-9]{4});.*FXPDEUC"),0,0,"UE40F7000",0];
+
+os[4] = [new RegExp("HbbTV/\\d+\\.\\d+\\.\\d+ \\(;(Samsung);SmartTV([0-9]{4});.*MST12DEUC"),0,0,"UE32F4500",0];
+
+os[5] = [new RegExp("HbbTV/1.1.1 \\(; (Philips);.*NETTV/4"),0,"2013",0,0];
+
+os[6] = [new RegExp("HbbTV/1.1.1 \\(; (Philips);.*NETTV/3"),0,"2012",0,0];
+
+os[7] = [new RegExp("HbbTV/1.1.1 \\(; (Philips);.*NETTV/2"),0,"2011",0,0];
+
+os[8] = [new RegExp("HbbTV/\\d+\\.\\d+\\.\\d+.*(firetv)-firefox-plugin (\\d+).(\\d+).(\\d+)"),"FireHbbTV",0,0,0];
+
+os[9] = [new RegExp("HbbTV/\\d+\\.\\d+\\.\\d+ \\(.*; ?([a-zA-Z]+) ?;.*(201[1-9]).*\\)"),0,0,0,0];
+
+os[10] = [new RegExp("(Windows Phone) (?:OS[ /])?(\\d+)\\.(\\d+)"),0,0,0,0];
+
+os[11] = [new RegExp("(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone)[ +]+(\\d+)[_\\.](\\d+)(?:[_\\.](\\d+))?.*Outlook-iOS-Android"),"iOS",0,0,0];
+
+os[12] = [new RegExp("(Android)[ \\-/](\\d+)\\.(\\d+)(?:[.\\-]([a-z0-9]+))?"),0,0,0,0];
+
+os[13] = [new RegExp("(Android) Donut"),0,"1","2",0];
+
+os[14] = [new RegExp("(Android) Eclair"),0,"2","1",0];
+
+os[15] = [new RegExp("(Android) Froyo"),0,"2","2",0];
+
+os[16] = [new RegExp("(Android) Gingerbread"),0,"2","3",0];
+
+os[17] = [new RegExp("(Android) Honeycomb"),0,"3",0,0];
+
+os[18] = [new RegExp("^UCWEB.*; (Adr) (\\d+)\\.(\\d+)(?:[.\\-]([a-z0-9]+))?;"),"Android",0,0,0];
+
+os[19] = [new RegExp("^UCWEB.*; (iPad|iPh|iPd) OS (\\d+)_(\\d+)(?:_(\\d+))?;"),"iOS",0,0,0];
+
+os[20] = [new RegExp("^UCWEB.*; (wds) (\\d+)\\.(\\d+)(?:\\.(\\d+))?;"),"Windows Phone",0,0,0];
+
+os[21] = [new RegExp("^(JUC).*; ?U; ?(?:Android)?(\\d+)\\.(\\d+)(?:[\\.\\-]([a-z0-9]+))?"),"Android",0,0,0];
+
+os[22] = [new RegExp("(Silk-Accelerated=[a-z]{4,5})"),"Android",0,0,0];
+
+os[23] = [new RegExp("(XBLWP7)"),"Windows Phone",0,0,0];
+
+os[24] = [new RegExp("(Windows ?Mobile)"),"Windows Mobile",0,0,0];
+
+os[25] = [new RegExp("(Windows (?:NT 5\\.2|NT 5\\.1))"),"Windows XP",0,0,0];
+
+os[26] = [new RegExp("(Windows NT 6\\.1)"),"Windows 7",0,0,0];
+
+os[27] = [new RegExp("(Windows NT 6\\.0)"),"Windows Vista",0,0,0];
+
+os[28] = [new RegExp("(Win 9x 4\\.90)"),"Windows ME",0,0,0];
+
+os[29] = [new RegExp("(Windows 98|Windows XP|Windows ME|Windows 95|Windows CE|Windows 7|Windows NT 4\\.0|Windows Vista|Windows 2000|Windows 3.1)"),0,0,0,0];
+
+os[30] = [new RegExp("(Windows NT 6\\.2; ARM;)"),"Windows RT",0,0,0];
+
+os[31] = [new RegExp("(Windows NT 6\\.2)"),"Windows 8",0,0,0];
+
+os[32] = [new RegExp("(Windows NT 6\\.3; ARM;)"),"Windows RT 8.1",0,0,0];
+
+os[33] = [new RegExp("(Windows NT 6\\.3)"),"Windows 8.1",0,0,0];
+
+os[34] = [new RegExp("(Windows NT 6\\.4)"),"Windows 10",0,0,0];
+
+os[35] = [new RegExp("(Windows NT 10\\.0)"),"Windows 10",0,0,0];
+
+os[36] = [new RegExp("(Windows NT 5\\.0)"),"Windows 2000",0,0,0];
+
+os[37] = [new RegExp("(WinNT4.0)"),"Windows NT 4.0",0,0,0];
+
+os[38] = [new RegExp("(Windows ?CE)"),"Windows CE",0,0,0];
+
+os[39] = [new RegExp("Win ?(95|98|3.1|NT|ME|2000)"),"Windows $1",0,0,0];
+
+os[40] = [new RegExp("Win16"),"Windows 3.1",0,0,0];
+
+os[41] = [new RegExp("Win32"),"Windows 95",0,0,0];
+
+os[42] = [new RegExp("(Tizen)[/ ](\\d+)\\.(\\d+)"),0,0,0,0];
+
+os[43] = [new RegExp("((?:Mac[ +]?|; )OS[ +]X)[\\s+/](?:(\\d+)[_.](\\d+)(?:[_.](\\d+))?|Mach-O)"),"Mac OS X",0,0,0];
+
+os[44] = [new RegExp(" (Dar)(win)/(9).(\\d+).*\\((?:i386|x86_64|Power Macintosh)\\)"),"Mac OS X","10","5",0];
+
+os[45] = [new RegExp(" (Dar)(win)/(10).(\\d+).*\\((?:i386|x86_64)\\)"),"Mac OS X","10","6",0];
+
+os[46] = [new RegExp(" (Dar)(win)/(11).(\\d+).*\\((?:i386|x86_64)\\)"),"Mac OS X","10","7",0];
+
+os[47] = [new RegExp(" (Dar)(win)/(12).(\\d+).*\\((?:i386|x86_64)\\)"),"Mac OS X","10","8",0];
+
+os[48] = [new RegExp(" (Dar)(win)/(13).(\\d+).*\\((?:i386|x86_64)\\)"),"Mac OS X","10","9",0];
+
+os[49] = [new RegExp("Mac_PowerPC"),"Mac OS",0,0,0];
+
+os[50] = [new RegExp("(?:PPC|Intel) (Mac OS X)"),0,0,0,0];
+
+os[51] = [new RegExp("(Apple\\s?TV)(?:/(\\d+)\\.(\\d+))?"),"ATV OS X",0,0,0];
+
+os[52] = [new RegExp("(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS)[ +]+(\\d+)[_\\.](\\d+)(?:[_\\.](\\d+))?"),"iOS",0,0,0];
+
+os[53] = [new RegExp("(iPhone|iPad|iPod); Opera"),"iOS",0,0,0];
+
+os[54] = [new RegExp("(iPhone|iPad|iPod).*Mac OS X.*Version/(\\d+)\\.(\\d+)"),"iOS",0,0,0];
+
+os[55] = [new RegExp("(CFNetwork)/(5)48\\.0\\.3.* Darwin/11\\.0\\.0"),"iOS",0,0,0];
+
+os[56] = [new RegExp("(CFNetwork)/(5)48\\.(0)\\.4.* Darwin/(1)1\\.0\\.0"),"iOS",0,0,0];
+
+os[57] = [new RegExp("(CFNetwork)/(5)48\\.(1)\\.4"),"iOS",0,0,0];
+
+os[58] = [new RegExp("(CFNetwork)/(4)85\\.1(3)\\.9"),"iOS",0,0,0];
+
+os[59] = [new RegExp("(CFNetwork)/(6)09\\.(1)\\.4"),"iOS",0,0,0];
+
+os[60] = [new RegExp("(CFNetwork)/(6)(0)9"),"iOS",0,0,0];
+
+os[61] = [new RegExp("(CFNetwork)/6(7)2\\.(1)\\.13"),"iOS",0,0,0];
+
+os[62] = [new RegExp("(CFNetwork)/6(7)2\\.(1)\\.(1)4"),"iOS",0,0,0];
+
+os[63] = [new RegExp("(CF)(Network)/6(7)(2)\\.1\\.15"),"iOS","7","1",0];
+
+os[64] = [new RegExp("(CFNetwork)/6(7)2\\.(0)\\.(?:2|8)"),"iOS",0,0,0];
+
+os[65] = [new RegExp("(CFNetwork)/709\\.1"),"iOS","8","0.b5",0];
+
+os[66] = [new RegExp("(CF)(Network)/711\\.(\\d)"),"iOS","8",0,0];
+
+os[67] = [new RegExp("(CF)(Network)/(720)\\.(\\d)"),"Mac OS X","10","10",0];
+
+os[68] = [new RegExp("(CF)(Network)/(760)\\.(\\d)"),"Mac OS X","10","11",0];
+
+os[69] = [new RegExp("(CF)(Network)/758\\.(\\d)"),"iOS","9",0,0];
+
+os[70] = [new RegExp("(CF)(Network)/808\\.(\\d)"),"iOS","10",0,0];
+
+os[71] = [new RegExp("CFNetwork/.* Darwin/16\\.\\d+.*\\(x86_64\\)"),"Mac OS X","10","12",0];
+
+os[72] = [new RegExp("CFNetwork/8.* Darwin/15\\.\\d+.*\\(x86_64\\)"),"Mac OS X","10","11",0];
+
+os[73] = [new RegExp("CFNetwork/.* Darwin/(9)\\.\\d+"),"iOS","1",0,0];
+
+os[74] = [new RegExp("CFNetwork/.* Darwin/(10)\\.\\d+"),"iOS","4",0,0];
+
+os[75] = [new RegExp("CFNetwork/.* Darwin/(11)\\.\\d+"),"iOS","5",0,0];
+
+os[76] = [new RegExp("CFNetwork/.* Darwin/(13)\\.\\d+"),"iOS","6",0,0];
+
+os[77] = [new RegExp("CFNetwork/6.* Darwin/(14)\\.\\d+"),"iOS","7",0,0];
+
+os[78] = [new RegExp("CFNetwork/7.* Darwin/(14)\\.\\d+"),"iOS","8","0",0];
+
+os[79] = [new RegExp("CFNetwork/7.* Darwin/(15)\\.\\d+"),"iOS","9","0",0];
+
+os[80] = [new RegExp("CFNetwork/8.* Darwin/(16)\\.\\d+"),"iOS","10",0,0];
+
+os[81] = [new RegExp("\\b(iOS[ /]|iOS; |iPhone(?:/| v|[ _]OS[/,]|; | OS : |\\d,\\d/|\\d,\\d; )|iPad/)(\\d{1,2})[_\\.](\\d{1,2})(?:[_\\.](\\d+))?"),"iOS",0,0,0];
+
+os[82] = [new RegExp("\\((iOS);"),0,0,0,0];
+
+os[83] = [new RegExp("(tvOS)/(\\d+).(\\d+)"),"tvOS",0,0,0];
+
+os[84] = [new RegExp("(CrOS) [a-z0-9_]+ (\\d+)\\.(\\d+)(?:\\.(\\d+))?"),"Chrome OS",0,0,0];
+
+os[85] = [new RegExp("([Dd]ebian)"),"Debian",0,0,0];
+
+os[86] = [new RegExp("(Linux Mint)(?:/(\\d+))?"),0,0,0,0];
+
+os[87] = [new RegExp("(Mandriva)(?: Linux)?/(?:[\\d.-]+m[a-z]{2}(\\d+).(\\d))?"),0,0,0,0];
+
+os[88] = [new RegExp("(Symbian[Oo][Ss])[/ ](\\d+)\\.(\\d+)"),"Symbian OS",0,0,0];
+
+os[89] = [new RegExp("(Symbian/3).+NokiaBrowser/7\\.3"),"Symbian^3 Anna",0,0,0];
+
+os[90] = [new RegExp("(Symbian/3).+NokiaBrowser/7\\.4"),"Symbian^3 Belle",0,0,0];
+
+os[91] = [new RegExp("(Symbian/3)"),"Symbian^3",0,0,0];
+
+os[92] = [new RegExp("\\b(Series 60|SymbOS|S60Version|S60V\\d|S60\\b)"),"Symbian OS",0,0,0];
+
+os[93] = [new RegExp("(MeeGo)"),0,0,0,0];
+
+os[94] = [new RegExp("Symbian [Oo][Ss]"),"Symbian OS",0,0,0];
+
+os[95] = [new RegExp("Series40;"),"Nokia Series 40",0,0,0];
+
+os[96] = [new RegExp("Series30Plus;"),"Nokia Series 30 Plus",0,0,0];
+
+os[97] = [new RegExp("(BB10);.+Version/(\\d+)\\.(\\d+)\\.(\\d+)"),"BlackBerry OS",0,0,0];
+
+os[98] = [new RegExp("(Black[Bb]erry)[0-9a-z]+/(\\d+)\\.(\\d+)\\.(\\d+)(?:\\.(\\d+))?"),"BlackBerry OS",0,0,0];
+
+os[99] = [new RegExp("(Black[Bb]erry).+Version/(\\d+)\\.(\\d+)\\.(\\d+)(?:\\.(\\d+))?"),"BlackBerry OS",0,0,0];
+
+os[100] = [new RegExp("(RIM Tablet OS) (\\d+)\\.(\\d+)\\.(\\d+)"),"BlackBerry Tablet OS",0,0,0];
+
+os[101] = [new RegExp("(Play[Bb]ook)"),"BlackBerry Tablet OS",0,0,0];
+
+os[102] = [new RegExp("(Black[Bb]erry)"),"BlackBerry OS",0,0,0];
+
+os[103] = [new RegExp("\\((?:Mobile|Tablet);.+Gecko/18.0 Firefox/\\d+\\.\\d+"),"Firefox OS","1","0","1"];
+
+os[104] = [new RegExp("\\((?:Mobile|Tablet);.+Gecko/18.1 Firefox/\\d+\\.\\d+"),"Firefox OS","1","1",0];
+
+os[105] = [new RegExp("\\((?:Mobile|Tablet);.+Gecko/26.0 Firefox/\\d+\\.\\d+"),"Firefox OS","1","2",0];
+
+os[106] = [new RegExp("\\((?:Mobile|Tablet);.+Gecko/28.0 Firefox/\\d+\\.\\d+"),"Firefox OS","1","3",0];
+
+os[107] = [new RegExp("\\((?:Mobile|Tablet);.+Gecko/30.0 Firefox/\\d+\\.\\d+"),"Firefox OS","1","4",0];
+
+os[108] = [new RegExp("\\((?:Mobile|Tablet);.+Gecko/32.0 Firefox/\\d+\\.\\d+"),"Firefox OS","2","0",0];
+
+os[109] = [new RegExp("\\((?:Mobile|Tablet);.+Gecko/34.0 Firefox/\\d+\\.\\d+"),"Firefox OS","2","1",0];
+
+os[110] = [new RegExp("\\((?:Mobile|Tablet);.+Firefox/\\d+\\.\\d+"),"Firefox OS",0,0,0];
+
+os[111] = [new RegExp("(BREW)[ /](\\d+)\\.(\\d+)\\.(\\d+)"),0,0,0,0];
+
+os[112] = [new RegExp("(BREW);"),0,0,0,0];
+
+os[113] = [new RegExp("(Brew MP|BMP)[ /](\\d+)\\.(\\d+)\\.(\\d+)"),"Brew MP",0,0,0];
+
+os[114] = [new RegExp("BMP;"),"Brew MP",0,0,0];
+
+os[115] = [new RegExp("(GoogleTV)(?: (\\d+)\\.(\\d+)(?:\\.(\\d+))?|/[\\da-z]+)"),0,0,0,0];
+
+os[116] = [new RegExp("(WebTV)/(\\d+).(\\d+)"),0,0,0,0];
+
+os[117] = [new RegExp("(CrKey)(?:[/](\\d+)\\.(\\d+)(?:\\.(\\d+))?)?"),"Chromecast",0,0,0];
+
+os[118] = [new RegExp("(hpw|web)OS/(\\d+)\\.(\\d+)(?:\\.(\\d+))?"),"webOS",0,0,0];
+
+os[119] = [new RegExp("(VRE);"),0,0,0,0];
+
+os[120] = [new RegExp("(Fedora|Red Hat|PCLinuxOS|Puppy|Ubuntu|Kindle|Bada|Lubuntu|BackTrack|Slackware|(?:Free|Open|Net|\\b)BSD)[/ ](\\d+)\\.(\\d+)(?:\\.(\\d+)(?:\\.(\\d+))?)?"),0,0,0,0];
+
+os[121] = [new RegExp("(Linux)[ /](\\d+)\\.(\\d+)(?:\\.(\\d+))?.*gentoo"),"Gentoo",0,0,0];
+
+os[122] = [new RegExp("\\((Bada);"),0,0,0,0];
+
+os[123] = [new RegExp("(Windows|Android|WeTab|Maemo|Web0S)"),0,0,0,0];
+
+os[124] = [new RegExp("(Ubuntu|Kubuntu|Arch Linux|CentOS|Slackware|Gentoo|openSUSE|SUSE|Red Hat|Fedora|PCLinuxOS|Mageia|(?:Free|Open|Net|\\b)BSD)"),0,0,0,0];
+
+os[125] = [new RegExp("(Linux)(?:[ /](\\d+)\\.(\\d+)(?:\\.(\\d+))?)?"),0,0,0,0];
+
+os[126] = [new RegExp("SunOS"),"Solaris",0,0,0];
+
+os[127] = [new RegExp("^(Roku)/DVP-(\\d+)\\.(\\d+)"),0,0,0,0];
+
+os[128] = [new RegExp("(iOS) (\\d+)\\.(\\d+)(?:\\.(\\d+))?"),0,0,0,0];
+
+
+export { browser, device, os };

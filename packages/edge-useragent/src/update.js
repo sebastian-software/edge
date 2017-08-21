@@ -22,21 +22,21 @@ import yaml from "yamlparser"
  */
 export function update(callback) {
   // Prepend local additions that are missing from the source
-  fs.readFile(exports.before, "utf8", function reading(err, before) {
+  fs.readFile(before, "utf8", function reading(err, before) {
     if (err) return callback(err)
 
     // Fetch the remote resource as that is frequently updated
-    request(exports.remote, function downloading(err, res, remote) {
+    request(remote, function downloading(err, res, remote) {
       if (err) return callback(err)
       if (res.statusCode !== 200)
         return callback(new Error("Invalid statusCode returned"))
 
       // Append get some local additions that are missing from the source
-      fs.readFile(exports.after, "utf8", function reading(err, after) {
+      fs.readFile(after, "utf8", function reading(err, after) {
         if (err) return callback(err)
 
         // Parse the contents
-        exports.parse([before, remote, after], function parsing(
+        parse([before, remote, after], function parsing(
           err,
           results,
           source
@@ -54,7 +54,7 @@ export function update(callback) {
             fs.writeFile(tempFilePath, source, function idk(err) {
               if (err) return
 
-              fs.rename(tempFilePath, exports.output, err => {})
+              fs.rename(tempFilePath, output, err => {})
             })
           })
         })
@@ -137,60 +137,53 @@ export function parse(sources, callback) {
       // We need to JSON stringify the data to properly add slashes escape other
       // kinds of crap in the RegularExpression. If we don't do thing we get
       // some illegal token warnings.
-      parser = "parser = Object.create(null);\n"
-      parser += `parser[0] = new RegExp(${JSON.stringify(resource.regex)});\n`
+      parser = `${details.name}[${i}] = [`
+      parser += `new RegExp(${JSON.stringify(resource.regex)}),`
 
       // Check if we have replacement for the parsed family name
       if (resource[details.replacement]) {
-        parser += `parser[1] = "${resource[details.replacement].replace(
+        parser += `"${resource[details.replacement].replace(
           '"',
           '\\"'
-        )}";`
+        )}",`
       } else {
-        parser += "parser[1] = 0;"
+        parser += "0,"
       }
-
-      parser += "\n"
 
       if (resource.v1_replacement) {
-        parser += `parser[2] = "${resource.v1_replacement.replace(
+        parser += `"${resource.v1_replacement.replace(
           '"',
           '\\"'
-        )}";`
+        )}",`
       } else {
-        parser += "parser[2] = 0;"
+        parser += "0,"
       }
-
-      parser += "\n"
 
       if (resource.v2_replacement) {
-        parser += `parser[3] = "${resource.v2_replacement.replace(
+        parser += `"${resource.v2_replacement.replace(
           '"',
           '\\"'
-        )}";`
+        )}",`
       } else {
-        parser += "parser[3] = 0;"
+        parser += "0,"
       }
-
-      parser += "\n"
 
       if (resource.v3_replacement) {
-        parser += `parser[4] = "${resource.v3_replacement.replace(
+        parser += `"${resource.v3_replacement.replace(
           '"',
           '\\"'
-        )}";`
+        )}"`
       } else {
-        parser += "parser[4] = 0;"
+        parser += "0"
       }
 
-      parser += "\n"
-      parser += `exports.${details.name}[${i}] = parser;`
+      parser += "];\n"
       results[details.resource].push(parser)
     }
   })
 
   // Generate a correct format
-  exports.generate(results, callback)
+  generate(results, callback)
 }
 
 /**
@@ -202,38 +195,24 @@ export function parse(sources, callback) {
  */
 export function generate(results, callback) {
   const regexps = [
-    '"use strict";',
-    exports.LEADER,
+    LEADER,
     "var parser;",
-    "exports.browser = Object.create(null);",
+    "var browser = [];",
     results.user_agent_parsers.join("\n"),
-    `exports.browser.length = ${results.user_agent_parsers.length};`,
+    //`browser.length = ${results.user_agent_parsers.length};`,
 
-    "exports.device = Object.create(null);",
+    "var device = [];",
     results.device_parsers.join("\n"),
-    `exports.device.length = ${results.device_parsers.length};`,
+    //`device.length = ${results.device_parsers.length};`,
 
-    "exports.os = Object.create(null);",
+    "var os = [];",
     results.os_parsers.join("\n"),
-    `exports.os.length = ${results.os_parsers.length};`
+    //`os.length = ${results.os_parsers.length};`,
+
+    "export { browser, device, os };"
   ].join("\n\n")
 
-  // Now that we have generated the structure for the RegExps export file we
-  // need to validate that we created a JavaScript compatible file, if we would
-  // write the file without checking it's content we could be breaking the
-  // module.
-  const sandbox = {
-    exports: {} // Emulate a module context, so everything is attached here
-  }
-
-  // Crossing our fingers that it worked
-  try {
-    vm.runInNewContext(regexps, sandbox, "validating.vm")
-  } catch (e) {
-    return callback(e, null, regexps)
-  }
-
-  callback(undefined, sandbox.exports, regexps)
+  callback(undefined, null, regexps)
 }
 
 /**

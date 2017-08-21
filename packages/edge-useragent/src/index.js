@@ -3,19 +3,19 @@ import semver from 'semver';
 /**
  * This is where all the magic comes from, specially crafted for `useragent`.
  */
-const regexps = require('./regexps');
+import { os as osparsers, browser as agentparsers, device as deviceparsers } from './regexps'
 
 /**
  * Reduce references by storing the lookups.
  */
 // OperatingSystem parsers:
-let osparsers = regexps.os, osparserslength = osparsers.length;
+let osparserslength = osparsers.length;
 
 // UserAgent parsers:
-let agentparsers = regexps.browser, agentparserslength = agentparsers.length;
+let agentparserslength = agentparsers.length;
 
 // Device parsers:
-let deviceparsers = regexps.device, deviceparserslength = deviceparsers.length;
+let deviceparserslength = deviceparsers.length;
 
 /**
  * The representation of a parsed user agent.
