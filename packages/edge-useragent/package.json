@@ -35,12 +35,11 @@
     "url": "git@github.com:sebastian-software/edge-useragent.git"
   },
   "devDependencies": {
-    "should": "*",
     "mocha": "*",
-    "long-stack-traces": "0.1.x",
-    "yamlparser": "0.0.x",
     "request": "2.81.x",
-    "semver": "5.4.x"
+    "semver": "5.4.x",
+    "should": "*",
+    "yamlparser": "0.0.x"
   },
   "scripts": {
     "test": "mocha $(find test -name '*.test.js')",
