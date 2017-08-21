@@ -1,6 +1,4 @@
 describe('useragent', () => {
-  'use strict';
-
   const useragent = require('../src'), ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_1) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.24 Safari/535.2";
 
   it('should expose the current version number', () => {
