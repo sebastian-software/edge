@@ -1,7 +1,7 @@
 {
-  "name": "useragent",
+  "name": "edge-useragent",
   "version": "2.2.1",
-  "description": "Fastest, most accurate & efficient user agent string parser, uses Browserscope's research for parsing",
+  "description": "High performance user agent string parser for modern environments. Part of the Edge Platform.",
   "main": "lib/index.es5.cjs.js",
   "module": "lib/index.es5.esm.js",
   "main:es2015": "lib/index.es2015.cjs.js",
@@ -50,8 +50,11 @@
   "scripts": {
     "test": "mocha $(find test -name '*.test.js')",
     "qa": "mocha --ui exports $(find test -name '*.qa.js')",
-    "update": "babel-node ./bin/update.js",
-    "prepare": "npm run update && prepublish"
+    "update": "babel-node ./bin/update.js && babel-node ./bin/testfiles.js",
+    "prepare": "npm run update && rimraf lib && prepublish",
+    "release": "git push && release-it --github.release --npm.publish --non-interactive",
+    "release:minor": "git push && release-it --github.release --npm.publish --non-interactive --increment minor",
+    "release:major": "git push && release-it --github.release --npm.publish --non-interactive --increment major"
   },
   "dependencies": {
     "lru-cache": "4.1.x",
