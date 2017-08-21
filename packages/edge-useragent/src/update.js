@@ -1,5 +1,3 @@
-"use strict"
-
 /**
  * Build in Native modules.
  */
