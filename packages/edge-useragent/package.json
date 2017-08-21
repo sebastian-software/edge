@@ -35,6 +35,7 @@
     "url": "git@github.com:sebastian-software/edge-useragent.git"
   },
   "devDependencies": {
+    "babel-preset-edge": "^1.2.1",
     "mocha": "*",
     "readable-code": "^3.4.12",
     "request": "2.81.x",
@@ -43,8 +44,8 @@
     "yamlparser": "0.0.x"
   },
   "scripts": {
-    "test": "mocha $(find test -name '*.test.js')",
-    "qa": "mocha --ui exports $(find test -name '*.qa.js')",
+    "test": "mocha --compilers js:babel-core/register $(find test -name '*.test.js')",
+    "qa": "mocha --compilers js:babel-core/register --ui exports $(find test -name '*.qa.js')",
     "update": "node ./bin/update.js",
     "prepublish": "npm run update"
   },

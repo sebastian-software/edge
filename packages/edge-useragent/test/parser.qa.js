@@ -1,7 +1,7 @@
-var useragent = require('../')
-  , should = require('should')
-  , yaml = require('yamlparser')
-  , fs = require('fs');
+import useragent from '../';
+import should from 'should';
+import yaml from 'yamlparser';
+import fs from 'fs';
 
 // run over the testcases, some might fail, some might not. This is just qu
 // test to see if we can parse without errors, and with a reasonable amount
@@ -11,12 +11,12 @@ var useragent = require('../')
   , 'static.custom.yaml'
   , 'firefoxes.yaml'
   , 'pgts.yaml'
-].forEach(function (filename) {
-  var testcases = fs.readFileSync(__dirname +'/fixtures/' + filename).toString()
-    , parsedyaml = yaml.eval(testcases);
+].forEach(filename => {
+  let testcases = fs.readFileSync(`${__dirname}/fixtures/${filename}`).toString();
+  const parsedyaml = yaml.eval(testcases);
 
   testcases = parsedyaml.test_cases;
-  testcases.forEach(function (test) {
+  testcases.forEach(test => {
     // we are unable to parse these tests atm because invalid JSON is used to
     // store the useragents
     if (typeof test.user_agent_string !== 'string') return;
@@ -26,13 +26,13 @@ var useragent = require('../')
     if (test.family.match(/googlebot|avant/i)) return;
 
     // attempt to parse the shizzle js based stuff
-    var js_ua;
+    let js_ua;
     if (test.js_ua) {
-      js_ua = (Function('return ' + test.js_ua)()).js_user_agent_string;
+      js_ua = (Function(`return ${test.js_ua}`)()).js_user_agent_string;
     }
 
-    exports[filename + ': ' + test.user_agent_string] = function () {
-      var agent = useragent.parse(test.user_agent_string, js_ua);
+    exports[`${filename}: ${test.user_agent_string}`] = () => {
+      const agent = useragent.parse(test.user_agent_string, js_ua);
 
       agent.family.should.equal(test.family);
       // we need to test if v1 is a string, because the yamlparser transforms

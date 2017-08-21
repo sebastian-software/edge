@@ -18,9 +18,9 @@
  */
 
 
-var parser;
+let parser;
 
-exports.browser = Object.create(null);
+export const browser = Object.create(null);
 
 parser = Object.create(null);
 parser[0] = new RegExp("(Rival IQ, rivaliq.com)");
@@ -1390,7 +1390,7 @@ exports.browser[194] = parser;
 
 exports.browser.length = 195;
 
-exports.device = Object.create(null);
+export const device = Object.create(null);
 
 parser = Object.create(null);
 parser[0] = new RegExp("(Rival IQ, rivaliq.com)");
@@ -5511,7 +5511,7 @@ exports.device[587] = parser;
 
 exports.device.length = 588;
 
-exports.os = Object.create(null);
+export const os = Object.create(null);
 
 parser = Object.create(null);
 parser[0] = new RegExp("HbbTV/\\d+\\.\\d+\\.\\d+ \\( ;(LG)E ;NetCast 4.0");

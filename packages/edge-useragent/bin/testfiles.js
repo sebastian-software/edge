@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-var request = require('request')
-  , path = require('path')
-  , fs = require('fs');
+import request from 'request';
+import path from 'path';
+import fs from 'fs';
 
-var files = {
+const files = {
     'pgts.yaml': 'https://raw.githubusercontent.com/ua-parser/uap-core/master/test_resources/pgts_browser_list.yaml'
   , 'testcases.yaml': 'https://raw.githubusercontent.com/ua-parser/uap-core/master/test_resources/test_user_agent_parser.yaml'
   , 'firefoxes.yaml': 'https://raw.githubusercontent.com/ua-parser/uap-core/master/test_resources/firefox_user_agent_strings.yaml'
@@ -14,7 +14,7 @@ var files = {
  * Update the fixtures
  */
 
-Object.keys(files).forEach(function (key) {
+Object.keys(files).forEach(key => {
   request(files[key], function response (err, res, data) {
     if (err || res.statusCode !== 200) return console.error('failed to update');
 

@@ -3,8 +3,9 @@
 /**
  * Plugin dependencies
  */
-var Agent = require('../').Agent
-  , semver = require('semver');
+import {Agent} from '../';
+
+import semver from 'semver';
 
 /**
  * Checks if the user agent's version can be satisfied agents the give
@@ -15,5 +16,5 @@ var Agent = require('../').Agent
  * @api public
  */
 Agent.prototype.satisfies = function satisfies (range) {
-  return semver.satisfies((Number(this.major) || 0) + '.' + (Number(this.minor) || 0) + '.' + (Number(this.patch) || 0), range);
+  return semver.satisfies(`${Number(this.major) || 0}.${Number(this.minor) || 0}.${Number(this.patch) || 0}`, range);
 };
