@@ -16,13 +16,15 @@ export function loadImport(wrapped) {
 }
 
 /**
- * Register the module for being pre-loaded on the client.
+ * Register the module for being pre-loaded on the *client*. This has no
+ * effect on the server other than injecting the chunk name for flusing to
+ * the generated HTML.
  *
  * Acts on transpiled `import()` statements from
  * [babel-plugin-universal-import](https://www.npmjs.com/package/babel-plugin-universal-import).
  *
  * @param {Object} wrapped The return value from transpiled `import()` statements.
  */
-export function preloadOnClient(wrapped) {
+export function preloadImport(wrapped) {
   CHUNK_NAMES.add(wrapped.chunkName())
 }
