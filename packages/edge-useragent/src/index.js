@@ -511,7 +511,7 @@ export function is(useragent) {
             , safari: false
             , webkit: false
             , android: false
-            , version: (ua.match(exports.is.versionRE) || [0, "0"])[1]
+            , version: (ua.match(versionRE) || [0, "0"])[1]
           };
 
   if (~ua.indexOf('webkit')) {
@@ -550,7 +550,7 @@ export function is(useragent) {
  * @type {RegExp}
  * @api private
  */
-exports.is.versionRE = /.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/;
+const versionRE = /.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/;
 
 /**
  * Transform a JSON object back to a valid userAgent string
