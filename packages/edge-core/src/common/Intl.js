@@ -118,22 +118,24 @@ export function getRegion(state) {
 // `require.ensure()` which does 50% of the equation - and is supported by *prepublish* but the
 // remaining part to define code splitting via `webpackChunkName` is not solvable right now.
 
-export function ensureReactIntlSupport(universalImport, language) {
+export function ensureReactIntlSupport(importCaller, language) {
   // React-Intl always loads monolithically with all locales in NodeJS
+  const importWrapper = importCaller(language)
   if (process.env.TARGET === "server") {
-    return preloadImportServer(universalImport)
+    return preloadImportServer(importWrapper)
   } else {
-    return loadImportClient(universalImport).then(installReactIntl)
+    return loadImportClient(importWrapper).then(installReactIntl)
   }
 }
 
 /* eslint-disable max-params */
-export function ensureIntlSupport(universalImport, locale, userAgent) {
+export function ensureIntlSupport(importCaller, locale, userAgent) {
   const hasIntlSupport = global.Intl && areIntlLocalesSupported([ locale ])
+  const importWrapper = importCaller(locale)
 
   if (process.env.TARGET === "server") {
     if (!hasIntlSupport) {
-      loadImportServer(universalImport)
+      loadImportServer(importWrapper)
     }
 
     let clientHasIntl = false
@@ -147,10 +149,10 @@ export function ensureIntlSupport(universalImport, locale, userAgent) {
     }
 
     if (!clientHasIntl) {
-      preloadImportServer(universalImport)
+      preloadImportServer(importWrapper)
     }
   } else if (!hasIntlSupport) {
-    return loadImportClient(universalImport).then(installIntlPolyfill)
+    return loadImportClient(importWrapper).then(installIntlPolyfill)
   }
 
   return null
