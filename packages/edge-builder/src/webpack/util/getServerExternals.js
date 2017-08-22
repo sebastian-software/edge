@@ -51,7 +51,13 @@ const Problematic = new Set([
   "encoding",
 
   // "node-pre-gyp" native code module helper
-  "node-pre-gyp"
+  "node-pre-gyp",
+
+  // Uses dynamic require expressions which do not work well with Webpack
+  "ajv",
+
+  // Uses dynamic require expressions which do not work well with Webpack
+  "jsdom"
 ])
 
 console.log("ESM:", Modules)
