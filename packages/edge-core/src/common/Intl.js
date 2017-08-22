@@ -10,14 +10,14 @@ import {
   preloadImport as preloadImportServer
 } from "../server/loadImport"
 
-import { feature } from "caniuse-lite"
+
 
 const PREFER_NATIVE = true
 
 var intlSupportTable
 if (process.env.TARGET === "node") {
-  intlSupportTable = feature(
-    require("caniuse-lite/data/features/internationalization.js")
+  intlSupportTable = require("caniuse-lite").feature(
+    require("caniuse-lite/data/features/internationalization")
   )
 }
 
