@@ -121,7 +121,7 @@ export function getRegion(state) {
 export function ensureReactIntlSupport(importCaller, language) {
   // React-Intl always loads monolithically with all locales in NodeJS
   const importWrapper = importCaller(language)
-  if (process.env.TARGET === "server") {
+  if (process.env.TARGET === "node") {
     return preloadImportServer(importWrapper)
   } else {
     return loadImportClient(importWrapper).then(installReactIntl)
@@ -133,7 +133,7 @@ export function ensureIntlSupport(importCaller, locale, userAgent) {
   const hasIntlSupport = global.Intl && areIntlLocalesSupported([ locale ])
   const importWrapper = importCaller(locale)
 
-  if (process.env.TARGET === "server") {
+  if (process.env.TARGET === "node") {
     if (!hasIntlSupport) {
       loadImportServer(importWrapper)
     }
