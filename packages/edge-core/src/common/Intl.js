@@ -15,7 +15,7 @@ import { feature } from "caniuse-lite"
 const PREFER_NATIVE = true
 
 var intlSupportTable
-if (process.env.TARGET === "server") {
+if (process.env.TARGET === "node") {
   intlSupportTable = feature(
     require("caniuse-lite/data/features/internationalization.js")
   )
@@ -145,6 +145,7 @@ export function ensureIntlSupport(importCaller, locale, userAgent) {
         clientHasIntl = true
       }
     } catch (error) {
+      console.log("Error during querying support table:", error)
       // pass
     }
 
