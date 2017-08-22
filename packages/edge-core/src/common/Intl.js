@@ -1,7 +1,25 @@
 import areIntlLocalesSupported from "intl-locales-supported"
 import { addLocaleData } from "react-intl"
 
+import {
+  loadImport as loadImportClient
+} from "../client/loadImport"
+
+import {
+  loadImport as loadImportServer,
+  preloadImport as preloadImportServer
+} from "../server/loadImport"
+
+import { feature } from "caniuse-lite"
+
 const PREFER_NATIVE = true
+
+var intlSupportTable
+if (process.env.TARGET === "server") {
+  intlSupportTable = feature(
+    require("caniuse-lite/data/features/internationalization.js")
+  )
+}
 
 export function requiresIntlPolyfill(locale) {
   // Determine if the built-in `Intl` has the locale data we need.
@@ -90,4 +108,50 @@ export function getLanguage(state) {
  */
 export function getRegion(state) {
   return state.intl.region
+}
+
+
+// Note:
+// As long as Rollup does not support dynamic `import()` we unfortunately have to implement
+// the loading part of intl files and general all code splitting in the real application
+// and not in any shared library. There is currently a way to transpile `import()` to
+// `require.ensure()` which does 50% of the equation - and is supported by *prepublish* but the
+// remaining part to define code splitting via `webpackChunkName` is not solvable right now.
+
+export function ensureReactIntlSupport(universalImport, language) {
+  // React-Intl always loads monolithically with all locales in NodeJS
+  if (process.env.TARGET === "server") {
+    return preloadImportServer(universalImport)
+  } else {
+    return loadImportClient(universalImport).then(installReactIntl)
+  }
+}
+
+/* eslint-disable max-params */
+export function ensureIntlSupport(universalImport, locale, userAgent) {
+  const hasIntlSupport = global.Intl && areIntlLocalesSupported([ locale ])
+
+  if (process.env.TARGET === "server") {
+    if (!hasIntlSupport) {
+      loadImportServer(universalImport)
+    }
+
+    let clientHasIntl = false
+    try {
+      // TODO: Make this smarter and more error tolerant
+      if (intlSupportTable.stats[userAgent.family.toLowerCase()][userAgent.major] === "y") {
+        clientHasIntl = true
+      }
+    } catch (error) {
+      // pass
+    }
+
+    if (!clientHasIntl) {
+      preloadImportServer(universalImport)
+    }
+  } else if (!hasIntlSupport) {
+    return loadImportClient(universalImport).then(installIntlPolyfill)
+  }
+
+  return null
 }

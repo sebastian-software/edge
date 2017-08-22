@@ -13,7 +13,9 @@ export {
   requiresReactIntl,
   installReactIntl,
   getRegion, getLanguage, getLocale,
-  intlReducer
+  intlReducer,
+  ensureReactIntlSupport,
+  ensureIntlSupport
 } from "./common/Intl"
 
 export { default as wrapApplication } from "./common/wrapApplication"

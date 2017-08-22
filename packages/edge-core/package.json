@@ -59,6 +59,7 @@
   "homepage": "https://github.com/sebastian-software/edge-core#readme",
   "dependencies": {
     "bluebird": "^3.5.0",
+    "caniuse-lite": "^1.0.30000717",
     "chalk": "^2.1.0",
     "history": "^4.6.3",
     "identity-obj-proxy": "^3.0.0",
