@@ -17,7 +17,7 @@ const PREFER_NATIVE = true
 var intlSupportTable
 if (process.env.TARGET === "node") {
   intlSupportTable = require("caniuse-lite").feature(
-    require("caniuse-lite/data/features/internationalization")
+    require("caniuse-lite/data/features/internationalization.js")
   )
 }
 
