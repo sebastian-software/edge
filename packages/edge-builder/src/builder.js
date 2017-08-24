@@ -176,6 +176,8 @@ export default function builder(target, env = "development", config = {}) {
   // See also: https://nolanlawson.com/2016/08/15/the-cost-of-small-modules/
   const useLightNodeBundle = false
 
+  const HMR_MIDDLEWARE = "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false"
+
   return {
     name,
     target: webpackTarget,
@@ -184,11 +186,12 @@ export default function builder(target, env = "development", config = {}) {
     externals: isServer ? getServerExternals(useLightNodeBundle) : undefined,
 
     entry: removeEmptyKeys({
-      vendor: (isServer ? config.entry.serverVendor : config.entry.clientVendor),
+      vendor: [
+        isClient && isDevelopment ? HMR_MIDDLEWARE : null,
+        isServer ? config.entry.serverVendor : config.entry.clientVendor
+      ].filter(Boolean),
       main: [
-        isClient && isDevelopment ?
-          "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false" :
-          null,
+        isClient && isDevelopment ? HMR_MIDDLEWARE : null,
         isServer ? config.entry.serverMain : config.entry.clientMain
       ].filter(Boolean)
     }),
