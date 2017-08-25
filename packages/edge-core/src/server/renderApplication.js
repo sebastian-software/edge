@@ -47,8 +47,8 @@ export default function renderApplication({ Application, clientStats, kernel, re
   const renderedPage = renderPage({
     state,
     html,
-    styles,
-    scripts: cssHash + js
+    styles: styles.toString(),
+    scripts: cssHash + js.toString()
   })
 
   // Make sure that the actual dynamically rendered page is never being cached
