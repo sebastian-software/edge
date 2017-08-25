@@ -1,6 +1,6 @@
 {
   "name": "edge-core",
-  "version": "0.6.13",
+  "version": "0.6.14",
   "description": "Core JavaScript Infrastructure for Edge. Part of the Edge Platform.",
   "main": "lib/node.es5.cjs.js",
   "module": "lib/node.es5.esm.js",
