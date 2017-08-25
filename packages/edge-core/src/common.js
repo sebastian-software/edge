@@ -13,7 +13,6 @@ export {
   requiresReactIntl,
   installReactIntl,
   getRegion, getLanguage, getLocale,
-  intlReducer,
   ensureReactIntlSupport,
   ensureIntlSupport
 } from "./common/Intl"

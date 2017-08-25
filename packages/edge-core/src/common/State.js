@@ -68,10 +68,7 @@ export function createRootReducer(reducers, reduxRouter = null, apolloClient = n
     ...reducers,
 
     // Edge Platform Data
-    edge: edgeReducer,
-
-    // Localization Support
-    intl: intlReducer
+    edge: edgeReducer
   }
 
   // Integration point for Redux First Router

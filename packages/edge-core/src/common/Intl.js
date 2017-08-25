@@ -80,18 +80,10 @@ export function installReactIntl(response) {
 
 
 /**
- * Dummy reducer for exporting server-side data to the client-side application.
- */
-export function intlReducer(previousState = {}, action) {
-  return previousState
-}
-
-
-/**
  * Selector for quering the current locale e.g. de-DE, en-US, ...
  */
 export function getLocale(state) {
-  return state.intl.locale
+  return state.edge.intl.locale
 }
 
 
@@ -99,7 +91,7 @@ export function getLocale(state) {
  * Selector for quering the current language e.g. de, en, fr, es, ...
  */
 export function getLanguage(state) {
-  return state.intl.language
+  return state.edge.intl.language
 }
 
 
@@ -107,7 +99,7 @@ export function getLanguage(state) {
  * Selector for quering the current region e.g. DE, BR, PT, ...
  */
 export function getRegion(state) {
-  return state.intl.region
+  return state.edge.intl.region
 }
 
 
@@ -128,7 +120,7 @@ export function ensureReactIntlSupport(importWrapper, intl) {
 }
 
 /* eslint-disable max-params */
-export function ensureIntlSupport(importWrapper, intl, userAgent) {
+export function ensureIntlSupport(importWrapper, intl, browser) {
   const hasIntlSupport = global.Intl && areIntlLocalesSupported([ intl.locale ])
 
   if (process.env.TARGET === "node") {
@@ -139,7 +131,7 @@ export function ensureIntlSupport(importWrapper, intl, userAgent) {
     let clientHasIntl = false
     try {
       // TODO: Make this smarter and more error tolerant
-      if (intlSupportTable.stats[userAgent.family.toLowerCase()][userAgent.major] === "y") {
+      if (intlSupportTable.stats[browser.family.toLowerCase()][browser.major] === "y") {
         clientHasIntl = true
       }
     } catch (error) {
