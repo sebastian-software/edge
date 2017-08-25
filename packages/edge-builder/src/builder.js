@@ -176,7 +176,7 @@ export default function builder(target, env = "development", config = {}) {
   // See also: https://nolanlawson.com/2016/08/15/the-cost-of-small-modules/
   const useLightNodeBundle = false
 
-  const HMR_MIDDLEWARE = "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=10000&reload=true&overlay=false"
+  const HMR_MIDDLEWARE = "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=10000&reload=true&noInfo=true&overlay=false"
 
   return {
     name,
