@@ -62,7 +62,7 @@ export function getNonce(state) {
 /**
  * Bundles the given reducers into a root reducer for the application
  */
-export function createRootReducer(reducers, reduxRouter = null, apolloClient = null) {
+export function createRootReducer(reducers, router = null, apollo = null) {
   const allReducers = {
     // Application specific reducers
     ...reducers,
@@ -72,13 +72,13 @@ export function createRootReducer(reducers, reduxRouter = null, apolloClient = n
   }
 
   // Integration point for Redux First Router
-  if (reduxRouter) {
-    allReducers.location = reduxRouter.reducer
+  if (router) {
+    allReducers.location = router.reducer
   }
 
   // Support for Apollo-based GraphQL backends
-  if (apolloClient) {
-    allReducers.apollo = apolloClient.reducer()
+  if (apollo) {
+    allReducers.apollo = apollo.reducer()
   }
 
   return combineReducers(allReducers)
@@ -94,16 +94,16 @@ export function createReduxStore(config = {}) {
     reducers = {},
     middlewares = [],
     enhancers = [],
-    initialState = {},
-    reduxRouter = null,
-    apolloClient = null
+    state = {},
+    router = null,
+    apollo = null
   } = config
 
-  const rootReducer = createRootReducer(reducers, reduxRouter, apolloClient)
+  const rootReducer = createRootReducer(reducers, router, apollo)
 
   const rootEnhancers = composeEnhancers(
     applyMiddleware(
-      apolloClient ? apolloClient.middleware() : emptyMiddleware,
+      apollo ? apollo.middleware() : emptyMiddleware,
 
       // Redux middleware that spits an error on you when you try to mutate
       // your state either inside a dispatch or between dispatches.
@@ -115,7 +115,7 @@ export function createReduxStore(config = {}) {
       thunk,
 
       // Redux Router First Middleware
-      reduxRouter ? reduxRouter.middleware : emptyMiddleware,
+      router ? router.middleware : emptyMiddleware,
 
       // Application specific middlewares
       ...middlewares,
@@ -128,7 +128,7 @@ export function createReduxStore(config = {}) {
     ),
 
     // Redux First Router Enhancer
-    reduxRouter ? reduxRouter.enhancer : emptyEnhancer,
+    router ? router.enhancer : emptyEnhancer,
 
     // Application specific enhancers
     ...enhancers
@@ -136,7 +136,7 @@ export function createReduxStore(config = {}) {
 
   const store = createStore(
     rootReducer,
-    initialState,
+    state,
     rootEnhancers
   )
 

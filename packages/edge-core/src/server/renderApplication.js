@@ -8,7 +8,7 @@ import renderPage from "./renderPage"
 /* eslint-disable max-params, no-console */
 export default function renderApplication({ Application, clientStats, kernel, request, response }) {
   console.log("[EDGE] Exporting current state...")
-  const state = kernel.reduxStore.getState()
+  const state = kernel.store.getState()
 
   // the idiomatic way to handle routes not found :)
   // your component's should also detect this state and render a 404 scene

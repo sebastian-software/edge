@@ -26,30 +26,29 @@ test("Create Redux Store - No Params", () => {
 })
 
 test("Create Redux Store - With Apollo", () => {
-  const apolloClient = createApolloClient()
-  expect(apolloClient).toBeDefined()
-  expect(typeof apolloClient).toBe("object")
+  const apollo = createApolloClient()
+  expect(apollo).toBeDefined()
+  expect(typeof apollo).toBe("object")
 
   const reducers = {}
   const middlewares = []
   const enhancers = []
-  const reduxStore = createReduxStore({ reducers, middlewares, enhancers, apolloClient })
-  expect(reduxStore).toBeDefined()
-  expect(typeof reduxStore).toBe("object")
+  const store = createReduxStore({ reducers, middlewares, enhancers, apollo })
+  expect(store).toBeDefined()
+  expect(typeof store).toBe("object")
 })
 
 test("Create Redux Store - With Apollo and URL", () => {
-  const apolloClient = createApolloClient()
-  expect(apolloClient).toBeDefined()
-  expect(typeof apolloClient).toBe("object")
+  const apollo = createApolloClient({ uri: "http://my.apollo.uri" })
+  expect(apollo).toBeDefined()
+  expect(typeof apollo).toBe("object")
 
   const reducers = {}
   const middlewares = []
   const enhancers = []
-  const initialData = { edge: { apolloUri: "http://my.apollo.uri" } }
-  const reduxStore = createReduxStore({ reducers, middlewares, enhancers, initialData, apolloClient })
-  expect(reduxStore).toBeDefined()
-  expect(typeof reduxStore).toBe("object")
+  const store = createReduxStore({ reducers, middlewares, enhancers, apollo })
+  expect(store).toBeDefined()
+  expect(typeof store).toBe("object")
 })
 
 test("Create Root Reducer", () => {
@@ -65,14 +64,14 @@ test("Create Root Reducer with one reducer", () => {
 })
 
 test("Create Redux Store - With Redux Router", () => {
-  const reduxRouter = createReduxRouter()
-  expect(reduxRouter).toBeDefined()
-  expect(typeof reduxRouter).toBe("object")
+  const router = createReduxRouter()
+  expect(router).toBeDefined()
+  expect(typeof router).toBe("object")
 
   const reducers = {}
   const middlewares = []
   const enhancers = []
-  const reduxStore = createReduxStore({ reducers, middlewares, enhancers, reduxRouter })
-  expect(reduxStore).toBeDefined()
-  expect(typeof reduxStore).toBe("object")
+  const store = createReduxStore({ reducers, middlewares, enhancers, router })
+  expect(store).toBeDefined()
+  expect(typeof store).toBe("object")
 })
