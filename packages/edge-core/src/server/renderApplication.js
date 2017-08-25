@@ -7,23 +7,13 @@ import renderPage from "./renderPage"
 
 /* eslint-disable max-params, no-console */
 export default function renderApplication({ Application, clientStats, kernel, request, response }) {
-  console.log("React: renderToString()...")
-  let html = ""
-  try {
-    html = ReactDOM.renderToString(Application)
-  } catch (err) {
-    console.error("Unable to render server side React:", err)
-  }
-
-  console.log("Redux: getState()...")
-  const initialState = kernel.reduxStore.getState()
-
-  const location = initialState.location
-
-  let httpStatus = 200
+  console.log("[EDGE] Exporting current state...")
+  const state = kernel.reduxStore.getState()
 
   // the idiomatic way to handle routes not found :)
   // your component's should also detect this state and render a 404 scene
+  const location = state.location
+  let httpStatus = 200
   if (location.type === NOT_FOUND) {
     /* eslint-disable no-magic-numbers */
     httpStatus = 404
@@ -34,28 +24,30 @@ export default function renderApplication({ Application, clientStats, kernel, re
     return response.redirect(302, location.pathname)
   }
 
+  console.log("[EDGE] Rendering application...")
+  let html = ""
+  try {
+    html = ReactDOM.renderToString(Application)
+  } catch (err) {
+    console.error("Unable to render server side React:", err)
+  }
+
+  console.log("[EDGE] Flushing chunks...")
   const chunkNames = flushChunkNames()
-
-  console.log("Rendered Server Chunk Names:", chunkNames.join(", "))
-
+  console.log("[EDGE] Rendered Chunk Names:", chunkNames.join(", "))
   const { js, styles, cssHash } = flushChunks(clientStats, { chunkNames })
-
-  console.log("Injected Script Tags:\n" + js.toString() + "\n")
-  console.log("Injected CSS Tags:\n" + styles.toString() + "\n")
-  console.log("Injected CSS Hash:\n" + cssHash.toString() + "\n")
+  console.log("[EDGE] Flushed Script Tags:\n" + js.toString() + "\n")
+  console.log("[EDGE] Flushed CSS Tags:\n" + styles.toString() + "\n")
 
   // TODO: Support SRI integrity checksums as added by SRI Webpack Plugin
   // https://www.npmjs.com/package/webpack-subresource-integrity#without-htmlwebpackplugin
 
-  const nonce = ""
-  const locale = kernel.intl.locale
-
   // Render full HTML page using external helper
+  console.log("Rendering Page...")
   const renderedPage = renderPage({
     html,
-    initialState,
-    nonce,
-    locale,
+    state,
+    kernel,
     styles,
     scripts: cssHash + js
   })
@@ -64,5 +56,6 @@ export default function renderApplication({ Application, clientStats, kernel, re
   response.setHeader("Cache-Control", "no-cache")
 
   // Send actual content
+  console.log("[EDGE] Sending Page...")
   return response.status(httpStatus).send(renderedPage)
 }
