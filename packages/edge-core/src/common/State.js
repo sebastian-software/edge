@@ -1,8 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux"
 import thunk from "redux-thunk"
 
-import { intlReducer } from "./Intl"
-
 const composeEnhancers = (process.env.TARGET === "web" &&
   process.env.NODE_ENV === "development" &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
