@@ -118,9 +118,8 @@ export function getRegion(state) {
 // `require.ensure()` which does 50% of the equation - and is supported by *prepublish* but the
 // remaining part to define code splitting via `webpackChunkName` is not solvable right now.
 
-export function ensureReactIntlSupport(importCaller, language) {
+export function ensureReactIntlSupport(importWrapper, intl) {
   // React-Intl always loads monolithically with all locales in NodeJS
-  const importWrapper = importCaller(language)
   if (process.env.TARGET === "node") {
     return preloadImportServer(importWrapper)
   } else {
@@ -129,9 +128,8 @@ export function ensureReactIntlSupport(importCaller, language) {
 }
 
 /* eslint-disable max-params */
-export function ensureIntlSupport(importCaller, locale, userAgent) {
-  const hasIntlSupport = global.Intl && areIntlLocalesSupported([ locale ])
-  const importWrapper = importCaller(locale)
+export function ensureIntlSupport(importWrapper, intl, userAgent) {
+  const hasIntlSupport = global.Intl && areIntlLocalesSupported([ intl.locale ])
 
   if (process.env.TARGET === "node") {
     if (!hasIntlSupport) {
