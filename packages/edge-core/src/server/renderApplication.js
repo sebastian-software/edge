@@ -6,7 +6,7 @@ import { NOT_FOUND } from "redux-first-router"
 import renderPage from "./renderPage"
 
 /* eslint-disable max-params, no-console */
-export default async function renderApplication({ Application, clientStats, kernel, request, response }) {
+export default function renderApplication({ Application, clientStats, kernel, request, response }) {
   console.log("React: renderToString()...")
   let html = ""
   try {
