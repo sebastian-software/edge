@@ -18,7 +18,7 @@ export default function renderPage({
   styles,
   scripts
 }) {
-  if (typeof state !== "object") {
+  if (typeof state !== "object" || typeof state.edge !== "object") {
     throw new Error("[EDGE]: RenderPage: Invalid state object!")
   }
 
@@ -26,11 +26,11 @@ export default function renderPage({
     throw new Error("[EDGE]: RenderPage: Invalid html string!")
   }
 
-  if (typeof styles !== "object" || styles.length === 0) {
+  if (typeof styles !== "string" || styles.length === 0) {
     throw new Error("[EDGE]: RenderPage: Invalid styles string!")
   }
 
-  if (typeof scripts !== "object" || scripts.length === 0) {
+  if (typeof scripts !== "string" || scripts.length === 0) {
     throw new Error("[EDGE]: RenderPage: Invalid scripts string!")
   }
 
