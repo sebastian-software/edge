@@ -45,9 +45,8 @@ export default function renderApplication({ Application, clientStats, kernel, re
   // Render full HTML page using external helper
   console.log("Rendering Page...")
   const renderedPage = renderPage({
-    html,
     state,
-    kernel,
+    html,
     styles,
     scripts: cssHash + js
   })
