@@ -21,17 +21,17 @@ import { IntlProvider } from "react-intl"
 export default function wrapApplication(Application, kernel) {
   let Wrapped = Application
 
-  if (kernel.apolloClient) {
+  if (kernel.apollo) {
     Wrapped = (
-      <ApolloProvider client={kernel.apolloClient} store={kernel.reduxStore}>
+      <ApolloProvider client={kernel.apollo} store={kernel.store}>
         {Wrapped}
       </ApolloProvider>
     )
   }
 
-  if (kernel.reduxStore) {
+  if (kernel.store) {
     Wrapped = (
-      <Provider store={kernel.reduxStore}>
+      <Provider store={kernel.store}>
         {Wrapped}
       </Provider>
     )
