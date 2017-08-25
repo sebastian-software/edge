@@ -17,6 +17,7 @@ export * from "./common"
 export * from "./server/loadImport"
 
 export { default as renderPage } from "./server/renderPage"
+export { default as renderApplication } from "./server/renderApplication"
 export { default as getLocaleData } from "./server/getLocaleData"
 
 export * from "./server/debug"

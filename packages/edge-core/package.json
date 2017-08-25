@@ -84,7 +84,8 @@
     "redux-thunk": "^2.2.0",
     "serialize-javascript": "^1.4.0",
     "source-map-support": "^0.4.16",
-    "unfetch": "^3.0.0"
+    "unfetch": "^3.0.0",
+    "webpack-flush-chunks": "^1.1.23"
   },
   "devDependencies": {
     "jest-cli": "^20.0.4",
