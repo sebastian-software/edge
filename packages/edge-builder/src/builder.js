@@ -301,6 +301,10 @@ export default function builder(target, env = "development", config = {}) {
       new webpack.ContextReplacementPlugin(/react-intl\/locale-data/, REACT_INTL_REGEXP),
 
       new webpack.DefinePlugin({
+        // Important:
+        // We keep all these env-variables separate as this allows for
+        // parallel usage of libraries like `dotenv` do make non compile-time
+        // environment variables accessible.
         "process.env.NODE_ENV": JSON.stringify(env),
         "process.env.BUILD_TARGET": JSON.stringify(webpackTarget)
       }),
