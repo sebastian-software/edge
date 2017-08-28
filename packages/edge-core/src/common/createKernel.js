@@ -3,7 +3,7 @@ import { createApolloClient } from "./ApolloClient"
 import { createReduxStore } from "./State"
 import getBrowserLocale from "../client/getBrowserLocale"
 
-const defaultState = process.env.TARGET === "client" ? window.APP_STATE : null
+const defaultState = process.env.TARGET === "web" ? window.APP_STATE : null
 
 /**
  *
