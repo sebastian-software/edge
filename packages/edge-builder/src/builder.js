@@ -301,10 +301,8 @@ export default function builder(target, env = "development", config = {}) {
       new webpack.ContextReplacementPlugin(/react-intl\/locale-data/, REACT_INTL_REGEXP),
 
       new webpack.DefinePlugin({
-        "process.env": {
-          NODE_ENV: JSON.stringify(env),
-          TARGET: JSON.stringify(target)
-        }
+        "process.env.NODE_ENV": JSON.stringify(env),
+        "process.env.TARGET": JSON.stringify(target)
       }),
 
       // Generating static HTML page for simple static deployment
