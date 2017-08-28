@@ -73,7 +73,7 @@ const UGLIFY_OPTIONS = {
 
     // More readable output
     // Whenever possible we will use a newline instead of a semicolon
-    semicolons: false,
+    // semicolons: false,
 
     // Remove all comments, don't even keep tons of copyright comments
     comments: false
