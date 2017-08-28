@@ -9,3 +9,4 @@ export * from "./client/loadImport"
 
 export { default as getBrowserLocale } from "./client/getBrowserLocale"
 export { default as renderApp } from "./client/renderApp"
+export { default as updateState } from "./client/updateState"

@@ -1,6 +1,7 @@
 import { render } from "react-dom"
 import wrapApplication from "../common/wrapApplication"
 
-export default function renderApp(Application, config) {
-  render(wrapApplication(Application, config), document.getElementById("root"))
+export default function renderApp(Application, kernel) {
+  console.log("[EDGE]: Rendering application...")
+  render(wrapApplication(Application, kernel), document.getElementById("root"))
 }
