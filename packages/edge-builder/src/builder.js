@@ -25,15 +25,15 @@ import StatsPlugin from "stats-webpack-plugin"
 import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin"
 
 // Generating static HTML pages
-import HtmlWebpackPlugin from "html-webpack-plugin"
+// import HtmlWebpackPlugin from "html-webpack-plugin"
 import SriPlugin from "webpack-subresource-integrity"
 
 // Compression
-import BabiliPlugin from "babili-webpack-plugin"
+import BabelMinifyPlugin from "babel-minify-webpack-plugin"
 import UglifyPlugin from "uglifyjs-webpack-plugin"
 
 import BundleAnalyzerPlugin from "webpack-bundle-analyzer"
-import ZopfliPlugin from "zopfli-webpack-plugin"
+// import ZopfliPlugin from "zopfli-webpack-plugin"
 
 import { getHashDigest } from "loader-utils"
 
@@ -80,7 +80,7 @@ const UGLIFY_OPTIONS = {
   }
 }
 
-const BABILI_OPTIONS = {}
+const BABEL_MINIFY_OPTIONS = {}
 
 const ROOT = getRoot()
 
@@ -380,8 +380,8 @@ export default function builder(target, env = "development", config = {}) {
       // Alternative to Uglify when producing modern output
       // Advanced ES2015 ready JS compression based on Babylon (Babel Parser)
       // https://github.com/webpack-contrib/babili-webpack-plugin
-      config.build.bundleCompression === "babili" && isProduction && isClient ?
-        new BabiliPlugin(BABILI_OPTIONS, { comments: false }) : null,
+      config.build.bundleCompression === "babel" && isProduction && isClient ?
+        new BabelMinifyPlugin(BABEL_MINIFY_OPTIONS, { comments: false }) : null,
 
       // "Use HashedModuleIdsPlugin to generate IDs that preserves over builds."
       // Via: https://github.com/webpack/webpack.js.org/issues/652#issuecomment-273324529
