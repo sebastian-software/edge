@@ -302,7 +302,7 @@ export default function builder(target, env = "development", config = {}) {
 
       new webpack.DefinePlugin({
         "process.env.NODE_ENV": JSON.stringify(env),
-        "process.env.TARGET": JSON.stringify(target)
+        "process.env.BUILD_TARGET": JSON.stringify(webpackTarget)
       }),
 
       // Generating static HTML page for simple static deployment
