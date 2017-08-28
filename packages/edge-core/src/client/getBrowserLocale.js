@@ -4,6 +4,10 @@
  * @param {Array} supportedLocales List of supported locales by the application.
  */
 export default function getBrowserLocale(supportedLocales) {
+  return process.env.TARGET === "web" ? _getBrowserLocale(supportedLocales) : null
+}
+
+function _getBrowserLocale(supportedLocales) {
   const supported = new Set(supportedLocales)
   const available = new Set()
 
