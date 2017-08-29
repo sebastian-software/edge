@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Navigation basic demo 1`] = `
+<nav>
+  <ul>
+    <li>
+      <a
+        aria-current="true"
+        className="active"
+        href="/"
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Home
+      </a>
+    </li>
+    <li>
+      <a
+        aria-current={false}
+        className={undefined}
+        href="/counter"
+        onClick={[Function]}
+        style={undefined}
+      >
+        Counter
+      </a>
+    </li>
+    <li>
+      <a
+        aria-current={false}
+        className={undefined}
+        href="/localization"
+        onClick={[Function]}
+        style={undefined}
+      >
+        Localization
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
