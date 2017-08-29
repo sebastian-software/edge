@@ -18,8 +18,6 @@ const RESOLVE_PATH_FOR = [
   "entry.serverVendor",
   "entry.clientVendor",
 
-  "entry.htmlTemplate",
-
   "output.server",
   "output.client"
 ]
@@ -34,11 +32,14 @@ const configLoader = cosmiconfig("edge", {
 })
 
 const configPromise = configLoader.load(ROOT).then((configResult) => {
+  if (typeof configResult !== "object" || configResult.config == null || configResult.filepath == null) {
+    throw new Error("Invalid config loader result: ", configResult)
+  }
   console.log(`Loaded config from ${relative(ROOT, configResult.filepath)}`)
   const mergedConfig = defaultsDeep(configResult.config, defaultConfig)
   return resolvePathsInConfig(mergedConfig, ROOT)
-}).catch((error) => {
-  throw new Error(`Error parsing config file: ${error}`)
+}).catch((parsingError) => {
+  throw new Error(`Error parsing config file: ${parsingError}. Root: ${ROOT}.`)
 })
 
 if (!configPromise) {
