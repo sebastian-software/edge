@@ -12,7 +12,7 @@
     right: 0;
     z-index: 1000;
 
-    background: rgba($grey-dark, 0.5);
+    background: rgba($gray-dark, 0.5);
     transition: opacity ease-out 200ms, transform linear 0ms 200ms;
     will-change: transform, opacity;
   }
