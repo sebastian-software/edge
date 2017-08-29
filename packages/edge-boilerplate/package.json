@@ -20,7 +20,7 @@
     "react": "bin/react"
   },
   "scripts": {
-    "prepack": "npm run lint && prepublish && npm run prod:build && npm run styleguide:build && npm run storybook:build",
+    "prepack": "npm run lint && prepublish && npm run build && npm run styleguide:build && npm run storybook:build",
     "precommit": "lint-staged",
     "start": "edge start:dev",
     "build": "edge build && prepublish",
