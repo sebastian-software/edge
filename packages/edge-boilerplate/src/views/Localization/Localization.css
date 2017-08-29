@@ -2,8 +2,5 @@
 @import "../../common/Responsive.css";
 
 .root {
-  @include container;
-  @include content;
-
-  padding-top: 1rem;
+  /* nothing */
 }

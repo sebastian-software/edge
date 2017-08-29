@@ -1,5 +1,17 @@
 /* stylelint-disable selector-max-type, property-no-unknown */
 
+@mixin mobile {
+  @media screen and (width >= 20em) and (width < 30em) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (width >= 48em) {
+    @content;
+  }
+}
+
 /*
 Adaptive Sizing for Mobile
 See also: https://github.com/seaneking/postcss-responsive-type

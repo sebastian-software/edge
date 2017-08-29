@@ -1,6 +1,7 @@
 import React from "react"
 import universal from "react-universal-component"
 import { NOT_FOUND } from "redux-first-router"
+import { NavLink } from "redux-first-router-link"
 import { ensureIntlSupport, ensureReactIntlSupport, routed } from "edge-core"
 import classnames from "classnames/bind"
 
@@ -59,6 +60,14 @@ class Application extends React.Component {
     return (
       <div className={Classes("root", { alive: this.state.alive })}>
         <HtmlHead />
+
+        <nav>
+          <ul>
+            <li><NavLink to={{ type: "HOME" }}>Home</NavLink></li>
+            <li><NavLink to={{ type: "COUNTER" }}>Counter</NavLink></li>
+            <li><NavLink to={{ type: "LOCALIZATION" }}>Localization</NavLink></li>
+          </ul>
+        </nav>
 
         <main className={Styles.content}>
           <HomeRoute />
