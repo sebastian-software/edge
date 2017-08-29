@@ -21,7 +21,7 @@ module.exports = {
           ]
         },
         {
-          test: /\.(eot|woff|woff2|ttf|otf|svg|png|jpg|jpeg|jp2|jpx|jxr|gif|webp|mp4|mp3|ogg|pdf|html)$/,
+          test: /\.(eot|woff|woff2|ttf|otf|svg|png|jpg|jpeg|jp2|jpx|jxr|gif|webp|mp4|mp3|ogg|pdf|html|ico)$/,
           loader: "file-loader",
           options: {
             name: "[path][name].[ext]"
