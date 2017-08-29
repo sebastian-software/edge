@@ -4,10 +4,9 @@ import { NOT_FOUND } from "redux-first-router"
 import { ensureIntlSupport, ensureReactIntlSupport, routed } from "edge-core"
 import classnames from "classnames/bind"
 
-import "./common/Core.css"
 import Styles from "./Application.css"
 
-import HtmlHead from "./common/components/htmlhead/HtmlHead"
+import HtmlHead from "./components/htmlhead/HtmlHead"
 import Navigation from "./components/navigation/Navigation"
 
 const Classes = classnames.bind(Styles)

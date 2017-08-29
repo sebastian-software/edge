@@ -10,7 +10,7 @@ import { connectRoutes } from "redux-first-router"
 import { IntlProvider } from "react-intl"
 import "edge-style"
 
-import "../src/common/Core.css"
+import "../src/Application.css"
 import State from "../src/State"
 
 import "./Overwrite.css"

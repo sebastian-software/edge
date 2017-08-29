@@ -1,5 +1,5 @@
-@import "../../common/Variables.css";
-@import "../../common/Responsive.css";
+@import "../../Variables.css";
+@import "../../Responsive.css";
 
 .preloader {
   width: calc(width("./logo.svg") / 2);
