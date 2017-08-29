@@ -1,36 +1,61 @@
 import React from "react"
-import ReactDOM from "react-dom/server"
-import { flushModuleIds } from "react-universal-component/server"
-import flushChunks from "webpack-flush-chunks"
-import AppRoot from "../components/App"
+import dotenv from "dotenv"
 
-export default ({ clientStats, outputPath }) => (request, response, next) => {
-  const renderedApp = ReactDOM.renderToString(<AppRoot />)
-  const moduleIds = flushModuleIds()
+import {
+  prepareResponse,
+  ensureIntlSupport,
+  ensureReactIntlSupport,
+  wrapApplication,
+  renderApplication,
+  createKernel,
+  fetchData
+} from "edge-core"
 
-  // TODO: Support SRI integrity checksums as added by SRI Webpack Plugin
-  // https://www.npmjs.com/package/webpack-subresource-integrity#without-htmlwebpackplugin
+import Application from "../Application"
+import State from "../State"
 
-  const { js, styles } = flushChunks(clientStats, {
-    moduleIds,
-    before: [ "bootstrap" ],
-    after: [ "main" ],
+dotenv.config()
 
-    // only needed if serving css rather than an external stylesheet
-    // note: during development css still serves as a stylesheet
-    outputPath
-  })
+// eslint-disable-next-line no-console
+console.log(`[APP] Build: ${process.env.NODE_ENV}-${process.env.BUILD_TARGET}`)
 
-  response.send(`
-    <!doctype html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        ${styles}
-      </head>
-      <body>
-        <div id="root">${renderedApp}</div>
-        ${js}
-      </body>
-    </html>`)
+/* eslint-disable no-console, max-statements */
+export default ({ clientStats }) => async(request, response) => {
+  // [1] Response Preparation:
+  // This step parses some client information like language and user agent.
+  const edge = prepareResponse(request)
+
+  // [2] Prepare Localization Support:
+  // Make sure that all required internationalization data and polyfills are ready.
+  // On the server-side we estimate client-side support by querying the caniuse
+  // database using the user agent passed via HTTP headers.
+  const intl = edge.intl
+  ensureIntlSupport(import(`lean-intl/locale-data/${intl.locale}`), intl, edge.browser)
+  ensureReactIntlSupport(import(`react-intl/locale-data/${intl.language}`), intl)
+
+  // [3] Build State:
+  // Built up object which contains all relevant initial render data.
+  // We can use this for passing environment settings to the client.
+  // Make sure to have the matching reducer for each top-level entry.
+  const state = {
+    env: {
+      baseApiUrl: process.env.BASE_API_URL
+    }
+  }
+
+  // [4] Create Kernel Instance:
+  // This one holds all current request state in an easy-accessible container.
+  const kernel = createKernel(State, { state, edge, request })
+
+  // [5] Wrap Application:
+  // We wrap the original application with support for Intl, Redux, ...
+  const WrappedApplication = wrapApplication(<Application />, kernel)
+
+  // [6] Fetch Data:
+  // Now we are ready to fetch required data by waiting for async requests.
+  await fetchData(WrappedApplication, kernel)
+
+  // [7] Render Application:
+  // When all required data is available we can safely render the result.
+  renderApplication({ Application: WrappedApplication, clientStats, kernel, request, response })
 }

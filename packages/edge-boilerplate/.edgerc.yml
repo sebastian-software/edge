@@ -1,0 +1,20 @@
+entry:
+  serverMain: src/server/index.js
+  clientMain: src/client/index.js
+  serverVendor: src/server/vendor.js
+  clientVendor: src/client/vendor.js
+
+build:
+  enableSourceMaps: true
+  bundleCompression: uglify
+  useCacheLoader: true
+  babelEnvPrefix: edge
+
+locale:
+  default: de-DE
+  supported: [ de-DE, de-AT, de-CH, fr-CH, en-US ]
+
+output:
+  server: build/server
+  client: build/client
+  public: /static/

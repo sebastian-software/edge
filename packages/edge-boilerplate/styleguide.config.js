@@ -1,35 +1,41 @@
+/* eslint-disable import/no-commonjs, import/unambiguous */
 module.exports = {
+  title: "Edge Boilerplate",
+  styleguideDir: "docs/styleguide",
+  serverPort: 1559,
   webpackConfig: {
     module: {
       rules: [
         {
-          test: /\.(mjs|js|jsx)$/,
-          loader: "babel-loader",
+          test: /\.(js|mjs|jsx)$/,
           exclude: /node_modules/,
-          options: {
-            babelrc: false,
-            presets: [
-              [ "edge", { target: "modern" }]
-            ]
-          }
+          use:
+          [
+            {
+              loader: "babel-loader",
+              options: {
+                babelrc: true,
+                forceEnv: "edge-development-client"
+              }
+            }
+          ]
         },
         {
           test: /\.(eot|woff|woff2|ttf|otf|svg|png|jpg|jpeg|jp2|jpx|jxr|gif|webp|mp4|mp3|ogg|pdf|html)$/,
           loader: "file-loader",
           options: {
-            name: "[name].[ext]"
+            name: "[path][name].[ext]"
           }
         },
         {
-          test: /\.(css|sss|pcss)$/,
+          test: /\.(css|pcss|sss)$/,
           loaders: [
             {
               loader: "style-loader"
             },
             {
               loader: "css-loader",
-              query:
-              {
+              options: {
                 sourceMap: true,
                 modules: true,
                 localIdentName: "[path][name]-[local]",
@@ -39,8 +45,7 @@ module.exports = {
             },
             {
               loader: "postcss-loader",
-              query:
-              {
+              options: {
                 sourceMap: true
               }
             }

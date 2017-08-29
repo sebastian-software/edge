@@ -1,55 +1,56 @@
 import React from "react"
-import Helmet from "react-helmet"
-import { FormattedDate, FormattedMessage, FormattedRelative } from "react-intl"
-import { addDays } from "date-fns"
-import cookies from "cookiesjs"
 import PropTypes from "prop-types"
+import { connect } from "react-redux"
+import Helmet from "react-helmet"
+import cookies from "cookiesjs"
+import { FormattedNumber, FormattedDate, FormattedTime, FormattedRelative } from "react-intl"
+import { getLocale } from "edge-core"
 
 import Styles from "./Localization.css"
 
-const yesterday = addDays(Date.now(), -1)
+const time = new Date()
+const timeDiff = 100000
 
-class Localization extends React.Component {
-  setLocale(value) {
-    cookies({ locale: value })
-    location.reload()
-  }
+function switchLocale(locale) {
+  cookies({ locale })
+  window.location.reload()
+}
 
-  render() {
-    const { intl } = this.props
-
-    return (
-      <article>
-        <Helmet title={intl.formatMessage({ id: "title" })} />
-        <p>
-          <FormattedMessage id="info" values={{ pi: 3.14159265359 }} />
-        </p>
-
-        <p>
-          Today: <br />
-          <FormattedDate value={Date.now()} year="numeric" month="long" day="numeric" weekday="long" />
-        </p>
-        <p>
-          Yesterday:<br />
-          <FormattedRelative value={yesterday} />
-        </p>
-
-        <h2>Locale Selector</h2>
-
-        <ul className={Styles.chooser}>
-          <li><button onClick={() => this.setLocale("en-US")}>English</button></li>
-          <li><button onClick={() => this.setLocale("de-DE")}>German</button></li>
-          <li><button onClick={() => this.setLocale("fr-FR")}>France</button></li>
-          <li><button onClick={() => this.setLocale("es-ES")}>Spanish</button></li>
-          <li><button onClick={() => this.setLocale(null)}>Auto</button></li>
-        </ul>
-      </article>
-    )
-  }
+function Localization({ locale }) {
+  return (
+    <div className={Styles.root}>
+      <Helmet title="Localization"/>
+      <h2>Locale: {locale}</h2>
+      <ul>
+        <li>FormattedNumber: <FormattedNumber value={3.14}/></li>
+        <li>FormattedNumber: <FormattedNumber value={3402859302}/></li>
+        <li>FormattedDate: <FormattedDate value={time}/></li>
+        <li>FormattedTime: <FormattedTime value={time}/></li>
+        <li>FormattedRelative: <FormattedRelative value={time - timeDiff}/></li>
+      </ul>
+      <h2>Select Locale:</h2>
+      <ul>
+        <li><a href="#" onClick={() => switchLocale("de-DE")}>Deutsch (Deutschland)</a></li>
+        <li><a href="#" onClick={() => switchLocale("fr-CH")}>Français (France)</a></li>
+        <li><a href="#" onClick={() => switchLocale("en-US")}>English (USA)</a></li>
+      </ul>
+    </div>
+  )
 }
 
 Localization.propTypes = {
-  intl: PropTypes.object
+  locale: PropTypes.string
 }
 
-export default Localization
+function mapStateToProps(state, ownProps) {
+  return {
+    locale: getLocale(state)
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Localization)

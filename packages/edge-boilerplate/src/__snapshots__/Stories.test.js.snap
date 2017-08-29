@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Storyshots Header Site Header 1`] = `
-<h1>
-  Site Header
-</h1>
-`;

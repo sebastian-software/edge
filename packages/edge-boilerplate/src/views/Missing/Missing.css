@@ -1,1 +1,7 @@
+@import "../../common/Variables.css";
 
+.root {
+  padding: 2rem;
+
+  color: $red;
+}

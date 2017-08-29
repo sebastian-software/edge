@@ -2,25 +2,25 @@
   "env": {
     "edge-development-client": {
       "presets": [
-        [ "edge", { "target": "browser" }]
+        [ "edge", { "target": "browser", "imports": "webpack" }]
       ]
     },
 
     "edge-development-server": {
       "presets": [
-        [ "edge", { "target": "current" }]
+        [ "edge", { "target": "current", "imports": "webpack" }]
       ]
     },
 
     "edge-production-client": {
       "presets": [
-        [ "edge", { "target": "browser" }]
+        [ "edge", { "target": "browser", "imports": "webpack" }]
       ]
     },
 
     "edge-production-server": {
       "presets": [
-        [ "edge", { "target": "script" }]
+        [ "edge", { "target": "script", "imports": "webpack" }]
       ]
     },
 

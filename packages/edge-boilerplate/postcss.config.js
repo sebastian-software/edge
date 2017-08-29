@@ -1,1 +1,2 @@
-module.exports = require("edge-postcss/postcss.config.js")
+/* eslint-disable */
+module.exports = require("edge-postcss")

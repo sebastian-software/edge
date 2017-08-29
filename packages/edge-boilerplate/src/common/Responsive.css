@@ -1,0 +1,114 @@
+/*
+- base font size: 16px
+*/
+
+/*
+- unit: 16px
+- half unit: 8px
+*/
+
+/*
+- 20rem => 320px (iPhone 5)
+  - 360px (Samsung S7) => 22.5rem
+  - 375px (iPhone 6) => 23.5rem
+  - 412px (Nexus 6) => 26rem
+  - 414px (iPhone 6 Plus) => 26rem
+- 48rem => 768px (Portrait Tablet)
+- 60rem => 960px (Landscape Tablet)
+- 80rem => 1280px (Laptop)
+*/
+
+@mixin mobile {
+  @media screen and (width >= 20em) and (width < 30em) {
+    @content;
+  }
+}
+
+@mixin not-mobile {
+  @media screen and (width >= 30em) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (width >= 48em) and (width < 60em) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media screen and (width >= 48em) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media screen and (width >= 60em) and (width < 80em) {
+    @content;
+  }
+}
+
+@mixin laptop-up {
+  @media screen and (width >= 60em) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (width >= 80em) {
+    @content;
+  }
+}
+
+@mixin container {
+  @include desktop {
+    max-width: 100rem;
+  }
+
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@mixin content {
+  padding-left: $full-site-padding;
+  padding-right: $full-site-padding;
+}
+
+/* stylelint-disable selector-max-type, property-no-unknown */
+
+/*
+Adaptive Sizing for Mobile
+See also: https://github.com/seaneking/postcss-responsive-type
+*/
+@include mobile {
+  html {
+    /*
+      20px would mean putting all new screen estate into size.
+      By using 18px we scale a little but also use the additional
+      size to show more content in the width as well.
+    */
+
+    /* min-size, max-size */
+    font-size: responsive 16px 18px;
+
+    /* viewport widths between which font-size is fluid */
+    font-range: 320px 400px;
+  }
+}
+
+@include desktop {
+  html {
+    /*
+      20px would mean putting all new screen estate into size.
+      By using 18px we scale a little but also use the additional
+      size to show more content in the width as well.
+    */
+
+    /* min-size, max-size */
+    font-size: responsive 16px 18px;
+
+    /* viewport widths between which font-size is fluid */
+    font-range: 1280px 1600px;
+  }
+}

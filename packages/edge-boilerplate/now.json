@@ -1,7 +1,0 @@
-{
-  "alias": "edge-boilerplate-latest",
-  "env": {
-    "NODE_ENV": "production"
-  },
-  "public": true
-}
