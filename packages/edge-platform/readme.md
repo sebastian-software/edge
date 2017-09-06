@@ -1,5 +1,7 @@
 # Edge Platform<br/>[![Sponsored by][sponsor-img]][sponsor]
 
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/Nehv39FW5U4NHEn7axuGx4CE/sebastian-software/edge-platform'>  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/Nehv39FW5U4NHEn7axuGx4CE/sebastian-software/edge-platform.svg' /></a>
+
 > Edge Platform helps you focus on business logic rather than dealing with complex dependencies and build configurations.
 
 [sponsor-img]: https://img.shields.io/badge/Sponsored%20by-Sebastian%20Software-692446.svg
