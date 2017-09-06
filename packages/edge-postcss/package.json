@@ -45,12 +45,12 @@
   "homepage": "https://github.com/sebastian-software/edge-postcss#readme",
   "dependencies": {
     "app-root-dir": "^1.0.2",
-    "autoprefixer": "^7.1.2",
+    "autoprefixer": "^7.1.3",
     "lost": "^8.2.0",
     "pleeease-filters": "^4.0.0",
-    "postcss": "^6.0.9",
+    "postcss": "^6.0.11",
     "postcss-advanced-variables": "^1.2.2",
-    "postcss-assets": "^4.2.0",
+    "postcss-assets": "^5.0.0",
     "postcss-at-warn": "^1.0.0",
     "postcss-better-colors": "^1.0.1",
     "postcss-calc": "^6.0.0",
@@ -91,10 +91,10 @@
     "postcss-zindex": "^2.2.0"
   },
   "devDependencies": {
-    "babel-preset-edge": "^1.2.0",
-    "jest-cli": "^20.0.4",
+    "babel-preset-edge": "^1.3.1",
+    "jest-cli": "^21.0.1",
     "postcss-load-config": "^1.2.0",
-    "prepublish": "^1.3.0",
+    "prepublish": "^1.4.1",
     "readable-code": "^3.4.12"
   }
 }
