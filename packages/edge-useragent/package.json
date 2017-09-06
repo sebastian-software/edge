@@ -38,9 +38,9 @@
     "url": "git@github.com:sebastian-software/edge-useragent.git"
   },
   "devDependencies": {
-    "babel-preset-edge": "^1.2.1",
+    "babel-preset-edge": "^1.3.1",
     "mocha": "*",
-    "prepublish": "^1.3.0",
+    "prepublish": "^1.4.1",
     "readable-code": "^3.4.12",
     "request": "2.81.x",
     "semver": "5.4.x",
