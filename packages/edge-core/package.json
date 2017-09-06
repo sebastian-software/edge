@@ -59,9 +59,9 @@
   "homepage": "https://github.com/sebastian-software/edge-core#readme",
   "dependencies": {
     "bluebird": "^3.5.0",
-    "caniuse-lite": "^1.0.30000718",
+    "caniuse-lite": "^1.0.30000726",
     "chalk": "^2.1.0",
-    "edge-useragent": "^3.0.1",
+    "edge-useragent": "^3.0.2",
     "history": "^4.7.2",
     "identity-obj-proxy": "^3.0.0",
     "intl-locales-supported": "^1.0.0",
@@ -71,12 +71,12 @@
     "react": "^15.6.1",
     "react-apollo": "^1.4.15",
     "react-dom": "^15.6.1",
-    "react-helmet": "^5.1.3",
+    "react-helmet": "^5.2.0",
     "react-intl": "^2.3.0",
     "react-redux": "^5.0.6",
     "react-test-renderer": "^15.6.1",
     "react-tree-walker": "^2.1.2",
-    "react-universal-component": "^2.5.1",
+    "react-universal-component": "^2.5.2",
     "redux": "^3.7.2",
     "redux-first-router": "^1.9.19",
     "redux-first-router-link": "^1.3.0",
@@ -84,15 +84,15 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "serialize-javascript": "^1.4.0",
-    "source-map-support": "^0.4.16",
+    "source-map-support": "^0.4.17",
     "unfetch": "^3.0.0",
     "webpack-flush-chunks": "^1.1.23"
   },
   "devDependencies": {
-    "jest-cli": "^20.0.4",
+    "jest-cli": "^21.0.1",
     "prepublish": "^1.4.1",
     "readable-code": "^3.4.12",
     "rimraf": "^2.6.1",
-    "size-limit": "^0.10.0"
+    "size-limit": "^0.11.0"
   }
 }
