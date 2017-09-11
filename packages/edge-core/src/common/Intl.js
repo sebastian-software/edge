@@ -75,7 +75,9 @@ export function requiresReactIntl() {
 }
 
 export function installReactIntl(response) {
-  addLocaleData(response)
+  if (process.env.TARGET !== "node") {
+    addLocaleData(response)
+  }
 }
 
 
