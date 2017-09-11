@@ -38,9 +38,6 @@ const Problematic = new Set([
   // "mime-db" database for working with mime types. Naturally pretty large stuff.
   "mime-db",
 
-  // "helmet" uses some look with require which are not solvable with webpack
-  "helmet",
-
   // "express" also uses some dynamic requires
   "express",
 
