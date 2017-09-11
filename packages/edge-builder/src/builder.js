@@ -189,8 +189,8 @@ export default function builder(target, env = "development", config = {}) {
   const VENDOR_ENTRY = isServer ? config.entry.serverVendor : config.entry.clientVendor
   const MAIN_ENTRY = isServer ? config.entry.serverMain : config.entry.clientMain
 
-  const HAS_VENDOR = fs.existsSync(VENDOR_FILE)
-  const HAS_MAIN = fs.existsSync(VENDOR_FILE)
+  const HAS_VENDOR = fs.existsSync(VENDOR_ENTRY)
+  const HAS_MAIN = fs.existsSync(MAIN_ENTRY)
 
   return {
     name,
@@ -399,7 +399,7 @@ export default function builder(target, env = "development", config = {}) {
 
 
       isProduction && isServer ?
-        new BabelMinifyPlugin(BABEL_SERVER_MINIFY_OPTIONS, { comments: false }) : null
+        new BabelMinifyPlugin(BABEL_SERVER_MINIFY_OPTIONS, { comments: false }) : null,
 
       // "Use HashedModuleIdsPlugin to generate IDs that preserves over builds."
       // Via: https://github.com/webpack/webpack.js.org/issues/652#issuecomment-273324529
