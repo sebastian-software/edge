@@ -333,9 +333,9 @@ export default function builder(target, env = "development", config = {}) {
       new CaseSensitivePathsPlugin(),
 
       // Custom progress plugin
-      new VerboseProgress({
+      process.stdout.isTTY ? new VerboseProgress({
         prefix: PREFIX
-      }),
+      }) : null,
 
       // Analyse bundle in production
       isClient && isProduction ? new BundleAnalyzerPlugin.BundleAnalyzerPlugin({
