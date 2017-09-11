@@ -186,6 +186,12 @@ export default function builder(target, env = "development", config = {}) {
 
   const HMR_MIDDLEWARE = "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=10000&reload=true&noInfo=true&overlay=false"
 
+  const VENDOR_ENTRY = isServer ? config.entry.serverVendor : config.entry.clientVendor
+  const MAIN_ENTRY = isServer ? config.entry.serverMain : config.entry.clientMain
+
+  const HAS_VENDOR = fs.existsSync(VENDOR_FILE)
+  const HAS_MAIN = fs.existsSync(VENDOR_FILE)
+
   return {
     name,
     target: webpackTarget,
@@ -194,14 +200,14 @@ export default function builder(target, env = "development", config = {}) {
     externals: isServer ? getServerExternals(useLightNodeBundle) : undefined,
 
     entry: removeEmptyKeys({
-      vendor: [
-        isClient && isDevelopment ? HMR_MIDDLEWARE : null,
-        isServer ? config.entry.serverVendor : config.entry.clientVendor
-      ].filter(Boolean),
-      main: [
-        isClient && isDevelopment ? HMR_MIDDLEWARE : null,
-        isServer ? config.entry.serverMain : config.entry.clientMain
-      ].filter(Boolean)
+      vendor: HAS_VENDOR ? [
+        HAS_VENDOR && isClient && isDevelopment ? HMR_MIDDLEWARE : null,
+        VENDOR_ENTRY
+      ].filter(Boolean) : null,
+      main: HAS_MAIN ? [
+        HAS_MAIN && isClient && isDevelopment ? HMR_MIDDLEWARE : null,
+        MAIN_ENTRY
+      ].filter(Boolean) : null
     }),
 
     output: {
@@ -419,7 +425,7 @@ export default function builder(target, env = "development", config = {}) {
       // }) : null,
 
       // https://webpack.js.org/plugins/commons-chunk-plugin/#explicit-vendor-chunk
-      isClient ? new webpack.optimize.CommonsChunkPlugin({
+      HAS_VENDOR && isClient ? new webpack.optimize.CommonsChunkPlugin({
         name: "vendor",
 
         // With more entries, this ensures that no other module goes into the vendor chunk
