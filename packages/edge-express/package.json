@@ -37,14 +37,14 @@
   },
   "dependencies": {
     "app-root-dir": "^1.0.2",
-    "body-parser": "^1.17.2",
+    "body-parser": "^1.18.2",
     "chalk": "^2.1.0",
     "cookie-parser": "^1.4.3",
-    "cosmiconfig": "^2.2.2",
+    "cosmiconfig": "^3.1.0",
     "dotenv": "^4.0.0",
-    "express": "^4.15.4",
+    "express": "^4.16.1",
     "express-locale": "^1.0.2",
-    "helmet": "^3.8.1",
+    "helmet": "^3.8.2",
     "hpp": "^0.2.2",
     "jsome": "^2.3.26",
     "pretty-error": "^2.1.1",
@@ -52,9 +52,9 @@
     "uuid": "^3.1.0"
   },
   "devDependencies": {
-    "readable-code": "^3.4.12",
-    "prepublish": "^1.4.1",
-    "rimraf": "^2.6.1",
-    "jest-cli": "^21.0.1"
+    "readable-code": "^3.4.14",
+    "prepublish": "^1.4.3",
+    "rimraf": "^2.6.2",
+    "jest-cli": "^21.2.1"
   }
 }
