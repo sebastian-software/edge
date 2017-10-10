@@ -1,6 +1,6 @@
 import cosmiconfig from "cosmiconfig"
 import { get as getRoot } from "app-root-dir"
-import { relative, resolve } from "path"
+import { relative, resolve, join } from "path"
 import chalk from "chalk"
 import { get, set, defaultsDeep } from "lodash"
 import jsome from "jsome"
@@ -20,6 +20,10 @@ const RESOLVE_PATH_FOR = [
 
   "output.server",
   "output.client"
+]
+
+const MODULE_LOADERS = [
+  "hook.webpack"
 ]
 
 // Read edge configuration
@@ -48,18 +52,43 @@ if (!configPromise) {
 }
 
 export async function getConfig(flags) {
-  return await configPromise.then((config) => {
-    for (let key in flags) {
-      set(config, key, flags[key])
-    }
+  return await configPromise
+    .then((config) => {
+      for (let key in flags) {
+        set(config, key, flags[key])
+      }
 
-    if (flags.verbose) {
-      console.log("Configuration:")
-      jsome(config)
-    }
+      if (flags.verbose) {
+        console.log("Configuration:")
+        jsome(config)
+      }
 
-    return config
-  })
+      return config
+    })
+    .then(async(config) => {
+      const loadedModules = await Promise.all(
+        MODULE_LOADERS.map(
+          (modulePath) => {
+            const moduleFile = get(config, modulePath)
+
+            if (moduleFile) {
+              return import(join(ROOT, moduleFile))
+            } else {
+              return null
+            }
+          }
+        )
+      )
+
+      MODULE_LOADERS.forEach((modulePath, index) => {
+        const loadedModule = loadedModules[index] // eslint-disable-line security/detect-object-injection
+        if (loadedModule) {
+          set(config, modulePath, loadedModule.default || loadedModule)
+        }
+      })
+
+      return config
+    })
 }
 
 function resolvePathsInConfig(config) {
