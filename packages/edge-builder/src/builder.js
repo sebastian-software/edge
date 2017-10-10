@@ -97,6 +97,8 @@ const babelFiles = /\.(js|mjs|jsx)$/
 const postcssFiles = /\.(css|sss|pcss)$/
 const compressableAssets = /\.(ttf|otf|svg|pdf|html|ico|txt|md|html|js|css|json|xml)$/
 
+const identityFnt = (item) => item
+
 export default function builder(target, env = "development", config = {}) {
   const SERVER_OUTPUT = config.output.server
   const CLIENT_OUTPUT = config.output.client
@@ -192,7 +194,9 @@ export default function builder(target, env = "development", config = {}) {
   const HAS_VENDOR = fs.existsSync(VENDOR_ENTRY)
   const HAS_MAIN = fs.existsSync(MAIN_ENTRY)
 
-  return {
+  const WEBPACK_HOOK = config.hook.webpack ? config.hook.webpack : identityFnt
+
+  return WEBPACK_HOOK({
     name,
     target: webpackTarget,
     devtool,
@@ -444,5 +448,5 @@ export default function builder(target, env = "development", config = {}) {
       //   verbose: true
       // }) : null
     ].filter(Boolean)
-  }
+  })
 }
