@@ -23,5 +23,7 @@ export default {
     server: "build/server",
     client: "build/client",
     public: "/static/"
-  }
+  },
+
+  hook: {}
 }
