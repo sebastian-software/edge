@@ -7,11 +7,7 @@ transition:all 600ms cubic-bezier(.47,0,.745,.715)
 `;
 
 exports[`Magic Animations 1`] = `
-".animation{
-animation-name:magic
-}
-
-@keyframes magic{
+"@keyframes magic{
 0%{
 opacity:1;
 transform-origin:100% 200%;
@@ -23,6 +19,10 @@ opacity:0;
 transform-origin:200% 500%;
 transform:scale(0,0) rotate(270deg)
 }
+}
+
+.animation{
+animation-name:magic
 }"
 `;
 
