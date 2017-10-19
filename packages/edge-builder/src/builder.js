@@ -447,5 +447,10 @@ export default function builder(target, env = "development", config = {}) {
       //   verbose: true
       // }) : null
     ].filter(Boolean)
+  }, {
+    isServer,
+    isClient,
+    isProduction,
+    isDevelopment
   })
 }
