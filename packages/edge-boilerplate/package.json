@@ -11,9 +11,7 @@
   "pre-commit": "lint-staged",
   "lint-staged": {
     "*.js": "eslint",
-    "*.mjs": "eslint",
     "*.css": "stylelint",
-    "*.pcss": "stylelint",
     "*.sss": "stylelint"
   },
   "bin": {
