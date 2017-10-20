@@ -4,6 +4,9 @@
 // https://github.com/developit/unfetch
 import "unfetch/polyfill"
 
+// Polyfill for RequestAnimationFrame which is required since React v16
+import "raf/polyfill"
+
 export * from "./common"
 export * from "./client/loadImport"
 
