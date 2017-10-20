@@ -5,7 +5,6 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux"
 import { Provider } from "react-redux"
 import { configure, addDecorator } from "@storybook/react"
 import { withKnobs } from "@storybook/addon-knobs"
-import createHistory from "history/createMemoryHistory"
 import { connectRoutes } from "redux-first-router"
 import { IntlProvider } from "react-intl"
 import "edge-style"
@@ -15,10 +14,9 @@ import State from "../src/State"
 
 import "./Overwrite.css"
 
-const history = createHistory()
-const routesMap = State.getRoutes()
+const routes = State.getRoutes()
 
-const { reducer, middleware, enhancer } = connectRoutes(history, routesMap)
+const { reducer, middleware, enhancer } = connectRoutes(routes)
 
 const enhancers = compose(enhancer, applyMiddleware(middleware))
 const reducers = combineReducers({ location: reducer, ...State.getReducers() })
