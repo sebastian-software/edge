@@ -32,12 +32,12 @@ export default function renderApplication({ Application, clientStats, kernel, re
     console.error("Unable to render server side React:", err)
   }
 
-  console.log("[EDGE] Flushing chunks...")
+  // console.log("[EDGE] Flushing chunks...")
   const chunkNames = flushChunkNames()
   console.log("[EDGE] Rendered Chunk Names:", chunkNames.join(", "))
   const { js, styles, cssHash } = flushChunks(clientStats, { chunkNames })
-  console.log("[EDGE] Flushed Script Tags:\n" + js.toString() + "\n")
-  console.log("[EDGE] Flushed CSS Tags:\n" + styles.toString() + "\n")
+  // console.log("[EDGE] Flushed Script Tags:\n" + js.toString() + "\n")
+  // console.log("[EDGE] Flushed CSS Tags:\n" + styles.toString() + "\n")
 
   // TODO: Support SRI integrity checksums as added by SRI Webpack Plugin
   // https://www.npmjs.com/package/webpack-subresource-integrity#without-htmlwebpackplugin
