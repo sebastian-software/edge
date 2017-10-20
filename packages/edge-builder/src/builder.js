@@ -388,6 +388,7 @@ export default function builder(target, env = "development", config = {}) {
       config.build.bundleCompression === "uglify" && isProduction && isClient ?
         new UglifyPlugin({
           sourceMap: config.build.enableSourceMaps,
+          cache: true,
           parallel: true,
           uglifyOptions: UGLIFY_OPTIONS
         }) : null,
