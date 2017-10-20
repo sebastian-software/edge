@@ -3,6 +3,28 @@ import { envReducer } from "./modules/Env"
 
 export default {
   /**
+   * Returns configuration objects for different areas of the Edge
+   * powered application infrastructure.
+   *
+   * @param state {Object} Current application state.
+   * @param topic {String} Any of "apollo", ...
+   */
+  getConfig(state, topic) {
+    if (topic === "apollo") {
+      return {
+        url: state.env.APOLLO_URL
+
+        // headers: {},
+        // batchRequests: false,
+        // trustNetwork: true,
+        // queryDeduplication: true
+      }
+    }
+
+    return null
+  },
+
+  /**
    * Return map of routes. Match redux actions to urls.
    */
   getRoutes() {

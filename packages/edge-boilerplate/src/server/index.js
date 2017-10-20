@@ -35,11 +35,17 @@ export default ({ clientStats }) => async(request, response) => {
 
   // [3] Build State:
   // Built up object which contains all relevant initial render data.
+  //
   // We can use this for passing environment settings to the client.
+  // This is actually super smart and helpful for things like API urls
+  // which might change depending on environment.
+  //
   // Make sure to have the matching reducer for each top-level entry.
+  // This is required to make Redux work correctly.
   const state = {
     env: {
-      baseApiUrl: process.env.BASE_API_URL
+      API_URL: process.env.API_URL,
+      APOLLO_URL: process.env.APOLLO_URL
     }
   }
 
