@@ -31,7 +31,7 @@ export default function createKernel(State, { state = defaultState, edge, reques
     request ? request.path : null
   )
 
-  let apolloConfig = State.getConfig("apollo")
+  let apolloConfig = State.getConfig(state, "apollo")
   let apollo = null
   if (apolloConfig) {
     apollo = createApolloClient(apolloConfig)
