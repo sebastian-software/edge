@@ -38,19 +38,17 @@ const Problematic = new Set([
   // "mime-db" database for working with mime types. Naturally pretty large stuff.
   "mime-db",
 
-  // "express" also uses some dynamic requires
-  "express",
-
   // "encoding" uses dynamic iconv loading
   "encoding",
 
-  // "node-pre-gyp" native code module helper
+  // Native code module helper
+  "node-gyp",
   "node-pre-gyp",
 
-  // Uses dynamic require expressions which do not work well with Webpack
+  // These packages make use of dynamic require expressions which do not work well with Webpack
   "ajv",
-
-  // Uses dynamic require expressions which do not work well with Webpack
+  "colors",
+  "express",
   "jsdom"
 ])
 
