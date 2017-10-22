@@ -6,7 +6,8 @@
   "browser": "lib/index.js",
   "scripts": {
     "test": "stylelint src/*.css",
-    "prepack": "rimraf lib && prepublish",
+    "build": "rimraf lib && prepublish",
+    "prepack": "npm run build",
     "release": "git push && release-it --github.release --npm.publish --non-interactive",
     "release:minor": "git push && release-it --github.release --npm.publish --non-interactive --increment minor",
     "release:major": "git push && release-it --github.release --npm.publish --non-interactive --increment major"
