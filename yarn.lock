@@ -2086,13 +2086,6 @@ browserify-zlib@^0.1.4:
   dependencies:
     pako "~0.2.0"
 
-browserslist@2.1.4:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-2.1.4.tgz#cc526af4a1312b7d2e05653e56d0c8ab70c0e053"
-  dependencies:
-    caniuse-lite "^1.0.30000670"
-    electron-to-chromium "^1.3.11"
-
 browserslist@^1.3.6, browserslist@^1.5.2, browserslist@^1.7.6:
   version "1.7.7"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-1.7.7.tgz#0bd76704258be829b2398bb50e4b62d1a166b0b9"
@@ -2318,15 +2311,11 @@ caniuse-api@^2.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-db@1.0.30000671:
-  version "1.0.30000671"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000671.tgz#9f071bbc7b96994638ccbaf47829d58a1577a8ed"
-
-caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
+caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639, caniuse-db@^1.0.30000741:
   version "1.0.30000748"
   resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000748.tgz#785d9edfcd645bf795c6ff3ced33c45d580c48a0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000670, caniuse-lite@^1.0.30000744, caniuse-lite@^1.0.30000748:
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000744, caniuse-lite@^1.0.30000748:
   version "1.0.30000748"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000748.tgz#44c8d6da52ad65a5d7b9dca4efebd0bdd982ba09"
 
@@ -3643,7 +3632,7 @@ ejs@^2.5.6:
   version "2.5.7"
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.5.7.tgz#cc872c168880ae3c7189762fd5ffc00896c9518a"
 
-electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.11, electron-to-chromium@^1.3.24:
+electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.24:
   version "1.3.27"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.27.tgz#78ecb8a399066187bb374eede35d9c70565a803d"
 
@@ -3865,7 +3854,7 @@ eslint-formatter-pretty@^1.3.0:
     plur "^2.1.2"
     string-width "^2.0.0"
 
-eslint-import-resolver-babel-module@^4.0.0-beta.2:
+eslint-import-resolver-babel-module@^4.0.0-beta.3:
   version "4.0.0-beta.5"
   resolved "https://registry.yarnpkg.com/eslint-import-resolver-babel-module/-/eslint-import-resolver-babel-module-4.0.0-beta.5.tgz#0e9c04303f8dabb3722f89e8f5d4710c3ad2a154"
   dependencies:
@@ -3890,13 +3879,13 @@ eslint-plugin-babel@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-babel/-/eslint-plugin-babel-4.1.2.tgz#79202a0e35757dd92780919b2336f1fa2fe53c1e"
 
-eslint-plugin-compat@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-compat/-/eslint-plugin-compat-1.0.4.tgz#76e52038119a5080e2612cc4141d687f4d140398"
+eslint-plugin-compat@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-compat/-/eslint-plugin-compat-2.0.1.tgz#4912e5447d3095f10e7cb785b2af2a55cd12ef8b"
   dependencies:
-    babel-runtime "^6.23.0"
-    browserslist "2.1.4"
-    caniuse-db "1.0.30000671"
+    babel-runtime "^6.26.0"
+    browserslist "^2.4.0"
+    caniuse-db "^1.0.30000741"
     requireindex "^1.1.0"
 
 eslint-plugin-css-modules@^2.7.5:
@@ -3923,20 +3912,20 @@ eslint-plugin-filenames@^1.2.0:
     lodash.snakecase "4.1.1"
     lodash.upperfirst "4.3.1"
 
-eslint-plugin-flowtype-errors@^3.3.2:
+eslint-plugin-flowtype-errors@^3.3.4:
   version "3.3.4"
   resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype-errors/-/eslint-plugin-flowtype-errors-3.3.4.tgz#ae07261b8b8014ba4ba7b96f063a34705c1fe86d"
   dependencies:
     babel-runtime "^6.26.0"
     slash "^1.0.0"
 
-eslint-plugin-flowtype@^2.37.0:
+eslint-plugin-flowtype@^2.39.1:
   version "2.39.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-2.39.1.tgz#b5624622a0388bcd969f4351131232dcb9649cd5"
   dependencies:
     lodash "^4.15.0"
 
-eslint-plugin-import@^2.7.0:
+eslint-plugin-import@^2.8.0:
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.8.0.tgz#fa1b6ef31fcb3c501c09859c1b86f1fc5b986894"
   dependencies:
@@ -3970,7 +3959,7 @@ eslint-plugin-jsx-a11y@^6.0.2:
     emoji-regex "^6.1.0"
     jsx-ast-utils "^1.4.0"
 
-eslint-plugin-lodash@^2.4.5:
+eslint-plugin-lodash@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-lodash/-/eslint-plugin-lodash-2.5.0.tgz#be23eb0c0b7b15c1fc3a46bf702b4be757446b45"
   dependencies:
@@ -3994,7 +3983,7 @@ eslint-plugin-node@^5.2.0:
     resolve "^1.3.3"
     semver "5.3.0"
 
-eslint-plugin-promise@^3.5.0:
+eslint-plugin-promise@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-3.6.0.tgz#54b7658c8f454813dc2a870aff8152ec4969ba75"
 
@@ -4026,7 +4015,7 @@ eslint-scope@^3.7.1:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint@^4.0.0, eslint@^4.8.0:
+eslint@^4.0.0, eslint@^4.9.0:
   version "4.9.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.9.0.tgz#76879d274068261b191fe0f2f56c74c2f4208e8b"
   dependencies:
@@ -4556,9 +4545,9 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
 
-flow-bin@^0.56.0:
-  version "0.56.0"
-  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.56.0.tgz#ce43092203a344ba9bf63c0cabe95d95145f6cad"
+flow-bin@^0.57.3:
+  version "0.57.3"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.57.3.tgz#843fb80a821b6d0c5847f7bb3f42365ffe53b27b"
 
 flush-write-stream@^1.0.0:
   version "1.0.2"
@@ -6694,7 +6683,7 @@ liftoff@^2.1.0:
     rechoir "^0.6.2"
     resolve "^1.1.7"
 
-lint-staged@^4.2.3:
+lint-staged@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-4.3.0.tgz#ed0779ad9a42c0dc62bb3244e522870b41125879"
   dependencies:
@@ -9605,40 +9594,40 @@ read-pkg@^2.0.0:
     path-type "^2.0.0"
 
 readable-code@^3.4.11, readable-code@^3.4.12, readable-code@^3.4.14:
-  version "3.4.14"
-  resolved "https://registry.yarnpkg.com/readable-code/-/readable-code-3.4.14.tgz#7f399dac9ff52a8855a743b590efcc84b59edfed"
+  version "3.4.15"
+  resolved "https://registry.yarnpkg.com/readable-code/-/readable-code-3.4.15.tgz#bfb30086188698940732503c3f8110fef43520b9"
   dependencies:
     babel-eslint "^8.0.1"
-    eslint "^4.8.0"
+    eslint "^4.9.0"
     eslint-formatter-pretty "^1.3.0"
-    eslint-import-resolver-babel-module "^4.0.0-beta.2"
+    eslint-import-resolver-babel-module "^4.0.0-beta.3"
     eslint-plugin-babel "^4.1.2"
-    eslint-plugin-compat "^1.0.4"
+    eslint-plugin-compat "^2.0.1"
     eslint-plugin-css-modules "^2.7.5"
     eslint-plugin-extra-rules "^0.8.1"
     eslint-plugin-filenames "^1.2.0"
-    eslint-plugin-flowtype "^2.37.0"
-    eslint-plugin-flowtype-errors "^3.3.2"
-    eslint-plugin-import "^2.7.0"
+    eslint-plugin-flowtype "^2.39.1"
+    eslint-plugin-flowtype-errors "^3.3.4"
+    eslint-plugin-import "^2.8.0"
     eslint-plugin-jsdoc "^3.1.3"
     eslint-plugin-jsx-a11y "^6.0.2"
-    eslint-plugin-lodash "^2.4.5"
+    eslint-plugin-lodash "^2.5.0"
     eslint-plugin-no-use-extend-native "^0.3.12"
     eslint-plugin-node "^5.2.0"
-    eslint-plugin-promise "^3.5.0"
+    eslint-plugin-promise "^3.6.0"
     eslint-plugin-react "^7.4.0"
     eslint-plugin-security "^1.4.0"
     eslint-plugin-you-dont-need-lodash-underscore "^6.3.1"
-    flow-bin "^0.56.0"
+    flow-bin "^0.57.3"
     gulp "^3.9.1"
     gulp-eslint "^4.0.0"
     gulp-plumber "^1.1.0"
     gulp-stylelint "^5.0.0"
     husky "^0.14.3"
-    lint-staged "^4.2.3"
+    lint-staged "^4.3.0"
     postcss "^6.0.13"
     prettier "^1.7.4"
-    stylelint "^8.1.1"
+    stylelint "^8.2.0"
     stylelint-formatter-pretty "^1.0.3"
     stylelint-order "^0.7.0"
     stylelint-scss "^2.1.0"
@@ -11037,7 +11026,7 @@ stylelint-scss@^2.1.0:
     postcss-selector-parser "^2.0.0"
     postcss-value-parser "^3.3.0"
 
-stylelint@^8.0.0, stylelint@^8.1.1:
+stylelint@^8.0.0, stylelint@^8.2.0:
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-8.2.0.tgz#6a15044553fb5c3143b16d62013a370314495b0d"
   dependencies:
