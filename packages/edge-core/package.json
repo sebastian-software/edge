@@ -9,9 +9,10 @@
   "module:es2015": "lib/node.es2015.esm.js",
   "browser:es2015": "lib/browser.es2015.esm.js",
   "scripts": {
-    "size": "npm run prepack && size-limit",
+    "size": "npm run build && size-limit",
     "test": "jest",
-    "prepack": "rimraf lib && prepublish",
+    "build": "rimraf lib && prepublish",
+    "prepack": "npm run build",
     "release": "git push && release-it --github.release --npm.publish --non-interactive",
     "release:minor": "git push && release-it --github.release --npm.publish --non-interactive --increment minor",
     "release:major": "git push && release-it --github.release --npm.publish --non-interactive --increment major"
