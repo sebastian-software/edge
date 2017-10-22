@@ -4,10 +4,8 @@
   "description": "Edge PostCSS is a collection of carefully chosen and configured PostCSS plugins. Part of the Edge Platform.",
   "main": "postcss.config.js",
   "scripts": {
-    "start": "edge start",
-    "prod": "edge build",
-    "prod:start": "npm run prod && node build/server/main.js",
-    "clean": "rimraf build/client/* build/server/*",
+    "build": "rimraf lib/ && prepublish",
+    "prepack": "npm run build",
     "test": "jest",
     "release": "release-it --github.release --npm.publish --non-interactive",
     "release:minor": "release-it --github.release --npm.publish --non-interactive --increment minor",
