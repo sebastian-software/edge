@@ -1,4 +1,4 @@
-# Edge Platform<br/>[![Sponsored by][sponsor-img]][sponsor] [![lerna][lerna-img](https://lernajs.io/)
+# Edge Platform<br/>[![Sponsored by][sponsor-img]][sponsor] [![lerna][lerna-img]][lerna]
 
 <a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/Nehv39FW5U4NHEn7axuGx4CE/sebastian-software/edge-platform'>  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/Nehv39FW5U4NHEn7axuGx4CE/sebastian-software/edge-platform.svg' /></a>
 
@@ -6,8 +6,8 @@
 
 [sponsor-img]: https://img.shields.io/badge/Sponsored%20by-Sebastian%20Software-692446.svg
 [sponsor]: https://www.sebastian-software.de
-[lerna-img]: https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg
-
+[lerna-img]: https://img.shields.io/badge/Maintained%20with-Lerna-cc00ff.svg
+[lerna]: https://lernajs.io/
 
 ## Platform Components
 
