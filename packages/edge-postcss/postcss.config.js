@@ -280,12 +280,6 @@ module.exports = ({ file, options, env }) => ({
     // https://github.com/ben-eb/postcss-at-warn
     "postcss-at-warn": {
       "silent": true
-    },
-
-    // Log PostCSS messages to the console
-    // https://github.com/postcss/postcss-reporter
-    "postcss-reporter": {
-      "clearReportedMessages": true
     }
   }
 })
