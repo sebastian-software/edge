@@ -43,6 +43,7 @@
     "prepublish": "^1.4.1",
     "readable-code": "^3.4.12",
     "request": "2.81.x",
+    "rimraf": "^2.6.2",
     "semver": "5.4.x",
     "should": "*",
     "yamlparser": "0.0.x"
