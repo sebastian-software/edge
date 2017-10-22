@@ -1,7 +1,7 @@
 {
   "name": "edge-express",
   "description": "Edge Express is a centralized Express-based HTTP server with sophisticated built-in security.",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "author": {
     "name": "Sebastian Software",
     "email": "s.werner@sebastian-software.de",
@@ -52,9 +52,9 @@
     "uuid": "^3.1.0"
   },
   "devDependencies": {
-    "readable-code": "^3.4.14",
+    "jest-cli": "^21.2.1",
     "prepublish": "^1.4.3",
-    "rimraf": "^2.6.2",
-    "jest-cli": "^21.2.1"
+    "readable-code": "^3.4.14",
+    "rimraf": "^2.6.2"
   }
 }
