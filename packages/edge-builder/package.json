@@ -18,7 +18,7 @@
   },
   "license": "Apache-2.0",
   "scripts": {
-    "prepare": "npm run build",
+    "prepack": "npm run build",
     "build": "rimraf bin && rimraf lib && prepublish",
     "test": "npm run build && jest",
     "release": "git push && release-it --github.release --npm.publish --non-interactive",
