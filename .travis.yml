@@ -1,0 +1,30 @@
+sudo: false
+language: node_js
+
+node_js:
+  - 6
+  - 8
+
+matrix:
+  fast_finish: true
+
+env:
+  - CXX=g++-4.8
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+
+notifications:
+  email: false
+  slack:
+    secure: bvUKXISN63vf7XnvOb9zI4KzgIb59HeDgZYrKSq63XpM3iX9Hm/j6njYPBFzYoVn6FTXwAdWmAG4EzbRIl0We7NNFivqCtFDdA3FMEaksLyb02OkPEfjyunChDpRoGdV5EzlS3YpsyWW/jYGSg22STBynWnbsDXEQZXu5SU9v58MJDV9w1kvbex4aLxlTt15M1cMjNmgHRhduHo8+dIS1Pb5MSl3hQUCgBppuD4rDFESC1MTAd047ZYF5PNbuAfGCpXcEyRVZMsD+A2kcO7VE3anaFvma7Qm9u9EN7yPuBKF2/mcZCx2Anmh8/XBK5/fAg4DeYq6pqjuQNiiq/SwZxvM+hEupwHXRZ13BkIzmSC6gnRlp9bhqU1HHotRwxm0gS8MrnEKCWhQi3f+ZWSIpIFXWQrdcqKNdw/zZvIn69UdAxqnzr3DTML7G8gKuXAky2Ibnx3bErUNA2wZP2vIYS9VUG85S1WQCbxTgxDfelDXoPHtZDWhqIM257g8WzLc51tJr4WSkIuXTxMBs9GBFdi9mrdvaAA3u4N+S9FK94VrpExnP9PEFQxo/KTY1wmhhi7hcvOgy03l/YoHl1EmVUEmamdbYM9nCXla6/KK5MHJ2HudiZwVMlXWinETC2MJ/ApHqy41cTit3hhy0EB7vc85Amr2QjOOeGTxCE89ThY=
+
+cache:
+  yarn: true
+  directories:
+    - ".eslintcache"
+    - "node_modules"
