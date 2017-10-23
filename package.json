@@ -5,7 +5,9 @@
 	},
 	"scripts": {
 		"prepare": "lerna bootstrap && lerna link",
-		"update": "lerna exec ncu -- -ua && lerna bootstrap"
+		"update": "lerna exec ncu -- -ua && lerna bootstrap",
+		"test": "lerna run test",
+		"build": "lerna run build"
 	},
 	"workspaces": [
 		"packages/*"
