@@ -38,13 +38,13 @@
   "dependencies": {
     "app-root-dir": "^1.0.2",
     "body-parser": "^1.18.2",
-    "chalk": "^2.1.0",
+    "chalk": "^2.2.0",
     "cookie-parser": "^1.4.3",
     "cosmiconfig": "^3.1.0",
     "dotenv": "^4.0.0",
-    "express": "^4.16.1",
-    "express-locale": "^1.0.2",
-    "helmet": "^3.8.2",
+    "express": "^4.16.2",
+    "express-locale": "^1.0.4",
+    "helmet": "^3.9.0",
     "hpp": "^0.2.2",
     "jsome": "^2.3.26",
     "pretty-error": "^2.1.1",
@@ -53,8 +53,8 @@
   },
   "devDependencies": {
     "jest-cli": "^21.2.1",
-    "prepublish": "^1.4.3",
-    "readable-code": "^3.4.14",
+    "prepublish": "^1.5.1",
+    "readable-code": "^3.4.15",
     "rimraf": "^2.6.2"
   }
 }

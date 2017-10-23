@@ -92,7 +92,7 @@
     "jest-cli": "^21.2.1",
     "postcss-load-config": "^1.2.0",
     "prepublish": "^1.5.1",
-    "readable-code": "^3.4.14",
+    "readable-code": "^3.4.15",
     "rimraf": "^2.6.2"
   }
 }
