@@ -24,18 +24,14 @@
     "build": "edge build && prepublish",
     "start:prod": "npm run build && bin/react",
     "test": "jest",
-    "test:watch": "jest --watchAll",
     "lint": "gulp lint:js && gulp lint:css",
     "storybook": "start-storybook --port 1449 --config-dir __storybook__",
     "storybook:build": "build-storybook --output-dir docs/storybook --config-dir __storybook__",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
-    "check-bundle": "bundle-buddy build/client/*.map",
     "release": "git push && release-it --github.release --npm.publish --non-interactive",
     "release:minor": "git push && release-it --github.release --npm.publish --non-interactive --increment minor",
-    "release:major": "git push && release-it --github.release --npm.publish --non-interactive --increment major",
-    "now-build": "npm run build",
-    "now-start": "bin/react"
+    "release:major": "git push && release-it --github.release --npm.publish --non-interactive --increment major"
   },
   "repository": {
     "type": "git",
