@@ -1,7 +1,7 @@
 {
   "name": "edge-builder",
   "description": "Edge Builder is a build tool for modern web applications. Part of the Edge Platform.",
-  "version": "0.12.20",
+  "version": "0.12.21",
   "author": {
     "name": "Sebastian Software",
     "email": "s.werner@sebastian-software.de",
@@ -49,7 +49,7 @@
     "chalk": "^2.2.0",
     "cosmiconfig": "^3.1.0",
     "css-loader": "^0.28.7",
-    "edge-express": "^0.1.7",
+    "edge-express": "^0.1.8",
     "express": "^4.16.2",
     "extract-css-chunks-webpack-plugin": "^2.0.17",
     "file-loader": "^1.1.5",
