@@ -1,4 +1,4 @@
-# Edge Platform<br/>[![Sponsored by][sponsor-img]][sponsor] [![lerna][lerna-img]][lerna]
+# Edge Platform<br/>[![Sponsored by][sponsor-img]][sponsor] [![lerna][lerna-img]][lerna] [![Build Status Unix][travis-img]][travis] [![Build Status Windows][appveyor-img]][appveyor]
 
 <a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/Nehv39FW5U4NHEn7axuGx4CE/sebastian-software/edge-platform'>  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/Nehv39FW5U4NHEn7axuGx4CE/sebastian-software/edge-platform.svg' /></a>
 
@@ -8,6 +8,10 @@
 [sponsor]: https://www.sebastian-software.de
 [lerna-img]: https://img.shields.io/badge/Maintained%20with-Lerna-cc00ff.svg
 [lerna]: https://lernajs.io/
+[travis-img]: https://img.shields.io/travis/sebastian-software/edge/master.svg?branch=master&label=unix
+[appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/edge/master.svg?label=windows
+[travis]: https://travis-ci.org/sebastian-software/edge
+[appveyor]: https://ci.appveyor.com/project/swernerx/edge/branch/master
 
 ## Platform Components
 
