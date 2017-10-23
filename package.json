@@ -5,6 +5,7 @@
 	},
 	"scripts": {
 		"update": "lerna exec ncu -- -ua && lerna bootstrap",
+		"prepare": "npm run build",
 		"test": "lerna run test",
 		"build": "lerna run build"
 	},
