@@ -11,8 +11,8 @@
 
 ## Platform Components
 
-Project Name | NPM Status | Build Status | Dependency Status
------------- | ---------- | ------------ | -------------------------------------
+Project Name | NPM Status | Dependency Status
+------------ | ---------- | -------------------------------------
 [Edge Builder][builder-home] | [![Version][builder-npm-version-img]][builder-npm] [![Downloads][builder-npm-downloads-img]][builder-npm] | [![Dependencies][builder-deps-img]][builder-deps]
 [Edge Core][core-home] | [![Version][core-npm-version-img]][core-npm] [![Downloads][core-npm-downloads-img]][core-npm] | [![Dependencies][core-deps-img]][core-deps]
 [Edge Style][style-home] | [![Version][style-npm-version-img]][style-npm] [![Downloads][style-npm-downloads-img]][style-npm] | [![Dependencies][style-deps-img]][style-deps]
