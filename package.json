@@ -7,7 +7,10 @@
 		"update": "lerna exec ncu -- -ua && lerna bootstrap",
 		"prepare": "npm run build",
 		"test": "lerna run test",
-		"build": "lerna run build"
+		"build:libs": "lerna run --scope '**-*(express|useragent|style|postcss|core)' build",
+		"build:builder": "lerna run --scope '**-*(builder)' build && lerna link",
+		"build:boilerplate": "lerna run --scope '**-*(boilerplate)' build",
+		"build": "npm run build:libs && npm run build:builder && npm run build:boilerplate"
 	},
 	"workspaces": [
 		"packages/*"
