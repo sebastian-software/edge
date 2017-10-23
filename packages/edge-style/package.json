@@ -1,6 +1,6 @@
 {
   "name": "edge-style",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Styling Essentials for Edge. Part of the Edge Platform.",
   "main": "lib/index.js",
   "browser": "lib/index.js",
@@ -45,7 +45,7 @@
   },
   "homepage": "https://github.com/sebastian-software/edge-style#readme",
   "dependencies": {
-    "edge-postcss": "^0.9.2"
+    "edge-postcss": "^0.9.3"
   },
   "devDependencies": {
     "prepublish": "^1.5.1",
