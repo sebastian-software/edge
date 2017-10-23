@@ -34,8 +34,8 @@ Project Name | NPM Status | Build Status | Dependency Status
 [Rollup Rebase][rebase-home] | [![Version][rebase-npm-version-img]][rebase-npm] [![Downloads][rebase-npm-downloads-img]][rebase-npm] | [![Build Status Unix][rebase-travis-img]][rebase-travis] [![Build Status Windows][rebase-appveyor-img]][rebase-appveyor] | [![Dependencies][rebase-deps-img]][rebase-deps]
 
 [builder-home]: https://github.com/sebastian-software/edge-builder
-[builder-deps]: https://david-dm.org/sebastian-software/edge-builder
-[builder-deps-img]: https://david-dm.org/sebastian-software/edge-builder.svg
+[builder-deps]: https://david-dm.org/sebastian-software/edge?path=packages/edge-builder
+[builder-deps-img]: https://david-dm.org/sebastian-software/edge.svg?path=packages/edge-builder
 [builder-npm]: https://www.npmjs.com/package/edge-builder
 [builder-npm-downloads-img]: https://img.shields.io/npm/dm/edge-builder.svg
 [builder-npm-version-img]: https://img.shields.io/npm/v/edge-builder.svg
@@ -45,8 +45,8 @@ Project Name | NPM Status | Build Status | Dependency Status
 [builder-appveyor]: https://ci.appveyor.com/project/swernerx/edge-builder/branch/master
 
 [core-home]: https://github.com/sebastian-software/edge-core
-[core-deps]: https://david-dm.org/sebastian-software/edge-core
-[core-deps-img]: https://david-dm.org/sebastian-software/edge-core.svg
+[core-deps]: https://david-dm.org/sebastian-software/edge?path=packages/edge-core
+[core-deps-img]: https://david-dm.org/sebastian-software/edge.svg?path=packages/edge-core
 [core-npm]: https://www.npmjs.com/package/edge-core
 [core-npm-downloads-img]: https://img.shields.io/npm/dm/edge-core.svg
 [core-npm-version-img]: https://img.shields.io/npm/v/edge-core.svg
@@ -56,8 +56,8 @@ Project Name | NPM Status | Build Status | Dependency Status
 [core-appveyor]: https://ci.appveyor.com/project/swernerx/edge-core/branch/master
 
 [style-home]: https://github.com/sebastian-software/edge-style
-[style-deps]: https://david-dm.org/sebastian-software/edge-style
-[style-deps-img]: https://david-dm.org/sebastian-software/edge-style.svg
+[style-deps]: https://david-dm.org/sebastian-software/edge?path=packages/edge-style
+[style-deps-img]: https://david-dm.org/sebastian-software/edge.svg?path=packages/edge-style
 [style-npm]: https://www.npmjs.com/package/edge-style
 [style-npm-downloads-img]: https://img.shields.io/npm/dm/edge-style.svg
 [style-npm-version-img]: https://img.shields.io/npm/v/edge-style.svg
@@ -67,8 +67,8 @@ Project Name | NPM Status | Build Status | Dependency Status
 [style-appveyor]: https://ci.appveyor.com/project/swernerx/edge-style/branch/master
 
 [express-home]: https://github.com/sebastian-software/edge-express
-[express-deps]: https://david-dm.org/sebastian-software/edge-express
-[express-deps-img]: https://david-dm.org/sebastian-software/edge-express.svg
+[express-deps]: https://david-dm.org/sebastian-software/edge?path=packages/edge-express
+[express-deps-img]: https://david-dm.org/sebastian-software/edge.svg?path=packages/edge-express
 [express-npm]: https://www.npmjs.com/package/edge-express
 [express-npm-downloads-img]: https://img.shields.io/npm/dm/edge-express.svg
 [express-npm-version-img]: https://img.shields.io/npm/v/edge-express.svg
@@ -78,8 +78,8 @@ Project Name | NPM Status | Build Status | Dependency Status
 [express-appveyor]: https://ci.appveyor.com/project/swernerx/edge-express/branch/master
 
 [useragent-home]: https://github.com/sebastian-software/edge-useragent
-[useragent-deps]: https://david-dm.org/sebastian-software/edge-useragent
-[useragent-deps-img]: https://david-dm.org/sebastian-software/edge-useragent.svg
+[useragent-deps]: https://david-dm.org/sebastian-software/edge?path=packages/edge-useragent
+[useragent-deps-img]: https://david-dm.org/sebastian-software/edge.svg?path=packages/edge-useragent
 [useragent-npm]: https://www.npmjs.com/package/edge-useragent
 [useragent-npm-downloads-img]: https://img.shields.io/npm/dm/edge-useragent.svg
 [useragent-npm-version-img]: https://img.shields.io/npm/v/edge-useragent.svg
@@ -89,8 +89,8 @@ Project Name | NPM Status | Build Status | Dependency Status
 [useragent-appveyor]: https://ci.appveyor.com/project/swernerx/edge-useragent/branch/master
 
 [boilerplate-home]: https://github.com/sebastian-software/edge-boilerplate
-[boilerplate-deps]: https://david-dm.org/sebastian-software/edge-boilerplate
-[boilerplate-deps-img]: https://david-dm.org/sebastian-software/edge-boilerplate.svg
+[boilerplate-deps]: https://david-dm.org/sebastian-software/edge?path=packages/edge-boilerplate
+[boilerplate-deps-img]: https://david-dm.org/sebastian-software/edge.svg?path=packages/edge-boilerplate
 [boilerplate-npm]: https://www.npmjs.com/package/edge-boilerplate
 [boilerplate-npm-downloads-img]: https://img.shields.io/npm/dm/edge-boilerplate.svg
 [boilerplate-npm-version-img]: https://img.shields.io/npm/v/edge-boilerplate.svg
@@ -100,8 +100,8 @@ Project Name | NPM Status | Build Status | Dependency Status
 [boilerplate-appveyor]: https://ci.appveyor.com/project/swernerx/edge-boilerplate/branch/master
 
 [postcss-home]: https://github.com/sebastian-software/edge-postcss
-[postcss-deps]: https://david-dm.org/sebastian-software/edge-postcss
-[postcss-deps-img]: https://david-dm.org/sebastian-software/edge-postcss.svg
+[postcss-deps]: https://david-dm.org/sebastian-software/edge?path=packages/edge-postcss
+[postcss-deps-img]: https://david-dm.org/sebastian-software/edge.svg?path=packages/edge-postcss
 [postcss-npm]: https://www.npmjs.com/package/edge-postcss
 [postcss-npm-downloads-img]: https://img.shields.io/npm/dm/edge-postcss.svg
 [postcss-npm-version-img]: https://img.shields.io/npm/v/edge-postcss.svg
