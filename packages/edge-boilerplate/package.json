@@ -23,7 +23,7 @@
     "start": "edge start:dev",
     "build": "edge build && prepublish",
     "start:prod": "npm run build && bin/react",
-    "test": "jest --coverage",
+    "test": "jest",
     "test:watch": "jest --watchAll",
     "lint": "gulp lint:js && gulp lint:css",
     "storybook": "start-storybook --port 1449 --config-dir __storybook__",

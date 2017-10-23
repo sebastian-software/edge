@@ -4011,7 +4011,7 @@ eslint-scope@^3.7.1:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint@^4.0.0, eslint@^4.9.0:
+eslint@*, eslint@^4.0.0, eslint@^4.9.0:
   version "4.9.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.9.0.tgz#76879d274068261b191fe0f2f56c74c2f4208e8b"
   dependencies:
@@ -8862,7 +8862,7 @@ prepend-http@^1.0.0, prepend-http@^1.0.1:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
 
-prepublish@^1.5.1:
+prepublish@*, prepublish@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/prepublish/-/prepublish-1.5.1.tgz#564c5f17b196f1077b908dd16fce09c80ea33d44"
   dependencies:
@@ -9595,7 +9595,7 @@ read-pkg@^2.0.0:
     normalize-package-data "^2.3.2"
     path-type "^2.0.0"
 
-readable-code@^3.4.15:
+readable-code@*, readable-code@^3.4.15:
   version "3.4.15"
   resolved "https://registry.yarnpkg.com/readable-code/-/readable-code-3.4.15.tgz#bfb30086188698940732503c3f8110fef43520b9"
   dependencies:
@@ -10119,7 +10119,7 @@ right-align@^0.1.1:
   dependencies:
     align-text "^0.1.1"
 
-rimraf@2, rimraf@^2.2.8, rimraf@^2.5.1, rimraf@^2.5.4, rimraf@^2.6.1, rimraf@^2.6.2:
+rimraf@*, rimraf@2, rimraf@^2.2.8, rimraf@^2.5.1, rimraf@^2.5.4, rimraf@^2.6.1, rimraf@^2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.6.2.tgz#2ed8150d24a16ea8651e6d6ef0f47c4158ce7a36"
   dependencies:

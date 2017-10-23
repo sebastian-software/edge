@@ -21,7 +21,7 @@
   "scripts": {
     "prepare": "npm run build",
     "build": "rimraf lib && prepublish",
-    "test": "npm run build && jest",
+    "test": "jest",
     "release": "git push && release-it --github.release --npm.publish --non-interactive",
     "release:minor": "git push && release-it --github.release --npm.publish --non-interactive --increment minor",
     "release:major": "git push && release-it --github.release --npm.publish --non-interactive --increment major"
