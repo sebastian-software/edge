@@ -4,7 +4,6 @@
 		"lerna": "^2.4.0"
 	},
 	"scripts": {
-		"prepare": "lerna bootstrap && lerna link",
 		"update": "lerna exec ncu -- -ua && lerna bootstrap",
 		"test": "lerna run test",
 		"build": "lerna run build"
