@@ -27,6 +27,11 @@
     "yarn": ">=1.0.0",
     "npm": ">=4.0.0"
   },
+  "files": [
+    "bin/",
+    "docs/",
+    "lib/"
+  ],
   "author": {
     "name": "Sebastian Software",
     "email": "s.werner@sebastian-software.de",

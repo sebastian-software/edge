@@ -27,6 +27,11 @@
     "email": "s.werner@sebastian-software.de",
     "url": "sebastian-software.de"
   },
+  "files": [
+    "bin/",
+    "docs/",
+    "lib/"
+  ],
   "license": "Apache-2.0",
   "dependencies": {
     "edge-postcss": "^0.9.5"

@@ -17,6 +17,11 @@
     "build": "rimraf lib && prepublish",
     "test": "jest"
   },
+  "files": [
+    "bin/",
+    "docs/",
+    "lib/"
+  ],
   "engines": {
     "node": ">=6.0.0",
     "yarn": ">=1.0.0",

@@ -11,6 +11,11 @@
   "bin": {
     "react": "bin/react"
   },
+  "files": [
+    "bin/",
+    "docs/",
+    "lib/"
+  ],
   "scripts": {
     "prepack": "npm run lint && prepublish && npm run build && npm run styleguide:build && npm run storybook:build",
     "start": "edge start:dev",
