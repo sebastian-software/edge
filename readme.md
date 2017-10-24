@@ -11,7 +11,7 @@ Edge Platform helps you focus on business logic rather than dealing with complex
 [travis]: https://travis-ci.org/sebastian-software/edge
 [appveyor]: https://ci.appveyor.com/project/swernerx/edge/branch/master
 
-<img src="./assets/edge.png" alt="Edge Platform Logo" width="951" height="347"/>
+<img src="./assets/edge.png" alt="Edge Platform Logo" width="951" style="max-width:100%"/>
 
 ## Edge Platform Components
 
