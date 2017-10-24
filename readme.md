@@ -11,9 +11,11 @@ Edge Platform helps you focus on business logic rather than dealing with complex
 [travis]: https://travis-ci.org/sebastian-software/edge
 [appveyor]: https://ci.appveyor.com/project/swernerx/edge/branch/master
 
-<img src="./assets/edge.png" alt="Edge Platform Logo" width="250" height="200"/>
+<img src="./assets/edge.png" alt="Edge Platform Logo" width="951" height="347"/>
 
-## Platform Components
+## Edge Platform Components
+
+> "Understanding the architectural decisions behind the tools you are using is perhaps more important than the many things a new package does for you." — James Gillmore
 
 Project Name | NPM Status | Dependency Status
 ------------ | ---------- | -------------------------------------
@@ -29,7 +31,7 @@ Project Name | NPM Status | Dependency Status
 <a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/Nehv39FW5U4NHEn7axuGx4CE/sebastian-software/edge-platform'>  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/Nehv39FW5U4NHEn7axuGx4CE/sebastian-software/edge-platform.svg' /></a>
 
 
-## Foundation Technologies
+## Foundation Technologies of Edge Platform
 
 Project Name | NPM Status | Build Status | Dependency Status
 ------------ | ---------- | ------------ | -------------------------------------
@@ -162,7 +164,6 @@ Project Name | NPM Status | Build Status | Dependency Status
 
 ## Core Technologies
 
-> "Understanding the architectural decisions behind the tools you are using is perhaps more important than the many things a new package does for you." — James Gillmore
 
 ### Tooling
 
