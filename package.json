@@ -2,10 +2,12 @@
 	"private": true,
 	"devDependencies": {
 		"lerna": "^2.4.0",
-		"lerna-changelog": "^0.7.0"
+		"lerna-changelog": "^0.7.0",
+		"lint-staged": "^4.3.0"
 	},
 	"scripts": {
 		"update": "lerna exec ncu -- -ua && lerna bootstrap",
+    "precommit": "lint-staged",
 		"prepare": "npm run build",
 		"test": "lerna run test",
 		"build:libs": "lerna run --stream --scope '**-*(express|useragent|style|postcss|core)' build",
@@ -13,6 +15,12 @@
 		"build:boilerplate": "lerna run --stream --scope edge-boilerplate build",
 		"build": "npm run build:libs && npm run build:builder && npm run build:boilerplate"
 	},
+  "pre-commit": "lint-staged",
+  "lint-staged": {
+    "*.js": "eslint",
+    "*.css": "stylelint",
+    "*.sss": "stylelint"
+  },
 	"workspaces": [
 		"packages/*"
 	]

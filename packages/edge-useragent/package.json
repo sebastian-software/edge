@@ -24,7 +24,7 @@
   ],
   "engines": {
     "node": ">=6.0.0",
-    "yarn": ">=0.21.3",
+    "yarn": ">=1.0.0",
     "npm": ">=4.0.0"
   },
   "author": {
@@ -33,10 +33,6 @@
     "url": "sebastian-software.de"
   },
   "license": "Apache-2.0",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:sebastian-software/edge-useragent.git"
-  },
   "dependencies": {
     "lru-cache": "4.1.x",
     "tmp": "0.0.x"

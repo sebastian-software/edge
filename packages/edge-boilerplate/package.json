@@ -8,31 +8,19 @@
     "email": "s.werner@sebastian-software.de",
     "url": "sebastian-software.de"
   },
-  "pre-commit": "lint-staged",
-  "lint-staged": {
-    "*.js": "eslint",
-    "*.css": "stylelint",
-    "*.sss": "stylelint"
-  },
   "bin": {
     "react": "bin/react"
   },
   "scripts": {
     "prepack": "npm run lint && prepublish && npm run build && npm run styleguide:build && npm run storybook:build",
-    "precommit": "lint-staged",
     "start": "edge start:dev",
     "build": "edge build && prepublish && npm run storybook:build && npm run styleguide:build",
     "start:prod": "npm run build && bin/react",
     "test": "jest",
-    "lint": "gulp lint:js && gulp lint:css",
     "storybook": "start-storybook --port 1449 --config-dir __storybook__",
     "storybook:build": "build-storybook --output-dir docs/storybook --config-dir __storybook__",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:sebastian-software/edge-boilerplate.git"
   },
   "keywords": [
     "front-end",
@@ -61,7 +49,6 @@
     "prepublish": "^1.5.1",
     "react-docgen": "^2.19.0",
     "react-styleguidist": "^6.0.31",
-    "readable-code": "^3.4.15",
     "recompose": "^0.26.0",
     "redux-mock-store": "^1.3.0",
     "storybook-addon-scissors": "^3.0.1"

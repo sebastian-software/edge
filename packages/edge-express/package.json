@@ -11,25 +11,15 @@
   "module": "lib/index.es5.esm.js",
   "main:es2015": "lib/index.es2015.cjs.js",
   "module:es2015": "lib/index.es2015.esm.js",
-  "main:modern": "lib/index.modern.cjs.js",
-  "module:modern": "lib/index.modern.esm.js",
-  "pre-commit": "lint-staged",
-  "lint-staged": {
-    "*.js": "eslint"
-  },
   "license": "Apache-2.0",
   "scripts": {
     "prepack": "npm run build",
     "build": "rimraf lib && prepublish",
     "test": "jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sebastian-software/edge-express.git"
-  },
   "engines": {
     "node": ">=6.0.0",
-    "yarn": ">=0.21.3",
+    "yarn": ">=1.0.0",
     "npm": ">=4.0.0"
   },
   "dependencies": {
@@ -51,7 +41,6 @@
   "devDependencies": {
     "jest-cli": "^21.2.1",
     "prepublish": "^1.5.1",
-    "readable-code": "^3.4.15",
     "rimraf": "^2.6.2"
   }
 }

@@ -12,10 +12,6 @@
   },
   "main": "lib/node.commonjs.js",
   "module": "lib/node.esmodules.js",
-  "pre-commit": "lint-staged",
-  "lint-staged": {
-    "*.js": "eslint"
-  },
   "license": "Apache-2.0",
   "scripts": {
     "prepack": "npm run build",
@@ -82,7 +78,6 @@
   "devDependencies": {
     "jest-cli": "^21.2.1",
     "prepublish": "^1.5.1",
-    "readable-code": "^3.4.15",
     "rimraf": "^2.6.2"
   }
 }

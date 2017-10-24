@@ -9,7 +9,7 @@
   "module:es2015": "lib/node.es2015.esm.js",
   "browser:es2015": "lib/browser.es2015.esm.js",
   "scripts": {
-    "size": "npm run build && size-limit",
+    "size": "npm run build",
     "test": "jest",
     "build": "rimraf lib && prepublish",
     "prepack": "npm run build"
@@ -18,18 +18,6 @@
     "node": ">=6.0.0",
     "yarn": ">=0.21.3",
     "npm": ">=4.0.0"
-  },
-  "pre-commit": "lint-staged",
-  "lint-staged": {
-    "*.js": "eslint",
-    "*.mjs": "eslint",
-    "*.css": "stylelint",
-    "*.pcss": "stylelint",
-    "*.sss": "stylelint"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sebastian-software/edge-core.git"
   },
   "keywords": [
     "react",
@@ -45,16 +33,6 @@
     "url": "sebastian-software.de"
   },
   "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/sebastian-software/edge-core/issues"
-  },
-  "size-limit": [
-    {
-      "path": "lib/browser.es5.esm.js",
-      "limit": "200 KB"
-    }
-  ],
-  "homepage": "https://github.com/sebastian-software/edge-core#readme",
   "dependencies": {
     "bluebird": "^3.5.1",
     "caniuse-lite": "^1.0.30000749",
@@ -91,8 +69,6 @@
   "devDependencies": {
     "jest-cli": "^21.2.1",
     "prepublish": "^1.5.1",
-    "readable-code": "^3.4.15",
-    "rimraf": "^2.6.2",
-    "size-limit": "^0.11.6"
+    "rimraf": "^2.6.2"
   }
 }

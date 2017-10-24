@@ -5,24 +5,14 @@
   "main": "lib/index.js",
   "browser": "lib/index.js",
   "scripts": {
-    "test": "npm run lint",
-    "lint": "stylelint src/*.css",
+    "test": "echo ''",
     "build": "rimraf lib && prepublish",
     "prepack": "npm run build"
   },
   "engines": {
     "node": ">=6.0.0",
-    "yarn": ">=0.21.3",
+    "yarn": ">=1.0.0",
     "npm": ">=4.0.0"
-  },
-  "pre-commit": "lint-staged",
-  "lint-staged": {
-    "*.js": "eslint",
-    "*.css": "stylelint"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sebastian-software/edge-style.git"
   },
   "keywords": [
     "css",
@@ -38,18 +28,12 @@
     "url": "sebastian-software.de"
   },
   "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/sebastian-software/edge-style/issues"
-  },
-  "homepage": "https://github.com/sebastian-software/edge-style#readme",
   "dependencies": {
     "edge-postcss": "^0.9.5"
   },
   "devDependencies": {
     "prepublish": "^1.5.1",
-    "readable-code": "^3.4.15",
     "rimraf": "^2.6.2",
-    "size-limit": "^0.11.6",
-    "stylelint": "^8.2.0"
+    "size-limit": "^0.11.6"
   }
 }
