@@ -1,8 +1,6 @@
 # Edge Platform<br/>[![Sponsored by][sponsor-img]][sponsor] [![lerna][lerna-img]][lerna] [![Build Status Unix][travis-img]][travis] [![Build Status Windows][appveyor-img]][appveyor]
 
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/Nehv39FW5U4NHEn7axuGx4CE/sebastian-software/edge-platform'>  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/Nehv39FW5U4NHEn7axuGx4CE/sebastian-software/edge-platform.svg' /></a>
-
-> Edge Platform helps you focus on business logic rather than dealing with complex dependencies and build configurations.
+Edge Platform helps you focus on business logic rather than dealing with complex dependencies and build configurations.
 
 [sponsor-img]: https://img.shields.io/badge/Sponsored%20by-Sebastian%20Software-692446.svg
 [sponsor]: https://www.sebastian-software.de
@@ -12,6 +10,8 @@
 [appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/edge/master.svg?label=windows
 [travis]: https://travis-ci.org/sebastian-software/edge
 [appveyor]: https://ci.appveyor.com/project/swernerx/edge/branch/master
+
+<img src="./assets/edge.png" alt="Edge Platform Logo" width="250" height="200"/>
 
 ## Platform Components
 
@@ -24,6 +24,9 @@ Project Name | NPM Status | Dependency Status
 [Edge UserAgent][useragent-home] | [![Version][useragent-npm-version-img]][useragent-npm] [![Downloads][useragent-npm-downloads-img]][useragent-npm] | [![Dependencies][useragent-deps-img]][useragent-deps]
 [Edge Boilerplate][boilerplate-home] | [![Version][boilerplate-npm-version-img]][boilerplate-npm] [![Downloads][boilerplate-npm-downloads-img]][boilerplate-npm] | [![Dependencies][boilerplate-deps-img]][boilerplate-deps]
 [Edge PostCSS][postcss-home] | [![Version][postcss-npm-version-img]][postcss-npm] [![Downloads][postcss-npm-downloads-img]][postcss-npm] | [![Dependencies][postcss-deps-img]][postcss-deps]
+
+
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/Nehv39FW5U4NHEn7axuGx4CE/sebastian-software/edge-platform'>  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/Nehv39FW5U4NHEn7axuGx4CE/sebastian-software/edge-platform.svg' /></a>
 
 
 ## Foundation Technologies
@@ -207,6 +210,6 @@ Project Name | NPM Status | Build Status | Dependency Status
 
 ## Copyright
 
-<img src="https://raw.githubusercontent.com/sebastian-software/readable-code/master/assets/sebastiansoftware.png" alt="Sebastian Software GmbH Logo" width="250" height="200"/>
+<img src="./assets/sebastiansoftware.png" alt="Sebastian Software GmbH Logo" width="250" height="200"/>
 
-Copyright 2017<br/>[Sebastian Software GmbH](http://www.sebastian-software.de)
+Copyright 2015-2017<br/>[Sebastian Software GmbH](http://www.sebastian-software.de)
