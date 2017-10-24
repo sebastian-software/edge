@@ -12,10 +12,7 @@
     "size": "npm run build && size-limit",
     "test": "jest",
     "build": "rimraf lib && prepublish",
-    "prepack": "npm run build",
-    "release": "git push && release-it --github.release --npm.publish --non-interactive",
-    "release:minor": "git push && release-it --github.release --npm.publish --non-interactive --increment minor",
-    "release:major": "git push && release-it --github.release --npm.publish --non-interactive --increment major"
+    "prepack": "npm run build"
   },
   "engines": {
     "node": ">=6.0.0",

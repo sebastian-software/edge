@@ -20,10 +20,7 @@
   "scripts": {
     "prepack": "npm run build",
     "build": "rimraf bin && rimraf lib && prepublish",
-    "test": "jest",
-    "release": "git push && release-it --github.release --npm.publish --non-interactive",
-    "release:minor": "git push && release-it --github.release --npm.publish --non-interactive --increment minor",
-    "release:major": "git push && release-it --github.release --npm.publish --non-interactive --increment major"
+    "test": "jest"
   },
   "repository": {
     "type": "git",

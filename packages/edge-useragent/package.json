@@ -59,9 +59,6 @@
     "qa": "mocha --ui exports test/*.qa.js",
     "update": "babel-node ./bin/update.js && babel-node ./bin/testfiles.js",
     "build": "rimraf lib && prepublish",
-    "prepack": "npm run build",
-    "release": "git push && release-it --github.release --npm.publish --non-interactive",
-    "release:minor": "git push && release-it --github.release --npm.publish --non-interactive --increment minor",
-    "release:major": "git push && release-it --github.release --npm.publish --non-interactive --increment major"
+    "prepack": "npm run build"
   }
 }

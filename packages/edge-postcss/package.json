@@ -6,10 +6,7 @@
   "scripts": {
     "build": "rimraf lib && prepublish",
     "prepack": "npm run build",
-    "test": "jest",
-    "release": "release-it --github.release --npm.publish --non-interactive",
-    "release:minor": "release-it --github.release --npm.publish --non-interactive --increment minor",
-    "release:major": "release-it --github.release --npm.publish --non-interactive --increment major"
+    "test": "jest"
   },
   "engines": {
     "node": ">=6.0.0",

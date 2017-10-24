@@ -28,10 +28,7 @@
     "storybook": "start-storybook --port 1449 --config-dir __storybook__",
     "storybook:build": "build-storybook --output-dir docs/storybook --config-dir __storybook__",
     "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build",
-    "release": "git push && release-it --github.release --npm.publish --non-interactive",
-    "release:minor": "git push && release-it --github.release --npm.publish --non-interactive --increment minor",
-    "release:major": "git push && release-it --github.release --npm.publish --non-interactive --increment major"
+    "styleguide:build": "styleguidist build"
   },
   "repository": {
     "type": "git",
