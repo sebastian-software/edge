@@ -61,7 +61,7 @@
   "dependencies": {
     "bluebird": "^3.5.1",
     "caniuse-lite": "^1.0.30000749",
-    "chalk": "^2.2.0",
+    "chalk": "^2.3.0",
     "edge-useragent": "^3.0.6",
     "identity-obj-proxy": "^3.0.0",
     "intl-locales-supported": "^1.0.0",
@@ -69,7 +69,7 @@
     "node-fetch": "^1.7.3",
     "nodent-runtime": "^3.0.4",
     "prop-types": "^15.6.0",
-    "query-string": "^5.0.0",
+    "query-string": "^5.0.1",
     "raf": "^3.4.0",
     "react": "^16.0.0",
     "react-apollo": "^1.4.16",
