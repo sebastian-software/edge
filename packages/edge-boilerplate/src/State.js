@@ -12,7 +12,7 @@ export default {
   getConfig(state, topic) {
     if (topic === "apollo") {
       return {
-        url: state.env.APOLLO_URL
+        uri: state.env.APOLLO_URL
 
         // headers: {},
         // batchRequests: false,
