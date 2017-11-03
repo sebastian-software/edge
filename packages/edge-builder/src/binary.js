@@ -6,7 +6,7 @@ import clearConsole from "react-dev-utils/clearConsole"
 
 import { ROOT, getConfig } from "./common"
 import { buildClient, buildServer, cleanClient, cleanServer } from "./commands/build"
-import { startDevServer } from "./commands/dev"
+import { start as startDevServer } from "./commands/dev"
 import { startReactServer } from "./commands/react"
 
 import pkg from "../package.json"

@@ -25,5 +25,7 @@ export default {
     public: "/static/"
   },
 
-  hook: {}
+  hook: {
+    webpack: null
+  }
 }

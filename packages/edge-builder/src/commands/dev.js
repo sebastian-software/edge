@@ -10,7 +10,7 @@ import { createExpressServer } from "edge-express"
 
 import configBuilder from "../builder"
 
-export function startDevServer(config = {}) {
+export function create(config = {}) {
   const clientConfig = configBuilder("client", "development", config)
   const serverConfig = configBuilder("server", "development", config)
 
@@ -37,26 +37,17 @@ export function startDevServer(config = {}) {
     }
   })
 
-  const server = createExpressServer({
-    staticConfig: {
-      public: config.output.public,
-      path: config.output.client
-    },
-    localeConfig: config.locale,
-    afterSecurity: [],
-    beforeFallback: [
-      devMiddleware,
-      hotMiddleware,
-      hotServerMiddleware
-    ],
-    enableCSP: process.env.ENABLE_CSP !== "false",
-    enableNonce: process.env.ENABLE_NONCE !== "false"
-  })
+  return {
+    middleware: [ devMiddleware, hotMiddleware, hotServerMiddleware ],
+    multiCompiler
+  }
+}
 
+export function connect(server, multiCompiler) {
   let serverIsStarted = false
 
   multiCompiler.plugin("invalid", () => {
-    console.log("Compiling...")
+    console.log("[EDGE] Compiling...")
   })
 
   multiCompiler.plugin("done", (stats) => {
@@ -65,19 +56,19 @@ export function startDevServer(config = {}) {
 
     const isSuccessful = !messages.errors.length && !messages.warnings.length
     if (isSuccessful) {
-      console.log(chalk.green("Compiled successfully!"))
+      console.log(chalk.green("[EDGE] Compiled successfully!"))
     }
 
     // If errors exist, only show errors.
     if (messages.errors.length) {
-      console.log(chalk.red("Failed to compile.\n"))
+      console.log(chalk.red("[EDGE] Failed to compile.\n"))
       console.log(messages.errors.join("\n\n"))
       return
     }
 
     // Show warnings if no errors were found.
     if (messages.warnings.length) {
-      console.log(chalk.yellow("Compiled with warnings.\n"))
+      console.log(chalk.yellow("[EDGE] Compiled with warnings.\n"))
       console.log(messages.warnings.join("\n\n"))
     }
 
@@ -85,8 +76,26 @@ export function startDevServer(config = {}) {
       serverIsStarted = true
 
       server.listen(process.env.SERVER_PORT, () => {
-        console.log(`Development Server started @ Port ${process.env.SERVER_PORT}`)
+        console.log(`[EDGE] Development Server started @ Port ${process.env.SERVER_PORT}`)
       })
     }
   })
+}
+
+export function start(config = {}) {
+  const { middleware, multiCompiler } = create(config)
+
+  const server = createExpressServer({
+    staticConfig: {
+      public: config.output.public,
+      path: config.output.client
+    },
+    localeConfig: config.locale,
+    afterSecurity: [],
+    beforeFallback: [ ...middleware ],
+    enableCSP: process.env.ENABLE_CSP !== "false",
+    enableNonce: process.env.ENABLE_NONCE !== "false"
+  })
+
+  connect(server, multiCompiler)
 }
