@@ -42,8 +42,7 @@ export default function createKernel(State, { state = defaultState, edge, reques
     enhancers: State.getEnhancers(),
     middlewares: State.getMiddlewares(),
     state,
-    router,
-    apollo
+    router
   })
 
   let intl = state.edge.intl

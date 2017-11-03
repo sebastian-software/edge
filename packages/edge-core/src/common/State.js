@@ -60,7 +60,7 @@ export function getNonce(state) {
 /**
  * Bundles the given reducers into a root reducer for the application
  */
-export function createRootReducer(reducers, router = null, apollo = null) {
+export function createRootReducer(reducers, router = null) {
   const allReducers = {
     // Application specific reducers
     ...reducers,
@@ -72,11 +72,6 @@ export function createRootReducer(reducers, router = null, apollo = null) {
   // Integration point for Redux First Router
   if (router) {
     allReducers.location = router.reducer
-  }
-
-  // Support for Apollo-based GraphQL backends
-  if (apollo) {
-    allReducers.apollo = apollo.reducer()
   }
 
   return combineReducers(allReducers)
@@ -93,15 +88,13 @@ export function createReduxStore(config = {}) {
     middlewares = [],
     enhancers = [],
     state = {},
-    router = null,
-    apollo = null
+    router = null
   } = config
 
-  const rootReducer = createRootReducer(reducers, router, apollo)
+  const rootReducer = createRootReducer(reducers, router)
 
   const rootEnhancers = composeEnhancers(
     applyMiddleware(
-      apollo ? apollo.middleware() : emptyMiddleware,
 
       // Redux middleware that spits an error on you when you try to mutate
       // your state either inside a dispatch or between dispatches.

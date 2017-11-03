@@ -23,7 +23,7 @@ export default function wrapApplication(Application, kernel) {
 
   if (kernel.apollo) {
     Wrapped = (
-      <ApolloProvider client={kernel.apollo} store={kernel.store}>
+      <ApolloProvider client={kernel.apollo}>
         {Wrapped}
       </ApolloProvider>
     )
