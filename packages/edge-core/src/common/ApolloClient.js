@@ -1,53 +1,32 @@
-import { ApolloClient, createNetworkInterface, createBatchingNetworkInterface } from "react-apollo"
+import { ApolloClient } from "apollo-client"
+import { createHttpLink } from "apollo-link-http"
+import { InMemoryCache } from "apollo-cache-inmemory"
 
 export function createApolloClient(config = {}) {
-  const {
-    headers,
-    uri = null,
-    batchRequests = false,
-    trustNetwork = true,
-    queryDeduplication = true
-  } = config
+  const { uri = null, trustNetwork = true, clientOptions = {}, linkOptions = {} } = config
 
-  const hasApollo = uri != null
-  const ssrMode = process.env.TARGET === "node"
-  var client
-
-  if (hasApollo) {
-    var opts = {
-      credentials: trustNetwork ? "include" : "same-origin",
-
-      // transfer request headers to networkInterface so that they're accessible to proxy server
-      // Addresses this issue: https://github.com/matthew-andrews/isomorphic-fetch/issues/83
-      headers
-    }
-
-    var networkInterface
-
-    if (batchRequests) {
-      networkInterface = createBatchingNetworkInterface({
-        uri,
-        batchInterval: 10,
-        opts
-      })
-    } else {
-      networkInterface = createNetworkInterface({
-        uri,
-        opts
-      })
-    }
-
-    client = new ApolloClient({
-      ssrMode,
-      queryDeduplication,
-      networkInterface
-    })
-  } else {
-    client = new ApolloClient({
-      ssrMode,
-      queryDeduplication
-    })
+  if (uri == null) {
+    return null
   }
 
-  return client
+  var finalLinkOptions = {
+    // Based on user given options
+    ...linkOptions,
+
+    // Use pre-defined URI, the only non optional parameter if Apollo should be enabled.
+    uri,
+
+    // Fetch Credentials:
+    // - omit: Never send cookies.
+    // - same-origin: Send user credentials (cookies, basic http auth, etc..) if the URL is on the same origin as the calling script.
+    // - include: Always send user credentials (cookies, basic http auth, etc..), even for cross-origin calls.
+    // See also: https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials
+    credentials: trustNetwork ? "include" : "same-origin"
+  }
+
+  return new ApolloClient({
+    link: createHttpLink(finalLinkOptions),
+    cache: new InMemoryCache(),
+    ...clientOptions
+  })
 }
