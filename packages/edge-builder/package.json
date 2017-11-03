@@ -76,8 +76,8 @@
     "zopfli-webpack-plugin": "^0.1.0"
   },
   "devDependencies": {
-    "jest-cli": "^21.2.1",
-    "prepublish": "^1.5.1",
-    "rimraf": "^2.6.2"
+    "jest": "*",
+    "prepublish": "*",
+    "rimraf": "*"
   }
 }

@@ -39,6 +39,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "apollo-cache-inmemory": "^1.0.0",
+    "apollo-client": "^2.0.1",
+    "apollo-link-http": "^1.1.0",
     "bluebird": "^3.5.1",
     "caniuse-lite": "^1.0.30000758",
     "chalk": "^2.3.0",
@@ -72,8 +75,9 @@
     "webpack-flush-chunks": "^1.2.1"
   },
   "devDependencies": {
-    "jest-cli": "^21.2.1",
-    "prepublish": "^1.5.1",
-    "rimraf": "^2.6.2"
+    "jest": "*",
+    "lint-staged": "*",
+    "prepublish": "*",
+    "rimraf": "*"
   }
 }
