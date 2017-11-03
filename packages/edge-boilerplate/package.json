@@ -17,15 +17,15 @@
     "lib/"
   ],
   "scripts": {
-    "prepack": "prepublish && npm run build && npm run styleguide:build && npm run storybook:build",
+    "prepack": "npm run build && npm run styleguide:build && npm run storybook:build",
     "start": "edge start:dev",
-    "build": "edge build && prepublish && npm run storybook:build && npm run styleguide:build",
+    "build": "prepublish",
     "start:prod": "npm run build && bin/react",
     "test": "jest",
     "storybook": "start-storybook --port 1449 --config-dir __storybook__",
-    "storybook:build": "build-storybook --output-dir docs/storybook --config-dir __storybook__",
+    "storybook:build": "rimraf docs/storybook && build-storybook --output-dir docs/storybook --config-dir __storybook__",
     "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "styleguide:build": "rimraf docs/styleguide && styleguidist build"
   },
   "keywords": [
     "front-end",
