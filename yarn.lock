@@ -419,6 +419,10 @@ apollo-client@^2.0.1:
   optionalDependencies:
     "@types/async" "2.0.44"
 
+apollo-link-context@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/apollo-link-context/-/apollo-link-context-1.0.0.tgz#8e0d02c5778f95b6658a2175481c09b79ff929d6"
+
 apollo-link-dedup@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/apollo-link-dedup/-/apollo-link-dedup-1.0.0.tgz#f0134ac495cc42e7e43dfafe7126645baa1e03bc"
@@ -656,12 +660,6 @@ astral-regex@^1.0.0:
 async-each@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/async-each/-/async-each-1.0.1.tgz#19d386a1d9edc6e7c1c85d388aedbcc56d33602d"
-
-async@2.4.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/async/-/async-2.4.1.tgz#62a56b279c98a11d0987096a01cc3eeb8eb7bbd7"
-  dependencies:
-    lodash "^4.14.0"
 
 async@^1.4.0, async@^1.5.0, async@^1.5.2:
   version "1.5.2"
@@ -1592,6 +1590,39 @@ babel-polyfill@^6.26.0:
     core-js "^2.5.0"
     regenerator-runtime "^0.10.5"
 
+babel-preset-edge@*, babel-preset-edge@^1.3.6:
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/babel-preset-edge/-/babel-preset-edge-1.3.6.tgz#ade3c53a48ca6baa93b08100e489c2393edce15c"
+  dependencies:
+    app-root-dir "^1.0.2"
+    babel-cli "^6.26.0"
+    babel-core "^6.26.0"
+    babel-plugin-dynamic-import-node "^1.1.0"
+    babel-plugin-dynamic-import-webpack "^1.0.1"
+    babel-plugin-fast-async "^6.1.2"
+    babel-plugin-lodash "^3.2.11"
+    babel-plugin-minify-dead-code-elimination "^0.2.0"
+    babel-plugin-module-resolver "^3.0.0-beta.4"
+    babel-plugin-react-intl "^2.3.1"
+    babel-plugin-syntax-dynamic-import "^6.18.0"
+    babel-plugin-syntax-jsx "^6.18.0"
+    babel-plugin-transform-class-properties "^6.24.1"
+    babel-plugin-transform-es3-member-expression-literals "^6.22.0"
+    babel-plugin-transform-es3-property-literals "^6.22.0"
+    babel-plugin-transform-object-rest-spread "^6.26.0"
+    babel-plugin-transform-react-constant-elements "^6.23.0"
+    babel-plugin-transform-react-inline-elements "^6.22.0"
+    babel-plugin-transform-react-remove-prop-types "^0.4.10"
+    babel-plugin-transform-runtime "^6.23.0"
+    babel-plugin-universal-import "^1.3.0"
+    babel-preset-env "^1.6.1"
+    babel-preset-flow "^6.23.0"
+    babel-preset-minify "^0.2.0"
+    babel-preset-react "^6.24.1"
+    babel-runtime "^6.26.0"
+    browserslist "^2.5.1"
+    nodent-runtime "^3.0.4"
+
 babel-preset-edge@^1.3.5:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/babel-preset-edge/-/babel-preset-edge-1.3.5.tgz#08eb8c0f9299fc2e9e4c4beb5ff52b5c8febc7f7"
@@ -1623,39 +1654,6 @@ babel-preset-edge@^1.3.5:
     babel-preset-react "^6.24.1"
     babel-runtime "^6.26.0"
     browserslist "^2.4.0"
-    nodent-runtime "^3.0.4"
-
-babel-preset-edge@^1.3.6:
-  version "1.3.6"
-  resolved "https://registry.yarnpkg.com/babel-preset-edge/-/babel-preset-edge-1.3.6.tgz#ade3c53a48ca6baa93b08100e489c2393edce15c"
-  dependencies:
-    app-root-dir "^1.0.2"
-    babel-cli "^6.26.0"
-    babel-core "^6.26.0"
-    babel-plugin-dynamic-import-node "^1.1.0"
-    babel-plugin-dynamic-import-webpack "^1.0.1"
-    babel-plugin-fast-async "^6.1.2"
-    babel-plugin-lodash "^3.2.11"
-    babel-plugin-minify-dead-code-elimination "^0.2.0"
-    babel-plugin-module-resolver "^3.0.0-beta.4"
-    babel-plugin-react-intl "^2.3.1"
-    babel-plugin-syntax-dynamic-import "^6.18.0"
-    babel-plugin-syntax-jsx "^6.18.0"
-    babel-plugin-transform-class-properties "^6.24.1"
-    babel-plugin-transform-es3-member-expression-literals "^6.22.0"
-    babel-plugin-transform-es3-property-literals "^6.22.0"
-    babel-plugin-transform-object-rest-spread "^6.26.0"
-    babel-plugin-transform-react-constant-elements "^6.23.0"
-    babel-plugin-transform-react-inline-elements "^6.22.0"
-    babel-plugin-transform-react-remove-prop-types "^0.4.10"
-    babel-plugin-transform-runtime "^6.23.0"
-    babel-plugin-universal-import "^1.3.0"
-    babel-preset-env "^1.6.1"
-    babel-preset-flow "^6.23.0"
-    babel-preset-minify "^0.2.0"
-    babel-preset-react "^6.24.1"
-    babel-runtime "^6.26.0"
-    browserslist "^2.5.1"
     nodent-runtime "^3.0.4"
 
 babel-preset-env@1.6.1, babel-preset-env@^1.6.0, babel-preset-env@^1.6.1:
@@ -2204,7 +2202,7 @@ bytes@2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-2.2.0.tgz#fd35464a403f6f9117c2de3609ecff9cae000588"
 
-bytes@3.0.0, bytes@^3.0.0:
+bytes@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.0.0.tgz#d32815404d689699f85a4ea4fa8755dd13a96048"
 
@@ -2468,10 +2466,6 @@ chownr@^1.0.1:
 ci-info@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-1.1.1.tgz#47b44df118c48d2597b56d342e7e25791060171a"
-
-ci-job-number@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/ci-job-number/-/ci-job-number-0.3.0.tgz#34bdd114b0dece1960287bd40a57051041a2a800"
 
 cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
   version "1.0.4"
@@ -2737,13 +2731,6 @@ compressible@~2.0.11, compressible@~2.0.7:
   resolved "https://registry.yarnpkg.com/compressible/-/compressible-2.0.12.tgz#c59a5c99db76767e9876500e271ef63b3493bd66"
   dependencies:
     mime-db ">= 1.30.0 < 2"
-
-compression-webpack-plugin@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/compression-webpack-plugin/-/compression-webpack-plugin-1.0.1.tgz#7f0a2af9f642b4f87b5989516a3b9e9b41bb4b3f"
-  dependencies:
-    async "2.4.1"
-    webpack-sources "^1.0.1"
 
 compression@^1.5.2:
   version "1.7.1"
@@ -5216,13 +5203,6 @@ gzip-size@3.0.0, gzip-size@^3.0.0:
   dependencies:
     duplexer "^0.1.1"
 
-gzip-size@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/gzip-size/-/gzip-size-4.0.0.tgz#a80e13e18938bcb2e6702fec606f5cf8b666db3a"
-  dependencies:
-    duplexer "^0.1.1"
-    pify "^3.0.0"
-
 handle-thing@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/handle-thing/-/handle-thing-1.2.5.tgz#fd7aad726bf1a5fd16dfc29b2f7a6601d27139c4"
@@ -6353,7 +6333,7 @@ jest-environment-node@^21.2.1:
     jest-mock "^21.2.0"
     jest-util "^21.2.1"
 
-jest-fetch-mock@^1.3.3:
+jest-fetch-mock@*, jest-fetch-mock@^1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/jest-fetch-mock/-/jest-fetch-mock-1.3.3.tgz#fc04ae163e2bf490ea6d225fd03aed4963ce6476"
   dependencies:
@@ -6494,7 +6474,7 @@ jest-validate@^21.1.0, jest-validate@^21.2.1:
     leven "^2.1.0"
     pretty-format "^21.2.1"
 
-jest@^21.2.1:
+jest@*:
   version "21.2.1"
   resolved "https://registry.yarnpkg.com/jest/-/jest-21.2.1.tgz#c964e0b47383768a1438e3ccf3c3d470327604e1"
   dependencies:
@@ -7335,7 +7315,7 @@ mem@^1.1.0:
   dependencies:
     mimic-fn "^1.0.0"
 
-memory-fs@^0.4.0, memory-fs@^0.4.1, memory-fs@~0.4.1:
+memory-fs@^0.4.0, memory-fs@~0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/memory-fs/-/memory-fs-0.4.1.tgz#3a9a20b8462523e447cfbc7e8bb80ed667bfc552"
   dependencies:
@@ -9032,7 +9012,7 @@ prepend-http@^1.0.0, prepend-http@^1.0.1:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
 
-prepublish@*, prepublish@^1.5.1:
+prepublish@*:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/prepublish/-/prepublish-1.5.1.tgz#564c5f17b196f1077b908dd16fce09c80ea33d44"
   dependencies:
@@ -10286,7 +10266,7 @@ right-align@^0.1.1:
   dependencies:
     align-text "^0.1.1"
 
-rimraf@*, rimraf@2, rimraf@^2.2.8, rimraf@^2.5.1, rimraf@^2.5.4, rimraf@^2.6.1, rimraf@^2.6.2:
+rimraf@*, rimraf@2, rimraf@^2.2.8, rimraf@^2.5.1, rimraf@^2.5.4, rimraf@^2.6.1:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.6.2.tgz#2ed8150d24a16ea8651e6d6ef0f47c4158ce7a36"
   dependencies:
@@ -10713,27 +10693,6 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-size-limit@^0.12.1:
-  version "0.12.1"
-  resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-0.12.1.tgz#ca86b1a5f54e8a01f38a0e7843fc9cc6e6c51538"
-  dependencies:
-    bytes "^3.0.0"
-    chalk "^2.3.0"
-    ci-job-number "^0.3.0"
-    compression-webpack-plugin "^1.0.1"
-    css-loader "^0.28.7"
-    escape-string-regexp "^1.0.5"
-    file-loader "^1.1.5"
-    globby "^6.1.0"
-    gzip-size "^4.0.0"
-    memory-fs "^0.4.1"
-    read-pkg-up "^2.0.0"
-    style-loader "^0.19.0"
-    uglifyjs-webpack-plugin "^1.0.1"
-    webpack "^3.8.1"
-    webpack-bundle-analyzer "^2.9.0"
-    yargs "^10.0.3"
-
 slash@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
@@ -11149,13 +11108,6 @@ strong-log-transformer@^1.0.6:
 style-loader@^0.18.2:
   version "0.18.2"
   resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.18.2.tgz#cc31459afbcd6d80b7220ee54b291a9fd66ff5eb"
-  dependencies:
-    loader-utils "^1.0.2"
-    schema-utils "^0.3.0"
-
-style-loader@^0.19.0:
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.19.0.tgz#7258e788f0fee6a42d710eaf7d6c2412a4c50759"
   dependencies:
     loader-utils "^1.0.2"
     schema-utils "^0.3.0"
@@ -12343,29 +12295,6 @@ yargs-parser@^7.0.0:
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-7.0.0.tgz#8d0ac42f16ea55debd332caf4c4038b3e3f5dfd9"
   dependencies:
     camelcase "^4.1.0"
-
-yargs-parser@^8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-8.0.0.tgz#21d476330e5a82279a4b881345bf066102e219c6"
-  dependencies:
-    camelcase "^4.1.0"
-
-yargs@^10.0.3:
-  version "10.0.3"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-10.0.3.tgz#6542debd9080ad517ec5048fb454efe9e4d4aaae"
-  dependencies:
-    cliui "^3.2.0"
-    decamelize "^1.1.1"
-    find-up "^2.1.0"
-    get-caller-file "^1.0.1"
-    os-locale "^2.0.0"
-    require-directory "^2.1.1"
-    require-main-filename "^1.0.1"
-    set-blocking "^2.0.0"
-    string-width "^2.0.0"
-    which-module "^2.0.0"
-    y18n "^3.2.1"
-    yargs-parser "^8.0.0"
 
 yargs@^4.8.0:
   version "4.8.1"
