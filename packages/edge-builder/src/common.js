@@ -39,7 +39,7 @@ const SCHEMA = {
     default: "build/client"
   },
 
-  "hook.webpack" : {
+  "hook.webpack": {
     type: "script",
     default: "hooks/webpack.js"
   }
@@ -55,16 +55,17 @@ const configLoader = cosmiconfig("edge", {
 })
 
 export async function getConfig(flags) {
-  var config
-  var filepath
+  var configResult
 
   try {
-    { config, filepath } = await configLoader.load(ROOT)
+    configResult = await configLoader.load(ROOT)
   } catch (parsingError) {
     throw new Error(`Error parsing config file: ${parsingError}. Root: ${ROOT}.`)
   }
 
   console.log(`Loaded config from ${relative(ROOT, configResult.filepath)}`)
+
+  const config = configResult.config
 
   for (let key in flags) {
     set(config, key, flags[key])
