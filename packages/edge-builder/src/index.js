@@ -1,3 +1,4 @@
+import { load as loadConfig } from "./config"
 import { cleanClient, cleanServer, buildClient, buildServer } from "./commands/build"
 import {
   start as startDevServer,
@@ -6,6 +7,7 @@ import {
 } from "./commands/dev"
 
 export {
+  loadConfig,
   cleanClient,
   cleanServer,
   buildClient,
