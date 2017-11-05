@@ -1,16 +1,14 @@
-import { relative } from "path"
 import jsome from "jsome"
-import { load, ROOT } from "./config"
+import { load } from "./config"
 
 /* eslint-disable no-console */
-
 export async function getConfig(flags) {
   const { config, root } = await load("edge", flags)
 
-  console.log(`Loaded config from ${root}.`)
+  console.log(`[EDGE] Loaded config from ${root}`)
 
   if (config.verbose) {
-    console.log("Configuration:")
+    console.log("[EDGE] Configuration:")
     jsome(config)
   }
 
