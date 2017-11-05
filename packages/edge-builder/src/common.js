@@ -12,19 +12,38 @@ import defaultConfig from "./defaultConfig"
 // Export common understanding of what ROOT is
 export const ROOT = getRoot()
 
-const RESOLVE_PATH_FOR = [
-  "entry.serverMain",
-  "entry.clientMain",
-  "entry.serverVendor",
-  "entry.clientVendor",
+const SCHEMA = {
+  "entry.serverMain": {
+    type: "path",
+    default: "src/server/index.js"
+  },
+  "entry.clientMain": {
+    type: "path",
+    default: "src/client/index.js"
+  },
+  "entry.serverVendor": {
+    type: "path",
+    default: "src/server/vendor.js"
+  },
+  "entry.clientVendor": {
+    type: "path",
+    default: "src/server/vendor.js"
+  },
 
-  "output.server",
-  "output.client"
-]
+  "output.server": {
+    type: "path",
+    default: "build/server"
+  },
+  "output.client": {
+    type: "path",
+    default: "build/client"
+  },
 
-const MODULE_LOADERS = [
-  "hook.webpack"
-]
+  "hook.webpack" : {
+    type: "script",
+    default: "hooks/webpack.js"
+  }
+}
 
 // Read edge configuration
 const configLoader = cosmiconfig("edge", {
@@ -35,60 +54,32 @@ const configLoader = cosmiconfig("edge", {
   stopDir: ROOT
 })
 
-const configPromise = configLoader.load(ROOT).then((configResult) => {
-  if (typeof configResult !== "object" || configResult.config == null || configResult.filepath == null) {
-    throw new Error("Invalid config loader result: ", configResult)
-  }
-  console.log(`Loaded config from ${relative(ROOT, configResult.filepath)}`)
-  const mergedConfig = defaultsDeep(configResult.config, defaultConfig)
-  return resolvePathsInConfig(mergedConfig, ROOT)
-}).catch((parsingError) => {
-  throw new Error(`Error parsing config file: ${parsingError}. Root: ${ROOT}.`)
-})
-
-if (!configPromise) {
-  console.error(chalk.red("Edge: Missing configuration file!"))
-  process.exit(1)
-}
-
 export async function getConfig(flags) {
-  return await configPromise
-    .then((config) => {
-      for (let key in flags) {
-        set(config, key, flags[key])
-      }
+  var config
+  var filepath
 
-      if (flags.verbose) {
-        console.log("Configuration:")
-        jsome(config)
-      }
+  try {
+    { config, filepath } = await configLoader.load(ROOT)
+  } catch (parsingError) {
+    throw new Error(`Error parsing config file: ${parsingError}. Root: ${ROOT}.`)
+  }
 
-      return config
-    })
-    .then(async(config) => {
-      const loadedModules = await Promise.all(
-        MODULE_LOADERS.map(
-          (modulePath) => {
-            const moduleFile = get(config, modulePath)
+  console.log(`Loaded config from ${relative(ROOT, configResult.filepath)}`)
 
-            if (moduleFile) {
-              return import(join(ROOT, moduleFile))
-            } else {
-              return null
-            }
-          }
-        )
-      )
+  for (let key in flags) {
+    set(config, key, flags[key])
+  }
 
-      MODULE_LOADERS.forEach((modulePath, index) => {
-        const loadedModule = loadedModules[index] // eslint-disable-line security/detect-object-injection
-        if (loadedModule) {
-          set(config, modulePath, loadedModule.default || loadedModule)
-        }
-      })
+  const mergedConfig = defaultsDeep(config, defaultConfig)
 
-      return config
-    })
+  if (flags.verbose) {
+    console.log("Configuration:")
+    jsome(config)
+  }
+
+  resolvePathsInConfig(mergedConfig, ROOT)
+
+  return config
 }
 
 function resolvePathsInConfig(config) {
