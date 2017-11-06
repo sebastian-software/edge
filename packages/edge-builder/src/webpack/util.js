@@ -86,57 +86,70 @@ export function shouldBeBundled(basename) {
   return result
 }
 
-export function getServerExternals(useLightBundle, entries) {
+// eslint-disable-next-line
+export function isRequestExternal(request, lightweight = false) {
+  // Inline all files which are dependend on Webpack loaders e.g. CSS, images, etc.
+  if (isLoaderSpecificFile(request)) {
+    return false
+  }
+
+  var basename = request.split("/")[0]
+
+  // Externalize built-in modules
+  if (BuiltIns.has(basename)) {
+    return true
+  }
+
+  // Ignore all inline files for further processing
+  if (basename.charAt(0) === ".") {
+    return false
+  }
+
+  // Inline all modules which require a Webpack environment
+  if (WebpackEnvRequired.has(basename)) {
+    return false
+  }
+
+  // Make sure that problematic CommonJS code is externalized
+  if (Problematic.has(basename)) {
+    return true
+  }
+
+  // Analyses remaining packages whether these offer ES2015 bundles
+  // and/or include native extensions via Gyp. We try to bundle all
+  // ES2015 modules as it is better for tree-shaking. We can't bundle
+  // any modules which contain binary code. If neither of these two is
+  // true we just follow the wishes of the user regarding bundling
+  // lightweight or heavyweight to include the maximum amount or least
+  // amount of modules feasible.
+  const bundle = shouldBeBundled(basename)
+  if (bundle != null) {
+    return !bundle
+  }
+
+  // Finally we respect the user given preference
+  return lightweight
+}
+
+const externalsCache = {}
+
+export function getServerExternals(lightweight, entries) {
   const entriesSet = new Set(entries)
 
   // We can't influence a public interface
   // eslint-disable-next-line max-params
   return (context, request, callback) => {
-    var basename = request.split("/")[0]
-
-    // Externalize built-in modules
-    if (BuiltIns.has(basename)) {
-      return callback(null, `commonjs ${request}`)
-    }
-
-    // Make sure to include entries
+    // Make sure to include all direct entries
     if (entriesSet.has(request)) {
       return callback()
     }
 
-    // Ignore all inline files for further processing
-    if (basename.charAt(0) === ".") {
-      return callback()
+    let isExternal = externalsCache[request]
+    if (isExternal == null) {
+      isExternal = isRequestExternal(request, lightweight)
+      externalsCache[request] = isExternal
     }
 
-    // Inline all files which are dependend on Webpack loaders e.g. CSS, images, etc.
-    if (isLoaderSpecificFile(request)) {
-      return callback()
-    }
-
-    // Inline all modules which require a Webpack environment
-    if (WebpackEnvRequired.has(basename)) {
-      return callback()
-    }
-
-    // Make sure that problematic CommonJS code is externalized
-    if (Problematic.has(basename)) {
-      return callback(null, `commonjs ${request}`)
-    }
-
-    // Analyses remaining packages whether these offer ES2015 bundles
-    // and/or include native extensions via Gyp. We try to bundle all
-    // ES2015 modules as it is better for tree-shaking. We can't bundle
-    // any modules which contain binary code. If neither of these two is
-    // true we just follow the wishes of the user regarding bundling
-    // lightweight or heavyweight to include the maximum amount or least
-    // amount of modules feasible.
-    const bundle = shouldBeBundled(basename)
-    if (bundle != null) {
-      return bundle ? callback() : callback(null, `commonjs ${request}`)
-    }
-
-    // Finally we respect the user given preference
-    return useLightBundle ? callback(null, `commonjs ${request}`) : callback()
+    return isExternal ? callback(null, `commonjs ${request}`) : callback()
   }
 }
