@@ -4,8 +4,9 @@ import builtinModules from "builtin-modules"
 import resolvePkg from "resolve-pkg"
 
 const BuiltIns = new Set(builtinModules)
-const WebpackEnvRequired = new Set([
-  // Required for react-universal-component's handling
+
+const BundleWithWebpack = new Set([
+  // These are required for universal import handling.
   "react-universal-component",
   "webpack-flush-chunks",
   "babel-plugin-universal-import"
@@ -40,7 +41,7 @@ export function isLoaderSpecificFile(request) {
 
   return Boolean(
     // eslint-disable-next-line max-len
-    /\.(eot|woff|woff2|ttf|otf|svg|png|jpg|jpeg|gif|webp|webm|ico|mp4|mp3|ogg|html|pdf|swf|css|scss|sass|sss|less)$/.exec(
+    /\.(eot|woff|woff2|ttf|otf|svg|png|jpg|jpeg|gif|webp|webm|ico|mp4|mp3|ogg|html|pdf|css|scss|sass|sss|less|zip)$/.exec(
       request
     )
   )
@@ -106,7 +107,7 @@ export function isRequestExternal(request, lightweight = false) {
   }
 
   // Inline all modules which require a Webpack environment
-  if (WebpackEnvRequired.has(basename)) {
+  if (BundleWithWebpack.has(basename)) {
     return false
   }
 
