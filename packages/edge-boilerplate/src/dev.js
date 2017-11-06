@@ -1,18 +1,13 @@
-import { resolve, dirname } from "path"
+/* eslint-disable no-console */
+
 import dotenv from "dotenv"
 import { createExpressServer } from "edge-express"
 import { loadConfig, createMiddleware, connectWithWebpack } from "edge-builder"
 
 dotenv.config()
 
-/* eslint-disable no-console, security/detect-non-literal-require */
 async function main() {
-  const { config, root } = await loadConfig()
-
-  console.log("ROOT:", root)
-  console.log("CONFIG:", config)
-  return
-
+  const { config } = await loadConfig()
   const { middleware, multiCompiler } = createMiddleware(config)
 
   const server = createExpressServer({
@@ -28,10 +23,6 @@ async function main() {
   })
 
   connectWithWebpack(server, multiCompiler)
-
-  server.listen(process.env.SERVER_PORT, () => {
-    console.log(`React Server Started @ Port ${process.env.SERVER_PORT}`)
-  })
 }
 
 process.nextTick(main)
