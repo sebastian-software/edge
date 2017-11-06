@@ -28,7 +28,6 @@
     "npm": ">=4.0.0"
   },
   "dependencies": {
-    "ajv": "^5.3.0",
     "app-manifest-loader": "^0.9.2",
     "app-root-dir": "^1.0.2",
     "babel-loader": "^7.1.2",
@@ -36,7 +35,6 @@
     "babel-preset-edge": "^1.3.6",
     "bluebird": "^3.5.1",
     "builtin-modules": "^1.1.1",
-    "bundle-buddy": "^0.1.2",
     "cache-loader": "^1.1.0",
     "case-sensitive-paths-webpack-plugin": "^2.1.1",
     "chalk": "^2.3.0",
@@ -60,7 +58,7 @@
     "resolve-pkg": "^1.0.0",
     "source-map-loader": "^0.2.3",
     "stats-webpack-plugin": "^0.6.1",
-    "uglify-es": "^3.1.6",
+    "uglify-es": "^3.1.7",
     "uglifyjs-webpack-plugin": "^1.0.1",
     "update-notifier": "^2.3.0",
     "webpack": "^3.8.1",

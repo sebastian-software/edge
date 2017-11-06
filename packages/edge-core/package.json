@@ -39,8 +39,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "apollo-cache-inmemory": "^1.0.0",
-    "apollo-client": "^2.0.1",
+    "apollo-cache-inmemory": "^1.1.0",
+    "apollo-client": "^2.0.2",
     "apollo-link-context": "^1.0.0",
     "apollo-link-http": "^1.1.0",
     "bluebird": "^3.5.1",
