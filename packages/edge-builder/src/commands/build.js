@@ -2,25 +2,21 @@ import webpack from "webpack"
 import { remove } from "fs-extra"
 import { promisify } from "bluebird"
 import formatWebpackMessages from "react-dev-utils/formatWebpackMessages"
-import chalk from "chalk"
 
 import builder from "../builder"
+import { notify } from "../common"
 
 const removePromise = promisify(remove)
 
-export function buildClient(config = {})
-{
+export function buildClient(config = {}) {
   const webpackConfig = builder("client", "production", config)
 
-  return new Promise((resolve, reject) =>
-  {
+  return new Promise((resolve, reject) => {
     /* eslint-disable no-console */
-    webpack(webpackConfig, (fatalError, stats) =>
-    {
+    webpack(webpackConfig, (fatalError, stats) => {
       if (fatalError) {
-        const fatalMsg = `Fatal error during compiling client: ${fatalError}`
-        console.log(chalk.red(fatalMsg))
-        return reject(fatalMsg)
+        notify(`Fatal error during compiling client: ${fatalError}`, "error")
+        return reject()
       }
 
       const rawMessages = stats.toJson({})
@@ -28,17 +24,17 @@ export function buildClient(config = {})
 
       const isSuccessful = !messages.errors.length && !messages.warnings.length
       if (isSuccessful) {
-        notify("Compiled client successfully!")
+        notify("Compiled client successfully!", "info")
       }
 
       // If errors exist, only show errors.
       if (messages.errors.length) {
-        console.log(chalk.red("Failed to compile client!\n"))
+        notify("Failed to compile client!", "error")
         console.log(messages.errors.join("\n\n"))
-        return reject("Failed to compile client!")
+        return reject()
       }
 
-      return resolve(true)
+      return resolve()
     })
   })
 }
@@ -50,9 +46,8 @@ export function buildServer(config = {}) {
     /* eslint-disable no-console */
     webpack(webpackConfig, (fatalError, stats) => {
       if (fatalError) {
-        const fatalMsg = `Fatal error during compiling server: ${fatalError}`
-        console.log(chalk.red(fatalMsg))
-        return reject(fatalMsg)
+        notify(`Fatal error during compiling server: ${fatalError}`, "error")
+        return reject()
       }
 
       const rawMessages = stats.toJson({})
@@ -60,17 +55,17 @@ export function buildServer(config = {}) {
 
       const isSuccessful = !messages.errors.length && !messages.warnings.length
       if (isSuccessful) {
-        console.log(chalk.green("Compiled server successfully!"))
+        notify("Compiled server successfully!", "info")
       }
 
       // If errors exist, only show errors.
       if (messages.errors.length) {
-        console.log(chalk.red("Failed to compile server!\n"))
+        notify("Failed to compile server!", "error")
         console.log(messages.errors.join("\n\n"))
-        return reject("Failed to compile server!")
+        return reject()
       }
 
-      return resolve(true)
+      return resolve()
     })
   })
 }
