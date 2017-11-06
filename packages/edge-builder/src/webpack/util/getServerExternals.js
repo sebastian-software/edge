@@ -52,9 +52,9 @@ const Problematic = new Set([
   "jsdom"
 ])
 
-console.log("ESM:", Modules)
-console.log("Binaries:", Binaries)
-console.log("Problematic:", Problematic)
+// console.log("ESM:", Modules)
+// console.log("Binaries:", Binaries)
+// console.log("Problematic:", Problematic)
 
 export function isLoaderSpecificFile(request) {
   return Boolean(
