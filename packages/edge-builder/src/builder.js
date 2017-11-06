@@ -200,7 +200,7 @@ export default function builder(target, env = "development", config = {}) {
     target: webpackTarget,
     devtool,
     context: ROOT,
-    externals: isServer ? getServerExternals(useLightNodeBundle) : undefined,
+    externals: isServer ? getServerExternals(useLightNodeBundle, [ VENDOR_ENTRY, MAIN_ENTRY ]) : undefined,
 
     entry: removeEmptyKeys({
       vendor: HAS_VENDOR ? [

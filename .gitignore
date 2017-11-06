@@ -9,3 +9,5 @@ packages/*/lib
 packages/*/build
 packages/*/bin
 packages/*/docs
+
+*.log

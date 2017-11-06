@@ -69,8 +69,7 @@ export function shouldBeBundled(basename) {
   // Implement default action
   let result = null
 
-  if (json)
-  {
+  if (json) {
     if (json.module || json.style || json["jsnext:main"]) {
       result = true
     }
@@ -86,7 +85,9 @@ export function shouldBeBundled(basename) {
   return result
 }
 
-export function getServerExternals(useLightBundle) {
+export function getServerExternals(useLightBundle, entries) {
+  const entriesSet = new Set(entries)
+
   // We can't influence a public interface
   // eslint-disable-next-line max-params
   return (context, request, callback) => {
@@ -95,6 +96,11 @@ export function getServerExternals(useLightBundle) {
     // Externalize built-in modules
     if (BuiltIns.has(basename)) {
       return callback(null, `commonjs ${request}`)
+    }
+
+    // Make sure to include entries
+    if (entriesSet.has(request)) {
+      return callback()
     }
 
     // Ignore all inline files for further processing
