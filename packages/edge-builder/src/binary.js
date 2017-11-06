@@ -4,8 +4,7 @@ import updateNotifier from "update-notifier"
 import Promise from "bluebird"
 import clearConsole from "react-dev-utils/clearConsole"
 
-import { getConfig } from "./common"
-import { NAME, VERSION } from "./config"
+import { loadConfig, NAME, VERSION } from "./config"
 import { buildClient, buildServer, cleanClient, cleanServer } from "./commands/build"
 
 import pkg from "../package.json"
@@ -17,11 +16,7 @@ if (IS_INTERACTIVE) {
 }
 
 console.log(
-  `${chalk.bold(`EDGE ${ chalk.green(`v${ pkg.version}`)}`)
-  } running on ${
-    chalk.bold.blue(NAME)
-  }-${
-    VERSION}`
+  `${chalk.bold(`EDGE ${chalk.green(`v${pkg.version}`)}`)} running on ${chalk.bold.blue(NAME)}-${VERSION}`
 )
 
 // Parse arguments
@@ -82,7 +77,7 @@ function executeCommands(listOfCommands, config) {
 }
 
 async function executeTasks() {
-  const config = await getConfig(flags)
+  const { config } = await loadConfig("edge", flags)
 
   for (let taskName of selectedTasks) {
     for (let taskConfig of availableTasks) {

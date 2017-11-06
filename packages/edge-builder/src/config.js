@@ -3,6 +3,7 @@ import cosmiconfig from "cosmiconfig"
 import { get as getRoot } from "app-root-dir"
 import { set } from "lodash"
 import toBool from "yn"
+import jsome from "jsome"
 
 // Export common understanding of what ROOT is
 export const ROOT = getRoot()
@@ -11,6 +12,7 @@ const appPkg = require(`${ROOT}/package.json`)
 
 export const NAME = appPkg.name
 export const VERSION = appPkg.version
+export const LOGPREFIX = `${NAME}-${VERSION}:`
 
 export const SCHEMA = {
   verbose: {
@@ -121,9 +123,16 @@ export async function loadConfig(prefix = "edge", flags = {}) {
 
   await processConfig(config, SCHEMA)
 
+  const configRoot = relative(ROOT, configResult.filepath)
+
+  if (config.verbose) {
+    console.log(`Configuration from ${configRoot}:`)
+    jsome(config)
+  }
+
   return {
     config,
-    root: relative(ROOT, configResult.filepath)
+    root: configRoot
   }
 }
 

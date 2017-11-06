@@ -1,22 +1,7 @@
-import jsome from "jsome"
 import chalk from "chalk"
 import notifier from "node-notifier"
 
-import { loadConfig, NAME, VERSION } from "./config"
-
-/* eslint-disable no-console */
-export async function getConfig(flags) {
-  const { config, root } = await loadConfig("edge", flags)
-
-  console.log(`[EDGE] Loaded config from ${root}`)
-
-  if (config.verbose) {
-    console.log("[EDGE] Configuration:")
-    jsome(config)
-  }
-
-  return config
-}
+import { NAME, VERSION } from "./config"
 
 export function colorize(message, level = null) {
   switch (level) {
