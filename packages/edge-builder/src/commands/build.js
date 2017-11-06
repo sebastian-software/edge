@@ -71,9 +71,9 @@ export function buildServer(config = {}) {
 }
 
 export function cleanServer(config = {}) {
-  return removePromise("./build/server")
+  return removePromise(config.output.server)
 }
 
 export function cleanClient(config = {}) {
-  return removePromise("./build/client")
+  return removePromise(config.output.client)
 }
