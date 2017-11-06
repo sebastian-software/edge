@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 import formatWebpackMessages from "react-dev-utils/formatWebpackMessages"
 import webpack from "webpack"
 import webpackDevMiddleware from "webpack-dev-middleware"
@@ -50,6 +48,7 @@ export function connectWithWebpack(server, multiCompiler) {
   })
 
   multiCompiler.plugin("done", (stats) => {
+    /* eslint-disable no-console */
     const rawMessages = stats.toJson({})
     const messages = formatWebpackMessages(rawMessages)
 
