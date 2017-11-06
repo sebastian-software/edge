@@ -1,4 +1,4 @@
-import { load as loadConfig } from "./config"
+import { loadConfig } from "./config"
 import { cleanClient, cleanServer, buildClient, buildServer } from "./commands/build"
 import { connectWithWebpack, createMiddleware } from "./commands/dev"
 

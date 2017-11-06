@@ -95,7 +95,7 @@ export const SCHEMA = {
   }
 }
 
-export async function load(prefix = "edge", flags = {}) {
+export async function loadConfig(prefix = "edge", flags = {}) {
   // Read edge configuration
   const configLoader = cosmiconfig(prefix, {
     // allow extensions on rc files

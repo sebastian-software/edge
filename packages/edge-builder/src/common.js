@@ -2,11 +2,11 @@ import jsome from "jsome"
 import chalk from "chalk"
 import notifier from "node-notifier"
 
-import { load, NAME, VERSION } from "./config"
+import { loadConfig, NAME, VERSION } from "./config"
 
 /* eslint-disable no-console */
 export async function getConfig(flags) {
-  const { config, root } = await load("edge", flags)
+  const { config, root } = await loadConfig("edge", flags)
 
   console.log(`[EDGE] Loaded config from ${root}`)
 

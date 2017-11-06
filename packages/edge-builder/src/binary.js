@@ -13,13 +13,20 @@ import pkg from "../package.json"
 const IS_INTERACTIVE = process.stdout.isTTY
 
 if (IS_INTERACTIVE) {
-  // clearConsole()
+  clearConsole()
 }
 
-console.log(chalk.bold("EDGE " + chalk.green("v" + pkg.version)) + " running on " + chalk.bold.blue(NAME) + "-" + VERSION)
+console.log(
+  `${chalk.bold(`EDGE ${ chalk.green(`v${ pkg.version}`)}`)
+  } running on ${
+    chalk.bold.blue(NAME)
+  }-${
+    VERSION}`
+)
 
 // Parse arguments
-const command = meow(`
+const command = meow(
+  `
   Usage:
     $ edge <command>
 
@@ -33,12 +40,14 @@ const command = meow(`
     build:client    Build client part of production application
     build:server    Build server part of production application
     clean           Clean up all generated files
-`, {
+`,
+  {
     alias: {
       v: "verbose",
       q: "quiet"
     }
-  })
+  }
+)
 
 const selectedTasks = command.input
 const flags = command.flags
@@ -65,9 +74,10 @@ if (!flags.verbose) {
   process.noDeprecation = true
 }
 
-/* eslint-disable no-process-exit, max-depth, no-console, no-use-extend-native/no-use-extend-native */
+/* eslint-disable no-process-exit, max-depth, no-console */
 
 function executeCommands(listOfCommands, config) {
+  /* eslint-disable no-use-extend-native/no-use-extend-native */
   return Promise.each(listOfCommands, (item) => item(config))
 }
 
