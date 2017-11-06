@@ -15,7 +15,7 @@ import webpackPkg from "webpack/package.json"
 import WebpackDigestHash from "./plugins/ChunkHash"
 import VerboseProgress from "./plugins/VerboseProgress"
 
-import getServerExternals from "./webpack/util/getServerExternals"
+import { getServerExternals } from "./webpack/util"
 
 // CSS Support
 import ExtractCssChunks from "extract-css-chunks-webpack-plugin"
@@ -183,7 +183,7 @@ export default function builder(target, env = "development", config = {}) {
   // Just bundle the NodeJS files which are from the local project instead
   // of a deep self-contained bundle.
   // See also: https://nolanlawson.com/2016/08/15/the-cost-of-small-modules/
-  const useLightNodeBundle = false
+  const useLightNodeBundle = isDevelopment
 
   const HMR_MIDDLEWARE = "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=10000&reload=true&noInfo=true&overlay=false"
 
