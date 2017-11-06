@@ -8,34 +8,38 @@ import { notify } from "../common"
 
 const removePromise = promisify(remove)
 
+/* eslint-disable no-console, max-params */
+function getWebpackHandler(target, resolve, reject) {
+  return (fatalError, stats) => {
+    if (fatalError) {
+      notify(`Fatal error during compiling ${target}: ${fatalError}`, "error")
+      return reject()
+    }
+
+    const rawMessages = stats.toJson({})
+    const messages = formatWebpackMessages(rawMessages)
+
+    const isSuccessful = !messages.errors.length && !messages.warnings.length
+    if (isSuccessful) {
+      notify(`Compiled ${target} successfully!`, "info")
+    }
+
+    // If errors exist, only show errors.
+    if (messages.errors.length) {
+      notify(`Failed to compile ${target}!`, "error")
+      console.log(messages.errors.join("\n\n"))
+      return reject()
+    }
+
+    return resolve()
+  }
+}
+
 export function buildClient(config = {}) {
   const webpackConfig = builder("client", "production", config)
 
   return new Promise((resolve, reject) => {
-    /* eslint-disable no-console */
-    webpack(webpackConfig, (fatalError, stats) => {
-      if (fatalError) {
-        notify(`Fatal error during compiling client: ${fatalError}`, "error")
-        return reject()
-      }
-
-      const rawMessages = stats.toJson({})
-      const messages = formatWebpackMessages(rawMessages)
-
-      const isSuccessful = !messages.errors.length && !messages.warnings.length
-      if (isSuccessful) {
-        notify("Compiled client successfully!", "info")
-      }
-
-      // If errors exist, only show errors.
-      if (messages.errors.length) {
-        notify("Failed to compile client!", "error")
-        console.log(messages.errors.join("\n\n"))
-        return reject()
-      }
-
-      return resolve()
-    })
+    webpack(webpackConfig, getWebpackHandler("client", resolve, reject))
   })
 }
 
@@ -43,30 +47,7 @@ export function buildServer(config = {}) {
   const webpackConfig = builder("server", "production", config)
 
   return new Promise((resolve, reject) => {
-    /* eslint-disable no-console */
-    webpack(webpackConfig, (fatalError, stats) => {
-      if (fatalError) {
-        notify(`Fatal error during compiling server: ${fatalError}`, "error")
-        return reject()
-      }
-
-      const rawMessages = stats.toJson({})
-      const messages = formatWebpackMessages(rawMessages)
-
-      const isSuccessful = !messages.errors.length && !messages.warnings.length
-      if (isSuccessful) {
-        notify("Compiled server successfully!", "info")
-      }
-
-      // If errors exist, only show errors.
-      if (messages.errors.length) {
-        notify("Failed to compile server!", "error")
-        console.log(messages.errors.join("\n\n"))
-        return reject()
-      }
-
-      return resolve()
-    })
+    webpack(webpackConfig, getWebpackHandler("server", resolve, reject))
   })
 }
 
