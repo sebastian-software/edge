@@ -5,13 +5,10 @@ import Promise from "bluebird"
 import clearConsole from "react-dev-utils/clearConsole"
 
 import { getConfig } from "./common"
-import { ROOT } from "./config"
+import { NAME, VERSION } from "./config"
 import { buildClient, buildServer, cleanClient, cleanServer } from "./commands/build"
 
 import pkg from "../package.json"
-
-const appPkg = require(ROOT + "/package.json")
-const appInfo = " running on " + chalk.bold.blue(appPkg.name) + "-" + appPkg.version
 
 const IS_INTERACTIVE = process.stdout.isTTY
 
@@ -19,7 +16,7 @@ if (IS_INTERACTIVE) {
   // clearConsole()
 }
 
-console.log(chalk.bold("EDGE " + chalk.green("v" + pkg.version)) + appInfo)
+console.log(chalk.bold("EDGE " + chalk.green("v" + pkg.version)) + " running on " + chalk.bold.blue(NAME) + "-" + VERSION)
 
 // Parse arguments
 const command = meow(`

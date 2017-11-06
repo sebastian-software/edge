@@ -28,7 +28,7 @@ export function buildClient(config = {})
 
       const isSuccessful = !messages.errors.length && !messages.warnings.length
       if (isSuccessful) {
-        console.log(chalk.green("Compiled client successfully!"))
+        notify("Compiled client successfully!")
       }
 
       // If errors exist, only show errors.

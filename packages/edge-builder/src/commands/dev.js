@@ -1,13 +1,13 @@
 /* eslint-disable no-console */
 
 import formatWebpackMessages from "react-dev-utils/formatWebpackMessages"
-import chalk from "chalk"
 import webpack from "webpack"
 import webpackDevMiddleware from "webpack-dev-middleware"
 import webpackHotMiddleware from "webpack-hot-middleware"
 import webpackHotServerMiddleware from "webpack-hot-server-middleware"
 
 import configBuilder from "../builder"
+import { notify } from "../common"
 
 export function createMiddleware(config = {}) {
   const clientConfig = configBuilder("client", "development", config)
@@ -46,7 +46,7 @@ export function connectWithWebpack(server, multiCompiler) {
   let serverIsStarted = false
 
   multiCompiler.plugin("invalid", () => {
-    console.log("[EDGE] Compiling...")
+    notify("Compiling...", "info")
   })
 
   multiCompiler.plugin("done", (stats) => {
@@ -55,19 +55,19 @@ export function connectWithWebpack(server, multiCompiler) {
 
     const isSuccessful = !messages.errors.length && !messages.warnings.length
     if (isSuccessful) {
-      console.log(chalk.green("[EDGE] Compiled successfully!"))
+      notify("Compiled successfully!", "info")
     }
 
     // If errors exist, only show errors.
     if (messages.errors.length) {
-      console.log(chalk.red("[EDGE] Failed to compile.\n"))
+      notify("Failed to compile!", "error")
       console.log(messages.errors.join("\n\n"))
       return
     }
 
     // Show warnings if no errors were found.
     if (messages.warnings.length) {
-      console.log(chalk.yellow("[EDGE] Compiled with warnings.\n"))
+      notify("Compiled with warnings!", "warn")
       console.log(messages.warnings.join("\n\n"))
     }
 
@@ -75,7 +75,7 @@ export function connectWithWebpack(server, multiCompiler) {
       serverIsStarted = true
 
       server.listen(process.env.SERVER_PORT, () => {
-        console.log(`[EDGE] Development Server started @ Port ${process.env.SERVER_PORT}`)
+        notify(`Server started at port ${process.env.SERVER_PORT}`, "info")
       })
     }
   })

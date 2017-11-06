@@ -7,6 +7,11 @@ import toBool from "yn"
 // Export common understanding of what ROOT is
 export const ROOT = getRoot()
 
+const appPkg = require(`${ROOT}/package.json`)
+
+export const NAME = appPkg.name
+export const VERSION = appPkg.version
+
 export const SCHEMA = {
   verbose: {
     type: "boolean",
