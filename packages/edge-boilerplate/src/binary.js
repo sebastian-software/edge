@@ -1,33 +1,23 @@
-import { resolve, dirname } from "path"
-import cosmiconfig from "cosmiconfig"
+import { resolve } from "path"
 import dotenv from "dotenv"
+import toBool from "yn"
+
 import { createExpressServer } from "edge-express"
+import { loadConfig } from "edge-builder"
 
 dotenv.config()
 
-const configLoader = cosmiconfig("edge", {
-  stopDir: process.cwd(),
-  rcExtensions: true
-})
-
-const enableNonce = process.env.ENABLE_NONCE === "true"
-const enableCSP = process.env.ENABLE_CSP === "true"
-
 /* eslint-disable no-console, security/detect-non-literal-require */
 async function main() {
-  const { config, filepath } = await configLoader.load(__dirname)
-  const root = dirname(filepath)
+  const { config } = await loadConfig()
 
-  const clientOutput = resolve(root, config.output.client)
-  const serverOutput = resolve(root, config.output.server)
-
-  const clientStats = require(`${clientOutput}/stats.json`)
-  const serverRender = require(`${serverOutput}/main.js`).default
+  const clientStats = require(resolve(config.output.client, "stats.json"))
+  const serverRender = require(resolve(config.output.server, "main.js")).default
 
   const server = createExpressServer({
     staticConfig: {
       public: config.output.public,
-      path: clientOutput
+      path: config.output.client
     },
     localeConfig: config.locale,
     afterSecurity: [],
@@ -36,8 +26,8 @@ async function main() {
         clientStats
       })
     ],
-    enableCSP,
-    enableNonce
+    enableCSP: toBool(process.env.ENABLE_CSP),
+    enableNonce: toBool(process.env.ENABLE_NONCE)
   })
 
   server.listen(process.env.SERVER_PORT, () => {

@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 
 import dotenv from "dotenv"
+import toBool from "yn"
+
 import { createExpressServer } from "edge-express"
 import { loadConfig, createMiddleware, connectWithWebpack } from "edge-builder"
 
@@ -18,8 +20,8 @@ async function main() {
     localeConfig: config.locale,
     afterSecurity: [],
     beforeFallback: [ ...middleware ],
-    enableCSP: process.env.ENABLE_CSP !== "false",
-    enableNonce: process.env.ENABLE_NONCE !== "false"
+    enableCSP: toBool(process.env.ENABLE_CSP),
+    enableNonce: toBool(process.env.ENABLE_NONCE)
   })
 
   connectWithWebpack(server, multiCompiler)
