@@ -7,7 +7,8 @@ const BuiltIns = new Set(builtinModules)
 const WebpackEnvRequired = new Set([
   // Required for react-universal-component's handling
   "react-universal-component",
-  "webpack-flush-chunks"
+  "webpack-flush-chunks",
+  "babel-plugin-universal-import"
 ])
 
 const Problematic = new Set([
