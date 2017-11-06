@@ -1,10 +1,6 @@
 import { load as loadConfig } from "./config"
 import { cleanClient, cleanServer, buildClient, buildServer } from "./commands/build"
-import {
-  start as startDevServer,
-  connect as connectWithWebpack,
-  create as createMiddleware
-} from "./commands/dev"
+import { connectWithWebpack, createMiddleware } from "./commands/dev"
 
 export {
   loadConfig,
@@ -12,7 +8,6 @@ export {
   cleanServer,
   buildClient,
   buildServer,
-  startDevServer,
   connectWithWebpack,
   createMiddleware
 }

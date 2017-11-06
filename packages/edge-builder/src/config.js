@@ -2,12 +2,18 @@ import { relative, resolve } from "path"
 import cosmiconfig from "cosmiconfig"
 import { get as getRoot } from "app-root-dir"
 import { set } from "lodash"
+import toBool from "yn"
 
 // Export common understanding of what ROOT is
 export const ROOT = getRoot()
 
 export const SCHEMA = {
   verbose: {
+    type: "boolean",
+    default: false
+  },
+
+  quiet: {
     type: "boolean",
     default: false
   },
@@ -150,7 +156,7 @@ async function processEntry(value, specs) {
       return parsed
 
     case "boolean":
-      return Boolean(value)
+      return toBool(value)
 
     case "path":
       if (typeof value !== "string") {

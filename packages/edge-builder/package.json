@@ -42,8 +42,6 @@
     "chalk": "^2.3.0",
     "cosmiconfig": "^3.1.0",
     "css-loader": "^0.28.7",
-    "edge-express": "^0.1.11",
-    "express": "^4.16.2",
     "extract-css-chunks-webpack-plugin": "^2.0.17",
     "file-loader": "^1.1.5",
     "fs-extra": "^4.0.2",
@@ -73,6 +71,7 @@
     "webpack-subresource-integrity": "^1.0.1",
     "worker-loader": "^1.1.0",
     "yaml-loader": "^0.5.0",
+    "yn": "^2.0.0",
     "zopfli-webpack-plugin": "^0.1.0"
   },
   "devDependencies": {

@@ -7,8 +7,6 @@ import clearConsole from "react-dev-utils/clearConsole"
 import { getConfig } from "./common"
 import { ROOT } from "./config"
 import { buildClient, buildServer, cleanClient, cleanServer } from "./commands/build"
-import { start as startDevServer } from "./commands/dev"
-import { startReactServer } from "./commands/react"
 
 import pkg from "../package.json"
 
@@ -18,7 +16,7 @@ const appInfo = " running on " + chalk.bold.blue(appPkg.name) + "-" + appPkg.ver
 const IS_INTERACTIVE = process.stdout.isTTY
 
 if (IS_INTERACTIVE) {
-  clearConsole()
+  // clearConsole()
 }
 
 console.log(chalk.bold("EDGE " + chalk.green("v" + pkg.version)) + appInfo)
@@ -34,9 +32,6 @@ const command = meow(`
     --quiet, -q     Reduce amount of output messages to warnings and errors.
 
   Commands:
-    dev             Start development server
-    start:dev       Start development server
-    start:react     Start production universal React server
     build           Build production appliction
     build:client    Build client part of production application
     build:server    Build server part of production application
@@ -65,11 +60,7 @@ const availableTasks = [
   { task: "clean", commands: [ cleanClient, cleanServer ] },
   { task: "build", commands: [ cleanClient, cleanServer, buildClient, buildServer ] },
   { task: "build:client", commands: [ cleanClient, buildClient ] },
-  { task: "build:server", commands: [ cleanServer, buildServer ] },
-  { task: "dev", commands: [ cleanClient, cleanServer, startDevServer ] },
-  { task: "start:dev", commands: [ cleanClient, cleanServer, startDevServer ] },
-  { task: "start:react", commands: [ cleanClient, cleanServer, buildClient, buildServer, startReactServer ] },
-  { task: "start:react:plain", commands: [ startReactServer ] }
+  { task: "build:server", commands: [ cleanServer, buildServer ] }
 ]
 
 // Prevent deprecation messages which should not be displayed to the end user

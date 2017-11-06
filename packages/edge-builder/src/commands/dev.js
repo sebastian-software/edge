@@ -6,11 +6,10 @@ import webpack from "webpack"
 import webpackDevMiddleware from "webpack-dev-middleware"
 import webpackHotMiddleware from "webpack-hot-middleware"
 import webpackHotServerMiddleware from "webpack-hot-server-middleware"
-import { createExpressServer } from "edge-express"
 
 import configBuilder from "../builder"
 
-export function create(config = {}) {
+export function createMiddleware(config = {}) {
   const clientConfig = configBuilder("client", "development", config)
   const serverConfig = configBuilder("server", "development", config)
 
@@ -43,7 +42,7 @@ export function create(config = {}) {
   }
 }
 
-export function connect(server, multiCompiler) {
+export function connectWithWebpack(server, multiCompiler) {
   let serverIsStarted = false
 
   multiCompiler.plugin("invalid", () => {
@@ -80,22 +79,4 @@ export function connect(server, multiCompiler) {
       })
     }
   })
-}
-
-export function start(config = {}) {
-  const { middleware, multiCompiler } = create(config)
-
-  const server = createExpressServer({
-    staticConfig: {
-      public: config.output.public,
-      path: config.output.client
-    },
-    localeConfig: config.locale,
-    afterSecurity: [],
-    beforeFallback: [ ...middleware ],
-    enableCSP: process.env.ENABLE_CSP !== "false",
-    enableNonce: process.env.ENABLE_NONCE !== "false"
-  })
-
-  connect(server, multiCompiler)
 }
