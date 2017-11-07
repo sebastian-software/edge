@@ -1,4 +1,5 @@
 import { resolve } from "path"
+import { existsSync } from "fs"
 import { readJsonSync } from "fs-extra"
 import builtinModules from "builtin-modules"
 import resolvePkg from "resolve-pkg"
@@ -61,25 +62,35 @@ export function shouldBeBundled(basename) {
     return null
   }
 
-  var json
-  try {
-    json = readJsonSync(resolve(resolved, "package.json"))
-  } catch (error) {
-    // pass
-  }
-
   // Implement default action
   let result = null
 
-  if (json) {
-    if (json.module || json.style || json["jsnext:main"]) {
-      result = true
+  // Detect Node-Gyp Bindings File
+  // "describes the configuration to build your module in a JSON-like format"
+  // Via: https://github.com/nodejs/node-gyp#the-bindinggyp-file
+  const hasBindings = existsSync(resolve(resolved, "bindings.gyp"))
+  if (hasBindings) {
+    result = false
+    console.log("BindingsFile:", basename)
+  } else {
+    var json
+
+    try {
+      json = readJsonSync(resolve(resolved, "package.json"))
+    } catch (error) {
+      // pass
     }
 
-    // Configuration for Node-Pre-Gyp
-    // See also: https://www.npmjs.com/package/node-pre-gyp
-    if (json.binary != null) {
-      result = false
+    if (json) {
+      if (json.module || json.style || json["jsnext:main"]) {
+        result = true
+      }
+
+      // Configuration for Node-Pre-Gyp
+      // See also: https://www.npmjs.com/package/node-pre-gyp
+      if (json.binary != null) {
+        result = false
+      }
     }
   }
 
