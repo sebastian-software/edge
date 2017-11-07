@@ -19,6 +19,7 @@ Edge Platform helps you focus on business logic rather than dealing with complex
 
 Project Name | NPM Status | Dependency Status
 ------------ | ---------- | -------------------------------------
+[Edge Common][common-home] | [![Version][common-npm-version-img]][common-npm] [![Downloads][common-npm-downloads-img]][common-npm] | [![Dependencies][common-deps-img]][common-deps]
 [Edge Builder][builder-home] | [![Version][builder-npm-version-img]][builder-npm] [![Downloads][builder-npm-downloads-img]][builder-npm] | [![Dependencies][builder-deps-img]][builder-deps]
 [Edge Core][core-home] | [![Version][core-npm-version-img]][core-npm] [![Downloads][core-npm-downloads-img]][core-npm] | [![Dependencies][core-deps-img]][core-deps]
 [Edge Style][style-home] | [![Version][style-npm-version-img]][style-npm] [![Downloads][style-npm-downloads-img]][style-npm] | [![Dependencies][style-deps-img]][style-deps]
@@ -42,49 +43,56 @@ Project Name | NPM Status | Build Status | Dependency Status
 [PostCSS Smart Asset][smartasset-home] | [![Version][smartasset-npm-version-img]][smartasset-npm] [![Downloads][smartasset-npm-downloads-img]][smartasset-npm] | [![Build Status Unix][smartasset-travis-img]][smartasset-travis] [![Build Status Windows][smartasset-appveyor-img]][smartasset-appveyor] | [![Dependencies][smartasset-deps-img]][smartasset-deps]
 [Rollup Rebase][rebase-home] | [![Version][rebase-npm-version-img]][rebase-npm] [![Downloads][rebase-npm-downloads-img]][rebase-npm] | [![Build Status Unix][rebase-travis-img]][rebase-travis] [![Build Status Windows][rebase-appveyor-img]][rebase-appveyor] | [![Dependencies][rebase-deps-img]][rebase-deps]
 
-[builder-home]: https://github.com/sebastian-software/edge-builder
+[common-home]: https://github.com/sebastian-software/edge/packages/edge-common
+[common-deps]: https://david-dm.org/sebastian-software/edge?path=packages/edge-common
+[common-deps-img]: https://david-dm.org/sebastian-software/edge.svg?path=packages/edge-common
+[common-npm]: https://www.npmjs.com/package/edge-common
+[common-npm-downloads-img]: https://img.shields.io/npm/dm/edge-common.svg
+[common-npm-version-img]: https://img.shields.io/npm/v/edge-common.svg
+
+[builder-home]: https://github.com/sebastian-software/edge/packages/edge-builder
 [builder-deps]: https://david-dm.org/sebastian-software/edge?path=packages/edge-builder
 [builder-deps-img]: https://david-dm.org/sebastian-software/edge.svg?path=packages/edge-builder
 [builder-npm]: https://www.npmjs.com/package/edge-builder
 [builder-npm-downloads-img]: https://img.shields.io/npm/dm/edge-builder.svg
 [builder-npm-version-img]: https://img.shields.io/npm/v/edge-builder.svg
 
-[core-home]: https://github.com/sebastian-software/edge-core
+[core-home]: https://github.com/sebastian-software/edge/packages/edge-core
 [core-deps]: https://david-dm.org/sebastian-software/edge?path=packages/edge-core
 [core-deps-img]: https://david-dm.org/sebastian-software/edge.svg?path=packages/edge-core
 [core-npm]: https://www.npmjs.com/package/edge-core
 [core-npm-downloads-img]: https://img.shields.io/npm/dm/edge-core.svg
 [core-npm-version-img]: https://img.shields.io/npm/v/edge-core.svg
 
-[style-home]: https://github.com/sebastian-software/edge-style
+[style-home]: https://github.com/sebastian-software/edge/packages/edge-style
 [style-deps]: https://david-dm.org/sebastian-software/edge?path=packages/edge-style
 [style-deps-img]: https://david-dm.org/sebastian-software/edge.svg?path=packages/edge-style
 [style-npm]: https://www.npmjs.com/package/edge-style
 [style-npm-downloads-img]: https://img.shields.io/npm/dm/edge-style.svg
 [style-npm-version-img]: https://img.shields.io/npm/v/edge-style.svg
 
-[express-home]: https://github.com/sebastian-software/edge-express
+[express-home]: https://github.com/sebastian-software/edge/packages/edge-express
 [express-deps]: https://david-dm.org/sebastian-software/edge?path=packages/edge-express
 [express-deps-img]: https://david-dm.org/sebastian-software/edge.svg?path=packages/edge-express
 [express-npm]: https://www.npmjs.com/package/edge-express
 [express-npm-downloads-img]: https://img.shields.io/npm/dm/edge-express.svg
 [express-npm-version-img]: https://img.shields.io/npm/v/edge-express.svg
 
-[useragent-home]: https://github.com/sebastian-software/edge-useragent
+[useragent-home]: https://github.com/sebastian-software/edge/packages/edge-useragent
 [useragent-deps]: https://david-dm.org/sebastian-software/edge?path=packages/edge-useragent
 [useragent-deps-img]: https://david-dm.org/sebastian-software/edge.svg?path=packages/edge-useragent
 [useragent-npm]: https://www.npmjs.com/package/edge-useragent
 [useragent-npm-downloads-img]: https://img.shields.io/npm/dm/edge-useragent.svg
 [useragent-npm-version-img]: https://img.shields.io/npm/v/edge-useragent.svg
 
-[boilerplate-home]: https://github.com/sebastian-software/edge-boilerplate
+[boilerplate-home]: https://github.com/sebastian-software/edge/packages/edge-boilerplate
 [boilerplate-deps]: https://david-dm.org/sebastian-software/edge?path=packages/edge-boilerplate
 [boilerplate-deps-img]: https://david-dm.org/sebastian-software/edge.svg?path=packages/edge-boilerplate
 [boilerplate-npm]: https://www.npmjs.com/package/edge-boilerplate
 [boilerplate-npm-downloads-img]: https://img.shields.io/npm/dm/edge-boilerplate.svg
 [boilerplate-npm-version-img]: https://img.shields.io/npm/v/edge-boilerplate.svg
 
-[postcss-home]: https://github.com/sebastian-software/edge-postcss
+[postcss-home]: https://github.com/sebastian-software/edge/packages/edge-postcss
 [postcss-deps]: https://david-dm.org/sebastian-software/edge?path=packages/edge-postcss
 [postcss-deps-img]: https://david-dm.org/sebastian-software/edge.svg?path=packages/edge-postcss
 [postcss-npm]: https://www.npmjs.com/package/edge-postcss
