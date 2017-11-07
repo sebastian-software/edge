@@ -13,7 +13,7 @@ const BundleWithWebpack = new Set([
 ])
 
 const Problematic = new Set([
-  // "intl" is included in one block with complete data. No reason for bundle everything here.
+  // "intl" is included in one block with complete data of all locales. There is no benefit for bundle everything here.
   "intl",
 
   // "mime-db" database for working with mime types. Naturally pretty large stuff.

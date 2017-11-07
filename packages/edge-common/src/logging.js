@@ -25,6 +25,7 @@ export function notify(message, level = null) {
     message
   })
 
+  /* eslint-disable no-console */
   const consoleMessage = `${chalk.bold(NAME)}: ${colorize(message, level)}`
   switch (level) {
     case "warn":
