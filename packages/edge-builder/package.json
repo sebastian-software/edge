@@ -47,7 +47,6 @@
     "loader-utils": "^1.1.0",
     "lodash": "^4.17.4",
     "meow": "^3.7.0",
-    "node-notifier": "^5.1.2",
     "ora": "^1.3.0",
     "postcss-loader": "^2.0.8",
     "react-dev-utils": "^4.2.1",

@@ -22,9 +22,12 @@
   },
   "dependencies": {
     "app-root-dir": "^1.0.2",
+    "chalk": "^2.3.0",
     "cosmiconfig": "^3.1.0",
     "jsome": "^2.3.26",
     "lodash": "^4.17.4",
+    "nodent-runtime": "^3.0.4",
+    "node-notifier": "^5.1.2",
     "yn": "^2.0.0"
   },
   "devDependencies": {
