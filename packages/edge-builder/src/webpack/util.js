@@ -71,7 +71,6 @@ export function shouldBeBundled(basename) {
   const hasBindings = existsSync(resolve(resolved, "bindings.gyp"))
   if (hasBindings) {
     result = false
-    console.log("BindingsFile:", basename)
   } else {
     var json
 
