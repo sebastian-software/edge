@@ -34,7 +34,6 @@
     "cache-loader": "^1.1.0",
     "case-sensitive-paths-webpack-plugin": "^2.1.1",
     "chalk": "^2.3.0",
-    "cosmiconfig": "^3.1.0",
     "css-loader": "^0.28.7",
     "extract-css-chunks-webpack-plugin": "^2.0.17",
     "file-loader": "^1.1.5",
