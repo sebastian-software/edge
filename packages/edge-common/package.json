@@ -1,7 +1,7 @@
 {
   "name": "edge-common",
   "description": "Edge common contains NodeJS based common utilities and helpers. Part of the Edge Platform.",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": {
     "name": "Sebastian Software",
     "email": "s.werner@sebastian-software.de",
@@ -26,8 +26,8 @@
     "cosmiconfig": "^3.1.0",
     "jsome": "^2.3.26",
     "lodash": "^4.17.4",
-    "nodent-runtime": "^3.0.4",
     "node-notifier": "^5.1.2",
+    "nodent-runtime": "^3.0.4",
     "yn": "^2.0.0"
   },
   "devDependencies": {
