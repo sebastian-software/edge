@@ -4,7 +4,8 @@ import dotenv from "dotenv"
 import toBool from "yn"
 
 import { createExpressServer } from "edge-express"
-import { loadConfig, createMiddleware, connectWithWebpack } from "edge-builder"
+import { loadConfig } from "edge-common"
+import { createMiddleware, connectWithWebpack } from "edge-builder"
 
 dotenv.config()
 

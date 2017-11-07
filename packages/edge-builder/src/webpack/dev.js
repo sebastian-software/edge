@@ -3,9 +3,9 @@ import webpack from "webpack"
 import webpackDevMiddleware from "webpack-dev-middleware"
 import webpackHotMiddleware from "webpack-hot-middleware"
 import webpackHotServerMiddleware from "webpack-hot-server-middleware"
+import { notify } from "edge-common"
 
 import configBuilder from "../builder"
-import { notify } from "../common"
 
 export function createMiddleware(config = {}) {
   const clientConfig = configBuilder("client", "development", config)

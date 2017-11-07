@@ -2,9 +2,9 @@ import webpack from "webpack"
 import { remove } from "fs-extra"
 import { promisify } from "bluebird"
 import formatWebpackMessages from "react-dev-utils/formatWebpackMessages"
+import { notify } from "edge-common"
 
 import builder from "../builder"
-import { notify } from "../common"
 
 const removePromise = promisify(remove)
 

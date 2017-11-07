@@ -4,7 +4,7 @@ import updateNotifier from "update-notifier"
 import Promise from "bluebird"
 import clearConsole from "react-dev-utils/clearConsole"
 
-import { loadConfig, NAME, VERSION } from "./config"
+import { loadConfig, NAME, VERSION } from "edge-common"
 import { buildClient, buildServer, cleanClient, cleanServer } from "./commands/build"
 
 import pkg from "../package.json"

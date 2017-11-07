@@ -3,7 +3,7 @@ import dotenv from "dotenv"
 import toBool from "yn"
 
 import { createExpressServer } from "edge-express"
-import { loadConfig } from "edge-builder"
+import { loadConfig } from "edge-common"
 
 dotenv.config()
 
