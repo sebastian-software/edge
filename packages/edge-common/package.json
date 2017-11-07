@@ -1,0 +1,35 @@
+{
+  "name": "edge-common",
+  "description": "Edge common contains NodeJS based common utilities and helpers. Part of the Edge Platform.",
+  "version": "0.0.1",
+  "author": {
+    "name": "Sebastian Software",
+    "email": "s.werner@sebastian-software.de",
+    "url": "sebastian-software.de"
+  },
+  "main": "lib/node.cjs.js",
+  "module": "lib/node.esm.js",
+  "license": "Apache-2.0",
+  "scripts": {
+    "prepack": "npm run build",
+    "build": "rimraf bin && rimraf lib && prepublish",
+    "test": "jest"
+  },
+  "engines": {
+    "node": ">=6.0.0",
+    "yarn": ">=1.0.0",
+    "npm": ">=4.0.0"
+  },
+  "dependencies": {
+    "app-root-dir": "^1.0.2",
+    "cosmiconfig": "^3.1.0",
+    "jsome": "^2.3.26",
+    "lodash": "^4.17.4",
+    "yn": "^2.0.0"
+  },
+  "devDependencies": {
+    "jest": "*",
+    "prepublish": "*",
+    "rimraf": "*"
+  }
+}
