@@ -50,20 +50,8 @@ export function isLoaderSpecificFile(request) {
 
 const bundleCache = {}
 
-export function shouldBeBundled(basename) {
-  if (basename in bundleCache) {
-    return bundleCache[basename]
-  }
-
-  let resolved
-  try {
-    resolved = resolvePkg(basename)
-  } catch (error) {
-    return null
-  }
-
-  // Implement default action
-  let result = null
+export function shouldPackageBeBundled(resolved) {
+  var result = null
 
   // Detect Node-Gyp Bindings File
   // "describes the configuration to build your module in a JSON-like format"
@@ -93,27 +81,52 @@ export function shouldBeBundled(basename) {
     }
   }
 
+  return result
+}
+
+export function shouldBeBundled(basename) {
+  if (basename in bundleCache) {
+    return bundleCache[basename]
+  }
+
+  let resolved
+  try {
+    resolved = resolvePkg(basename)
+  } catch (error) {
+    return null
+  }
+
+  let result = resolved ? shouldPackageBeBundled(resolved) : null
   bundleCache[basename] = result
   return result
 }
 
 // eslint-disable-next-line
 export function isRequestExternal(request, lightweight = false) {
+  // Ignore all inline files for further processing
+  if (request.charAt(0) === ".") {
+    return false
+  }
+
   // Inline all files which are dependend on Webpack loaders e.g. CSS, images, etc.
   if (isLoaderSpecificFile(request)) {
     return false
   }
 
-  var basename = request.split("/")[0]
+  const match = (/^((@[a-zA-Z0-9-_]+\/)?[a-zA-Z0-9_-]+)\/?/).exec(request)
+  const basename = match ? match[1] : null
+
+  if (basename == null) {
+    console.warn("Couldn't figure out package name from require:", request)
+
+    // We assume that all special scenarios which are not covered yet, are
+    // probably some extension in Webpack and should therefor be bundled.
+    return true
+  }
 
   // Externalize built-in modules
   if (BuiltIns.has(basename)) {
     return true
-  }
-
-  // Ignore all inline files for further processing
-  if (basename.charAt(0) === ".") {
-    return false
   }
 
   // Inline all modules which require a Webpack environment
