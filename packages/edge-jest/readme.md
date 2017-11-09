@@ -19,14 +19,14 @@
 Install via NPM:
 
 ```
-npm install --save-dev @coliquio/jest-config
+npm install --save-dev edge-jest
 ```
 
 Add your local Jest config as a `jest.config.js` file - Config inside your `package.json` is not supported!
 
 ```js
 /* eslint-disable */
-const config = require("@coliquio/jest-config")
+const config = require("edge-jest")
 
 // Modify/Extend the config object here
 

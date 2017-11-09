@@ -7,7 +7,7 @@ import { configure, addDecorator } from "@storybook/react"
 import { connectRoutes } from "redux-first-router"
 import { IntlProvider } from "react-intl"
 
-import "@coliquio/core-styles"
+import "edge-style"
 
 const routesMap = {
   HOME: "/"
