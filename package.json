@@ -3,7 +3,8 @@
   "devDependencies": {
     "lerna": "^2.5.1",
     "lerna-changelog": "^0.7.0",
-    "lint-staged": "^4.3.0"
+    "lint-staged": "^4.3.0",
+    "ncu": "^0.2.1"
   },
   "scripts": {
     "update": "lerna exec ncu -- -ua && lerna bootstrap",
@@ -13,8 +14,7 @@
     "build:libs": "lerna run --stream --scope '**-*(common|express|useragent|style|postcss|core)' build",
     "build:builder": "lerna run --stream --scope edge-builder build && lerna link",
     "build:boilerplate": "lerna run --stream --scope edge-boilerplate build",
-    "build":
-      "npm run build:libs && npm run build:builder && npm run build:boilerplate"
+    "build": "npm run build:libs && npm run build:builder && npm run build:boilerplate"
   },
   "pre-commit": "lint-staged",
   "lint-staged": {
@@ -22,5 +22,7 @@
     "*.css": "stylelint",
     "*.sss": "stylelint"
   },
-  "workspaces": ["packages/*"]
+  "workspaces": [
+    "packages/*"
+  ]
 }
