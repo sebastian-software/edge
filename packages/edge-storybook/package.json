@@ -1,0 +1,40 @@
+{
+  "name": "edge-storybook",
+  "version": "0.0.1",
+  "description": "Central configuration for Storybook. For usage in component collections and applications.",
+  "main": "lib/config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf lib && cpy src/babelrc --rename=.babelrc lib/ && cpy src/devices.json lib/ && babel --out-dir lib src",
+    "prepack": "npm run build"
+  },
+  "files": [
+    "lib/"
+  ],
+  "keywords": [],
+  "pre-commit": "lint-staged",
+  "lint-staged": {
+    "*.js": "eslint",
+    "*.css": "stylelint"
+  },
+  "author": {
+    "name": "Sebastian Software",
+    "email": "s.werner@sebastian-software.de",
+    "url": "sebastian-software.de"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@storybook/addon-actions": "^3.2.12",
+    "@storybook/addon-links": "^3.2.12",
+    "@storybook/addon-storyshots": "^3.2.12",
+    "@storybook/react": "^3.2.12",
+    "babel-preset-edge": "^1.3.5",
+    "edge-core": "^0.6.28",
+    "storybook-addon-scissors": "^3.0.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "cpy-cli": "^1.0.1",
+    "rimraf": "^2.6.2"
+  }
+}

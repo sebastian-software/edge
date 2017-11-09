@@ -1,0 +1,16 @@
+{
+  "env": {
+    "development": {
+      "compact": false,
+      "presets": [
+        [ "edge", { "target": "browser" }]
+      ]
+    },
+
+    "test": {
+      "presets": [
+        [ "edge", { "target": "test" }]
+      ]
+    }
+  }
+}

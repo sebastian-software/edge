@@ -1,0 +1,67 @@
+[
+	{
+		"Device Name":"iPhone 4/4s",
+		"Portrait Width":"320",
+		"Landscape Width":"480"
+	},
+	{
+		"Device Name":"iPhone 5/5s",
+		"Portrait Width":"320",
+		"Landscape Width":"568"
+	},
+	{
+		"Device Name":"iPhone 6/7",
+		"Portrait Width":"375",
+		"Landscape Width":"667"
+	},
+	{
+		"Device Name":"iPhone 6/7 Plus",
+		"Portrait Width":"414",
+		"Landscape Width":"736"
+  },
+	{
+		"Device Name":"Galaxy S3/S4/S5/S6/S7",
+		"Portrait Width":"360",
+		"Landscape Width":"640"
+  },
+	{
+		"Device Name":"iPad 12.9\"",
+		"Portrait Width":"1366",
+		"Landscape Width":"1024"
+  },
+	{
+		"Device Name":"iPad 9.7\"",
+		"Portrait Width":"1024",
+		"Landscape Width":"768"
+  },
+	{
+		"Device Name":"Galaxy Tab 10\"",
+		"Portrait Width":"1024",
+		"Landscape Width":"768"
+  },
+	{
+		"Device Name":"Surface Pro 3",
+		"Portrait Width":"1440",
+		"Landscape Width":"1024"
+  },
+	{
+		"Device Name":"Surface Pro 1/2",
+		"Portrait Width":"1280",
+		"Landscape Width":"720"
+  },
+	{
+		"Device Name":"MacBook Pro 15\"",
+		"Portrait Width":"1680",
+		"Landscape Width":"1050"
+  },
+	{
+		"Device Name":"MacBook Air/Pro 13\"",
+		"Portrait Width":"1440",
+		"Landscape Width":"900"
+  },
+	{
+		"Device Name":"MacBook 12\"",
+		"Portrait Width":"1280",
+		"Landscape Width":"800"
+	}
+]

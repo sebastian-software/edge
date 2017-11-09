@@ -1,0 +1,5 @@
+{
+  "presets": [
+    [ "edge", { "target": { "browsers": [ "> 1%", "ie 10" ] } } ]
+  ]
+}
