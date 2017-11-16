@@ -7,7 +7,7 @@
     "npm-check-updates": "^2.13.0"
   },
   "scripts": {
-    "update": "lerna exec ncu -- -ua && lerna bootstrap",
+    "update": "lerna clean --yes && lerna exec ncu -- -ua && lerna bootstrap",
     "precommit": "lint-staged",
     "prepare": "npm run build",
     "test": "lerna run test",
