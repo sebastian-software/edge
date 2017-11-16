@@ -35,7 +35,7 @@
     "cosmiconfig": "^3.1.0",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
-    "express-locale": "^1.0.4",
+    "express-locale": "^1.0.5",
     "helmet": "^3.9.0",
     "hpp": "^0.2.2",
     "jsome": "^2.3.26",
