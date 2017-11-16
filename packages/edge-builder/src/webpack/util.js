@@ -23,14 +23,9 @@ const Problematic = new Set([
   // "encoding" uses dynamic iconv loading
   "encoding",
 
-  // Native code module helper
-  "node-gyp",
-  "node-pre-gyp",
-
   // These packages make use of dynamic require expressions which do not work well with Webpack
   "ajv",
   "colors",
-  "express",
   "jsdom"
 ])
 
