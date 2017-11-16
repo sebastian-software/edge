@@ -64,7 +64,7 @@ export function shouldPackageBeBundled(resolved) {
     }
 
     if (json) {
-      if (json.module || json.style || json["jsnext:main"]) {
+      if (json.module || json.style || json.browser || json["jsnext:main"]) {
         result = true
       }
 
