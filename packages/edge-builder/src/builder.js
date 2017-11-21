@@ -273,6 +273,9 @@ export default function builder(target, env = "development", config = {}) {
           exclude: /node_modules/,
           use:
           [
+            // Note:
+            // We prefer cache-loader over babel cache mechanism. Reason:
+            // "They both serve the same purpose and are interchangeable, with cache-loader being the 'newer and official' way to cache a loader in general"
             cacheLoader,
             {
               loader: "babel-loader",
