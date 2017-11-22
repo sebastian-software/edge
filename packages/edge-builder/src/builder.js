@@ -218,9 +218,19 @@ export default function builder(target, env = "development", config = {}) {
       filename: isDevelopment || isServer ? "[name].js" : "[name]-[chunkhash].js",
       chunkFilename: isDevelopment || isServer ? "[name].js" : "[name]-[chunkhash].js",
       path: isServer ? SERVER_OUTPUT : CLIENT_OUTPUT,
+
+      // This is required for loading dynamic chunks and other files. Should point
+      // to the CDN URL if that is used.
       publicPath: config.output.public,
 
+      // Tell webpack to include comments in bundles with information about the
+      // contained modules. This option defaults to false and should not be used
+      // in production, but it's very useful in development when reading the generated code.
+      // https://webpack.js.org/configuration/output/#output-pathinfo
+      pathinfo: isDevelopment,
+
       // Enable cross-origin loading without credentials - Useful for loading files from CDN
+      // when React server is hosted on a different domain.
       crossOriginLoading: "anonymous"
     },
 
