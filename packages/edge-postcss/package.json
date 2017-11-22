@@ -54,7 +54,7 @@
     "postcss-easings": "^1.0.1",
     "postcss-flexbugs-fixes": "^3.2.0",
     "postcss-flow-root": "0.0.3",
-    "postcss-font-family-system-ui": "^2.0.1",
+    "postcss-font-family-system-ui": "^2.1.1",
     "postcss-font-variant": "^3.0.0",
     "postcss-gradient-transparency-fix": "^2.1.0",
     "postcss-grid-kiss": "^1.4.1",
@@ -71,7 +71,7 @@
     "postcss-responsive-type": "^1.0.0",
     "postcss-sassy-mixins": "^2.1.0",
     "postcss-selector-matches": "^3.0.1",
-    "postcss-smart-asset": "^0.5.0",
+    "postcss-smart-asset": "^0.5.1",
     "postcss-transform-shortcut": "^2.0.1",
     "postcss-will-change": "^2.0.0",
     "postcss-zindex": "^2.2.0"
