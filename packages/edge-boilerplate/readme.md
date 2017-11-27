@@ -21,8 +21,16 @@ Edge Boilerplate is a template for modern web applications. Part of the Edge Pla
 - [Latest](https://edge-boilerplate-latest.now.sh/) (Hosted by [now](https://now.sh/))
 
 
+
+
+
+
 ## Features
 
+- Hot Loading for both Client + Server
+- Bundled Client + Server
+- Lightweight production build
+- Long Term Caching using Hashed Assets
 - Server Side React Rendering for excellent SEO Support and very high Mobile Performance.
 - Semi-Automatic Code-Splitting for both CSS and JS.
 - Hot Loading for Client and Server using Webpack Multi Compiler Architecture.
@@ -34,46 +42,111 @@ Edge Boilerplate is a template for modern web applications. Part of the Edge Pla
 - Redux Infrastructure Built-In
 
 
-## Usage
+
+## Getting Started
 
 ### Prerequisites
 
-- `npm install`
+- Execute `npm install` or `yarn install`
 
 ### Create .env file
 
-Copy the file .env-dev to .env before running any npm scripts.
+Copy the file `.env-dev` to `.env` before running any `npm` scripts.
 
-### Production Build
+### Start development server
 
-Bundles and executes a server side React server. Initial rendering is taken place on the server for
-optimal client side performance. The server also figures out the initial styles and scripts required for
-rendering and allows the client to stream all these resources in parallel to other tasks.
+Execute: `npm run dev`
 
-- `run prod:start`
+To exit the development server press `Ctrl+C`.
 
-### Development Mode
-
-Hot reloading server for client and server side React code. Offers very fast-paced development cycles
+This is the ideal for fast-paced development cycles
 as everything is rebuild as needed and in most cases hot-injected into the running application.
 
-- `run start`
+### Run Storybook
+
+The UI components can be viewed with the included *Storybook*: Run `npm run storybook` and visit `http://localhost:1449`.
 
 
-## Code Style
+### Run Styleguidist
 
-This package uses [readable-code](https://github.com/sebastian-software/readable-code) for keeping
-a unified code style with other projects.
+The UI components can be viewed with the included *Styleguidist*: Run `npm run styleguide` and visit `http://localhost:1559`.
+
+### Bundling for production
+
+In any phase of your development you can bundle the files for a deployment to production. This essentially contains these steps:
+
+1. Bundling the client side application
+2. Bundling the server side application code with knowledge of the asset file names of the client.
+3. Bundling the *binary* server which contains the overall express server.
+
+### Deploy to production
+
+TODO
 
 
-## Storybook
 
-The UI components can be viewed with the included storybook: Run `npm run storybook` and visit [http://localhost:1449](http://localhost:1449)
+## Application Structure
+
+### Version Managed Files/Folders
+
+- `hooks/`: Extensions for some more internal features like the *Webpack*-based build system.
+- `src/`: This holds all application code.
+
+### Generated Files/Folders
+
+- `bin/`: Contains the binary web server
+- `build/`: Generated during development and production build. Contains the bundled application files for both, server and client.
+- `docs/`: Generated documentation e.g. Storybook production build for deployment to e.g. Github Pages.
+- `node_modules/`: Contains all local NPM package dependencies.
+- `.cache/`: Contains the entries of the *Webpack* loader cache to improve rebuild times.
 
 
-## Styleguidist
+## Customizing using Standard Configuration Files
 
-The UI components can be viewed with the included styleguidist: Run `npm run styleguide` and visit [http://localhost:1559](http://localhost:1559)
+### PostCSS
+
+The project folder contains the file `postcss.config.js`. This includes only `edge-postcss` in the as-delivered state. Any extensions are possible. Of course, the standard set of `edge-postcss` can also be completely replaced here, for example with `postcss-next`.
+
+### Babel
+
+The `. babelrc` file to be found in the project folder is a normally customizable Babel configuration. The pre-configured Babel environments starting with `edge-` are relevant for the build processes through Edge. On delivery state, the preset package `babel-preset-edge` is configured in different ways. All entries can be changed and extended at will. Of course, one should be careful here, because the current *Webpack*-based build process expects some special features, such as support for dynamic imports. As a rule, however, extensions should not be a problem, e.g. to add functionalities such as decorators.
+
+### Browser
+
+The *Edge Platform* uses *Browserslist* to optimize builds for the configured set of browsers. The default configuration differs between `development` and `production`. This is mainly done to optimize build times during development and thus allow faster development cycles.
+
+More modern browsers usually offer better support for the latest standards. Edge uses this to send these browsers less sophisticated rewritten code. As a positive side-effect, this also leads to better error messages during development, because the code the browser sees is closer to the code originally developed.
+
+The configuration affects both, the *Babel* transpiler and the `PostCSS` prefixing.
+
+*Edge* provides some sensible defaults here. It is of course possible to customize the file `browserslist` however you like. It should not really have any effect on the core functionalities of the Edge platform.
+
+### Jest
+
+To configure the *Jest* test runner use the `jest.config.js`, which is located in the main directory like the other config files. In the state of delivery `edge-jest` will be imported and directly exported without any changes. Here it is possible to make adjustments in the form of overrides and additions to the imported config.
+
+The standard configuration includes the following core features:
+
+- Exclude entry code points (client, server, views) from the code coverage, just like all test and storybook files.
+- Compatibility for assets that are supported by the build with *Webpack*.
+- Support for CSS modules.
+- Includes a Polyfill for Request Animation Frame for React v16 compatibility.
+- Overrides or mocks the native Fetch API to prevent actual `fetch()` requests being made in tests.
+
+
+## Customizing using Hooks
+
+### Webpack
+
+TODO
+
+### Storybook
+
+TODO
+
+
+
+
 
 
 
