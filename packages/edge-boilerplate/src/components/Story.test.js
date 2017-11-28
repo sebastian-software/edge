@@ -1,5 +1,6 @@
 import initStoryshots from "@storybook/addon-storyshots"
+import { dirname } from "path"
 
 initStoryshots({
-  configPath: require.resolve("edge-storybook")
+  configPath: dirname(require.resolve("edge-storybook"))
 })
