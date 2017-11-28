@@ -5,8 +5,7 @@
     "stylelint-config-readable": "^0.1.0",
     "lerna": "^2.5.1",
     "lerna-changelog": "^0.7.0",
-    "lint-staged": "^5.0.0",
-    "npm-check-updates": "^2.13.0"
+    "lint-staged": "^5.0.0"
   },
   "scripts": {
     "update": "lerna clean --yes && lerna exec ncu -- -ua && lerna bootstrap",

@@ -1,6 +1,7 @@
 {
   "name": "edge-boilerplate",
-  "description": "Edge Boilerplate is a template for modern web applications. Part of the Edge Platform.",
+  "description":
+    "Edge Boilerplate is a template for modern web applications. Part of the Edge Platform.",
   "version": "0.7.6",
   "main": "server/index.js",
   "author": {
@@ -11,28 +12,22 @@
   "bin": {
     "server": "bin/server"
   },
-  "files": [
-    "bin/",
-    "docs/",
-    "lib/"
-  ],
+  "files": ["bin/", "docs/", "lib/"],
   "scripts": {
     "dev": "babel-watch src/dev.js",
     "start": "bin/server",
     "build": "prepublish",
     "test": "jest",
-    "prepack": "npm run build && npm run styleguide:build && npm run storybook:build",
-    "storybook": "start-storybook --port 1449 --config-dir __storybook__",
-    "storybook:build": "rimraf docs/storybook && build-storybook --output-dir docs/storybook --config-dir __storybook__",
+    "prepack":
+      "npm run build && npm run styleguide:build && npm run storybook:build",
+    "storybook":
+      "start-storybook --port 1449 --config-dir node_modules/edge-storybook",
+    "storybook:build":
+      "rimraf docs/storybook && build-storybook --output-dir docs/storybook --config-dir node_modules/edge-storybook",
     "styleguide": "styleguidist server",
     "styleguide:build": "rimraf docs/styleguide && styleguidist build"
   },
-  "keywords": [
-    "front-end",
-    "boilerplate",
-    "webpack",
-    "react"
-  ],
+  "keywords": ["front-end", "boilerplate", "webpack", "react"],
   "license": "Apache-2.0",
   "dependencies": {
     "edge-common": "^0.1.1",
@@ -50,6 +45,7 @@
     "edge-storybook": "*",
     "edge-style": "*",
     "prepublish": "*",
-    "react-styleguidist": "^6.0.33"
+    "@storybook/react": "*",
+    "react-styleguidist": "*"
   }
 }
