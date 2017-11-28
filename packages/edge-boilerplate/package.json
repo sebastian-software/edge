@@ -1,8 +1,7 @@
 {
   "name": "edge-boilerplate",
-  "description":
-    "Edge Boilerplate is a template for modern web applications. Part of the Edge Platform.",
-  "version": "0.7.6",
+  "description": "Edge Boilerplate is a template for modern web applications. Part of the Edge Platform.",
+  "version": "0.7.7",
   "main": "server/index.js",
   "author": {
     "name": "Sebastian Software",
@@ -12,22 +11,28 @@
   "bin": {
     "server": "bin/server"
   },
-  "files": ["bin/", "docs/", "lib/"],
+  "files": [
+    "bin/",
+    "docs/",
+    "lib/"
+  ],
   "scripts": {
     "dev": "babel-watch src/dev.js",
     "start": "bin/server",
     "build": "prepublish",
     "test": "jest",
-    "prepack":
-      "npm run build && npm run styleguide:build && npm run storybook:build",
-    "storybook":
-      "start-storybook --port 1449 --config-dir node_modules/edge-storybook/lib",
-    "storybook:build":
-      "rimraf docs/storybook && build-storybook --output-dir docs/storybook --config-dir node_modules/edge-storybook/lib",
+    "prepack": "npm run build && npm run styleguide:build && npm run storybook:build",
+    "storybook": "start-storybook --port 1449 --config-dir node_modules/edge-storybook/lib",
+    "storybook:build": "rimraf docs/storybook && build-storybook --output-dir docs/storybook --config-dir node_modules/edge-storybook/lib",
     "styleguide": "styleguidist server",
     "styleguide:build": "rimraf docs/styleguide && styleguidist build"
   },
-  "keywords": ["front-end", "boilerplate", "webpack", "react"],
+  "keywords": [
+    "front-end",
+    "boilerplate",
+    "webpack",
+    "react"
+  ],
   "license": "Apache-2.0",
   "dependencies": {
     "edge-common": "^0.1.1",
@@ -36,17 +41,17 @@
     "yn": "^2.0"
   },
   "devDependencies": {
+    "@storybook/react": "*",
     "babel-watch": "^2.0.7",
     "cookiesjs": "^2.0.0",
-    "edge-builder": "*",
-    "edge-core": "*",
-    "edge-postcss": "*",
+    "edge-builder": "^0.13.5",
+    "edge-core": "^0.8.5",
     "edge-jest": "*",
-    "edge-storybook": "*",
-    "edge-style": "*",
-    "prepublish": "*",
+    "edge-postcss": "^0.9.10",
+    "edge-storybook": "^0.1.3",
+    "edge-style": "^0.2.11",
     "jest": "*",
-    "@storybook/react": "*",
+    "prepublish": "*",
     "react-styleguidist": "*"
   }
 }
