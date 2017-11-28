@@ -57,7 +57,7 @@
     "postcss-font-family-system-ui": "^2.1.1",
     "postcss-font-variant": "^3.0.0",
     "postcss-gradient-transparency-fix": "^2.1.0",
-    "postcss-grid-kiss": "^1.4.1",
+    "postcss-grid-kiss": "^1.4.2",
     "postcss-hexrgba": "^1.0.0",
     "postcss-import": "^11.0.0",
     "postcss-initial": "^2.0.0",

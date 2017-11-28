@@ -44,7 +44,7 @@
     "apollo-link-context": "^1.0.1",
     "apollo-link-http": "^1.2.0",
     "bluebird": "^3.5.1",
-    "caniuse-lite": "^1.0.30000769",
+    "caniuse-lite": "^1.0.30000772",
     "chalk": "^2.3.0",
     "edge-useragent": "^3.0.10",
     "identity-obj-proxy": "^3.0.0",

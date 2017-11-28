@@ -2,13 +2,14 @@
   "private": true,
   "devDependencies": {
     "eslint-config-readable": "^0.1.0",
-    "stylelint-config-readable": "^0.1.0",
     "lerna": "^2.5.1",
     "lerna-changelog": "^0.7.0",
-    "lint-staged": "^5.0.0"
+    "lint-staged": "^5.0.0",
+    "stylelint-config-readable": "^0.1.0"
   },
   "scripts": {
-    "update": "lerna clean --yes && lerna bootstrap",
+    "clean": "lerna clean --yes && rimraf node_modules",
+    "update": "lerna exec ncu -- -ua && yarn",
     "precommit": "lint-staged",
     "prepare": "npm run build",
     "test": "lerna run test",
