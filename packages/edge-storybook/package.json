@@ -4,7 +4,7 @@
   "description": "Central configuration for Storybook. For usage in component collections and applications.",
   "main": "lib/config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "rimraf lib && cpy src/babelrc --rename=.babelrc lib/ && cpy src/devices.json lib/ && babel --out-dir lib src",
     "prepack": "npm run build"
   },
