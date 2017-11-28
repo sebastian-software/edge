@@ -22,15 +22,24 @@ const store = createStore(reducers, {}, enhancers)
 addDecorator((story) => {
   return (
     <IntlProvider locale="en-US">
-      <Provider store={store}>
-        {story()}
-      </Provider>
+      <Provider store={store}>{story()}</Provider>
     </IntlProvider>
   )
 })
 
-// Installed in ROOT/node_modules/storybook-config/lib
-const loader = require.context("../../../src", true, /\.story\.js$/)
+// Installed in either:
+// - ROOT/node_modules/edge-storybook/lib (inside applications)
+//   This is true: __dirname == "./node_modules/edge-storybook/lib"
+// - ROOT/packages/edge-storybook/lib (inside edge itself)
+//   This is true: __dirname == "../edge-storybook/lib"
+console.log("DIRNAME:", __dirname)
+
+const context =
+  __dirname === "../edge-storybook/lib" ?
+    "../../edge-boilerplate/src" :
+    "../../../src"
+
+const loader = require.context(context, true, /\.story\.js$/)
 
 function loadStories() {
   loader.keys().forEach((filename) => loader(filename))

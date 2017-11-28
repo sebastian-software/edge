@@ -21,9 +21,9 @@
     "prepack":
       "npm run build && npm run styleguide:build && npm run storybook:build",
     "storybook":
-      "start-storybook --port 1449 --config-dir node_modules/edge-storybook",
+      "start-storybook --port 1449 --config-dir node_modules/edge-storybook/lib",
     "storybook:build":
-      "rimraf docs/storybook && build-storybook --output-dir docs/storybook --config-dir node_modules/edge-storybook",
+      "rimraf docs/storybook && build-storybook --output-dir docs/storybook --config-dir node_modules/edge-storybook/lib",
     "styleguide": "styleguidist server",
     "styleguide:build": "rimraf docs/styleguide && styleguidist build"
   },

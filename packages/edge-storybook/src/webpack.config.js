@@ -1,5 +1,9 @@
 /* eslint-disable import/no-commonjs, import/unambiguous */
 module.exports = {
+  node: {
+    __dirname: true
+  },
+
   module: {
     rules: [
       {
