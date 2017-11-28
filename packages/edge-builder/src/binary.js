@@ -5,7 +5,12 @@ import Promise from "bluebird"
 import clearConsole from "react-dev-utils/clearConsole"
 
 import { loadConfig, NAME, VERSION } from "edge-common"
-import { buildClient, buildServer, cleanClient, cleanServer } from "./commands/build"
+import {
+  buildClient,
+  buildServer,
+  cleanClient,
+  cleanServer
+} from "./commands/build"
 
 import pkg from "../package.json"
 
@@ -16,7 +21,9 @@ if (IS_INTERACTIVE) {
 }
 
 console.log(
-  `${chalk.bold(`EDGE ${chalk.green(`v${pkg.version}`)}`)} running on ${chalk.bold.blue(NAME)}-${VERSION}`
+  `${chalk.bold(
+    `EDGE ${chalk.green(`v${pkg.version}`)}`
+  )} running on ${chalk.bold.blue(NAME)}-${VERSION}`
 )
 
 // Parse arguments
@@ -37,9 +44,15 @@ const command = meow(
     clean           Clean up all generated files
 `,
   {
-    alias: {
-      v: "verbose",
-      q: "quiet"
+    flags: {
+      verbose: {
+        alias: "v",
+        default: false
+      },
+      quiet: {
+        alias: "q",
+        default: false
+      }
     }
   }
 )
@@ -59,7 +72,10 @@ updateNotifier({
 // List of tasks we have available
 const availableTasks = [
   { task: "clean", commands: [ cleanClient, cleanServer ] },
-  { task: "build", commands: [ cleanClient, cleanServer, buildClient, buildServer ] },
+  {
+    task: "build",
+    commands: [ cleanClient, cleanServer, buildClient, buildServer ]
+  },
   { task: "build:client", commands: [ cleanClient, buildClient ] },
   { task: "build:server", commands: [ cleanServer, buildServer ] }
 ]
