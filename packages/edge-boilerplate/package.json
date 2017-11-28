@@ -45,6 +45,7 @@
     "edge-storybook": "*",
     "edge-style": "*",
     "prepublish": "*",
+    "jest": "*",
     "@storybook/react": "*",
     "react-styleguidist": "*"
   }
