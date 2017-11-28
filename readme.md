@@ -29,9 +29,6 @@ Project Name | NPM Status | Dependency Status
 [Edge PostCSS][postcss-home] | [![Version][postcss-npm-version-img]][postcss-npm] [![Downloads][postcss-npm-downloads-img]][postcss-npm] | [![Dependencies][postcss-deps-img]][postcss-deps]
 
 
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/Nehv39FW5U4NHEn7axuGx4CE/sebastian-software/edge-platform'>  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/Nehv39FW5U4NHEn7axuGx4CE/sebastian-software/edge-platform.svg' /></a>
-
-
 ## Foundation Technologies of Edge Platform
 
 Project Name | NPM Status | Build Status | Dependency Status
