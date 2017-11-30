@@ -1,6 +1,6 @@
 # Edge Platform<br/>[![Sponsored by][sponsor-img]][sponsor] [![lerna][lerna-img]][lerna] [![Build Status Unix][travis-img]][travis] [![Build Status Windows][appveyor-img]][appveyor]
 
-Edge Platform helps you focus on business logic rather than dealing with complex dependencies and build configurations.
+*🐺 Edge Platform* helps you focus on business logic rather than dealing with complex dependencies and build configurations.
 
 [sponsor-img]: https://img.shields.io/badge/Sponsored%20by-Sebastian%20Software-692446.svg
 [sponsor]: https://www.sebastian-software.de
@@ -13,7 +13,7 @@ Edge Platform helps you focus on business logic rather than dealing with complex
 
 <img src="./assets/edge.png" alt="Edge Platform Logo" width="951" style="max-width:100%"/>
 
-## Edge Platform Components
+## *🐺 Edge Platform* Components
 
 > "Understanding the architectural decisions behind the tools you are using is perhaps more important than the many things a new package does for you." — James Gillmore
 
@@ -29,7 +29,7 @@ Project Name | NPM Status | Dependency Status
 [Edge PostCSS][postcss-home] | [![Version][postcss-npm-version-img]][postcss-npm] [![Downloads][postcss-npm-downloads-img]][postcss-npm] | [![Dependencies][postcss-deps-img]][postcss-deps]
 
 
-## Foundation Technologies of Edge Platform
+## *🐺 Edge Platform* Foundation Technologies
 
 Project Name | NPM Status | Build Status | Dependency Status
 ------------ | ---------- | ------------ | -------------------------------------
