@@ -5,7 +5,7 @@
     "lerna": "^2.5.1",
     "lerna-changelog": "^0.7.0",
     "lint-staged": "^6.0.0",
-    "readable-cli": "^0.2.3",
+    "readable-cli": "^0.2.4",
     "stylelint-config-readable": "^0.1.1"
   },
   "scripts": {
