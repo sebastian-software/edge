@@ -6,7 +6,7 @@ import fs from "fs"
 // run over the testcases, some might fail, some might not. This is just qu
 // test to see if we can parse without errors, and with a reasonable amount
 // of errors.
-["static.custom.yaml", "firefoxes.yaml", "pgts.yaml"].forEach(filename => {
+;["static.custom.yaml", "firefoxes.yaml", "pgts.yaml"].forEach(filename => {
   let testcases = fs
     .readFileSync(`${__dirname}/fixtures/${filename}`)
     .toString()

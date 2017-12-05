@@ -3,7 +3,12 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import Helmet from "react-helmet"
 import cookies from "cookiesjs"
-import { FormattedNumber, FormattedDate, FormattedTime, FormattedRelative } from "react-intl"
+import {
+  FormattedNumber,
+  FormattedDate,
+  FormattedTime,
+  FormattedRelative
+} from "react-intl"
 import { getLocale } from "edge-core"
 
 import Styles from "./Localization.css"
@@ -19,20 +24,42 @@ function switchLocale(locale) {
 function Localization({ locale }) {
   return (
     <div className={Styles.root}>
-      <Helmet title="Localization"/>
+      <Helmet title="Localization" />
       <h2>Locale: {locale}</h2>
       <ul>
-        <li>FormattedNumber: <FormattedNumber value={3.14}/></li>
-        <li>FormattedNumber: <FormattedNumber value={3402859302}/></li>
-        <li>FormattedDate: <FormattedDate value={time}/></li>
-        <li>FormattedTime: <FormattedTime value={time}/></li>
-        <li>FormattedRelative: <FormattedRelative value={time - timeDiff}/></li>
+        <li>
+          FormattedNumber: <FormattedNumber value={3.14} />
+        </li>
+        <li>
+          FormattedNumber: <FormattedNumber value={3402859302} />
+        </li>
+        <li>
+          FormattedDate: <FormattedDate value={time} />
+        </li>
+        <li>
+          FormattedTime: <FormattedTime value={time} />
+        </li>
+        <li>
+          FormattedRelative: <FormattedRelative value={time - timeDiff} />
+        </li>
       </ul>
       <h2>Select Locale:</h2>
       <ul>
-        <li><a href="#" onClick={() => switchLocale("de-DE")}>Deutsch (Deutschland)</a></li>
-        <li><a href="#" onClick={() => switchLocale("fr-CH")}>Français (France)</a></li>
-        <li><a href="#" onClick={() => switchLocale("en-US")}>English (USA)</a></li>
+        <li>
+          <a href="#" onClick={() => switchLocale("de-DE")}>
+            Deutsch (Deutschland)
+          </a>
+        </li>
+        <li>
+          <a href="#" onClick={() => switchLocale("fr-CH")}>
+            Français (France)
+          </a>
+        </li>
+        <li>
+          <a href="#" onClick={() => switchLocale("en-US")}>
+            English (USA)
+          </a>
+        </li>
       </ul>
     </div>
   )
@@ -49,8 +76,7 @@ function mapStateToProps(state, ownProps) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-  }
+  return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Localization)

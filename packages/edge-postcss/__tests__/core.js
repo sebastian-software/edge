@@ -25,7 +25,11 @@ function format(cssString) {
 }
 
 export function compile(input) {
-  let allOptions = { ...options, from: "__tests__/main.css", to: "__tests__/dist/main.css" }
+  let allOptions = {
+    ...options,
+    from: "__tests__/main.css",
+    to: "__tests__/dist/main.css"
+  }
 
   return postcss(plugins)
     .process(input, allOptions)
@@ -33,10 +37,13 @@ export function compile(input) {
 }
 
 export function compileSameFolder(input) {
-  let allOptions = { ...options, from: "__tests__/fixtures/main.css", to: "__tests__/fixtures/main.out.css" }
+  let allOptions = {
+    ...options,
+    from: "__tests__/fixtures/main.css",
+    to: "__tests__/fixtures/main.out.css"
+  }
 
   return postcss(plugins)
     .process(input, allOptions)
     .then((result) => expect(format(result.css)).toMatchSnapshot())
 }
-

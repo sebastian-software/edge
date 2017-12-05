@@ -10,7 +10,8 @@ pretty.skipPackage("express")
 
 export default function addErrorMiddleware(server) {
   // and use it for our app's error handler:
-  server.use((error, request, response, next) => { // eslint-disable-line max-params
+  server.use((error, request, response, next) => {
+    // eslint-disable-line max-params
     console.log(pretty.render(error))
     next()
   })

@@ -12,12 +12,7 @@ import Helmet from "react-helmet"
  * @param config.scripts {string} [""] Scripts to inject into the page.
  * @returns The full HTML page in the form of a React element.
  */
-export default function renderPage({
-  state,
-  html,
-  styles,
-  scripts
-}) {
+export default function renderPage({ state, html, styles, scripts }) {
   if (typeof state !== "object" || typeof state.edge !== "object") {
     throw new Error("[EDGE]: RenderPage: Invalid state object!")
   }

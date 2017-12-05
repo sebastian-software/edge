@@ -20,7 +20,7 @@ dotenv.config()
 console.log(`[APP] Build: ${process.env.NODE_ENV}-${process.env.BUILD_TARGET}`)
 
 /* eslint-disable no-console, max-statements */
-export default ({ clientStats }) => async(request, response) => {
+export default ({ clientStats }) => async (request, response) => {
   // [1] Response Preparation:
   // This step parses some client information like language and user agent.
   const edge = prepareResponse(request)
@@ -30,8 +30,15 @@ export default ({ clientStats }) => async(request, response) => {
   // On the server-side we estimate client-side support by querying the caniuse
   // database using the user agent passed via HTTP headers.
   const intl = edge.intl
-  ensureIntlSupport(import(`lean-intl/locale-data/${intl.locale}`), intl, edge.browser)
-  ensureReactIntlSupport(import(`react-intl/locale-data/${intl.language}`), intl)
+  ensureIntlSupport(
+    import(`lean-intl/locale-data/${intl.locale}`),
+    intl,
+    edge.browser
+  )
+  ensureReactIntlSupport(
+    import(`react-intl/locale-data/${intl.language}`),
+    intl
+  )
 
   // [3] Build State:
   // Built up object which contains all relevant initial render data.
@@ -63,5 +70,11 @@ export default ({ clientStats }) => async(request, response) => {
 
   // [7] Render Application:
   // When all required data is available we can safely render the result.
-  renderApplication({ Application: WrappedApplication, clientStats, kernel, request, response })
+  renderApplication({
+    Application: WrappedApplication,
+    clientStats,
+    kernel,
+    request,
+    response
+  })
 }

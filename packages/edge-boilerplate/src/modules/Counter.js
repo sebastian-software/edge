@@ -41,14 +41,11 @@ function mockServerDelay() {
   /* eslint-disable no-console */
   console.log("Loading counter...")
   return new Promise((resolve, reject) => {
-    setTimeout(
-      () => {
-        let value = Math.round(Math.random() * 100)
-        console.log("Received counter:", value)
-        resolve(value)
-      },
-      100
-    )
+    setTimeout(() => {
+      let value = Math.round(Math.random() * 100)
+      console.log("Received counter:", value)
+      resolve(value)
+    }, 100)
   })
 }
 
@@ -56,7 +53,8 @@ function mockServerDelay() {
  * Async data loading using redux-thunk.
  */
 export function loadCounter() {
-  return (dispatch) => mockServerDelay().then((value) => dispatch(setCounter(value)))
+  return (dispatch) =>
+    mockServerDelay().then((value) => dispatch(setCounter(value)))
 }
 
 const initialState = { value: null }
@@ -67,10 +65,8 @@ const initialState = { value: null }
  * @param previousState Previous state object of this reducer.
  * @param {string} action Action to process.
  */
-export function counterReducer(previousState = initialState, action)
-{
-  switch (action.type)
-  {
+export function counterReducer(previousState = initialState, action) {
+  switch (action.type) {
     case SET_COUNTER:
       return { ...previousState, value: action.value }
 

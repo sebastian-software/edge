@@ -35,9 +35,9 @@ addDecorator((story) => {
 console.log("DIRNAME:", __dirname)
 
 const context =
-  __dirname === "../edge-storybook/lib" ?
-    "../../edge-boilerplate/src" :
-    "../../../src"
+  __dirname === "../edge-storybook/lib"
+    ? "../../edge-boilerplate/src"
+    : "../../../src"
 
 const loader = require.context(context, true, /\.story\.js$/)
 
