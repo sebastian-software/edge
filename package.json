@@ -1,7 +1,7 @@
 {
   "private": true,
   "devDependencies": {
-    "eslint-config-readable": "^0.2.1",
+    "eslint-config-readable": "^0.2.2",
     "lerna": "^2.5.1",
     "lerna-changelog": "^0.7.0",
     "lint-staged": "^6.0.0",

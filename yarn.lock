@@ -4007,9 +4007,9 @@ eslint-config-prettier@^2.9.0:
   dependencies:
     get-stdin "^5.0.1"
 
-eslint-config-readable@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-readable/-/eslint-config-readable-0.2.1.tgz#f243081c4c85b5fee4fc170af3e20c79109766e4"
+eslint-config-readable@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/eslint-config-readable/-/eslint-config-readable-0.2.2.tgz#9021c2ee84a0076eba910a8d9f863c07e80cbcbd"
   dependencies:
     babel-eslint "^8.0.3"
     babel-plugin-module-resolver "^3.0.0"
