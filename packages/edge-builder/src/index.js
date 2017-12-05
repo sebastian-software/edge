@@ -1,4 +1,9 @@
-import { cleanClient, cleanServer, buildClient, buildServer } from "./commands/build"
+import {
+  cleanClient,
+  cleanServer,
+  buildClient,
+  buildServer
+} from "./commands/build"
 import { connectWithWebpack, createMiddleware } from "./webpack/dev"
 
 export {
@@ -6,7 +11,6 @@ export {
   cleanServer,
   buildClient,
   buildServer,
-
   connectWithWebpack,
   createMiddleware
 }
