@@ -13,10 +13,7 @@ const Classes = classnames.bind(Styles)
 
 /* eslint-disable no-console */
 
-const HomeRoute = routed(
-  universal(() => import("./views/Home/Home")),
-  "HOME"
-)
+const HomeRoute = routed(universal(() => import("./views/Home/Home")), "HOME")
 
 const CounterRoute = routed(
   universal(() => import("./views/Counter/Counter")),
@@ -37,7 +34,10 @@ export function prepare(kernel) {
   const intl = kernel.intl
   return Promise.all([
     ensureIntlSupport(import(`lean-intl/locale-data/${intl.locale}`), intl),
-    ensureReactIntlSupport(import(`react-intl/locale-data/${intl.language}`), intl)
+    ensureReactIntlSupport(
+      import(`react-intl/locale-data/${intl.language}`),
+      intl
+    )
   ])
 }
 
@@ -59,7 +59,7 @@ class Application extends React.Component {
     return (
       <div className={Classes("root", { alive: this.state.alive })}>
         <HtmlHead />
-        <Navigation/>
+        <Navigation />
 
         <main className={Styles.content}>
           <HomeRoute />

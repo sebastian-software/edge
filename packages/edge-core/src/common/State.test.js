@@ -17,7 +17,7 @@ test("Create Redux Store - No Reducers", () => {
 })
 
 test("Create Redux Store - Empty Param", () => {
-  expect(createReduxStore({ })).toBeDefined()
+  expect(createReduxStore({})).toBeDefined()
 })
 
 test("Create Redux Store - No Params", () => {

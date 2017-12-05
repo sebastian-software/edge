@@ -31,10 +31,13 @@ export default function HtmlHead() {
 
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 
-      { /* http://httpwg.org/http-extensions/client-hints.html */ }
+      {/* http://httpwg.org/http-extensions/client-hints.html */}
       <meta property="Accept-CH" content="DPR, Width, Viewport-Width" />
 
-      <meta name="viewport" content="width=device-width,maximum-scale=1,minimum-scale=1,initial-scale=1" />
+      <meta
+        name="viewport"
+        content="width=device-width,maximum-scale=1,minimum-scale=1,initial-scale=1"
+      />
     </Helmet>
   )
 }

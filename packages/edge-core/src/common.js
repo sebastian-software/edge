@@ -1,6 +1,9 @@
 export {
-  createReduxStore, createRootReducer,
-  emptyReducer, emptyMiddleware, emptyEnhancer,
+  createReduxStore,
+  createRootReducer,
+  emptyReducer,
+  emptyMiddleware,
+  emptyEnhancer,
   edgeReducer
 } from "./common/State"
 
@@ -12,7 +15,9 @@ export {
   installIntlPolyfill,
   requiresReactIntl,
   installReactIntl,
-  getRegion, getLanguage, getLocale,
+  getRegion,
+  getLanguage,
+  getLocale,
   ensureReactIntlSupport,
   ensureIntlSupport
 } from "./common/Intl"

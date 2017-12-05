@@ -2,7 +2,11 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
-import { loadCounter, incrementCounter, decrementCounter } from "../../modules/Counter"
+import {
+  loadCounter,
+  incrementCounter,
+  decrementCounter
+} from "../../modules/Counter"
 import Styles from "./Counter.css"
 
 class Counter extends React.Component {

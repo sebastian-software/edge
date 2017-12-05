@@ -18,8 +18,7 @@ export function setEnv(value) {
   return { type: SET_ENV, value }
 }
 
-const initialState = { }
-
+const initialState = {}
 
 /**
  * Reducer for all env relevant action types.
@@ -27,10 +26,8 @@ const initialState = { }
  * @param previousState Previous state object of this reducer.
  * @param {string} action Action to process.
  */
-export function envReducer(previousState = initialState, action)
-{
-  switch (action.type)
-  {
+export function envReducer(previousState = initialState, action) {
+  switch (action.type) {
     case SET_ENV:
       return { ...previousState, ...action.value }
 

@@ -6,7 +6,13 @@ import { NOT_FOUND } from "redux-first-router"
 import renderPage from "./renderPage"
 
 /* eslint-disable max-params, no-console */
-export default function renderApplication({ Application, clientStats, kernel, request, response }) {
+export default function renderApplication({
+  Application,
+  clientStats,
+  kernel,
+  request,
+  response
+}) {
   console.log("[EDGE] Exporting current state...")
   const state = kernel.store.getState()
 

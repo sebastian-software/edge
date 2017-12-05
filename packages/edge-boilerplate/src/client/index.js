@@ -7,9 +7,11 @@ import Application, { prepare } from "../Application"
 console.log(`[APP] Build: ${process.env.NODE_ENV}-${process.env.BUILD_TARGET}`)
 
 const kernel = createKernel(State)
-prepare(kernel).then(() => renderApp(Application, kernel)).catch((error) => {
-  throw new Error(`Unable to rehydrate client application: ${error}!`)
-})
+prepare(kernel)
+  .then(() => renderApp(Application, kernel))
+  .catch(error => {
+    throw new Error(`Unable to rehydrate client application: ${error}!`)
+  })
 
 if (process.env.NODE_ENV === "development" && module.hot) {
   // Accept changes to the Edge-Core API, but don't have any actions to implement.

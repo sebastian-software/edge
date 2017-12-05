@@ -12,9 +12,7 @@ import { connect } from "react-redux"
 export default function routed(ChildComponent, type) {
   function RouteTarget({ currentLocation, currentPayload }) {
     if (type === currentLocation) {
-      return (
-        <ChildComponent {...currentPayload}/>
-      )
+      return <ChildComponent {...currentPayload} />
     }
 
     return null

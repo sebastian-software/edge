@@ -8,11 +8,13 @@ export default function addCoreMiddleware(server, { locale }) {
   server.use(cookieParser())
 
   // Detect client locale and match it with configuration
-  server.use(createLocaleMiddleware({
-    priority: [ "query", "cookie", "accept-language", "default" ],
-    default: locale.default.replace(/-/, "_"),
-    allowed: locale.supported.map((entry) => entry.replace(/-/, "_"))
-  }))
+  server.use(
+    createLocaleMiddleware({
+      priority: [ "query", "cookie", "accept-language", "default" ],
+      default: locale.default.replace(/-/, "_"),
+      allowed: locale.supported.map(entry => entry.replace(/-/, "_"))
+    })
+  )
 
   // Parse application/x-www-form-urlencoded
   server.use(bodyParser.urlencoded({ extended: false }))
