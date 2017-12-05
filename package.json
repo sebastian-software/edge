@@ -1,15 +1,16 @@
 {
   "private": true,
   "devDependencies": {
-    "eslint-config-readable": "^0.2.0",
+    "eslint-config-readable": "^0.2.1",
     "lerna": "^2.5.1",
     "lerna-changelog": "^0.7.0",
-    "lint-staged": "^5.0.0",
-    "stylelint-config-readable": "^0.1.0"
+    "lint-staged": "^6.0.0",
+    "readable-cli": "^0.2.3",
+    "stylelint-config-readable": "^0.1.1"
   },
   "scripts": {
     "clean": "lerna clean --yes && rimraf node_modules",
-    "update": "lerna exec ncu -- -ua && yarn",
+    "update": "lerna exec ncu -- -ua && ncu -ua && yarn",
     "precommit": "lint-staged",
     "prepare": "npm run build",
     "test": "lerna run test",
