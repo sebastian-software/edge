@@ -1,11 +1,11 @@
 {
   "private": true,
   "devDependencies": {
-    "eslint-config-readable": "^0.3.0",
+    "eslint-config-readable": "^0.3.5",
     "lerna": "^2.5.1",
     "lerna-changelog": "^0.7.0",
     "lint-staged": "^6.0.0",
-    "readable-cli": "^0.3.0",
+    "readable-cli": "^0.3.1",
     "stylelint-config-readable": "^0.1.1"
   },
   "scripts": {
