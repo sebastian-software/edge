@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "app-root-dir": "^1.0.2",
-    "autoprefixer": "^7.2.2",
+    "autoprefixer": "^7.2.3",
     "lost": "^8.2.0",
     "pleeease-filters": "^4.0.0",
     "postcss": "^6.0.14",
@@ -65,7 +65,7 @@
     "postcss-magic-animations": "^0.3.0",
     "postcss-map": "^0.9.0",
     "postcss-media-minmax": "^3.0.0",
-    "postcss-nested": "^2.1.2",
+    "postcss-nested": "^3.0.0",
     "postcss-normalize": "^4.0.0",
     "postcss-pseudoelements": "^5.0.0",
     "postcss-responsive-type": "^1.0.0",

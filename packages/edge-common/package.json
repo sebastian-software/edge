@@ -27,7 +27,7 @@
     "jsome": "^2.3.26",
     "lodash": "^4.17.4",
     "node-notifier": "^5.1.2",
-    "nodent-runtime": "^3.0.4",
+    "nodent-runtime": "^3.2.0",
     "yn": "^2.0.0"
   },
   "devDependencies": {
