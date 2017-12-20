@@ -155,7 +155,8 @@ const identityFnt = (item) => item
 async function processEntry(value, specs) {
   let parsed
 
-  switch (specs.type) {
+  switch (specs.type)
+  {
     case "string":
       if (typeof value !== "string") {
         throw new Error("Invalid config value for type string!")
