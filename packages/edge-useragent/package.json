@@ -50,7 +50,7 @@
     "readable-code": "*",
     "request": "2.83.x",
     "rimraf": "*",
-    "semver": "5.4.x",
+    "semver": "5.5.x",
     "should": "*",
     "yamlparser": "0.0.x"
   },
