@@ -47,7 +47,6 @@
     "eslint": "*",
     "mocha": "*",
     "prepublish": "*",
-    "readable-code": "*",
     "request": "2.83.x",
     "rimraf": "*",
     "semver": "5.5.x",
