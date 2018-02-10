@@ -10,7 +10,7 @@
   },
   "scripts": {
     "clean": "lerna clean --yes && rimraf node_modules",
-    "update": "lerna exec ncu -- -ua && ncu -ua && yarn",
+    "update": "yarn upgrade-interactive --latest",
     "precommit": "lint-staged",
     "prepare": "npm run build",
     "test": "lerna run test",
