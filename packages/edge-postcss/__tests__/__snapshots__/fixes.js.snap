@@ -22,8 +22,8 @@ display:flex
 
 exports[`Flexbox Fix 1`] = `
 ".elem{
--ms-flex:1 1;
-flex:1 1
+-ms-flex:1 1 0%;
+flex:1 1 0%
 }"
 `;
 
