@@ -2,8 +2,8 @@
 /* eslint-disable import/no-commonjs */
 /* eslint-disable import/unambiguous */
 
-var appRootDir = require("app-root-dir").get()
-var resolve = require("path").resolve
+const appRootDir = require("app-root-dir").get()
+const resolve = require("path").resolve
 
 module.exports = ({ file, options, env }) => ({
   "plugins":
