@@ -19,3 +19,11 @@ test("Nested Basic", () =>
 test("Nested Parent Selector", () =>
   compile("body { ul { li { &:first-child { margin-top: 0; }}}}")
 )
+
+test("Calc Simple", () =>
+  compile("h1 { width: calc(10% + 3%); }")
+)
+
+test("Calc Complex", () =>
+  compile("h1 { width: calc(99.999% * 3 / 10); }")
+)

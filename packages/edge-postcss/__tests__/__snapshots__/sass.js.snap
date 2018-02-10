@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Calc Complex 1`] = `
+"h1{
+width:29.9997%
+}"
+`;
+
+exports[`Calc Simple 1`] = `
+"h1{
+width:13%
+}"
+`;
+
 exports[`Config Maps 1`] = `
 "h1{
 background:darkyellow
