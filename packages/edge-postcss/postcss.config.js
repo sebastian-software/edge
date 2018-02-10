@@ -58,9 +58,7 @@ module.exports = ({ file, options, env }) => ({
     // https://github.com/pascalduez/postcss-map
     "postcss-map": {
       basePath: resolve(appRootDir, "src/"),
-      maps: [
-        "Config.yml"
-      ]
+      maps: []
     },
 
     // Sass-like mixins
