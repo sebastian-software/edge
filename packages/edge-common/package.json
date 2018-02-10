@@ -25,6 +25,7 @@
     "chalk": "^2.3.0",
     "cosmiconfig": "^3.1.0",
     "jsome": "^2.3.26",
+    "lean-nodent-runtime": "^1.0.2",
     "lodash": "^4.17.4",
     "node-notifier": "^5.1.2",
     "nodent-runtime": "^3.2.0",

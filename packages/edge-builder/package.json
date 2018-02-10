@@ -43,6 +43,7 @@
     "html-webpack-plugin": "^2.30.1",
     "jsome": "^2.3.26",
     "json-loader": "^0.5.7",
+    "lean-nodent-runtime": "^1.0.2",
     "loader-utils": "^1.1.0",
     "lodash": "^4.17.4",
     "meow": "^4.0.0",
