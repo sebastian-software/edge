@@ -25,5 +25,5 @@ test("Calc Simple", () =>
 )
 
 test("Calc Complex", () =>
-  compile("h1 { width: calc(99.999% * 3 / 10); }")
+  compile("h1 { width: calc(99.999% * 3 / 10 - 22px); }")
 )
