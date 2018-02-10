@@ -4,7 +4,7 @@
   "description": "Central configuration for Storybook. For usage in component collections and applications.",
   "main": "lib/config.js",
   "scripts": {
-    "test": "jest",
+    "test": "echo",
     "build": "rimraf lib && cpy src/babelrc --rename=.babelrc lib/ && cpy src/devices.json lib/ && babel --out-dir lib src",
     "prepack": "npm run build"
   },
@@ -12,11 +12,6 @@
     "lib/"
   ],
   "keywords": [],
-  "pre-commit": "lint-staged",
-  "lint-staged": {
-    "*.js": "eslint",
-    "*.css": "stylelint"
-  },
   "author": {
     "name": "Sebastian Software",
     "email": "s.werner@sebastian-software.de",

@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "browser": "lib/index.js",
   "scripts": {
-    "test": "echo ''",
+    "test": "echo",
     "build": "rimraf lib && prepublish",
     "prepack": "npm run build"
   },
