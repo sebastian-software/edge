@@ -65,3 +65,15 @@ initStoryshots({
 ```
 
 It makes sense to just use shallow snapshots. That's how Jest normally behaves as well with snapshot tests. You typically do not want to include the fully resolved DOM structure into all snapshots. Testing should end at the boundaries of your components.
+
+
+## License
+
+[Apache License Version 2.0, January 2004](license)
+
+
+## Copyright
+
+<img src="https://cdn.rawgit.com/sebastian-software/sebastian-software-brand/3d93746f/sebastiansoftware-en.svg" alt="Sebastian Software GmbH Logo" width="250" height="200"/>
+
+Copyright 2017-2018<br/>[Sebastian Software GmbH](http://www.sebastian-software.de)
