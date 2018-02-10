@@ -59,7 +59,7 @@
     "postcss-gradient-transparency-fix": "^2.1.0",
     "postcss-grid-kiss": "^1.4.2",
     "postcss-hexrgba": "^1.0.0",
-    "postcss-import": "^11.0.0",
+    "postcss-import": "^11.1.0",
     "postcss-initial": "^2.0.0",
     "postcss-input-style": "^1.0.0",
     "postcss-magic-animations": "^0.3.0",
