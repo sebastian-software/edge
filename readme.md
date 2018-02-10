@@ -36,7 +36,7 @@ Project Name | NPM Status | Build Status | Dependency Status
 [Edge Babel][babel-home] | [![Version][babel-npm-version-img]][babel-npm] [![Downloads][babel-npm-downloads-img]][babel-npm] | [![Build Status Unix][babel-travis-img]][babel-travis] [![Build Status Windows][babel-appveyor-img]][babel-appveyor] | [![Dependencies][babel-deps-img]][babel-deps]
 [Lean Intl][intl-home] | [![Version][intl-npm-version-img]][intl-npm] [![Downloads][intl-npm-downloads-img]][intl-npm] | [![Build Status Unix][intl-travis-img]][intl-travis] [![Build Status Windows][intl-appveyor-img]][intl-appveyor] | [![Dependencies][intl-deps-img]][intl-deps]
 [Prepublish][prepublish-home] | [![Version][prepublish-npm-version-img]][prepublish-npm] [![Downloads][prepublish-npm-downloads-img]][prepublish-npm] | [![Build Status Unix][prepublish-travis-img]][prepublish-travis] [![Build Status Windows][prepublish-appveyor-img]][prepublish-appveyor] | [![Dependencies][prepublish-deps-img]][prepublish-deps]
-[Readable Code][readable-home] | [![Version][readable-npm-version-img]][readable-npm] [![Downloads][readable-npm-downloads-img]][readable-npm] | - | [![Dependencies][readable-deps-img]][readable-deps]
+[Readable CLI][readable-home] | [![Version][readable-npm-version-img]][readable-npm] [![Downloads][readable-npm-downloads-img]][readable-npm] | - | [![Dependencies][readable-deps-img]][readable-deps]
 [PostCSS Smart Asset][smartasset-home] | [![Version][smartasset-npm-version-img]][smartasset-npm] [![Downloads][smartasset-npm-downloads-img]][smartasset-npm] | [![Build Status Unix][smartasset-travis-img]][smartasset-travis] [![Build Status Windows][smartasset-appveyor-img]][smartasset-appveyor] | [![Dependencies][smartasset-deps-img]][smartasset-deps]
 [Rollup Rebase][rebase-home] | [![Version][rebase-npm-version-img]][rebase-npm] [![Downloads][rebase-npm-downloads-img]][rebase-npm] | [![Build Status Unix][rebase-travis-img]][rebase-travis] [![Build Status Windows][rebase-appveyor-img]][rebase-appveyor] | [![Dependencies][rebase-deps-img]][rebase-deps]
 
@@ -133,16 +133,16 @@ Project Name | NPM Status | Build Status | Dependency Status
 [prepublish-travis]: https://travis-ci.org/sebastian-software/prepublish
 [prepublish-appveyor]: https://ci.appveyor.com/project/swernerx/prepublish/branch/master
 
-[readable-home]: https://github.com/sebastian-software/readable-code
-[readable-deps]: https://david-dm.org/sebastian-software/readable-code
-[readable-deps-img]: https://david-dm.org/sebastian-software/readable-code.svg
-[readable-npm]: https://www.npmjs.com/package/readable-code
-[readable-npm-downloads-img]: https://img.shields.io/npm/dm/readable-code.svg
-[readable-npm-version-img]: https://img.shields.io/npm/v/readable-code.svg
-[readable-travis-img]: https://img.shields.io/travis/sebastian-software/readable-code/master.svg?branch=master&label=unix
-[readable-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/readable-code/master.svg?label=windows
-[readable-travis]: https://travis-ci.org/sebastian-software/readable-code
-[readable-appveyor]: https://ci.appveyor.com/project/swernerx/readable-code/branch/master
+[readable-home]: https://github.com/sebastian-software/readable-cli
+[readable-deps]: https://david-dm.org/sebastian-software/readable-cli
+[readable-deps-img]: https://david-dm.org/sebastian-software/readable-cli.svg
+[readable-npm]: https://www.npmjs.com/package/readable-cli
+[readable-npm-downloads-img]: https://img.shields.io/npm/dm/readable-cli.svg
+[readable-npm-version-img]: https://img.shields.io/npm/v/readable-cli.svg
+[readable-travis-img]: https://img.shields.io/travis/sebastian-software/readable-cli/master.svg?branch=master&label=unix
+[readable-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/readable-cli/master.svg?label=windows
+[readable-travis]: https://travis-ci.org/sebastian-software/readable-cli
+[readable-appveyor]: https://ci.appveyor.com/project/swernerx/readable-cli/branch/master
 
 [smartasset-home]: https://github.com/sebastian-software/postcss-smart-asset
 [smartasset-deps]: https://david-dm.org/sebastian-software/postcss-smart-asset
