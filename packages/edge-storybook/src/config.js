@@ -27,22 +27,14 @@ addDecorator((story) => {
   )
 })
 
-// Installed in either:
-// - ROOT/node_modules/edge-storybook/lib (inside applications)
-//   This is true: __dirname == "./node_modules/edge-storybook/lib"
-// - ROOT/packages/edge-storybook/lib (inside edge itself)
-//   This is true: __dirname == "../edge-storybook/lib"
-console.log("DIRNAME:", __dirname)
+// Mode: Inside "edge" mono-repository
+const loader = require.context("../../edge-boilerplate/src", true, /\.story\.js$/);
+const stories = loader.keys()
 
-const context =
-  __dirname === "../edge-storybook/lib"
-    ? "../../edge-boilerplate/src"
-    : "../../../src"
-
-const loader = require.context(context, true, /\.story\.js$/)
+console.log("Loading", stories.length, "stories")
 
 function loadStories() {
-  loader.keys().forEach((filename) => loader(filename))
+  stories.forEach((filename) => loader(filename))
 }
 
 configure(loadStories, module)
