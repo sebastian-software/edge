@@ -32,11 +32,11 @@
   },
   "dependencies": {
     "app-root-dir": "^1.0.2",
-    "autoprefixer": "^7.2.6",
+    "autoprefixer": "^8.0.0",
     "lost": "^8.2.0",
     "pleeease-filters": "^4.0.0",
     "postcss": "^6.0.17",
-    "postcss-advanced-variables": "^2.3.0",
+    "postcss-advanced-variables": "^2.3.1",
     "postcss-assets": "^5.0.0",
     "postcss-at-warn": "^1.0.0",
     "postcss-better-colors": "^1.1.3",
