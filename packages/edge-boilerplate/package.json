@@ -19,8 +19,8 @@
   "scripts": {
     "dev": "babel-watch src/dev.js",
     "start": "bin/server",
-    "build": "prepublish",
-    "test": "jest",
+    "build": "prepublish && edge build",
+    "test": "jest && npm run build",
     "prepack": "npm run build && npm run styleguide:build && npm run storybook:build",
     "storybook": "start-storybook --port 1449 --config-dir node_modules/edge-storybook/lib",
     "storybook:build": "rimraf docs/storybook && build-storybook --output-dir docs/storybook --config-dir node_modules/edge-storybook/lib",
