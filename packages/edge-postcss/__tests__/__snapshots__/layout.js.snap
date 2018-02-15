@@ -11,7 +11,6 @@ column-count:1
 
 exports[`Grid KISS 1`] = `
 ".gridTest{
-display:-ms-grid;
 display:grid;
 -ms-flex-line-pack:justify;
 align-content:space-between;
@@ -21,7 +20,6 @@ grid-template:\\"a a\\" 120px \\"b c \\" 1fr \\"e e\\" 60px/30% 1fr
 .gridTest>header{
 grid-area:a;
 -ms-flex-item-align:start;
--ms-grid-row-align:start;
 align-self:start
 }
 
@@ -37,7 +35,6 @@ grid-area:c
 grid-area:e;
 justify-self:center;
 -ms-flex-item-align:end;
--ms-grid-row-align:end;
 align-self:end
 }
 
