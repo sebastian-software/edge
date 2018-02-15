@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "app-root-dir": "^1.0.2",
-    "chalk": "^2.3.0",
+    "chalk": "^2.3.1",
     "cosmiconfig": "^4.0.0",
     "jsome": "^2.5.0",
     "lean-nodent-runtime": "^1.0.2",

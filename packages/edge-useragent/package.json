@@ -45,7 +45,7 @@
   "devDependencies": {
     "babel-preset-edge": "*",
     "eslint": "*",
-    "mocha": "*",
+    "mocha": "5.0.1",
     "prepublish": "*",
     "request": "2.83.x",
     "rimraf": "*",

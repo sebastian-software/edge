@@ -19,10 +19,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@storybook/addon-actions": "^3.3.12",
-    "@storybook/addon-links": "^3.3.12",
-    "@storybook/addon-storyshots": "^3.3.12",
-    "@storybook/react": "^3.3.12",
+    "@storybook/addon-actions": "^3.3.13",
+    "@storybook/addon-links": "^3.3.13",
+    "@storybook/addon-storyshots": "^3.3.13",
+    "@storybook/react": "^3.3.13",
     "babel-preset-edge": "^1.7.1",
     "edge-core": "^0.8.10",
     "storybook-addon-scissors": "^3.0.1"
