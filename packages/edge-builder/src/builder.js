@@ -29,7 +29,6 @@ import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin"
 import SriPlugin from "webpack-subresource-integrity"
 
 // Compression
-import BabelMinifyPlugin from "babel-minify-webpack-plugin"
 import UglifyPlugin from "uglifyjs-webpack-plugin"
 
 import BundleAnalyzerPlugin from "webpack-bundle-analyzer"
@@ -78,16 +77,6 @@ const UGLIFY_OPTIONS = {
     // Remove all comments, don't even keep tons of copyright comments
     comments: false
   }
-}
-
-const BABEL_MINIFY_CLIENT_OPTIONS = {}
-
-const BABEL_SERVER_MINIFY_OPTIONS = {
-  booleans: false,
-  deadcode: true,
-  flipComparisons: false,
-  mangle: false,
-  mergeVars: false
 }
 
 const ROOT = getRoot()
@@ -147,7 +136,6 @@ export default function builder(target, env = "development", config = {}) {
   if (config.verbose) {
     console.log(`→ Babel Environment: ${BABEL_ENV}`)
     console.log(`→ Enable Source Maps: ${devtool}`)
-    console.log(`→ Bundle Compression: ${config.build.bundleCompression}`)
     console.log(`→ Use Cache Loader: ${config.build.useCacheLoader} [Hash: ${CACHE_HASH}]`)
     console.log(`→ Default Locale: ${DEFAULT_LOCALE}`)
     console.log(`→ Supported Locales: ${SUPPORTED_LOCALES}`)
@@ -398,23 +386,13 @@ export default function builder(target, env = "development", config = {}) {
 
       // Classic UglifyJS for compressing ES5 compatible code.
       // https://github.com/webpack-contrib/uglifyjs-webpack-plugin
-      config.build.bundleCompression === "uglify" && isProduction ?
+      isProduction ?
         new UglifyPlugin({
           sourceMap: config.build.enableSourceMaps,
           cache: true,
           parallel: true,
           uglifyOptions: UGLIFY_OPTIONS
         }) : null,
-
-      // Alternative to Uglify when producing modern output
-      // Advanced ES2015 ready JS compression based on Babylon (Babel Parser)
-      // https://github.com/webpack-contrib/babili-webpack-plugin
-      // config.build.bundleCompression === "babel" && isProduction && isClient ?
-      //   new BabelMinifyPlugin(BABEL_MINIFY_CLIENT_OPTIONS, { comments: false }) : null,
-
-
-      // isProduction && isServer ?
-      //   new BabelMinifyPlugin(BABEL_SERVER_MINIFY_OPTIONS, { comments: false }) : null,
 
       // "Use HashedModuleIdsPlugin to generate IDs that preserves over builds."
       // Via: https://github.com/webpack/webpack.js.org/issues/652#issuecomment-273324529
