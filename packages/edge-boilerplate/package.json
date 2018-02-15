@@ -1,7 +1,7 @@
 {
   "name": "edge-boilerplate",
   "description": "Edge Boilerplate is a template for modern web applications. Part of the Edge Platform.",
-  "version": "0.7.12",
+  "version": "0.8.0",
   "main": "server/index.js",
   "author": {
     "name": "Sebastian Software",
@@ -35,8 +35,8 @@
   ],
   "license": "Apache-2.0",
   "dependencies": {
-    "edge-common": "^0.1.2",
-    "edge-express": "^0.1.14",
+    "edge-common": "^0.1.3",
+    "edge-express": "^0.1.15",
     "http-status-codes": "^1.3.0",
     "yn": "^2.0"
   },
@@ -44,12 +44,12 @@
     "@storybook/react": "*",
     "babel-watch": "^2.0.7",
     "cookiesjs": "^2.0.0",
-    "edge-builder": "^0.13.9",
-    "edge-core": "^0.8.10",
-    "edge-jest": "^0.1.2",
-    "edge-postcss": "^0.10.0",
-    "edge-storybook": "^0.1.8",
-    "edge-style": "^0.2.14",
+    "edge-builder": "^0.14.0",
+    "edge-core": "^0.8.11",
+    "edge-jest": "^0.1.3",
+    "edge-postcss": "^0.10.1",
+    "edge-storybook": "^0.1.9",
+    "edge-style": "^0.2.15",
     "jest": "*",
     "prepublish": "*",
     "react-styleguidist": "*"
