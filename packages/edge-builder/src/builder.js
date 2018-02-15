@@ -398,7 +398,7 @@ export default function builder(target, env = "development", config = {}) {
 
       // Classic UglifyJS for compressing ES5 compatible code.
       // https://github.com/webpack-contrib/uglifyjs-webpack-plugin
-      config.build.bundleCompression === "uglify" && isProduction && isClient ?
+      config.build.bundleCompression === "uglify" && isProduction ?
         new UglifyPlugin({
           sourceMap: config.build.enableSourceMaps,
           cache: true,
@@ -409,12 +409,12 @@ export default function builder(target, env = "development", config = {}) {
       // Alternative to Uglify when producing modern output
       // Advanced ES2015 ready JS compression based on Babylon (Babel Parser)
       // https://github.com/webpack-contrib/babili-webpack-plugin
-      config.build.bundleCompression === "babel" && isProduction && isClient ?
-        new BabelMinifyPlugin(BABEL_MINIFY_CLIENT_OPTIONS, { comments: false }) : null,
+      // config.build.bundleCompression === "babel" && isProduction && isClient ?
+      //   new BabelMinifyPlugin(BABEL_MINIFY_CLIENT_OPTIONS, { comments: false }) : null,
 
 
-      isProduction && isServer ?
-        new BabelMinifyPlugin(BABEL_SERVER_MINIFY_OPTIONS, { comments: false }) : null,
+      // isProduction && isServer ?
+      //   new BabelMinifyPlugin(BABEL_SERVER_MINIFY_OPTIONS, { comments: false }) : null,
 
       // "Use HashedModuleIdsPlugin to generate IDs that preserves over builds."
       // Via: https://github.com/webpack/webpack.js.org/issues/652#issuecomment-273324529
