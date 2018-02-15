@@ -19,10 +19,7 @@ export function createMiddleware(config = {}) {
     publicPath: config.output.public,
 
     // we have our custom error handling for webpack which offers far better DX
-    quiet: true,
-
-    // display no info to console (only warnings and errors)
-    noInfo: true
+    logLevel: "silent"
   })
 
   const hotMiddleware = webpackHotMiddleware(clientCompiler)
