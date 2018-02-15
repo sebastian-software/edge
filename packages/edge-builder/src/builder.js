@@ -39,8 +39,8 @@ import { getHashDigest } from "loader-utils"
 
 function removeEmptyKeys(source)
 {
-  var copy = {}
-  for (var key in source)
+  const copy = {}
+  for (const key in source)
   {
     if (!(source[key] == null || source[key].length === 0))
       copy[key] = source[key]
@@ -127,7 +127,7 @@ export default function builder(target, env = "development", config = {}) {
   // Extract plain languages from configured locales
   const SUPPORTED_LANGUAGES = (() => {
     const languages = new Set()
-    for (let entry of SUPPORTED_LOCALES) {
+    for (const entry of SUPPORTED_LOCALES) {
       languages.add(entry.split("-")[0])
     }
     return Array.from(languages.keys())
@@ -450,7 +450,7 @@ export default function builder(target, env = "development", config = {}) {
       isProduction ? new webpack.optimize.ModuleConcatenationPlugin() : null,
 
       isClient && isDevelopment ? new webpack.HotModuleReplacementPlugin() : null,
-      isDevelopment ? new webpack.NoEmitOnErrorsPlugin() : null,
+      isDevelopment ? new webpack.NoEmitOnErrorsPlugin() : null
 
       // Compress static files with zopfli (gzip) compression
       // https://github.com/webpack-contrib/zopfli-webpack-plugin

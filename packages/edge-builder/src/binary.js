@@ -95,8 +95,8 @@ function executeCommands(listOfCommands, config) {
 async function executeTasks() {
   const { config } = await loadConfig("edge", flags)
 
-  for (let taskName of selectedTasks) {
-    for (let taskConfig of availableTasks) {
+  for (const taskName of selectedTasks) {
+    for (const taskConfig of availableTasks) {
       if (taskConfig.task === taskName) {
         try {
           await executeCommands(taskConfig.commands, config)
