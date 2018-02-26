@@ -12,7 +12,10 @@
     "server": "bin/server"
   },
   "files": [
-    "docs/"
+    "docs/",
+    "build/",
+    "bin/",
+    ".edgerc.yml"
   ],
   "scripts": {
     "dev": "babel-watch src/dev.js",
