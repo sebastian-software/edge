@@ -43,10 +43,10 @@
     "tmp": "0.0.x"
   },
   "devDependencies": {
-    "babel-preset-edge": "*",
-    "eslint": "*",
+    "babel-preset-edge": "1.8.0",
+    "eslint": "4.18.1",
     "mocha": "5.0.1",
-    "prepublish": "*",
+    "prepublish": "1.6.3",
     "request": "2.83.x",
     "rimraf": "*",
     "semver": "5.5.x",

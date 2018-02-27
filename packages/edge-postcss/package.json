@@ -35,8 +35,8 @@
     "autoprefixer": "^8.0.0",
     "lost": "^8.2.0",
     "pleeease-filters": "^4.0.0",
-    "postcss": "^6.0.18",
-    "postcss-advanced-variables": "^2.3.1",
+    "postcss": "^6.0.19",
+    "postcss-advanced-variables": "^2.3.3",
     "postcss-assets": "^5.0.0",
     "postcss-at-warn": "^1.0.0",
     "postcss-better-colors": "^1.1.3",
@@ -77,10 +77,10 @@
     "postcss-zindex": "^2.2.0"
   },
   "devDependencies": {
-    "babel-preset-edge": "*",
-    "jest": "*",
+    "babel-preset-edge": "1.8.0",
+    "jest": "22.4.2",
     "postcss-load-config": "^1.2.0",
-    "prepublish": "*",
+    "prepublish": "1.6.3",
     "rimraf": "*"
   }
 }
