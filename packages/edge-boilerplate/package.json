@@ -1,7 +1,7 @@
 {
   "name": "edge-boilerplate",
   "description": "Edge Boilerplate is a template for modern web applications. Part of the Edge Platform.",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "main": "server/index.js",
   "author": {
     "name": "Sebastian Software",
@@ -48,7 +48,7 @@
     "edge-core": "^0.9.0",
     "edge-jest": "^0.1.4",
     "edge-postcss": "^0.10.2",
-    "edge-storybook": "^0.1.10",
+    "edge-storybook": "^0.2.0",
     "edge-style": "^0.2.16",
     "jest": "22.4.2",
     "prepublish": "1.6.3",

@@ -1,6 +1,6 @@
 {
   "name": "edge-storybook",
-  "version": "0.1.10",
+  "version": "0.2.0",
   "description": "Central configuration for Storybook. For usage in component collections and applications.",
   "main": "lib/config.js",
   "scripts": {
