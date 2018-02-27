@@ -1,6 +1,6 @@
 {
   "name": "edge-storybook",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Central configuration for Storybook. For usage in component collections and applications.",
   "main": "lib/config.js",
   "scripts": {
@@ -24,7 +24,7 @@
     "@storybook/addon-storyshots": "^3.3.14",
     "@storybook/react": "^3.3.14",
     "babel-preset-edge": "^1.8.0",
-    "edge-core": "^0.8.11",
+    "edge-core": "^0.9.0",
     "storybook-addon-scissors": "^3.0.1"
   },
   "devDependencies": {
