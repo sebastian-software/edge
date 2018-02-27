@@ -5,7 +5,7 @@
   "main": "lib/config.js",
   "scripts": {
     "test": "echo",
-    "build": "rimraf lib && cpy src/babelrc --rename=.babelrc lib/ && cpy src/devices.json lib/ && babel --out-dir lib src",
+    "build": "rimraf lib && cpy src/babelrc --rename=.babelrc lib/ && babel --out-dir lib src",
     "prepack": "npm run build"
   },
   "files": [
@@ -22,10 +22,10 @@
     "@storybook/addon-actions": "^3.3.14",
     "@storybook/addon-links": "^3.3.14",
     "@storybook/addon-storyshots": "^3.3.14",
+    "@storybook/addon-viewport": "^3.3.0",
     "@storybook/react": "^3.3.14",
     "babel-preset-edge": "^1.8.0",
-    "edge-core": "^0.9.0",
-    "storybook-addon-scissors": "^3.0.1"
+    "edge-core": "^0.9.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
