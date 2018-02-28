@@ -34,6 +34,7 @@
     "cache-loader": "^1.2.2",
     "case-sensitive-paths-webpack-plugin": "^2.1.1",
     "chalk": "^2.3.1",
+    "clipboardy": "^1.2.3",
     "css-loader": "^0.28.10",
     "edge-common": "^0.1.5",
     "extract-css-chunks-webpack-plugin": "^2.0.18",
