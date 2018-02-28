@@ -22,6 +22,10 @@ before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
 
+install:
+  - yarn install
+  - yarn build
+
 notifications:
   email: false
   slack:
@@ -29,6 +33,3 @@ notifications:
 
 cache:
   yarn: true
-  directories:
-    - ".eslintcache"
-    - "node_modules"

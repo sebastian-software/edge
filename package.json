@@ -19,8 +19,7 @@
   "pre-commit": "lint-staged",
   "lint-staged": {
     "*.js": "eslint --quiet",
-    "*.css": "stylelint --quiet",
-    "*.sss": "stylelint --quiet"
+    "*.css": "stylelint --quiet"
   },
   "workspaces": [
     "packages/*"
