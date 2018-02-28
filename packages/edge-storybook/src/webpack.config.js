@@ -16,7 +16,6 @@ module.exports = {
       {
         test: /\.(css|pcss|sss)$/,
         exclude: [
-          /storybook-addon-scissors/,
           /react-select/
         ],
         loaders: [
@@ -44,7 +43,6 @@ module.exports = {
       {
         test: /\.css$/,
         include: [
-          /storybook-addon-scissors/,
           /react-select/
         ],
         loaders: [
