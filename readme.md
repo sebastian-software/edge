@@ -1,3 +1,5 @@
+<img src="https://cdn.rawgit.com/sebastian-software/sebastian-software-brand/8d89acc9/edge.svg" alt="Edge Platform Logo" width="250" style="max-width:100%"/>
+
 # Edge Platform<br/>[![Sponsored by][sponsor-img]][sponsor] [![lerna][lerna-img]][lerna] [![Build Status Unix][travis-img]][travis] [![Build Status Windows][appveyor-img]][appveyor]
 
 *Edge Platform* helps you focus on business logic rather than dealing with complex dependencies and build configurations.
@@ -11,11 +13,7 @@
 [travis]: https://travis-ci.org/sebastian-software/edge
 [appveyor]: https://ci.appveyor.com/project/swernerx/edge/branch/master
 
-<img src="./assets/edge.png" alt="Edge Platform Logo" width="238" style="max-width:100%"/>
-
 ## *Edge Platform* Components
-
-> "Understanding the architectural decisions behind the tools you are using is perhaps more important than the many things a new package does for you." — James Gillmore
 
 Project Name | NPM Status | Dependency Status
 ------------ | ---------- | -------------------------------------
@@ -207,6 +205,6 @@ Project Name | NPM Status | Build Status | Dependency Status
 
 ## Copyright
 
-<img src="./assets/sebastiansoftware.png" alt="Sebastian Software GmbH Logo" width="250" height="200"/>
+<img src="https://cdn.rawgit.com/sebastian-software/sebastian-software-brand/3d93746f/sebastiansoftware-en.svg" alt="Sebastian Software GmbH Logo" width="250" height="200"/>
 
 Copyright 2015-2018<br/>[Sebastian Software GmbH](http://www.sebastian-software.de)
