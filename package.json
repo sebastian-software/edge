@@ -11,10 +11,7 @@
   "scripts": {
     "clean": "lerna clean --yes && rimraf node_modules",
     "update": "yarn upgrade-interactive --latest",
-    "precommit": "lint-staged",
-    "prepare": "npm run build",
-    "test": "lerna run test",
-    "build": "lerna run build && lerna link"
+    "precommit": "lint-staged"
   },
   "pre-commit": "lint-staged",
   "lint-staged": {

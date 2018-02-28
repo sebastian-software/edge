@@ -7,10 +7,8 @@
     "email": "s.werner@sebastian-software.de",
     "url": "https://www.sebastian-software.de"
   },
-  "main": "lib/index.es5.cjs.js",
-  "module": "lib/index.es5.esm.js",
-  "main:es2015": "lib/index.es2015.cjs.js",
-  "module:es2015": "lib/index.es2015.esm.js",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.esm.js",
   "license": "Apache-2.0",
   "scripts": {
     "prepack": "npm run build",

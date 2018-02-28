@@ -2,10 +2,8 @@
   "name": "edge-useragent",
   "version": "3.0.14",
   "description": "High performance user agent string parser for modern environments. Part of the Edge Platform.",
-  "main": "lib/index.es5.cjs.js",
-  "module": "lib/index.es5.esm.js",
-  "main:es2015": "lib/index.es2015.cjs.js",
-  "module:es2015": "lib/index.es2015.esm.js",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.esm.js",
   "keywords": [
     "agent",
     "browser",

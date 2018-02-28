@@ -10,8 +10,8 @@
   "bin": {
     "edge": "bin/edge"
   },
-  "main": "lib/node.cjs.js",
-  "module": "lib/node.esm.js",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.esm.js",
   "license": "Apache-2.0",
   "scripts": {
     "prepack": "npm run build",
