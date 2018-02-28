@@ -53,5 +53,8 @@
     "jest": "22.4.2",
     "prepublish": "1.6.3",
     "react-styleguidist": "6.2.5"
+  },
+  "peerDependencies": {
+    "edge-builder": "^0.14.2"
   }
 }
