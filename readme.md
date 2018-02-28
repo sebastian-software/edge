@@ -1,6 +1,6 @@
 # Edge Platform<br/>[![Sponsored by][sponsor-img]][sponsor] [![lerna][lerna-img]][lerna] [![Build Status Unix][travis-img]][travis] [![Build Status Windows][appveyor-img]][appveyor]
 
-*🐺 Edge Platform* helps you focus on business logic rather than dealing with complex dependencies and build configurations.
+*Edge Platform* helps you focus on business logic rather than dealing with complex dependencies and build configurations.
 
 [sponsor-img]: https://img.shields.io/badge/Sponsored%20by-Sebastian%20Software-692446.svg
 [sponsor]: https://www.sebastian-software.de
@@ -11,9 +11,9 @@
 [travis]: https://travis-ci.org/sebastian-software/edge
 [appveyor]: https://ci.appveyor.com/project/swernerx/edge/branch/master
 
-<img src="./assets/edge.png" alt="Edge Platform Logo" width="951" style="max-width:100%"/>
+<img src="./assets/edge.png" alt="Edge Platform Logo" width="238" style="max-width:100%"/>
 
-## *🐺 Edge Platform* Components
+## *Edge Platform* Components
 
 > "Understanding the architectural decisions behind the tools you are using is perhaps more important than the many things a new package does for you." — James Gillmore
 
@@ -29,7 +29,7 @@ Project Name | NPM Status | Dependency Status
 [Edge PostCSS][postcss-home] | [![Version][postcss-npm-version-img]][postcss-npm] [![Downloads][postcss-npm-downloads-img]][postcss-npm] | [![Dependencies][postcss-deps-img]][postcss-deps]
 
 
-## *🐺 Edge Platform* Foundation Technologies
+## *Edge Platform* Foundation Technologies
 
 Project Name | NPM Status | Build Status | Dependency Status
 ------------ | ---------- | ------------ | -------------------------------------
@@ -174,17 +174,11 @@ Project Name | NPM Status | Build Status | Dependency Status
 
 - Webpack: Bundling for SPAs.
   - Loaders: Assets, JSON, YAML, GraphQL, ...
-  - Plugins:
 - Rollup: Bundling for Libraries and Executables.
 - PostCSS: CSS Transformation Chain.
   - CSS Modules enabled.
-- ESLint: Linting for JavaScript files.
-  - Plugins for React, Security, Imports, ...
-- Stylelint: Linting for CSS files.
-- Prettier: Autoformatting for JavaScript, CSS, JSON, GraphQL and more.
 - Uglify-ES: ES2015 capable JavaScript compression
-- Babili: ES2015+ capable JavaScript compression
-- Zopfli: Highly optimized Compression of Resources
+- Zopfli: Highly optimized Compression of assets
 
 ### React Development
 
@@ -198,10 +192,7 @@ Project Name | NPM Status | Build Status | Dependency Status
 ### Server
 
 - Express: Effectively the standard Web Server in NodeJS
-- Cookie Parser:
 - Express Locale: Locale Detection
-- Helmet:
-- HPP
 
 ### Helpers
 
@@ -218,4 +209,4 @@ Project Name | NPM Status | Build Status | Dependency Status
 
 <img src="./assets/sebastiansoftware.png" alt="Sebastian Software GmbH Logo" width="250" height="200"/>
 
-Copyright 2015-2017<br/>[Sebastian Software GmbH](http://www.sebastian-software.de)
+Copyright 2015-2018<br/>[Sebastian Software GmbH](http://www.sebastian-software.de)
