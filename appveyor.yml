@@ -20,8 +20,6 @@ deploy: off
 install:
   - ps: Install-Product node $env:nodejs_version $env:platform
   - yarn install
-  - lerna run prepack
-  - lerna link
 
 test_script:
   - npm test
