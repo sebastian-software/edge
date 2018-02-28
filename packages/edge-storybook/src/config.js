@@ -27,11 +27,15 @@ addDecorator((story) => {
   )
 })
 
-// Mode: Inside "edge" mono-repository
-const loader = require.context("../../edge-boilerplate/src", true, /\.story\.js$/);
+/* global ROOT */
+
+// Uses the injected ROOT from our Webpack config to find stories
+// relative to the application folder.
+const loader = require.context(ROOT, true, /\.story\.js$/);
 const stories = loader.keys()
 
-console.log("Loading", stories.length, "stories")
+console.log("Root Folder:", ROOT)
+console.log("Adding", stories.length, "stories")
 
 function loadStories() {
   stories.forEach((filename) => loader(filename))

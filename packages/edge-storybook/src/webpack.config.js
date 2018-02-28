@@ -1,8 +1,20 @@
-/* eslint-disable import/no-commonjs, import/unambiguous */
+import webpack from "webpack"
+import { get as getRoot } from "app-root-dir"
+import { join } from "path"
+
+/* eslint-disable import/no-commonjs */
 module.exports = {
   node: {
     __dirname: true
   },
+
+  plugins: [
+    // We use this tricky approach to "send" the root application path to the
+    // config so that we can have a literal
+    new webpack.DefinePlugin({
+      ROOT: JSON.stringify(join(getRoot(), "src"))
+    })
+  ],
 
   module: {
     rules: [
