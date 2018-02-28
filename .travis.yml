@@ -24,7 +24,8 @@ before_install:
 
 install:
   - yarn install
-  - yarn build
+  - lerna run prepack
+  - lerna link
 
 notifications:
   email: false

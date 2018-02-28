@@ -17,11 +17,10 @@
   "scripts": {
     "dev": "babel-watch src/dev.js",
     "build": "prepublish && edge build",
-    "start": "./bin/server",
+    "start": "node bin/server",
     "clean": "rimraf bin && rimraf build && rimraf docs",
     "test": "jest",
     "docs": "npm run styleguide:build && npm run storybook:build",
-    "prepack": "npm run docs",
     "storybook": "start-storybook --port 1449 --config-dir node_modules/edge-storybook/lib",
     "storybook:build": "rimraf docs/storybook && build-storybook --output-dir docs/storybook --config-dir node_modules/edge-storybook/lib",
     "styleguide": "styleguidist server",
