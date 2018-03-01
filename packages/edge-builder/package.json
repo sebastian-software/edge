@@ -40,6 +40,7 @@
     "extract-css-chunks-webpack-plugin": "^2.0.18",
     "file-loader": "^1.1.10",
     "fs-extra": "^5.0.0",
+    "get-port": "^3.2.0",
     "graphql": "^0.13.1",
     "graphql-tag": "^2.8.0",
     "html-webpack-plugin": "^2.30.1",
