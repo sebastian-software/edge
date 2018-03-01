@@ -1,4 +1,4 @@
-import shrinkRay from "shrink-ray"
+import compression from "compression"
 import createLocaleMiddleware from "express-locale"
 import cookieParser from "cookie-parser"
 import bodyParser from "body-parser"
@@ -22,7 +22,6 @@ export default function addCoreMiddleware(server, { locale }) {
   // Parse application/json
   server.use(bodyParser.json())
 
-  // Advanced response compression using a async zopfli/brotli combination
-  // https://github.com/aickin/shrink-ray
-  server.use(shrinkRay())
+  // Compress output stream
+  server.use(compression())
 }
