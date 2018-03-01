@@ -79,9 +79,15 @@ export function connectWithWebpack(server, multiCompiler) {
       serverIsStarted = true
 
       try {
-        const serverPort = await getPort(process.env.SERVER_PORT)
+        const expectedPort = parseInt(process.env.SERVER_PORT, 10)
+        const serverPort = await getPort(expectedPort)
 
         server.listen(serverPort, () => {
+          if (serverPort !== expectedPort) {
+            console.log(
+              `Port ${expectedPort} is not free. Using ${serverPort} instead`
+            )
+          }
           notify(`Server started at port ${serverPort}`, "info")
 
           writeToClipboard(`http://localhost:${serverPort}`)
