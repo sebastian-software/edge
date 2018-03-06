@@ -5,7 +5,7 @@ import webpackHotMiddleware from "webpack-hot-middleware"
 import webpackHotServerMiddleware from "webpack-hot-server-middleware"
 import { notify } from "edge-common"
 import clipboardy from "clipboardy"
-import getPort from "get-port"
+import { find as findPort } from "port-authority"
 
 import configBuilder from "../builder"
 
@@ -80,7 +80,7 @@ export function connectWithWebpack(server, multiCompiler) {
 
       try {
         const expectedPort = parseInt(process.env.SERVER_PORT, 10)
-        const serverPort = await getPort(expectedPort)
+        const serverPort = await findPort(expectedPort)
 
         server.listen(serverPort, () => {
           if (serverPort !== expectedPort) {
