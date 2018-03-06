@@ -50,6 +50,7 @@
     "lodash": "^4.17.5",
     "meow": "^4.0.0",
     "ora": "^1.4.0",
+    "port-authority": "^1.0.1",
     "postcss-loader": "^2.1.1",
     "react-dev-utils": "^5.0.0",
     "resolve-pkg": "^1.0.0",

@@ -5,6 +5,7 @@ import webpackHotMiddleware from "webpack-hot-middleware"
 import webpackHotServerMiddleware from "webpack-hot-server-middleware"
 import { notify } from "edge-common"
 import clipboardy from "clipboardy"
+import { find as findPort } from "port-authority"
 
 import configBuilder from "../builder"
 
@@ -38,6 +39,12 @@ export function createMiddleware(config = {}) {
   }
 }
 
+function writeToClipboard(content) {
+  clipboardy.write(content).catch((error) => {
+    // noop
+  })
+}
+
 export function connectWithWebpack(server, multiCompiler) {
   let serverIsStarted = false
 
@@ -45,7 +52,7 @@ export function connectWithWebpack(server, multiCompiler) {
     notify("Compiling...", "info")
   })
 
-  multiCompiler.plugin("done", (stats) => {
+  multiCompiler.plugin("done", async (stats) => {
     /* eslint-disable no-console */
     const rawMessages = stats.toJson({})
     const messages = formatWebpackMessages(rawMessages)
@@ -71,15 +78,27 @@ export function connectWithWebpack(server, multiCompiler) {
     if (!stats.hasErrors() && !serverIsStarted) {
       serverIsStarted = true
 
-      server.listen(process.env.SERVER_PORT, () => {
-        notify(`Server started at port ${process.env.SERVER_PORT}`, "info")
+      try {
+        const expectedPort = parseInt(process.env.SERVER_PORT, 10)
+        const serverPort = await findPort(expectedPort)
 
-        clipboardy
-          .write(`http://localhost:${process.env.SERVER_PORT}`)
-          .catch((error) => {
-            // noop
-          })
-      })
+        server.listen(serverPort, () => {
+          if (serverPort !== expectedPort) {
+            console.log(
+              `Port ${expectedPort} is not free. Using ${serverPort} instead`
+            )
+          }
+          notify(`Server started at port ${serverPort}`, "info")
+
+          writeToClipboard(`http://localhost:${serverPort}`)
+        })
+      } catch (error) {
+        console.error(
+          `Error requesting port ${
+            process.env.SERVER_PORT
+          } for development server`
+        )
+      }
     }
   })
 }
