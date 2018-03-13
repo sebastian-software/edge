@@ -1,6 +1,6 @@
 <img src="https://cdn.rawgit.com/sebastian-software/sebastian-software-brand/8d89acc9/edge.svg" alt="Edge Platform Logo" width="250" style="max-width:100%"/>
 
-# Edge Platform<br/>[![Sponsored by][sponsor-img]][sponsor] [![lerna][lerna-img]][lerna] [![Build Status Unix][travis-img]][travis] [![Build Status Windows][appveyor-img]][appveyor]
+# Edge Platform<br/>[![Sponsored by][sponsor-img]][sponsor] [![lerna][lerna-img]][lerna] [![Build Status Unix][travis-img]][travis] [![Build Status Windows][appveyor-img]][appveyor] [![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/edge)
 
 *Edge Platform* helps you focus on business logic rather than dealing with complex dependencies and build configurations.
 
