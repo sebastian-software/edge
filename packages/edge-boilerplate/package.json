@@ -51,6 +51,8 @@
     "edge-style": "^0.2.16",
     "jest": "22.4.3",
     "prepublish": "1.6.3",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
     "react-styleguidist": "7.0.8"
   },
   "peerDependencies": {
