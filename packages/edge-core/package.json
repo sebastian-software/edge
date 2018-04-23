@@ -53,7 +53,7 @@
     "node-fetch": "^2.0.0",
     "nodent-runtime": "^3.2.0",
     "prop-types": "^15.6.1",
-    "query-string": "^5.1.0",
+    "query-string": "^6.0.0",
     "raf": "^3.4.0",
     "react": "^16.2.0",
     "react-apollo": "^2.0.4",
