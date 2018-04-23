@@ -35,7 +35,7 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@csstools/sass-import-resolve/-/sass-import-resolve-1.0.0.tgz#32c3cdb2f7af3cd8f0dca357b592e7271f3831b5"
 
-"@storybook/addon-actions@3.4.2", "@storybook/addon-actions@^3.3.14":
+"@storybook/addon-actions@3.4.2", "@storybook/addon-actions@^3.4.2":
   version "3.4.2"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-3.4.2.tgz#ab45c37f57027257530577a9c1af6896ffb40156"
   dependencies:
@@ -50,7 +50,7 @@
     react-inspector "^2.2.2"
     uuid "^3.2.1"
 
-"@storybook/addon-links@3.4.2", "@storybook/addon-links@^3.3.14":
+"@storybook/addon-links@3.4.2", "@storybook/addon-links@^3.4.2":
   version "3.4.2"
   resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-3.4.2.tgz#09531263bd332669807b2e94cc70bd15e173f421"
   dependencies:
@@ -59,7 +59,7 @@
     global "^4.3.2"
     prop-types "^15.6.1"
 
-"@storybook/addon-storyshots@^3.3.14":
+"@storybook/addon-storyshots@^3.4.2":
   version "3.4.2"
   resolved "https://registry.yarnpkg.com/@storybook/addon-storyshots/-/addon-storyshots-3.4.2.tgz#4bf754c050a535ffbc3d671792a123e481e4bf33"
   dependencies:
@@ -73,7 +73,7 @@
     puppeteer "^1.2.0"
     read-pkg-up "^3.0.0"
 
-"@storybook/addon-viewport@^3.3.0":
+"@storybook/addon-viewport@^3.4.2":
   version "3.4.2"
   resolved "https://registry.yarnpkg.com/@storybook/addon-viewport/-/addon-viewport-3.4.2.tgz#5212c8ccd10bf95149e7e4714780c36d78cb0d3f"
   dependencies:
@@ -188,7 +188,7 @@
   dependencies:
     babel-runtime "^6.5.0"
 
-"@storybook/react@3.4.2", "@storybook/react@^3.3.14":
+"@storybook/react@3.4.2", "@storybook/react@^3.4.2":
   version "3.4.2"
   resolved "https://registry.yarnpkg.com/@storybook/react/-/react-3.4.2.tgz#d48952a01cc2fa6bb143a1042bfa178f7d634ec3"
   dependencies:
