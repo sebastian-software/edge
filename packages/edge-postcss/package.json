@@ -50,7 +50,7 @@
     "postcss-custom-media": "^6.0.0",
     "postcss-devtools": "^1.1.1",
     "postcss-discard-comments": "^2.0.4",
-    "postcss-easing-gradients": "^1.2.3",
+    "postcss-easing-gradients": "^2.0.1",
     "postcss-easings": "^1.0.1",
     "postcss-flexbugs-fixes": "^3.3.0",
     "postcss-flow-root": "0.0.3",

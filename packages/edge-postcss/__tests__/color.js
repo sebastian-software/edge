@@ -23,8 +23,10 @@ test("Color Function", () =>
 test("Easing Gradients", () =>
   compile(`
 .demo {
-  background: scrim-gradient(
+  background: linear-gradient(
+    to bottom,
     black,
+    cubic-bezier(0.48, 0.30, 0.64, 1.00),
     transparent
   );
 }`))

@@ -262,6 +262,10 @@
   version "2.0.47"
   resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.47.tgz#f49ba1dd1f189486beb6e1d070a850f6ab4bd521"
 
+"@types/bezier-easing@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/bezier-easing/-/bezier-easing-2.0.0.tgz#addbc86aec544788a7dca64dd136a83c1711af16"
+
 "@types/graphql@0.12.6":
   version "0.12.6"
   resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.12.6.tgz#3d619198585fcabe5f4e1adfb5cf5f3388c66c13"
@@ -2022,6 +2026,10 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
+bezier-easing@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/bezier-easing/-/bezier-easing-2.0.3.tgz#cb493fddb7f8920ecca00973344ce0518885f17e"
+
 bfj-node4@^5.2.0:
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/bfj-node4/-/bfj-node4-5.3.1.tgz#e23d8b27057f1d0214fc561142ad9db998f26830"
@@ -2568,6 +2576,10 @@ chokidar@^2.0.0, chokidar@^2.0.2:
 chownr@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-1.0.1.tgz#e2a75042a9551908bebd25b8523d5f9769d79181"
+
+chroma-js@^1.3.6:
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/chroma-js/-/chroma-js-1.3.6.tgz#22dd7220ef6b55dcfcb8ef92982baaf55dced45d"
 
 ci-info@^1.0.0:
   version "1.1.3"
@@ -4004,9 +4016,12 @@ duplexify@^3.4.2, duplexify@^3.5.3:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
-eases@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/eases/-/eases-1.0.8.tgz#f1f5069a6b6ed2ea510f9c6110398d63efe9aee6"
+easing-coordinates@^1.0.2:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/easing-coordinates/-/easing-coordinates-1.0.4.tgz#c48fcf760aea7a265eca9946c18bbb8ff34b238b"
+  dependencies:
+    "@types/bezier-easing" "^2.0.0"
+    bezier-easing "^2.0.3"
 
 ecc-jsbn@~0.1.1:
   version "0.1.1"
@@ -7774,26 +7789,9 @@ marked@^0.3.9:
   version "0.3.19"
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.19.tgz#5d47f709c4c9fc3c216b6d46127280f40b39d790"
 
-math-abs@^1.0.1:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/math-abs/-/math-abs-1.0.2.tgz#8fb2675d969327a61a629821fc23e41faac5c4d3"
-
 math-expression-evaluator@^1.2.14:
   version "1.2.17"
   resolved "https://registry.yarnpkg.com/math-expression-evaluator/-/math-expression-evaluator-1.2.17.tgz#de819fdbcd84dccd8fae59c6aeb79615b9d266ac"
-
-math-hypot@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/math-hypot/-/math-hypot-1.0.0.tgz#60b9d5eb7f172d20a6458f77bb6b62abfcfbb346"
-  dependencies:
-    math-abs "^1.0.1"
-    math-sqrt "^1.0.0"
-    validate.io-infinite "^1.0.0"
-    validate.io-nan "^1.0.3"
-
-math-sqrt@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/math-sqrt/-/math-sqrt-1.0.1.tgz#37f5639d67d317d7273cdaae984c5d775a143425"
 
 mathml-tag-names@^2.0.0, mathml-tag-names@^2.0.1:
   version "2.0.2"
@@ -9131,17 +9129,14 @@ postcss-discard-unused@^2.2.1:
     postcss "^5.0.14"
     uniqs "^2.0.0"
 
-postcss-easing-gradients@^1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/postcss-easing-gradients/-/postcss-easing-gradients-1.2.3.tgz#17e90310b50d98b5662393717b58553ff760b78f"
+postcss-easing-gradients@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/postcss-easing-gradients/-/postcss-easing-gradients-2.0.1.tgz#48ece9b0d64fe418cd8442d14b8c478b8ead3103"
   dependencies:
-    camelcase "^4.1.0"
-    color "^1.0.3"
-    eases "^1.0.8"
-    math-hypot "^1.0.0"
-    postcss "^5.2.16"
+    chroma-js "^1.3.6"
+    easing-coordinates "^1.0.2"
+    postcss "^6.0.21"
     postcss-value-parser "^3.3.0"
-    round10 "^1.0.3"
 
 postcss-easings@^1.0.1:
   version "1.0.1"
@@ -11033,10 +11028,6 @@ rollup@^0.56.0:
   version "0.56.5"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.56.5.tgz#40fe3cf0cd1659d469baad11f4d5b6336c14ce84"
 
-round10@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/round10/-/round10-1.0.3.tgz#86110f46a10874a1931da7fdd5e06d1857a8e4d0"
-
 rudy-history@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/rudy-history/-/rudy-history-1.0.0.tgz#6e716bfea7b6dc00768a9423ace964fd0f168127"
@@ -12718,14 +12709,6 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
-
-validate.io-infinite@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/validate.io-infinite/-/validate.io-infinite-1.0.0.tgz#9076cf0b41f7ac201a42d58697c461142b4afcfb"
-
-validate.io-nan@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/validate.io-nan/-/validate.io-nan-1.0.3.tgz#d438e13868c9cbd37fdba12594de4d8fe14430a4"
 
 value-equal@^0.4.0:
   version "0.4.0"
