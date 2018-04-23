@@ -21,8 +21,8 @@
     "clean": "rimraf bin && rimraf build && rimraf docs",
     "test": "jest",
     "docs": "npm run styleguide:build && npm run storybook:build",
-    "storybook": "start-storybook --port 1449 --config-dir node_modules/edge-storybook/lib",
-    "storybook:build": "rimraf docs/storybook && build-storybook --output-dir docs/storybook --config-dir node_modules/edge-storybook/lib",
+    "storybook": "start-storybook --port 1449 --config-dir ../../node_modules/edge-storybook/lib",
+    "storybook:build": "rimraf docs/storybook && build-storybook --output-dir docs/storybook --config-dir ../../node_modules/edge-storybook/lib",
     "styleguide": "styleguidist server",
     "styleguide:build": "rimraf docs/styleguide && styleguidist build"
   },
