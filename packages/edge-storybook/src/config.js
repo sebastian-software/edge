@@ -1,9 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies, import/no-unresolved, import/extensions */
 
-// The "global" import fixes issues accessing globals from outside of the VM
-// where this script is running. This is mainly relevant for running Storyshots via Jest.
-import global from "global"
-
 import React from "react"
 import { createStore, combineReducers, applyMiddleware, compose } from "redux"
 import { Provider } from "react-redux"
@@ -12,6 +8,17 @@ import { connectRoutes } from "redux-first-router"
 import { IntlProvider } from "react-intl"
 
 import "edge-style"
+
+if (typeof global.APP_SRC !== "string") {
+  // The "global" import fixes issues accessing globals from outside of the VM
+  // where this script is running. This is mainly relevant for running Storyshots via Jest.
+  /* eslint-disable no-global-assign, no-native-reassign */
+  global = require("global")
+
+  if (typeof global.APP_SRC !== "string") {
+    throw new Error("Edge-Storybook: Configuration Error: APP_SRC is required to be defined by the environment!")
+  }
+}
 
 const routesMap = {
   HOME: "/"
@@ -30,10 +37,6 @@ addDecorator((story) => {
     </IntlProvider>
   )
 })
-
-if (typeof global.APP_SRC !== "string") {
-  throw new Error("Edge-Storybook: Configuration Error: APP_SRC is required to be defined by the environment!")
-}
 
 // Uses the injected ROOT from our Webpack config to find stories
 // relative to the application folder.
