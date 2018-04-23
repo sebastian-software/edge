@@ -1,3 +1,6 @@
+const APP_ROOT = require("app-root-dir").get()
+const path = require("path")
+
 /* eslint-disable */
 module.exports = {
   moduleNameMapper: {
@@ -10,6 +13,12 @@ module.exports = {
     "raf/polyfill",
     require.resolve("./jest.setup.js")
   ],
+
+  globals: {
+    "APP_ROOT": APP_ROOT,
+    "APP_SRC": path.join(APP_ROOT, "src"),
+    "APP_DIST": path.join(APP_ROOT, "dist")
+  },
 
   collectCoverageFrom: [
     "src/**.js"

@@ -16,6 +16,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "app-root-dir": "^1.0.2",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.4.2",
     "jest-fetch-mock": "^1.4.2",

@@ -27,15 +27,16 @@ addDecorator((story) => {
   )
 })
 
-/* global ROOT */
+if (typeof global.APP_SRC !== "string") {
+  throw new Error("Edge-Storybook: Configuration Error: APP_SRC is required to be defined by the environment!")
+}
 
 // Uses the injected ROOT from our Webpack config to find stories
 // relative to the application folder.
-const loader = require.context(ROOT, true, /\.story\.js$/);
+const loader = require.context(global.APP_SRC, true, /\.story\.js$/);
 const stories = loader.keys()
 
-console.log("Root Folder:", ROOT)
-console.log("Adding", stories.length, "stories")
+console.log("Adding", stories.length, "stories from", global.APP_SRC)
 
 function loadStories() {
   stories.forEach((filename) => loader(filename))

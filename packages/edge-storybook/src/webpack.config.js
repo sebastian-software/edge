@@ -9,10 +9,12 @@ module.exports = {
   },
 
   plugins: [
-    // We use this tricky approach to "send" the root application path to the
-    // config so that we can have a literal
+    // The context require feature of Webpack - which we use to load our stories
+    // from the application folders, require a static primitive value (no variable)
+    // A nice trick here is to inject this variable via the DefinePlugin before
+    // it runs in the application and is therefor processed before `require.context`.
     new webpack.DefinePlugin({
-      ROOT: JSON.stringify(join(getRoot(), "src"))
+      "global.APP_SRC": JSON.stringify(join(getRoot(), "src"))
     })
   ],
 
