@@ -64,7 +64,7 @@
     "react-test-renderer": "^16.2.0",
     "react-tree-walker": "^2.1.3",
     "react-universal-component": "^2.8.4",
-    "redux": "^3.7.2",
+    "redux": "^4.0.0",
     "redux-first-router": "rudy",
     "redux-first-router-link": "rudy",
     "redux-immutable-state-invariant": "^2.1.0",
@@ -76,7 +76,7 @@
     "webpack-flush-chunks": "^1.2.3"
   },
   "devDependencies": {
-    "jest": "22.4.2",
+    "jest": "22.4.3",
     "jest-fetch-mock": "^1.4.2",
     "prepublish": "1.6.3",
     "rimraf": "*"

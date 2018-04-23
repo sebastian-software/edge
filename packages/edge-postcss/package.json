@@ -78,7 +78,7 @@
   },
   "devDependencies": {
     "babel-preset-edge": "1.8.2",
-    "jest": "22.4.2",
+    "jest": "22.4.3",
     "postcss-load-config": "^1.2.0",
     "prepublish": "1.6.3",
     "rimraf": "*"

@@ -32,7 +32,7 @@
     "yn": "^2.0.0"
   },
   "devDependencies": {
-    "jest": "22.4.2",
+    "jest": "22.4.3",
     "prepublish": "1.6.3",
     "rimraf": "*"
   }
