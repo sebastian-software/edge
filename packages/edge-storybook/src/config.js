@@ -1,5 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies, import/no-unresolved, import/extensions */
 
+// The "global" import fixes issues accessing globals from outside of the VM
+// where this script is running. This is mainly relevant for running Storyshots via Jest.
+import global from "global"
+
 import React from "react"
 import { createStore, combineReducers, applyMiddleware, compose } from "redux"
 import { Provider } from "react-redux"

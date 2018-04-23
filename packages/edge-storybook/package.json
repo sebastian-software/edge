@@ -24,7 +24,8 @@
     "@storybook/addon-storyshots": "^3.4.2",
     "@storybook/addon-viewport": "^3.4.2",
     "@storybook/react": "^3.4.2",
-    "edge-core": "^0.9.1"
+    "edge-style": "^0.2.16",
+    "global": "^4.3.2"
   },
   "devDependencies": {
     "babel-preset-edge": "^1.8.2",

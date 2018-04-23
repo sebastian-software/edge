@@ -4,10 +4,6 @@ import { join } from "path"
 
 /* eslint-disable import/no-commonjs */
 module.exports = {
-  node: {
-    __dirname: true
-  },
-
   plugins: [
     // The context require feature of Webpack - which we use to load our stories
     // from the application folders, require a static primitive value (no variable)
