@@ -178,7 +178,6 @@ export default function builder(target, env = "development", config = {}) {
   const VENDOR_ENTRY = isServer ? config.entry.serverVendor : config.entry.clientVendor
   const MAIN_ENTRY = isServer ? config.entry.serverMain : config.entry.clientMain
 
-  const HAS_VENDOR = fs.existsSync(VENDOR_ENTRY)
   const HAS_MAIN = fs.existsSync(MAIN_ENTRY)
 
   const WEBPACK_HOOK = config.hook.webpack ? config.hook.webpack : identityFnt
@@ -190,16 +189,12 @@ export default function builder(target, env = "development", config = {}) {
     context: ROOT,
     externals: isServer ? getServerExternals(useLightNodeBundle, [ VENDOR_ENTRY, MAIN_ENTRY ]) : undefined,
 
-    entry: removeEmptyKeys({
-      vendor: HAS_VENDOR ? [
-        HAS_VENDOR && isClient && isDevelopment ? HMR_MIDDLEWARE : null,
-        VENDOR_ENTRY
-      ].filter(Boolean) : null,
-      main: HAS_MAIN ? [
-        HAS_MAIN && isClient && isDevelopment ? HMR_MIDDLEWARE : null,
+    entry: {
+      main: [
+        isClient && isDevelopment ? HMR_MIDDLEWARE : null,
         MAIN_ENTRY
-      ].filter(Boolean) : null
-    }),
+      ].filter(Boolean)
+    },
 
     output: {
       libraryTarget: isServer ? "commonjs2" : "var",
@@ -407,23 +402,6 @@ export default function builder(target, env = "development", config = {}) {
       }) : null,
 
       isServer ? new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }) : null,
-
-      // Extract Webpack bootstrap code with knowledge about chunks into separate cachable package.
-      // isClient ? new webpack.optimize.CommonsChunkPlugin({
-      //   names: [ "bootstrap" ],
-
-      //   // needed to put webpack bootstrap code before chunks
-      //   filename: isProduction ? "[name]-[chunkhash].js" : "[name].js",
-      //   minChunks: Infinity
-      // }) : null,
-
-      // https://webpack.js.org/plugins/commons-chunk-plugin/#explicit-vendor-chunk
-      HAS_VENDOR && isClient ? new webpack.optimize.CommonsChunkPlugin({
-        name: "vendor",
-
-        // With more entries, this ensures that no other module goes into the vendor chunk
-        minChunks: Infinity
-      }) : null,
 
       isProduction ? new webpack.optimize.ModuleConcatenationPlugin() : null,
 
