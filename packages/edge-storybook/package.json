@@ -19,11 +19,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@storybook/addon-actions": "^3.4.2",
-    "@storybook/addon-links": "^3.4.2",
-    "@storybook/addon-storyshots": "^3.4.2",
-    "@storybook/addon-viewport": "^3.4.2",
-    "@storybook/react": "^3.4.2",
+    "@storybook/addon-actions": "^4.0.0-alpha.3",
+    "@storybook/addon-links": "^4.0.0-alpha.3",
+    "@storybook/addon-storyshots": "^4.0.0-alpha.3",
+    "@storybook/addon-viewport": "^4.0.0-alpha.3",
+    "@storybook/react": "^4.0.0-alpha.3",
     "edge-style": "^0.2.17",
     "global": "^4.3.2"
   },
