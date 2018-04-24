@@ -28,7 +28,7 @@
     "app-root-dir": "^1.0.2",
     "babel-loader": "^7.1.4",
     "babel-minify-webpack-plugin": "^0.3.1",
-    "babel-preset-edge": "^1.8.2",
+    "babel-preset-edge": "^1.9.1",
     "bluebird": "^3.5.1",
     "builtin-modules": "^2.0.0",
     "cache-loader": "^1.2.2",
@@ -72,7 +72,7 @@
   },
   "devDependencies": {
     "jest": "22.4.3",
-    "prepublish": "1.6.3",
+    "prepublish": "1.7.0",
     "rimraf": "*"
   }
 }

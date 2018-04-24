@@ -37,7 +37,7 @@
     "edge-postcss": "^0.11.0"
   },
   "devDependencies": {
-    "prepublish": "1.6.3",
+    "prepublish": "1.7.0",
     "rimraf": "*"
   }
 }

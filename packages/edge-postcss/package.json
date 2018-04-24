@@ -77,10 +77,10 @@
     "postcss-zindex": "^2.2.0"
   },
   "devDependencies": {
-    "babel-preset-edge": "1.8.2",
+    "babel-preset-edge": "1.9.1",
     "jest": "22.4.3",
     "postcss-load-config": "^1.2.0",
-    "prepublish": "1.6.3",
+    "prepublish": "1.7.0",
     "rimraf": "*"
   }
 }
