@@ -13,7 +13,8 @@
     "update": "yarn upgrade-interactive --latest",
     "test": "lerna run test",
     "pretest": "lerna run prepack && lerna link",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "prepack": "lerna run prepack"
   },
   "pre-commit": "lint-staged",
   "lint-staged": {
