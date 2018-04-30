@@ -1,7 +1,7 @@
 {
   "name": "edge-common",
   "description": "Edge common contains NodeJS based common utilities and helpers. Part of the Edge Platform.",
-  "version": "0.1.6",
+  "version": "1.0.0-alpha.0",
   "author": {
     "name": "Sebastian Software",
     "email": "s.werner@sebastian-software.de",
