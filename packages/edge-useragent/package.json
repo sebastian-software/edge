@@ -41,7 +41,7 @@
     "tmp": "0.0.x"
   },
   "devDependencies": {
-    "babel-preset-edge": "1.9.1",
+    "babel-preset-edge": "3.0.2",
     "eslint": "4.19.1",
     "mocha": "5.1.1",
     "prepublish": "1.7.0",
