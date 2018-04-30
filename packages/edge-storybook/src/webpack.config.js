@@ -25,10 +25,7 @@ const rules = [
     }
   },
   {
-    test: /\.(css|pcss|sss)$/,
-    exclude: [
-      /react-select/
-    ],
+    test: /\.module\.(css|sss|pcss)$/,
     loaders: [
       {
         loader: "style-loader"
@@ -53,9 +50,7 @@ const rules = [
   },
   {
     test: /\.css$/,
-    include: [
-      /react-select/
-    ],
+    exclude: /\.module\.(css|sss|pcss)$/,
     loaders: [
       {
         loader: "style-loader"
@@ -63,7 +58,9 @@ const rules = [
       {
         loader: "css-loader",
         query: {
-          sourceMap: true
+          sourceMap: true,
+          minimize: false,
+          import: false
         }
       }
     ]
