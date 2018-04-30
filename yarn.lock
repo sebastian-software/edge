@@ -2,6 +2,21 @@
 # yarn lockfile v1
 
 
+"@babel/cli@^7.0.0-beta.46":
+  version "7.0.0-beta.46"
+  resolved "https://registry.yarnpkg.com/@babel/cli/-/cli-7.0.0-beta.46.tgz#4fcede56d20659bf063b2c30c444267aa23f1bd3"
+  dependencies:
+    commander "^2.8.1"
+    convert-source-map "^1.1.0"
+    fs-readdir-recursive "^1.0.0"
+    glob "^7.0.0"
+    lodash "^4.2.0"
+    output-file-sync "^2.0.0"
+    slash "^1.0.0"
+    source-map "^0.5.0"
+  optionalDependencies:
+    chokidar "^1.6.1"
+
 "@babel/code-frame@7.0.0-beta.42":
   version "7.0.0-beta.42"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.0.0-beta.42.tgz#a9c83233fa7cd06b39dc77adbb908616ff4f1962"
@@ -738,7 +753,7 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@storybook/addon-actions@^4.0.0-alpha.3":
+"@storybook/addon-actions@^4.0.0-alpha.4":
   version "4.0.0-alpha.4"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-4.0.0-alpha.4.tgz#3ea9e8d914fe8ec26183241887c53c78a681e1aa"
   dependencies:
@@ -754,7 +769,7 @@
     react-inspector "^2.3.0"
     uuid "^3.2.1"
 
-"@storybook/addon-links@^4.0.0-alpha.3":
+"@storybook/addon-links@^4.0.0-alpha.4":
   version "4.0.0-alpha.4"
   resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-4.0.0-alpha.4.tgz#3aa97e73e91f1b302f9f8291856f42878aa3da0f"
   dependencies:
@@ -764,7 +779,7 @@
     global "^4.3.2"
     prop-types "^15.6.1"
 
-"@storybook/addon-storyshots@^4.0.0-alpha.3":
+"@storybook/addon-storyshots@^4.0.0-alpha.4":
   version "4.0.0-alpha.4"
   resolved "https://registry.yarnpkg.com/@storybook/addon-storyshots/-/addon-storyshots-4.0.0-alpha.4.tgz#67a143f9d9dfc98488f81de5269de64891ba8a11"
   dependencies:
@@ -779,7 +794,7 @@
     puppeteer "^1.3.0"
     read-pkg-up "^3.0.0"
 
-"@storybook/addon-viewport@^4.0.0-alpha.3":
+"@storybook/addon-viewport@^4.0.0-alpha.4":
   version "4.0.0-alpha.4"
   resolved "https://registry.yarnpkg.com/@storybook/addon-viewport/-/addon-viewport-4.0.0-alpha.4.tgz#835fddb3fa959156e75fcd52dc957d6f53b82518"
   dependencies:
@@ -930,7 +945,7 @@
   dependencies:
     babel-runtime "^6.5.0"
 
-"@storybook/react@^4.0.0-alpha.3":
+"@storybook/react@^4.0.0-alpha.3", "@storybook/react@^4.0.0-alpha.4":
   version "4.0.0-alpha.4"
   resolved "https://registry.yarnpkg.com/@storybook/react/-/react-4.0.0-alpha.4.tgz#310eb92d3f8b40c712d01effdebfb5059a383899"
   dependencies:
@@ -9711,6 +9726,14 @@ output-file-sync@^1.1.2:
     graceful-fs "^4.1.4"
     mkdirp "^0.5.1"
     object-assign "^4.1.0"
+
+output-file-sync@^2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/output-file-sync/-/output-file-sync-2.0.1.tgz#f53118282f5f553c2799541792b723a4c71430c0"
+  dependencies:
+    graceful-fs "^4.1.11"
+    is-plain-obj "^1.1.0"
+    mkdirp "^0.5.1"
 
 p-finally@^1.0.0:
   version "1.0.0"
