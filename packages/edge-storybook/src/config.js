@@ -40,13 +40,16 @@ addDecorator((story) => {
 
 // Uses the injected ROOT from our Webpack config to find stories
 // relative to the application folder.
-const loader = require.context(global.APP_SRC, true, /\.story\.js$/);
-const stories = loader.keys()
 
-console.log("Adding", stories.length, "stories from", global.APP_SRC)
+// 1. Require all initializers files e.g. core CSS required for all components, i18n setup, etc.
+const initLoader = require.context(global.APP_SRC, false, /\bInit\.js$/)
+const initializers = initLoader.keys().map(initLoader)
 
-function loadStories() {
-  stories.forEach((filename) => loader(filename))
-}
+console.log("Loaded", initializers.length, "initializers.")
 
-configure(loadStories, module)
+// 2. Find and load all stories found somewhere in the application directory.
+const storyLoader = require.context(global.APP_SRC, true, /\.story\.js$/)
+const stories = storyLoader.keys().map(storyLoader)
+configure(() => stories, module)
+
+console.log("Added", stories.length, "stories.")
