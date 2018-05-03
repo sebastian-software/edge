@@ -5,7 +5,12 @@ import reactTreeWalker from "react-tree-walker"
 export default function deepFetch(rootElement) {
   function visitor(element, instance, context) {
     if (instance && typeof instance.fetchData === "function") {
-      return instance.fetchData()
+      const value = instance.fetchData();
+      if (value instanceof Promise) {
+        return value.catch((err) => {
+          console.log("[EDGE] Fetch failed: " + err);
+        })
+      }
     }
 
     return true

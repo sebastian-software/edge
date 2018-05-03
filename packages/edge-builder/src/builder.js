@@ -29,7 +29,6 @@ import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin"
 import SriPlugin from "webpack-subresource-integrity"
 
 // Compression
-import BabelMinifyPlugin from "babel-minify-webpack-plugin"
 import UglifyPlugin from "uglifyjs-webpack-plugin"
 
 import BundleAnalyzerPlugin from "webpack-bundle-analyzer"
@@ -39,8 +38,8 @@ import { getHashDigest } from "loader-utils"
 
 function removeEmptyKeys(source)
 {
-  var copy = {}
-  for (var key in source)
+  const copy = {}
+  for (const key in source)
   {
     if (!(source[key] == null || source[key].length === 0))
       copy[key] = source[key]
@@ -80,16 +79,6 @@ const UGLIFY_OPTIONS = {
   }
 }
 
-const BABEL_MINIFY_CLIENT_OPTIONS = {}
-
-const BABEL_SERVER_MINIFY_OPTIONS = {
-  booleans: false,
-  deadcode: true,
-  flipComparisons: false,
-  mangle: false,
-  mergeVars: false
-}
-
 const ROOT = getRoot()
 
 const assetFiles = /\.(eot|woff|woff2|ttf|otf|svg|png|jpg|jpeg|jp2|jpx|jxr|gif|webp|mp4|mp3|ogg|pdf|html|ico)$/
@@ -127,7 +116,7 @@ export default function builder(target, env = "development", config = {}) {
   // Extract plain languages from configured locales
   const SUPPORTED_LANGUAGES = (() => {
     const languages = new Set()
-    for (let entry of SUPPORTED_LOCALES) {
+    for (const entry of SUPPORTED_LOCALES) {
       languages.add(entry.split("-")[0])
     }
     return Array.from(languages.keys())
@@ -147,7 +136,6 @@ export default function builder(target, env = "development", config = {}) {
   if (config.verbose) {
     console.log(`→ Babel Environment: ${BABEL_ENV}`)
     console.log(`→ Enable Source Maps: ${devtool}`)
-    console.log(`→ Bundle Compression: ${config.build.bundleCompression}`)
     console.log(`→ Use Cache Loader: ${config.build.useCacheLoader} [Hash: ${CACHE_HASH}]`)
     console.log(`→ Default Locale: ${DEFAULT_LOCALE}`)
     console.log(`→ Supported Locales: ${SUPPORTED_LOCALES}`)
@@ -190,7 +178,6 @@ export default function builder(target, env = "development", config = {}) {
   const VENDOR_ENTRY = isServer ? config.entry.serverVendor : config.entry.clientVendor
   const MAIN_ENTRY = isServer ? config.entry.serverMain : config.entry.clientMain
 
-  const HAS_VENDOR = fs.existsSync(VENDOR_ENTRY)
   const HAS_MAIN = fs.existsSync(MAIN_ENTRY)
 
   const WEBPACK_HOOK = config.hook.webpack ? config.hook.webpack : identityFnt
@@ -202,16 +189,12 @@ export default function builder(target, env = "development", config = {}) {
     context: ROOT,
     externals: isServer ? getServerExternals(useLightNodeBundle, [ VENDOR_ENTRY, MAIN_ENTRY ]) : undefined,
 
-    entry: removeEmptyKeys({
-      vendor: HAS_VENDOR ? [
-        HAS_VENDOR && isClient && isDevelopment ? HMR_MIDDLEWARE : null,
-        VENDOR_ENTRY
-      ].filter(Boolean) : null,
-      main: HAS_MAIN ? [
-        HAS_MAIN && isClient && isDevelopment ? HMR_MIDDLEWARE : null,
+    entry: {
+      main: [
+        isClient && isDevelopment ? HMR_MIDDLEWARE : null,
         MAIN_ENTRY
-      ].filter(Boolean) : null
-    }),
+      ].filter(Boolean)
+    },
 
     output: {
       libraryTarget: isServer ? "commonjs2" : "var",
@@ -398,23 +381,13 @@ export default function builder(target, env = "development", config = {}) {
 
       // Classic UglifyJS for compressing ES5 compatible code.
       // https://github.com/webpack-contrib/uglifyjs-webpack-plugin
-      config.build.bundleCompression === "uglify" && isProduction && isClient ?
+      isProduction ?
         new UglifyPlugin({
           sourceMap: config.build.enableSourceMaps,
           cache: true,
           parallel: true,
           uglifyOptions: UGLIFY_OPTIONS
         }) : null,
-
-      // Alternative to Uglify when producing modern output
-      // Advanced ES2015 ready JS compression based on Babylon (Babel Parser)
-      // https://github.com/webpack-contrib/babili-webpack-plugin
-      config.build.bundleCompression === "babel" && isProduction && isClient ?
-        new BabelMinifyPlugin(BABEL_MINIFY_CLIENT_OPTIONS, { comments: false }) : null,
-
-
-      isProduction && isServer ?
-        new BabelMinifyPlugin(BABEL_SERVER_MINIFY_OPTIONS, { comments: false }) : null,
 
       // "Use HashedModuleIdsPlugin to generate IDs that preserves over builds."
       // Via: https://github.com/webpack/webpack.js.org/issues/652#issuecomment-273324529
@@ -430,27 +403,10 @@ export default function builder(target, env = "development", config = {}) {
 
       isServer ? new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }) : null,
 
-      // Extract Webpack bootstrap code with knowledge about chunks into separate cachable package.
-      // isClient ? new webpack.optimize.CommonsChunkPlugin({
-      //   names: [ "bootstrap" ],
-
-      //   // needed to put webpack bootstrap code before chunks
-      //   filename: isProduction ? "[name]-[chunkhash].js" : "[name].js",
-      //   minChunks: Infinity
-      // }) : null,
-
-      // https://webpack.js.org/plugins/commons-chunk-plugin/#explicit-vendor-chunk
-      HAS_VENDOR && isClient ? new webpack.optimize.CommonsChunkPlugin({
-        name: "vendor",
-
-        // With more entries, this ensures that no other module goes into the vendor chunk
-        minChunks: Infinity
-      }) : null,
-
       isProduction ? new webpack.optimize.ModuleConcatenationPlugin() : null,
 
       isClient && isDevelopment ? new webpack.HotModuleReplacementPlugin() : null,
-      isDevelopment ? new webpack.NoEmitOnErrorsPlugin() : null,
+      isDevelopment ? new webpack.NoEmitOnErrorsPlugin() : null
 
       // Compress static files with zopfli (gzip) compression
       // https://github.com/webpack-contrib/zopfli-webpack-plugin

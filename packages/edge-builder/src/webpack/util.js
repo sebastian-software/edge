@@ -46,7 +46,7 @@ export function isLoaderSpecificFile(request) {
 const bundleCache = {}
 
 export function shouldPackageBeBundled(resolved) {
-  var result = null
+  let result = null
 
   // Detect Node-Gyp Bindings File
   // "describes the configuration to build your module in a JSON-like format"
@@ -55,7 +55,7 @@ export function shouldPackageBeBundled(resolved) {
   if (hasBindings) {
     result = false
   } else {
-    var json
+    let json
 
     try {
       json = readJsonSync(resolve(resolved, "package.json"))
@@ -91,7 +91,7 @@ export function shouldBeBundled(basename) {
     return null
   }
 
-  let result = resolved ? shouldPackageBeBundled(resolved) : null
+  const result = resolved ? shouldPackageBeBundled(resolved) : null
   bundleCache[basename] = result
   return result
 }
@@ -108,7 +108,7 @@ export function isRequestExternal(request, lightweight = false) {
     return false
   }
 
-  const match = (/^((@[a-zA-Z0-9-_]+\/)?[a-zA-Z0-9_-]+)\/?/).exec(request)
+  const match = (/^((@[\w-]+\/)?[\w-]+)\/?/).exec(request)
   const basename = match ? match[1] : null
 
   if (basename == null) {

@@ -1,15 +1,25 @@
 {
   "env": {
     "development": {
-      "compact": false,
       "presets": [
-        [ "edge", { "target": "browser" }]
+        [
+          "edge",
+          {
+            "modules": "cjs",
+            "compression": true,
+            "env": "production"
+          }
+        ]
       ]
     },
-
     "test": {
       "presets": [
-        [ "edge", { "target": "test" }]
+        [
+          "edge",
+          {
+            "target": "test"
+          }
+        ]
       ]
     }
   }

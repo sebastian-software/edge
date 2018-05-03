@@ -1,19 +1,19 @@
 {
   "name": "edge-common",
   "description": "Edge common contains NodeJS based common utilities and helpers. Part of the Edge Platform.",
-  "version": "0.1.1",
+  "version": "1.0.0-alpha.0",
   "author": {
     "name": "Sebastian Software",
     "email": "s.werner@sebastian-software.de",
     "url": "https://www.sebastian-software.de"
   },
-  "main": "lib/node.cjs.js",
-  "module": "lib/node.esm.js",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.esm.js",
   "license": "Apache-2.0",
   "scripts": {
     "prepack": "npm run build",
     "build": "rimraf bin && rimraf lib && prepublish",
-    "test": "jest"
+    "test": "echo"
   },
   "engines": {
     "node": ">=6.0.0",
@@ -22,17 +22,17 @@
   },
   "dependencies": {
     "app-root-dir": "^1.0.2",
-    "chalk": "^2.3.0",
-    "cosmiconfig": "^3.1.0",
-    "jsome": "^2.3.26",
-    "lodash": "^4.17.4",
-    "node-notifier": "^5.1.2",
-    "nodent-runtime": "^3.2.0",
+    "chalk": "^2.4.1",
+    "cosmiconfig": "^4.0.0",
+    "jsome": "^2.5.0",
+    "lean-nodent-runtime": "^1.0.2",
+    "lodash": "^4.17.10",
+    "node-notifier": "^5.2.1",
     "yn": "^2.0.0"
   },
   "devDependencies": {
-    "jest": "*",
-    "prepublish": "*",
+    "jest": "22.4.3",
+    "prepublish": "1.7.0",
     "rimraf": "*"
   }
 }

@@ -1,22 +1,17 @@
 {
   "name": "edge-storybook",
-  "version": "0.1.7",
+  "version": "1.0.0-alpha.2",
   "description": "Central configuration for Storybook. For usage in component collections and applications.",
   "main": "lib/config.js",
   "scripts": {
-    "test": "jest",
-    "build": "rimraf lib && cpy src/babelrc --rename=.babelrc lib/ && cpy src/devices.json lib/ && babel --out-dir lib src",
+    "test": "echo",
+    "build": "rimraf lib && cpy src/babelrc --rename=.babelrc lib/ && babel --out-dir lib src",
     "prepack": "npm run build"
   },
   "files": [
     "lib/"
   ],
   "keywords": [],
-  "pre-commit": "lint-staged",
-  "lint-staged": {
-    "*.js": "eslint",
-    "*.css": "stylelint"
-  },
   "author": {
     "name": "Sebastian Software",
     "email": "s.werner@sebastian-software.de",
@@ -24,17 +19,23 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@storybook/addon-actions": "^3.2.17",
-    "@storybook/addon-links": "^3.2.17",
-    "@storybook/addon-storyshots": "^3.2.17",
-    "@storybook/react": "^3.2.17",
-    "babel-preset-edge": "^1.4.0",
-    "edge-core": "^0.8.9",
-    "storybook-addon-scissors": "^3.0.1"
+    "@storybook/addon-actions": "^4.0.0-alpha.4",
+    "@storybook/addon-links": "^4.0.0-alpha.4",
+    "@storybook/addon-storyshots": "^4.0.0-alpha.4",
+    "@storybook/addon-viewport": "^4.0.0-alpha.4",
+    "@storybook/react": "^4.0.0-alpha.4",
+    "edge-style": "^1.0.0-alpha.0",
+    "global": "^4.3.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "@babel/cli": "^7.0.0-beta.46",
+    "@babel/core": "^7.0.0-beta.46",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "^8.0.0-beta.2",
+    "babel-preset-edge": "^3.0.2",
     "cpy-cli": "^1.0.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
     "rimraf": "^2.6.2"
   }
 }

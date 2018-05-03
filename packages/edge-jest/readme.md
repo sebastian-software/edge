@@ -34,3 +34,16 @@ module.exports = config
 ```
 
 Jest is automatically looking up the configuration file. No need for passing any further information.
+
+
+
+## License
+
+[Apache License Version 2.0, January 2004](license)
+
+
+## Copyright
+
+<img src="https://cdn.rawgit.com/sebastian-software/sebastian-software-brand/3d93746f/sebastiansoftware-en.svg" alt="Sebastian Software GmbH Logo" width="250" height="200"/>
+
+Copyright 2017-2018<br/>[Sebastian Software GmbH](http://www.sebastian-software.de)

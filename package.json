@@ -1,26 +1,25 @@
 {
   "private": true,
   "devDependencies": {
-    "eslint-config-readable": "^1.4.0",
-    "lerna": "^2.5.1",
+    "eslint-config-readable": "^1.10.2",
+    "lerna": "^2.9.0",
     "lerna-changelog": "^0.7.0",
-    "lint-staged": "^6.0.0",
-    "readable-cli": "^0.3.2",
-    "stylelint-config-readable": "^1.0.1"
+    "lint-staged": "^7.0.0",
+    "readable-cli": "^0.4.0",
+    "stylelint-config-readable": "^1.0.3"
   },
   "scripts": {
     "clean": "lerna clean --yes && rimraf node_modules",
-    "update": "lerna exec ncu -- -ua && ncu -ua && yarn",
-    "precommit": "lint-staged",
-    "prepare": "npm run build",
+    "update": "yarn upgrade-interactive --latest",
     "test": "lerna run test",
-    "build": "lerna run build && lerna link"
+    "pretest": "lerna run prepack && lerna link",
+    "precommit": "lint-staged",
+    "prepack": "lerna run prepack"
   },
   "pre-commit": "lint-staged",
   "lint-staged": {
-    "*.js": "eslint",
-    "*.css": "stylelint",
-    "*.sss": "stylelint"
+    "*.js": "eslint --quiet",
+    "*.css": "stylelint --quiet"
   },
   "workspaces": [
     "packages/*"

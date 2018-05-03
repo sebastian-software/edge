@@ -9,6 +9,17 @@ import { IntlProvider } from "react-intl"
 
 import "edge-style"
 
+if (typeof global.APP_SRC !== "string") {
+  // The "global" import fixes issues accessing globals from outside of the VM
+  // where this script is running. This is mainly relevant for running Storyshots via Jest.
+  /* eslint-disable no-global-assign, no-native-reassign */
+  global = require("global")
+
+  if (typeof global.APP_SRC !== "string") {
+    throw new Error("Edge-Storybook: Configuration Error: APP_SRC is required to be defined by the environment!")
+  }
+}
+
 const routesMap = {
   HOME: "/"
 }
@@ -27,22 +38,18 @@ addDecorator((story) => {
   )
 })
 
-// Installed in either:
-// - ROOT/node_modules/edge-storybook/lib (inside applications)
-//   This is true: __dirname == "./node_modules/edge-storybook/lib"
-// - ROOT/packages/edge-storybook/lib (inside edge itself)
-//   This is true: __dirname == "../edge-storybook/lib"
-console.log("DIRNAME:", __dirname)
+// Uses the injected ROOT from our Webpack config to find stories
+// relative to the application folder.
 
-const context =
-  __dirname === "../edge-storybook/lib"
-    ? "../../edge-boilerplate/src"
-    : "../../../src"
+// 1. Require all initializers files e.g. core CSS required for all components, i18n setup, etc.
+const initLoader = require.context(global.APP_SRC, false, /\bInit\.js$/)
+const initializers = initLoader.keys().map(initLoader)
 
-const loader = require.context(context, true, /\.story\.js$/)
+console.log("Loaded", initializers.length, "initializers.")
 
-function loadStories() {
-  loader.keys().forEach((filename) => loader(filename))
-}
+// 2. Find and load all stories found somewhere in the application directory.
+const storyLoader = require.context(global.APP_SRC, true, /\.story\.js$/)
+const stories = storyLoader.keys().map(storyLoader)
+configure(() => stories, module)
 
-configure(loadStories, module)
+console.log("Added", stories.length, "stories.")

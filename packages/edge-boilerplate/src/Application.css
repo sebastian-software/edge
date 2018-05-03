@@ -1,20 +1,4 @@
 @import "./Variables.css";
-@import "./fonts/source-sans-pro/SourceSansPro.css";
-
-/* stylelint-disable selector-max-type, selector-max-universal */
-
-/*
-  apply a natural box layout model to all elements, but allowing
-  components to change
-*/
-
-html {
-  font-family: Source Sans Pro, sans-serif;
-}
-
-body {
-  background: $gray-light;
-}
 
 .root {
   &::after {

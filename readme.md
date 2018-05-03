@@ -1,6 +1,8 @@
-# Edge Platform<br/>[![Sponsored by][sponsor-img]][sponsor] [![lerna][lerna-img]][lerna] [![Build Status Unix][travis-img]][travis] [![Build Status Windows][appveyor-img]][appveyor]
+<img src="https://cdn.rawgit.com/sebastian-software/sebastian-software-brand/8d89acc9/edge.svg" alt="Edge Platform Logo" width="250" style="max-width:100%"/>
 
-*🐺 Edge Platform* helps you focus on business logic rather than dealing with complex dependencies and build configurations.
+# Edge Platform<br/>[![Sponsored by][sponsor-img]][sponsor] [![lerna][lerna-img]][lerna] [![Build Status Unix][travis-img]][travis] [![Build Status Windows][appveyor-img]][appveyor] [![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/edge)
+
+*Edge Platform* helps you focus on business logic rather than dealing with complex dependencies and build configurations.
 
 [sponsor-img]: https://img.shields.io/badge/Sponsored%20by-Sebastian%20Software-692446.svg
 [sponsor]: https://www.sebastian-software.de
@@ -11,11 +13,7 @@
 [travis]: https://travis-ci.org/sebastian-software/edge
 [appveyor]: https://ci.appveyor.com/project/swernerx/edge/branch/master
 
-<img src="./assets/edge.png" alt="Edge Platform Logo" width="951" style="max-width:100%"/>
-
-## *🐺 Edge Platform* Components
-
-> "Understanding the architectural decisions behind the tools you are using is perhaps more important than the many things a new package does for you." — James Gillmore
+## *Edge Platform* Components
 
 Project Name | NPM Status | Dependency Status
 ------------ | ---------- | -------------------------------------
@@ -29,14 +27,14 @@ Project Name | NPM Status | Dependency Status
 [Edge PostCSS][postcss-home] | [![Version][postcss-npm-version-img]][postcss-npm] [![Downloads][postcss-npm-downloads-img]][postcss-npm] | [![Dependencies][postcss-deps-img]][postcss-deps]
 
 
-## *🐺 Edge Platform* Foundation Technologies
+## *Edge Platform* Foundation Technologies
 
 Project Name | NPM Status | Build Status | Dependency Status
 ------------ | ---------- | ------------ | -------------------------------------
 [Edge Babel][babel-home] | [![Version][babel-npm-version-img]][babel-npm] [![Downloads][babel-npm-downloads-img]][babel-npm] | [![Build Status Unix][babel-travis-img]][babel-travis] [![Build Status Windows][babel-appveyor-img]][babel-appveyor] | [![Dependencies][babel-deps-img]][babel-deps]
 [Lean Intl][intl-home] | [![Version][intl-npm-version-img]][intl-npm] [![Downloads][intl-npm-downloads-img]][intl-npm] | [![Build Status Unix][intl-travis-img]][intl-travis] [![Build Status Windows][intl-appveyor-img]][intl-appveyor] | [![Dependencies][intl-deps-img]][intl-deps]
 [Prepublish][prepublish-home] | [![Version][prepublish-npm-version-img]][prepublish-npm] [![Downloads][prepublish-npm-downloads-img]][prepublish-npm] | [![Build Status Unix][prepublish-travis-img]][prepublish-travis] [![Build Status Windows][prepublish-appveyor-img]][prepublish-appveyor] | [![Dependencies][prepublish-deps-img]][prepublish-deps]
-[Readable Code][readable-home] | [![Version][readable-npm-version-img]][readable-npm] [![Downloads][readable-npm-downloads-img]][readable-npm] | - | [![Dependencies][readable-deps-img]][readable-deps]
+[Readable CLI][readable-home] | [![Version][readable-npm-version-img]][readable-npm] [![Downloads][readable-npm-downloads-img]][readable-npm] | - | [![Dependencies][readable-deps-img]][readable-deps]
 [PostCSS Smart Asset][smartasset-home] | [![Version][smartasset-npm-version-img]][smartasset-npm] [![Downloads][smartasset-npm-downloads-img]][smartasset-npm] | [![Build Status Unix][smartasset-travis-img]][smartasset-travis] [![Build Status Windows][smartasset-appveyor-img]][smartasset-appveyor] | [![Dependencies][smartasset-deps-img]][smartasset-deps]
 [Rollup Rebase][rebase-home] | [![Version][rebase-npm-version-img]][rebase-npm] [![Downloads][rebase-npm-downloads-img]][rebase-npm] | [![Build Status Unix][rebase-travis-img]][rebase-travis] [![Build Status Windows][rebase-appveyor-img]][rebase-appveyor] | [![Dependencies][rebase-deps-img]][rebase-deps]
 
@@ -133,16 +131,16 @@ Project Name | NPM Status | Build Status | Dependency Status
 [prepublish-travis]: https://travis-ci.org/sebastian-software/prepublish
 [prepublish-appveyor]: https://ci.appveyor.com/project/swernerx/prepublish/branch/master
 
-[readable-home]: https://github.com/sebastian-software/readable-code
-[readable-deps]: https://david-dm.org/sebastian-software/readable-code
-[readable-deps-img]: https://david-dm.org/sebastian-software/readable-code.svg
-[readable-npm]: https://www.npmjs.com/package/readable-code
-[readable-npm-downloads-img]: https://img.shields.io/npm/dm/readable-code.svg
-[readable-npm-version-img]: https://img.shields.io/npm/v/readable-code.svg
-[readable-travis-img]: https://img.shields.io/travis/sebastian-software/readable-code/master.svg?branch=master&label=unix
-[readable-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/readable-code/master.svg?label=windows
-[readable-travis]: https://travis-ci.org/sebastian-software/readable-code
-[readable-appveyor]: https://ci.appveyor.com/project/swernerx/readable-code/branch/master
+[readable-home]: https://github.com/sebastian-software/readable-cli
+[readable-deps]: https://david-dm.org/sebastian-software/readable-cli
+[readable-deps-img]: https://david-dm.org/sebastian-software/readable-cli.svg
+[readable-npm]: https://www.npmjs.com/package/readable-cli
+[readable-npm-downloads-img]: https://img.shields.io/npm/dm/readable-cli.svg
+[readable-npm-version-img]: https://img.shields.io/npm/v/readable-cli.svg
+[readable-travis-img]: https://img.shields.io/travis/sebastian-software/readable-cli/master.svg?branch=master&label=unix
+[readable-appveyor-img]: https://img.shields.io/appveyor/ci/swernerx/readable-cli/master.svg?label=windows
+[readable-travis]: https://travis-ci.org/sebastian-software/readable-cli
+[readable-appveyor]: https://ci.appveyor.com/project/swernerx/readable-cli/branch/master
 
 [smartasset-home]: https://github.com/sebastian-software/postcss-smart-asset
 [smartasset-deps]: https://david-dm.org/sebastian-software/postcss-smart-asset
@@ -174,17 +172,11 @@ Project Name | NPM Status | Build Status | Dependency Status
 
 - Webpack: Bundling for SPAs.
   - Loaders: Assets, JSON, YAML, GraphQL, ...
-  - Plugins:
 - Rollup: Bundling for Libraries and Executables.
 - PostCSS: CSS Transformation Chain.
   - CSS Modules enabled.
-- ESLint: Linting for JavaScript files.
-  - Plugins for React, Security, Imports, ...
-- Stylelint: Linting for CSS files.
-- Prettier: Autoformatting for JavaScript, CSS, JSON, GraphQL and more.
 - Uglify-ES: ES2015 capable JavaScript compression
-- Babili: ES2015+ capable JavaScript compression
-- Zopfli: Highly optimized Compression of Resources
+- Zopfli: Highly optimized Compression of assets
 
 ### React Development
 
@@ -198,10 +190,7 @@ Project Name | NPM Status | Build Status | Dependency Status
 ### Server
 
 - Express: Effectively the standard Web Server in NodeJS
-- Cookie Parser:
 - Express Locale: Locale Detection
-- Helmet:
-- HPP
 
 ### Helpers
 
@@ -216,6 +205,6 @@ Project Name | NPM Status | Build Status | Dependency Status
 
 ## Copyright
 
-<img src="./assets/sebastiansoftware.png" alt="Sebastian Software GmbH Logo" width="250" height="200"/>
+<img src="https://cdn.rawgit.com/sebastian-software/sebastian-software-brand/3d93746f/sebastiansoftware-en.svg" alt="Sebastian Software GmbH Logo" width="250" height="200"/>
 
-Copyright 2015-2017<br/>[Sebastian Software GmbH](http://www.sebastian-software.de)
+Copyright 2015-2018<br/>[Sebastian Software GmbH](http://www.sebastian-software.de)

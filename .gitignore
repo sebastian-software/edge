@@ -5,6 +5,8 @@ coverage/
 *error.log 
 .cache
 
+package-lock.json
+
 packages/*/lib
 packages/*/build
 packages/*/bin

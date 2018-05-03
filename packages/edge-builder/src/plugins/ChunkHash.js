@@ -38,14 +38,14 @@ ChunkHash.prototype.apply = function(compiler)
   {
     compilation.plugin("chunk-hash", (chunk, chunkHash) =>
     {
-      var source = chunk.mapModules((module) => module)
+      const source = chunk.mapModules((module) => module)
         .sort(compareModules)
         .map(getModuleSource)
 
         // we provide an initialValue in case there is an empty module source. Ref: http://es5.github.io/#x15.4.4.21
         .reduce(concatenateSource, "")
 
-      var generatedHash = getHashDigest(source, hashType, digestType, digestLength)
+      const generatedHash = getHashDigest(source, hashType, digestType, digestLength)
       chunkHash.digest = function() {
         return generatedHash
       }

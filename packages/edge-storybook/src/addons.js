@@ -2,7 +2,4 @@
 
 import "@storybook/addon-actions/register"
 import "@storybook/addon-links/register"
-import registerScissors from "storybook-addon-scissors"
-import devices from "./devices.json"
-
-registerScissors(devices)
+import "@storybook/addon-viewport/register"

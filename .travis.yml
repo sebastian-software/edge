@@ -29,6 +29,3 @@ notifications:
 
 cache:
   yarn: true
-  directories:
-    - ".eslintcache"
-    - "node_modules"

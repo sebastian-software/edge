@@ -1,11 +1,11 @@
 {
   "name": "edge-style",
-  "version": "0.2.13",
+  "version": "1.0.0-alpha.0",
   "description": "Styling Essentials for Edge. Part of the Edge Platform.",
   "main": "lib/index.js",
   "browser": "lib/index.js",
   "scripts": {
-    "test": "echo ''",
+    "test": "echo",
     "build": "rimraf lib && prepublish",
     "prepack": "npm run build"
   },
@@ -34,10 +34,10 @@
   ],
   "license": "Apache-2.0",
   "dependencies": {
-    "edge-postcss": "^0.9.12"
+    "edge-postcss": "^1.0.0-alpha.0"
   },
   "devDependencies": {
-    "prepublish": "*",
+    "prepublish": "1.7.0",
     "rimraf": "*"
   }
 }

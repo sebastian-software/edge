@@ -4,6 +4,7 @@ import webpackDevMiddleware from "webpack-dev-middleware"
 import webpackHotMiddleware from "webpack-hot-middleware"
 import webpackHotServerMiddleware from "webpack-hot-server-middleware"
 import { notify } from "edge-common"
+import clipboardy from "clipboardy"
 
 import configBuilder from "../builder"
 
@@ -19,10 +20,7 @@ export function createMiddleware(config = {}) {
     publicPath: config.output.public,
 
     // we have our custom error handling for webpack which offers far better DX
-    quiet: true,
-
-    // display no info to console (only warnings and errors)
-    noInfo: true
+    logLevel: "silent"
   })
 
   const hotMiddleware = webpackHotMiddleware(clientCompiler)
@@ -75,6 +73,12 @@ export function connectWithWebpack(server, multiCompiler) {
 
       server.listen(process.env.SERVER_PORT, () => {
         notify(`Server started at port ${process.env.SERVER_PORT}`, "info")
+
+        clipboardy
+          .write(`http://localhost:${process.env.SERVER_PORT}`)
+          .catch((error) => {
+            // noop
+          })
       })
     }
   })
