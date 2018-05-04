@@ -3,6 +3,7 @@ import { createApolloClient } from "./ApolloClient"
 import { createReduxStore } from "./State"
 import getBrowserLocale from "../client/getBrowserLocale"
 
+/* global window */
 const defaultState = process.env.TARGET === "web" ? window.APP_STATE : null
 
 /**
@@ -10,7 +11,7 @@ const defaultState = process.env.TARGET === "web" ? window.APP_STATE : null
  * @param {*} State
  * @param {*} param1
  */
-export default function createKernel(State, { state = defaultState, edge, request } = {}) {
+export default function createKernel(State, { state = defaultState, edge, request, supportedLocales } = {}) {
   // Use given edge instance when not already defined on state
   if (process.env.TARGET === "node" && edge != null) {
     if (!state.edge) {
@@ -20,24 +21,21 @@ export default function createKernel(State, { state = defaultState, edge, reques
 
   if (process.env.TARGET === "web" && state.edge.intl == null) {
     console.warn("Fallback to client side locale information!")
-
-    // FIXME: Retrieve data from build config
-    const supportedLocales = []
-    state.edge.intl = getBrowserLocale(supportedLocales)
+    state.edge.intl = getBrowserLocale(supportedLocales || [ "en-US" ])
   }
 
-  let router = createReduxRouter(
+  const router = createReduxRouter(
     State.getRoutes(),
     request ? request.path : null
   )
 
-  let apolloConfig = State.getConfig(state, "apollo")
+  const apolloConfig = State.getConfig(state, "apollo")
   let apollo = null
   if (apolloConfig) {
     apollo = createApolloClient(apolloConfig)
   }
 
-  let store = createReduxStore({
+  const store = createReduxStore({
     reducers: State.getReducers(),
     enhancers: State.getEnhancers(),
     middlewares: State.getMiddlewares(),
@@ -45,7 +43,7 @@ export default function createKernel(State, { state = defaultState, edge, reques
     router
   })
 
-  let intl = state.edge.intl
+  const intl = state.edge.intl
 
   // Kernel "Instance"
   return {
