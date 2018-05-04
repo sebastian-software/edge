@@ -10,11 +10,11 @@ import {
   preloadImport as preloadImportServer
 } from "../server/loadImport"
 
-
+/* global Intl */
 
 const PREFER_NATIVE = true
 
-var intlSupportTable
+let intlSupportTable
 if (process.env.TARGET === "node") {
   intlSupportTable = require("caniuse-lite").feature(
     require("caniuse-lite/data/features/internationalization.js")
@@ -76,7 +76,14 @@ export function requiresReactIntl() {
 
 export function installReactIntl(response) {
   if (process.env.TARGET !== "node") {
-    addLocaleData(response)
+    // It seems like React Intls data files are not correctly dealt with in recent
+    // Webpack. There is data under the "default" key but it's not a correct ESM module.
+    let normalizedResponse = response
+    if (!(response instanceof Array) && response.default) {
+      normalizedResponse = response.default
+    }
+
+    addLocaleData(normalizedResponse)
   }
 }
 
