@@ -123,7 +123,7 @@ export function ensureReactIntlSupport(importWrapper, intl) {
 
 /* eslint-disable max-params */
 export function ensureIntlSupport(importWrapper, intl, browser) {
-  const hasIntlSupport = global.Intl && areIntlLocalesSupported([ intl.locale ])
+  const hasIntlSupport = PREFER_NATIVE && global.Intl && areIntlLocalesSupported([ intl.locale ])
 
   if (process.env.TARGET === "node") {
     if (!hasIntlSupport) {
