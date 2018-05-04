@@ -1321,11 +1321,9 @@ apollo-utilities@^1.0.0, apollo-utilities@^1.0.12:
   version "1.0.12"
   resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.12.tgz#9e2b2a34cf89f3bf0d73a664effd8c1bb5d1b7f7"
 
-app-manifest-loader@^0.9.3:
-  version "0.9.3"
-  resolved "https://registry.yarnpkg.com/app-manifest-loader/-/app-manifest-loader-0.9.3.tgz#71dfa98e99c7f608619efb4e1f209da13bf7930b"
-  dependencies:
-    steed "^1.1.3"
+app-manifest-loader@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/app-manifest-loader/-/app-manifest-loader-1.0.1.tgz#a20e1685c8e6f2984bd183c59420de011ae605b3"
 
 app-root-dir@^1.0.2:
   version "1.0.2"
@@ -2615,9 +2613,9 @@ babel-polyfill@^6.26.0:
     core-js "^2.5.0"
     regenerator-runtime "^0.10.5"
 
-babel-preset-edge@3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/babel-preset-edge/-/babel-preset-edge-3.0.2.tgz#293f0c62dbe42914cefef824326c72cd80f19096"
+babel-preset-edge@3.3.0, babel-preset-edge@^3.0.2:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/babel-preset-edge/-/babel-preset-edge-3.3.0.tgz#4053392e8a3dc14d56989d4521b1af7bee57adfb"
   dependencies:
     "@babel/core" "7.0.0-beta.46"
     "@babel/plugin-proposal-class-properties" "7.0.0-beta.46"
@@ -2644,7 +2642,7 @@ babel-preset-edge@3.0.2:
     babel-plugin-universal-import "^1.5.2"
     babel-preset-minify "^0.4.0"
     browserslist "^3.2.6"
-    nodent-transform "^3.2.3"
+    fast-async "^7.0.6"
 
 babel-preset-edge@^1.9.1:
   version "1.9.1"
@@ -2677,37 +2675,6 @@ babel-preset-edge@^1.9.1:
     babel-runtime "^6.26.0"
     browserslist "^3.2.5"
     fast-async "^6.3.5"
-
-babel-preset-edge@^3.0.2:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/babel-preset-edge/-/babel-preset-edge-3.3.0.tgz#4053392e8a3dc14d56989d4521b1af7bee57adfb"
-  dependencies:
-    "@babel/core" "7.0.0-beta.46"
-    "@babel/plugin-proposal-class-properties" "7.0.0-beta.46"
-    "@babel/plugin-proposal-object-rest-spread" "7.0.0-beta.46"
-    "@babel/plugin-syntax-dynamic-import" "7.0.0-beta.46"
-    "@babel/plugin-syntax-jsx" "7.0.0-beta.46"
-    "@babel/plugin-transform-member-expression-literals" "7.0.0-beta.46"
-    "@babel/plugin-transform-property-literals" "7.0.0-beta.46"
-    "@babel/plugin-transform-react-constant-elements" "7.0.0-beta.46"
-    "@babel/plugin-transform-react-inline-elements" "7.0.0-beta.46"
-    "@babel/plugin-transform-runtime" "7.0.0-beta.46"
-    "@babel/preset-env" "7.0.0-beta.46"
-    "@babel/preset-flow" "7.0.0-beta.46"
-    "@babel/preset-react" "7.0.0-beta.46"
-    "@babel/runtime" "7.0.0-beta.46"
-    app-root-dir "^1.0.2"
-    babel-plugin-dynamic-import-node "^1.2.0"
-    babel-plugin-dynamic-import-webpack "^1.0.2"
-    babel-plugin-lodash "^3.3.2"
-    babel-plugin-minify-dead-code-elimination "^0.4.0"
-    babel-plugin-module-resolver "^3.1.1"
-    babel-plugin-react-intl "^2.4.0"
-    babel-plugin-transform-react-remove-prop-types "^0.4.13"
-    babel-plugin-universal-import "^1.5.2"
-    babel-preset-minify "^0.4.0"
-    browserslist "^3.2.6"
-    fast-async "^7.0.6"
 
 babel-preset-env@^1.6.1:
   version "1.6.1"
@@ -5824,35 +5791,9 @@ fast-memoize@^2.2.7:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/fast-memoize/-/fast-memoize-2.3.2.tgz#f6b9eb8e06a754029cca25b4cd3945f2f6242c90"
 
-fastfall@^1.5.0:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/fastfall/-/fastfall-1.5.1.tgz#3fee03331a49d1d39b3cdf7a5e9cd66f475e7b94"
-  dependencies:
-    reusify "^1.0.0"
-
-fastparallel@^2.2.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/fastparallel/-/fastparallel-2.3.0.tgz#1e709bfb6a03993f3857e3ce7f01311ce7602613"
-  dependencies:
-    reusify "^1.0.0"
-    xtend "^4.0.1"
-
 fastparse@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/fastparse/-/fastparse-1.1.1.tgz#d1e2643b38a94d7583b479060e6c4affc94071f8"
-
-fastq@^1.3.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/fastq/-/fastq-1.5.0.tgz#05e32ffb999ec2d945dda27461bf08941436448b"
-  dependencies:
-    reusify "^1.0.0"
-
-fastseries@^1.7.0:
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/fastseries/-/fastseries-1.7.2.tgz#d22ce13b9433dff3388d91dbd6b8bda9b21a0f4b"
-  dependencies:
-    reusify "^1.0.0"
-    xtend "^4.0.0"
 
 faye-websocket@^0.10.0:
   version "0.10.0"
@@ -9447,7 +9388,7 @@ nodent-runtime@>=3.2.1, nodent-runtime@^3.2.0, nodent-runtime@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/nodent-runtime/-/nodent-runtime-3.2.1.tgz#9e2755d85e39f764288f0d4752ebcfe3e541e00e"
 
-nodent-transform@^3.2.3, nodent-transform@^3.2.4, nodent-transform@^3.2.6:
+nodent-transform@^3.2.4, nodent-transform@^3.2.6:
   version "3.2.6"
   resolved "https://registry.yarnpkg.com/nodent-transform/-/nodent-transform-3.2.6.tgz#b782edc0e2aafa6d29df0333b36cd00af757c36d"
 
@@ -11115,9 +11056,9 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-apollo@^2.1.3:
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.1.3.tgz#5eb02cdf18cc4bdeb615bda94baedb50354e94e5"
+react-apollo@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.1.4.tgz#a51059ac56f1a7997cad636a5d36398b9c93ff12"
   dependencies:
     fbjs "^0.8.16"
     hoist-non-react-statics "^2.5.0"
@@ -11292,9 +11233,9 @@ react-style-proptype@^3.0.0:
   dependencies:
     prop-types "^15.5.4"
 
-react-styleguidist@7.0.8:
-  version "7.0.8"
-  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-7.0.8.tgz#03d51b69bf1913b92ebe46153fda1268ed1c7d21"
+react-styleguidist@7.0.9:
+  version "7.0.9"
+  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-7.0.9.tgz#57b851ac61231ec4b2d1085869b42d841ff25ed8"
   dependencies:
     "@vxna/mini-html-webpack-template" "^0.1.6"
     acorn "^5.5.3"
@@ -12082,10 +12023,6 @@ retry@^0.10.0:
   version "0.10.1"
   resolved "https://registry.yarnpkg.com/retry/-/retry-0.10.1.tgz#e76388d217992c252750241d3d3956fed98d8ff4"
 
-reusify@^1.0.0:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/reusify/-/reusify-1.0.4.tgz#90da382b1e126efc02146e90845a88db12925d76"
-
 rgb@~0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/rgb/-/rgb-0.1.0.tgz#be27b291e8feffeac1bd99729721bfa40fc037b5"
@@ -12823,16 +12760,6 @@ statuses@~1.4.0:
 stealthy-require@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
-
-steed@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/steed/-/steed-1.1.3.tgz#f1525dd5adb12eb21bf74749537668d625b9abc5"
-  dependencies:
-    fastfall "^1.5.0"
-    fastparallel "^2.2.0"
-    fastq "^1.3.0"
-    fastseries "^1.7.0"
-    reusify "^1.0.0"
 
 stream-browserify@^2.0.1:
   version "2.0.1"

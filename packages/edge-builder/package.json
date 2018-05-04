@@ -24,7 +24,7 @@
     "npm": ">=4.0.0"
   },
   "dependencies": {
-    "app-manifest-loader": "^0.9.3",
+    "app-manifest-loader": "^1.0.1",
     "app-root-dir": "^1.0.2",
     "babel-loader": "^8.0.0-beta.2",
     "babel-minify-webpack-plugin": "^0.3.1",

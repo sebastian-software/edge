@@ -14,7 +14,8 @@
     "test": "lerna run test",
     "pretest": "lerna run prepack && lerna link",
     "precommit": "lint-staged",
-    "prepack": "lerna run prepack"
+    "prepack": "lerna run prepack",
+    "publish": "npm run prepack && lerna publish"
   },
   "pre-commit": "lint-staged",
   "lint-staged": {
