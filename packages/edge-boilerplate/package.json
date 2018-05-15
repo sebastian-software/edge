@@ -53,7 +53,7 @@
     "prepublish": "1.7.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-styleguidist": "7.0.9"
+    "react-styleguidist": "7.0.14"
   },
   "peerDependencies": {
     "edge-builder": "^0.14.2"

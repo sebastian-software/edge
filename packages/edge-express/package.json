@@ -27,11 +27,11 @@
   },
   "dependencies": {
     "app-root-dir": "^1.0.2",
-    "body-parser": "^1.18.2",
+    "body-parser": "^1.18.3",
     "chalk": "^2.4.1",
     "compression": "^1.7.2",
     "cookie-parser": "^1.4.3",
-    "cosmiconfig": "^4.0.0",
+    "cosmiconfig": "^5.0.3",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "express-locale": "^1.0.5",
