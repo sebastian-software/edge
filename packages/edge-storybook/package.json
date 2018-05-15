@@ -1,6 +1,6 @@
 {
   "name": "edge-storybook",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "description": "Central configuration for Storybook. For usage in component collections and applications.",
   "main": "lib/config.js",
   "scripts": {
@@ -24,7 +24,7 @@
     "@storybook/addon-storyshots": "^4.0.0-alpha.4",
     "@storybook/addon-viewport": "^4.0.0-alpha.4",
     "@storybook/react": "^4.0.0-alpha.4",
-    "edge-style": "^1.0.0-alpha.2",
+    "edge-style": "^1.0.0-alpha.3",
     "global": "^4.3.2"
   },
   "devDependencies": {
