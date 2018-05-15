@@ -7,7 +7,8 @@
     "test": "jest"
   },
   "files": [
-    "jest.*"
+    "jest.*",
+    "transform"
   ],
   "author": {
     "name": "Sebastian Software",
