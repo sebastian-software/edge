@@ -23,7 +23,7 @@
   "dependencies": {
     "app-root-dir": "^1.0.2",
     "chalk": "^2.4.1",
-    "cosmiconfig": "^5.0.3",
+    "cosmiconfig": "^5.0.4",
     "jsome": "^2.5.0",
     "lean-nodent-runtime": "^1.0.2",
     "lodash": "^4.17.10",
@@ -31,7 +31,7 @@
     "yn": "^2.0.0"
   },
   "devDependencies": {
-    "jest": "22.4.3",
+    "jest": "22.4.4",
     "prepublish": "1.7.0",
     "rimraf": "*"
   }

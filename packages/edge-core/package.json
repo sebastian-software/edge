@@ -44,7 +44,7 @@
     "apollo-link-context": "^1.0.8",
     "apollo-link-http": "^1.5.4",
     "bluebird": "^3.5.1",
-    "caniuse-lite": "^1.0.30000840",
+    "caniuse-lite": "^1.0.30000844",
     "chalk": "^2.4.1",
     "edge-useragent": "^4.0.0-alpha.3",
     "graphql": "^0.13.2",
@@ -77,8 +77,8 @@
     "webpack-flush-chunks": "^1.2.3"
   },
   "devDependencies": {
-    "jest": "22.4.3",
-    "jest-fetch-mock": "^1.5.0",
+    "jest": "22.4.4",
+    "jest-fetch-mock": "^1.6.1",
     "prepublish": "1.7.0",
     "rimraf": "*"
   }
