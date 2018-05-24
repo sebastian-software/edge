@@ -1,12 +1,16 @@
 {
   "private": true,
   "devDependencies": {
+    "eslint": "^4.19.1",
     "eslint-config-readable": "^1.13.4",
     "lerna": "^2.11.0",
     "lerna-changelog": "^0.7.0",
     "lint-staged": "^7.1.2",
     "readable-cli": "^0.4.0",
-    "stylelint-config-readable": "^1.2.1"
+    "stylelint-config-readable": "^1.2.1",
+    "flow-bin": "^0.72.0",
+    "prettier": "^1.12.1",
+    "stylelint": "^9.2.1"
   },
   "scripts": {
     "clean": "lerna clean --yes && rimraf node_modules",

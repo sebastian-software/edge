@@ -6,6 +6,7 @@ import { Provider } from "react-redux"
 import { configure, addDecorator } from "@storybook/react"
 import { connectRoutes } from "redux-first-router"
 import { IntlProvider } from "react-intl"
+import Cookie from "js-cookie"
 
 import "edge-style"
 
@@ -20,6 +21,23 @@ if (typeof global.APP_SRC !== "string") {
   }
 }
 
+// Testing with Storyshots:
+// Some components rely on intervals being executed at least once.
+// This is also good for test coverage as it hits areas normally not hit when
+// intervals are stopped before first execution.
+// Note: We can't use Jest's fakeTimers as these snapshots are rendered in a
+// different V8 VM where we do not have any access to the Jest API.
+if (process.env.NODE_ENV === "test") {
+  global.setInterval = function fakeSetInterval(callback, timeout) {
+    callback()
+    return 0
+  }
+
+  global.clearInterval = function fakeClearInterval() {
+    // empty
+  }
+}
+
 const routesMap = {
   HOME: "/"
 }
@@ -30,9 +48,13 @@ const enhancers = compose(enhancer, applyMiddleware(middleware))
 const reducers = combineReducers({ location: reducer })
 const store = createStore(reducers, {}, enhancers)
 
+// Using same cookie as in our applications which should make it possible
+// via some UI to switch between different locales.
+const locale = Cookie.get("locale") || "en-US"
+
 addDecorator((story) => {
   return (
-    <IntlProvider locale="en-US">
+    <IntlProvider locale={locale}>
       <Provider store={store}>{story()}</Provider>
     </IntlProvider>
   )
