@@ -3814,9 +3814,9 @@ caniuse-lite@^1.0.30000835, caniuse-lite@^1.0.30000839:
   version "1.0.30000840"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000840.tgz#344513f8f843536cf99694964c09811277eee395"
 
-caniuse-lite@^1.0.30000844:
-  version "1.0.30000844"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000844.tgz#de7c84cde0582143cf4f5abdf1b98e5a0539ad4a"
+caniuse-lite@^1.0.30000846:
+  version "1.0.30000846"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000846.tgz#2092911eecad71a89dae1faa62bcc202fde7f959"
 
 capture-stack-trace@^1.0.0:
   version "1.0.0"
@@ -10760,9 +10760,9 @@ postcss-discard-unused@^2.2.1:
     postcss "^5.0.14"
     uniqs "^2.0.0"
 
-postcss-easing-gradients@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/postcss-easing-gradients/-/postcss-easing-gradients-2.1.0.tgz#374ad58a7295a1bda558761c5129521db5e7247c"
+postcss-easing-gradients@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/postcss-easing-gradients/-/postcss-easing-gradients-2.2.1.tgz#b912a833739278cdc38bb8dddcd2eacc029ca202"
   dependencies:
     chroma-js "^1.3.7"
     easing-coordinates "^1.0.4"
@@ -11723,9 +11723,9 @@ react-docgen@^3.0.0-beta11:
     node-dir "^0.1.10"
     recast "^0.12.6"
 
-react-dom@^16.3.2:
-  version "16.3.2"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.3.2.tgz#cb90f107e09536d683d84ed5d4888e9640e0e4df"
+react-dom@^16.4.0:
+  version "16.4.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.4.0.tgz#099f067dd5827ce36a29eaf9a6cdc7cbf6216b1e"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -11792,9 +11792,9 @@ react-intl@^2.4.0:
     intl-relativeformat "^2.0.0"
     invariant "^2.1.1"
 
-react-is@^16.3.2:
-  version "16.3.2"
-  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.3.2.tgz#f4d3d0e2f5fbb6ac46450641eb2e25bf05d36b22"
+react-is@^16.4.0:
+  version "16.4.0"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.4.0.tgz#cc9fdc855ac34d2e7d9d2eb7059bbc240d35ffcf"
 
 react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.2:
   version "3.0.2"
@@ -11903,14 +11903,14 @@ react-styleguidist@7.0.14:
     webpack-dev-server "^2.11.2"
     webpack-merge "^4.1.2"
 
-react-test-renderer@^16.3.2:
-  version "16.3.2"
-  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.3.2.tgz#3d1ed74fda8db42521fdf03328e933312214749a"
+react-test-renderer@^16.4.0:
+  version "16.4.0"
+  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.4.0.tgz#0dbe0e24263e94e1830c7afb1f403707fad313a3"
   dependencies:
     fbjs "^0.8.16"
     object-assign "^4.1.1"
     prop-types "^15.6.0"
-    react-is "^16.3.2"
+    react-is "^16.4.0"
 
 react-transition-group@^2.0.0:
   version "2.3.1"
@@ -11942,9 +11942,9 @@ react-universal-component@^2.9.0:
     hoist-non-react-statics "^2.2.1"
     prop-types "^15.5.10"
 
-react@^16.3.2:
-  version "16.3.2"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.3.2.tgz#fdc8420398533a1e58872f59091b272ce2f91ea9"
+react@^16.4.0:
+  version "16.4.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.4.0.tgz#402c2db83335336fba1962c08b98c6272617d585"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
