@@ -6,7 +6,6 @@
           "edge",
           {
             "modules": "cjs",
-            "compression": true,
             "env": "production"
           }
         ]
