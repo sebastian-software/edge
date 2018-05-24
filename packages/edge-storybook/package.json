@@ -1,6 +1,6 @@
 {
   "name": "edge-storybook",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.7",
   "description": "Central configuration for Storybook. For usage in component collections and applications.",
   "main": "lib/config.js",
   "scripts": {
@@ -32,8 +32,8 @@
   "peerDependencies": {
     "react": ">=16.4.0",
     "react-dom": ">=16.4.0",
-    "redux": ">=4.0.0",
-    "react-redux": ">=5.0.0"
+    "react-redux": ">=5.0.0",
+    "redux": ">=4.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.47",
@@ -44,8 +44,8 @@
     "cpy-cli": "^1.0.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "redux": "^4.0.0",
     "react-redux": "^5.0.0",
+    "redux": "^4.0.0",
     "rimraf": "^2.6.2"
   }
 }
