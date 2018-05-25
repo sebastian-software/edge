@@ -18,11 +18,11 @@
   "license": "Apache-2.0",
   "dependencies": {
     "app-root-dir": "^1.0.2",
-    "babel-jest": "^22.4.4",
+    "babel-jest": "^23.0.0",
     "graphql-tag": "^2.9.2",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^22.4.4",
-    "jest-fetch-mock": "^1.6.1",
+    "jest": "^23.0.0",
+    "jest-fetch-mock": "^1.6.2",
     "jest-mock-now": "^1.2.0",
     "raf": "^3.4.0"
   }

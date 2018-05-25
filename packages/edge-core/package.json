@@ -54,7 +54,7 @@
     "node-fetch": "^2.1.2",
     "nodent-runtime": "^3.2.1",
     "prop-types": "^15.6.1",
-    "query-string": "^6.0.0",
+    "query-string": "^6.1.0",
     "raf": "^3.4.0",
     "react": "^16.4.0",
     "react-apollo": "^2.1.4",
@@ -77,8 +77,8 @@
     "webpack-flush-chunks": "^1.2.3"
   },
   "devDependencies": {
-    "jest": "22.4.4",
-    "jest-fetch-mock": "^1.6.1",
+    "jest": "23.0.0",
+    "jest-fetch-mock": "^1.6.2",
     "prepublish": "1.7.0",
     "rimraf": "*"
   }

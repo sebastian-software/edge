@@ -58,7 +58,7 @@
     "postcss-font-variant": "^3.0.0",
     "postcss-gradient-transparency-fix": "^2.1.0",
     "postcss-grid-kiss": "^1.4.2",
-    "postcss-hexrgba": "^1.0.0",
+    "postcss-hexrgba": "^1.0.1",
     "postcss-import": "^11.1.0",
     "postcss-initial": "^2.0.0",
     "postcss-input-style": "^1.0.0",
@@ -77,8 +77,8 @@
     "postcss-zindex": "^2.2.0"
   },
   "devDependencies": {
-    "babel-preset-edge": "4.1.0",
-    "jest": "22.4.4",
+    "babel-preset-edge": "4.2.1",
+    "jest": "23.0.0",
     "postcss-load-config": "^1.2.0",
     "prepublish": "1.7.0",
     "rimraf": "*"

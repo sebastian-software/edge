@@ -31,7 +31,7 @@
     "chalk": "^2.4.1",
     "compression": "^1.7.2",
     "cookie-parser": "^1.4.3",
-    "cosmiconfig": "^5.0.4",
+    "cosmiconfig": "^5.0.5",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "express-locale": "^1.0.5",
@@ -42,7 +42,7 @@
     "uuid": "^3.2.1"
   },
   "devDependencies": {
-    "jest": "22.4.4",
+    "jest": "23.0.0",
     "prepublish": "1.7.0",
     "rimraf": "*"
   }
