@@ -49,7 +49,7 @@
     "edge-postcss": "^1.0.0-alpha.5",
     "edge-storybook": "^1.0.0-alpha.8",
     "edge-style": "^1.0.0-alpha.5",
-    "jest": "23.0.0",
+    "jest": "23.0.1",
     "prepublish": "1.7.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",

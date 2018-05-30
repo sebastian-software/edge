@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "app-root-dir": "^1.0.2",
-    "autoprefixer": "^8.5.0",
+    "autoprefixer": "^8.5.1",
     "lost": "^8.2.1",
     "pleeease-filters": "^4.0.0",
     "postcss": "^6.0.22",
@@ -50,7 +50,7 @@
     "postcss-custom-media": "^6.0.0",
     "postcss-devtools": "^1.1.1",
     "postcss-discard-comments": "^2.0.4",
-    "postcss-easing-gradients": "^2.2.1",
+    "postcss-easing-gradients": "^3.0.0",
     "postcss-easings": "^1.0.1",
     "postcss-flexbugs-fixes": "^3.3.1",
     "postcss-flow-root": "0.0.3",
@@ -77,8 +77,8 @@
     "postcss-zindex": "^2.2.0"
   },
   "devDependencies": {
-    "babel-preset-edge": "4.2.1",
-    "jest": "23.0.0",
+    "babel-preset-edge": "4.3.1",
+    "jest": "23.0.1",
     "postcss-load-config": "^1.2.0",
     "prepublish": "1.7.0",
     "rimraf": "*"

@@ -28,9 +28,9 @@
     "app-root-dir": "^1.0.2",
     "babel-loader": "^8.0.0-beta.2",
     "babel-minify-webpack-plugin": "^0.3.1",
-    "babel-preset-edge": "^4.2.1",
+    "babel-preset-edge": "^4.3.1",
     "bluebird": "^3.5.1",
-    "builtin-modules": "^2.0.0",
+    "builtin-modules": "^3.0.0",
     "cache-loader": "^1.2.2",
     "case-sensitive-paths-webpack-plugin": "^2.1.2",
     "chalk": "^2.4.1",
@@ -58,20 +58,19 @@
     "uglify-es": "^3.3.10",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "update-notifier": "^2.5.0",
-    "webpack": "^4.8.3",
+    "webpack": "^4.10.1",
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-dev-middleware": "^3.1.3",
     "webpack-flush-chunks": "^1.2.3",
     "webpack-hot-middleware": "^2.22.2",
     "webpack-hot-server-middleware": "^0.5.0",
     "webpack-subresource-integrity": "^1.1.0-rc.4",
-    "worker-loader": "^1.1.1",
+    "worker-loader": "^2.0.0",
     "yaml-loader": "^0.5.0",
-    "yn": "^2.0.0",
-    "zopfli-webpack-plugin": "^0.1.0"
+    "yn": "^2.0.0"
   },
   "devDependencies": {
-    "jest": "23.0.0",
+    "jest": "23.0.1",
     "prepublish": "1.7.0",
     "rimraf": "*"
   }
