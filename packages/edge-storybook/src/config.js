@@ -17,7 +17,9 @@ if (typeof global.APP_SRC !== "string") {
   global = require("global")
 
   if (typeof global.APP_SRC !== "string") {
-    throw new Error("Edge-Storybook: Configuration Error: APP_SRC is required to be defined by the environment!")
+    throw new Error(
+      "Edge-Storybook: Configuration Error: APP_SRC is required to be defined by the environment!"
+    )
   }
 }
 
@@ -44,22 +46,21 @@ const routesMap = {
 
 const { reducer, middleware, enhancer } = connectRoutes(routesMap)
 
-const enhancers = compose(enhancer, applyMiddleware(middleware))
+const enhancers = compose(
+  enhancer,
+  applyMiddleware(middleware)
+)
 const reducers = combineReducers({ location: reducer })
 const store = createStore(reducers, {}, enhancers)
 
 // Using same cookie as in our applications which should make it possible
 // via some UI to switch between different locales.
-const locale = Cookie.get("locale") || "en-US"
+const locale =
+  process.env.NODE_ENV === "test" ? "en-US" : Cookie.get("locale") || "en-US"
 
 const language = locale.split("-")[0]
 
-// Dynamically loading configured language support
-import(`react-intl/locale-data/${language}`).then((data) => {
-  // Access CJS data by using "default" key
-  addLocaleData(data.default)
-  console.log("React-Intl loaded data for", language)
-
+function boot() {
   addDecorator((story) => {
     return (
       <IntlProvider locale={locale}>
@@ -83,4 +84,17 @@ import(`react-intl/locale-data/${language}`).then((data) => {
   configure(() => stories, module)
 
   console.log("Added", stories.length, "stories.")
-})
+}
+
+if (process.env.NODE_ENV === "test") {
+  // In tests we keep things static and just use the default locale
+  boot()
+} else {
+  // Dynamically loading configured language support
+  import(`react-intl/locale-data/${language}`).then(data => {
+    // Access CJS data by using "default" key
+    addLocaleData(data.default)
+    console.log("React-Intl loaded data for", language)
+    boot()
+  })
+}
