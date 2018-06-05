@@ -1,7 +1,7 @@
 {
   "name": "edge-boilerplate",
   "description": "Edge Boilerplate is a template for modern web applications. Part of the Edge Platform.",
-  "version": "1.0.0-alpha.10",
+  "version": "1.0.0-alpha.11",
   "main": "server/index.js",
   "author": {
     "name": "Sebastian Software",
@@ -34,8 +34,8 @@
   ],
   "license": "Apache-2.0",
   "dependencies": {
-    "edge-common": "^1.0.0-alpha.5",
-    "edge-express": "^1.0.0-alpha.5",
+    "edge-common": "^1.0.0-alpha.6",
+    "edge-express": "^1.0.0-alpha.6",
     "http-status-codes": "^1.3.0",
     "yn": "^2.0"
   },
@@ -43,12 +43,12 @@
     "@storybook/react": "^4.0.0-alpha.3",
     "babel-watch": "^2.0.7",
     "cookiesjs": "^2.0.0",
-    "edge-builder": "^1.0.0-alpha.6",
-    "edge-core": "^1.0.0-alpha.6",
-    "edge-jest": "^0.2.1-alpha.4",
-    "edge-postcss": "^1.0.0-alpha.6",
-    "edge-storybook": "^1.0.0-alpha.9",
-    "edge-style": "^1.0.0-alpha.6",
+    "edge-builder": "^1.0.0-alpha.7",
+    "edge-core": "^1.0.0-alpha.7",
+    "edge-jest": "^0.2.1-alpha.5",
+    "edge-postcss": "^1.0.0-alpha.7",
+    "edge-storybook": "^1.0.0-alpha.10",
+    "edge-style": "^1.0.0-alpha.7",
     "jest": "23.1.0",
     "prepublish": "1.7.0",
     "react": "^16.4.0",
