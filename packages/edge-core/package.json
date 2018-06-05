@@ -44,13 +44,13 @@
     "apollo-link-context": "^1.0.8",
     "apollo-link-http": "^1.5.4",
     "bluebird": "^3.5.1",
-    "caniuse-lite": "^1.0.30000846",
+    "caniuse-lite": "^1.0.30000849",
     "chalk": "^2.4.1",
     "edge-useragent": "^4.0.0-alpha.6",
     "graphql": "^0.13.2",
     "identity-obj-proxy": "^3.0.0",
     "intl-locales-supported": "^1.0.0",
-    "lean-intl": "^3.1.1",
+    "lean-intl": "^4.0.0",
     "node-fetch": "^2.1.2",
     "nodent-runtime": "^3.2.1",
     "prop-types": "^15.6.1",
@@ -77,7 +77,7 @@
     "webpack-flush-chunks": "^1.2.3"
   },
   "devDependencies": {
-    "jest": "23.0.1",
+    "jest": "23.1.0",
     "jest-fetch-mock": "^1.6.2",
     "prepublish": "1.7.0",
     "rimraf": "*"

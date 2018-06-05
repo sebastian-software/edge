@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "app-root-dir": "^1.0.2",
-    "autoprefixer": "^8.5.1",
+    "autoprefixer": "^8.6.0",
     "lost": "^8.2.1",
     "pleeease-filters": "^4.0.0",
     "postcss": "^6.0.22",
@@ -78,7 +78,7 @@
   },
   "devDependencies": {
     "babel-preset-edge": "4.3.1",
-    "jest": "23.0.1",
+    "jest": "23.1.0",
     "postcss-load-config": "^1.2.0",
     "prepublish": "1.7.0",
     "rimraf": "*"
