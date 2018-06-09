@@ -1,6 +1,6 @@
 {
   "name": "edge-style",
-  "version": "1.0.0-alpha.7",
+  "version": "1.0.0-alpha.8",
   "description": "Styling Essentials for Edge. Part of the Edge Platform.",
   "main": "lib/index.js",
   "browser": "lib/index.js",
@@ -34,7 +34,7 @@
   ],
   "license": "Apache-2.0",
   "dependencies": {
-    "edge-postcss": "^1.0.0-alpha.7"
+    "edge-postcss": "^1.0.0-alpha.8"
   },
   "devDependencies": {
     "prepublish": "1.7.0",

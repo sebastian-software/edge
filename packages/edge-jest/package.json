@@ -1,6 +1,6 @@
 {
   "name": "edge-jest",
-  "version": "0.2.1-alpha.5",
+  "version": "0.2.1-alpha.6",
   "description": "Centralized Jest configuration for Edge-based projects.",
   "main": "jest.config.js",
   "scripts": {
