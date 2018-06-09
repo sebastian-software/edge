@@ -22,7 +22,7 @@
     "graphql-tag": "^2.9.2",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.1.0",
-    "jest-fetch-mock": "^1.6.2",
+    "jest-fetch-mock": "^1.6.3",
     "jest-mock-now": "^1.2.0",
     "raf": "^3.4.0"
   }
