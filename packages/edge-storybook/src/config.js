@@ -8,20 +8,13 @@ import { connectRoutes } from "redux-first-router"
 import { IntlProvider, addLocaleData } from "react-intl"
 import Cookie from "js-cookie"
 
+// The "global" import fixes issues accessing globals from outside of the VM
+// where this script is running. This is mainly relevant for running Storyshots via Jest.
+/* eslint-disable no-global-assign, no-native-reassign */
+import global from "global"
+
+// Core Reset Styles
 import "edge-style"
-
-if (typeof global.APP_SRC !== "string") {
-  // The "global" import fixes issues accessing globals from outside of the VM
-  // where this script is running. This is mainly relevant for running Storyshots via Jest.
-  /* eslint-disable no-global-assign, no-native-reassign */
-  global = require("global")
-
-  if (typeof global.APP_SRC !== "string") {
-    throw new Error(
-      "Edge-Storybook: Configuration Error: APP_SRC is required to be defined by the environment!"
-    )
-  }
-}
 
 // Testing with Storyshots:
 // Some components rely on intervals being executed at least once.
@@ -55,8 +48,12 @@ const store = createStore(reducers, {}, enhancers)
 
 // Using same cookie as in our applications which should make it possible
 // via some UI to switch between different locales.
-const locale =
-  process.env.NODE_ENV === "test" ? "en-US" : Cookie.get("locale") || "en-US"
+let locale = process.env.NODE_ENV === "test" ?
+  process.env.APP_DEFAULT_LOCALE : Cookie.get("locale")
+
+if (locale == null) {
+  locale = "en-US"
+}
 
 const language = locale.split("-")[0]
 
@@ -73,13 +70,13 @@ function boot() {
   // relative to the application folder.
 
   // 1. Require all initializers files e.g. core CSS required for all components, i18n setup, etc.
-  const initLoader = require.context(global.APP_SRC, false, /\bInit\.js$/)
+  const initLoader = require.context(process.env.APP_SOURCE, false, /\bInit\.js$/)
   const initializers = initLoader.keys().map(initLoader)
 
   console.log("Loaded", initializers.length, "initializers.")
 
   // 2. Find and load all stories found somewhere in the application directory.
-  const storyLoader = require.context(global.APP_SRC, true, /\.story\.js$/)
+  const storyLoader = require.context(process.env.APP_SOURCE, true, /\.story\.js$/)
   const stories = storyLoader.keys().map(storyLoader)
   configure(() => stories, module)
 

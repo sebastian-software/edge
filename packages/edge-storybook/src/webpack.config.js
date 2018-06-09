@@ -1,6 +1,5 @@
 import webpack from "webpack"
-import { get as getRoot } from "app-root-dir"
-import { join } from "path"
+import { getEnvironment } from "universal-dotenv"
 
 const rules = [
   // Transpile our own JavaScript files using the setup in `.babelrc`.
@@ -72,9 +71,7 @@ const plugins = [
   // from the application folders, require a static primitive value (no variable)
   // A nice trick here is to inject this variable via the DefinePlugin before
   // it runs in the application and is therefor processed before `require.context`.
-  new webpack.DefinePlugin({
-    "global.APP_SRC": JSON.stringify(join(getRoot(), "src"))
-  })
+  new webpack.DefinePlugin(getEnvironment().webpack)
 ]
 
 /* eslint-disable import/no-commonjs */
