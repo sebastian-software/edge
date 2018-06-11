@@ -1,6 +1,6 @@
 {
   "name": "edge-webpack",
-  "version": "0.0.2-alpha.1",
+  "version": "0.0.2-alpha.2",
   "description": "Centralized Webpack configuration for Edge-based projects.",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
@@ -22,6 +22,7 @@
     "app-manifest-loader": "^1.0.1",
     "app-root-dir": "^1.0.2",
     "babel-loader": "^8.0.0-beta.3",
+    "cache-loader": "^1.2.2",
     "css-loader": "^0.28.11",
     "error-overlay-webpack-plugin": "^0.1.5",
     "extract-css-chunks-webpack-plugin": "^3.0.5",
