@@ -14,7 +14,9 @@ import StaticModule from "./modules/Static"
 export default {
   name: EnvironmentModule.name,
   mode: EnvironmentModule.mode,
-  entry: resolve(process.env.APP_ROOT, `src/${BUILD_TARGET}/index.js`),
+  entry: {
+    main: [ resolve(process.env.APP_ROOT, `src/${BUILD_TARGET}/index.js`) ]
+  },
 
   output: {
     path: resolve(process.env.APP_ROOT, "dist"),

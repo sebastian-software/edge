@@ -2035,10 +2035,6 @@ babel-code-frame@6.26.0, babel-code-frame@^6.22.0, babel-code-frame@^6.26.0:
     esutils "^2.0.2"
     js-tokens "^3.0.2"
 
-babel-core@7.0.0-bridge.0, babel-core@^7.0.0-bridge.0:
-  version "7.0.0-bridge.0"
-  resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-7.0.0-bridge.0.tgz#95a492ddd90f9b4e9a4a1da14eb335b87b634ece"
-
 babel-core@^6.0.0, babel-core@^6.26.0:
   version "6.26.3"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.26.3.tgz#b2e2f09e342d0f0c88e2f02e067794125e75c207"
@@ -2062,6 +2058,10 @@ babel-core@^6.0.0, babel-core@^6.26.0:
     private "^0.1.8"
     slash "^1.0.0"
     source-map "^0.5.7"
+
+babel-core@^7.0.0-0, babel-core@^7.0.0-bridge.0:
+  version "7.0.0-bridge.0"
+  resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-7.0.0-bridge.0.tgz#95a492ddd90f9b4e9a4a1da14eb335b87b634ece"
 
 babel-eslint@^8.2.3:
   version "8.2.3"
@@ -14355,6 +14355,14 @@ units-css@^0.4.0:
 universal-dotenv@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/universal-dotenv/-/universal-dotenv-1.3.0.tgz#aa133fc58c507ea259d385cf647ee180a2a98d68"
+  dependencies:
+    app-root-dir "^1.0.2"
+    dotenv "^6.0.0"
+    dotenv-expand "^4.2.0"
+
+universal-dotenv@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/universal-dotenv/-/universal-dotenv-1.4.0.tgz#a85fb8c2f61c0419dc63a95baf59206546a3b277"
   dependencies:
     app-root-dir "^1.0.2"
     dotenv "^6.0.0"
