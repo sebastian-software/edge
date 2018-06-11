@@ -9,6 +9,9 @@
     "build": "rimraf lib && preppy",
     "prepack": "npm run build"
   },
+  "files": [
+    "lib/"
+  ],
   "author": {
     "name": "Sebastian Software",
     "email": "s.werner@sebastian-software.de",
@@ -42,6 +45,7 @@
     "babel-jest": "^23.0.1",
     "babel-preset-edge": "^4.3.1",
     "jest": "^23.1.0",
-    "preppy": "^4.2.2"
+    "preppy": "^4.2.2",
+    "rimraf": "^2.6.2"
   }
 }

@@ -4,6 +4,7 @@ import CssChunksPlugin, { loader as extractCssLoader } from "extract-css-chunks-
 import {
   IS_DEVELOPMENT,
   IS_PRODUCTION,
+  BUILD_TARGET,
   ENABLE_SOURCE_MAPS,
   BABEL_EXTS,
   ASSET_EXTS,
@@ -81,7 +82,7 @@ export default {
       loader: "file-loader",
       options: {
         name: ASSET_FILENAME,
-        emitFile: process.env.BUILD_TARGET === "client"
+        emitFile: BUILD_TARGET === "client"
       }
     },
 
