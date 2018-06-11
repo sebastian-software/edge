@@ -2,18 +2,29 @@
 import { loader as extractCssLoader } from "extract-css-chunks-webpack-plugin"
 
 import {
-  IS_CLIENT,
+  ENABLE_SOURCE_MAPS,
   IS_PRODUCTION,
   BABEL_EXTS,
   ASSET_EXTS,
   POSTCSS_EXTS,
   POSTCSS_MODULE_EXTS,
   YAML_EXTS,
-  GRAPHQL_EXTS,
-  POSTCSS_LOADER_OPTS,
-  CSS_LOADER_OPTS,
-  CSS_LOADER_MODULE_OPTS
+  GRAPHQL_EXTS
 } from "./config"
+
+const CSS_LOADER_OPTS = {
+  import: false,
+
+  // We are using CSS-O as part of our PostCSS-Chain
+  minimize: false,
+  sourceMap: ENABLE_SOURCE_MAPS
+}
+
+const CSS_LOADER_MODULE_OPTS = {
+  ...CSS_LOADER_OPTS,
+  modules: true,
+  localIdentName: "[local]-[hash:base62:8]"
+}
 
 const ASSET_FILENAME = IS_PRODUCTION ?
   "file-[hash:base62:8].[ext]" :
@@ -58,7 +69,7 @@ export default [
     loader: "file-loader",
     options: {
       name: ASSET_FILENAME,
-      emitFile: IS_CLIENT
+      emitFile: process.env.BUILD_TARGET === "client"
     }
   },
 
@@ -107,7 +118,9 @@ export default [
       },
       {
         loader: "postcss-loader",
-        options: POSTCSS_LOADER_OPTS
+        options: {
+          sourceMap: ENABLE_SOURCE_MAPS
+        }
       }
     ].filter(Boolean)
   },
@@ -124,7 +137,9 @@ export default [
       },
       {
         loader: "postcss-loader",
-        options: POSTCSS_LOADER_OPTS
+        options: {
+          sourceMap: ENABLE_SOURCE_MAPS
+        }
       }
     ].filter(Boolean)
   }

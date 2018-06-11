@@ -2,7 +2,8 @@
   "name": "edge-webpack",
   "version": "0.0.1",
   "description": "Centralized Webpack configuration for Edge-based projects.",
-  "main": "index.js",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.esm.js",
   "scripts": {
     "test": "jest"
   },
@@ -32,5 +33,9 @@
     "webpack": "^4.12.0",
     "webpack-subresource-integrity": "^1.1.0-rc.4",
     "yaml-loader": "^0.5.0"
+  },
+  "devDependencies": {
+    "babel-preset-edge": "^4.3.1",
+    "preppy": "^4.2.2"
   }
 }
