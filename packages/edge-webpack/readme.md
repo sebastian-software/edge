@@ -2,7 +2,8 @@
 
 ## Features
 
-- Basic loader infrastructure with sensible defaults.
-- Great user experience with a nice amount of plugins to tweak experience while developing.
-- Integrated caching were sensible.
-- Uses [Universal Dotenv](https://www.npmjs.com/package/universal-dotenv) for automatic setup based on environment configuration.
+- Support for React, GraphQL, CSS Modules, ...
+- Tweaked for nice user experience.
+- Configuration via environment variables using [Universal Dotenv](https://www.npmjs.com/package/universal-dotenv).
+- Enabled for using multi threading and advanced caching.
+- Able to generate static HTML with SRI support.
