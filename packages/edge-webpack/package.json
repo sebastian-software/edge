@@ -5,7 +5,9 @@
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "rimraf lib && preppy",
+    "prepack": "npm run build"
   },
   "author": {
     "name": "Sebastian Software",
