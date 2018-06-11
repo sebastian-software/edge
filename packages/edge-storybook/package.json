@@ -25,6 +25,7 @@
     "@storybook/addon-viewport": "^4.0.0-alpha.4",
     "@storybook/react": "^4.0.0-alpha.4",
     "edge-style": "^1.0.0-alpha.8",
+    "edge-webpack": "^0.0.1",
     "global": "^4.3.2",
     "js-cookie": "^2.2.0",
     "react-intl": "^2.4.0",

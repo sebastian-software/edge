@@ -11,7 +11,20 @@ import OptimizationModule from "./modules/Optimization"
 import RulesModule from "./modules/Rules"
 import StaticModule from "./modules/Static"
 
-export default {
+// For usage in otherwise pre-defined Webpack environment like Storybook
+export const core = {
+  module: {
+    rules: RulesModule.rules
+  },
+
+  plugins: [
+    ...EnvironmentModule.plugins,
+    ...LocalesModule.plugins,
+    ...RulesModule.plugins
+  ].filter(Boolean)
+}
+
+export const full = {
   name: EnvironmentModule.name,
   mode: EnvironmentModule.mode,
   entry: {
