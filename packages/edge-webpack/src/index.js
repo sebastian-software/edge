@@ -1,30 +1,23 @@
-import webpack from "webpack"
-import { get as getRoot } from "app-root-dir"
 import { resolve } from "path"
-import { getEnvironment } from "universal-dotenv"
-import HtmlWebpackPlugin from "html-webpack-plugin"
-import CssChunksPlugin from "extract-css-chunks-webpack-plugin"
-import SriPlugin from "webpack-subresource-integrity"
 
-import rules from "./rules"
-import {
-  IS_DEVELOPMENT,
-  IS_PRODUCTION,
-  BUILD_TARGET
-} from "./config"
+// Basic Configuration Adapter
+import { IS_DEVELOPMENT, BUILD_TARGET } from "./config"
 
-// Modules
+// Individual Feature Modules
+import EnvironmentModule from "./modules/Environment"
 import LocalesModule from "./modules/Locales"
-import DeveloperExperienceModule from "./modules/DeveloperExperience"
+import ExperienceModule from "./modules/Experience"
 import OptimizationModule from "./modules/Optimization"
+import RulesModule from "./modules/Rules"
+import StaticModule from "./modules/Static"
 
 export default {
-  entry: `./src/${BUILD_TARGET}/index.js`,
-  mode: IS_PRODUCTION ? "production" : "development",
-  name: BUILD_TARGET,
+  name: EnvironmentModule.name,
+  mode: EnvironmentModule.mode,
+  entry: resolve(process.env.APP_ROOT, `src/${BUILD_TARGET}/index.js`),
 
   output: {
-    path: resolve(getRoot(), "dist"),
+    path: resolve(process.env.APP_ROOT, "dist"),
     filename: IS_DEVELOPMENT ? "index.js" : "index.[hash].js",
     chunkFilename: IS_DEVELOPMENT ?
       "chunk-[name].[chunkhash].js" :
@@ -33,36 +26,18 @@ export default {
   },
 
   module: {
-    rules
+    rules: RulesModule.rules
   },
 
-  stats: DeveloperExperienceModule.stats,
-  serve: DeveloperExperienceModule.serve,
+  stats: ExperienceModule.stats,
+  serve: ExperienceModule.serve,
   optimization: OptimizationModule.optimization,
 
   plugins: [
-    new webpack.DefinePlugin(getEnvironment().webpack),
-
+    ...EnvironmentModule.plugins,
     ...LocalesModule.plugins,
-    ...DeveloperExperienceModule.plugins,
-
-    new CssChunksPlugin({
-      filename: IS_DEVELOPMENT ? "[name].css" : "[name]-[contenthash].css",
-      chunkFilename: IS_DEVELOPMENT ?
-        "chunk-[name].css" :
-        "chunk-[name]-[contenthash].css",
-      hot: IS_DEVELOPMENT
-    }),
-
-    IS_PRODUCTION ?
-      new SriPlugin({
-        hashFuncNames: [ "sha256", "sha512" ],
-        enabled: IS_PRODUCTION
-      }) : null,
-
-    new HtmlWebpackPlugin({
-      inject: true,
-      title: process.env.APP_TITLE
-    })
+    ...ExperienceModule.plugins,
+    ...RulesModule.plugins,
+    ...StaticModule.plugins
   ].filter(Boolean)
 }
