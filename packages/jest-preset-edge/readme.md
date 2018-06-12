@@ -1,4 +1,4 @@
-# Centralized Jest Configuration Preset
+# Jest Preset Edge - Advanced Frontend Focussed Jest Configuration
 
 ## Features
 
@@ -21,14 +21,14 @@
 Install via NPM:
 
 ```
-npm install --save-dev edge-jest
+npm install --save-dev jest-preset-edge
 ```
 
-Easiest approach is to use this as a so-called [preset in Jest](https://facebook.github.io/jest/docs/en/configuration.html#preset-string):
+Define the preset inside your own configuration. [Official docs](https://facebook.github.io/jest/docs/en/configuration.html#preset-string):
 
 ```js
 module.exports = {
-  "preset": "edge-jest"
+  "preset": "jest-preset-edge"
 }
 ```
 

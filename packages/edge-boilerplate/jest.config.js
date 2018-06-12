@@ -1,2 +1,4 @@
 /* eslint-disable */
-module.exports = require("edge-jest")
+module.exports = {
+  "preset": "jest-preset-edge"
+}

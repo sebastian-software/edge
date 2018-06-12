@@ -1,5 +1,5 @@
 {
-  "name": "edge-jest",
+  "name": "jest-preset-edge",
   "version": "0.2.1-alpha.8",
   "description": "Centralized Jest configuration for Edge-based projects.",
   "main": "jest-preset.js",

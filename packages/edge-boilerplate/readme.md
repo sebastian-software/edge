@@ -121,7 +121,7 @@ The configuration affects both, the *Babel* transpiler and the `PostCSS` prefixi
 
 ### Jest
 
-To configure the *Jest* test runner use the `jest.config.js`, which is located in the main directory like the other config files. In the state of delivery `edge-jest` will be imported and directly exported without any changes. Here it is possible to make adjustments in the form of overrides and additions to the imported config.
+To configure the *Jest* test runner use the `jest.config.js`, which is located in the main directory like the other config files. The default configuration uses `jest-preset-edge` as a preset. As it is only a preset it is possible to make adjustments by adding any custom entries beside `preset`.
 
 The standard configuration includes the following core features:
 

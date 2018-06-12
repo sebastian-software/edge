@@ -45,7 +45,7 @@
     "cookiesjs": "^2.0.0",
     "edge-builder": "^1.0.0-alpha.8",
     "edge-core": "^1.0.0-alpha.9",
-    "edge-jest": "^0.2.1-alpha.8",
+    "jest-preset-edge": "^0.2.1-alpha.8",
     "edge-postcss": "^1.0.0-alpha.10",
     "edge-storybook": "^1.0.0-alpha.16",
     "edge-style": "^1.0.0-alpha.10",
