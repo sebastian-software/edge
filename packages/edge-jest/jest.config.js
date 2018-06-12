@@ -25,11 +25,6 @@ module.exports = {
     require.resolve("./jest.setup.js")
   ],
 
-  globals: {
-    APP_ROOT: APP_ROOT,
-    APP_SRC: path.join(APP_ROOT, "src"),
-    APP_DIST: path.join(APP_ROOT, "dist")
-  },
 
   collectCoverageFrom: ["src/**.js"],
 
