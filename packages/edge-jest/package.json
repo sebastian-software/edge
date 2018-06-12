@@ -7,7 +7,7 @@
     "test": "jest"
   },
   "files": [
-    "jest.*",
+    "setup.js",
     "transform"
   ],
   "author": {
