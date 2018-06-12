@@ -1,6 +1,3 @@
-const APP_ROOT = require("app-root-dir").get()
-const path = require("path")
-
 /* eslint-disable import/no-commonjs */
 module.exports = {
   transform: {
@@ -25,8 +22,11 @@ module.exports = {
     require.resolve("./jest.setup.js")
   ],
 
+  collectCoverageFrom: [
+    "src/**.js"
+  ],
 
-  collectCoverageFrom: ["src/**.js"],
+  coverageDirectory: "docs/coverage",
 
   coveragePathIgnorePatterns: [
     // NPM packages
@@ -57,5 +57,5 @@ module.exports = {
   ],
 
   // Default: ["json", "lcov", "text"]
-  coverageReporters: ["lcov", "json-summary", "json", "text"]
+  coverageReporters: [ "lcov", "json-summary", "json", "text" ]
 }
