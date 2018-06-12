@@ -55,43 +55,34 @@ if (locale == null) {
   locale = "en-US"
 }
 
-const language = locale.split("-")[0]
-
-function boot() {
-  addDecorator((story) => {
-    return (
-      <IntlProvider locale={locale}>
-        <Provider store={store}>{story()}</Provider>
-      </IntlProvider>
-    )
-  })
-
-  // Uses the injected ROOT from our Webpack config to find stories
-  // relative to the application folder.
-
-  // 1. Require all initializers files e.g. core CSS required for all components, i18n setup, etc.
-  const initLoader = require.context(process.env.APP_SOURCE, false, /\bInit\.js$/)
-  const initializers = initLoader.keys().map(initLoader)
-
-  console.log("Loaded", initializers.length, "initializers.")
-
-  // 2. Find and load all stories found somewhere in the application directory.
-  const storyLoader = require.context(process.env.APP_SOURCE, true, /\.story\.js$/)
-  const stories = storyLoader.keys().map(storyLoader)
-  configure(() => stories, module)
-
-  console.log("Added", stories.length, "stories.")
+// In tests we keep things static and just use the default locale
+if (process.env.NODE_ENV !== "test") {
+  const language = locale.split("-")[0]
+  const data = require(`react-intl/locale-data/${language}`)
+  addLocaleData(data)
+  console.log("React-Intl loaded data for", language)
 }
 
-if (process.env.NODE_ENV === "test") {
-  // In tests we keep things static and just use the default locale
-  boot()
-} else {
-  // Dynamically loading configured language support
-  import(`react-intl/locale-data/${language}`).then(data => {
-    // Access CJS data by using "default" key
-    addLocaleData(data.default)
-    console.log("React-Intl loaded data for", language)
-    boot()
-  })
-}
+addDecorator((story) => {
+  return (
+    <IntlProvider locale={locale}>
+      <Provider store={store}>{story()}</Provider>
+    </IntlProvider>
+  )
+})
+
+// Uses the injected ROOT from our Webpack config to find stories
+// relative to the application folder.
+
+// 1. Require all initializers files e.g. core CSS required for all components, i18n setup, etc.
+const initLoader = require.context(process.env.APP_SOURCE, false, /\bInit\.js$/)
+const initializers = initLoader.keys().map(initLoader)
+
+console.log("Loaded", initializers.length, "initializers.")
+
+// 2. Find and load all stories found somewhere in the application directory.
+const storyLoader = require.context(process.env.APP_SOURCE, true, /\.story\.js$/)
+const stories = storyLoader.keys().map(storyLoader)
+configure(() => stories, module)
+
+console.log("Added", stories.length, "stories.")
