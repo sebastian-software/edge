@@ -46,6 +46,7 @@ module.exports = {
     // Application Glue Code
     "src/Application.js",
     "src/State.js",
+    "src/Init.js",
     "/views/",
 
     // Storybook Stories
