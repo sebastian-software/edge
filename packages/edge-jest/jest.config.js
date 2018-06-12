@@ -13,7 +13,7 @@ module.exports = {
   },
 
   transformIgnorePatterns: [
-    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$",
+    "node_modules/.+\\.(js|jsx|mjs)$",
     "^.+\\.module\\.css$"
   ],
 
