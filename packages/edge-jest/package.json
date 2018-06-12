@@ -21,6 +21,7 @@
     "graphql-tag": "^2.9.2",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.1.0",
+    "jest-canvas-mock": "^1.0.2",
     "jest-fetch-mock": "^1.6.4",
     "jest-mock-now": "^1.2.0",
     "raf": "^3.4.0",

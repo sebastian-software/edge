@@ -19,6 +19,7 @@ module.exports = {
   },
 
   setupFiles: [
+    "jest-canvas-mock",
     require.resolve("./jest.setup.js")
   ],
 
