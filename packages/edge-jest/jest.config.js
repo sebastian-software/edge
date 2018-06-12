@@ -5,9 +5,11 @@ const path = require("path")
 module.exports = {
   transform: {
     "^.+\\.(js|jsx|mjs)$": require.resolve("./transform/babel.js"),
-    "^.+\\.(css|sss)$": require.resolve("./transform/css.js"),
+    "^.+\\.(css|sss|scss|sass)$": require.resolve("./transform/css.js"),
     "^.+\\.(graphql|gql)$": require.resolve("./transform/graphql.js"),
-    "^(?!.*\\.(js|jsx|mjs|css|sss|json|graphql|gql)$)": require.resolve("./transform/file.js")
+    "^(?!.*\\.(js|jsx|mjs|css|sss|scss|sass|json|graphql|gql)$)": require.resolve(
+      "./transform/file.js"
+    )
   },
 
   transformIgnorePatterns: [
