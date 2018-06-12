@@ -1,4 +1,4 @@
-/* eslint-disable import/no-commonjs */
+/* eslint-disable import/no-commonjs, filenames/match-regex */
 module.exports = {
   transform: {
     "^.+\\.(js|jsx|mjs)$": require.resolve("./transform/babel.js"),
@@ -20,7 +20,7 @@ module.exports = {
 
   setupFiles: [
     "jest-canvas-mock",
-    require.resolve("./jest.setup.js")
+    require.resolve("./setup.js")
   ],
 
   collectCoverageFrom: [
@@ -57,6 +57,10 @@ module.exports = {
     ".test.js"
   ],
 
-  // Default: ["json", "lcov", "text"]
-  coverageReporters: [ "lcov", "json-summary", "json", "text" ]
+  coverageReporters: [
+    "lcov",
+    "json-summary",
+    "json",
+    "text"
+  ]
 }

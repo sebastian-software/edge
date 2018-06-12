@@ -1,4 +1,4 @@
-/* eslint-disable import/no-commonjs */
+/* eslint-disable import/no-commonjs, filenames/match-regex */
 
 // Mocking all fetch() calls. Should never depend on any actual network during test.
 global.fetch = require("jest-fetch-mock")

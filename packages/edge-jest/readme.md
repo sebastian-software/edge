@@ -1,18 +1,20 @@
-# Centralized Jest Configuration
+# Centralized Jest Configuration Preset
 
 ## Features
 
 - Supports CSS Modules using `identity-obj-proxy`.
-- Mocks all asset file requirements for e.g. images, fonts, ...
+- Mocks all asset file requirements for e.g. images, fonts, graphql files, ...
 - Includes a mock for the native `fetch()` method.
 - Polyfills `requestAnimationFrame()` which is required by React v16.
+- Configures Date constructors to return a static data which is very helpful for snapshot testing.
+- Integrates a mock for HTML5 canvas so that API calls does not throw inside NodeJS (via JSDOM).
 
 ## Excludes for Coverage
 
-- Excludes typical *Edge Platform* based application glue code files e.g. `Application.js` and `State.js`.
-- Excludes *Webpack* and *Prepublish* entry points.
+- Excludes typical *Edge Platform* based application glue code files e.g. `Application.js`, `State.js` and `Init.js`.
+- Excludes *Webpack* and generic bundling/package entry points.
 - Excludes *Storybook* stories following the `.story.js` naming convention.
-- Excludes *Jest* tests following the `.test.js` naming convention.
+- Excludes *Jest* tests following the `.test.js` naming convention or being placed inside a `__tests__` folder.
 
 ## Usage
 
@@ -22,18 +24,15 @@ Install via NPM:
 npm install --save-dev edge-jest
 ```
 
-Add your local Jest config as a `jest.config.js` file - Config inside your `package.json` is not supported!
+Easiest approach is to use this as a so-called [preset in Jest](https://facebook.github.io/jest/docs/en/configuration.html#preset-string):
 
 ```js
-/* eslint-disable */
-const config = require("edge-jest")
-
-// Modify/Extend the config object here
-
-module.exports = config
+module.exports = {
+  "preset": "edge-jest"
+}
 ```
 
-Jest is automatically looking up the configuration file. No need for passing any further information.
+This works in a `jest.config.js` or in the `package.json` file under the `jest` key.
 
 
 
