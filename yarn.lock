@@ -1129,6 +1129,10 @@
   version "0.12.6"
   resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.12.6.tgz#3d619198585fcabe5f4e1adfb5cf5f3388c66c13"
 
+"@types/jest@^23.0.0":
+  version "23.0.2"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.0.2.tgz#f03f9e6dd2206cc2a2e8fd033161b0b7cf905db6"
+
 "@types/node@*":
   version "10.3.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.3.2.tgz#3840ec6c12556fdda6e0e6d036df853101d732a4"
@@ -3593,7 +3597,7 @@ browserslist@^2.11.3:
     caniuse-lite "^1.0.30000792"
     electron-to-chromium "^1.3.30"
 
-browserslist@^3.0.0, browserslist@^3.2.5, browserslist@^3.2.6, browserslist@^3.2.7, browserslist@^3.2.8:
+browserslist@^3.0.0, browserslist@^3.2.5, browserslist@^3.2.6, browserslist@^3.2.8:
   version "3.2.8"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-3.2.8.tgz#b0005361d6471f0f5952797a76fc985f1f978fc6"
   dependencies:
@@ -3809,9 +3813,13 @@ caniuse-api@^1.5.2:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-db@^1.0.30000187, caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639, caniuse-db@^1.0.30000843:
+caniuse-db@^1.0.30000187, caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
   version "1.0.30000846"
   resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000846.tgz#d9c86f914738db4da098eeded997413c44561bd2"
+
+caniuse-db@^1.0.30000846:
+  version "1.0.30000852"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000852.tgz#c37a706048f8d81f87946a7c13f39ed636876659"
 
 caniuse-lite@^1.0.30000792, caniuse-lite@^1.0.30000805, caniuse-lite@^1.0.30000815, caniuse-lite@^1.0.30000844, caniuse-lite@^1.0.30000846:
   version "1.0.30000846"
@@ -3820,6 +3828,10 @@ caniuse-lite@^1.0.30000792, caniuse-lite@^1.0.30000805, caniuse-lite@^1.0.300008
 caniuse-lite@^1.0.30000851, caniuse-lite@latest:
   version "1.0.30000851"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000851.tgz#3b498aebf9f92cf6cff4ab54d13b557c0b590533"
+
+caniuse-lite@^1.0.30000852:
+  version "1.0.30000852"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000852.tgz#8b7510cec030cac7842e52beca2bf292af65f935"
 
 capture-exit@^1.2.0:
   version "1.2.0"
@@ -5248,7 +5260,7 @@ doctrine@1.5.0:
     esutils "^2.0.2"
     isarray "^1.0.0"
 
-doctrine@^2.0.0, doctrine@^2.0.2, doctrine@^2.1.0:
+doctrine@^2.0.0, doctrine@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-2.1.0.tgz#5cd01fc101621b42c4cd7f5d1a66243716d3f39d"
   dependencies:
@@ -5610,29 +5622,29 @@ eslint-config-prettier@^2.9.0:
   dependencies:
     get-stdin "^5.0.1"
 
-eslint-config-readable@^1.13.4:
-  version "1.13.4"
-  resolved "https://registry.yarnpkg.com/eslint-config-readable/-/eslint-config-readable-1.13.4.tgz#f5a45e39662155edab8b3e45d7bb4f979fa05cc9"
+eslint-config-readable@^1.14.0:
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-readable/-/eslint-config-readable-1.14.0.tgz#389920116f111f8b6c551ce090082380a7d3b215"
   dependencies:
     babel-eslint "^8.2.3"
     babel-plugin-module-resolver "^3.1.1"
     eslint-config-prettier "^2.9.0"
     eslint-import-resolver-babel-module "^5.0.0-beta.0"
     eslint-plugin-babel "^5.1.0"
-    eslint-plugin-compat "^2.2.0"
+    eslint-plugin-compat "^2.4.0"
     eslint-plugin-css-modules "^2.7.5"
-    eslint-plugin-filenames "^1.2.0"
-    eslint-plugin-flowtype "^2.46.3"
-    eslint-plugin-flowtype-errors "^3.5.1"
+    eslint-plugin-filenames "^1.3.0"
+    eslint-plugin-flowtype "^2.49.3"
+    eslint-plugin-flowtype-errors "^3.6.0"
     eslint-plugin-getsentry "^2.0.0"
     eslint-plugin-import "^2.12.0"
-    eslint-plugin-jest "^21.15.1"
-    eslint-plugin-jsdoc "^3.7.0"
+    eslint-plugin-jest "^21.17.0"
+    eslint-plugin-jsdoc "^3.7.1"
     eslint-plugin-jsx-a11y "^6.0.3"
     eslint-plugin-no-use-extend-native "^0.3.12"
     eslint-plugin-node "^6.0.1"
-    eslint-plugin-promise "^3.7.0"
-    eslint-plugin-react "^7.8.2"
+    eslint-plugin-promise "^3.8.0"
+    eslint-plugin-react "^7.9.1"
     eslint-plugin-security "^1.4.0"
 
 eslint-formatter-pretty@^1.3.0:
@@ -5672,15 +5684,15 @@ eslint-plugin-babel@^5.1.0:
   dependencies:
     eslint-rule-composer "^0.3.0"
 
-eslint-plugin-compat@^2.2.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-compat/-/eslint-plugin-compat-2.3.0.tgz#18d315cc68329844bd54dcc184be53d38a6f91c8"
+eslint-plugin-compat@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-compat/-/eslint-plugin-compat-2.4.0.tgz#827a5c57491929860918fbbc97794ba7309b6990"
   dependencies:
     babel-runtime "^6.26.0"
-    browserslist "^3.2.7"
-    caniuse-db "^1.0.30000843"
-    mdn-browser-compat-data "^0.0.20"
-    requireindex "^1.1.0"
+    browserslist "^3.2.8"
+    caniuse-db "^1.0.30000846"
+    mdn-browser-compat-data "^0.0.36"
+    requireindex "^1.2.0"
 
 eslint-plugin-css-modules@^2.7.5:
   version "2.7.5"
@@ -5689,25 +5701,25 @@ eslint-plugin-css-modules@^2.7.5:
     gonzales-pe "^4.0.3"
     lodash "^4.17.2"
 
-eslint-plugin-filenames@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-filenames/-/eslint-plugin-filenames-1.2.0.tgz#aee9c1c90189c95d2e49902c160eceefecd99f53"
+eslint-plugin-filenames@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-filenames/-/eslint-plugin-filenames-1.3.0.tgz#126b26bc87fc7c50cb38713097feb372f76aa103"
   dependencies:
     lodash.camelcase "4.3.0"
     lodash.kebabcase "4.1.1"
     lodash.snakecase "4.1.1"
     lodash.upperfirst "4.3.1"
 
-eslint-plugin-flowtype-errors@^3.5.1:
+eslint-plugin-flowtype-errors@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype-errors/-/eslint-plugin-flowtype-errors-3.6.0.tgz#5782994261e925aed1320630146636e88e4ad553"
   dependencies:
     babel-runtime "^6.26.0"
     slash "^2.0.0"
 
-eslint-plugin-flowtype@^2.46.3:
-  version "2.48.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-2.48.0.tgz#e447dc27dcb99d68e2a705fd9c1046c32aae2ca1"
+eslint-plugin-flowtype@^2.49.3:
+  version "2.49.3"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-2.49.3.tgz#ccca6ee5ba2027eb3ed36bc2ec8c9a842feee841"
   dependencies:
     lodash "^4.17.10"
 
@@ -5730,11 +5742,11 @@ eslint-plugin-import@^2.12.0:
     read-pkg-up "^2.0.0"
     resolve "^1.6.0"
 
-eslint-plugin-jest@^21.15.1:
+eslint-plugin-jest@^21.17.0:
   version "21.17.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-21.17.0.tgz#fdb00e2f9ff16987d6ebcf2c75c7add105760bbb"
 
-eslint-plugin-jsdoc@^3.7.0:
+eslint-plugin-jsdoc@^3.7.1:
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-3.7.1.tgz#3e5912d3f9f9ae41d8bd74c12dc96a0121707708"
   dependencies:
@@ -5772,18 +5784,18 @@ eslint-plugin-node@^6.0.1:
     resolve "^1.3.3"
     semver "^5.4.1"
 
-eslint-plugin-promise@^3.7.0:
+eslint-plugin-promise@^3.8.0:
   version "3.8.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-3.8.0.tgz#65ebf27a845e3c1e9d6f6a5622ddd3801694b621"
 
-eslint-plugin-react@^7.8.2:
-  version "7.8.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.8.2.tgz#e95c9c47fece55d2303d1a67c9d01b930b88a51d"
+eslint-plugin-react@^7.9.1:
+  version "7.9.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.9.1.tgz#101aadd15e7c7b431ed025303ac7b421a8e3dc15"
   dependencies:
-    doctrine "^2.0.2"
-    has "^1.0.1"
+    doctrine "^2.1.0"
+    has "^1.0.2"
     jsx-ast-utils "^2.0.1"
-    prop-types "^15.6.0"
+    prop-types "^15.6.1"
 
 eslint-plugin-security@^1.4.0:
   version "1.4.0"
@@ -6971,6 +6983,12 @@ has@^1.0.1:
   dependencies:
     function-bind "^1.0.2"
 
+has@^1.0.2:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/has/-/has-1.0.3.tgz#722d7cbfc1f6aa8241f16dd814e011e1f41e8796"
+  dependencies:
+    function-bind "^1.1.1"
+
 hash-base@^3.0.0:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/hash-base/-/hash-base-3.0.4.tgz#5fc8686847ecd73499403319a6b0a3f3f6ae4918"
@@ -7957,6 +7975,10 @@ javascript-stringify@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/javascript-stringify/-/javascript-stringify-1.6.0.tgz#142d111f3a6e3dae8f4a9afd77d45855b5a9cce3"
 
+jest-canvas-mock@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/jest-canvas-mock/-/jest-canvas-mock-1.0.2.tgz#05373f8f87fa764ca25fb4c5d6d9e34954a05550"
+
 jest-changed-files@^22.2.0:
   version "22.4.3"
   resolved "https://registry.yarnpkg.com/jest-changed-files/-/jest-changed-files-22.4.3.tgz#8882181e022c38bd46a2e4d18d44d19d90a90fb2"
@@ -8149,10 +8171,11 @@ jest-environment-node@^23.1.0:
     jest-mock "^23.1.0"
     jest-util "^23.1.0"
 
-jest-fetch-mock@^1.6.3:
-  version "1.6.3"
-  resolved "https://registry.yarnpkg.com/jest-fetch-mock/-/jest-fetch-mock-1.6.3.tgz#bb168a80ae1e70efd47096523a53f62e3967261e"
+jest-fetch-mock@^1.6.4:
+  version "1.6.4"
+  resolved "https://registry.yarnpkg.com/jest-fetch-mock/-/jest-fetch-mock-1.6.4.tgz#73fc486cb17c9547dbf256eed1a826ee5f215761"
   dependencies:
+    "@types/jest" "^23.0.0"
     isomorphic-fetch "^2.2.1"
     promise-polyfill "^7.1.1"
 
@@ -9330,9 +9353,9 @@ loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.2.0, loose-envify@^1.3
   dependencies:
     js-tokens "^3.0.0"
 
-lost@^8.2.1:
-  version "8.2.1"
-  resolved "https://registry.yarnpkg.com/lost/-/lost-8.2.1.tgz#4ee4dcb6de4633bbb8e1fe53877d342ebdf071bd"
+lost@^8.3.0:
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/lost/-/lost-8.3.0.tgz#adaa8f82b04c99222503a08dfc11d01fe664645d"
   dependencies:
     object-assign "^4.1.0"
     postcss "^6.0.6"
@@ -9466,9 +9489,9 @@ mdast-util-compact@^1.0.0:
     unist-util-modify-children "^1.0.0"
     unist-util-visit "^1.1.0"
 
-mdn-browser-compat-data@^0.0.20:
-  version "0.0.20"
-  resolved "https://registry.yarnpkg.com/mdn-browser-compat-data/-/mdn-browser-compat-data-0.0.20.tgz#26e4a226d96cc5318fdc504d6dfd86907752da5c"
+mdn-browser-compat-data@^0.0.36:
+  version "0.0.36"
+  resolved "https://registry.yarnpkg.com/mdn-browser-compat-data/-/mdn-browser-compat-data-0.0.36.tgz#d347c618b648981fd0310035e556fd6871fde2fe"
   dependencies:
     extend "3.0.1"
 
@@ -12541,7 +12564,7 @@ require-uncached@^1.0.3:
     caller-path "^0.1.0"
     resolve-from "^1.0.0"
 
-requireindex@^1.1.0:
+requireindex@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/requireindex/-/requireindex-1.2.0.tgz#3463cdb22ee151902635aa6c9535d4de9c2ef1ef"
 
