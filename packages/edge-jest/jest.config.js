@@ -1,7 +1,7 @@
 const APP_ROOT = require("app-root-dir").get()
 const path = require("path")
 
-/* eslint-disable */
+/* eslint-disable import/no-commonjs */
 module.exports = {
   transform: {
     "^.+\\.(js|jsx|mjs)$": require.resolve("./transform/babel.js"),
