@@ -39,12 +39,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "apollo-cache-inmemory": "^1.2.2",
-    "apollo-client": "^2.3.2",
+    "apollo-cache-inmemory": "^1.2.4",
+    "apollo-client": "^2.3.4",
     "apollo-link-context": "^1.0.8",
     "apollo-link-http": "^1.5.4",
     "bluebird": "^3.5.1",
-    "caniuse-lite": "^1.0.30000852",
+    "caniuse-lite": "^1.0.30000856",
     "chalk": "^2.4.1",
     "edge-useragent": "^4.0.0-alpha.6",
     "graphql": "^0.13.2",
@@ -56,13 +56,13 @@
     "prop-types": "^15.6.1",
     "query-string": "^6.1.0",
     "raf": "^3.4.0",
-    "react": "^16.4.0",
-    "react-apollo": "^2.1.4",
-    "react-dom": "^16.4.0",
+    "react": "^16.4.1",
+    "react-apollo": "^2.1.5",
+    "react-dom": "^16.4.1",
     "react-helmet": "^5.2.0",
     "react-intl": "^2.4.0",
     "react-redux": "^5.0.7",
-    "react-test-renderer": "^16.4.0",
+    "react-test-renderer": "^16.4.1",
     "react-tree-walker": "^4.0.2",
     "react-universal-component": "^2.9.0",
     "redux": "^4.0.0",
@@ -74,11 +74,11 @@
     "serialize-javascript": "^1.5.0",
     "source-map-support": "^0.5.6",
     "unfetch": "^3.0.0",
-    "webpack-flush-chunks": "^1.2.3"
+    "webpack-flush-chunks": "^2.0.0"
   },
   "devDependencies": {
     "jest": "23.1.0",
-    "jest-fetch-mock": "^1.6.4",
+    "jest-fetch-mock": "^1.6.5",
     "prepublish": "1.7.0",
     "rimraf": "*"
   }

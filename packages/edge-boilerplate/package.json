@@ -51,8 +51,8 @@
     "jest": "23.1.0",
     "jest-preset-edge": "^0.2.1-alpha.9",
     "prepublish": "1.7.0",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
     "react-styleguidist": "7.0.17"
   },
   "peerDependencies": {
