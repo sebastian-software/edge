@@ -2,7 +2,8 @@
 import "universal-dotenv"
 
 export const IS_PRODUCTION = process.env.NODE_ENV === "production"
-export const IS_DEVELOPMENT = !IS_PRODUCTION
+export const IS_TEST = process.env.NODE_ENV === "test"
+export const IS_DEVELOPMENT = !IS_PRODUCTION && !IS_TEST
 
 export const BUILD_TARGET = process.env.BUILD_TARGET || "client"
 

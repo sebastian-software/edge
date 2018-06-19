@@ -12,7 +12,7 @@ import RulesModule from "./modules/Rules"
 import StaticModule from "./modules/Static"
 
 // For usage in otherwise pre-defined Webpack environment like Storybook
-export const core = {
+export const core = (options) => ({
   module: {
     rules: RulesModule.rules
   },
@@ -22,17 +22,17 @@ export const core = {
     ...LocalesModule.plugins,
     ...RulesModule.plugins
   ].filter(Boolean)
-}
+})
 
-export const full = {
+export const full = (options) => ({
   name: EnvironmentModule.name,
   mode: EnvironmentModule.mode,
   entry: {
-    main: [ resolve(process.env.APP_ROOT, `src/${BUILD_TARGET}/index.js`) ]
+    main: [ resolve(options.root || process.env.APP_ROOT, `src/${BUILD_TARGET}/index.js`) ]
   },
 
   output: {
-    path: resolve(process.env.APP_ROOT, "dist"),
+    path: resolve(options.root || process.env.APP_ROOT, "dist"),
     filename: IS_DEVELOPMENT ? "index.js" : "index.[hash].js",
     chunkFilename: IS_DEVELOPMENT ?
       "chunk-[name].[chunkhash].js" :
@@ -55,4 +55,4 @@ export const full = {
     ...RulesModule.plugins,
     ...StaticModule.plugins
   ].filter(Boolean)
-}
+})

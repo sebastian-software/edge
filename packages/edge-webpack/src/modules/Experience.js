@@ -2,7 +2,7 @@ import webpack from "webpack"
 import FriendlyPlugin from "friendly-errors-webpack-plugin"
 import ErrorOverlayPlugin from "error-overlay-webpack-plugin"
 
-import { IS_PRODUCTION } from "../config"
+import { IS_PRODUCTION, IS_DEVELOPMENT } from "../config"
 
 const stats = "minimal"
 const logLevel = "silent"
@@ -25,11 +25,11 @@ export default {
   },
 
   plugins: [
-    new FriendlyPlugin({
+    IS_DEVELOPMENT || IS_PRODUCTION ? new FriendlyPlugin({
       clearConsole: false
-    }),
+    }) : null,
 
-    new ErrorOverlayPlugin(),
+    IS_DEVELOPMENT ? new ErrorOverlayPlugin() : null,
 
     // Does not work well with HMR and Dev Server
     IS_PRODUCTION ? new webpack.ProgressPlugin() : null
