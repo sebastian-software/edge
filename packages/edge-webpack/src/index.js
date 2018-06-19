@@ -12,7 +12,7 @@ import RulesModule from "./modules/Rules"
 import StaticModule from "./modules/Static"
 
 // For usage in otherwise pre-defined Webpack environment like Storybook
-export const core = (options) => ({
+export const core = (options = {}) => ({
   module: {
     rules: RulesModule.rules
   },
@@ -24,7 +24,7 @@ export const core = (options) => ({
   ].filter(Boolean)
 })
 
-export const full = (options) => ({
+export const full = (options = {}) => ({
   name: EnvironmentModule.name,
   mode: EnvironmentModule.mode,
   entry: {

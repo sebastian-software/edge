@@ -16,9 +16,10 @@ test("Executes correctly", () => {
       if (err || stats.hasErrors()) {
         // Handle errors here
         reject(err)
+        return
       }
 
-      resolve()
+      setTimeout(resolve, 100)
     })
   })
 

@@ -2,9 +2,9 @@
 module.exports = {
   preset: "jest-preset-edge",
   verbose: true,
-  // testPathIgnorePatterns: [
-  //   "/node_modules/",
-  //   "/__fixtures__/",
-  //   "/dist/"
-  // ]
+  testPathIgnorePatterns: [
+    "/node_modules/",
+    "/dist/",
+    "/__tests__/.*/src"
+  ]
 }
