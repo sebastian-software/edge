@@ -46,6 +46,7 @@
     "babel-jest": "^23.0.1",
     "babel-preset-edge": "^4.5.0",
     "jest": "^23.1.0",
+    "jest-cli": "^23.1.0",
     "jest-preset-edge": "^0.2.1-alpha.9",
     "preppy": "^4.2.2",
     "rimraf": "^2.6.2"

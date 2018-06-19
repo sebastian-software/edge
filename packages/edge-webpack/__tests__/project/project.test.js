@@ -2,25 +2,22 @@
 
 import webpack from "webpack"
 import rimraf from "rimraf"
+import { resolve } from "path"
 
 import { full } from "../../src"
 
-beforeAll((done) => {
-  rimraf("dist", done)
+beforeEach((done) => {
+  rimraf(resolve(__dirname, "dist"), done)
 })
 
-test("Executes correctly", () => {
-  return new Promise((resolve, reject) => {
-    const compiler = webpack(full({ root: __dirname }))
-    compiler.run((err, stats) => {
-      if (err || stats.hasErrors()) {
-        // Handle errors here
-        reject(err)
-        return
-      }
+test("Executes correctly", (done) => {
+  const compiler = webpack(full({ root: __dirname }))
+  compiler.run((err, stats) => {
+    if (err || stats.hasErrors()) {
+      // Handle errors here
+      throw new Error(err)
+    }
 
-      setTimeout(resolve, 100)
-    })
+    setTimeout(done, 500)
   })
-
 })
