@@ -77,7 +77,7 @@
     "postcss-zindex": "^2.2.0"
   },
   "devDependencies": {
-    "babel-preset-edge": "4.5.1",
+    "babel-preset-edge": "4.6.0",
     "jest": "23.2.0",
     "postcss-load-config": "^1.2.0",
     "prepublish": "1.7.0",

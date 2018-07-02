@@ -2546,6 +2546,13 @@ babel-plugin-dynamic-import-node@^1.2.0:
   dependencies:
     babel-plugin-syntax-dynamic-import "^6.18.0"
 
+babel-plugin-dynamic-import-node@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-dynamic-import-node/-/babel-plugin-dynamic-import-node-2.0.0.tgz#d6fc3f6c5e3bdc34e49c15faca7ce069755c0a57"
+  dependencies:
+    babel-plugin-syntax-dynamic-import "^6.18.0"
+    object.assign "^4.1.0"
+
 babel-plugin-dynamic-import-webpack@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/babel-plugin-dynamic-import-webpack/-/babel-plugin-dynamic-import-webpack-1.0.2.tgz#cb83435833e073f1600c0188a95edacfdc07c256"
@@ -2799,9 +2806,9 @@ babel-plugin-react-intl@^2.4.0:
     intl-messageformat-parser "^1.2.0"
     mkdirp "^0.5.1"
 
-babel-plugin-smart-webpack-import@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-smart-webpack-import/-/babel-plugin-smart-webpack-import-1.2.0.tgz#f41e741add4e7836c32836530a0ccd4d6bd94cd9"
+babel-plugin-smart-webpack-import@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-smart-webpack-import/-/babel-plugin-smart-webpack-import-1.2.1.tgz#1ae25a008c99982b5d7d66b5ec905d0e238e8f69"
   dependencies:
     app-root-dir "^1.0.2"
     base-x "^3.0.4"
@@ -3268,9 +3275,9 @@ babel-polyfill@^6.26.0:
     core-js "^2.5.0"
     regenerator-runtime "^0.10.5"
 
-babel-preset-edge@4.5.1, babel-preset-edge@^4.5.1:
-  version "4.5.1"
-  resolved "https://registry.yarnpkg.com/babel-preset-edge/-/babel-preset-edge-4.5.1.tgz#38886483aa6ce60cc62bb7063140b932a3b42371"
+babel-preset-edge@4.6.0, babel-preset-edge@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/babel-preset-edge/-/babel-preset-edge-4.6.0.tgz#95e68cd21d9bd958ddfdf85833f41e42a7e3a4da"
   dependencies:
     "@babel/core" "7.0.0-beta.51"
     "@babel/plugin-proposal-class-properties" "7.0.0-beta.51"
@@ -3291,16 +3298,16 @@ babel-preset-edge@4.5.1, babel-preset-edge@^4.5.1:
     "@babel/runtime" "7.0.0-beta.51"
     app-root-dir "^1.0.2"
     babel-core "^7.0.0-bridge.0"
-    babel-plugin-dynamic-import-node "^1.2.0"
+    babel-plugin-dynamic-import-node "^2.0.0"
     babel-plugin-emotion "^9.2.4"
     babel-plugin-lodash "^3.3.4"
     babel-plugin-macros "^2.2.2"
     babel-plugin-module-resolver "^3.1.1"
     babel-plugin-react-intl "^2.4.0"
-    babel-plugin-smart-webpack-import "^1.2.0"
+    babel-plugin-smart-webpack-import "^1.2.1"
     babel-plugin-transform-react-remove-prop-types "^0.4.13"
     babel-preset-minify "^0.4.3"
-    browserslist "^3.2.8"
+    browserslist "^4.0.0"
     fast-async "^7.0.6"
     loadable-components "^2.2.2"
     semver "^5.5.0"
@@ -3860,6 +3867,14 @@ browserslist@^3.0.0, browserslist@^3.2.5, browserslist@^3.2.6, browserslist@^3.2
   dependencies:
     caniuse-lite "^1.0.30000844"
     electron-to-chromium "^1.3.47"
+
+browserslist@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.0.0.tgz#48703f1ed7ef981c6719e39e9444f20632b06571"
+  dependencies:
+    caniuse-lite "^1.0.30000859"
+    electron-to-chromium "^1.3.50"
+    node-releases "^1.0.0-alpha.10"
 
 bser@^2.0.0:
   version "2.0.0"
@@ -5750,6 +5765,10 @@ ejs@^2.5.7:
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.30, electron-to-chromium@^1.3.39, electron-to-chromium@^1.3.47:
   version "1.3.48"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.48.tgz#d3b0d8593814044e092ece2108fc3ac9aea4b900"
+
+electron-to-chromium@^1.3.50:
+  version "1.3.50"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.50.tgz#7438b76f92b41b919f3fbdd350fbd0757dacddf7"
 
 elegant-spinner@^1.0.1:
   version "1.0.1"
@@ -10546,6 +10565,12 @@ node-pre-gyp@^0.10.0:
     rimraf "^2.6.1"
     semver "^5.3.0"
     tar "^4"
+
+node-releases@^1.0.0-alpha.10:
+  version "1.0.0-alpha.10"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.0.0-alpha.10.tgz#61c8d5f9b5b2e05d84eba941d05b6f5202f68a2a"
+  dependencies:
+    semver "^5.3.0"
 
 nodent-compiler@^3.2.4:
   version "3.2.6"

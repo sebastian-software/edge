@@ -44,7 +44,7 @@
     "@babel/core": "^7.0.0-beta.51",
     "babel-core": "^7.0.0-0",
     "babel-jest": "^23.2.0",
-    "babel-preset-edge": "^4.5.1",
+    "babel-preset-edge": "^4.6.0",
     "jest": "^23.2.0",
     "jest-cli": "^23.2.0",
     "jest-preset-edge": "^0.2.1-alpha.9",

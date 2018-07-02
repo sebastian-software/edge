@@ -28,7 +28,7 @@
     "app-root-dir": "^1.0.2",
     "babel-loader": "^8.0.0-beta.2",
     "babel-minify-webpack-plugin": "^0.3.1",
-    "babel-preset-edge": "^4.5.1",
+    "babel-preset-edge": "^4.6.0",
     "bluebird": "^3.5.1",
     "builtin-modules": "^3.0.0",
     "cache-loader": "^1.2.2",
