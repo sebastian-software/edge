@@ -39,10 +39,10 @@
     "hpp": "^0.2.2",
     "jsome": "^2.5.0",
     "pretty-error": "^2.1.1",
-    "uuid": "^3.2.1"
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "jest": "23.1.0",
+    "jest": "23.2.0",
     "prepublish": "1.7.0",
     "rimraf": "*"
   }

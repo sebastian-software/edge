@@ -48,12 +48,12 @@
     "edge-postcss": "^1.0.0-alpha.10",
     "edge-storybook": "^1.0.0-alpha.16",
     "edge-style": "^1.0.0-alpha.10",
-    "jest": "23.1.0",
+    "jest": "23.2.0",
     "jest-preset-edge": "^0.2.1-alpha.9",
     "prepublish": "1.7.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-styleguidist": "7.0.17"
+    "react-styleguidist": "7.0.20"
   },
   "peerDependencies": {
     "edge-builder": "^0.14.2"
