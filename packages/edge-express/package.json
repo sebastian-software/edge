@@ -1,7 +1,7 @@
 {
   "name": "edge-express",
   "description": "Edge Express is a centralized Express-based HTTP server with sophisticated built-in security.",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.7",
   "author": {
     "name": "Sebastian Software",
     "email": "s.werner@sebastian-software.de",
