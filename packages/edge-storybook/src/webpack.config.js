@@ -9,14 +9,17 @@ module.exports = (storybookBaseConfig, configType) => {
 
   // Replace Storybooks Babel Loader with local one.
   // This enables Babel v7 support.
-  for (const rule of storybookBaseConfig.module.rules) {
+  storybookBaseConfig.module.rules.forEach((rule) => {
     if (/babel/.exec(rule.loader)) {
       rule.loader = require.resolve("babel-loader")
     }
-  }
+  })
 
-  storybookBaseConfig.module.rules.push(...core.module.rules)
-  storybookBaseConfig.plugins.push(...core.plugins)
+  const options = {}
+  const config = core(options)
+
+  storybookBaseConfig.module.rules.push(...config.module.rules)
+  storybookBaseConfig.plugins.push(...config.plugins)
 
   return storybookBaseConfig
 }
