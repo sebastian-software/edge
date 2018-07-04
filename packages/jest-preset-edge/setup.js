@@ -22,7 +22,16 @@ require("raf/polyfill")
 
 // Making sure that global.URL is supported by loading the Polyfill.
 // This is required for some libraries like the MapBox GL API.
-require("url-polyfill")
+if (global.URL == null) {
+  require("url-polyfill")
+}
+
+// Polyfill for not yet implemented parts of the URL API in NodeJS.
+// See also: https://github.com/nodejs/node/issues/16167
+if (URL.createObjectURL == null) {
+  URL.createObjectURL = jest.fn()
+  URL.revokeObjectURL = jest.fn()
+}
 
 // Mocking for Element Resize Detector which is used for responsive components
 // e.g. via React Sizeme. We have to pass the factory as otherwise only the
