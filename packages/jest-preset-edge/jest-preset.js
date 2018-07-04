@@ -19,12 +19,11 @@ module.exports = {
   },
 
   setupFiles: [
-    "jest-canvas-mock",
     require.resolve("./setup.js")
   ],
 
   collectCoverageFrom: [
-    "src/**.js"
+    "src/**/*.js"
   ],
 
   coverageDirectory: "docs/coverage",
@@ -45,9 +44,12 @@ module.exports = {
     "/server/",
 
     // Application Glue Code
-    "src/Application.js",
+    "src/App.js",
+    "src/Main.js",
     "src/State.js",
     "src/Init.js",
+
+    // Views aka Route Entry Points
     "/views/",
 
     // Storybook Stories

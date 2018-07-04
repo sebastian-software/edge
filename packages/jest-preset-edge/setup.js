@@ -4,6 +4,10 @@
 // Make sure that environment variables are available
 require("universal-dotenv")
 
+// Mocking Canvas APIs in a very lean way. We don't really need some
+// Cairo based rendering at all in most test scenarios.
+require("jest-canvas-mock")
+
 // Mocking all fetch() calls. Should never depend on any actual network during test.
 global.fetch = require("jest-fetch-mock")
 
