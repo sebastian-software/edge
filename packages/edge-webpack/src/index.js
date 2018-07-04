@@ -41,7 +41,12 @@ export const full = (options = {}) => ({
   },
 
   module: {
-    rules: RulesModule.rules
+    rules: RulesModule.rules,
+    noParse: [
+      // Fix broken CommonJS library export in MapBox
+      // See also: https://github.com/mapbox/mapbox-gl-js/issues/4359#issuecomment-288001933
+      /(mapbox-gl)\.js$/
+    ]
   },
 
   stats: ExperienceModule.stats,
