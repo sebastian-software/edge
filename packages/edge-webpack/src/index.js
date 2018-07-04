@@ -51,6 +51,8 @@ export const full = (options = {}) => ({
 
   stats: ExperienceModule.stats,
   serve: ExperienceModule.serve,
+  devServer: ExperienceModule.devServer,
+
   optimization: OptimizationModule.optimization,
 
   plugins: [

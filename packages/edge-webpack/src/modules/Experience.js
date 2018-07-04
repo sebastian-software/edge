@@ -13,6 +13,8 @@ const logLevel = "info"
 export default {
   stats,
 
+  // The new development web server of Webpack
+  // See also: https://github.com/webpack-contrib/webpack-serve
   serve: {
     dev: {
       logLevel,
@@ -22,6 +24,13 @@ export default {
     hot: {
       logLevel
     }
+  },
+
+  // The legacy development web server of Webpack
+  // See also: https://webpack.js.org/configuration/dev-server/
+  devServer: {
+    stats,
+    clientLogLevel: logLevel
   },
 
   plugins: [
