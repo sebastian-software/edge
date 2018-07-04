@@ -1,6 +1,6 @@
 {
   "name": "edge-webpack",
-  "version": "0.0.2-alpha.5",
+  "version": "0.0.2-alpha.6",
   "description": "Centralized Webpack configuration for Edge-based projects.",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
@@ -47,7 +47,7 @@
     "babel-preset-edge": "^4.6.0",
     "jest": "^23.2.0",
     "jest-cli": "^23.2.0",
-    "jest-preset-edge": "^0.2.1-alpha.11",
+    "jest-preset-edge": "^0.2.1-alpha.12",
     "preppy": "^4.2.3",
     "rimraf": "^2.6.2"
   }
