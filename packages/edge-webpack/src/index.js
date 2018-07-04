@@ -11,11 +11,19 @@ import OptimizationModule from "./modules/Optimization"
 import RulesModule from "./modules/Rules"
 import StaticModule from "./modules/Static"
 
+const node = BUILD_TARGET === "client" ? {
+  fs: "empty",
+  __filename: "mock",
+  __dirname: "mock"
+} : null
+
 // For usage in otherwise pre-defined Webpack environment like Storybook
 export const core = (options = {}) => ({
   module: {
     rules: RulesModule.rules
   },
+
+  node,
 
   plugins: [
     ...EnvironmentModule.plugins,
@@ -31,11 +39,7 @@ export const full = (options = {}) => ({
     main: [ resolve(options.root || process.env.APP_ROOT, `src/${BUILD_TARGET}/index.js`) ]
   },
 
-  node: BUILD_TARGET === "client" ? {
-    fs: "empty",
-    __filename: "mock",
-    __dirname: "mock"
-  } : null,
+  node,
 
   output: {
     path: resolve(options.root || process.env.APP_ROOT, "dist"),
