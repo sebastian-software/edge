@@ -39,17 +39,34 @@ if (locale == null) {
   locale = "en-US"
 }
 
-// In tests we keep things static and just use the default locale
-if (process.env.NODE_ENV !== "test") {
-  const language = locale.split("-")[0]
-  const data = require(`react-intl/locale-data/${language}`)
-  addLocaleData(data)
-  console.log("React-Intl loaded data for", language)
-}
+const language = locale.split("-")[0]
 
+// In tests we keep things static and just use the default locale
+const data = require(`react-intl/locale-data/${language}`)
+addLocaleData(data)
+console.log("React-Intl loaded data for", language)
+
+// Loading messages for components from application root "messages" folder
+// Expect that these messages are named `${language}.json` or `${locale}.json`.
+const messageLoader = require.context(process.env.APP_SOURCE + "/messages", !1, /\.json$/)
+
+const localeMatcher = new RegExp(locale + "\\.json$")
+const languageMatcher = new RegExp(language + "\\.json$")
+
+const localeSpecific = messageLoader.keys().filter((messageFile) => localeMatcher.test(messageFile))
+const languageSpecific = messageLoader.keys().filter((messageFile) => languageMatcher.test(messageFile))
+
+const localeData = localeSpecific[0] ? messageLoader(localeSpecific[0]) : {}
+const languageData = languageSpecific[0] ? messageLoader(languageSpecific[0]) : {}
+
+// We merge the data from locale and language specific files - if both are avaible.
+// Locale specific messages override language only data.
+const messages = { ...languageData, ...localeData }
+
+// Decorate all stories with localization support so that FormattedMessage, etc. work correctly.
 addDecorator((story) => {
   return (
-    <IntlProvider locale={locale}>
+    <IntlProvider locale={locale} messages={messages} defaultLocale={process.env.APP_DEFAULT_LOCALE}>
       {story()}
     </IntlProvider>
   )
