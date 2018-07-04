@@ -4,11 +4,8 @@ import ErrorOverlayPlugin from "error-overlay-webpack-plugin"
 
 import { IS_PRODUCTION, IS_DEVELOPMENT } from "../config"
 
-// const stats = "minimal"
-// const logLevel = "silent"
-
-const stats = "errors-only"
-const logLevel = "info"
+const stats = "minimal"
+const logLevel = "warn"
 
 export default {
   stats,
