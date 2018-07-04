@@ -18,7 +18,16 @@ module.exports = (storybookBaseConfig, configType) => {
   const options = {}
   const config = core(options)
 
+  storybookBaseConfig.node = config.node
+
+  // Do not flood the console with thousands of messages
+  storybookBaseConfig.stats = config.stats
+  storybookBaseConfig.devServer = config.devServer
+
+  // Append our loaders to the file specific rules
   storybookBaseConfig.module.rules.push(...config.module.rules)
+
+  // As well as our set of plugins
   storybookBaseConfig.plugins.push(...config.plugins)
 
   return storybookBaseConfig
