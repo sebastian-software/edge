@@ -30,6 +30,15 @@ if (process.env.NODE_ENV === "test") {
   }
 }
 
+// Activate polyfill for `require.context()` when running inside e.g. Jest/NodeJS
+if (process.env.NODE_ENV === "test" && require.context == null) {
+  /* global __dirname */
+  require("babel-plugin-require-context-hook/register")()
+  require.context = function context(directory, useSubdirectories, regExp) {
+    return global.__requireContext(__dirname, directory, useSubdirectories, regExp)
+  }
+}
+
 // Using same cookie as in our applications which should make it possible
 // via some UI to switch between different locales.
 let locale = process.env.NODE_ENV === "test" ?
