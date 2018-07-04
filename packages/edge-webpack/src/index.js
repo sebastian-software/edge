@@ -25,6 +25,10 @@ export const core = (options = {}) => ({
 
   node,
 
+  stats: ExperienceModule.stats,
+  serve: ExperienceModule.serve,
+  devServer: ExperienceModule.devServer,
+
   plugins: [
     ...EnvironmentModule.plugins,
     ...LocalesModule.plugins,
