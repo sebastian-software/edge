@@ -4,7 +4,8 @@
   "description": "Centralized Jest configuration for Edge-based projects.",
   "main": "jest-preset.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "prepack": "echo"
   },
   "files": [
     "setup.js",
