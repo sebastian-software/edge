@@ -31,6 +31,12 @@ export const full = (options = {}) => ({
     main: [ resolve(options.root || process.env.APP_ROOT, `src/${BUILD_TARGET}/index.js`) ]
   },
 
+  node: BUILD_TARGET === "client" ? {
+    fs: "empty",
+    __filename: "mock",
+    __dirname: "mock"
+  } : null,
+
   output: {
     path: resolve(options.root || process.env.APP_ROOT, "dist"),
     filename: IS_DEVELOPMENT ? "index.js" : "index.[hash].js",
