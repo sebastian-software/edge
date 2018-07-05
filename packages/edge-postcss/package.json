@@ -49,7 +49,7 @@
     "postcss-csso": "^3.0.0",
     "postcss-custom-media": "^6.0.0",
     "postcss-devtools": "^1.1.1",
-    "postcss-discard-comments": "^2.0.4",
+    "postcss-discard-comments": "^4.0.0",
     "postcss-easing-gradients": "^3.0.0",
     "postcss-easings": "^1.0.1",
     "postcss-flexbugs-fixes": "^3.3.1",
@@ -74,11 +74,11 @@
     "postcss-smart-asset": "^0.5.7",
     "postcss-transform-shortcut": "^2.0.1",
     "postcss-will-change": "^2.0.0",
-    "postcss-zindex": "^2.2.0"
+    "postcss-zindex": "^4.0.0"
   },
   "devDependencies": {
-    "babel-preset-edge": "4.6.0",
-    "jest": "23.2.0",
+    "babel-preset-edge": "4.7.1",
+    "jest": "23.3.0",
     "postcss-load-config": "^1.2.0",
     "prepublish": "1.7.0",
     "rimraf": "*"

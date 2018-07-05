@@ -44,7 +44,7 @@
     "apollo-link-context": "^1.0.8",
     "apollo-link-http": "^1.5.4",
     "bluebird": "^3.5.1",
-    "caniuse-lite": "^1.0.30000861",
+    "caniuse-lite": "^1.0.30000864",
     "chalk": "^2.4.1",
     "edge-useragent": "^4.0.0-alpha.7",
     "graphql": "^0.13.2",
@@ -57,7 +57,7 @@
     "query-string": "^6.1.0",
     "raf": "^3.4.0",
     "react": "^16.4.1",
-    "react-apollo": "^2.1.8",
+    "react-apollo": "^2.1.9",
     "react-dom": "^16.4.1",
     "react-helmet": "^5.2.0",
     "react-intl": "^2.4.0",
@@ -77,7 +77,7 @@
     "webpack-flush-chunks": "^2.0.1"
   },
   "devDependencies": {
-    "jest": "23.2.0",
+    "jest": "23.3.0",
     "jest-fetch-mock": "^1.6.5",
     "prepublish": "1.7.0",
     "rimraf": "*"
