@@ -40,11 +40,13 @@ if (URL.createObjectURL == null) {
 // Mocking for Element Resize Detector which is used for responsive components
 // e.g. via React Sizeme. We have to pass the factory as otherwise only the
 // root function is mocked which is not enough.
-jest.mock("element-resize-detector", () => {
-  return () => ({
-    listenTo: jest.fn(),
-    removeListener: jest.fn(),
-    removeAllListeners: jest.fn(),
-    uninstall: jest.fn()
+try {
+  jest.mock("element-resize-detector", () => {
+    return () => ({
+      listenTo: jest.fn(),
+      removeListener: jest.fn(),
+      removeAllListeners: jest.fn(),
+      uninstall: jest.fn()
+    })
   })
-})
+} catch(error) {}
