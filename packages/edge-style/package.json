@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo",
     "build": "rimraf lib && prepublish",
-    "prepack": "npm run build"
+    "prepublish": "npm run build"
   },
   "engines": {
     "node": ">=6.0.0",

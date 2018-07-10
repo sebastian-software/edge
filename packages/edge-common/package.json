@@ -11,7 +11,7 @@
   "module": "lib/index.esm.js",
   "license": "Apache-2.0",
   "scripts": {
-    "prepack": "npm run build",
+    "prepublish": "npm run build",
     "build": "rimraf bin && rimraf lib && prepublish",
     "test": "echo"
   },
