@@ -28,6 +28,14 @@ const CSS_LOADER_MODULE_OPTS = {
   localIdentName: "[local]-[hash:base62:8]"
 }
 
+const THREAD_LOADER = {
+  loader: require.resolve("thread-loader"),
+  options: {
+    // keep workers alive for more effective watch mode
+    poolTimeout: Infinity
+  }
+}
+
 const ASSET_FILENAME = IS_PRODUCTION ?
   "file-[hash:base62:8].[ext]" :
   "[path][name].[ext]"
@@ -89,7 +97,7 @@ export default {
     // YAML
     {
       test: YAML_EXTS,
-      loaders: [ "cache-loader", "thread-loader", "json-loader", "yaml-loader" ]
+      loaders: [ "cache-loader", THREAD_LOADER, "json-loader", "yaml-loader" ]
     },
 
     // GraphQL support
@@ -108,7 +116,7 @@ export default {
         // We prefer cache-loader over babel cache mechanism. Reason:
         // "They both serve the same purpose and are interchangeable, with cache-loader being the 'newer and official' way to cache a loader in general"
         "cache-loader",
-        "thread-loader",
+        THREAD_LOADER,
         {
           loader: "babel-loader",
           options: {
@@ -124,7 +132,7 @@ export default {
       use: [
         extractCssLoader,
         "cache-loader",
-        "thread-loader",
+        THREAD_LOADER,
         {
           loader: "css-loader",
           options: CSS_LOADER_OPTS
@@ -143,7 +151,7 @@ export default {
       use: [
         extractCssLoader,
         "cache-loader",
-        "thread-loader",
+        THREAD_LOADER,
         {
           loader: "css-loader",
           options: CSS_LOADER_MODULE_OPTS

@@ -79,7 +79,7 @@
   "devDependencies": {
     "babel-preset-edge": "4.8.1",
     "jest": "23.3.0",
-    "postcss-load-config": "^1.2.0",
+    "postcss-load-config": "^2.0.0",
     "prepublish": "1.7.0",
     "rimraf": "*"
   }
