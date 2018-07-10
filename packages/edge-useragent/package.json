@@ -37,6 +37,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.52",
     "lru-cache": "4.1.3",
     "tmp": "0.0.x"
   },
