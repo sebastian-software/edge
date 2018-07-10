@@ -4,7 +4,7 @@ describe("useragent", () => {
       "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_1) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.24 Safari/535.2"
 
   it("should expose the current version number", () => {
-    useragent.version.should.match(/^\d+\.\d+\.\d+$/)
+    useragent.version.should.match(/^\d+\.\d+\.\d+/)
   })
 
   it("should expose the Agent interface", () => {
