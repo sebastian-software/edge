@@ -5,33 +5,21 @@ exports[`Storyshots Navigation basic demo 1`] = `
   <ul>
     <li>
       <a
-        aria-current="true"
-        className="active"
         href="/"
-        onClick={[Function]}
-        style={Object {}}
       >
         Home
       </a>
     </li>
     <li>
       <a
-        aria-current={false}
-        className={undefined}
-        href="#"
-        onClick={[Function]}
-        style={undefined}
+        href="/counter"
       >
         Counter
       </a>
     </li>
     <li>
       <a
-        aria-current={false}
-        className={undefined}
-        href="#"
-        onClick={[Function]}
-        style={undefined}
+        href="/localization"
       >
         Localization
       </a>

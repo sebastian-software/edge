@@ -1,18 +1,17 @@
 import React from "react"
-import { NavLink } from "redux-first-router-link"
 
 export default function Navigation() {
   return (
     <nav>
       <ul>
         <li>
-          <NavLink to={{ type: "HOME" }}>Home</NavLink>
+          <a href="/">Home</a>
         </li>
         <li>
-          <NavLink to={{ type: "COUNTER" }}>Counter</NavLink>
+          <a href="/counter">Counter</a>
         </li>
         <li>
-          <NavLink to={{ type: "LOCALIZATION" }}>Localization</NavLink>
+          <a href="/localization">Localization</a>
         </li>
       </ul>
     </nav>
