@@ -1,4 +1,4 @@
 --reporter spec
 --ui bdd
 --require should
---compilers js:babel-core/register
+--require @babel/register
