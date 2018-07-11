@@ -4,6 +4,7 @@ coverage/
 *debug.log
 *error.log 
 .cache
+.DS_Store
 
 package-lock.json
 
