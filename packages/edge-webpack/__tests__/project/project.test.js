@@ -17,7 +17,8 @@ test("Executes correctly", (done) => {
       // Handle errors here
       throw new Error(err)
     }
-
-    setTimeout(done, 500)
+  })
+  compiler.hooks.done.tap("Test", () => {
+    done()
   })
 })
