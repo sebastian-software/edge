@@ -31,11 +31,11 @@
     "graphql-tag": "^2.9.2",
     "json-loader": "^0.5.7",
     "optimize-css-assets-webpack-plugin": "^4.0.3",
-    "postcss-loader": "^2.1.5",
+    "postcss-loader": "^2.1.6",
     "source-map-loader": "^0.2.3",
     "thread-loader": "^1.1.5",
     "uglifyjs-webpack-plugin": "^1.2.7",
-    "universal-dotenv": "^1.7.0",
+    "universal-dotenv": "^1.8.0",
     "webpack": "^4.15.1",
     "webpack-subresource-integrity": "^1.1.0-rc.4",
     "yaml-loader": "^0.5.0"
@@ -43,10 +43,10 @@
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.52",
     "babel-core": "^7.0.0-0",
-    "babel-jest": "^23.2.0",
-    "babel-preset-edge": "^4.8.1",
-    "jest": "^23.3.0",
-    "jest-cli": "^23.3.0",
+    "babel-jest": "^23.4.0",
+    "babel-preset-edge": "^4.9.0",
+    "jest": "^23.4.0",
+    "jest-cli": "^23.4.0",
     "jest-preset-edge": "^0.2.1-alpha.16",
     "preppy": "^4.2.3",
     "rimraf": "^2.6.2"
