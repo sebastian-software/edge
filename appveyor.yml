@@ -23,7 +23,7 @@ install:
   - yarn install
 
 test_script:
-  - npm test
+  - yarn test
 
 notifications:
   - provider: Slack
