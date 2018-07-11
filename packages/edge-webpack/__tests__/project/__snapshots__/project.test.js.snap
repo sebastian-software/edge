@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Executes correctly: dirlist 1`] = `
+Array [
+  "file-1UZ6YEQK.svg",
+  "index.af62e0947047ecb1db7f.js",
+  "index.html",
+]
+`;
+
+exports[`Executes correctly: htmlfile 1`] = `
+"<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=\\"UTF-8\\">
+    <title></title>
+  </head>
+  <body>
+  <script type=\\"text/javascript\\" src=\\"index.af62e0947047ecb1db7f.js\\" integrity=\\"sha256-x6x4Dv3tkrxPcWNOFkLKDR9z68JCwHrdXCiyPc4CY7U= sha512-Al0veVgVM6uQsN3KqZM26rZPIl2WrhPlB+j5e9lpFfOzyPcNODlQnr8gpBK0KJ0AaX9omKn3z3+54gZBbyplXA==\\" crossorigin=\\"anonymous\\"></script></body>
+</html>"
+`;
+
+exports[`Executes correctly: logofile 1`] = `"<svg clip-rule=\\"evenodd\\" fill-rule=\\"evenodd\\" stroke-linejoin=\\"round\\" stroke-miterlimit=\\"1.41421\\" viewBox=\\"0 0 16 16\\" xmlns=\\"http://www.w3.org/2000/svg\\"><path d=\\"m-.1-.1h16.3v16.2h-16.3z\\" fill=\\"#442230\\"/><path d=\\"m7.754 2.007-4.596 4.596 1.06 1.061 4.597-4.596z\\" fill=\\"#fff\\"/><path d=\\"m11.346 5.627-4.596 4.596 1.06 1.06 4.596-4.596z\\" fill=\\"#c41e54\\"/><g fill=\\"#fff\\"><path d=\\"m7.917 5.427-4.597 4.596 1.061 1.061 4.596-4.596z\\"/><path d=\\"m11.401 8.965-4.596 4.596 1.061 1.06 4.596-4.596z\\"/></g></svg>"`;

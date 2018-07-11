@@ -1,24 +1,36 @@
 /* global __dirname */
 
-import webpack from "webpack"
+import { readdirSync, readFileSync } from "fs"
+import { resolve, join } from "path"
 import rimraf from "rimraf"
-import { resolve } from "path"
+import webpack from "webpack"
 
-import { full } from "../../src"
+process.env.NODE_ENV = "production"
+
+/* eslint-disable-next-line import/no-commonjs */
+const edge = require("../../src")
+
+const config = edge.full({ root: __dirname })
 
 beforeEach((done) => {
   rimraf(resolve(__dirname, "dist"), done)
 })
 
 test("Executes correctly", (done) => {
-  const compiler = webpack(full({ root: __dirname }))
+  const compiler = webpack(config)
   compiler.run((err, stats) => {
     if (err || stats.hasErrors()) {
       // Handle errors here
       throw new Error(err)
     }
+
+    const dist = join(__dirname, "dist")
+
+    expect(readdirSync(dist)).toMatchSnapshot("dirlist")
+    expect(readFileSync(`${dist}/index.html`, "utf-8")).toMatchSnapshot("htmlfile")
+    expect(readFileSync(`${dist}/file-1UZ6YEQK.svg`, "utf-8")).toMatchSnapshot("logofile")
   })
   compiler.hooks.done.tap("Test", () => {
-    done()
+    setTimeout(done, 100)
   })
 })
