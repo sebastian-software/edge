@@ -11,6 +11,8 @@ import OptimizationModule from "./modules/Optimization"
 import RulesModule from "./modules/Rules"
 import StaticModule from "./modules/Static"
 
+import ChunkHash from "./plugins/ChunkHash"
+
 const node = BUILD_TARGET === "client" ? {
   fs: "empty",
   __filename: "mock",
@@ -32,7 +34,9 @@ export const core = (options = {}) => ({
   plugins: [
     ...EnvironmentModule.plugins,
     ...LocalesModule.plugins,
-    ...RulesModule.plugins
+    ...RulesModule.plugins,
+
+    new ChunkHash()
   ].filter(Boolean)
 })
 
@@ -74,6 +78,8 @@ export const full = (options = {}) => ({
     ...LocalesModule.plugins,
     ...ExperienceModule.plugins,
     ...RulesModule.plugins,
-    ...StaticModule.plugins
+    ...StaticModule.plugins,
+
+    new ChunkHash()
   ].filter(Boolean)
 })
