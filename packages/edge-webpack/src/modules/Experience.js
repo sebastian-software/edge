@@ -1,8 +1,9 @@
 import webpack from "webpack"
-import FriendlyPlugin from "friendly-errors-webpack-plugin"
-import ErrorOverlayPlugin from "error-overlay-webpack-plugin"
 
-import { IS_PRODUCTION, IS_DEVELOPMENT } from "../config"
+import ErrorOverlayPlugin from "error-overlay-webpack-plugin"
+import FriendlyPlugin from "friendly-errors-webpack-plugin"
+
+import { IS_DEVELOPMENT, IS_PRODUCTION } from "../config"
 
 const stats = "minimal"
 const logLevel = "warn"
@@ -31,9 +32,11 @@ export default {
   },
 
   plugins: [
-    IS_DEVELOPMENT || IS_PRODUCTION ? new FriendlyPlugin({
-      clearConsole: false
-    }) : null,
+    IS_DEVELOPMENT || IS_PRODUCTION ?
+      new FriendlyPlugin({
+        clearConsole: false
+      }) :
+      null,
 
     IS_DEVELOPMENT ? new ErrorOverlayPlugin() : null,
 
@@ -41,4 +44,3 @@ export default {
     IS_PRODUCTION ? new webpack.ProgressPlugin() : null
   ].filter(Boolean)
 }
-
