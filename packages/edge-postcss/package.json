@@ -5,7 +5,7 @@
   "main": "postcss.config.js",
   "scripts": {
     "build": "rimraf lib && prepublish",
-    "prepublish": "npm run build",
+    "prepack": "npm run build",
     "test": "jest"
   },
   "engines": {

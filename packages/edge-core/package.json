@@ -12,7 +12,7 @@
     "size": "npm run build",
     "test": "jest",
     "build": "rimraf lib && prepublish",
-    "prepublish": "npm run build"
+    "prepack": "npm run build"
   },
   "engines": {
     "node": ">=6.0.0",

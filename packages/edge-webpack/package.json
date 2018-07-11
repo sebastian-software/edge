@@ -7,7 +7,7 @@
   "scripts": {
     "test": "jest",
     "build": "rimraf lib && preppy",
-    "prepublish": "npm run build"
+    "prepack": "npm run build"
   },
   "files": [
     "lib/"

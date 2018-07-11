@@ -60,6 +60,6 @@
     "qa": "cross-env NODE_ENV=test mocha --ui exports test/*.qa.js",
     "update": "babel-node ./bin/update.js && babel-node ./bin/testfiles.js",
     "build": "rimraf lib && preppy",
-    "prepublish": "npm run build"
+    "prepack": "npm run build"
   }
 }

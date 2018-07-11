@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo",
     "build": "rimraf lib && cpy src/babelrc --rename=.babelrc lib/ && babel --out-dir lib src",
-    "prepublish": "npm run build"
+    "prepack": "npm run build"
   },
   "files": [
     "lib/"
