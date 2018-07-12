@@ -1,6 +1,6 @@
 {
   "name": "edge-core",
-  "version": "1.0.0-alpha.11",
+  "version": "1.0.0-alpha.12",
   "description": "Core JavaScript Infrastructure for Edge. Part of the Edge Platform.",
   "main": "lib/node.es5.cjs.js",
   "module": "lib/node.es5.esm.js",
@@ -46,7 +46,7 @@
     "bluebird": "^3.5.1",
     "caniuse-lite": "^1.0.30000865",
     "chalk": "^2.4.1",
-    "edge-useragent": "^4.0.0-alpha.8",
+    "edge-useragent": "^4.0.0-alpha.9",
     "graphql": "^0.13.2",
     "identity-obj-proxy": "^3.0.0",
     "intl-locales-supported": "^1.0.0",
