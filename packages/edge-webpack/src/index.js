@@ -11,7 +11,14 @@ import OptimizationModule from "./modules/Optimization"
 import RulesModule from "./modules/Rules"
 import StaticModule from "./modules/Static"
 
-import ChunkHash from "./plugins/ChunkHash"
+import { Hasher } from "asset-hash"
+
+// We can't set `hashDigest: base52` currently because of limitations in Webpacks validation rules.
+class ModifiedHasher extends Hasher {
+  digest() {
+    return super.digest("base52")
+  }
+}
 
 const node = BUILD_TARGET === "client" ? {
   fs: "empty",
@@ -34,9 +41,7 @@ export const core = (options = {}) => ({
   plugins: [
     ...EnvironmentModule.plugins,
     ...LocalesModule.plugins,
-    ...RulesModule.plugins,
-
-    new ChunkHash()
+    ...RulesModule.plugins
   ].filter(Boolean)
 })
 
@@ -55,7 +60,12 @@ export const full = (options = {}) => ({
     chunkFilename: IS_DEVELOPMENT ?
       "chunk-[name].[chunkhash].js" :
       "chunk-[name].[chunkhash].js",
-    crossOriginLoading: "anonymous"
+    crossOriginLoading: "anonymous",
+    hashFunction: ModifiedHasher
+
+    // Unfortunately we are unable to use other digests right now as the validation of Webpack prevents this.
+    // This is also the reason why we use a slightly modified Hasher with built-in enforcement to `base52`.
+    // hashDigest: "base52"
   },
 
   module: {
@@ -78,8 +88,6 @@ export const full = (options = {}) => ({
     ...LocalesModule.plugins,
     ...ExperienceModule.plugins,
     ...RulesModule.plugins,
-    ...StaticModule.plugins,
-
-    new ChunkHash()
+    ...StaticModule.plugins
   ].filter(Boolean)
 })

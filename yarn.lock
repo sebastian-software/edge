@@ -1949,6 +1949,15 @@ asset-hash@^1.2.1:
     big.js "^5.1.2"
     xxhash "^0.2.4"
 
+asset-hash@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/asset-hash/-/asset-hash-2.0.0.tgz#941a2074578d184db8a1281727c02f803ed7e282"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.53"
+    big.js "^5.1.2"
+    core-js "^2.5.7"
+    xxhash "^0.2.4"
+
 assets@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/assets/-/assets-3.0.0.tgz#0899b030c76701bf9b4a015a0da2ed18ecc1d833"

@@ -21,6 +21,7 @@
   "dependencies": {
     "app-manifest-loader": "^1.0.4",
     "app-root-dir": "^1.0.2",
+    "asset-hash": "^2.0.0",
     "babel-loader": "^8.0.0-beta.3",
     "cache-loader": "^1.2.2",
     "css-loader": "^1.0.0",

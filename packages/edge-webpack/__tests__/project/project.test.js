@@ -10,7 +10,7 @@ process.env.NODE_ENV = "production"
 /* eslint-disable-next-line import/no-commonjs */
 const edge = require("../../src")
 
-const config = edge.full({ root: __dirname })
+const config = edge.full({ root: __dirname, quiet: true })
 
 beforeEach((done) => {
   rimraf(resolve(__dirname, "dist"), done)
@@ -32,6 +32,6 @@ test("Executes correctly", (done) => {
   })
 
   compiler.hooks.done.tap("Test", () => {
-    setTimeout(done, 1000)
+    setTimeout(done, 2000)
   })
 })

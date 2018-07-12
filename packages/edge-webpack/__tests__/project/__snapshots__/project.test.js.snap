@@ -3,7 +3,7 @@
 exports[`Executes correctly: dirlist 1`] = `
 Array [
   "file-1UZ6YEQK.svg",
-  "index.4ca1a1546a4a27161493.js",
+  "index.ccdIVa.js",
   "index.html",
 ]
 `;
@@ -16,7 +16,7 @@ exports[`Executes correctly: htmlfile 1`] = `
     <title></title>
   </head>
   <body>
-  <script type=\\"text/javascript\\" src=\\"index.4ca1a1546a4a27161493.js\\" integrity=\\"sha256-x6x4Dv3tkrxPcWNOFkLKDR9z68JCwHrdXCiyPc4CY7U= sha512-Al0veVgVM6uQsN3KqZM26rZPIl2WrhPlB+j5e9lpFfOzyPcNODlQnr8gpBK0KJ0AaX9omKn3z3+54gZBbyplXA==\\" crossorigin=\\"anonymous\\"></script></body>
+  <script type=\\"text/javascript\\" src=\\"index.ccdIVa.js\\" integrity=\\"sha256-x6x4Dv3tkrxPcWNOFkLKDR9z68JCwHrdXCiyPc4CY7U= sha512-Al0veVgVM6uQsN3KqZM26rZPIl2WrhPlB+j5e9lpFfOzyPcNODlQnr8gpBK0KJ0AaX9omKn3z3+54gZBbyplXA==\\" crossorigin=\\"anonymous\\"></script></body>
 </html>"
 `;
 
