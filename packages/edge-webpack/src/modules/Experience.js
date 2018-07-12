@@ -1,3 +1,4 @@
+import webpack from "webpack"
 import ErrorOverlayPlugin from "error-overlay-webpack-plugin"
 import FriendlyPlugin from "friendly-errors-webpack-plugin"
 
@@ -39,6 +40,6 @@ export default {
     IS_DEVELOPMENT ? new ErrorOverlayPlugin() : null,
 
     // Does not work well with HMR and Dev Server
-    //IS_PRODUCTION ? new webpack.ProgressPlugin() : null
+    IS_PRODUCTION ? new webpack.ProgressPlugin() : null
   ].filter(Boolean)
 }
