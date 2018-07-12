@@ -36,15 +36,15 @@
     "thread-loader": "^1.1.5",
     "uglifyjs-webpack-plugin": "^1.2.7",
     "universal-dotenv": "^1.8.0",
-    "webpack": "^4.15.1",
+    "webpack": "^4.16.0",
     "webpack-subresource-integrity": "^1.1.0-rc.4",
     "yaml-loader": "^0.5.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.52",
+    "@babel/core": "^7.0.0-beta.53",
     "babel-core": "^7.0.0-0",
     "babel-jest": "^23.4.0",
-    "babel-preset-edge": "^4.9.0",
+    "babel-preset-edge": "^4.9.1",
     "jest": "^23.4.0",
     "jest-cli": "^23.4.0",
     "jest-preset-edge": "^0.2.1-alpha.16",
