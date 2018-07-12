@@ -12,7 +12,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "prepack": "npm run build",
-    "build": "rimraf bin && rimraf lib && prepublish",
+    "build": "rimraf bin && rimraf lib && preppy",
     "test": "echo"
   },
   "engines": {
@@ -25,14 +25,13 @@
     "chalk": "^2.4.1",
     "cosmiconfig": "^5.0.5",
     "jsome": "^2.5.0",
-    "lean-nodent-runtime": "^1.0.2",
     "lodash": "^4.17.10",
     "node-notifier": "^5.2.1",
     "yn": "^2.0.0"
   },
   "devDependencies": {
     "jest": "23.4.0",
-    "prepublish": "1.7.0",
-    "rimraf": "*"
+    "preppy": "^4.2.3",
+    "rimraf": "^2.6.2"
   }
 }

@@ -3406,14 +3406,6 @@ babel-types@^6.0.0, babel-types@^6.18.0, babel-types@^6.19.0, babel-types@^6.24.
     lodash "^4.17.4"
     to-fast-properties "^1.0.3"
 
-babel-watch@^2.0.7:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/babel-watch/-/babel-watch-2.0.7.tgz#584ad2af245ba96f88721213a9563631ba8fae48"
-  dependencies:
-    chokidar "^1.4.3"
-    commander "^2.9.0"
-    source-map-support "^0.4.0"
-
 babylon@7.0.0-beta.31:
   version "7.0.0-beta.31"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-7.0.0-beta.31.tgz#7ec10f81e0e456fd0f855ad60fa30c2ac454283f"
@@ -4035,7 +4027,7 @@ check-types@^7.3.0:
   version "7.4.0"
   resolved "https://registry.yarnpkg.com/check-types/-/check-types-7.4.0.tgz#0378ec1b9616ec71f774931a3c6516fad8c152f4"
 
-chokidar@^1.4.3, chokidar@^1.6.0, chokidar@^1.6.1:
+chokidar@^1.6.0, chokidar@^1.6.1:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-1.7.0.tgz#798e689778151c8076b4b360e5edd28cda2bb468"
   dependencies:
@@ -6002,6 +5994,10 @@ eslint@5.1.0, eslint@^5.1.0:
     strip-json-comments "^2.0.1"
     table "^4.0.3"
     text-table "^0.2.0"
+
+esm@^3.0.69:
+  version "3.0.69"
+  resolved "https://registry.yarnpkg.com/esm/-/esm-3.0.69.tgz#4ce2b06ec32742b28cca1c2187318f8563fb3cb8"
 
 espree@^4.0.0:
   version "4.0.0"
@@ -13396,7 +13392,7 @@ source-map-resolve@^0.5.0:
     source-map-url "^0.4.0"
     urix "^0.1.0"
 
-source-map-support@^0.4.0, source-map-support@^0.4.15, source-map-support@^0.4.2:
+source-map-support@^0.4.15, source-map-support@^0.4.2:
   version "0.4.18"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.18.tgz#0286a6de8be42641338594e97ccea75f0a2c585f"
   dependencies:
