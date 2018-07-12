@@ -107,7 +107,7 @@ export async function loadConfig(prefix = "edge", flags = {}) {
     stopDir: ROOT
   })
 
-  var configResult
+  let configResult
 
   try {
     configResult = await configLoader.load(ROOT)
@@ -117,7 +117,7 @@ export async function loadConfig(prefix = "edge", flags = {}) {
 
   const config = configResult.config
 
-  for (let key in flags) {
+  for (const key in flags) {
     set(config, key, flags[key])
   }
 
