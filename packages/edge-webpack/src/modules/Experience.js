@@ -13,12 +13,12 @@ export default {
   // The new development web server of Webpack
   // See also: https://github.com/webpack-contrib/webpack-serve
   serve: {
-    dev: {
+    devMiddleware: {
       logLevel,
       stats
     },
 
-    hot: {
+    hotClient: {
       logLevel
     }
   },
