@@ -1,6 +1,6 @@
 {
   "name": "edge-webpack",
-  "version": "0.0.2-alpha.14",
+  "version": "0.0.2-alpha.15",
   "description": "Centralized Webpack configuration for Edge-based projects.",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
