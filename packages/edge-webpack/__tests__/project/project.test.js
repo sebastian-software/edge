@@ -1,7 +1,7 @@
 /* global __dirname */
 
+import { join, resolve } from "path"
 import { readdirSync, readFileSync } from "fs"
-import { resolve, join } from "path"
 import rimraf from "rimraf"
 import webpack from "webpack"
 
