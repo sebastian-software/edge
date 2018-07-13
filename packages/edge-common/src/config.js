@@ -99,10 +99,7 @@ export const SCHEMA = {
 
 export async function loadConfig(prefix = "edge", flags = {}) {
   // Read edge configuration
-  const configLoader = cosmiconfig(prefix, {
-    // allow extensions on rc files
-    rcExtensions: true,
-
+  const explorer = cosmiconfig(prefix, {
     // Force stop at project root folder
     stopDir: ROOT
   })
@@ -110,7 +107,7 @@ export async function loadConfig(prefix = "edge", flags = {}) {
   let configResult
 
   try {
-    configResult = await configLoader.load(ROOT)
+    configResult = await explorer.search(ROOT)
   } catch (parsingError) {
     throw new Error(`Error parsing config file: ${parsingError}. Root: ${ROOT}.`)
   }
