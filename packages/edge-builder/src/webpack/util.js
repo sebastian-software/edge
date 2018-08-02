@@ -26,7 +26,9 @@ const Problematic = new Set([
   // These packages make use of dynamic require expressions which do not work well with Webpack
   "ajv",
   "colors",
-  "jsdom"
+  "jsdom",
+
+  "node-fetch"
 ])
 
 export function isLoaderSpecificFile(request) {
