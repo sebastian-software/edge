@@ -285,7 +285,7 @@ export default function builder(target, env = "development", config = {}) {
         {
           test: postcssFiles,
           use: [
-            ExtractCssChunks.loader,
+            isClient ? ExtractCssChunks.loader : null,
             cacheLoader,
             {
               loader: isClient ? "css-loader" : "css-loader/locals",
