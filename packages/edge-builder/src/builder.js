@@ -274,7 +274,7 @@ export default function builder(target, env = "development", config = {}) {
               loader: "babel-loader",
               options: {
                 babelrc: true,
-                forceEnv: BABEL_ENV
+                envName: BABEL_ENV
               }
             }
           ].filter(Boolean)
