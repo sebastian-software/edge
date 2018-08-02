@@ -293,7 +293,24 @@ export default function builder(target, env = "development", config = {}) {
             },
             postCSSLoaderRule
           ].filter(Boolean)
-        }
+        },
+
+        // Special support for application manifest files
+        {
+          test: /manifest.json|\.webmanifest$/,
+          type: "javascript/auto",
+          use: [
+            {
+              loader: "file-loader",
+              options: {
+                name: isProduction ? "file-[hash:base62:8].[ext]" : "[path][name].[ext]"
+              }
+            },
+            {
+              loader: "app-manifest-loader"
+            }
+          ]
+        },
       ].filter(Boolean)
     },
 
