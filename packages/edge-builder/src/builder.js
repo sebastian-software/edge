@@ -183,6 +183,7 @@ export default function builder(target, env = "development", config = {}) {
   const WEBPACK_HOOK = config.hook.webpack ? config.hook.webpack : identityFnt
 
   return WEBPACK_HOOK({
+    mode: isDevelopment ? "development" : "production",
     name,
     target: webpackTarget,
     devtool,
