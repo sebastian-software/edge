@@ -8,11 +8,6 @@ import chalk from "chalk"
 
 import webpackPkg from "webpack/package.json"
 
-// Using more modern approach of hashing than "webpack-md5-hash". Somehow the SHA256 version
-// ("webpack-sha-hash") does not correctly work based (produces different hashes for same content).
-// This is basically a replacement of md5 with the loader-utils implementation which also supports
-// shorter generated hashes based on base62 encoding instead of hex.
-import WebpackDigestHash from "./plugins/ChunkHash"
 import VerboseProgress from "./plugins/VerboseProgress"
 
 import { getServerExternals } from "./webpack/util"
@@ -35,18 +30,6 @@ import BundleAnalyzerPlugin from "webpack-bundle-analyzer"
 // import ZopfliPlugin from "zopfli-webpack-plugin"
 
 import { getHashDigest } from "loader-utils"
-
-function removeEmptyKeys(source)
-{
-  const copy = {}
-  for (const key in source)
-  {
-    if (!(source[key] == null || source[key].length === 0))
-      copy[key] = source[key]
-  }
-
-  return copy
-}
 
 // https://github.com/mishoo/UglifyJS2#compress-options
 const UGLIFY_OPTIONS = {
@@ -376,13 +359,6 @@ export default function builder(target, env = "development", config = {}) {
         openAnalyzer: false,
         reportFilename: "report.html"
       }) : null,
-
-      // We use this so that our generated [chunkhash]'s are only different if
-      // the content for our respective chunks have changed.  This optimises
-      // our long term browser caching strategy for our client bundle, avoiding
-      // cases where browsers end up having to download all the client chunks
-      // even though 1 or 2 may have only changed.
-      isProduction && isClient ? new WebpackDigestHash() : null,
 
       // Let the server side renderer know about our client side assets
       // https://github.com/FormidableLabs/webpack-stats-plugin
