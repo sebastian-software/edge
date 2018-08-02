@@ -16,7 +16,7 @@
     "update": "ncu -ua && lerna exec ncu -- -ua",
     "test": "lerna run --stream --sort test",
     "pretest": "npm run prepack && lerna link",
-    "precommit": "lint-staged",
+    "xprecommit": "lint-staged",
     "prepack": "lerna run --stream --sort prepack",
     "publish": "npm run prepack && lerna publish"
   },
