@@ -38,14 +38,14 @@
     "react-dom": ">=16.4.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.53",
-    "@babel/core": "^7.0.0-beta.53",
+    "@babel/cli": "^7.0.0-beta.55",
+    "@babel/core": "^7.0.0-beta.55",
     "babel-core": "^7.0.0-bridge.0",
     "babel-loader": "^8.0.0-beta.2",
-    "babel-preset-edge": "^4.9.1",
+    "babel-preset-edge": "^4.9.5",
     "cpy-cli": "^2.0.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
     "rimraf": "^2.6.2"
   }
 }

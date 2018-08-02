@@ -32,10 +32,10 @@
   },
   "dependencies": {
     "app-root-dir": "^1.0.2",
-    "autoprefixer": "^8.6.5",
+    "autoprefixer": "^9.0.2",
     "lost": "^8.3.0",
     "pleeease-filters": "^4.0.0",
-    "postcss": "^6.0.23",
+    "postcss": "^7.0.2",
     "postcss-advanced-variables": "^2.3.3",
     "postcss-assets": "^5.0.0",
     "postcss-at-warn": "^1.0.0",
@@ -52,11 +52,11 @@
     "postcss-discard-comments": "^4.0.0",
     "postcss-easing-gradients": "^3.0.0",
     "postcss-easings": "^1.0.1",
-    "postcss-flexbugs-fixes": "^3.3.1",
+    "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-flow-root": "0.0.3",
     "postcss-font-family-system-ui": "^3.0.0",
     "postcss-font-variant": "^3.0.0",
-    "postcss-gradient-transparency-fix": "^2.1.0",
+    "postcss-gradient-transparency-fix": "^3.0.0",
     "postcss-grid-kiss": "^2.0.0",
     "postcss-hexrgba": "^1.0.1",
     "postcss-import": "^11.1.0",
@@ -71,16 +71,16 @@
     "postcss-responsive-type": "^1.0.0",
     "postcss-sassy-mixins": "^2.1.0",
     "postcss-selector-matches": "^3.0.1",
-    "postcss-smart-asset": "^0.5.7",
+    "postcss-smart-asset": "^0.7.1",
     "postcss-transform-shortcut": "^2.0.1",
     "postcss-will-change": "^2.0.0",
     "postcss-zindex": "^4.0.0"
   },
   "devDependencies": {
-    "babel-preset-edge": "4.9.1",
-    "jest": "23.4.0",
+    "babel-preset-edge": "4.9.5",
+    "jest": "23.4.2",
     "postcss-load-config": "^2.0.0",
-    "prepublish": "1.7.0",
+    "prepublish": "2.1.1",
     "rimraf": "*"
   }
 }
