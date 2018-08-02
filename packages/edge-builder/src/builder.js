@@ -170,6 +170,12 @@ export default function builder(target, env = "development", config = {}) {
     context: ROOT,
     externals: isServer ? getServerExternals(useLightNodeBundle, [ VENDOR_ENTRY, MAIN_ENTRY ]) : undefined,
 
+    node: isClient ? {
+      fs: "empty",
+      __filename: "mock",
+      __dirname: "mock"
+    } : {},
+
     entry: {
       main: [
         isClient && isDevelopment ? HMR_MIDDLEWARE : null,
