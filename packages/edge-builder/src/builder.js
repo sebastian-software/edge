@@ -283,20 +283,11 @@ export default function builder(target, env = "development", config = {}) {
         // Use either
         {
           test: postcssFiles,
-          use: isClient ? ExtractCssChunks.extract({
-            use:
-            [
-              cacheLoader,
-              {
-                loader: "css-loader",
-                options: cssLoaderOptions
-              },
-              postCSSLoaderRule
-            ].filter(Boolean)
-          }) : [
+          use: [
+            ExtractCssChunks.loader,
             cacheLoader,
             {
-              loader: "css-loader/locals",
+              loader: isClient ? "css-loader" : "css-loader/locals",
               options: cssLoaderOptions
             },
             postCSSLoaderRule
