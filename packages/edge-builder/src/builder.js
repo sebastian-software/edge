@@ -23,9 +23,6 @@ import CaseSensitivePathsPlugin from "case-sensitive-paths-webpack-plugin"
 // import HtmlWebpackPlugin from "html-webpack-plugin"
 import SriPlugin from "webpack-subresource-integrity"
 
-// Compression
-import UglifyPlugin from "uglifyjs-webpack-plugin"
-
 import BundleAnalyzerPlugin from "webpack-bundle-analyzer"
 // import ZopfliPlugin from "zopfli-webpack-plugin"
 
@@ -364,42 +361,12 @@ export default function builder(target, env = "development", config = {}) {
       // https://github.com/FormidableLabs/webpack-stats-plugin
       isProduction && isClient ? new StatsPlugin("stats.json") : null,
 
-      // Classic UglifyJS for compressing ES5 compatible code.
-      // https://github.com/webpack-contrib/uglifyjs-webpack-plugin
-      isProduction ?
-        new UglifyPlugin({
-          sourceMap: config.build.enableSourceMaps,
-          cache: true,
-          parallel: true,
-          uglifyOptions: UGLIFY_OPTIONS
-        }) : null,
-
-      // "Use HashedModuleIdsPlugin to generate IDs that preserves over builds."
-      // Via: https://github.com/webpack/webpack.js.org/issues/652#issuecomment-273324529
-      isProduction ? new webpack.HashedModuleIdsPlugin() : null,
-
-      // I would recommend using NamedModulesPlugin during development (better output).
-      // Via: https://github.com/webpack/webpack.js.org/issues/652#issuecomment-273023082
-      isDevelopment ? new webpack.NamedModulesPlugin() : null,
-
       isClient ? new ExtractCssChunks({
         filename: isDevelopment ? "[name].css" : "[name]-[contenthash:base62:8].css",
         hot: isDevelopment
       }) : null,
 
-      isServer ? new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }) : null,
-
-      isProduction ? new webpack.optimize.ModuleConcatenationPlugin() : null,
-
-      isClient && isDevelopment ? new webpack.HotModuleReplacementPlugin() : null,
-      isDevelopment ? new webpack.NoEmitOnErrorsPlugin() : null
-
-      // Compress static files with zopfli (gzip) compression
-      // https://github.com/webpack-contrib/zopfli-webpack-plugin
-      // isProduction && isClient ? new ZopfliPlugin({
-      //   test: compressableAssets,
-      //   verbose: true
-      // }) : null
+      isClient && isDevelopment ? new webpack.HotModuleReplacementPlugin() : null
     ].filter(Boolean)
   }, {
     isServer,
