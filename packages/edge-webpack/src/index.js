@@ -13,13 +13,6 @@ import StaticModule from "./modules/Static"
 
 import { Hasher } from "asset-hash"
 
-// We can't set `hashDigest: base52` currently because of limitations in Webpacks validation rules.
-class ModifiedHasher extends Hasher {
-  digest() {
-    return super.digest("base52")
-  }
-}
-
 const node = BUILD_TARGET === "client" ? {
   fs: "empty",
   __filename: "mock",
@@ -61,11 +54,8 @@ export const full = (options = {}) => ({
       "chunk-[name].[chunkhash].js" :
       "chunk-[name].[chunkhash].js",
     crossOriginLoading: "anonymous",
-    hashFunction: ModifiedHasher
-
-    // Unfortunately we are unable to use other digests right now as the validation of Webpack prevents this.
-    // This is also the reason why we use a slightly modified Hasher with built-in enforcement to `base52`.
-    // hashDigest: "base52"
+    hashFunction: Hasher,
+    hashDigest: "base52"
   },
 
   module: {
