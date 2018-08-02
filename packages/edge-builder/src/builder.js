@@ -390,7 +390,8 @@ export default function builder(target, env = "development", config = {}) {
       isDevelopment ? new webpack.NamedModulesPlugin() : null,
 
       isClient ? new ExtractCssChunks({
-        filename: isDevelopment ? "[name].css" : "[name]-[contenthash:base62:8].css"
+        filename: isDevelopment ? "[name].css" : "[name]-[contenthash:base62:8].css",
+        hot: isDevelopment
       }) : null,
 
       isServer ? new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }) : null,
