@@ -1,7 +1,7 @@
-import { createKernel, updateState, renderApp } from "edge-core"
+import { createKernel, renderApp, updateState } from "edge-core"
 
-import State from "../State"
 import Application, { prepare } from "../Application"
+import State from "../State"
 
 // eslint-disable-next-line no-console
 console.log(`[APP] Build: ${process.env.NODE_ENV}-${process.env.BUILD_TARGET}`)
@@ -9,7 +9,7 @@ console.log(`[APP] Build: ${process.env.NODE_ENV}-${process.env.BUILD_TARGET}`)
 const kernel = createKernel(State)
 prepare(kernel)
   .then(() => renderApp(Application, kernel))
-  .catch(error => {
+  .catch((error) => {
     throw new Error(`Unable to rehydrate client application: ${error}!`)
   })
 
