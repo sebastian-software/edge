@@ -49,7 +49,11 @@ export default ({ clientStats }) => async (request, response) => {
 
   // [6] Fetch Data:
   // Now we are ready to fetch required data by waiting for async requests.
-  await fetchData(WrappedApplication, kernel)
+  try {
+    await fetchData(WrappedApplication, kernel)
+  } catch(error) {
+    console.error("Unable to fetch data:", error)
+  }
 
   // [7] Render Application:
   // When all required data is available we can safely render the result.

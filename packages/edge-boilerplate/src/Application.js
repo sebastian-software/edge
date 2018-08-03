@@ -13,22 +13,22 @@ const Classes = classnames.bind(Styles)
 
 /* eslint-disable no-console */
 
-const HomeRoute = loadable(
+const HomeView = loadable(
   () => import("./views/Home/Home"),
   { render: ViewWrapper }
 )
 
-const CounterRoute = loadable(
+const CounterView = loadable(
   () => import("./views/Counter/Counter"),
   { render: ViewWrapper }
 )
 
-const LocalizationRoute = loadable(
+const LocalizationView = loadable(
   () => import("./views/Localization/Localization"),
   { render: ViewWrapper }
 )
 
-const MissingRoute = loadable(
+const MissingView = loadable(
   () => import("./views/Missing/Missing"),
   { render: ViewWrapper }
 )
@@ -54,19 +54,19 @@ class Application extends React.Component {
 
   render() {
     return (
-      <Router>
-        <div className={Classes("root", { alive: this.state.alive })}>
-          <HtmlHead />
-          <Navigation />
+      <div className={Classes("root", { alive: this.state.alive })}>
+        <HtmlHead />
+        <Navigation />
 
-          <main className={Styles.content}>
-            <HomeRoute />
-            <CounterRoute />
-            <LocalizationRoute />
-            <MissingRoute />
-          </main>
-        </div>
-      </Router>
+        <main className={Styles.content}>
+          <Router>
+            <HomeView path="/" />
+            <CounterView path="/counter" />
+            <LocalizationView path="/localization" />
+            <MissingView default />
+          </Router>
+        </main>
+      </div>
     )
   }
 }
