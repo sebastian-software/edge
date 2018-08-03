@@ -1,17 +1,18 @@
 import React from "react"
+import { Link } from "@reach/router"
 
 export default function Navigation() {
   return (
     <nav>
       <ul>
         <li>
-          <a href="/">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="/counter">Counter</a>
+          <Link to="/counter">Counter</Link>
         </li>
         <li>
-          <a href="/localization">Localization</a>
+          <Link to="/localization">Localization</Link>
         </li>
       </ul>
     </nav>
