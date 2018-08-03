@@ -8,7 +8,6 @@ import "unfetch/polyfill"
 import "raf/polyfill"
 
 export * from "./common"
-export * from "./client/loadImport"
 
 export { default as getBrowserLocale } from "./client/getBrowserLocale"
 export { default as renderApp } from "./client/renderApp"

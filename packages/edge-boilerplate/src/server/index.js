@@ -3,8 +3,6 @@ import dotenv from "dotenv"
 
 import {
   prepareResponse,
-  ensureIntlSupport,
-  ensureReactIntlSupport,
   wrapApplication,
   renderApplication,
   createKernel,
@@ -24,21 +22,6 @@ export default ({ clientStats }) => async (request, response) => {
   // [1] Response Preparation:
   // This step parses some client information like language and user agent.
   const edge = prepareResponse(request)
-
-  // [2] Prepare Localization Support:
-  // Make sure that all required internationalization data and polyfills are ready.
-  // On the server-side we estimate client-side support by querying the caniuse
-  // database using the user agent passed via HTTP headers.
-  const intl = edge.intl
-  ensureIntlSupport(
-    import(`lean-intl/locale-data/${intl.locale}`),
-    intl,
-    edge.browser
-  )
-  ensureReactIntlSupport(
-    import(`react-intl/locale-data/${intl.language}`),
-    intl
-  )
 
   // [3] Build State:
   // Built up object which contains all relevant initial render data.

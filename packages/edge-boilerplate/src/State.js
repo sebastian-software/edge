@@ -25,17 +25,6 @@ export default {
   },
 
   /**
-   * Return map of routes. Match redux actions to urls.
-   */
-  getRoutes() {
-    return {
-      HOME: "/",
-      COUNTER: "/counter",
-      LOCALIZATION: "/localization"
-    }
-  },
-
-  /**
    * Return list of Redux store enhancers to use.
    */
   getEnhancers() {

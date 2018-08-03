@@ -40,6 +40,7 @@
     "yn": "^2.0"
   },
   "devDependencies": {
+    "@reach/router": "^1.1.1",
     "@storybook/react": "^4.0.0-alpha.3",
     "cookiesjs": "^2.0.0",
     "edge-builder": "^1.0.0-alpha.11",
@@ -47,7 +48,9 @@
     "edge-postcss": "^1.0.0-alpha.13",
     "edge-storybook": "^1.0.0-alpha.31",
     "edge-style": "^1.0.0-alpha.13",
+    "eslint": "^5.2.0",
     "esm": "^3.0.72",
+    "flow": "^0.2.3",
     "jest": "^23.4.2",
     "jest-preset-edge": "^0.2.1-alpha.17",
     "prepublish": "2.1.1",

@@ -1,25 +1,16 @@
 import areIntlLocalesSupported from "intl-locales-supported"
 import { addLocaleData } from "react-intl"
 
-import {
-  loadImport as loadImportClient
-} from "../client/loadImport"
-
-import {
-  loadImport as loadImportServer,
-  preloadImport as preloadImportServer
-} from "../server/loadImport"
-
 /* global Intl */
 
 const PREFER_NATIVE = true
 
-let intlSupportTable
-if (process.env.TARGET === "node") {
-  intlSupportTable = require("caniuse-lite").feature(
-    require("caniuse-lite/data/features/internationalization.js")
-  )
-}
+// let intlSupportTable
+// if (process.env.TARGET === "node") {
+//   intlSupportTable = require("caniuse-lite").feature(
+//     require("caniuse-lite/data/features/internationalization.js")
+//   )
+// }
 
 export function requiresIntlPolyfill(locale) {
   // Determine if the built-in `Intl` has the locale data we need.
@@ -109,51 +100,4 @@ export function getLanguage(state) {
  */
 export function getRegion(state) {
   return state.edge.intl.region
-}
-
-
-// Note:
-// As long as Rollup does not support dynamic `import()` we unfortunately have to implement
-// the loading part of intl files and general all code splitting in the real application
-// and not in any shared library. There is currently a way to transpile `import()` to
-// `require.ensure()` which does 50% of the equation - and is supported by *prepublish* but the
-// remaining part to define code splitting via `webpackChunkName` is not solvable right now.
-
-export function ensureReactIntlSupport(importWrapper, intl) {
-  // React-Intl always loads monolithically with all locales in NodeJS
-  if (process.env.TARGET === "node") {
-    return preloadImportServer(importWrapper)
-  } else {
-    return loadImportClient(importWrapper).then(installReactIntl)
-  }
-}
-
-/* eslint-disable max-params */
-export function ensureIntlSupport(importWrapper, intl, browser) {
-  const hasIntlSupport = PREFER_NATIVE && global.Intl && areIntlLocalesSupported([ intl.locale ])
-
-  if (process.env.TARGET === "node") {
-    if (!hasIntlSupport) {
-      loadImportServer(importWrapper)
-    }
-
-    let clientHasIntl = false
-    try {
-      // TODO: Make this smarter and more error tolerant
-      if (intlSupportTable.stats[browser.family.toLowerCase()][browser.major] === "y") {
-        clientHasIntl = true
-      }
-    } catch (error) {
-      console.log("Error during querying support table:", error)
-      // pass
-    }
-
-    if (!clientHasIntl) {
-      preloadImportServer(importWrapper)
-    }
-  } else if (!hasIntlSupport) {
-    return loadImportClient(importWrapper).then(installIntlPolyfill)
-  }
-
-  return null
 }

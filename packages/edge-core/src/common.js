@@ -8,7 +8,6 @@ export {
 } from "./common/State"
 
 export { createApolloClient } from "./common/ApolloClient"
-export { createReduxRouter } from "./common/ReduxRouter"
 
 export {
   requiresIntlPolyfill,
@@ -17,13 +16,10 @@ export {
   installReactIntl,
   getRegion,
   getLanguage,
-  getLocale,
-  ensureReactIntlSupport,
-  ensureIntlSupport
+  getLocale
 } from "./common/Intl"
 
 export { default as wrapApplication } from "./common/wrapApplication"
 export { default as deepFetch } from "./common/deepFetch"
-export { default as routed } from "./common/routed"
 export { default as createKernel } from "./common/createKernel"
 export { default as fetchData } from "./common/fetchData"

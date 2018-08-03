@@ -14,7 +14,7 @@ function _getBrowserLocale(supportedLocales) {
   // Modern standard: Support by modern Chrome, Safari and Firefox
   const languages = navigator.languages
   if (languages) {
-    for (let lang of languages) {
+    for (const lang of languages) {
       if (supported.has(lang)) {
         available.add(lang)
       }

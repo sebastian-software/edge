@@ -14,7 +14,6 @@ if (!global.fetch) {
 }
 
 export * from "./common"
-export * from "./server/loadImport"
 
 export { default as renderPage } from "./server/renderPage"
 export { default as renderApplication } from "./server/renderApplication"

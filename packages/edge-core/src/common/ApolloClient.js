@@ -20,7 +20,7 @@ export function createApolloClient(config = {}) {
     return null
   }
 
-  var finalLinkOptions = {
+  const finalLinkOptions = {
     // Based on user given options
     ...linkOptions,
 
