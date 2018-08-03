@@ -6,6 +6,7 @@ exports[`Storyshots Navigation basic demo 1`] = `
     <li>
       <a
         href="/"
+        onClick={[Function]}
       >
         Home
       </a>
@@ -13,6 +14,7 @@ exports[`Storyshots Navigation basic demo 1`] = `
     <li>
       <a
         href="/counter"
+        onClick={[Function]}
       >
         Counter
       </a>
@@ -20,6 +22,7 @@ exports[`Storyshots Navigation basic demo 1`] = `
     <li>
       <a
         href="/localization"
+        onClick={[Function]}
       >
         Localization
       </a>

@@ -1,11 +1,11 @@
-import React from "react"
 import PropTypes from "prop-types"
+import React from "react"
 import { connect } from "react-redux"
 
 import {
-  loadCounter,
+  decrementCounter,
   incrementCounter,
-  decrementCounter
+  loadCounter
 } from "../../modules/Counter"
 import Styles from "./Counter.css"
 
@@ -59,4 +59,7 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Counter)

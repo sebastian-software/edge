@@ -1,13 +1,13 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { connect } from "react-redux"
-import Helmet from "react-helmet"
 import cookies from "cookiesjs"
+import Helmet from "react-helmet"
+import PropTypes from "prop-types"
+import React from "react"
+import { connect } from "react-redux"
 import {
-  FormattedNumber,
   FormattedDate,
-  FormattedTime,
-  FormattedRelative
+  FormattedNumber,
+  FormattedRelative,
+  FormattedTime
 } from "react-intl"
 import { getLocale } from "edge-core"
 
@@ -79,4 +79,7 @@ function mapDispatchToProps(dispatch) {
   return {}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Localization)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Localization)

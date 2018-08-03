@@ -1,15 +1,14 @@
-import React from "react"
 import Helmet from "react-helmet"
+import React from "react"
 
 /* eslint-disable import/no-webpack-loader-syntax */
 
 import AppleTouchIcon from "./apple-touch-icon.png"
-import FavIcon32 from "./favicon-32x32.png"
+import ClassicFavicon from "./favicon.ico"
 import FavIcon16 from "./favicon-16x16.png"
+import FavIcon32 from "./favicon-32x32.png"
 import Manifest from "./manifest.webmanifest"
 import SafariPinned from "./safari-pinned-tab.svg"
-import ClassicFavicon from "./favicon.ico"
-import ApplicationConfig from "!file-loader!./browserconfig.xml"
 
 export default function HtmlHead() {
   return (
@@ -26,7 +25,6 @@ export default function HtmlHead() {
       <link rel="mask-icon" href={SafariPinned} color="#2581c4" />
       <link rel="shortcut icon" href={ClassicFavicon} />
 
-      <meta name="msapplication-config" content={ApplicationConfig} />
       <meta name="theme-color" content="#ffffff" />
 
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
