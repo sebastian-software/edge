@@ -36,7 +36,7 @@
     "source-map-loader": "^0.2.3",
     "thread-loader": "^1.2.0",
     "uglifyjs-webpack-plugin": "^1.2.7",
-    "universal-dotenv": "^1.8.0",
+    "universal-dotenv": "^1.8.2",
     "webpack": "^4.16.3",
     "webpack-subresource-integrity": "^1.1.0-rc.4",
     "yaml-loader": "^0.5.0"

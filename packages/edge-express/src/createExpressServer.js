@@ -19,15 +19,13 @@ export default function createExpressServer({
   localeConfig = defaultLocale,
   staticConfig = defaultStatic,
   afterSecurity = [],
-  beforeFallback = [],
-  enableCSP = false,
-  enableNonce = false
+  beforeFallback = []
 }) {
   // Create our express based server.
   const server = express()
 
   addErrorMiddleware(server)
-  addSecurityMiddleware(server, { enableCSP, enableNonce })
+  addSecurityMiddleware(server)
 
   // Allow for some early additions for middleware
   if (afterSecurity.length > 0) {

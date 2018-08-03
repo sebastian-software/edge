@@ -1,13 +1,9 @@
 /* eslint-disable no-console */
 
-import dotenv from "dotenv"
-import toBool from "yn"
-
 import { connectWithWebpack, createMiddleware } from "edge-builder"
 import { createExpressServer } from "edge-express"
 import { loadConfig } from "edge-common"
-
-dotenv.config()
+import "universal-dotenv"
 
 async function main() {
   const { config } = await loadConfig()
@@ -20,9 +16,7 @@ async function main() {
     },
     localeConfig: config.locale,
     afterSecurity: [],
-    beforeFallback: [ ...middleware ],
-    enableCSP: toBool(process.env.ENABLE_CSP),
-    enableNonce: toBool(process.env.ENABLE_NONCE)
+    beforeFallback: [ ...middleware ]
   })
 
   connectWithWebpack(server, multiCompiler)

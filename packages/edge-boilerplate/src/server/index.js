@@ -1,5 +1,4 @@
 import React from "react"
-import dotenv from "dotenv"
 
 import {
   prepareResponse,
@@ -11,8 +10,6 @@ import {
 
 import Application from "../Application"
 import State from "../State"
-
-dotenv.config()
 
 // eslint-disable-next-line no-console
 console.log(`[APP] Build: ${process.env.NODE_ENV}-${process.env.BUILD_TARGET}`)
