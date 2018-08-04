@@ -1,0 +1,18 @@
+{
+  "generic.error.title": "Desperfecto",
+  "generic.info.title": "Inteligencia",
+
+  "lifecycle.error": "No se han podido cargar los datos.",
+  "lifecycle.loading": "Carga de datos...",
+  "lifecycle.skip": "No se pueden cargar los datos porque falta un parámetro requerido.",
+
+  "router.notfound": "Desafortunadamente la página no fue encontrada!",
+  "router.codesplit.error": "Desafortunadamente, un error ocurrió durante el proceso de carga: ",
+  "router.codesplit.loading": "Se carga la página solicitada...",
+
+  "locale.value.auto": "Automático",
+  "locale.value.de-DE": "Deutsch (Deutschland)",
+  "locale.value.fr-FR": "Français (France)",
+  "locale.value.es-ES": "Espagnol (Espagne)",
+  "locale.value.en-US": "English (USA)"
+}

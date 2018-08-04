@@ -1,0 +1,18 @@
+{
+  "generic.error.title": "Fehler",
+  "generic.info.title": "Information",
+
+  "lifecycle.error": "Die Daten konnten nicht geladen werden.",
+  "lifecycle.loading": "Lade Daten...",
+  "lifecycle.skip": "Kann die Daten nicht laden, da ein benötigter Parameter fehlt.",
+
+  "router.notfound": "Die Seite wurde leider nicht gefunden!",
+  "router.codesplit.error": "Leider ist während des Ladevorgangs ein Fehler aufgetreten: ",
+  "router.codesplit.loading": "Die angeforderte Seite wird geladen...",
+
+  "locale.value.auto": "Automatisch",
+  "locale.value.de-DE": "Deutsch (Deutschland)",
+  "locale.value.fr-FR": "Français (France)",
+  "locale.value.es-ES": "Espagnol (Espagne)",
+  "locale.value.en-US": "English (USA)"
+}

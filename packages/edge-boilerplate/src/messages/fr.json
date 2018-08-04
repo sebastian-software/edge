@@ -1,0 +1,18 @@
+{
+  "generic.error.title": "Défaut",
+  "generic.info.title": "Renseignement",
+
+  "lifecycle.error": "Les données n'ont pas pu être chargées.",
+  "lifecycle.loading": "Chargement des données...",
+  "lifecycle.skip": "Impossible de charger les données parce qu'il manque un paramètre requis.",
+
+  "router.notfound": "La page n'a malheureusement pas été trouvée!",
+  "router.codesplit.error": "Malheureusement, une erreur s'est produite pendant le processus de chargement.: ",
+  "router.codesplit.loading": "La page demandée est chargée...",
+
+  "locale.value.auto": "Automatique",
+  "locale.value.de-DE": "Deutsch (Deutschland)",
+  "locale.value.fr-FR": "Français (France)",
+  "locale.value.es-ES": "Espagnol (Espagne)",
+  "locale.value.en-US": "English (USA)"
+}

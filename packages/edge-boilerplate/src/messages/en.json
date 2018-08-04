@@ -1,0 +1,18 @@
+{
+  "generic.error.title": "Error",
+  "generic.info.title": "Info",
+
+  "lifecycle.error": "The data could not be loaded.",
+  "lifecycle.loading": "Loading data...",
+  "lifecycle.skip": "Cannot load the data because a required parameter is missing.",
+
+  "router.notfound": "The page was unfortunately not found!",
+  "router.codesplit.error": "Unfortunately, an error occurred during the loading process: ",
+  "router.codesplit.loading": "The requested page is loaded...",
+
+  "locale.value.auto": "Automatic",
+  "locale.value.de-DE": "German (Germany)",
+  "locale.value.fr-FR": "Français (France)",
+  "locale.value.es-ES": "Espagnol (Espagne)",
+  "locale.value.en-US": "English (USA)"
+}
