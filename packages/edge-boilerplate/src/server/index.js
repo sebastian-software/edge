@@ -1,12 +1,6 @@
 import React from "react"
-
-import {
-  prepareResponse,
-  wrapApplication,
-  renderApplication,
-  createKernel,
-  fetchData
-} from "edge-core"
+import { fetchData, prepareResponse, renderApplication } from "edge-core"
+import { getLoadableState } from 'loadable-components/server'
 
 import Application from "../Application"
 import State from "../State"
@@ -16,49 +10,28 @@ console.log(`[APP] Build: ${process.env.NODE_ENV}-${process.env.BUILD_TARGET}`)
 
 /* eslint-disable no-console, max-statements */
 export default ({ clientStats }) => async (request, response) => {
-  // [1] Response Preparation:
+  // Response Preparation:
   // This step parses some client information like language and user agent.
-  const edge = prepareResponse(request)
+  const parsed = prepareResponse(request)
 
-  // [3] Build State:
-  // Built up object which contains all relevant initial render data.
-  //
-  // We can use this for passing environment settings to the client.
-  // This is actually super smart and helpful for things like API urls
-  // which might change depending on environment.
-  //
-  // Make sure to have the matching reducer for each top-level entry.
-  // This is required to make Redux work correctly.
-  const state = {
-    env: {
-      API_URL: process.env.API_URL,
-      APOLLO_URL: process.env.APOLLO_URL
-    }
-  }
-
-  // [4] Create Kernel Instance:
-  // This one holds all current request state in an easy-accessible container.
-  const kernel = createKernel(State, { state, edge, request })
-
-  // [5] Wrap Application:
-  // We wrap the original application with support for Intl, Redux, ...
-  const WrappedApplication = wrapApplication(<Application />, kernel)
-
-  // [6] Fetch Data:
+  // Fetch Data:
   // Now we are ready to fetch required data by waiting for async requests.
   try {
-    await fetchData(WrappedApplication, kernel)
-  } catch(error) {
+    await fetchData(Application)
+  } catch (error) {
     console.error("Unable to fetch data:", error)
   }
 
-  // [7] Render Application:
+  // Render Application:
   // When all required data is available we can safely render the result.
-  renderApplication({
-    Application: WrappedApplication,
-    clientStats,
-    kernel,
-    request,
-    response
-  })
+  try {
+    renderApplication({
+      Application,
+      clientStats,
+      request,
+      response
+    })
+  } catch(error) {
+    console.error("Unable to render application:", error)
+  }
 }

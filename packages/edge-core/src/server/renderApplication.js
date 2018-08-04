@@ -1,4 +1,4 @@
-import ReactDOM from "react-dom/server"
+import { renderToString } from "react-dom/server"
 import flushChunks from "webpack-flush-chunks"
 
 import renderPage from "./renderPage"
@@ -11,13 +11,10 @@ export default function renderApplication({
   request,
   response
 }) {
-  console.log("[EDGE] Exporting current state...")
-  const state = kernel.store.getState()
-
   console.log("[EDGE] Rendering application...")
   let html = ""
   try {
-    html = ReactDOM.renderToString(Application)
+    html = renderToString(Application)
   } catch (err) {
     console.error("Unable to render server side React:", err)
   }
@@ -27,10 +24,11 @@ export default function renderApplication({
   // TODO: Support SRI integrity checksums as added by SRI Webpack Plugin
   // https://www.npmjs.com/package/webpack-subresource-integrity#without-htmlwebpackplugin
 
+  console.log("HTML:",html)
+
   // Render full HTML page using external helper
   console.log("Rendering Page...")
   const renderedPage = renderPage({
-    state,
     html,
     styles: styles.toString(),
     scripts: js.toString()

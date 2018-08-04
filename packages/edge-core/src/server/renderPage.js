@@ -12,11 +12,7 @@ import Helmet from "react-helmet"
  * @param config.scripts {string} [""] Scripts to inject into the page.
  * @returns The full HTML page in the form of a React element.
  */
-export default function renderPage({ state, html, styles, scripts }) {
-  if (typeof state !== "object" || typeof state.edge !== "object") {
-    throw new Error("[EDGE]: RenderPage: Invalid state object!")
-  }
-
+export default function renderPage({ html, styles, scripts }) {
   if (typeof html !== "string" || html.length === 0) {
     throw new Error("[EDGE]: RenderPage: Invalid html string!")
   }
@@ -29,10 +25,12 @@ export default function renderPage({ state, html, styles, scripts }) {
     throw new Error("[EDGE]: RenderPage: Invalid scripts string!")
   }
 
-  const edge = state.edge
   const helmet = Helmet.renderStatic()
-  const inlineCode = `APP_STATE=${serialize(state, { isJSON: true })};`
-  const nonceHtml = edge.nonce ? `nonce="${edge.nonce}"` : ""
+  // const inlineCode = `APP_STATE=${serialize(state, { isJSON: true })};`
+  // const nonceHtml = edge.nonce ? `nonce="${edge.nonce}"` : ""
+
+  const inlineCode = ""
+  const nonceHtml = ""
 
   return `
 <!doctype html>
