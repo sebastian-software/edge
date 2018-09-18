@@ -1,6 +1,6 @@
 {
   "name": "jest-preset-edge",
-  "version": "0.2.1-alpha.17",
+  "version": "0.2.1-alpha.18",
   "description": "Centralized Jest configuration for Edge-based projects.",
   "main": "jest-preset.js",
   "scripts": {
