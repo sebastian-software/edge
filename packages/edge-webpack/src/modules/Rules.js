@@ -31,8 +31,11 @@ const CSS_LOADER_MODULE_OPTS = {
 const THREAD_LOADER = {
   loader: require.resolve("thread-loader"),
   options: {
-    // keep workers alive for more effective watch mode
-    poolTimeout: Infinity
+    // Via: https://webpack.js.org/guides/build-performance/#sass
+    // node-sass has a bug which blocks threads from the Node.js thread pool.
+    // When using it with the thread-loader set workerParallelJobs: 2.
+    workerParallelJobs: 2,
+    poolTimeout: process.env.NODE_ENV === "development" ? Infinity : 500 // keep workers alive for more effective watch mode
   }
 }
 
