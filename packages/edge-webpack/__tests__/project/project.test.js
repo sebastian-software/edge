@@ -31,7 +31,5 @@ test("Executes correctly", (done) => {
     expect(readFileSync(`${dist}/file-1UZ6YEQK.svg`, "utf-8")).toMatchSnapshot("logofile")
   })
 
-  compiler.hooks.done.tap("Test", () => {
-    setTimeout(done, 2000)
-  })
+  compiler.hooks.done.tap("Test", () => setTimeout(done))
 })
