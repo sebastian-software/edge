@@ -42,8 +42,10 @@
     "tmp": "0.0.x"
   },
   "devDependencies": {
+    "@babel/node": "^7.0.0",
     "@babel/register": "^7.0.0",
     "babel-preset-edge": "4.13.1",
+    "core-js": "^2.5.7",
     "cross-env": "^5.2.0",
     "eslint": "5.6.0",
     "mocha": "5.2.0",
@@ -58,7 +60,7 @@
     "lint": "eslint src/",
     "test": "cross-env NODE_ENV=test mocha test/*.test.js",
     "qa": "cross-env NODE_ENV=test mocha --ui exports test/*.qa.js",
-    "update": "babel-node ./bin/update.js && babel-node ./bin/testfiles.js",
+    "update": "cross-env NODE_ENV=node babel-node ./bin/update.js && cross-env NODE_ENV=node babel-node ./bin/testfiles.js",
     "build": "rimraf lib && preppy",
     "prepack": "npm run build"
   }
