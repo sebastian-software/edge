@@ -3,7 +3,7 @@
 exports[`Executes correctly: dirlist 1`] = `
 Array [
   "file-1UZ6YEQK.svg",
-  "index.bYADCiUt.js",
+  "index.fxFXOoXR.js",
   "index.html",
 ]
 `;
@@ -16,7 +16,7 @@ exports[`Executes correctly: htmlfile 1`] = `
     <title></title>
   </head>
   <body>
-  <script type=\\"text/javascript\\" src=\\"index.bYADCiUt.js\\" integrity=\\"sha256-hGU670OiayJ5z4HUfki9InHZs0TZDqdlJGtrO/hFSVw= sha512-ofG5xBlsyJNCDyxE4mACLU0Sv2u6y3LRiOeMfljmRmzpOQmhWz++1u7wa2rqvD4L4UFR2HVlZhzmuQmpOO9owA==\\" crossorigin=\\"anonymous\\"></script></body>
+  <script type=\\"text/javascript\\" src=\\"index.fxFXOoXR.js\\" integrity=\\"sha256-PgiP58mhrbMAndcVTWXHb7B4BsT7LazlqXsVDevA8Uk= sha512-oVTsFsi56jygDsWLuid3V1sMsPCfc3aXeWUzDH+FQuvXpajUvxIhGLYmN8GUm8pusTF3SED1e+Wxga04Gjznew==\\" crossorigin=\\"anonymous\\"></script></body>
 </html>"
 `;
 
