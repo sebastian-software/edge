@@ -37,6 +37,6 @@
     "edge-postcss": "^1.0.0-alpha.13"
   },
   "devDependencies": {
-    "prepublish": "2.1.1"
+    "prepublish": "2.2.0"
   }
 }

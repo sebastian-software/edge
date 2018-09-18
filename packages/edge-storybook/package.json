@@ -20,32 +20,32 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@storybook/addon-actions": "^4.0.0-alpha.4",
-    "@storybook/addon-jest": "^3.4.8",
+    "@storybook/addon-jest": "^3.4.11",
     "@storybook/addon-links": "^4.0.0-alpha.4",
     "@storybook/addon-storyshots": "^4.0.0-alpha.4",
-    "@storybook/addon-storysource": "^3.4.8",
+    "@storybook/addon-storysource": "^3.4.11",
     "@storybook/addon-viewport": "^4.0.0-alpha.4",
     "@storybook/react": "^4.0.0-alpha.4",
     "edge-style": "^1.0.0-alpha.13",
     "edge-webpack": "^0.0.2-alpha.16",
     "global": "^4.3.2",
     "js-cookie": "^2.2.0",
-    "react-intl": "^2.4.0",
-    "universal-dotenv": "^1.8.2"
+    "react-intl": "^2.6.0",
+    "universal-dotenv": "^1.9.1"
   },
   "peerDependencies": {
     "react": ">=16.4.0",
     "react-dom": ">=16.4.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.55",
-    "@babel/core": "^7.0.0-beta.55",
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-loader": "^8.0.0-beta.2",
-    "babel-preset-edge": "^4.9.5",
+    "babel-loader": "^8.0.2",
+    "babel-preset-edge": "^4.13.1",
     "cpy-cli": "^2.0.0",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
     "rimraf": "^2.6.2"
   }
 }
